@@ -1,0 +1,412 @@
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 16:58:49 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 21:58:34 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Thu Feb 03 21:58:40 +0800 2011
+  Processing by SessionsController#new as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered sessions/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at Thu Feb 03 21:58:46 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"kJGAkiS/yV+4hAoe/uyRfYTthz4iCoGy/ayQIEWjhsM=", "utf8"=>"✓", "password"=>"[FILTERED]", "login"=>"ealin"}
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (16.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE (login = 'ealin' and activated_at IS NOT NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 52ms
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 21:58:46 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (59.5ms)
+Completed 200 OK in 69ms (Views: 67.9ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 22:00:09 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 22:00:53 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 22:06:10 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Completed   in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=1):
+  app/controllers/users_controller.rb:84:in `index'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.4ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.5ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 03 22:07:05 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Feb 04 00:12:04 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+ERROR: compiling _app_views_users_index_html_erb__1919393160_2173652020_0 RAISED compile error
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:36: syntax error, unexpected '<', expecting ')'
+<body style="background: #EEEEEE;">
+ ^
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:41: syntax error, unexpected '<', expecting ')'
+</body>
+ ^
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: unknown regexp options - htl
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: unterminated string meets end of file
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: syntax error, unexpected $end, expecting ')'
+Function body:           def _app_views_users_index_html_erb__1919393160_2173652020_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "users/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Private Spaces</title>
+  ');@output_buffer.append= ( stylesheet_link_tag :all );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( javascript_include_tag :defaults );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( csrf_meta_tag );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</head>
+
+
+<h1> ');@output_buffer.append= (t :title );@output_buffer.safe_concat('</h1>
+
+
+<h1> ');@output_buffer.append= (t :MyPrivateSpace );@output_buffer.safe_concat('</h1>
+
+<h1> My Private Spaces </h1>
+
+
+<div class="user">  
+  ');@output_buffer.append= ( link_to (t :signup), :signup unless logged_in? );@output_buffer.safe_concat('  
+');@output_buffer.safe_concat('</div>  
+
+<div class="user">  
+  ');@output_buffer.append= ( link_to (t :login, :locale => :en), :login unless logged_in? );@output_buffer.safe_concat('  
+');@output_buffer.safe_concat('</div>  
+
+<p>');@output_buffer.append= ( l Time.now, :format => :short );@output_buffer.safe_concat('</p>
+
+
+');@output_buffer.append= ( #debug @temp_user );@output_buffer.safe_concat('
+');@output_buffer.append= ( #debug "XXXXXXXXXXXX" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+
+<body style="background: #EEEEEE;">
+
+
+');@output_buffer.append= ( yield );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+</body>
+</html>');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42:in `compile'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:440:in `_run__434435962__process_action__199225275__callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered users/index.html.erb within layouts/application (3.6ms)
+Completed   in 13ms
+
+ActionView::Template::Error (compile error
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:36: syntax error, unexpected '<', expecting ')'
+<body style="background: #EEEEEE;">
+ ^
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:41: syntax error, unexpected '<', expecting ')'
+</body>
+ ^
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: unknown regexp options - htl
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: unterminated string meets end of file
+/Ealin/Project/GitHub/PrivateSpace/app/views/users/index.html.erb:42: syntax error, unexpected $end, expecting ')'):
+    33: <%= #debug "XXXXXXXXXXXX" %>
+    34: 
+    35: 
+    36: <body style="background: #EEEEEE;">
+    37: 
+    38: 
+    39: <%= yield %>
+  app/views/users/index.html.erb:42:in `compile'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.3ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Feb 04 00:12:34 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at Fri Feb 04 01:26:21 +0800 2011
+  Processing by SessionsController#destroy as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Fri Feb 04 01:26:21 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at Fri Feb 04 01:26:29 +0800 2011
+  Processing by UsersController#new as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 1652413ms (Views: 31.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/signup" for 127.0.0.1 at Fri Feb 04 01:54:28 +0800 2011
+  Processing by UsersController#new as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 58280ms (Views: 30.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at Fri Feb 04 01:55:27 +0800 2011
+  Processing by UsersController#create as HTML
+  Parameters: {"commit"=>"註冊", "authenticity_token"=>"UWWbXQPhMZ9HyDktaSUPIzs45KQYM7MfQucm9K/Ek3g=", "utf8"=>"✓", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>"ealin5", "email"=>"ealin@xxx.yyy"}}
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."login" = 'ealin5') LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'ealin@xxx.yyy') LIMIT 1
+Rendered users/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 165165ms (Views: 18.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Feb 21 11:27:44 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (218.5ms)
+Completed 200 OK in 266ms (Views: 265.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Mon Feb 21 11:28:01 +0800 2011
+  Processing by SessionsController#new as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Apr 04 17:25:08 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (170.4ms)
+Completed 200 OK in 184ms (Views: 183.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at Mon Apr 04 17:25:13 +0800 2011
+  Processing by SessionsController#new as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at Mon Apr 04 17:25:15 +0800 2011
+  Processing by SessionsController#create as HTML
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"AxurQmg1QhUXZ6/vqN3ckaJvzR28rNKIiCodyoaXVdI=", "utf8"=>"✓", "password"=>"[FILTERED]", "login"=>"ealin"}
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE (login = 'ealin' and activated_at IS NOT NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms
+
+
+Started GET "/" for 127.0.0.1 at Mon Apr 04 17:25:15 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 60ms (Views: 58.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at Mon Apr 04 17:25:17 +0800 2011
+  Processing by SessionsController#destroy as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at Mon Apr 04 17:25:18 +0800 2011
+  Processing by UsersController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered users/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.0ms)
