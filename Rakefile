@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-TestPrj::Application.load_tasks
+HeyGoTimes::Application.load_tasks

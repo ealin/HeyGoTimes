@@ -2,12 +2,11 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module TestPrj
+module HeyGoTimes
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -27,14 +26,9 @@ module TestPrj
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    # <=== setup default locale here
-	#
-	#
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-	config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
@@ -44,7 +38,5 @@ module TestPrj
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-	
-	config.active_record.observers = :user_observer
   end
 end
