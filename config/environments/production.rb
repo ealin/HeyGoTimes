@@ -1,4 +1,4 @@
-TestPrj::Application.configure do
+HeyGoTimes::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -46,20 +46,4 @@ TestPrj::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  
- 
-  
-  ActionMailer::Base.smtp_settings = {  
-    :address => "smtp.gmail.com",  
-    :port => 587,  
-    :domain => "my-private-space.com",  
-    :authentication => :plain,  
-    :user_name => "privatespace888@gmail.com",  
-    :password => "ealinya1112"  
-  }   
-
- SITE_URL  = "http://www.my-private-space.com"
-
- 
 end

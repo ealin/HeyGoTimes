@@ -1,19 +1,12 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Private Spaces</title>
+  <title>HeyGoTimes</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
-
-<div class="user">  
-  <%= link_to "Logout", :logout unless !logged_in? %>  
-</div>  
-
-<body style="background: #EEEEEE;">
+<body>
 
 <%= yield %>
 

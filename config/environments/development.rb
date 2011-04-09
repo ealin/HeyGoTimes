@@ -1,4 +1,4 @@
-TestPrj::Application.configure do
+HeyGoTimes::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -22,21 +22,5 @@ TestPrj::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-  
-  
- 
-  ActionMailer::Base.smtp_settings = {  
-    :address => "smtp.gmail.com",  
-    :port => 587,  
-    :domain => "my-private-space.com",  
-    :authentication => :plain,  
-    :user_name => "privatespace888@gmail.com",  
-    :password => "ealinya1112"  
-  }    
-	
-
-
-  SITE_URL  = "http://localhost:3000"
-  
 end
 
