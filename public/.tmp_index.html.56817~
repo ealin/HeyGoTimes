@@ -235,50 +235,5 @@
 
       <div id="footer">&nbsp;</div>
     </div>
-	
-
-<script type="text/javascript">
-// 確認User Agent中是否包含str
-function _ua(str) 
-{
-  var ua = navigator.userAgent;
-  return (ua.indexOf(str) > 0);
-}
-// 若為iPhone的話就回傳true
-function isIPhone() { return _ua("iPhone"); }
-// 若為iPad的話就回傳true
-function isIPad() { return _ua("iPad"); }
-// 若為Android的話就回傳true
-function isAndroid() { return _ua("Android"); }
-// 回傳機種名稱
-function getDeviceName() {
-  if (isIPhone()) { return "iPhone"; }
-  if (isIPad())   { return "iPad"; }
-  if (isAndroid()) {
-    return getAndroidDevName();
-  }
-  return "未知的機器";
-}
-// 調查Android的機種名稱
-function getAndroidDevName() {
-    var ua = navigator.userAgent;
-    var regex = /Android (.*);.*;\s*(.*)\sBuild/;
-    var match = regex.exec(ua);
-    if (match) {
-      var ver = match[1];
-      var dev_name = match[2];
-      return "Android " + ver + " " + dev_name;
-    }
-    return "未知的android機器";
-}
-// 顯示裝置名稱
-alert("這是 " + getDeviceName() + "!");
-document.write(navigator.userAgent);
-</script>
-
-	
   </body>
-  
-  
-  
 </html>
