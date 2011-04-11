@@ -1,4 +1,32 @@
 HeyGoTimes::Application.routes.draw do
+  
+  get "admin/index"
+
+  get "translator/index"
+
+  get "report/index"
+
+  get "area/index"
+
+  get "setup/index"
+
+  get "search/index"
+
+  get "user_history/index"
+
+  get "editor/index"
+
+  get "ad/index"
+
+  get "my_ad/index"
+
+  get "faq/index"
+
+  get "paper/index"
+  get "paper/to_main_page"
+
+  get "main_page/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +76,7 @@ HeyGoTimes::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "paper#index"
 
   # See how all your routes lay out with "rake routes"
 
