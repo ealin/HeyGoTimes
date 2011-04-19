@@ -866,3 +866,565 @@ Started GET "/faq/index" for 127.0.0.1 at Mon Apr 11 17:01:58 +0800 2011
 * Locale set to 'zh_tw'
 Rendered faq/index.html.erb within layouts/application (2.1ms)
 Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search/index" for 127.0.0.1 at Mon Apr 11 17:12:24 +0800 2011
+  Processing by SearchController#index as HTML
+* Accept-Language: zh-tw
+* Locale set to 'zh_tw'
+Rendered search/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 82ms (Views: 81.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/activity.atom" for 127.0.0.1 at Mon Apr 11 17:34:55 +0800 2011
+
+ActionController::RoutingError (No route matches "/activity.atom"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Apr 14 12:43:33 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (96.3ms)
+Completed 200 OK in 179ms (Views: 178.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Apr 14 12:44:22 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 12:46:04 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (177.3ms)
+Completed 200 OK in 219ms (Views: 217.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 13:43:47 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/HeyGo_logo.png" for 127.0.0.1 at Tue Apr 19 13:43:47 +0800 2011
+
+ActionController::RoutingError (No route matches "/HeyGo_logo.png"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 13:46:55 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:02:53 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:03:02 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/images/HeyGo_logo.png" for 127.0.0.1 at Tue Apr 19 14:03:02 +0800 2011
+
+ActionController::RoutingError (No route matches "/main_page/images/HeyGo_logo.png"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:03:22 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:03:32 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:03:37 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:13:26 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (469.0ms)
+Completed   in 485ms
+
+ActionView::Template::Error (undefined local variable or method `link_to_main' for #<#<Class:0x103ab3d68>:0x103ab1f18>):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), :action =>link_to_main) %>
+    13: 
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2178251160_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.1ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (133.2ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (152.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:14:08 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (37.1ms)
+Completed   in 63ms
+
+ActionView::Template::Error (undefined local variable or method `link_to_main' for #<#<Class:0x103d4fa90>:0x103d4c098>):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), :action =>link_to_main) %>
+    13: 
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2179615260_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.1ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (49.2ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (79.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:14:13 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (18.6ms)
+Completed   in 32ms
+
+ActionView::Template::Error (undefined local variable or method `link_to_main' for #<#<Class:0x103addcd0>:0x103adbde0>):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), :action =>link_to_main) %>
+    13: 
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2178337080_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (171.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (186.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:15:31 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (51.6ms)
+Completed   in 67ms
+
+ActionView::Template::Error (undefined local variable or method `link_to_main' for #<#<Class:0x103ea4c88>:0x103ea2e38>):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), :action =>link_to_main) %>
+    13: 
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2180317540_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.5ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (28.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:15:33 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (27.0ms)
+Completed   in 44ms
+
+ActionView::Template::Error (undefined local variable or method `link_to_main' for #<#<Class:0x103b78a00>:0x103b73d20>):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), :action =>link_to_main) %>
+    13: 
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2178647440_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (23.0ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (46.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:17:30 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.8ms)
+Completed   in 23ms
+
+ActionView::Template::Error (No route matches {:controller=>"paper", :action=>"link_to_main"}):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), \
+    13: 						  :action =>'link_to_main') %>
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2179715600_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.9ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.2ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:18:30 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:18:33 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 3ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:18:33 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (16.8ms)
+Completed   in 43ms
+
+ActionView::Template::Error (No route matches {:controller=>"main_page", :action=>"to_main_page"}):
+    9: <body>
+    10: 	
+    11: 	<!-- show logo/ link_to_main defined in application_controller.rb -->
+    12: 	<%= link_to( image_tag("/images/HeyGo_logo.png", :alt => "Logo"), \
+    13: 						  :action =>'to_main_page') %>
+    14: 
+    15: 
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__1821981716_2179105440_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.8ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (30.1ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:20:41 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 30ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 14:20:53 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+main_page
+to_main_page
+Completed   in 18ms
+
+ActionView::MissingTemplate (Missing template main_page/to_main_page with {:locale=>[:zh_tw, :en], :handlers=>[:rhtml, :erb, :rxml, :builder, :rjs], :formats=>[:html]} in view paths "/Ealin/Project/GitHub/HeyGoTimes/app/views"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:21:10 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (162.6ms)
+Completed 200 OK in 179ms (Views: 177.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:21:14 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:21:14 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 14:21:29 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+main_page
+to_main_page
+Completed   in 19ms
+
+ActionView::MissingTemplate (Missing template main_page/to_main_page with {:locale=>[:zh_tw, :en], :handlers=>[:rhtml, :erb, :rxml, :builder, :rjs], :formats=>[:html]} in view paths "/Ealin/Project/GitHub/HeyGoTimes/app/views"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:22:57 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 54ms (Views: 52.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:23:00 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:23:00 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 14:23:08 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper/index
+Completed 302 Found in 3ms
+
+
+Started GET "/paper/index" for 127.0.0.1 at Tue Apr 19 14:23:08 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:23:13 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 5ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:23:13 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 14:23:15 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper/index
+Completed 302 Found in 2ms
+
+
+Started GET "/paper/index" for 127.0.0.1 at Tue Apr 19 14:23:15 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:36:53 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (59.1ms)
+Completed   in 75ms
+
+ActionView::Template::Error (No route matches {:controller=>"paper", :action=>"to_main_page"}):
+    11: 
+    12: <br><br>
+    13: <h1>連結：</h1>
+    14: <%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page' %>
+    15: 
+    16: 
+    17: </html>
+  app/views/paper/index.html.erb:14:in `_app_views_paper_index_html_erb__1810009278_2179782900_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.9ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (14.0ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (33.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:43:13 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (37.1ms)
+Completed   in 56ms
+
+ActionView::Template::Error (No route matches {:controller=>"paper", :action=>"to_main_page"}):
+    11: 
+    12: <br><br>
+    13: <h1>連結：</h1>
+    14: <%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page' %>
+    15: 
+    16: 
+    17: </html>
+  app/views/paper/index.html.erb:14:in `_app_views_paper_index_html_erb__1810009278_2180122680_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.1ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (32.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:46:47 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 52ms (Views: 50.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:46:50 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:46:51 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:48:23 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (73.0ms)
+Completed 200 OK in 114ms (Views: 112.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:48:28 +0800 2011
+
+AbstractController::ActionNotFound (The action 'show' could not be found for PaperController):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 14:49:13 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (42.6ms)
+Completed 200 OK in 59ms (Views: 57.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 14:49:15 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 14:49:16 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 15:13:42 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (39.1ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 15:13:54 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 15:13:54 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 15:13:56 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 2ms
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 15:13:56 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.0ms)

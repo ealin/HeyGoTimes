@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
     if I18n.locale == :"zh" 
      
-      #  84 == 'T',  116 == 't'
+      #  Ealin: 84 == 'T',  116 == 't' (特別處理: zh_tw or zh_TW)
       if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116   
         #
         # Ealin: 避免繁體與簡體可能混淆, 將繁體的locale name設為zh_tw
@@ -28,6 +28,19 @@ class ApplicationController < ActionController::Base
     #logger.debug I18n.locale.length
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
+  
+  
+  # Ealin: 20110419
+  #-----------------------------------------------------------------------------------
+  # method: to_main_page
+  #   - 點到logo icon時的動作 => 大部分畫面都是跳到/paper, 在/paper時跳到/main_page 
+  #     (只有paper_controller會overriding這個method, 其他controller直接用父類別的這個功能 )
+  #-----------------------------------------------------------------------------------
+  #
+  def to_main_page
+    redirect_to :controller => 'paper', :action => 'index'  
+  end  
+  
   
   protect_from_forgery
   
@@ -48,5 +61,9 @@ class ApplicationController < ActionController::Base
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     #request.env['HTTP_ACCEPT_LANGUAGE']
   end   
+  
+  
+  
+
    
 end

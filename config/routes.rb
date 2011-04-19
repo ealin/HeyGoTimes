@@ -1,5 +1,13 @@
 HeyGoTimes::Application.routes.draw do
   
+  get "terms_of_service/index"
+
+  get "privacy/index"
+
+  get "template/index"
+
+  get "edit_area/index"
+
   get "admin/index"
 
   get "translator/index"
@@ -22,10 +30,17 @@ HeyGoTimes::Application.routes.draw do
 
   get "faq/index"
 
-  get "paper/index"
-  get "paper/to_main_page"
+  resources :paper do
+    #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
+    #
+    get 'index', :on => :collection  
+    get 'to_main_page', :on => :collection  
+  end
+
 
   get "main_page/index"
+  get "main_page/to_main_page"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
