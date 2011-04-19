@@ -1,4 +1,47 @@
 HeyGoTimes::Application.routes.draw do
+  
+  get "terms_of_service/index"
+
+  get "privacy/index"
+
+  get "template/index"
+
+  get "edit_area/index"
+
+  get "admin/index"
+
+  get "translator/index"
+
+  get "report/index"
+
+  get "area/index"
+
+  get "setup/index"
+
+  get "search/index"
+
+  get "user_history/index"
+
+  get "editor/index"
+
+  get "ad/index"
+
+  get "my_ad/index"
+
+  get "faq/index"
+
+  resources :paper do
+    #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
+    #
+    get 'index', :on => :collection  
+    get 'to_main_page', :on => :collection  
+  end
+
+
+  get "main_page/index"
+  get "main_page/to_main_page"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +91,7 @@ HeyGoTimes::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "paper#index"
 
   # See how all your routes lay out with "rake routes"
 
