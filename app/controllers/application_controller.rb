@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   #-----------------------------------------------------------------------------------
   #
   def to_main_page
-    redirect_to :controller => 'paper', :action => 'index'  
+    redirect_to :controller => 'paper', :action => 'index' 
   end  
   
   

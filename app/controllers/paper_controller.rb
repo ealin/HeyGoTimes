@@ -14,8 +14,8 @@ class PaperController < ApplicationController
     
     # link to "main_page/index" 
     #
-    redirect_to :controller => 'main_page', :action => 'index'
-  end
+    redirect_to  :controller => 'main_page', :action => 'index'
+ end
 
 
 end
