@@ -1,5 +1,6 @@
 class PaperController < ApplicationController
   
+
   def index
   
   
