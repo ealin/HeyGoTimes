@@ -15,9 +15,10 @@ class ApplicationController < ActionController::Base
     #logger.debug "'#{I18n.locale}'"
   
     if I18n.locale == :"zh" 
-     
-      #  Ealin: 84 == 'T',  116 == 't' (特別處理: zh_tw or zh_TW)
-      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116   
+    
+      logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
+      #  Ealin: 84 == 'T' (特別處理: zh_TW)
+      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 'T'  
         #
         # Ealin: 避免繁體與簡體可能混淆, 將繁體的locale name設為zh_tw
         #

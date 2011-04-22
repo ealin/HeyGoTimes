@@ -1508,3 +1508,110 @@ Started GET "/" for 127.0.0.1 at 2011-04-22 14:22:04 +0800
 * Locale set to 'zh'
 Rendered paper/index.html.erb within layouts/application (31.0ms)
 Completed 200 OK in 169ms (Views: 167.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 15:49:59 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 133ms (Views: 132.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:02:42 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 110ms (Views: 109.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:05:58 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 120ms (Views: 119.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:10:02 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 133ms (Views: 133.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:27:30 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+T
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 159ms (Views: 159.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:27:44 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+T
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:28:09 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+T
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (67.0ms)
+Completed 200 OK in 165ms (Views: 164.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:28:25 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+T
+* Locale set to 'zh'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 176ms (Views: 174.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:31:29 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+xxxxx
+T
+yyyy
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (60.0ms)
+Completed 200 OK in 175ms (Views: 174.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 16:34:52 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+T
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 116ms (Views: 114.0ms | ActiveRecord: 0.0ms)
