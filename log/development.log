@@ -1428,3 +1428,1115 @@ Started GET "/paper" for 127.0.0.1 at Tue Apr 19 15:13:56 +0800 2011
 * Locale set to 'zh_tw'
 Rendered paper/index.html.erb within layouts/application (6.7ms)
 Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:08:56 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered paper/index.html.erb within layouts/application (6.8ms)
+Completed   in 26ms
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: 
+    4: <%= show_search_bar %>
+    5: 
+    6: <h1>(5). Paper#index</h1>
+    7: <p>Find me in app/views/paper/index.html.erb</p>
+  app/views/paper/index.html.erb:4:in `show_search_bar'
+  app/views/paper/index.html.erb:4:in `_app_views_paper_index_html_erb__1810009278_2180053660_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.4ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (34.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:10:09 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (38.9ms)
+Completed 200 OK in 54ms (Views: 52.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:11:50 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (14.5ms)
+Completed   in 145ms
+
+ActionView::Template::Error (undefined local variable or method `html' for #<#<Class:0x1039d6be8>:0x103bb7db8>):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: 
+    4: <%= show_search_bar :paper  %>
+    5: 
+    6: <h1>(5). Paper#index</h1>
+    7: <p>Find me in app/views/paper/index.html.erb</p>
+  app/helpers/application_helper.rb:23:in `show_search_bar'
+  app/views/paper/index.html.erb:4:in `_app_views_paper_index_html_erb__1810009278_2180382020_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.9ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:12:42 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:13:41 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:29:06 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (3.7ms)
+Completed   in 18ms
+
+ActionView::Template::Error (Missing partial <p>Show Search Bar here</p> with {:handlers=>[:erb, :rjs, :rhtml, :builder, :rxml], :locale=>[:zh_tw, :en], :formats=>[:html]} in view paths "/Ealin/Project/GitHub/HeyGoTimes/app/views"):
+    1: <!DOCTYPE html>
+    2: <html>
+    3: 
+    4: <%= show_search_bar :paper  %>
+    5: 
+    6: <h1>(5). Paper#index</h1>
+    7: <p>Find me in app/views/paper/index.html.erb</p>
+  app/helpers/application_helper.rb:23:in `show_search_bar'
+  app/views/paper/index.html.erb:4:in `_app_views_paper_index_html_erb__1810009278_2179284800_0'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.3ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (28.7ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:29:52 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered text template (0.0ms)
+Rendered paper/index.html.erb within layouts/application (37.9ms)
+Completed 200 OK in 60ms (Views: 57.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:32:39 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 31ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:33:06 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:33:34 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:34:43 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 38ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:50:03 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:51:07 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:52:03 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 16:53:43 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 17:08:58 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 17:09:07 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index?hint=to+main+page
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index?hint=to+main+page" for 127.0.0.1 at Tue Apr 19 17:09:07 +0800 2011
+  Processing by MainPageController#index as HTML
+  Parameters: {"hint"=>"to main page"}
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 17:09:10 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 2ms
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 17:09:10 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 17:10:11 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 17:10:17 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index?hint=to+main+page
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index?hint=to+main+page" for 127.0.0.1 at Tue Apr 19 17:10:17 +0800 2011
+  Processing by MainPageController#index as HTML
+  Parameters: {"hint"=>"to main page"}
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:27:16 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+ERROR: compiling _app_views_paper_index_html_erb__1810009278_2179037040_0 RAISED compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected tASSOC, expecting ')'
+            :title => "Tooltip text goes here" );@o...
+                     ^
+Function body:           def _app_views_paper_index_html_erb__1810009278_2179037040_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "paper/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+
+');@output_buffer.append= ( show_search_bar :paper  );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+<h1>(5). Paper#index</h1>
+<p>Find me in app/views/paper/index.html.erb</p>
+
+<br><br>
+<h1>每日發行的報紙頁面</h1>
+<p>此頁面包含： login/報紙頭條/分類廣告橫欄...</p>
+
+
+<br><br>
+<h1>連結：</h1>
+');@output_buffer.append= ( link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page'
+            :title => "Tooltip text goes here" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:24:in `compile'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:440:in `_run__848668037__process_action__199225275__callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:229:in `optimized_each'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered paper/index.html.erb within layouts/application (2.1ms)
+Completed   in 116ms
+
+ActionView::Template::Error (compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected tASSOC, expecting ')'
+            :title => "Tooltip text goes here" );@o...
+                     ^):
+    14: <br><br>
+    15: <h1>連結：</h1>
+    16: <%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page'
+    17:             :title => "Tooltip text goes here" %>
+    18: 
+    19: 
+    20: </html>
+  app/views/paper/index.html.erb:24:in `compile'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.9ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:27:52 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+ERROR: compiling _app_views_paper_index_html_erb__1810009278_2177786540_0 RAISED compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected tASSOC, expecting ')'
+            :title => "Tooltip text goes here") );@...
+                     ^
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected ')', expecting kEND
+...=> "Tooltip text goes here") );@output_buffer.safe_concat('
+                              ^
+Function body:           def _app_views_paper_index_html_erb__1810009278_2177786540_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "paper/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+
+');@output_buffer.append= ( show_search_bar :paper  );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+<h1>(5). Paper#index</h1>
+<p>Find me in app/views/paper/index.html.erb</p>
+
+<br><br>
+<h1>每日發行的報紙頁面</h1>
+<p>此頁面包含： login/報紙頭條/分類廣告橫欄...</p>
+
+
+<br><br>
+<h1>連結：</h1>
+');@output_buffer.append= ( link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page'
+            :title => "Tooltip text goes here") );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:24:in `compile'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:440:in `_run__848668037__process_action__199225275__callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:229:in `optimized_each'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered paper/index.html.erb within layouts/application (1.8ms)
+Completed   in 15ms
+
+ActionView::Template::Error (compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected tASSOC, expecting ')'
+            :title => "Tooltip text goes here") );@...
+                     ^
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected ')', expecting kEND
+...=> "Tooltip text goes here") );@output_buffer.safe_concat('
+                              ^):
+    14: <br><br>
+    15: <h1>連結：</h1>
+    16: <%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page'
+    17:             :title => "Tooltip text goes here") %>
+    18: 
+    19: 
+    20: </html>
+  app/views/paper/index.html.erb:24:in `compile'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.1ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.9ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (209.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:28:30 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+ERROR: compiling _app_views_paper_index_html_erb__1810009278_2179601540_0 RAISED compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected ')', expecting kEND
+...=> "Tooltip text goes here") );@output_buffer.safe_concat('
+                              ^
+Function body:           def _app_views_paper_index_html_erb__1810009278_2179601540_0(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "paper/index";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+
+');@output_buffer.append= ( show_search_bar :paper  );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+<h1>(5). Paper#index</h1>
+<p>Find me in app/views/paper/index.html.erb</p>
+
+<br><br>
+<h1>每日發行的報紙頁面</h1>
+<p>此頁面包含： login/報紙頭條/分類廣告橫欄...</p>
+
+
+<br><br>
+<h1>連結：</h1>
+');@output_buffer.append= ( link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page',
+            :title => "Tooltip text goes here") );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('
+
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:24:in `compile'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:59:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:440:in `_run__848668037__process_action__199225275__callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `send'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `action'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:229:in `optimized_each'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+/Users/apple/.gem/ruby/1.8/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/apple/.gem/ruby/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/Users/apple/.gem/ruby/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/Library/Ruby/Gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+Rendered paper/index.html.erb within layouts/application (2.3ms)
+Completed   in 59ms
+
+ActionView::Template::Error (compile error
+/Ealin/Project/GitHub/HeyGoTimes/app/views/paper/index.html.erb:17: syntax error, unexpected ')', expecting kEND
+...=> "Tooltip text goes here") );@output_buffer.safe_concat('
+                              ^):
+    14: <br><br>
+    15: <h1>連結：</h1>
+    16: <%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page',
+    17:             :title => "Tooltip text goes here") %>
+    18: 
+    19: 
+    20: </html>
+  app/views/paper/index.html.erb:24:in `compile'
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.5ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (46.6ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (101.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:28:59 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (48.3ms)
+Completed 200 OK in 73ms (Views: 71.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 18:29:16 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 3ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 18:29:16 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 18:29:19 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 3ms
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 18:29:19 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (160.7ms)
+Completed 200 OK in 184ms (Views: 182.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 18:30:15 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 5ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 18:30:15 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 18:30:24 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 2ms
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 18:30:25 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:31:33 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:33:41 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 53ms (Views: 47.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 18:34:15 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 2ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 18:34:15 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 18:37:02 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:43:05 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 42ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:48:37 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:48:49 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 60ms (Views: 56.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:50:16 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:50:38 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 73ms (Views: 68.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 21:53:48 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:07:35 +0800 2011
+
+SyntaxError (/Ealin/Project/GitHub/HeyGoTimes/app/controllers/paper_controller.rb:17: syntax error, unexpected '\n', expecting tASSOC):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.2ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:09:24 +0800 2011
+
+SyntaxError (/Ealin/Project/GitHub/HeyGoTimes/app/controllers/paper_controller.rb:17: syntax error, unexpected ',', expecting tASSOC
+...page', { :action => 'index'} ,{:title => 'test'} 
+                              ^):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (17.2ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (43.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:10:46 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 193ms (Views: 191.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:12:03 +0800 2011
+
+SyntaxError (/Ealin/Project/GitHub/HeyGoTimes/app/controllers/paper_controller.rb:17: syntax error, unexpected tASSOC, expecting '}'
+    redirect_to  {:controller => 'main_page', :action => 'index'}
+                                ^
+/Ealin/Project/GitHub/HeyGoTimes/app/controllers/paper_controller.rb:17: syntax error, unexpected ',', expecting '}'
+    redirect_to  {:controller => 'main_page', :action => 'index'}
+                                             ^):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (17.7ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:12:56 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:28:03 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 19 22:28:09 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Tue Apr 19 22:28:18 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 3ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Tue Apr 19 22:28:18 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 31ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Tue Apr 19 22:28:27 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 3ms
+
+
+Started GET "/paper" for 127.0.0.1 at Tue Apr 19 22:28:28 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (246.0ms)
+Completed 200 OK in 266ms (Views: 263.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Apr 20 16:18:01 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (93.6ms)
+Completed 200 OK in 103ms (Views: 102.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Apr 20 17:14:30 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Wed Apr 20 17:14:44 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 1ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Wed Apr 20 17:14:44 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Apr 21 12:14:03 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at Thu Apr 21 12:15:10 +0800 2011
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/main_page/index
+Completed 302 Found in 1ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Thu Apr 21 12:15:10 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at Thu Apr 21 12:15:18 +0800 2011
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Rendered main_page/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/to_main_page" for 127.0.0.1 at Thu Apr 21 12:15:28 +0800 2011
+  Processing by MainPageController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 1ms
+
+
+Started GET "/paper" for 127.0.0.1 at Thu Apr 21 12:15:28 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Apr 22 14:16:40 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Apr 22 14:23:23 +0800 2011
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh_tw'
+[HGTimes Debug] I want to search in News Paper
+Rendered paper/index.html.erb within layouts/application (84.1ms)
+Completed 200 OK in 91ms (Views: 90.4ms | ActiveRecord: 0.0ms)
