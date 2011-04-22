@@ -1428,3 +1428,83 @@ Started GET "/paper" for 127.0.0.1 at Tue Apr 19 15:13:56 +0800 2011
 * Locale set to 'zh_tw'
 Rendered paper/index.html.erb within layouts/application (6.7ms)
 Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-21 21:49:32 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered paper/index.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 285ms (Views: 284.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at 2011-04-21 21:49:52 +0800
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Redirected to http://127.0.0.1:3000/main_page/index
+Completed 302 Found in 1ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at 2011-04-21 21:49:53 +0800
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered main_page/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 123ms (Views: 122.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/main_page/index" for 127.0.0.1 at 2011-04-21 21:49:55 +0800
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered main_page/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 126ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at 2011-04-21 21:50:17 +0800
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Redirected to http://127.0.0.1:3000/main_page/index
+Completed 302 Found in 1ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at 2011-04-21 21:50:18 +0800
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered main_page/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 116ms (Views: 116.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 14:15:34 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered paper/index.html.erb within layouts/application (122.0ms)
+Completed 200 OK in 248ms (Views: 247.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/paper/to_main_page" for 127.0.0.1 at 2011-04-22 14:17:02 +0800
+  Processing by PaperController#to_main_page as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Redirected to http://127.0.0.1:3000/main_page/index
+Completed 302 Found in 1ms
+
+
+Started GET "/main_page/index" for 127.0.0.1 at 2011-04-22 14:17:02 +0800
+  Processing by MainPageController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered main_page/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 123ms (Views: 122.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-22 14:22:04 +0800
+  Processing by PaperController#index as HTML
+* Accept-Language: zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4
+* Locale set to 'zh'
+Rendered paper/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 169ms (Views: 167.0ms | ActiveRecord: 0.0ms)
