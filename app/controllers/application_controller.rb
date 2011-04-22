@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     #logger.debug "'#{I18n.locale}'"
   
     if I18n.locale == :"zh" 
-     
+   
       #  Ealin: 84 == 'T',  116 == 't' (特別處理: zh_tw or zh_TW)
       if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116   
         #
