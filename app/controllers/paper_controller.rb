@@ -2,8 +2,7 @@ class PaperController < ApplicationController
   
 
   def index
-  
-  
+
   end
 
   # Ealin: 20110411

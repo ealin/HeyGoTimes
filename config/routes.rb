@@ -1,5 +1,6 @@
 HeyGoTimes::Application.routes.draw do
   
+   
   get "terms_of_service/index"
 
   get "privacy/index"
@@ -18,8 +19,6 @@ HeyGoTimes::Application.routes.draw do
 
   get "setup/index"
 
-  get "search/index"
-
   get "user_history/index"
 
   get "editor/index"
@@ -29,6 +28,12 @@ HeyGoTimes::Application.routes.draw do
   get "my_ad/index"
 
   get "faq/index"
+
+  resources :search do
+    get 'index', :on => :collection  
+    get 'do_search', :on => :collection  
+    get 'to_main_page', :on => :collection  
+  end
 
   resources :paper do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2

@@ -1,5 +1,7 @@
 module SearchHelper
 
+
+
   
   # Ealin: 20110419
   #------------------------------------------------------------------------------
@@ -15,12 +17,16 @@ module SearchHelper
       logger.debug "[HGTimes Debug] I want to search in others"     
     end
     
+    #Ealin: render  Partial Layout - _search_bar.html.erb
+    render "/search/search_bar"
+    
     # Ealin: helper.rb可以直接輸出html, 但為了安全因素字串後面要接.html_safe (否則會連tag一起輸出)
     #
-    html = "" ;
-    html << "Search Bar(searching " + type.to_s + ")<br>"
-    html.html_safe
-    
+    #   html = "" ;
+    #   html << "Search Bar(searching " + type.to_s + ")<br>"
+    #   html.html_safe
+    #   '<br><br>'.html_safe
+
     
   end
     
