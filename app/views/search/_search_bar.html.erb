@@ -1,0 +1,9 @@
+
+<!-- show search bar  -->
+<div>
+<%= form_tag('/search/do_search', :method => "get") do   %> 
+<%=    label_tag :query, 'Search for:'   %> 
+<%=    text_field_tag :query,'input search-key here:'   %> 
+<%=    submit_tag 'Search'   %> 
+<%  end   %>   
+</div>
