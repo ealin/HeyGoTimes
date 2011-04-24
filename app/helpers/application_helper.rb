@@ -7,7 +7,5 @@ module ApplicationHelper
   # Ealin: reference for Rails Helper
   # http://paulsturgess.co.uk/articles/show/49-using-helper-methods-in-ruby-on-rails
   
- 
-
   
 end

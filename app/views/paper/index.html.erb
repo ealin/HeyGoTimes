@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
 
+<div id="header">
+	
+  <div id="logo" >	
+    <!-- "to_main_page" is defined in application_controller.rb -->
+    <%=     link_to( image_tag("/images/HeyGo_logo.png"), {:action =>'to_main_page'}, \
+        {:title => 'to home page'} )  %>
+  </div>
+
+  <div id="search_bar" align="right">
+    <!--- # show_search_bar is implemented in search_helper.rb  
+	  show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
+    --->
+    <%= show_search_bar :paper  %>
+  </div>
+  
+</div>
 
 
-<!--- # show_search_bar is implemented in search_helper.rb  
-	show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
---->
-<%= show_search_bar :paper  %>
+
+
+
+<br><br><br><br><br><br><br><br>
 
 <h1>(5). Paper#index</h1>
 <p>Find me in app/views/paper/index.html.erb</p>

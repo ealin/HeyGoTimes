@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   # method: set_locale
   #--------------------------
   # 
-
   def set_locale
     logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     I18n.locale = extract_locale_from_accept_language_header
@@ -35,7 +34,7 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110419
   #-----------------------------------------------------------------------------------
   # method: to_main_page
-  #   - 點到logo icon時的動作 => 大部分畫面都是跳到/paper, 在/paper時跳到/main_page 
+  #   - 點到logo icon時的動作 => 大部分畫面都是跳到/paper, 在/paper時要跳到/main_page 
   #     (只有paper_controller會overriding這個method, 其他controller直接用父類別的這個功能 )
   #-----------------------------------------------------------------------------------
   #
@@ -43,6 +42,7 @@ class ApplicationController < ActionController::Base
     redirect_to :controller => 'paper', :action => 'index' 
   end  
   
+
   
   protect_from_forgery
   
