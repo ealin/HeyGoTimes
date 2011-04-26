@@ -33,14 +33,15 @@ HeyGoTimes::Application.routes.draw do
     get 'index', :on => :collection  
     get 'do_search', :on => :collection  
     get 'to_main_page', :on => :collection  
-  end
+ end
 
   resources :paper do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
     #
     get 'index', :on => :collection  
     get 'to_main_page', :on => :collection  
-  end
+    get 'filiter_today_newspaper', :on => :collection
+ end
 
 
   get "main_page/index"

@@ -16,6 +16,11 @@
     <%= show_search_bar :paper  %>
   </div>
   
+  <div id="links" >	
+    <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '選擇其他報紙'} %>
+    <%= link_to '過濾新聞', {:action => 'filiter_today_newspaper'}, {:title => '過濾新聞'} %>
+  </div>  
+  
 </div>
 
 
