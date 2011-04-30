@@ -2,6 +2,59 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   
+  
+  #--------------------------------------
+  # Attributes definition:
+  #--------------------------------------
+
+  # current user 是否已經login (要使用session的功能) 
+  @logged_flag = true
+
+  #-----------------------------------------------------------------------------------------
+
+
+  #def initialize
+  #  logger.debug "[Application controller- initialize method]"
+  #end
+
+
+  # Ealin: 20110430
+  #--------------------------
+  # method: login
+  #--------------------------
+  # 
+  def login
+  
+   
+   render "/user/login"
+  end
+  #-----------------------------------------------------------------------------------------
+
+  # Ealin: 20110430
+  #--------------------------
+  # method: logout
+  #--------------------------
+  # 
+  def logout
+    
+   render "/user/logout"
+  end
+  #-----------------------------------------------------------------------------------------
+
+
+  # Ealin: 20110430
+  #--------------------------
+  # method: signup
+  #--------------------------
+  # 
+  def signup
+    
+    
+   render "/user/signup"
+  end
+  #-----------------------------------------------------------------------------------------
+
+  
   # Ealin: 20110411
   #--------------------------
   # method: set_locale
@@ -29,6 +82,7 @@ class ApplicationController < ActionController::Base
     #logger.debug I18n.locale.length
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
+  #-----------------------------------------------------------------------------------------
   
   
   # Ealin: 20110419
@@ -41,6 +95,7 @@ class ApplicationController < ActionController::Base
   def to_main_page
     redirect_to :controller => 'paper', :action => 'index' 
   end  
+  #-----------------------------------------------------------------------------------------
   
 
   
@@ -63,7 +118,8 @@ class ApplicationController < ActionController::Base
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     #request.env['HTTP_ACCEPT_LANGUAGE']
   end   
-  
+  #-----------------------------------------------------------------------------------------
+   
   
   
 

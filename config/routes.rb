@@ -41,6 +41,10 @@ HeyGoTimes::Application.routes.draw do
     get 'index', :on => :collection  
     get 'to_main_page', :on => :collection  
     get 'filiter_today_newspaper', :on => :collection
+    get 'follow', :on => :collection
+    get 'login', :on => :collection
+    get 'logout', :on => :collection
+    get 'signup', :on => :collection
  end
 
 
