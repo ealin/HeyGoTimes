@@ -6,7 +6,7 @@
 
   <div id="logo" >	
     <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGo_logo.png"), {:action =>'to_main_page'}, \
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
         {:title => 'to home page'} )  %>
   </div>
 
@@ -43,32 +43,27 @@
   
 </div>
 
-<br><br><br><br><br>
-
-<!-- Show NewsPaper's title -->
-<div id="newspaper_title" >	
-  <h1><%= @newspaper_title %></h1>
-  <h2><%= @newspaper_slogan%></h2>
-  <p><%= @weather.to_s%> <%=@date%></p>
-</div>
-
-
-<%=render 'follow' %>
-<frameset cols="25%,50%,25%">
-
-<frame src="../user/login.html.erb">
-<frame src="../user/login.html.erb">
-<frame src="../user/login.html.erb">
-<!-- 
-<frame> <p>1234</p>  </frame>
-<frame> <p>5678</p>  </frame>
-<frame> <p>7788</p>  </frame>
--->
-</frameset>
-
-
 <br><br><br>
 
+  <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
+   <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> frameborder="0" border="0"></iframe>
+
+  <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
+  <iframe src="/paper/show_fun_buttons" width=<%=@ad_width%> height=<%=@title_height%> frameborder="0" border="0"></iframe> 
+   
+<br>
+
+  <!-- show content of today's newspaper -->
+  <iframe src="/paper/show_paper_content" width= <%=@paper_width%> ></iframe>
+  
+  <!-- show AD list-->
+  <iframe src="/editor/index"></iframe>
+
+
+
+<br>
+<iframe src="/editor/index"></iframe>
+<br><br><br>
 
 
 <h1>(5). Paper#index</h1>

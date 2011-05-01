@@ -45,6 +45,9 @@ HeyGoTimes::Application.routes.draw do
     get 'login', :on => :collection
     get 'logout', :on => :collection
     get 'signup', :on => :collection
+    get 'show_paper_title', :on => :collection
+    get 'show_fun_buttons', :on => :collection
+    get 'show_paper_content', :on => :collection
  end
 
 

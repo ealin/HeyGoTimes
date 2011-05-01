@@ -1,21 +1,28 @@
-﻿class PaperController < ApplicationController
-  
-  
+class PaperController < ApplicationController
+
   def index
-     
-     #一開始就要判斷目前user是否有訂閱這份報紙
-     check_followed   
+     check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
      
      # for checking login status in View, we must define an obj-attribute @user_login here. 
      # check_logged_in() is defined in application_controller.rb
-     @user_login = check_logged_in
+     @user_login = check_logged_in()
      
-     #get newspaper's title
-     get_paper_title_info
-     
+     set_newspaper_size() 
+   end
+
+
+  #-----------------------------------------------------------------------------------
+  # method: set_newspaper_size      (Ealin: 20110501)
+  #   - （設定報紙頁面中, 一些與size有關的attributes）
+  #-----------------------------------------------------------------------------------
+  # 
+  def set_newspaper_size
+    @paper_width = 500 
+    @ad_width = 80
+    @title_height = 180
+    
   end
-
-
+ 
  
   #-----------------------------------------------------------------------------------
   # method: get_paper_title_info      (Ealin: 20110430)
@@ -39,12 +46,60 @@
   #===========================================================================
 
 
+  #-----------------------------------------------------------------------------------
+  # method: get_paper_title_info      (Ealin: 20110430)
+  #   - （取得 報紙title 裡的資訊 - 報紙名/slogan/date/weather/type...）
+  #-----------------------------------------------------------------------------------
+  # 
+  def show_paper_title
+    #get newspaper's title
+    get_paper_title_info()
+   
+    # render show_paper_title.html.erb
+    render :layout => nil
+    
+    
+  end
 
-  # Ealin: 20110430
-  #-----------------------------------------
-  # method: follow
-  #   - 目前的user是否有訂閱這份報紙？
-  #-----------------------------------------
+  #===========================================================================
+
+
+
+  #-----------------------------------------------------------------------------------
+  # method: show_paper_content      (Ealin: 20110501)
+  #   - 顯示本日報紙的內容
+  #-----------------------------------------------------------------------------------
+  # 
+  def show_paper_content
+
+     # render show_paper_content.html.erb
+     render :layout => nil
+   
+  end
+
+  #===========================================================================
+
+
+  #-----------------------------------------------------------------------------------
+  # method: show_fun_buttons      (Ealin: 20110501)
+  #   - （Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD
+  #-----------------------------------------------------------------------------------
+  # 
+  def show_fun_buttons
+   
+   
+    # render show_paper_title.html.erb
+    render :layout => nil
+    
+  end
+
+  #===========================================================================
+
+
+  #---------------------------------------------------------
+  # method: check_followed
+  #   - 目前的user是否有訂閱這份報紙？  (Ealin: 20110430)
+  #---------------------------------------------------------
   # 
   def check_followed
     # 目前的user是否有訂閱這份報紙？
@@ -55,6 +110,7 @@
   #===========================================================================
 
 
+
   # Ealin: 20110430
   #-----------------------------------------
   # method: follow
@@ -63,22 +119,41 @@
   # 
   def follow 
 
+    if params[:flag] == "true"
+      if @followed_flag == false
+        logger.degug "新增訂戶"
+        @followed_flag = true
+      end
+    else   
+     if @followed_flag == true
+        logger.degug "取消訂戶"
+        @followed_flag = false
+      end      
+    end    
+
   end
   #-----------------------------------------
 
 
 
 
+  # Ealin: 20110411
+  #--------------------------
+  # method: to_main_page
+  #--------------------------
   # 
  def to_main_page
     
+    # link to "main_page/index" 
     #
     redirect_to  :controller => 'main_page', :action => 'index'
  end
   #-----------------------------------------
 
 
+  # Ealin: 20110426
   #----------------------------------------
+  # method: filiter_today_newspaper  過濾新聞
   #----------------------------------------
   # 
   def filiter_today_newspaper
@@ -88,7 +163,6 @@
   end
   #-----------------------------------------
 
+
+
 end
-
-
-

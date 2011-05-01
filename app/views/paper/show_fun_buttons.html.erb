@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>HG Times - paper/show_fun_buttons</title>
+		
+		<!-- Ealin: this template is issued in an iframe, "base" tag with "_parent"is very important
+		     to make 'link_to' can jump out the iframe. -->
+		<base target="_parent" />
+	</head>
+	<body>
+
+ 	  <!-- 這三個icon必須直排 -->
+	  <div>
+	    <%=     link_to( image_tag("icon_camera.png",:size => "54x54"), {:controller => 'report'}, \
+	        {:title => 'report a News!'} )  %>	
+	  </div>
+	  
+	  <div>
+	    <%=     link_to( image_tag("icon_editor.png",:size => "54x54"), {:controller => 'editor'}, \
+	        {:title => 'edit realtime News !'} )  %>
+	  </div>
+	  
+	  <div>
+	    <%=     link_to( image_tag("icon_target.png",:size => "54x54"), {:controller => 'my_ad'}, \
+	        {:title => 'issue a AD !'} )  %>
+	  </div>
+	
+
+	</body>
+</html>
