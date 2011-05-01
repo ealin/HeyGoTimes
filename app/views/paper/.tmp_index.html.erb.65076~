@@ -31,7 +31,7 @@
     <%= link_to '設定', {:controller => 'setup'}, {:title => '設定個人資訊'} %>
 	
 	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
-	<% if @user_login  == true %>   
+	<% if @logged_flag == true %>   
       <%= link_to 'Logout', {:action => 'logout'}, {:title => 'logout'} %>
     <% else %>
       <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>	
@@ -43,18 +43,11 @@
   
 </div>
 
-<br><br><br><br><br>
-
-<!-- Show NewsPaper's title -->
-<div id="newspaper_title" >	
-  <h1><%= @newspaper_title %></h1>
-  <h2><%= @newspaper_slogan%></h2>
-  <p><%= @weather.to_s%> <%=@date%></p>
-</div>
 
 
 
-<br><br><br>
+
+<br><br><br><br><br><br><br><br>
 
 <h1>(5). Paper#index</h1>
 <p>Find me in app/views/paper/index.html.erb</p>
