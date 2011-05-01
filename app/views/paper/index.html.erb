@@ -46,7 +46,8 @@
 <br><br><br>
 
   <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
-   <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> frameborder="0" border="0"></iframe>
+   <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> 
+   		frameborder="0" border="0" scrolling="no">  </iframe>
 
   <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
   <iframe src="/paper/show_fun_buttons" width=<%=@ad_width%> height=<%=@title_height%> frameborder="0" border="0"></iframe> 
@@ -54,29 +55,16 @@
 <br>
 
   <!-- show content of today's newspaper -->
-  <iframe src="/paper/show_paper_content" width= <%=@paper_width%> ></iframe>
-  
+  <iframe src="/paper/show_paper_content" width= <%=@paper_width%> align="top"> </iframe>
+
   <!-- show AD list-->
-  <iframe src="/editor/index"></iframe>
+  <iframe src="/paper/show_ad_list"  width= <%=@ad_width%> height=<%= (@ad_height * @ad_no) %>  
+  			scrolling="no"  > </iframe>
 
+<br><br><hr>
 
-
-<br>
-<iframe src="/editor/index"></iframe>
-<br><br><br>
-
-
-<h1>(5). Paper#index</h1>
-<p>Find me in app/views/paper/index.html.erb</p>
-
-<br><br>
-<h1>每日發行的報紙頁面</h1>
-<p>此頁面包含： login/報紙頭條/分類廣告橫欄...</p>
-
-
-<br><br>
-<h1>連結：</h1>
-<%= link_to (t :HeyGoTimes)+" "+(t :main_page), {:action => 'to_main_page'} , {:title => 'to home page'}  %>
+  <!-- lauouts/_show_page_tail.html.erb  -->
+  <%= render :partial => '/layouts/show_page_tail' %>
 
 
 </html>

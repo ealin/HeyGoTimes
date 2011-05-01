@@ -48,6 +48,7 @@ HeyGoTimes::Application.routes.draw do
     get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
+    get 'show_ad_list', :on => :collection
  end
 
 

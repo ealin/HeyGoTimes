@@ -17,11 +17,14 @@ class PaperController < ApplicationController
   #-----------------------------------------------------------------------------------
   # 
   def set_newspaper_size
-    @paper_width = 500 
-    @ad_width = 80
-    @title_height = 180
+    @paper_width = 600 
+    @title_height = 200
     
+    @ad_width = 120
+    @ad_height = 60
+    @ad_no = 10
   end
+  #===========================================================================
  
  
   #-----------------------------------------------------------------------------------
@@ -33,8 +36,8 @@ class PaperController < ApplicationController
     #
     # Ealin: should access database here
     #
-    @newspaper_title = "北台灣日報"
-    @newspaper_slogan = "最權威完整的網路報紙"
+    @newspaper_title = t :sample_paper_name
+    @newspaper_slogan = t :sample_paper_slogan
     @weather = :Thunderstorms  # need to define
     @layout_style = :normal    # need to define
     
@@ -73,6 +76,22 @@ class PaperController < ApplicationController
   def show_paper_content
 
      # render show_paper_content.html.erb
+     render :layout => nil
+   
+  end
+
+  #===========================================================================
+
+
+
+  #-----------------------------------------------------------------------------------
+  # method: show_ad_list      (Ealin: 20110501)
+  #   - 顯示本日報紙的內容
+  #-----------------------------------------------------------------------------------
+  # 
+  def show_ad_list
+
+     # render show_ad_list.html.erb
      render :layout => nil
    
   end
@@ -121,12 +140,12 @@ class PaperController < ApplicationController
 
     if params[:flag] == "true"
       if @followed_flag == false
-        logger.degug "新增訂戶"
+        #logger.degug "新增訂戶"
         @followed_flag = true
       end
     else   
      if @followed_flag == true
-        logger.degug "取消訂戶"
+        #logger.degug "取消訂戶"
         @followed_flag = false
       end      
     end    
