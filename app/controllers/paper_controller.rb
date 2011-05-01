@@ -1,7 +1,10 @@
 ﻿class PaperController < ApplicationController
   
+  
   def index
-     check_followed   #一開始就要判斷目前user是否有訂閱這份報紙
+     
+     #一開始就要判斷目前user是否有訂閱這份報紙
+     check_followed   
      
      # for checking login status in View, we must define an obj-attribute @user_login here. 
      # check_logged_in() is defined in application_controller.rb
@@ -60,41 +63,22 @@
   # 
   def follow 
 
-    if params[:flag] == "true"
-      if @followed_flag == false
-        #logger.degug "新增訂戶"
-        @followed_flag = true
-      end
-    else   
-     if @followed_flag == true
-        #logger.degug "取消訂戶"
-        @followed_flag = false
-      end      
-    end    
-
   end
   #-----------------------------------------
 
 
 
 
-  # Ealin: 20110411
-  #--------------------------
-  # method: to_main_page
-  #--------------------------
   # 
  def to_main_page
     
-    # link to "main_page/index" 
     #
     redirect_to  :controller => 'main_page', :action => 'index'
  end
   #-----------------------------------------
 
 
-  # Ealin: 20110426
   #----------------------------------------
-  # method: filiter_today_newspaper  過濾新聞
   #----------------------------------------
   # 
   def filiter_today_newspaper
@@ -104,6 +88,7 @@
   end
   #-----------------------------------------
 
-
-
 end
+
+
+
