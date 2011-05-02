@@ -14,7 +14,7 @@ module ApplicationHelper
   # 
   def show_page_tail
     
-    
+    render  '/layouts/show_page_tail'
   end
   #===========================================================================
 
