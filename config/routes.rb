@@ -14,6 +14,8 @@ HeyGoTimes::Application.routes.draw do
   get "translator/index"
 
   get "report/index"
+  get "report/to_main_page"
+  get "report/logout"
 
   get "area/index"
 

@@ -1,0 +1,11 @@
+<div  align = "center">
+	
+HeyGo © 2011 &nbsp;&nbsp;	
+
+
+<%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>
+<%= link_to 'Privacy',{:controller => 'privacy'},{:title => 'Show Privacy'}%>
+<%= link_to 'Terms',{:controller => 'terms_of_service'},{:title => '使用條款'}%>
+
+
+</div>

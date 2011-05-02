@@ -1,2 +1,27 @@
-<h1>Report#index</h1>
-<p>Find me in app/views/report/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+
+<div id="header">
+<!-- 顯示頁首的所有元素 - logo,  許多功能連結, login/logout... -->
+
+  <div id="logo" >	
+    <!-- "to_main_page" is defined in application_controller.rb -->
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
+        {:title => 'to home page'} )  %>
+  </div>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+  <%= show_page_head %>
+
+</div>
+
+<!-- Form for creating a new Report -->
+
+
+<br><br><hr>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+  <%= show_page_tail %>
+
+
+</html>
