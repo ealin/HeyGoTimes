@@ -24,6 +24,9 @@ HeyGoTimes::Application.routes.draw do
   get "user_history/index"
 
   get "editor/index"
+  get "editor/to_main_page"
+  get "editor/logout"
+  get "editor/filiter_and_sort_news"
 
   get "ad/index"
 

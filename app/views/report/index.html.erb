@@ -10,8 +10,12 @@
         {:title => 'to home page'} )  %>
   </div>
 
-  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
-  <%= show_page_head true  %>
+  <div align="center">
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
+     if parameter of 'show_page_head' is true means: show link of 'editor' 
+  -->
+    <%= show_page_head true  %>
+  </div>
 
 </div>
 
