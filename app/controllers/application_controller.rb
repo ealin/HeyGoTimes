@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
    
     
     # 紀錄current user 是否已經login (要使用session的功能, session should be stored in database) 
-    @@logged_flag = false
+    # (all controllers in this system would have attribute - "@logged_flag")
+    @logged_flag = false
     
-    return @@logged_flag  
   end
   #===========================================================================
 

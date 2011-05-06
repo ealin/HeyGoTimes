@@ -19,6 +19,9 @@ HeyGoTimes::Application.routes.draw do
 
   get "area/index"
 
+  get "feedback/index"
+
+
   get "setup/index"
 
   get "user_history/index"
@@ -59,6 +62,10 @@ HeyGoTimes::Application.routes.draw do
 
   get "main_page/index"
   get "main_page/to_main_page"
+  get "main_page/logout"
+  get "main_page/login"
+  get "main_page/signup"
+  
 
 
   # The priority is based upon order of creation:

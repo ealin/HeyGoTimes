@@ -24,13 +24,22 @@ module ApplicationHelper
   #     editor_flag = true ==>  多顯示一個'editor' link
   #-----------------------------------------------------------------------------------
   # 
-  def show_page_head (editor_flag )
+  def show_page_head (option = {:faq_flag => false} )
     
-    if editor_flag == true
-      @edit_flag = true
+    if option[:realtime_news_flag] == true
+      @realtime_news_flag = true
     else
-      @edit_flag = false
+      @realtime_news_flag = false
     end
+    
+    # only "main_page"/"paper"/"faq"/"terms"/"privacy" pages may have "login"/"signup" link, others page should have "logout" link only.
+    # (i.e. non-member could read "main_page"/"paper"/"faq"/"terms"/"privacy" pages only)
+    if option[:faq_flag] == true
+      @faq_flag = true
+    else
+      @faq_flag = false
+    end   
+     
     render  '/layouts/show_page_head'
   end
   #===========================================================================

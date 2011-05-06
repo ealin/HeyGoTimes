@@ -31,7 +31,7 @@
     <%= link_to '設定', {:controller => 'setup'}, {:title => '設定個人資訊'} %>
 	
 	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
-	<% if @user_login  == true %>   
+	<% if @logged_flag  == true %>   
       <%= link_to 'Logout', {:action => 'logout'}, {:title => 'logout'} %>
     <% else %>
       <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>	

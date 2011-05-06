@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 
-
-
 <div id="header">
 	
   <div id="logo" >	
     <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGo_logo.png"), {:action =>'to_main_page'}, \
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
         {:title => "to today's newspaper"} )  %>
   </div>
-  
-</div>
 
-<br><br><br><br><br><br><br><br>
+  <div align="center">
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
+     if parameter of 'show_page_head' is true means: show link of 'editor' 
+  -->
+    <%= show_page_head(:realtime_news_flag => true,:faq_flag => true)  %>
+  </div>
+
+ </div>
+ <br><br><br>  
+
+  <div id="feedback" >	
+    <%=     link_to( image_tag("/images/feedback.png"), {:controller =>'feedback'}, \
+        {:title => "fill your feedback"} )  %>
+  </div>
+
+
+<br><br><br><br><br>
+
 
 
 <h1>MainPage#index</h1>
