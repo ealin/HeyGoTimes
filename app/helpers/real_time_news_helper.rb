@@ -1,0 +1,2 @@
+module RealTimeNewsHelper
+end

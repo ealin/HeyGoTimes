@@ -17,6 +17,10 @@ module ApplicationHelper
     
   end
   #===========================================================================
-
+  
+  def get_button(button_text, options={})
+    options[:class] = "submitButton"
+    submit_tag button_text, options
+  end
   
 end
