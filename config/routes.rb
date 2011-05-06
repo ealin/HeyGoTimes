@@ -3,7 +3,7 @@ HeyGoTimes::Application.routes.draw do
   get "real_time_news/report"
   get "real_time_news/to_main_page"
   resources :real_time_news
-
+ 
   get "terms_of_service/index"
 
   get "privacy/index"
@@ -30,6 +30,7 @@ HeyGoTimes::Application.routes.draw do
   get "my_ad/index"
 
   get "faq/index"
+  get "faq/to_main_page"
 
   resources :search do
     get 'index', :on => :collection  
@@ -59,6 +60,7 @@ HeyGoTimes::Application.routes.draw do
   get "main_page/logout"
   get "main_page/login"
   get "main_page/signup"
+  get "main_page/to_mobile_site"
   
 
 

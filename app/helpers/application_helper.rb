@@ -25,7 +25,7 @@ module ApplicationHelper
   #     editor_flag = true ==>  多顯示一個'editor' link
   #-----------------------------------------------------------------------------------
   # 
-  def show_page_head (option = {:faq_flag => false} )
+  def show_page_head (option = {:faq_flag => false, :setup_flag => false} )
     
     if option[:realtime_news_flag] == true
       @realtime_news_flag = true
@@ -41,6 +41,12 @@ module ApplicationHelper
       @faq_flag = false
     end   
      
+    if option[:setup_flag] == true
+      @setup_flag = true
+    else
+      @setup_flag = false
+    end   
+
     render  '/layouts/show_page_head'
   end
   #===========================================================================

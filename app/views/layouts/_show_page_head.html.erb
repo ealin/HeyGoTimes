@@ -7,9 +7,14 @@
     <%= link_to '即時新聞',{:controller => 'real_time_news'},{:title => '到編輯新聞畫面'}%>
   <% end %>
 
- <% if @faq_flag == true%>
+  <% if @faq_flag == true%>
     <%= link_to 'FAQ',{:controller => 'faq'},{:title => 'FAQ'}%>
   <% end %>
+
+  <% if @setup_flag == true%>
+    <%= link_to 'SETUP',{:controller => 'setup'},{:title => '設定'}%>
+  <% end %>
+
 
   <!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb --> 
   <% if @logged_flag  == true %>   
@@ -18,4 +23,5 @@
       <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>	
       <%= link_to 'Signup', {:action => 'signup'}, {:title => 'signup'} %>
   <% end %>
+
 

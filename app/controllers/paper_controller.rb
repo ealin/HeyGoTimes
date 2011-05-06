@@ -18,7 +18,7 @@ class PaperController < ApplicationController
   # 
   def set_newspaper_size
     @paper_width = 600 
-    @title_height = 200
+    @title_height = 210
     
     @ad_width = 120
     @ad_height = 60
