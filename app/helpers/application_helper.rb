@@ -18,6 +18,7 @@ module ApplicationHelper
   end
   #===========================================================================
 
+
   #-----------------------------------------------------------------------------------
   # method: show_page_head      (Ealin: 20110502)
   #   - 包含以下聯結: to main page/ to today's newspaper / logout
@@ -43,5 +44,12 @@ module ApplicationHelper
     render  '/layouts/show_page_head'
   end
   #===========================================================================
+
+  
+  def get_button(button_text, options={})
+    options[:class] = "submitButton"
+    submit_tag button_text, options
+  end
+
   
 end

@@ -4,7 +4,7 @@
   <%= link_to '今日報紙',{:controller => 'paper'},{:title => 'Show Privacy'}%>
 
   <% if @realtime_news_flag == true%>
-    <%= link_to '即時新聞',{:controller => 'editor'},{:title => '到編輯新聞畫面'}%>
+    <%= link_to '即時新聞',{:controller => 'real_time_news'},{:title => '到編輯新聞畫面'}%>
   <% end %>
 
  <% if @faq_flag == true%>

@@ -1,6 +1,9 @@
 HeyGoTimes::Application.routes.draw do
   
-   
+  get "real_time_news/report"
+  get "real_time_news/to_main_page"
+  resources :real_time_news
+
   get "terms_of_service/index"
 
   get "privacy/index"
@@ -13,10 +16,6 @@ HeyGoTimes::Application.routes.draw do
 
   get "translator/index"
 
-  get "report/index"
-  get "report/to_main_page"
-  get "report/logout"
-
   get "area/index"
 
   get "feedback/index"
@@ -25,11 +24,6 @@ HeyGoTimes::Application.routes.draw do
   get "setup/index"
 
   get "user_history/index"
-
-  get "editor/index"
-  get "editor/to_main_page"
-  get "editor/logout"
-  get "editor/filiter_and_sort_news"
 
   get "ad/index"
 
@@ -57,8 +51,8 @@ HeyGoTimes::Application.routes.draw do
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
+    get 'real_time_news/report', :on => :collection
  end
-
 
   get "main_page/index"
   get "main_page/to_main_page"
