@@ -1,4 +1,4 @@
-class PaperController < ApplicationController
+class PaperController < RealTimeNewsController
 
   def index
      check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
@@ -74,7 +74,7 @@ class PaperController < ApplicationController
   #-----------------------------------------------------------------------------------
   # 
   def show_paper_content
-
+    @real_time_news = RealTimeNews.all
      # render show_paper_content.html.erb
      render :layout => nil
    

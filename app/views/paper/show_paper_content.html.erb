@@ -5,8 +5,35 @@
 		<title>HG Times - show_paper_content </title>
 	</head>
 	<body>
+		<h1>Show Today's News paper here!</h1>
+		  
+  	<table>
+		<tr>
+			<th>Title</th>
+			<th>Url</th>
+			<th>Area</th>
+			<th>Tag</th>
+			<th>Content</th>
+			<th>Time</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>	
 
-		  <h1>Show Today's News paper here!</h1>
+		<% @real_time_news.each do |real_time_news| %>
+		  <tr>
+		    <td><%= real_time_news.title %></td>
+		    <td><%= real_time_news.url %></td>
+		    <td><%= real_time_news.area %></td>
+		    <td><%= real_time_news.tag %></td>
+		    <td><%= real_time_news.content.html_safe %></td>
+		    <td><%= real_time_news.time %></td>
+		    <td><%= link_to 'Show', real_time_news %></td>
+		    <td><%= link_to 'Edit', edit_real_time_news_path(real_time_news) %></td>
+		    <td><%= link_to 'Destroy', real_time_news, :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</table>
 
 	</body>
 </html>
