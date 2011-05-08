@@ -22,6 +22,8 @@ HeyGoTimes::Application.routes.draw do
 
 
   get "setup/index"
+  get "setup/to_main_page"
+  get "setup/logout"
 
   get "user_history/index"
 
@@ -31,7 +33,9 @@ HeyGoTimes::Application.routes.draw do
 
   get "faq/index"
   get "faq/to_main_page"
-
+  get "faq/show_question_list"  
+  get "faq/show_answer"
+  
   resources :search do
     get 'index', :on => :collection  
     get 'do_search', :on => :collection  

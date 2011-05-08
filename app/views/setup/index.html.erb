@@ -1,2 +1,44 @@
-<h1>Setup#index</h1>
-<p>Find me in app/views/setup/index.html.erb</p>
+
+<html>
+<head>
+	<script type="text/javascript">
+		function asking_login_alert()
+		{
+		  alert("您必須登入後才能使用此功能!\n將跳轉回今日報紙的畫面.") ;
+		  window.location="/paper/" ;
+		}
+	</script>
+</head>
+
+<% if @logged_flag == true %>
+    <!-- 處理user未登入的狀況 (自動跳轉回paper畫面) -->
+    <script type="text/javascript"> 
+	  asking_login_alert(); 
+	</script>
+	
+<% end %>
+
+<div id="header">
+	
+  <div id="logo" >	
+    <!-- "to_main_page" is defined in application_controller.rb -->
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
+        {:title => "to today's newspaper"} )  %>
+  </div>
+
+  <div id="link_list" >
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
+     if parameter of 'show_page_head' is true means: show link of 'editor' 
+  -->
+    <%= show_page_head(:realtime_news_flag => true,:faq_flag => true)  %>
+  </div>
+
+</div>
+ <br><br><br>  
+
+<br><br><hr>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+  <%= show_page_tail %>
+
+</html>

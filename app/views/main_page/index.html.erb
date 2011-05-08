@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 
 <div id="header">
 	
@@ -9,14 +7,14 @@
         {:title => "to today's newspaper"} )  %>
   </div>
 
-  <div align="center">
+  <div id="link_list" >
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
      if parameter of 'show_page_head' is true means: show link of 'editor' 
   -->
     <%= show_page_head(:realtime_news_flag => true,:faq_flag => true, :setup_flag => true)  %>
   </div>
 
- </div>
+</div>
  <br><br><br>  
 
 
@@ -45,4 +43,3 @@
     </div>
   </div>
 
-</html>

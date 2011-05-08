@@ -14,10 +14,15 @@
   
  </div>
   
-  
-  
-  
- <br><br><hr>
+ <br><br>
+ 
+  <!-- show Questions-List -->
+  <iframe src="/faq/show_question_list" width=<%= @question_frame_width %> align="top"> </iframe>
+
+  <!-- Show Answer -->
+  <iframe src="/faq/show_answer"  width= <%= @answer_frame_width %> scrolling="no"  > </iframe> 
+ 
+ <br><hr>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
   <%= show_page_tail %>

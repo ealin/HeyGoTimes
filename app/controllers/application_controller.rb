@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   
+  # Ealin: 讓view & helper 都可以呼叫redirect_to()
+  #
+  helper_method :redirect_to
+  
   before_filter :set_locale
   
  
@@ -14,7 +18,9 @@ class ApplicationController < ActionController::Base
     
     # 紀錄current user 是否已經login (要使用session的功能, session should be stored in database) 
     # (all controllers in this system would have attribute - "@logged_flag")
-    @logged_flag = false
+    @logged_flag = true
+    
+    return @logged_flag
     
   end
   #===========================================================================

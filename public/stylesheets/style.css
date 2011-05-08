@@ -209,25 +209,3 @@ a img {
 	width: 160px;
 }
 
-/* Footer */
-
-#footer {
-	clear: both;
-	width: 900px;
-	height: 50px;
-	margin: 0px auto 30px auto;
-	background: #c23939 url(images/img06.gif) no-repeat left top;
-	color: #FFFFFF;
-}
-
-#footer p {
-	margin: 0px;
-	padding: 19px 0px 0px 0px;
-	text-align: left;
-	line-height: normal;
-	font-size: smaller;
-}
-
-#footer a {
-	color: #FFFFFF;
-}
