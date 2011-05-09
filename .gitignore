@@ -4,4 +4,5 @@ log/*.log
 tmp/**/*
 /db/*
 /log/*
+/public/javascripts/tiny_mce/*
 /tmp/*
