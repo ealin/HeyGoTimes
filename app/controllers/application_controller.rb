@@ -25,6 +25,36 @@ class ApplicationController < ActionController::Base
   end
   #===========================================================================
 
+
+  #----------------------------------------------------
+  # method: get_current_user_info   (Ealin: 20110510)
+  #----------------------------------------------------
+  #
+  def get_current_user_info
+
+    #  Ealin: 以下變數先寫死(20110510)
+
+    @user_account = "ealin.chiu@gmail.com"
+    @user_account_connected_to = "facebook"
+
+    # 1 account has MAX 3 email-address
+    @user_account_email = Array.new
+    @user_account_email[0] = "ealin.chiu@gmail.com"
+    @user_account_email[1] = "ealin@yahoo.com.tw"
+    @user_account_email[2] = nil
+
+    #statistics data:
+    @report_no = 10
+    @comment_no = 5
+    @edit_no = 3
+    @follow_no = 6
+    @fans_no = 100
+    @ad_no = 6
+
+  end
+  #===========================================================================
+
+
  
   #----------------------------------------------------
   # method: login   (Ealin: 20110430)

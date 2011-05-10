@@ -20,7 +20,7 @@
 
 
 <div id="header">
-	
+
   <div id="logo" >	
     <!-- "to_main_page" is defined in application_controller.rb -->
     <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
@@ -33,28 +33,68 @@
   -->
     <%= show_page_head(:realtime_news_flag => true,:faq_flag => true)  %>
   </div>
+  <H2><%= t(:setting) %></H2>
 
 </div>
  <br><br><br>  
  
- <!-- setup: user's account -->
- 
- 
- <input type="button" value="送出" onclick="self.location.href='index.html'"/>
+ <!-- setup: user's account
+      deactive_fb_account() & connect_twitter_account() are defined in setup_controller.rb
+ -->
+
+ <div id= "setup_field">
+   <img src="/images/facebook_logo.png" alt="this is a facebook account" />
+   &nbsp;&nbsp;&nbsp;
+   <%= t(:user_account) %> <%= @user_account %>
+   &nbsp;&nbsp;&nbsp;
+   <input type="button" value=<%= t(:deactive_account) %> onclick="self.location.href='deactive_fb_account'"/>
+
+   <input type="button" value=<%= t(:connect_to_twitter) %> onclick="self.location.href='connect_twitter_account'"/>
+
+ </div>
 
 
- <!-- setup: user's email (可收到報紙的信箱) -->
-
+ <!-- setup: user's email (可收到報紙的信箱)
+    add_email() & modify_email() are defined in setup_controller.rb
+ -->
+ <div id= "setup_field">
+   <%= t(:user_email) %>
+   <% @user_account_email.each do |email| %>
+        <br>&nbsp;&nbsp;
+        <% if email == nil %>
+           <input type="button" value=<%= t(:add_email) %> onclick="self.location.href='add_email'"/>
+        <%else%>
+           <%=email %>
+           <input type="button" value=<%= t(:modify_email) %> onclick="self.location.href='modify_email'"/>
+          <%end%>
+   <% end %>
+ </div>
 
  <!-- setup: 訂閱狀況 -->
-
+<div id= "setup_field">
+  <%= t(:subscribtion_status) %>
+</div>
 
  <!-- setup: 統計數字 -->
+<div id= "setup_field">
+  <%= t(:statistics) %>
+  <p>
+    &nbsp;&nbsp;<%= t(:report_no) + @report_no.to_s %>
+    <br>&nbsp;&nbsp;<%= t(:comment_no) + @comment_no.to_s %>
+
+    <br>&nbsp;&nbsp;<%= t(:edit_no) + @edit_no.to_s %>
+    &nbsp;&nbsp;<input type="button" value=<%= t(:to_my_history) %> onclick="self.location.href='/user_history/index/'"/>
+
+    <br>&nbsp;&nbsp;<%= t(:follow_no) + @follow_no.to_s %>
+    <br>&nbsp;&nbsp;<%= t(:fans_no) + @fans_no.to_s %>
+
+    <br>&nbsp;&nbsp;<%= t(:AD_no) + @ad_no.to_s %>
+    &nbsp;&nbsp;<input type="button" value=<%= t(:to_my_AD) %> onclick="self.location.href='/my_ad/index/'"/>
 
 
+  </p>
+</div>
 
-
-<br><br><hr>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
   <%= show_page_tail %>

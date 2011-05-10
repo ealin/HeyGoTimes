@@ -24,6 +24,9 @@ HeyGoTimes::Application.routes.draw do
   get "setup/index"
   get "setup/to_main_page"
   get "setup/logout"
+  get "setup/deactive_fb_account"
+  get "setup/connect_twitter_account"
+
 
   get "user_history/index"
 
