@@ -1,0 +1,25 @@
+
+zh_tw:
+  
+    user_account: "帳號: "
+    deactive_account: "取消此facebook帳號連結"
+    connect_to_twitter: "連結Twitter帳號"
+    
+    user_email: "電子郵箱(最多三組): "
+    add_email:  "新增電子郵箱帳號"
+    modify_email:  "修改此電子郵箱帳號"
+    
+    subscribtion_status: "已訂閱報紙列表: "    
+    
+    statistics: "統計數據: "
+    report_no: "報導新聞次數: "
+    comment_no: "評論新聞次數: "
+    edit_no: "編輯新聞次數: "
+    follow_no: "關注的記者數目: "
+    fans_no: "粉絲數: "
+    AD_no: "發送廣告數目: "
+    
+    to_my_AD: "我的廣告"
+    to_my_history: "我的紀錄"
+
+    
