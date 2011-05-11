@@ -43,6 +43,17 @@ class ApplicationController < ActionController::Base
     @user_account_email[1] = "ealin@yahoo.com.tw"
     @user_account_email[2] = nil
 
+    # 取得使用者訂閱的報紙列表  (read from database)
+    @user_subscribed_paper_no = 4
+    @user_subscribed_paper = Array.new
+    @user_subscribed_paper[0] = "Taiwan"
+    @user_subscribed_paper[1] = "Silicon Valley"
+    @user_subscribed_paper[2] = "松山高中校刊"
+    @user_subscribed_paper[3] = "7-11特價報導"
+
+
+
+
     #statistics data:
     @report_no = 10
     @comment_no = 5
