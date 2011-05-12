@@ -10,9 +10,6 @@ class SetupController < ApplicationController
      get_current_user_info
 
 
-
-
-    
   end
 
 
@@ -39,23 +36,43 @@ class SetupController < ApplicationController
 
 
   #----------------------------------------------------
-  # method: add_email   (Ealin: 20110510)
-  #    新增EMAIL帳號
-  #----------------------------------------------------
-  #
-  def add_email
-    #TBD
-
-  end
-
-
-  #----------------------------------------------------
   # method: modify_email   (Ealin: 20110510)
   #    修改既有的EMAIL帳號
   #----------------------------------------------------
   #
   def modify_email
     #TBD
+
+  end
+
+
+  #----------------------------------------------------
+  # method: cancel_subscription   (Ealin: 20110512)
+  #    取消訂閱
+  #----------------------------------------------------
+  #
+  def cancel_subscription
+
+  end
+
+  #----------------------------------------------------
+  # method: set_filter   (Ealin: 20110512)
+  #     過濾新聞 (USER可選擇其有興趣的TAG)
+  #----------------------------------------------------
+  #
+  def set_filter
+    logger.debug params[:area]
+    @current_subscription = params[:area]
+
+  end
+
+
+  #----------------------------------------------------
+  # method: set_default_paper   (Ealin: 20110512)
+  #      設定預設報紙 (打開首頁, 預設會載入的報紙)
+  #----------------------------------------------------
+  #
+  def set_default_paper
 
   end
 

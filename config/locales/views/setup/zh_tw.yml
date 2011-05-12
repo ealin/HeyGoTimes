@@ -5,11 +5,17 @@ zh_tw:
     deactive_account: "取消此facebook帳號連結"
     connect_to_twitter: "連結Twitter帳號"
     
-    user_email: "電子郵箱(最多三組): "
-    add_email:  "新增電子郵箱帳號"
+    user_email: "電子郵箱: "
+    #add_email:  "新增電子郵箱帳號"
     modify_email:  "修改此電子郵箱帳號"
     
     subscribtion_status: "已訂閱報紙列表: "    
+    cancel_subscribe: "取消訂閱"
+    set_filter: "過濾新聞"
+
+    set_default: "設定預設報紙"
+    create_a_new_paper: "我要辦報！"
+
     
     statistics: "統計數據: "
     report_no: "報導新聞次數: "

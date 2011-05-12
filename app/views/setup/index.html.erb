@@ -55,24 +55,39 @@
 
 
  <!-- setup: user's email (可收到報紙的信箱)
-    add_email() & modify_email() are defined in setup_controller.rb
+    modify_email() are defined in setup_controller.rb
  -->
  <div id= "setup_field">
    <%= t(:user_email) %>
-   <% @user_account_email.each do |email| %>
-        <br>&nbsp;&nbsp;
-        <% if email == nil %>
-           <input type="button" value=<%= t(:add_email) %> onclick="self.location.href='add_email'"/>
-        <%else%>
-           <%=email %>
-           <input type="button" value=<%= t(:modify_email) %> onclick="self.location.href='modify_email'"/>
-          <%end%>
+
+   <br>  &nbsp;&nbsp;
+   <% if @email_for_subscription == nil %>
+     <%= @user_account %>
+   <% else %>
+       <%= @user_account %>
    <% end %>
+   <input type="button" value=<%= t(:modify_email) %> onclick="self.location.href='modify_email'"/>
+
+
  </div>
 
  <!-- setup: 訂閱狀況 -->
 <div id= "setup_field">
   <%= t(:subscribtion_status) %>
+  <% @user_subscribed_paper.each do |subscription| %>
+     <br>&nbsp;&nbsp;
+     <%=subscription %>
+
+     <input type="button" value=<%= t(:cancel_subscribe) %>
+             onclick="self.location.href='cancel_subscription'"/>
+
+     <input type="button" value=<%= t(:set_filter) %>
+             onclick="self.location.href='set_filter/<%= subscription %>'"/>
+  <% end %>
+
+  <br><br>&nbsp;&nbsp;
+  <input type="button" value=<%= t(:set_default) %> onclick="self.location.href='set_default_paper'"/>
+  <input type="button" value=<%= t(:create_a_new_paper) %> onclick="self.location.href='/area/index/'"/>
 
 </div>
 

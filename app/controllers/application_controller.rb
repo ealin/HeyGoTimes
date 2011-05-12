@@ -38,10 +38,7 @@ class ApplicationController < ActionController::Base
     @user_account_connected_to = "facebook"
 
     # 1 account has MAX 3 email-address
-    @user_account_email = Array.new
-    @user_account_email[0] = "ealin.chiu@gmail.com"
-    @user_account_email[1] = "ealin@yahoo.com.tw"
-    @user_account_email[2] = nil
+    @email_for_subscription = "ealin@yahoo.com.tw"
 
     # 取得使用者訂閱的報紙列表  (read from database)
     @user_subscribed_paper_no = 4
@@ -50,8 +47,6 @@ class ApplicationController < ActionController::Base
     @user_subscribed_paper[1] = "Silicon Valley"
     @user_subscribed_paper[2] = "松山高中校刊"
     @user_subscribed_paper[3] = "7-11特價報導"
-
-
 
 
     #statistics data:
