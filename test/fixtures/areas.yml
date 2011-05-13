@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  area_id: 1
+  name: MyString
+  parent_area_id: 1
+  level: 1
+  latitude: MyString
+  longtitude: MyString
+  map_id: 
+
+two:
+  area_id: 1
+  name: MyString
+  parent_area_id: 1
+  level: 1
+  latitude: MyString
+  longtitude: MyString
+  map_id: 
