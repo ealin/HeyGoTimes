@@ -1,8 +1,8 @@
 HeyGoTimes::Application.routes.draw do
-  
-  get "real_time_news/report"
 
-  get "real_time_news/to_main_page"
+  get "news/report"
+
+  get "news/to_main_page"
 
   get "terms_of_service/index"
 
@@ -26,7 +26,7 @@ HeyGoTimes::Application.routes.draw do
 
   get "faq/index"
 
-  resources :real_time_news
+  resources :news
 
   resources :area do
     get 'to_main_page', :on => :collection

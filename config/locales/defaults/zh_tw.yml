@@ -9,7 +9,6 @@ zh_tw:
   #----------------------------------------
   main_page:  "主頁"
 
-
 #------------------------------------
 # contens below are loaded from :
 # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/zh-TW.yml

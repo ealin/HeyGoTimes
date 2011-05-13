@@ -1,10 +1,10 @@
-<%= form_for(@real_time_news) do |f| %>
-  <% if @real_time_news.errors.any? %>
+<%= form_for(@news) do |f| %>
+  <% if @news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@real_time_news.errors.count, "error") %> prohibited this real_time_news from being saved:</h2>
+      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
 
       <ul>
-      <% @real_time_news.errors.full_messages.each do |msg| %>
+      <% @news.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
