@@ -20,17 +20,17 @@
 			<th></th>
 		</tr>	
 
-		<% @real_time_news.each do |real_time_news| %>
+		<% @news.each do |news| %>
 		  <tr>
-		    <td><%= real_time_news.title %></td>
-		    <td><%= real_time_news.url %></td>
-		    <td><%= real_time_news.area %></td>
-		    <td><%= real_time_news.tag %></td>
-		    <td><%= real_time_news.content.html_safe %></td>
-		    <td><%= real_time_news.time %></td>
-		    <td><%= link_to 'Show', real_time_news %></td>
-		    <td><%= link_to 'Edit', edit_real_time_news_path(real_time_news) %></td>
-		    <td><%= link_to 'Destroy', real_time_news, :confirm => 'Are you sure?', :method => :delete %></td>
+		    <td><%= news.title %></td>
+		    <td><%= news.url %></td>
+		    <td><%= news.area %></td>
+		    <td><%= news.tag %></td>
+		    <td><%= news.content.html_safe %></td>
+		    <td><%= news.time %></td>
+		    <td><%= link_to 'Show', news %></td>
+		    <td><%= link_to 'Edit', edit_news_path(news) %></td>
+		    <td><%= link_to 'Destroy', news, :confirm => 'Are you sure?', :method => :delete %></td>
 		  </tr>
 		<% end %>
 	</table>
