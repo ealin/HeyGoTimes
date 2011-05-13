@@ -11,13 +11,13 @@
 
  	  <!-- 這4個icon必須直排 -->
 	  <div>
-	    <%=     link_to( image_tag("icon_camera.png",:size => "54x54"), {:controller => 'real_time_news', :action => 'report'}, \
+	    <%=     link_to( image_tag("icon_camera.png",:size => "54x54"), {:controller => 'news', :action => 'report'}, \
 	        {:title => 'report a News!'} )  %>	
 	  </div>
 	  
 	  <div>
-	    <%=     link_to( image_tag("icon_editor.png",:size => "54x54"), {:controller => 'real_time_news'}, \
-	        {:title => 'edit realtime News !'} )  %>
+	    <%=     link_to( image_tag("icon_editor.png",:size => "54x54"), {:controller => 'news'}, \
+	        {:title => 'edit News !'} )  %>
 	  </div>
 	  
 	  <div>

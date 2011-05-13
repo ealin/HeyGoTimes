@@ -1,9 +1,16 @@
 HeyGoTimes::Application.routes.draw do
-  
+
+
   get "real_time_news/report"
   get "real_time_news/to_main_page"
   resources :real_time_news
- 
+
+
+
+  get "news/report"
+
+  get "news/to_main_page"
+
   get "terms_of_service/index"
 
   get "privacy/index"
@@ -35,10 +42,19 @@ HeyGoTimes::Application.routes.draw do
   get "my_ad/index"
 
   get "faq/index"
+
   get "faq/to_main_page"
   get "faq/show_question_list"  
   get "faq/show_answer"
-  
+
+
+  resources :news
+
+  resources :area do
+    get 'to_main_page', :on => :collection
+  end
+
+
   resources :search do
     get 'index', :on => :collection  
     get 'do_search', :on => :collection  
@@ -59,7 +75,7 @@ HeyGoTimes::Application.routes.draw do
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
-    get 'real_time_news/report', :on => :collection
+    get 'news/report', :on => :collection
  end
 
   get "main_page/index"

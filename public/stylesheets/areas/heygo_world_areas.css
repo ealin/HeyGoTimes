@@ -1,0 +1,52 @@
+body{background:white;margin-top:0 !important;}
+ #hg_area_world{_height:1px;color:black; font-size:12px;font-family:"MingLiU","PMingLiU";margin:0;padding:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #hg_area_world { 	/*min-width-hack*/ 	behavior:expression(	this.style.width =  (document.documentElement.offsetWidth<750)?"750px":"auto"); 	min-width:750px; }
+ #hg_area_world a{color:#0000bb}
+ #hg_area_world a:hover{color:Red;}
+ #hg_area_world .mhlogo{display:inline;float:left;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #hg_area_world .mhlogo img{height:50px !important;margin:12px 3px 0 0;padding:0;background:white;border:solid 0 white;}
+ #hg_area_world .mhinfo{background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;float:left;width:216px;margin:0;padding:12px 0 0 0;}
+ #hg_area_world .mhinfo p{margin:0;padding:2px 4px;border-left:solid 1px #CECECE;border-right:solid 1px #CECECE;}
+ #hg_area_world .mhuser{float:left;padding:14px 0 3px 0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #hg_area_world .mhuser div{border-left:solid 1px #CECECE;padding:0 0 0 5px;}
+ #hg_area_world .mhuser b{display:block;margin:2px 2px 1px 0;font-weight:normal;color:black !important;}
+ #hg_area_world .mhuser div b a{font-weight:bold;color:#0000bb !important;}
+ #hg_area_world .mhuser q{quotes:"" "";display:block;margin:4px 2px 1px 0;font-weight:normal;color:black;}
+ #hg_area_world .mhuser q a{color:#0000bb;}
+ #hg_area_world .mhuser p{margin:0;padding:2px 4px 2px 0;font-family:"PMing-LiU","Ming-LiU" !important}
+ #hg_area_world .mhuser a{color:#0000bb;}
+
+ #hg_area_world .mhsch{background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_paddle_bg.gif) repeat-x;float:right;width:222px;float:right;}
+ #hg_area_world .mhsch p{margin:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;padding:12px 6px 0 0;text-align:right;_height:40px;min-height:40px; font-size:13px;}
+ #hg_area_world .mhsch form{margin:0 !important;padding:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_paddle.gif) no-repeat;padding:0 0 0 42px;}
+ #hg_area_world .mhsch form p{margin:0;padding:0;_height:22px;background:transparent;text-align:left;font-size:13px;}
+ #hg_area_world .mhsch form p .t{display:block;width:94px;float:left;margin:0 0 3px 0;}
+ #hg_area_world .mhsch form p .s{cursor:hand;cursor:pointer;display:block;width:79px;margin:0 0 3px 0;float:right;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_submit_bg_2.gif) left bottom no-repeat;}
+ #hg_area_world .mhsch form p .t input{font-family:"Arial","Verdana","PMingLiU";width:92px;border:solid 1px #999999;margin:2px 0 5px 0;font-size:12px;padding:2px;}
+ #hg_area_world[id] .mhsch form p .t input{margin-top:4px;}
+ #hg_area_world .mhsch form p .s input{font-family:"Arial","Verdana","PMingLiU";cursor:hand;cursor:pointer;font-size:12px;margin:2px 0 5px 0;width:79px;_height:18px;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_submit_bg_1.gif) left top no-repeat;border:solid 0 white;padding:2px 0 0 0;_padding:5px 0 0 0;}
+ #hg_area_world .mhsch form p .s:hover input{color:blue;}
+ #hg_area_world .mhsch form div {white-space:nowrap;_position:relative;left:6px;}
+ #hg_area_world .mhsch form div a{_padding-top/**/:4px;_height/**/:1.2em;}
+ #hg_area_world .mhsch b{font-weight:normal;padding:0 1px 0 1px;font-size:15px;color:#aaa;} /** new **/
+ #hg_area_world .mhsch form p:after{content:url(http://tw.yimg.com/i/tw/hp/masthead/transparent.gif);display:block;clear:both;height:1px;width:1px;}
+ #hg_area_world:after{content:url(http://tw.yimg.com/i/tw/hp/masthead/transparent.gif);display:block;clear:both;height:1px;width:1px;}
+
+#hg_area_world_foot{clear:both;border-top:1px solid #c7c7c7;color:#777;font-size:12px;font-family:"MingLiU","PMingLiU"; font-family/**/:/**/"Arial","MingLiU","PMingLiU";padding:5px 0;text-align:left;}
+#hg_area_world_foot { 	/*min-width-hack*/ 	behavior:expression(	this.style.width =  (document.documentElement.offsetWidth<720)?"720px":"auto"); 	min-width:720px; }
+#hg_area_world_foot a{color:#0000bb}
+#hg_area_world_foot a:hover{color:red;}
+#hg_area_world_foot .cp{float:left;}
+#hg_area_world_foot .ln{float:right;}
+#hg_area_world_foot .ln a
+{
+	padding:0 0 0 5px;padding/**/:/**/0 1px 0 5px;border-left:1px solid #aaa;
+	behavior:expression(
+	this.runtimeStyle.behavior =  this.className =  (this.parentNode.all.tags(this.tagName)[0] == this)?"first-child":"null"
+	);
+}
+#hg_area_world_foot .ln a:first-child{border-left:0;}
+#hg_area_world_foot .ln a.first-child{border-left:0;}
+
+#hg_area_world_foot .cb{clear:both;}
+#hg_area_world_foot .other{clear:both;margin-top:1em;}

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  comment_id: MyString
+  news_id: MyString
+  user_id: 1
+  comment: MyText
+  head_vote: 1
+  suck_vote: 1
+
+two:
+  comment_id: MyString
+  news_id: MyString
+  user_id: 1
+  comment: MyText
+  head_vote: 1
+  suck_vote: 1

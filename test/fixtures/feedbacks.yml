@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  feedback_id: MyString
+  user_id: MyString
+  title: MyString
+  type: 1
+  org_feedback_id: MyString
+
+two:
+  feedback_id: MyString
+  user_id: MyString
+  title: MyString
+  type: 1
+  org_feedback_id: MyString

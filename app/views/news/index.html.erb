@@ -1,0 +1,48 @@
+<%= include_tiny_mce_if_needed %>
+
+<div id="logo" >	
+	<!-- "to_main_page" is defined in application_controller.rb -->
+	<%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
+	    {:title => 'to home page'} )  %>
+</div>
+
+<h1>Listing news</h1>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Area</th>
+    <th>Tag</th>
+    <th>Content</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @news.each do |news| %>
+  <tr>
+    <td><%= news.title %></td>
+    <td><%= news.url %></td>
+    <td><%= news.area %></td>
+    <td><%= news.tag %></td>
+    <td><%= news.content.html_safe %></td>
+    <td><%= news.time %></td>
+    <td><%= link_to 'Show', news %></td>
+    <td><%= link_to 'Edit', edit_news_path(news) %></td>
+    <td><%= link_to 'Destroy', news, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Report news', news_index_path+'/report' %>
