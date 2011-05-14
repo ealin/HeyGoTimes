@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+  include Facebooker2::Rails::Controller
   
   before_filter :set_locale
   
