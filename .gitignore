@@ -1,7 +1,9 @@
 .bundle
+.DS_Store
+.idea
 db/*.sqlite3
 log/*.log
 tmp/**/*
-/db/*
 /log/*
 /tmp/*
+public/javascripts/tiny_mce/*
