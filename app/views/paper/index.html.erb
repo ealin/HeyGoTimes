@@ -38,13 +38,25 @@
       <%= link_to 'Signup', {:action => 'signup'}, {:title => 'signup'} %>
     <% end %>
 	
-  </div>  
+  </div>
+<%= fb_connect_async_js %>
+<% if current_facebook_user != nil %>
+  <% current_facebook_user.fetch %>
+  <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
+  <%= fb_logout_link("Logout of fb", request.url) %>
+      <br />
+<% else
+   # you must explicitly request permissions for facebook user fields.
+   # here we instruct facebook to ask the user for permission for our website
+   # to access the user's facebook email and birthday
+   %>
+  <%= fb_login_and_redirect('http://localhost:3000/', :perms => 'email,user_birthday') %>
+<% end %>
   
   
 </div>
 
 <br><br><br>
-
   <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
   <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> 
    		frameborder="0" border="0" scrolling="no">  </iframe>

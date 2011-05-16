@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+  include Facebooker2::Rails::Controller
   
   # Ealin: 讓view & helper 都可以呼叫redirect_to()
   #
