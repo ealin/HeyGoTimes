@@ -1,0 +1,35 @@
+
+
+<%= fb_connect_async_js %>
+
+<% begin %>
+
+     <% if current_facebook_user != nil %>
+
+       <% # fetch可能失敗(user主動自FACEBOOK中LOGOUT) ==> 必須處理 Mogli::Client::OAuthException %>
+       <% current_facebook_user.fetch %>
+
+
+       <%= fb_logout_link("Logout", request.url) %>
+       <br>
+       <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
+
+       <% session[:logged_in] = true  %>
+     <% else
+        # you must explicitly request permissions for facebook user fields.
+        # here we instruct facebook to ask the user for permission for our website
+        # to access the user's facebook email and birthday
+        %>
+       <%= fb_login_and_redirect('http://localhost:3000/', :perms => 'email,user_birthday') %>
+
+       <% session[:logged_in] = nil %>
+     <% end %>
+<% rescue  %>
+
+           <% SDFSDSF %>
+     <% session[:logged_in] = nil %>
+
+
+     <%= redirect_to  :controller => 'paper', :action => 'index' %>
+
+<% end %>

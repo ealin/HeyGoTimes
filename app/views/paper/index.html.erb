@@ -29,30 +29,13 @@
     <% end %>
 	
     <%= link_to t(:setting), {:controller => 'setup'}, {:title => '設定個人資訊'} %>
-	
-	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
-	<% if @logged_flag  == true %>   
-      <%= link_to 'Logout', {:action => 'logout'}, {:title => 'logout'} %>
-    <% else %>
-      <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>	
-      <%= link_to 'Signup', {:action => 'signup'}, {:title => 'signup'} %>
-    <% end %>
-	
+
+
+    <%= show_logging_link %>
+
+
   </div>
-<%= fb_connect_async_js %>
-<% if current_facebook_user != nil %>
-  <% current_facebook_user.fetch %>
-  <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
-  <%= fb_logout_link("Logout of fb", request.url) %>
-      <br />
-<% else
-   # you must explicitly request permissions for facebook user fields.
-   # here we instruct facebook to ask the user for permission for our website
-   # to access the user's facebook email and birthday
-   %>
-  <%= fb_login_and_redirect('http://localhost:3000/', :perms => 'email,user_birthday') %>
-<% end %>
-  
+
   
 </div>
 

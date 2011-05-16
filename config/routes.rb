@@ -30,7 +30,6 @@ HeyGoTimes::Application.routes.draw do
   match "/setup/set_filter/:area", :to => "setup#set_filter"
   get "setup/index"
   get "setup/to_main_page"
-  get "setup/logout"
   get "setup/deactive_fb_account"
   get "setup/connect_twitter_account"
   get "setup/set_filter"
@@ -68,9 +67,6 @@ HeyGoTimes::Application.routes.draw do
     get 'to_main_page', :on => :collection  
     get 'filiter_today_newspaper', :on => :collection
     get 'follow', :on => :collection
-    get 'login', :on => :collection
-    get 'logout', :on => :collection
-    get 'signup', :on => :collection
     get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
@@ -80,9 +76,6 @@ HeyGoTimes::Application.routes.draw do
 
   get "main_page/index"
   get "main_page/to_main_page"
-  get "main_page/logout"
-  get "main_page/login"
-  get "main_page/signup"
   get "main_page/to_mobile_site"
   
 
