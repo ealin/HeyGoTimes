@@ -7,7 +7,8 @@ class PaperController < NewsController
      # check_logged_in() is defined in application_controller.rb
      @user_login = check_logged_in()
      
-     set_newspaper_size() 
+     set_newspaper_size()
+     get_paper_title_info()
    end
 
 
@@ -58,7 +59,7 @@ class PaperController < NewsController
     #get newspaper's title
     get_paper_title_info()
    
-    # render show_paper_title.html.erb
+    # render _show_paper_title.html.erb
     render :layout => nil
     
     
@@ -75,7 +76,7 @@ class PaperController < NewsController
   # 
   def show_paper_content
     @news = News.all
-     # render show_paper_content.html.erb
+     # render _show_paper_content.html.erb
      render :layout => nil
    
   end
@@ -107,7 +108,7 @@ class PaperController < NewsController
   def show_fun_buttons
    
    
-    # render show_paper_title.html.erb
+    # render _show_paper_title.html.erb
     render :layout => nil
     
   end

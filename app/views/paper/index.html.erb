@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html>
 
+<div id="container">
 <div id="header">
 <!-- 顯示頁首的所有元素 - logo, search bar, 許多功能連結, login/logout... -->
 
-  <div id="logo" >	
+  <div id="logo" >
     <!-- "to_main_page" is defined in application_controller.rb -->
     <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
         {:title => 'to home page'} )  %>
   </div>
 
   <div id="search_bar" align="right">
-    <!--- # show_search_bar is implemented in search_helper.rb  
+    <!--- # show_search_bar is implemented in search_helper.rb
 	  show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
     --->
     <%= show_search_bar :paper  %>
   </div>
-  
-  <div id="links" >	
+
+  <div id="links" >
     <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '選擇其他報紙'} %>
 
     <%= link_to '過濾新聞', {:action => 'filiter_today_newspaper'}, {:title => '過濾新聞'} %>
-	
+
 	<% if @followed_flag == true  %>
       <%= link_to '取消訂閱', {:action => 'follow', :flag => 'true'}, {:title => '取消訂閱這份報紙'} %>
     <% else %>
       <%= link_to '訂閱', {:action => 'follow', :flag => 'false'}, {:title => '訂閱這份報紙'} %>
     <% end %>
-	
+
     <%= link_to '設定', {:controller => 'setup'}, {:title => '設定個人資訊'} %>
-	
+
 	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
-	<% if @user_login  == true %>   
+	<% if @user_login  == true %>
       <%= link_to 'Logout', {:action => 'logout'}, {:title => 'logout'} %>
     <% else %>
-      <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>	
+      <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>
       <%= link_to 'Signup', {:action => 'signup'}, {:title => 'signup'} %>
     <% end %>
-	
+
   </div>
 <%= fb_connect_async_js %>
 <% if current_facebook_user != nil %>
-  <% current_facebook_user.fetch %>
-  <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
+  <% current_facebook_user.fetch%>
+  <%= "Welcome #{current_facebook_user.fetch}!" %>
   <%= fb_logout_link("Logout of fb", request.url) %>
       <br />
 <% else
@@ -52,30 +53,33 @@
    %>
   <%= fb_login_and_redirect('http://localhost:3000/', :perms => 'email,user_birthday') %>
 <% end %>
-  
-  
+
+
 </div>
 
-<br><br><br>
-  <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
-   <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> 
-   		frameborder="0" border="0" scrolling="no">  </iframe>
+    <div id="title">
+      <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
+    </div>
 
-  <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
-  <iframe src="/paper/show_fun_buttons" width=<%=@ad_width%> height=<%=@title_height%> frameborder="0" border="0"></iframe> 
-   
+    <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
+    <div id="functionalButton">
+      <%= render :partial => 'paper/show_fun_buttons' %>
+    </div>
+
 <br>
+    <!-- show content of today's newspaper -->
+    <div id="paperContent">
+        <% # TODO: use @paper_width %>
+        <%= render :partial => 'paper/show_paper_content' %>
+    </div>
 
-  <!-- show content of today's newspaper -->
-  <iframe src="/paper/show_paper_content" width= <%=@paper_width%> align="top"> </iframe>
-
-  <!-- show AD list-->
-  <iframe src="/paper/show_ad_list"  width= <%=@ad_width%> height=<%= (@ad_height * @ad_no) %>  
-  			scrolling="no"  > </iframe>
+    <!-- show AD list-->
+    <div id="adList">
+        <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <%= render :partial => 'paper/show_ad_list' %>
+    </div>
 
 <br><br><hr>
 
+<!-- /container --></div>
   <!-- lauouts/_show_page_tail.html.erb  -->
-
-
-</html>
