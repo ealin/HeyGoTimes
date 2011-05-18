@@ -3,9 +3,9 @@ class PaperController < NewsController
   def index
      check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
      
-     # for checking login status in View, we must define an obj-attribute @user_login here. 
-     # check_logged_in() is defined in application_controller.rb
-     @user_login = check_logged_in()
+     # for checking login status in View, we must define an obj-attribute @logged_flag and
+     #    check_logged_in() in application_controller.rb
+     check_logged_in()
      
      set_newspaper_size()
      get_paper_title_info()
@@ -19,7 +19,7 @@ class PaperController < NewsController
   # 
   def set_newspaper_size
     @paper_width = 600 
-    @title_height = 200
+    @title_height = 210
     
     @ad_width = 120
     @ad_height = 60

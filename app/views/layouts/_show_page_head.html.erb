@@ -1,0 +1,26 @@
+
+
+  <%= link_to t(:main_page),{:controller => 'main_page'},{:title => 'Show FAQ'}%>
+  <%= link_to t(:today_newspaper),{:controller => 'paper'},{:title => 'Show Privacy'}%>
+
+  <% if @realtime_news_flag == true%>
+    <%= link_to t(:realtime_news),{:controller => 'real_time_news'},{:title => '到編輯新聞畫面'}%>
+  <% end %>
+
+  <% if @faq_flag == true%>
+    <%= link_to 'FAQ',{:controller => 'faq'},{:title => 'FAQ'}%>
+  <% end %>
+
+  <% if @setup_flag == true%>
+    <%= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
+  <% end %>
+
+
+  <!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb --> 
+  <% if @logged_flag  == true %>   
+      <%= link_to t(:logout), {:action => 'logout'}, {:title => 'logout'} %>
+  <% else %>
+      <%= link_to t(:login),  {:action => 'login'},  {:title => 'login'} %>	
+  <% end %>
+
+

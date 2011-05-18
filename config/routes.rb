@@ -1,5 +1,12 @@
 HeyGoTimes::Application.routes.draw do
 
+
+  get "real_time_news/report"
+  get "real_time_news/to_main_page"
+  resources :real_time_news
+
+
+
   get "news/report"
 
   get "news/to_main_page"
@@ -16,7 +23,16 @@ HeyGoTimes::Application.routes.draw do
 
   get "translator/index"
 
+  get "area/index"
+
+  get "feedback/index"
+
+  match "/setup/set_filter/:area", :to => "setup#set_filter"
   get "setup/index"
+  get "setup/to_main_page"
+  get "setup/deactive_fb_account"
+  get "setup/connect_twitter_account"
+  get "setup/set_filter"
 
   get "user_history/index"
 
@@ -26,11 +42,17 @@ HeyGoTimes::Application.routes.draw do
 
   get "faq/index"
 
+  get "faq/to_main_page"
+  get "faq/show_question_list"  
+  get "faq/show_answer"
+
+
   resources :news
 
   resources :area do
     get 'to_main_page', :on => :collection
   end
+
 
   resources :search do
     get 'index', :on => :collection  
@@ -45,9 +67,6 @@ HeyGoTimes::Application.routes.draw do
     get 'to_main_page', :on => :collection  
     get 'filiter_today_newspaper', :on => :collection
     get 'follow', :on => :collection
-    get 'login', :on => :collection
-    get 'logout', :on => :collection
-    get 'signup', :on => :collection
     get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
@@ -57,6 +76,8 @@ HeyGoTimes::Application.routes.draw do
 
   get "main_page/index"
   get "main_page/to_main_page"
+  get "main_page/to_mobile_site"
+  
 
 
   # The priority is based upon order of creation:

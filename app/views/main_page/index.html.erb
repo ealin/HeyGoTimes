@@ -1,24 +1,45 @@
-<!DOCTYPE html>
-<html>
-
-
 
 <div id="header">
 	
   <div id="logo" >	
     <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGo_logo.png"), {:action =>'to_main_page'}, \
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
         {:title => "to today's newspaper"} )  %>
   </div>
-  
+
+  <div id="link_list" >
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
+     if parameter of 'show_page_head' is true means: show link of 'editor' 
+  -->
+    <%= show_page_head(:realtime_news_flag => true,:faq_flag => true, :setup_flag => true)  %>
+  </div>
+
 </div>
+ <br><br><br>  
 
-<br><br><br><br><br><br><br><br>
 
+  <div>
+    <div id="feedback" >	
+      <%=     link_to( image_tag("/images/feedback.png"), {:controller =>'feedback'}, \
+        {:title => "fill your feedback"} )  %>
+    </div>
+  
+    <div align = "center">
+      <h1>HG Times Slogan: </h1>
+	  <h1>Real NewsPaper you need in Internet!</h1>
+      <p>[put a Grapics here]</p>
+    </div>
+  </div>
+  
+  <br><br><br><br><hr><br>
 
-<h1>MainPage#index</h1>
-<p>Find me in app/views/main_page/index.html.erb</p>
+  <div>
+    <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+    <%= show_page_tail %>
+  
+    <div align = "right">
+      <!-- to_mobile_site is defined in application_controller.rb -->
+      <%= link_to( "Mobile Site" , {:action =>'to_mobile_site'},{:title => '以手機螢幕瀏覽'} )  %>
+    </div>
+  </div>
 
-<%= link_to "Today's News Paper" %>
-
-</html>

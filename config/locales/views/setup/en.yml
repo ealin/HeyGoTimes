@@ -1,0 +1,40 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+    user_account: "Account: "
+    deactive_account: "Deactive"
+    connect_to_twitter: "Cnnect to twitter"
+    
+    user_email: "Email:"
+    #add_email: "Add an Email account"
+    modify_email:  "modify this Email account"
+    
+    subscribtion_list: "Subscribtion List:"
+    cancel_subscribe: "Cancel the subsctiption"
+    set_filter: "Set the filter"
+
+    set_default: "Set default paper"
+    create_a_new_paper: "Create a new paper"
+
+    statistics: "Statistics:"
+    report_no: "Report NO: "
+    comment_no: "Comment NO: "
+    edit_no: "Edit NO: "
+    follow_no: "Followed Reporters NO: "
+    fans_no: "FANS NO: "
+    AD_no: "AD NO: "
+    
+    to_my_AD: "Check My AD"
+    to_my_history: "Check My History"
+    
+    
+    
+    
+    
+    
+
+   
+  
+  
+  

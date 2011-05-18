@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
 
   include Facebooker2::Rails::Controller
   
+  # Ealin: è®?iew & helper ?½å?ä»¥å??«redirect_to()
+  #
+  helper_method :redirect_to
+  
   before_filter :set_locale
   
  
@@ -11,15 +15,47 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   # 
   def check_logged_in
-    # cehck status of session, then store it to class-variable - @@logged_flag  
-   
     
-    # ç´€éŒ„current user æ˜¯å¦å·²ç¶“login (è¦ä½¿ç”¨sessionçš„åŠŸèƒ½, session should be stored in database) 
-    @@logged_flag = false
+    return session[:logged_in] ;
     
-    return @@logged_flag  
   end
   #===========================================================================
+
+
+  #----------------------------------------------------
+  # method: get_current_user_info   (Ealin: 20110510)
+  #----------------------------------------------------
+  #
+  def get_current_user_info
+
+    #  Ealin: ä»¥ä?è®????¯«æ­?20110510)
+
+    @user_account = "ealin.chiu@gmail.com"
+    @user_account_connected_to = "facebook"
+
+    # 1 account has MAX 3 email-address
+    @email_for_subscription = "ealin@yahoo.com.tw"
+
+    # ???ä½¿ç?????±ç??±ç???¡¨  (read from database)
+    @user_subscribed_paper_no = 4
+    @user_subscribed_paper = Array.new
+    @user_subscribed_paper[0] = "Taiwan"
+    @user_subscribed_paper[1] = "Silicon Valley"
+    @user_subscribed_paper[2] = "?¾å±±é«?¸­?¡å?"
+    @user_subscribed_paper[3] = "7-11?¹å??±å?"
+
+
+    #statistics data:
+    @report_no = 10
+    @comment_no = 5
+    @edit_no = 3
+    @follow_no = 6
+    @fans_no = 100
+    @ad_no = 6
+
+  end
+  #===========================================================================
+
 
  
   #----------------------------------------------------
@@ -27,8 +63,8 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   # 
   def login
-  
-   
+
+
    render "/user/login"
   end
   #===========================================================================
@@ -39,7 +75,7 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   # 
   def logout
-    
+
    render "/user/logout"
   end
   #===========================================================================
@@ -49,11 +85,9 @@ class ApplicationController < ActionController::Base
   # method: signup   (Ealin: 20110430)
   #----------------------------------------------------
   # 
-  def signup
-    
-    
-   render "/user/signup"
-  end
+  #def signup
+  # render "/user/signup"
+  #end
   #===========================================================================
 
 
@@ -64,19 +98,20 @@ class ApplicationController < ActionController::Base
   #--------------------------
   # 
   def set_locale
-    logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+    #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+    #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
     I18n.locale = extract_locale_from_accept_language_header
-  
+
     #logger.debug "'#{I18n.locale}'"
-  
+
     if I18n.locale == :"zh" 
    
       logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
-      #  Ealin: 84 == 'T' (ç‰¹åˆ¥è™•ç†: zh_TW), 116 == 't' (ç‰¹åˆ¥è™•ç†: zh-tw)
+      #  Ealin: 84 == 'T' (?¹å????: zh_TW), 116 == 't' (?¹å????: zh-tw)
       if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116
 
         #
-        # Ealin: é¿å…ç¹é«”èˆ‡ç°¡é«”å¯èƒ½æ··æ·†, å°‡ç¹é«”çš„locale nameè¨­ç‚ºzh_tw
+        # Ealin: ?¿å?ç¹????°¡é«???½æ··æ·? å°??é«??locale nameè¨­ç?zh_tw
         #
         I18n.locale = :zh_tw
       end
@@ -91,8 +126,8 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110419
   #-----------------------------------------------------------------------------------
   # method: to_main_page
-  #   - é»žåˆ°logo iconæ™‚çš„å‹•ä½œ => å¤§éƒ¨åˆ†ç•«é¢éƒ½æ˜¯è·³åˆ°/paper, åœ¨/paperæ™‚è¦è·³åˆ°/main_page 
-  #     (åªæœ‰paper_controlleræœƒoverridingé€™å€‹method, å…¶ä»–controllerç›´æŽ¥ç”¨çˆ¶é¡žåˆ¥çš„é€™å€‹åŠŸèƒ½ )
+  #   - é»??logo icon?????? => å¤§é?????¢é??¯è·³??paper, ??paper???è·³å?/main_page 
+  #     (?ªæ?paper_controller??verriding???method, ?¶ä?controller?´æ??¨ç?é¡??????????)
   #-----------------------------------------------------------------------------------
   #
   def to_main_page
@@ -100,6 +135,19 @@ class ApplicationController < ActionController::Base
   end  
   #-----------------------------------------------------------------------------------------
   
+
+
+  # Ealin: 20110505
+  #-----------------------------------------------------------------------------------
+  # method: to_mobile_site
+  #   è½???ºæ?æ©??è¦½æ¨¡å¼?(URL should looks like:   m.heygotimes.com/xxx/yy)
+  #-----------------------------------------------------------------------------------
+  #
+   def to_mobile_site
+    redirect_to :controller => 'paper', :action => 'index' 
+  end  
+  #-----------------------------------------------------------------------------------------
+
 
   
   protect_from_forgery

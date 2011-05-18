@@ -3,7 +3,7 @@
 
 <div id="container">
 <div id="header">
-<!-- é¡¯ç¤ºé é¦–çš„æ‰€æœ‰å…ƒç´  - logo, search bar, è¨±å¤šåŠŸèƒ½é€£çµ, login/logout... -->
+<!-- é¡¯ç¤º?????????ç´?- logo, search bar, è¨±å???????, login/logout... -->
 
   <div id="logo" >
     <!-- "to_main_page" is defined in application_controller.rb -->
@@ -19,17 +19,17 @@
   </div>
 
   <div id="links" >
-    <%= link_to (t :other_paper), {:controller => 'area'}, {:title => 'é¸æ“‡å…¶ä»–å ±ç´™'} %>
+    <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '?¸æ??¶ä??±ç?'} %>
 
-    <%= link_to 'éŽæ¿¾æ–°èž', {:action => 'filiter_today_newspaper'}, {:title => 'éŽæ¿¾æ–°èž'} %>
+    <%= link_to '??¿¾?°è?', {:action => 'filiter_today_newspaper'}, {:title => '??¿¾?°è?'} %>
 
 	<% if @followed_flag == true  %>
-      <%= link_to 'å–æ¶ˆè¨‚é–±', {:action => 'follow', :flag => 'true'}, {:title => 'å–æ¶ˆè¨‚é–±é€™ä»½å ±ç´™'} %>
+      <%= link_to '???è¨??', {:action => 'follow', :flag => 'true'}, {:title => '???è¨????»½?±ç?'} %>
     <% else %>
-      <%= link_to 'è¨‚é–±', {:action => 'follow', :flag => 'false'}, {:title => 'è¨‚é–±é€™ä»½å ±ç´™'} %>
+      <%= link_to 'è¨??', {:action => 'follow', :flag => 'false'}, {:title => 'è¨????»½?±ç?'} %>
     <% end %>
 
-    <%= link_to 'è¨­å®š', {:controller => 'setup'}, {:title => 'è¨­å®šå€‹äººè³‡è¨Š'} %>
+    <%= link_to 'è¨­å?', {:controller => 'setup'}, {:title => 'è¨­å???ººè³??'} %>
 
 	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
 	<% if @user_login  == true %>
@@ -56,7 +56,15 @@
 
 
 </div>
+	
+    <%= link_to t(:setting), {:controller => 'setup'}, {:title => 'è¨­å???ººè³??'} %>
 
+
+    <%= show_logging_link %>
+  </div>
+</div>
+
+	<!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
     <div id="title">
       <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
     </div>
@@ -78,6 +86,9 @@
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
         <%= render :partial => 'paper/show_ad_list' %>
     </div>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+  <%= show_page_tail %>
 
 <br><br><hr>
 
