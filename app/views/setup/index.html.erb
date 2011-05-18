@@ -10,22 +10,24 @@
 	</script>
 </head>
 
-<% if @logged_flag == false %>
-    <!-- 處理user未登入的狀況 (自動跳轉回paper畫面) -->
-    <script type="text/javascript"> 
-	  asking_login_alert(); 
-	</script>
-	
-<% end %>
-
 
 <div id="header">
 
   <div id="logo" >	
     <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
-        {:title => "to today's newspaper"} )  %>
+    <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, \
+            {:title => "to today's newspaper"} )  %>
   </div>
+
+
+  <!-- 處理user未登入的狀況 (自動跳轉回paper畫面) -->
+  <% if session[:logged_in] == false %>
+     <script type="text/javascript">
+	   asking_login_alert();
+	 </script>
+
+  <% end %>
+
 
   <div id="link_list" >
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb 
@@ -36,7 +38,9 @@
   <H2><%= t(:setting) %></H2>
 
 </div>
- <br><br><br>  
+
+
+ <br><br><br>
  
  <!-- setup: user's account
       deactive_fb_account() & connect_twitter_account() are defined in setup_controller.rb

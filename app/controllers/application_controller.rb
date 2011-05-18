@@ -15,10 +15,31 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   # 
   def check_logged_in
+
+
+    if !(current_facebook_user.nil?)
+      begin
+        current_facebook_user.fetch
+
+        session[:logged_in] = true
+
+      rescue Exception => e
+
+        # OAuthException : user主動自FACEBOOK中LOGOUT
+        #
+        set_fb_cookie(nil,nil,nil,nil)
+
+        session[:logged_in] = false
+
+      end
+    else
+      session[:logged_in] = false
+    end
     
-    return session[:logged_in] ;
-    
+
   end
+
+
   #===========================================================================
 
 

@@ -9,4 +9,12 @@ module UserHelper
    end
 
 
+
+  def show_logout_link
+
+    render "user/fb_logout_link"
+
+
+  end
+
 end

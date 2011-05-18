@@ -16,11 +16,8 @@
   <% end %>
 
 
-  <!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb --> 
-  <% if @logged_flag  == true %>   
-      <%= link_to t(:logout), {:action => 'logout'}, {:title => 'logout'} %>
-  <% else %>
-      <%= link_to t(:login),  {:action => 'login'},  {:title => 'login'} %>	
-  <% end %>
+  <% # show_logout_link() defined in user_helper.rb %>
+  <%= show_logout_link %>
+
 
 

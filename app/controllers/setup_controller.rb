@@ -1,6 +1,6 @@
 class SetupController < ApplicationController
   def index
-     # for checking login status in View, we must define an obj-attribute @logged_flag and
+     # for checking login status in View, we must define session[:logged_in] and
      #    check_logged_in() in application_controller.rb    
      check_logged_in
 
