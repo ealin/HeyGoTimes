@@ -1,0 +1,10 @@
+
+<% if news != nil %>
+  <% news.each do |news| %>
+    <h2><%= news.title %></h2>
+    <%= news.time %>
+    <%= news.content.html_safe %>
+  <% end %>
+<% end %>
+
+

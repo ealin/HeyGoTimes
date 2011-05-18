@@ -1,67 +1,89 @@
 <!DOCTYPE html>
 <html>
 
-<div id="header">
-<!-- 顯示頁首的所有元素 - logo, search bar, 許多功能連結, login/logout... -->
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/stylesheets/style.css" />
+</head>
 
-  <div id="logo" >	
-    <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
-        {:title => 'to home page'} )  %>
-  </div>
+<div id="page">
+  <div id="header">
+    <div id="masthead">
+      <div id="branding" role="banner">
+        <div id="site-title">
+          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, {:title => 'to home page'} ) %>
+          <span><%= @newspaper_title %></span>
+        </div>
 
-  <div id="search_bar" align="right">
-    <!--- # show_search_bar is implemented in search_helper.rb  
-	  show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
-    --->
-    <%= show_search_bar :paper  %>
-  </div>
-  
-  <div id="links" >	
-    <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '選擇其他報紙'} %>
+          <div id="links" >
+            <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '選擇其他報紙'} %>
 
-    <%= link_to '過濾新聞', {:action => 'filiter_today_newspaper'}, {:title => '過濾新聞'} %>
-	
-	<% if @followed_flag == true  %>
-      <%= link_to '取消訂閱', {:action => 'follow', :flag => 'true'}, {:title => '取消訂閱這份報紙'} %>
-    <% else %>
-      <%= link_to '訂閱', {:action => 'follow', :flag => 'false'}, {:title => '訂閱這份報紙'} %>
-    <% end %>
-	
-    <%= link_to t(:setting), {:controller => 'setup'}, {:title => '設定個人資訊'} %>
+            <%= link_to '過濾新聞', {:action => 'filiter_today_newspaper'}, {:title => '過濾新聞'} %>
 
+            <% if @followed_flag == true %>
+                <%= link_to '取消訂閱', {:action => 'follow', :flag => 'true'}, {:title => '取消訂閱這份報紙'} %>
+            <% else %>
+                <%= link_to '訂閱', {:action => 'follow', :flag => 'false'}, {:title => '訂閱這份報紙'} %>
+            <% end %>
 
-    <% # show_logging_link() defined in user_helper.rb %>
-    <%= show_logging_link %>
+            <%= link_to t(:setting), {:controller => 'setup'}, {:title => '設定個人資訊'} %>
 
+            <% # show_logging_link() defined in user_helper.rb %>
+            <%= show_logging_link %>
 
-  </div>
+          </div><!-- #links -->
+      </div><!-- #branding -->
+    </div><!-- #masthead -->
+  </div><!-- #header -->
 
-  
-</div>
+  <div id="access">
+    <div class="menu-header">
+      <ul id="menu-area" class="menu">
+        <li id="menu-item-lv1" class="menu-item"><a title="Level1" href="<%= paper_index_path+'/taiwan' %>">台灣</a></li>
+        <li id="menu-item-lv2" class="menu-item"><a title="Level2" href="<%= paper_index_path+'/north' %>">北區</a></li>
+        <li id="menu-item-lv3" class="menu-item"><a title="Level3" href="<%= paper_index_path+'/taipei' %>">台北市</a></li>
+        <li id="menu-item-lv4" class="menu-item current-menu-item"><a title="Level4" href="<%= paper_index_path+'/sonshan' %>">松山區</a></li>
+      </ul>
+    </div>
+  </div><!-- #access -->
 
-<br><br><br>
-  <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
-  <iframe src="/paper/show_paper_title" width= <%=@paper_width%>  height=<%=@title_height%> 
-   		frameborder="0" border="0" scrolling="no">  </iframe>
+  <div id="main">
+    <div id="content">
+      <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
+      <div id="title">
+        <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
+      </div>
+      <div id="paperContent">
+        <% # TODO: use @paper_width %>
+        <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
+      </div>
+    </div>
 
-  <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
-  <iframe src="/paper/show_fun_buttons" width=<%=@ad_width%> height=<%=@title_height%> 
-        frameborder="0" border="0" scrolling="no"></iframe> 
-   
-<br>
+    <div id="sub">
+      <div id="search_bar">
+        <!--- # show_search_bar is implemented in search_helper.rb
+        show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
+        --->
+        <%= show_search_bar :paper %>
+      </div>
 
-  <!-- show content of today's newspaper -->
-  <iframe src="/paper/show_paper_content" width= <%=@paper_width%> align="top"> </iframe>
+      <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
+      <div id="functionalButton">
+        <%= render :partial => 'paper/show_fun_buttons' %>
+      </div>
 
-  <!-- show AD list-->
-  <iframe src="/paper/show_ad_list"  width= <%=@ad_width%> height=<%= (@ad_height * @ad_no) %>  
-  			scrolling="no"  > </iframe>
+      <!-- show AD list-->
+      <div id="ad">
+        <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <%= render :partial => 'paper/show_ad_list' %>
+      </div>
+    </div>
+  </div><!-- #main -->
 
-<br><br><hr>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
-  <%= show_page_tail %>
-
-
+    <div id="footer">
+      <%= show_page_tail %>
+    </div>
+</div> <!-- /page -->
+  <!-- news/_show_page_tail.html.erb  -->
 </html>

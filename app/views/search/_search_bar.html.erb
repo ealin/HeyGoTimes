@@ -5,7 +5,7 @@
   <h3>
   	
   <%= label_tag :label, 'Search for:'  %>
-  <%= text_field_tag :text,'input search-key here:'  , :size => 50 ,:title => 'search key?' %> 
+  <%= text_field_tag :text,'input search-key here:'  , :size => 20 ,:title => 'search key?' %>
   <%= select_tag :search_type, options_for_select(\
 			[['ALL',0],['報紙', 1], ['即時新聞', 2], ['區域', 3], ['廣告',4] ],5)  %>
   <%= image_submit_tag 'search.gif', :title => 'search'   %>

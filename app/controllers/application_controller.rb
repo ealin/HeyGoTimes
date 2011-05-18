@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
  
 
   #----------------------------------------------------
-  # method: check_logged_in   (Ealin: 20110430)
+  # method: check_logged_in (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def check_logged_in
 
 
@@ -44,12 +44,12 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: get_current_user_info   (Ealin: 20110510)
+  # method: get_current_user_info (Ealin: 20110510)
   #----------------------------------------------------
   #
   def get_current_user_info
 
-    #  Ealin: 以下變數先寫死(20110510)
+    # Ealin: 以下變數先寫死(20110510)
 
     @user_account = "ealin.chiu@gmail.com"
     @user_account_connected_to = "facebook"
@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
     # 1 account has MAX 3 email-address
     @email_for_subscription = "ealin@yahoo.com.tw"
 
-    # 取得使用者訂閱的報紙列表  (read from database)
+    # 取得使用者訂閱的報紙列表 (read from database)
     @user_subscribed_paper_no = 4
     @user_subscribed_paper = Array.new
     @user_subscribed_paper[0] = "Taiwan"
@@ -80,9 +80,9 @@ class ApplicationController < ActionController::Base
 
  
   #----------------------------------------------------
-  # method: login   (Ealin: 20110430)
+  # method: login (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def login
 
 
@@ -92,9 +92,9 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: logout   (Ealin: 20110430)
+  # method: logout (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def logout
 
    render "/user/logout"
@@ -103,9 +103,9 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: signup   (Ealin: 20110430)
+  # method: signup (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   #def signup
   # render "/user/signup"
   #end
@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
   #--------------------------
   # method: set_locale
   #--------------------------
-  # 
+  #
   def set_locale
     #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
@@ -126,10 +126,10 @@ class ApplicationController < ActionController::Base
 
     #logger.debug "'#{I18n.locale}'"
 
-    if I18n.locale == :"zh" 
+    if I18n.locale == :"zh"
    
       logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
-      #  Ealin: 84 == 'T' (特別處理: zh_TW)
+      # Ealin: 84 == 'T' (特別處理: zh_TW)
       if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116
 
         #
@@ -148,13 +148,13 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110419
   #-----------------------------------------------------------------------------------
   # method: to_main_page
-  #   - 點到logo icon時的動作 => 大部分畫面都是跳到/paper, 在/paper時要跳到/main_page 
-  #     (只有paper_controller會overriding這個method, 其他controller直接用父類別的這個功能 )
+  # - 點到logo icon時的動作 => 大部分畫面都是跳到/paper, 在/paper時要跳到/main_page
+  # (只有paper_controller會overriding這個method, 其他controller直接用父類別的這個功能 )
   #-----------------------------------------------------------------------------------
   #
   def to_main_page
-    redirect_to :controller => 'paper', :action => 'index' 
-  end  
+    redirect_to :controller => 'paper', :action => 'index'
+  end
   #-----------------------------------------------------------------------------------------
   
 
@@ -162,12 +162,12 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110505
   #-----------------------------------------------------------------------------------
   # method: to_mobile_site
-  #   轉換為手機瀏覽模式 (URL should looks like:   m.heygotimes.com/xxx/yy)
+  # 轉換為手機瀏覽模式 (URL should looks like: m.heygotimes.com/xxx/yy)
   #-----------------------------------------------------------------------------------
   #
    def to_mobile_site
-    redirect_to :controller => 'paper', :action => 'index' 
-  end  
+    redirect_to :controller => 'paper', :action => 'index'
+  end
   #-----------------------------------------------------------------------------------------
 
 
@@ -185,12 +185,12 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   #
   def extract_locale_from_accept_language_header
-    # One source of client supplied information would be an Accept-Language HTTP header. 
+    # One source of client supplied information would be an Accept-Language HTTP header.
     # People may set this in their browser
     
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     #request.env['HTTP_ACCEPT_LANGUAGE']
-  end   
+  end
   #-----------------------------------------------------------------------------------------
    
   

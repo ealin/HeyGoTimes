@@ -1,25 +1,32 @@
-class PaperController < NewsController
+class PaperController < ApplicationController
 
   def index
-     check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
-     
-     # for checking login status in View, we must define an obj-attribute @logged_flag and
-     #    check_logged_in() in application_controller.rb
-     check_logged_in()
-     
-     set_newspaper_size() 
-   end
+    @news = get_news()
 
+    check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
+
+    # for checking login status in View, we must define an obj-attribute @logged_flag and
+    #    check_logged_in() in application_controller.rb
+    check_logged_in()
+
+    set_newspaper_size()
+    get_paper_title_info()
+  end
+
+  def get_news
+    @news = News.all
+    return @news
+  end
 
   #-----------------------------------------------------------------------------------
   # method: set_newspaper_size      (Ealin: 20110501)
   #   - （設定報紙頁面中, 一些與size有關的attributes）
   #-----------------------------------------------------------------------------------
-  # 
+  #
   def set_newspaper_size
-    @paper_width = 600 
+    @paper_width = 600
     @title_height = 210
-    
+
     @ad_width = 120
     @ad_height = 60
     @ad_no = 10
@@ -58,7 +65,7 @@ class PaperController < NewsController
     #get newspaper's title
     get_paper_title_info()
    
-    # render show_paper_title.html.erb
+    # render _show_paper_title.html.erb
     render :layout => nil
     
     
@@ -74,8 +81,8 @@ class PaperController < NewsController
   #-----------------------------------------------------------------------------------
   # 
   def show_paper_content
-    @news = News.all
-     # render show_paper_content.html.erb
+
+     # render _show_paper_content.html.erb
      render :layout => nil
    
   end
@@ -91,7 +98,7 @@ class PaperController < NewsController
   # 
   def show_ad_list
 
-     # render show_ad_list.html.erb
+     # render _show_ad_list.html.erb
      render :layout => nil
    
   end
@@ -107,7 +114,7 @@ class PaperController < NewsController
   def show_fun_buttons
    
    
-    # render show_paper_title.html.erb
+    # render _show_paper_title.html.erb
     render :layout => nil
     
   end
