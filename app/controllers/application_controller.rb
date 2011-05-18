@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   include Facebooker2::Rails::Controller
   
-  # Ealin: è®?iew & helper ?½å?ä»¥å??«redirect_to()
+  # Ealin: è®“view & helper éƒ½å¯ä»¥å‘¼å«redirect_to()
   #
   helper_method :redirect_to
   
@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
  
 
   #----------------------------------------------------
-  # method: check_logged_in   (Ealin: 20110430)
+  # method: check_logged_in (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def check_logged_in
     
     return session[:logged_in] ;
@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: get_current_user_info   (Ealin: 20110510)
+  # method: get_current_user_info (Ealin: 20110510)
   #----------------------------------------------------
   #
   def get_current_user_info
 
-    #  Ealin: ä»¥ä?è®????¯«æ­?20110510)
+    # Ealin: ä»¥ä¸‹è®Šæ•¸å…ˆå¯«æ­»(20110510)
 
     @user_account = "ealin.chiu@gmail.com"
     @user_account_connected_to = "facebook"
@@ -36,13 +36,13 @@ class ApplicationController < ActionController::Base
     # 1 account has MAX 3 email-address
     @email_for_subscription = "ealin@yahoo.com.tw"
 
-    # ???ä½¿ç?????±ç??±ç???¡¨  (read from database)
+    # å–å¾—ä½¿ç”¨è€…è¨‚é–±çš„å ±ç´™åˆ—è¡¨ (read from database)
     @user_subscribed_paper_no = 4
     @user_subscribed_paper = Array.new
     @user_subscribed_paper[0] = "Taiwan"
     @user_subscribed_paper[1] = "Silicon Valley"
-    @user_subscribed_paper[2] = "?¾å±±é«?¸­?¡å?"
-    @user_subscribed_paper[3] = "7-11?¹å??±å?"
+    @user_subscribed_paper[2] = "æ¾å±±é«˜ä¸­æ ¡åˆŠ"
+    @user_subscribed_paper[3] = "7-11ç‰¹åƒ¹å ±å°Ž"
 
 
     #statistics data:
@@ -59,9 +59,9 @@ class ApplicationController < ActionController::Base
 
  
   #----------------------------------------------------
-  # method: login   (Ealin: 20110430)
+  # method: login (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def login
 
 
@@ -71,9 +71,9 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: logout   (Ealin: 20110430)
+  # method: logout (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   def logout
 
    render "/user/logout"
@@ -82,9 +82,9 @@ class ApplicationController < ActionController::Base
 
 
   #----------------------------------------------------
-  # method: signup   (Ealin: 20110430)
+  # method: signup (Ealin: 20110430)
   #----------------------------------------------------
-  # 
+  #
   #def signup
   # render "/user/signup"
   #end
@@ -96,22 +96,23 @@ class ApplicationController < ActionController::Base
   #--------------------------
   # method: set_locale
   #--------------------------
-  # 
+  #
   def set_locale
     #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
+
     I18n.locale = extract_locale_from_accept_language_header
 
     #logger.debug "'#{I18n.locale}'"
 
-    if I18n.locale == :"zh" 
+    if I18n.locale == :"zh"
    
       logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
-      #  Ealin: 84 == 'T' (?¹å????: zh_TW), 116 == 't' (?¹å????: zh-tw)
+      # Ealin: 84 == 'T' (ç‰¹åˆ¥è™•ç†: zh_TW)
       if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116
 
         #
-        # Ealin: ?¿å?ç¹????°¡é«???½æ··æ·? å°??é«??locale nameè¨­ç?zh_tw
+        # Ealin: é¿å…ç¹é«”èˆ‡ç°¡é«”å¯èƒ½æ··æ·†, å°‡ç¹é«”çš„locale nameè¨­ç‚ºzh_tw
         #
         I18n.locale = :zh_tw
       end
@@ -126,13 +127,13 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110419
   #-----------------------------------------------------------------------------------
   # method: to_main_page
-  #   - é»??logo icon?????? => å¤§é?????¢é??¯è·³??paper, ??paper???è·³å?/main_page 
-  #     (?ªæ?paper_controller??verriding???method, ?¶ä?controller?´æ??¨ç?é¡??????????)
+  # - é»žåˆ°logo iconæ™‚çš„å‹•ä½œ => å¤§éƒ¨åˆ†ç•«é¢éƒ½æ˜¯è·³åˆ°/paper, åœ¨/paperæ™‚è¦è·³åˆ°/main_page
+  # (åªæœ‰paper_controlleræœƒoverridingé€™å€‹method, å…¶ä»–controllerç›´æŽ¥ç”¨çˆ¶é¡žåˆ¥çš„é€™å€‹åŠŸèƒ½ )
   #-----------------------------------------------------------------------------------
   #
   def to_main_page
-    redirect_to :controller => 'paper', :action => 'index' 
-  end  
+    redirect_to :controller => 'paper', :action => 'index'
+  end
   #-----------------------------------------------------------------------------------------
   
 
@@ -140,12 +141,12 @@ class ApplicationController < ActionController::Base
   # Ealin: 20110505
   #-----------------------------------------------------------------------------------
   # method: to_mobile_site
-  #   è½???ºæ?æ©??è¦½æ¨¡å¼?(URL should looks like:   m.heygotimes.com/xxx/yy)
+  # è½‰æ›ç‚ºæ‰‹æ©Ÿç€è¦½æ¨¡å¼ (URL should looks like: m.heygotimes.com/xxx/yy)
   #-----------------------------------------------------------------------------------
   #
    def to_mobile_site
-    redirect_to :controller => 'paper', :action => 'index' 
-  end  
+    redirect_to :controller => 'paper', :action => 'index'
+  end
   #-----------------------------------------------------------------------------------------
 
 
@@ -163,12 +164,12 @@ class ApplicationController < ActionController::Base
   #----------------------------------------------------
   #
   def extract_locale_from_accept_language_header
-    # One source of client supplied information would be an Accept-Language HTTP header. 
+    # One source of client supplied information would be an Accept-Language HTTP header.
     # People may set this in their browser
     
     request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     #request.env['HTTP_ACCEPT_LANGUAGE']
-  end   
+  end
   #-----------------------------------------------------------------------------------------
    
   

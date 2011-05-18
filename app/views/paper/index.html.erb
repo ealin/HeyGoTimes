@@ -3,82 +3,52 @@
 
 <div id="container">
 <div id="header">
-<!-- é¡¯ç¤º?????????ç´?- logo, search bar, è¨±å???????, login/logout... -->
+<!-- é¡¯ç¤ºé é¦–çš„æ‰€æœ‰å…ƒç´  - logo, search bar, è¨±å¤šåŠŸèƒ½é€£çµ, login/logout... -->
 
-  <div id="logo" >
-    <!-- "to_main_page" is defined in application_controller.rb -->
-    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
-        {:title => 'to home page'} )  %>
-  </div>
+    <div id="logo" >
+        <!-- "to_main_page" is defined in application_controller.rb -->
+        <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
+            {:title => 'to home page'} ) %>
+        </div>
 
-  <div id="search_bar" align="right">
-    <!--- # show_search_bar is implemented in search_helper.rb
-	  show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
-    --->
-    <%= show_search_bar :paper  %>
-  </div>
+        <div id="search_bar" align="right">
+        <!--- # show_search_bar is implemented in search_helper.rb
+        show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
+        --->
+        <%= show_search_bar :paper %>
+    </div>
 
-  <div id="links" >
-    <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '?¸æ??¶ä??±ç?'} %>
+    <div id="links" >
+        <%= link_to (t :other_paper), {:controller => 'area'}, {:title => 'é¸æ“‡å…¶ä»–å ±ç´™'} %>
 
-    <%= link_to '??¿¾?°è?', {:action => 'filiter_today_newspaper'}, {:title => '??¿¾?°è?'} %>
+        <%= link_to 'éŽæ¿¾æ–°èž', {:action => 'filiter_today_newspaper'}, {:title => 'éŽæ¿¾æ–°èž'} %>
 
-	<% if @followed_flag == true  %>
-      <%= link_to '???è¨??', {:action => 'follow', :flag => 'true'}, {:title => '???è¨????»½?±ç?'} %>
-    <% else %>
-      <%= link_to 'è¨??', {:action => 'follow', :flag => 'false'}, {:title => 'è¨????»½?±ç?'} %>
-    <% end %>
+        <% if @followed_flag == true %>
+            <%= link_to 'å–æ¶ˆè¨‚é–±', {:action => 'follow', :flag => 'true'}, {:title => 'å–æ¶ˆè¨‚é–±é€™ä»½å ±ç´™'} %>
+        <% else %>
+            <%= link_to 'è¨‚é–±', {:action => 'follow', :flag => 'false'}, {:title => 'è¨‚é–±é€™ä»½å ±ç´™'} %>
+        <% end %>
 
-    <%= link_to 'è¨­å?', {:controller => 'setup'}, {:title => 'è¨­å???ººè³??'} %>
-
-	<!--- @logged_flag and method-login/logout/signup are defined in application_controller.rb -->
-	<% if @user_login  == true %>
-      <%= link_to 'Logout', {:action => 'logout'}, {:title => 'logout'} %>
-    <% else %>
-      <%= link_to 'Login',  {:action => 'login'},  {:title => 'login'} %>
-      <%= link_to 'Signup', {:action => 'signup'}, {:title => 'signup'} %>
-    <% end %>
-
-  </div>
-<%= fb_connect_async_js %>
-<% if current_facebook_user != nil %>
-  <% current_facebook_user.fetch%>
-  <%= "Welcome #{current_facebook_user.fetch}!" %>
-  <%= fb_logout_link("Logout of fb", request.url) %>
-      <br />
-<% else
-   # you must explicitly request permissions for facebook user fields.
-   # here we instruct facebook to ask the user for permission for our website
-   # to access the user's facebook email and birthday
-   %>
-  <%= fb_login_and_redirect('http://localhost:3000/', :perms => 'email,user_birthday') %>
-<% end %>
-
-
-</div>
-	
-    <%= link_to t(:setting), {:controller => 'setup'}, {:title => 'è¨­å???ººè³??'} %>
-
+        <%= link_to t(:setting), {:controller => 'setup'}, {:title => 'è¨­å®šå€‹äººè³‡è¨Š'} %>
 
     <%= show_logging_link %>
-  </div>
-</div>
+    </div>
 
 	<!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
     <div id="title">
-      <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
+        <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
     </div>
 
     <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
     <div id="functionalButton">
-      <%= render :partial => 'paper/show_fun_buttons' %>
+        <%= render :partial => 'paper/show_fun_buttons' %>
     </div>
 
 <br>
     <!-- show content of today's newspaper -->
     <div id="paperContent">
         <% # TODO: use @paper_width %>
-        <%= render :partial => 'paper/show_paper_content' %>
+        <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
     </div>
 
     <!-- show AD list-->
@@ -94,3 +64,4 @@
 
 <!-- /container --></div>
   <!-- lauouts/_show_page_tail.html.erb  -->
+</html>

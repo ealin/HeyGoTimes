@@ -92,7 +92,7 @@ class PaperController < NewsController
   # 
   def show_ad_list
 
-     # render show_ad_list.html.erb
+     # render _show_ad_list.html.erb
      render :layout => nil
    
   end
