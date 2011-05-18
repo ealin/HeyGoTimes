@@ -1,33 +1,10 @@
 
-<h1>Show Today's News paper here!</h1>
-
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Url</th>
-        <th>Area</th>
-        <th>Tag</th>
-        <th>Content</th>
-        <th>Time</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    <% if news != nil %>
-        <% news.each do |news| %>
-          <tr>
-            <td><%= news.title %></td>
-            <td><%= news.url %></td>
-            <td><%= news.area %></td>
-            <td><%= news.tag %></td>
-            <td><%= news.content.html_safe %></td>
-            <td><%= news.time %></td>
-            <td><%= link_to 'Show', news %></td>
-            <td><%= link_to 'Edit', edit_news_path(news) %></td>
-            <td><%= link_to 'Destroy', news, :confirm => 'Are you sure?', :method => :delete %></td>
-          </tr>
-        <% end %>
-    <% end %>
-</table>
+<% if news != nil %>
+  <% news.each do |news| %>
+    <h2><%= news.title %></h2>
+    <%= news.time %>
+    <%= news.content.html_safe %>
+  <% end %>
+<% end %>
 
 

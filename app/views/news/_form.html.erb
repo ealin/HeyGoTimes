@@ -11,11 +11,6 @@
     </div>
   <% end %>
 
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -24,20 +19,13 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
-  <div class="field">
-    <%= f.label :area %><br />
-    <%= f.text_field :area %>
-  </div>
-  <div class="field">
-    <%= f.label :tag %><br />
-    <%= f.text_field :tag %>
-  </div>
+
   <div class="field">
   	<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
 	<script type="text/javascript">
 	tinyMCE.init({
         // General options
-        mode : "textareas",
+        mode : "textareas"
 	});
 	</script>
     <%= f.label :content %><br />
