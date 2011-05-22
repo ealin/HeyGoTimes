@@ -8,8 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :host_id
       t.string :email
 
-      t.string : locale
-      t.datetime : birthday
+      t.string :locale
+      t.datetime :birthday
 
 
       t.timestamps
