@@ -15,9 +15,16 @@
     <%= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
   <% end %>
 
+  <% if @login_flag && session[:logged_in] == false %>
 
-  <% # show_logout_link() defined in user_helper.rb %>
-  <%= show_logout_link %>
+      <%= show_logging_link %>
+  <% else %>
+
+      <% # show_logout_link() defined in user_helper.rb %>
+      <%= show_logout_link %>
+  <% end %>
+
+
 
 
 

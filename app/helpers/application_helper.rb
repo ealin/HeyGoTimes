@@ -25,7 +25,7 @@ module ApplicationHelper
   #     editor_flag = true ==>  多顯示一個'editor' link
   #-----------------------------------------------------------------------------------
   # 
-  def show_page_head (option = {:faq_flag => false, :setup_flag => false} )
+  def show_page_head (option = {:faq_flag => false, :setup_flag => false, :login_flag => false} )
     
     if option[:realtime_news_flag] == true
       @realtime_news_flag = true
@@ -46,6 +46,15 @@ module ApplicationHelper
     else
       @setup_flag = false
     end   
+
+    # 在某些不需要LOGIN就可以使用的頁面, 必須視狀況, 顯示LOGIN的ICON
+    #
+    if option[:login_flag] == true
+      @login_flag = true
+    else
+      @login_flag = false
+    end
+
 
     render  '/layouts/show_page_head'
   end

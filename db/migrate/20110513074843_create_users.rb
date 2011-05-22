@@ -3,9 +3,14 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :first_name
       t.string :last_name
-      t.string :account
-      t.integer :account_type
+      t.string :host_account
+      t.integer :host_site
+      t.integer :host_id
       t.string :email
+
+      t.string : locale
+      t.datetime : birthday
+
 
       t.timestamps
     end

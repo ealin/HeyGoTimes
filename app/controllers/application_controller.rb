@@ -10,13 +10,15 @@ class ApplicationController < ActionController::Base
   
  
 
-  #----------------------------------------------------
+  #-----------------------------------------------------------
   # method: check_logged_in (Ealin: 20110430)
-  #----------------------------------------------------
+  #     - create_account_flag : if true ==> 必要時建立USER帳號
+  #-----------------------------------------------------------
   #
-  def check_logged_in
+  def check_logged_in(create_account_flag = false)
 
-
+    # check status of logging-in FB or not
+    #
     if !(current_facebook_user.nil?)
       begin
         current_facebook_user.fetch
@@ -35,6 +37,21 @@ class ApplicationController < ActionController::Base
     else
       session[:logged_in] = false
     end
+
+    # if logged-in FB, 判斷此USER是否已經建立帳號
+    #  (account should be: current_facebook_user.email & current_facebook_user.id )
+    #    YES: 從DB載入USER, 將重要訊息放在SESSION中
+    #    NO: create account (if necessary)
+    if session[:logged_in] == true && create_account_flag == true
+      # search USER DB with host_id field
+
+      # save id & host_id in session if got it in USER DB
+
+      # create a new account with: current_facebook_user. first_name, last_name, locale, birthday...
+
+    end
+
+
     
 
   end
