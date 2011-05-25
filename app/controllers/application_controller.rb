@@ -112,8 +112,8 @@ class ApplicationController < ActionController::Base
     @user_subscribed_paper = Array.new
     @user_subscribed_paper[0] = "Taiwan"
     @user_subscribed_paper[1] = "Silicon Valley"
-    @user_subscribed_paper[2] = "松山高中校刊"
-    @user_subscribed_paper[3] = "7-11特價報導"
+    @user_subscribed_paper[2] = "SH High School"
+    @user_subscribed_paper[3] = "7-11 Special Price "
 
 
     #statistics data:
