@@ -6,4 +6,6 @@ log/*.log
 tmp/**/*
 /log/*
 public/javascripts/tiny_mce/*
+/foreigner/*
 /tmp/*
+.tmp*

@@ -1,0 +1,18 @@
+
+# config/facebook_koala.yml
+# for koala
+
+development:
+ app_id: 102018533222077
+ secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
+ callback_url: http://localhost:3000/
+
+test:
+ app_id: 102018533222077
+ secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
+ callback_url: http://localhost:3000/
+
+production:
+ app_id: 102018533222077
+ secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
+ callback_url: http://localhost:3000/

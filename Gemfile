@@ -15,6 +15,8 @@ gem 'json'
 gem 'mogli'
 gem 'facebooker2'
 
+gem 'koala'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
