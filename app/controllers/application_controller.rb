@@ -24,8 +24,9 @@ class ApplicationController < ActionController::Base
   #
   def check_logged_in(create_account_flag = false)
 
+
     # check status of logging-in FB or not
-    #
+
     if !(current_facebook_user.nil?)
       begin
         current_facebook_user.fetch
@@ -45,22 +46,41 @@ class ApplicationController < ActionController::Base
       session[:logged_in] = false
     end
 
+
     # if logged-in FB, 判斷此USER是否已經建立帳號
     #  (account should be: current_facebook_user.email & current_facebook_user.id )
     #    YES: 從DB載入USER, 將重要訊息放在SESSION中
     #    NO: create account (if necessary)
+
     if session[:logged_in] == true && create_account_flag == true
+
+      session[:id] = nil
+
       # search USER DB with host_id field
+      user = User.find_by_host_id(current_facebook_user.id)
 
-      # save id & host_id in session if got it in USER DB
+      if user != nil
+        # already existed
+        session[:id] = user.id
 
-      # create a new account with: current_facebook_user. first_name, last_name, locale, birthday...
-      #user = User.new(:first_name => current_facebook_user.first_name, \
-      #                :last_name => current_facebook_user.last_name,
-      #                :host_account => current_facebook_user.email,
-      #                :birthday => current_facebook_user.birthday,
-      #              :host_id => current_facebook_user.id)
-      #user.save
+      else
+
+        # create a new account with: current_facebook_user. first_name, last_name, locale, birthday...
+        user = User.new(:first_name => current_facebook_user.first_name, \
+                      :last_name => current_facebook_user.last_name,
+                      :host_account => current_facebook_user.email,
+                      :birthday => current_facebook_user.birthday,
+                      :host_id => current_facebook_user.id,
+                      :host_site => 1,           # 1: facebook, 2: twitter
+                      :locale => current_facebook_user.locale
+)
+        if user.save!
+           session[:id] = user.id
+        else
+           logger.debug "Create User-" + current_facebook_user.email + " to DB error!!"
+        end
+
+      end
 
     end
 

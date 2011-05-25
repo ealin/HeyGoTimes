@@ -16,6 +16,7 @@ gem 'mogli'
 gem 'facebooker2'
 
 gem 'koala'
+gem 'jrails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
