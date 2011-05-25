@@ -28,6 +28,64 @@
       <p>[put a Grapics here]</p>
     </div>
   </div>
+
+
+
+
+
+
+
+<script src="http://www.google.com/jsapi"></script>
+<script>
+  google.load("jquery", "1.6");
+  google.load("jqueryui", "1.8");
+</script>
+
+<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+
+
+<div id="dialog" title="" style="display:none;">
+</div>
+
+<a hrer="javascript:" onclick="btn();">資料</a>
+
+<script>
+function btn() {
+
+
+    var data='<b>你好</b><br>測試';
+
+    $('#dialog').html( data );
+
+
+    $('#dialog').css({display:'inline'});
+
+    $("#dialog").dialog({
+        title: '資料',
+        bgiframe: true,
+        width: 350,
+        height: 350,
+        modal: true,
+        draggable: true,
+        resizable: false,
+        overlay:{opacity: 0.7, background: "#FF8899" },
+
+        buttons: {
+            '關閉': function() {
+                $(this).dialog('close');
+            }
+        }
+    });
+
+
+}
+</script>
+
+
+
+
+
   
   <br><br><br><br><hr><br>
 

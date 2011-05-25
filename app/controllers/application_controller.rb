@@ -48,6 +48,12 @@ class ApplicationController < ActionController::Base
       # save id & host_id in session if got it in USER DB
 
       # create a new account with: current_facebook_user. first_name, last_name, locale, birthday...
+      #user = User.new(:first_name => current_facebook_user.first_name, \
+      #                :last_name => current_facebook_user.last_name,
+      #                :host_account => current_facebook_user.email,
+      #                :birthday => current_facebook_user.birthday,
+      #              :host_id => current_facebook_user.id)
+      #user.save
 
     end
 

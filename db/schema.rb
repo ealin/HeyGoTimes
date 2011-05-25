@@ -122,17 +122,6 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
     t.string "news_id"
   end
 
-  create_table "real_time_news", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "area"
-    t.string   "tag"
-    t.text     "content"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "responses", :force => true do |t|
     t.string   "feedback_id"
     t.string   "comment_id"
@@ -159,9 +148,12 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "account"
-    t.integer  "account_type"
+    t.integer  "host_id"
     t.string   "email"
+    t.string   "locale"
+    t.datetime "birthday"
+    t.string   "host_account"
+    t.integer  "host_site"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
