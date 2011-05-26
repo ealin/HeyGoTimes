@@ -16,6 +16,10 @@ en:
   logout: "Logout"
   signup: "Signup"
   feedback: "Feedback"
+  
+  filter_news: "Filter News"
+  ok: "OK"
+  cancel: "Cncel"
  
   
   #----------------------------------------

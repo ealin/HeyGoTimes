@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<!-- 這4個icon必須直排 -->
+
 
 <div id='fun-btn'>
   <a href='#' name='btn1' class='osx btn1'><img src="/images/icon_camera.png" alt="report a news"></a>
@@ -26,13 +26,14 @@
 
 </div>
 
+<!-- Show "News Filter" Dialog -->
 <div id="osx-modal-content1">
-  <div id="osx-modal-title1">test</div>
+  <div id="osx-modal-title1"><%= t(:filter_news) %></script></div>
   <div class="close"><a href="#" class="simplemodal-close">x</a></div>
   <div id="osx-modal-data1">
-    <h2>Select area</h2>
-    <%= render :partial => 'paper/show_ad_list' %>
-    <p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+
+  <%= render :partial => 'paper/show_news_filter' %>
+
   </div>
 </div>
 
