@@ -7,6 +7,21 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+# use tiny_mce for text area rich editor
+gem 'tiny_mce'
+
+# facebooker2 used json, mogli
+gem 'json'
+gem 'mogli'
+gem 'facebooker2'
+
+# facebook connection
+gem 'koala'
+gem 'jrails'
+
+# html/xml parser
+gem 'nokogiri'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

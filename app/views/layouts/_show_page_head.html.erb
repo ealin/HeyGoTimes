@@ -1,0 +1,42 @@
+
+
+  <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
+
+
+  <%#= link_to t(:today_newspaper),{:controller => 'paper'},{:title => 'Show Privacy'}%>
+
+  <%# if @realtime_news_flag == true%>
+    <%#= link_to t(:realtime_news),{:controller => 'real_time_news'},{:title => '到編輯新聞畫面'}%>
+  <%# end %>
+
+  <%# if @faq_flag == true%>
+    <%#= link_to 'FAQ',{:controller => 'faq'},{:title => 'FAQ'}%>
+  <%# end %>
+
+  <%# if @setup_flag == true%>
+    <%#= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
+  <%# end %>
+
+  <% if @login_flag && session[:logged_in] == false %>
+
+      <%= show_logging_link %>
+  <% else %>
+      <% # setup-dialog would be shown only when user is logged in. %>
+      <%= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
+
+      <% # show_logout_link() is defined in user_helper.rb  %>
+      <%= show_logout_link %>
+
+      <br>
+      <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
+
+      <%#= "id= #{current_facebook_user.birthday} alias = #{current_facebook_user.id} )" %>
+      <%# fb_profile_pic(current_facebook_user.id, {:size => 'square' }) %>
+      <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %>
+
+  <% end %>
+
+
+
+
+

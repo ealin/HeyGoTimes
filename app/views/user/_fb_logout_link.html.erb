@@ -1,0 +1,15 @@
+
+<% if session[:logged_in] == true %>
+  <%= fb_connect_async_js%>
+
+  <%= fb_logout_link("Logout", site_url()) %>
+
+<% end %>
+
+
+
+
+
+
+
+

@@ -1,4 +1,3 @@
-
 zh_tw:
 
   HeyGoTimes: "黑狗日報"
@@ -8,7 +7,29 @@ zh_tw:
   # name of each page(controller/view)
   #----------------------------------------
   main_page:  "主頁"
+  today_newspaper: "今日報紙"
+  privacy: "隱私條款"
+  terms: "使用條款"
+  realtime_news: "即時新聞編輯"
+  login: "登入"
+  logout: "登出"
+  signup: "註冊"
+  feedback: "建議與反饋"
+  
+  filter_news: "過濾新聞"
+  ok: "完成"
+  cancel: "取消"
 
+
+
+  #----------------------------------------
+  # name of the Link
+  #----------------------------------------
+  setting: "帳號設定"
+
+   #----------------------------------------
+   # temp
+   #----------------------------------------
 
 #------------------------------------
 # contens below are loaded from :

@@ -1,5 +1,16 @@
 HeyGoTimes::Application.routes.draw do
-  
+
+
+  get "real_time_news/report"
+  get "real_time_news/to_main_page"
+  resources :real_time_news
+
+
+
+  get "news/report"
+
+  get "news/to_main_page"
+
   get "terms_of_service/index"
 
   get "privacy/index"
@@ -12,17 +23,18 @@ HeyGoTimes::Application.routes.draw do
 
   get "translator/index"
 
-  get "report/index"
-
   get "area/index"
 
-  get "setup/index"
+  get "feedback/index"
 
-  get "search/index"
+  match "/setup/set_filter/:area", :to => "setup#set_filter"
+  get "setup/index"
+  get "setup/to_main_page"
+  get "setup/deactive_fb_account"
+  get "setup/connect_twitter_account"
+  get "setup/set_filter"
 
   get "user_history/index"
-
-  get "editor/index"
 
   get "ad/index"
 
@@ -30,16 +42,42 @@ HeyGoTimes::Application.routes.draw do
 
   get "faq/index"
 
+  get "faq/to_main_page"
+  get "faq/show_question_list"  
+  get "faq/show_answer"
+
+
+  resources :news
+
+  resources :area do
+    get 'to_main_page', :on => :collection
+  end
+
+
+  resources :search do
+    get 'index', :on => :collection  
+    get 'do_search', :on => :collection  
+    get 'to_main_page', :on => :collection  
+ end
+
   resources :paper do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
     #
     get 'index', :on => :collection  
     get 'to_main_page', :on => :collection  
-  end
-
+    get 'filiter_today_newspaper', :on => :collection
+    get 'follow', :on => :collection
+    get 'show_paper_title', :on => :collection
+    get 'show_fun_buttons', :on => :collection
+    get 'show_paper_content', :on => :collection
+    get 'show_ad_list', :on => :collection
+    get 'news/report', :on => :collection
+ end
 
   get "main_page/index"
   get "main_page/to_main_page"
+  get "main_page/to_mobile_site"
+  
 
 
   # The priority is based upon order of creation:

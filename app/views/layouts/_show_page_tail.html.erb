@@ -1,0 +1,19 @@
+
+
+<div  id="footer" align = "center">
+
+<br>
+HeyGo © 2011 &nbsp;&nbsp;	
+
+
+<%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>
+<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>
+<%= link_to t(:terms),{:controller => 'terms_of_service'},{:title => '使用條款'}%>
+
+<% # FEEDBACK功能就是一個新聞頁面 %>
+<% # tddo: 必須傳參數進去, PAPER PAGE應該對FEEDBACK頁面作一些特別處理 %>
+<%= link_to t(:feedback),{:controller => 'paper'},{:title => '建議與問題反饋'}%>
+
+
+</div>
+

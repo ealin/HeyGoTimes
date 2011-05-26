@@ -1,0 +1,56 @@
+/* Link List (on front of the page)*/
+#link_list {
+	
+	float: right;
+}
+
+
+/* Setup_field */
+
+#setup_field {
+	clear: both;
+	width: 500px;
+	/*height: 50px;*/
+    float: left ;
+    font: 16px Arial, Helvetica, sans-serif;
+	margin: 0px auto 30px auto;
+	background: #dddddd no-repeat left top;
+	color: #c23939;
+}
+
+#setup_field p {
+	margin: 0px;
+	padding: 19px 0px 0px 0px;
+	text-align: left;
+	line-height: normal;
+	font-size: smaller;
+}
+
+#setup_field a {
+	color: #FFFFFF;
+}
+
+
+
+/* Footer */
+
+#footer {
+	clear: both;
+	width: 900px;
+	height: 50px;
+	margin: 0px auto 30px auto;
+	background: #c23939 url(images/img06.gif) no-repeat left top;
+	color: #FFFFFF;
+}
+
+#footer p {
+	margin: 0px;
+	padding: 19px 0px 0px 0px;
+	text-align: left;
+	line-height: normal;
+	font-size: smaller;
+}
+
+#footer a {
+	color: #FFFFFF;
+}

@@ -1,2 +1,200 @@
-<h1>Area#index</h1>
-<p>Find me in app/views/area/index.html.erb</p>
+
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/tr/html4/strict.dtd'>
+<html lang=utf-8>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<title><%= t :world_heygo%></title>
+<link rel="stylesheet" type="text/css" href="../stylesheets/heygo_world.areas.css"/>
+<style type="text/css">
+.style1 {
+    color: #8BB3C2;
+    font-weight: bold;
+}
+#link
+    {font-size:16px;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<style type="text/css">
+.sbody{font-size:15px; line-height:150%;}
+.sbody a{font-size:15px; color:003399;text-decoration:none;}
+.sbody a:hover{font-size:15px; text-decoration:underline;}
+.style1 {
+ color: #8BB3C2;
+ font-weight: bold;
+}
+#link
+ {font-size:15px;
+ }
+</style>
+<style type="text/css">
+<!--
+a:link, a:visited{text-decoration:none}
+a:hover{color:#0353a5;text-decoration:underline}
+a:link{color:#013299}
+a:visited{color:#800080}
+html>body spacer{display:block}
+-->
+</style>
+
+<div id="logo" >
+	<!-- "to_main_page" is defined in application_controller.rb -->
+	<%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
+	    {:title => 'to home page'} )  %>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<table width="70%" border="0" align="left" cellpadding="0" cellspacing="0" class="top">
+ <tr>
+ <td height="20" valign="bottom"> <div class="ms">
+ <table border="0" cellpadding="3" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellspacing="3">
+
+ <tr>
+ <td width="100%">
+ <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+ <tr>
+ <td width="32%" valign="top" bgcolor="#F5F8FD">
+ <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3" class="sbody">
+ <tr>
+ <td width="4%" bgcolor="#CEDEED">　</td>
+
+ <td width="96%" bgcolor="#CEDEED" colspan="2"><strong>
+ <font face="arial">北美洲</font></strong></td>
+ </tr>
+ <tr>
+ <td width="4%" bgcolor="#F5F8FD">　</td>
+ <td width="48%" bgcolor="#F5F8FD" valign="top">
+<a href="<%= area_index_path + '/usa'%>">美國</a><br>
+<a href="<%= area_index_path + '/canada'%>">加拿大</a><br>
+ <td width="48%" bgcolor="#F5F8FD" valign="top">
+<a href="<%= area_index_path + '/mexico'%>">墨西哥</a><br>
+ </tr>
+ </table>
+ </td>
+
+ <td width="1%" valign="top">　</td>
+ <td width="32%" valign="top" bgcolor="#F5F8FD">
+ <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4" class="sbody">
+ <tr>
+ <td width="4%" bgcolor="#CEDEED">　</td>
+ <td width="96%" bgcolor="#CEDEED" colspan="2"><strong>
+ <font face="arial">亞洲</font></strong></td>
+
+ </tr>
+ <tr>
+ <td width="4%" bgcolor="#F5F8FD">　</td>
+ <td width="48%" bgcolor="#F5F8FD" valign="top">
+    <a href="<%= area_index_path + '/taiwan'%>">臺灣</a><br>
+    <a href="<%= area_index_path + '/china'%>">中國</a><br>
+ <td width="48%" bgcolor="#F5F8FD" valign="top">
+    <a href="<%= area_index_path + '/hongkong'%>">香港</a><br>
+    <a href="<%= area_index_path + '/japan'%>">日本</a><br>
+ </tr>
+ </table>
+ </td>
+ <td width="1%" valign="top">　</td>
+ <td width="32%" valign="top" bgcolor="#F5F8FD">
+
+ <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5" class="sbody">
+ <tr>
+ <td width="5%" bgcolor="#CEDEED">　</td>
+ <td width="95%" bgcolor="#CEDEED" colspan="2"><strong>
+ <font face="arial">歐洲</font></strong></td>
+ </tr>
+ <tr>
+ <td width="5%" bgcolor="#F5F8FD">　</td>
+
+ <td width="48%" bgcolor="#F5F8FD" valign="top">
+<a href="<%= area_index_path + '/uk'%>">英國<br>
+<a href="<%= area_index_path + '/france'%>">法國</a><br>
+<a href="<%= area_index_path + '/germany'%>">德國</a><br></td>
+ <td width="47%" bgcolor="#F5F8FD" valign="top">
+
+<a href="<%= area_index_path + '/sweden'%>">瑞典</a><br>
+<a href="<%= area_index_path + '/greek'%>">希臘</a></td>
+ </tr>
+ </table>
+
+ </td>
+ </tr>
+ </table>
+ </td>
+ </tr>
+ <tr>
+ <td width="100%"><map name="FPMap0">
+ <area href="map/cf/*http:/cf.yahoo.com/" shape="rect" coords="74, 130, 99, 141">
+ <area href="map/espanol/*http:/espanol.yahoo.com/" shape="rect" coords="49, 159, 96, 172">
+
+ <area coords="129, 143, 167, 157" shape="rect" href="map/us/*http:/www.yahoo.com/">
+ <area href="map/ca/*http:/ca.yahoo.com/" shape="rect" coords="138, 119, 181, 132">
+ <area href="map/mx/*http:/mx.yahoo.com/" shape="rect" coords="82, 193, 128, 207">
+ <area href="map/br/*http:/br.yahoo.com/" shape="rect" coords="223, 268, 254, 282">
+ <area href="map/ar/*http:/ar.yahoo.com/" shape="rect" coords="198, 309, 247, 323">
+ <area href="map/no/*http:/no.yahoo.com/" shape="rect" coords="323, 86, 354, 97">
+ <area href="map/uk/*http:/uk.yahoo.com/" shape="rect" coords="289, 97, 319, 108">
+ <area href="map/nl/*http:/nl.yahoo.com/" shape="rect" coords="311, 108, 340, 118">
+ <area href="map/ch/*http:/ch.search.yahoo.com/" shape="rect" coords="314, 121, 345, 132">
+
+ <area href="map/fr/*http:/fr.yahoo.com/" shape="rect" coords="306, 133, 339, 143">
+ <area href="map/es/*http:/es.yahoo.com/" shape="rect" coords="284, 144, 323, 153">
+ <area href="map/fi/*http:/fi.search.yahoo.com/" shape="rect" coords="400, 83, 431, 93">
+ <area href="map/se/*http:/se.yahoo.com/" shape="rect" coords="359, 90, 390, 98">
+ <area href="map/dk/*http:/dk.yahoo.com/" shape="rect" coords="349, 100, 377, 111">
+ <area href="map/de/*http:/de.yahoo.com/" shape="rect" coords="349, 116, 381, 126">
+ <area href="map/at/*http:/at.yahoo.com/" shape="rect" coords="355, 128, 397, 137">
+ <area href="map/it/*http:/it.yahoo.com/" shape="rect" coords="352, 139, 392, 148">
+ <area href="map/gr/*http:/gr.yahoo.com/" shape="rect" coords="376, 149, 409, 160">
+
+ <area href="map/ru/*http:/ru.yahoo.com/" shape="rect" coords="464, 94, 511, 105">
+ <area href="map/asia/*http:/asia.yahoo.com/" shape="rect" coords="532, 128, 567, 139">
+ <area href="map/cn/*http:/cn.yahoo.com/" shape="rect" coords="540, 149, 576, 163">
+ <area href="map/kr/*http:/kr.yahoo.com/" shape="rect" coords="588, 141, 621, 154">
+ <area href="map/jp/*http:/www.yahoo.co.jp/" shape="rect" coords="615, 156, 649, 165">
+ <area href="<%= area_index_path + '/taiwan'%>" shape="rect" coords="579, 182, 613, 192">
+ <area href="map/hk/*http:/hk.yahoo.com/" shape="rect" coords="537, 183, 571, 197">
+ <area href="map/in/*http:/in.yahoo.com/" shape="rect" coords="454, 192, 489, 205">
+ <area href="map/th/*http:/th.yahoo.com/" shape="rect" coords="504, 201, 539, 212">
+
+ <area href="map/malaysia/*http:/malaysia.yahoo.com/" shape="rect" coords="487, 220, 541, 232">
+ <area href="map/sg/*http:/sg.yahoo.com/" shape="rect" coords="504, 242, 551, 252">
+ <area href="map/vn/*http:/vn.yahoo.com/" shape="rect" coords="547, 206, 580, 215">
+ <area href="map/ph/*http:/ph.yahoo.com/" shape="rect" coords="582, 216, 629, 227">
+ <area href="map/id/*http:/id.yahoo.com/" shape="rect" coords="571, 252, 605, 261">
+ <area href="map/au/*http:/au.yahoo.com/" shape="rect" coords="581, 306, 640, 317">
+ <area coords="687, 315, 735, 327" shape="rect" href="map/malaysia/*http:/nz.yahoo.com/">
+ </map>
+ <img border="0" src=" http://l.yimg.com/tw.yimg.com/i/tw/hp/map2_2.jpg" usemap="#FPMap0" width="760" height="368"></td>
+
+ </tr>
+ </table>
+ <p><p><p><p>
+</body>
+<!-- TODO add foot here
+<table border="0" cellpadding="0" cellspacing="0" width="750px" align="center">
+<tr><td>
+<DIV id=hg_area_world_foot>
+<div class="cp">雅虎資訊　版權所有 &copy;
+2011 Yahoo! Taiwan Inc. All Rights Reserved.</div>
+<DIV class=ln>
+<A href="f/reg/*http:/tw.reg.yahoo.com/">會員中心</A><A href="f/help/*http://tw.help.cc.yahoo.com/index.html">服務說明</A><A href="f/tos/*http:/tw.yahoo.com/info/utos.html">服務條款</A>
+
+<A href="f/pri/*http:/privacy.yahoo.com/privacy/tw">隱私權政策</A>
+<a href="f/tos/*http:/tw.yahoo.com/">Yahoo!奇摩</A>
+</DIV>
+</DIV>
+</tr></td>
+</table>
+-->
+</table>
+</body>
+</html><!-- w202.info.platform.tw1.yahoo.com compressed/chunked Tue May 10 14:27:28 CST 2011 -->
+

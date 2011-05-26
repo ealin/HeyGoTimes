@@ -1,2 +1,31 @@
-<h1>Faq#index</h1>
-<p>Find me in app/views/faq/index.html.erb</p>
+
+<div id="header">
+<!-- 顯示頁首的所有元素 - logo, search bar, 許多功能連結, login/logout... -->
+
+  <div id="logo" >	
+    <!-- "to_main_page" is defined in application_controller.rb -->
+    <%=     link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'},\
+        {:title => 'to home page'} )  %>
+  </div>
+
+  <div align = "right">	
+    <%= link_to "Back(MAIN MENU)", {:controller => 'main_page'}, {:title => '回主畫面'} %>
+  </div>
+  
+ </div>
+  
+ <br><br>
+ 
+  <!-- show Questions-List -->
+  <iframe src="/faq/show_question_list" width=<%= @question_frame_width %> align="top"> </iframe>
+
+  <!-- Show Answer -->
+  <iframe src="/faq/show_answer"  width= <%= @answer_frame_width %> scrolling="no"  > </iframe> 
+ 
+ <br><hr>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+  <%= show_page_tail %>
+
+
+ 

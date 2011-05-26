@@ -1,17 +1,70 @@
 <!DOCTYPE html>
 <html>
 
-<h1>(5). Paper#index</h1>
-<p>Find me in app/views/paper/index.html.erb</p>
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/stylesheets/style.css" />
+</head>
 
-<br><br>
-<h1>每日發行的報紙頁面</h1>
-<p>此頁面包含： login/報紙頭條/分類廣告橫欄...</p>
+<div id="page">
+  <div id="header">
+    <div id="masthead">
+      <div id="branding" role="banner">
+        <div id="site-title">
+          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:action =>'to_main_page'}, {:title => 'to home page'} ) %>
+          <span><%= @newspaper_title %></span>
+        </div>
+
+          <div id="links" >
+            <%= show_page_head(:login_flag => true)  %>
+          </div><!-- #links -->
+
+      </div><!-- #branding -->
+    </div><!-- #masthead -->
+  </div><!-- #header -->
+
+  <div id="access">
+    <div class="menu-header">
+      <ul id="menu-area" class="menu">
+        <li id="menu-item-lv1" class="menu-item"><a title="Level1" href="<%= paper_index_path+'/taiwan' %>">台灣</a></li>
+        <li id="menu-item-lv2" class="menu-item"><a title="Level2" href="<%= paper_index_path+'/north' %>">北區</a></li>
+        <li id="menu-item-lv3" class="menu-item"><a title="Level3" href="<%= paper_index_path+'/taipei' %>">台北市</a></li>
+        <li id="menu-item-lv4" class="menu-item current-menu-item"><a title="Level4" href="<%= paper_index_path+'/sonshan' %>">松山區</a></li>
+      </ul>
+    </div>
+  </div><!-- #access -->
+
+  <div id="main">
+    <div id="content">
+      <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
+      <div id="title">
+        <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
+      </div>
+      <div id="paperContent">
+        <% # TODO: use @paper_width %>
+        <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
+      </div>
+    </div>
+
+    <div id="sub">
+
+      <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
+      <div id="functionalButton">
+        <%= render :partial => 'paper/show_fun_buttons' %>
+      </div>
+
+      <!-- show AD list-->
+      <div id="ad">
+        <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <%= render :partial => 'paper/show_ad_list' %>
+      </div>
+    </div>
+  </div><!-- #main -->
 
 
-<br><br>
-<h1>連結：</h1>
-<%= link_to (t :HeyGoTimes)+" "+(t :main_page), :action => 'to_main_page' %>
-
-
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+    <div id="footer">
+      <%= show_page_tail %>
+    </div>
+</div> <!-- /page -->
+  <!-- news/_show_page_tail.html.erb  -->
 </html>

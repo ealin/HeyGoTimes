@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ad_id: MyString
+  paper_id: MyString
+  user_id: 1
+  url_link: MyString
+  image: MyString
+  page: 1
+  row: 1
+  column: 1
+  fee: 1
+  issued_tate: 2011-05-13 17:58:03
+  public_days: 1
+  valid_through: 2011-05-13 17:58:03
+
+two:
+  ad_id: MyString
+  paper_id: MyString
+  user_id: 1
+  url_link: MyString
+  image: MyString
+  page: 1
+  row: 1
+  column: 1
+  fee: 1
+  issued_tate: 2011-05-13 17:58:03
+  public_days: 1
+  valid_through: 2011-05-13 17:58:03

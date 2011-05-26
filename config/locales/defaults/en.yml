@@ -8,7 +8,24 @@ en:
   # name of each page(controller/view)
   #----------------------------------------
   main_page:  "Main Page"
+  today_newspaper: "Today's Newspaper"
+  privacy: "Privacy"
+  terms: "Terms"
+  realtime_news: "Realtime-News"
+  login: "Login"
+  logout: "Logout"
+  signup: "Signup"
+  feedback: "Feedback"
   
+  filter_news: "Filter News"
+  ok: "OK"
+  cancel: "Cncel"
+ 
+  
+  #----------------------------------------
+  # name of the Link
+  #----------------------------------------
+  setting: "Settings"
 
 
 

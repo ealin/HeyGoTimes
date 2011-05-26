@@ -1,0 +1,40 @@
+
+
+<!--
+current_facebook_user : 可以用的欄位 (defined in mogli)
+  (https://github.com/mmangino/mogli/blob/master/lib/mogli/user.rb)
+
+define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
+      :email, :website, :timezone, :updated_time, :verified, :political, :bio,
+      :relationship_status, :locale, :religion, :quotes, :third_party_id
+
+-->
+
+
+<%= fb_connect_async_js%>
+
+    <% if current_facebook_user != nil && session[:logged_in] != false%>
+
+
+
+       <% # fetch可能失敗(user主動自FACEBOOK中LOGOUT) ==> 必須處理 Mogli::Client::OAuthException %>
+       <% # 這個動作在 check_logged_in() /  application_controller.rb 執行 %>
+       <% #current_facebook_user.fetch %>
+
+       <%= fb_logout_link("Logout", request.url) %>
+       <br>
+       <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name} (#{current_facebook_user.email})" %>
+
+       <% session[:logged_in] = true  %>
+
+    <% else
+        # you must explicitly request permissions for facebook user fields.
+        # here we instruct facebook to ask the user for permission for our website
+        # to access the user's facebook email and birthday
+        %>
+
+       <%= fb_login_and_redirect(site_url(),:perms => 'email,user_birthday') %>
+
+       <% session[:logged_in] = false %>
+    <% end %>
+
