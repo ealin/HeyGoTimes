@@ -15,7 +15,11 @@ gem 'json'
 gem 'mogli'
 gem 'facebooker2'
 
+# facebook connection
 gem 'koala'
+
+# html/xml parser
+gem 'nokogiri'
 
 # Use unicorn as the web server
 # gem 'unicorn'

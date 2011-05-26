@@ -40,6 +40,9 @@ GEM
       crack (= 0.1.8)
     i18n (0.5.0)
     json (1.5.1)
+    koala (1.0.0)
+      json (~> 1.0)
+      multipart-post (~> 1.0)
     mail (2.2.14)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -48,6 +51,9 @@ GEM
     mime-types (1.16)
     mogli (0.0.28)
       httparty (>= 0.4.3)
+    multipart-post (1.1.2)
+    nokogiri (1.4.4)
+    nokogiri (1.4.4-x86-mingw32)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -84,7 +90,9 @@ PLATFORMS
 DEPENDENCIES
   facebooker2
   json
+  koala
   mogli
+  nokogiri
   rails (= 3.0.3)
   sqlite3-ruby
   tiny_mce
