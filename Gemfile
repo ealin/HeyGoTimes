@@ -17,6 +17,7 @@ gem 'facebooker2'
 
 # facebook connection
 gem 'koala'
+gem 'jrails'
 
 # html/xml parser
 gem 'nokogiri'

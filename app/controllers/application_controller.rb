@@ -17,12 +17,15 @@ class ApplicationController < ActionController::Base
   
  
 
-  #----------------------------------------------------
+  #-----------------------------------------------------------
   # method: check_logged_in (Ealin: 20110430)
-  #----------------------------------------------------
+  #     - create_account_flag : if true ==> 必要時建立USER帳號
+  #-----------------------------------------------------------
   #
-  def check_logged_in
+  def check_logged_in(create_account_flag = false)
 
+
+    # check status of logging-in FB or not
 
     if !(current_facebook_user.nil?)
       begin
@@ -42,6 +45,46 @@ class ApplicationController < ActionController::Base
     else
       session[:logged_in] = false
     end
+
+
+    # if logged-in FB, 判斷此USER是否已經建立帳號
+    #  (account should be: current_facebook_user.email & current_facebook_user.id )
+    #    YES: 從DB載入USER, 將重要訊息放在SESSION中
+    #    NO: create account (if necessary)
+
+    if session[:logged_in] == true && create_account_flag == true
+
+      session[:id] = nil
+
+      # search USER DB with host_id field
+      user = User.find_by_host_id(current_facebook_user.id)
+
+      if user != nil
+        # already existed
+        session[:id] = user.id
+
+      else
+
+        # create a new account with: current_facebook_user. first_name, last_name, locale, birthday...
+        user = User.new(:first_name => current_facebook_user.first_name, \
+                      :last_name => current_facebook_user.last_name,
+                      :host_account => current_facebook_user.email,
+                      :birthday => current_facebook_user.birthday,
+                      :host_id => current_facebook_user.id,
+                      :host_site => 1,           # 1: facebook, 2: twitter
+                      :locale => current_facebook_user.locale
+)
+        if user.save!
+           session[:id] = user.id
+        else
+           logger.debug "Create User-" + current_facebook_user.email + " to DB error!!"
+        end
+
+      end
+
+    end
+
+
     
 
   end
@@ -69,8 +112,8 @@ class ApplicationController < ActionController::Base
     @user_subscribed_paper = Array.new
     @user_subscribed_paper[0] = "Taiwan"
     @user_subscribed_paper[1] = "Silicon Valley"
-    @user_subscribed_paper[2] = "松山高中校刊"
-    @user_subscribed_paper[3] = "7-11特價報導"
+    @user_subscribed_paper[2] = "SH High School"
+    @user_subscribed_paper[3] = "7-11 Special Price "
 
 
     #statistics data:

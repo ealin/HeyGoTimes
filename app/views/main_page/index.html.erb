@@ -9,7 +9,7 @@
 
   <div id="link_list" >
     <% #method 'show_page_haed' would be used by all VIEW, so it's implemented in application_helper.rb %>
-    <%= show_page_head(:realtime_news_flag => true,:faq_flag => true, :setup_flag => true)  %>
+    <%= show_page_head(:realtime_news_flag => true,:faq_flag => true, :setup_flag => true, :login_flag => true)  %>
   </div>
 
 </div>
@@ -28,6 +28,52 @@
       <p>[put a Grapics here]</p>
     </div>
   </div>
+
+
+
+
+
+<div id="dialog" title="" style="display:none;">
+</div>
+
+<a hrer="javascript:" onclick="btn();">資料</a>
+
+<script>
+function btn() {
+
+
+    var data='<b>你好</b><br>測試';
+
+    $('#dialog').html( data );
+
+
+    $('#dialog').css({display:'inline'});
+
+    $("#dialog").dialog({
+        title: '資料',
+        bgiframe: true,
+        width: 350,
+        height: 350,
+        modal: true,
+        draggable: true,
+        resizable: false,
+        overlay:{opacity: 0.7, background: "#FF8899" },
+
+        buttons: {
+            '關閉': function() {
+                $(this).dialog('close');
+            }
+        }
+    });
+
+
+}
+</script>
+
+
+
+
+
   
   <br><br><br><br><hr><br>
 

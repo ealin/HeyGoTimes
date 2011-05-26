@@ -15,22 +15,9 @@
         </div>
 
           <div id="links" >
-            <%= link_to (t :other_paper), {:controller => 'area'}, {:title => '選擇其他報紙'} %>
-
-            <%= link_to '過濾新聞', {:action => 'filiter_today_newspaper'}, {:title => '過濾新聞'} %>
-
-            <% if @followed_flag == true %>
-                <%= link_to '取消訂閱', {:action => 'follow', :flag => 'true'}, {:title => '取消訂閱這份報紙'} %>
-            <% else %>
-                <%= link_to '訂閱', {:action => 'follow', :flag => 'false'}, {:title => '訂閱這份報紙'} %>
-            <% end %>
-
-            <%= link_to t(:setting), {:controller => 'setup'}, {:title => '設定個人資訊'} %>
-
-            <% # show_logging_link() defined in user_helper.rb %>
-            <%= show_logging_link %>
-
+            <%= show_page_head(:login_flag => true)  %>
           </div><!-- #links -->
+
       </div><!-- #branding -->
     </div><!-- #masthead -->
   </div><!-- #header -->
@@ -59,12 +46,6 @@
     </div>
 
     <div id="sub">
-      <div id="search_bar">
-        <!--- # show_search_bar is implemented in search_helper.rb
-        show_search_bar@search_helper.rb ==> render _search_bar.html.erb ==> submit ==> search/do_search
-        --->
-        <%= show_search_bar :paper %>
-      </div>
 
       <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
       <div id="functionalButton">
