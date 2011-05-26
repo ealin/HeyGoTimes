@@ -36,9 +36,37 @@
 <div id="dialog" title="" style="display:none;">
 </div>
 
-<a hrer="javascript:" onclick="btn();">資料</a>
+  <input type="button" name="hello1"
+    value="AAAA"
+    onClick="btn2(this)">
+
+        <input type="button" name="hello2"
+        value="BBB"
+        onClick="btn2(this)">
+
 
 <script>
+
+
+
+function btn2(this_bt) {
+    //myWindow = window.open("/paper","TEST WIN") ;
+
+    var x = event.srcElement;
+
+    if(x.name == "hello1")
+        window.alert("yddyy") ;
+    else
+        window.alert("zddzz") ;
+}
+
+
+function btn3() {
+    //myWindow = window.open("/paper","TEST WIN") ;
+    window.alert("xxx") ;
+}
+
+
 function btn() {
 
 
