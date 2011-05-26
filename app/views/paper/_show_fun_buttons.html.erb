@@ -1,15 +1,47 @@
+<html>
+<head>
+  <!-- Page styles -->
+  <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
+  <!-- OSX Style CSS files -->
+  <link type='text/css' href='/stylesheets/osx.css' rel='stylesheet' media='screen' />
+</head>
+
+<body>
 <!-- 這4個icon必須直排 -->
-<div>
-<%=     link_to( image_tag("icon_camera.png",:size => "54x54"), {:controller => 'news', :action => 'report'}, \
-    {:title => 'report a News!'} )  %>
+
+<div id='fun-btn'>
+  <a href='#' name='btn1' class='osx btn1'><img src="/images/icon_camera.png" alt="report a news"></a>
+  <a href='#' name='btn2' class='osx btn2'><img src="/images/icon_editor.png" alt="set filter"></a>
 </div>
 
 
-<div>
-<%=     link_to( image_tag("icon_editor.png",:size => "54x54"), {:controller => 'news'}, \
-    {:title => 'Set Filter'} )  %>
+<div id="osx-modal-content">
+  <div id="osx-modal-title">OSX Style Modal Dialog</div>
+  <div class="close"><a href="#" class="simplemodal-close">x</a></div>
+  <div id="osx-modal-data">
+    <%= render :partial => 'paper/show_ad_list' %>
+    <p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+  </div>
+
 </div>
 
+<div id="osx-modal-content1">
+  <div id="osx-modal-title1">test</div>
+  <div class="close"><a href="#" class="simplemodal-close">x</a></div>
+  <div id="osx-modal-data1">
+    <h2>Select area</h2>
+    <%= render :partial => 'paper/show_ad_list' %>
+    <p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+  </div>
+</div>
+
+<!-- Load JavaScript files -->
+<script type='text/javascript' src='/javascripts/jquery.js'></script>
+<script type='text/javascript' src='/javascripts/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='/javascripts/osx.js'></script>
+
+</body>
+</html>
 
 
