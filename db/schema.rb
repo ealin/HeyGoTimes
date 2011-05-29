@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513095803) do
+ActiveRecord::Schema.define(:version => 20110527165042) do
 
   create_table "ad_grids", :force => true do |t|
     t.string   "ad_id"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
     t.datetime "issued_tate"
     t.integer  "public_days"
     t.datetime "valid_through"
+  end
+
+  create_table "area_filters", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "areas", :force => true do |t|
@@ -50,6 +55,11 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
     t.datetime "updated_at"
   end
 
+  create_table "date_filters", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "feedbacks", :force => true do |t|
     t.string   "feedback_id"
     t.string   "user_id"
@@ -63,6 +73,11 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
   create_table "filters", :force => true do |t|
     t.integer  "subscription_id"
     t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friend_filters", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -138,6 +153,11 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
     t.datetime "updated_at"
   end
 
+  create_table "tag_filters", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -148,11 +168,11 @@ ActiveRecord::Schema.define(:version => 20110513095803) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "host_id"
     t.string   "email"
     t.string   "locale"
     t.datetime "birthday"
     t.string   "host_account"
+    t.integer  "host_id"
     t.integer  "host_site"
     t.datetime "created_at"
     t.datetime "updated_at"

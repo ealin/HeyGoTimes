@@ -164,13 +164,14 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = extract_locale_from_accept_language_header
 
-    #logger.debug "'#{I18n.locale}'"
+    logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    
       logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
       # Ealin: 84 == 'T' (特別處理: zh_TW)
-      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116
+      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116   ||    \
+         env['HTTP_ACCEPT_LANGUAGE'][3] == 'T'  || env['HTTP_ACCEPT_LANGUAGE'][3] == 't'
 
         #
         # Ealin: 避免繁體與簡體可能混淆, 將繁體的locale name設為zh_tw
