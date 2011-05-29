@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110527165042) do
+ActiveRecord::Schema.define(:version => 20110529165224) do
 
   create_table "ad_grids", :force => true do |t|
     t.string   "ad_id"
@@ -60,16 +60,6 @@ ActiveRecord::Schema.define(:version => 20110527165042) do
     t.datetime "updated_at"
   end
 
-  create_table "feedbacks", :force => true do |t|
-    t.string   "feedback_id"
-    t.string   "user_id"
-    t.string   "title"
-    t.integer  "type"
-    t.string   "org_feedback_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "filters", :force => true do |t|
     t.integer  "subscription_id"
     t.integer  "tag_id"
@@ -78,22 +68,6 @@ ActiveRecord::Schema.define(:version => 20110527165042) do
   end
 
   create_table "friend_filters", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "map_rects", :force => true do |t|
-    t.integer  "x"
-    t.integer  "y"
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "maps", :force => true do |t|
-    t.string   "map_id"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,38 +93,11 @@ ActiveRecord::Schema.define(:version => 20110527165042) do
     t.integer "tag_id"
   end
 
-  create_table "papers", :force => true do |t|
-    t.string   "paper_id"
-    t.string   "image"
-    t.string   "description"
-    t.integer  "user_id"
-    t.integer  "publish_type"
-    t.string   "area_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "photos", :force => true do |t|
     t.string "photo_id"
     t.string "name"
     t.string "url"
     t.string "news_id"
-  end
-
-  create_table "responses", :force => true do |t|
-    t.string   "feedback_id"
-    t.string   "comment_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "subscriptions", :force => true do |t|
-    t.string   "user_id"
-    t.string   "paper_id"
-    t.integer  "filter_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tag_filters", :force => true do |t|
