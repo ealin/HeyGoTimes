@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   belongs_to :news
-  belongs_to :paper
-  has_many :subscriptions
-  has_many :comments
-  has_many :feedbacks
-  has_many :ad_grids
+
+  has_many :tag_filters
+  has_many :area_filters
+  has_many :date_filters
+  has_many :friend_filters
+
 end
