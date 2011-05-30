@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   # Use tiny_mce editor
   uses_tiny_mce
+
   # GET /news
   # GET /news.xml
   def index
@@ -26,12 +27,30 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
-    @news = News.new
+
+    if (params[:url] != nil)
+      @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+
+      require 'nokogiri'
+      require 'open-uri'
+
+      # @uri = "www.facebook.com/sharer.php?u=http://www.littleshell.net&t=littleshell的網站"
+      @doc = Nokogiri::HTML(open(@url))
+      # @body = @doc.at_css('body').text
+      @title = @doc.search('div.UIShareStage_Title')
+      # UIShareStage_Summary
+      # @data['title']="塑化劑風暴／塑化劑嚴重　衛署追查化妝保養品-Yahoo!奇摩新聞"
+      # @data['text'] = @title
+    end
+
+    @data = {}
+    @data['title']="塑化劑風暴／塑化劑嚴重　衛署追查化妝保養品-Yahoo!奇摩新聞"
+    @data['text']="塑化劑風暴更擴大了，現在不只是食品，就連指甲油、香水、化妝品、乳液等保養品都牽連危機！彰化衛生局上午到屈臣氏抽查相關化妝品，要檢驗是否含塑化劑，國家衛生研究院最近更首度...."
 
     respond_to do |format|
-      format.html # report.html.erb
-      format.xml  { render :xml => @news }
+      format.json { render :json => @data.to_json }
     end
+
   end
 
   # GET /news/new

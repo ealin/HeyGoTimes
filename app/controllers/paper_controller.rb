@@ -1,4 +1,4 @@
-class PaperController < ApplicationController
+class PaperController < NewsController
 
   def index
     @news = get_news()

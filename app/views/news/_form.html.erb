@@ -1,10 +1,76 @@
-<%= form_for(@news) do |f| %>
-  <% if @news.errors.any? %>
+<head>
+  <!-- Page styles -->
+  <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
+  <script type='text/javascript' src='/javascripts/jquery.js'></script>
+  <script type="text/javascript">
+  <!--
+  $(document).ready(function () {
+
+    // avatar validation
+    // we use keyup *and* change because
+    $('#avatar').keyup(function () {
+      var t = this;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        if (t.value == t.current) {
+            return true;
+        }
+
+        var preview = $('#validateAvatar').html('<br><img src="images/ajax-loader.gif" height="16" width="16" /> loading...');
+        var i = new Image();
+
+        clearTimeout(t.timeout);
+
+        if (t.value == '') {
+          preview.html('');
+        } else {
+          i.src = t.value;
+          i.height = 32;
+          i.width = 32;
+          i.className = 'avatar';
+
+          // set a timeout of x seconds to load the image, otherwise, show the fail message
+          t.timeout = setTimeout(function () {
+            preview.html('Invalid URL.');
+            //preview.html(i.src);
+            //alert(document.forms[0][3].name+'\n'+document.forms[0][4].name+'\n'+document.forms[0][5].name+'\n')
+            $.ajax({url: '<%= url_for :controller => 'news', :action => 'report' %>',
+              data: 'url=' + i.src,
+              dataType: 'script'})
+            $.getJSON("/news/report.json", function(json){
+              document.forms[0].elements[2].value = json.title;
+              document.forms[0].elements[5].value = json.text;
+            })
+            //document.forms[0].elements[5].value = i.src
+            i = null;
+          }, 3000);
+
+          // if the dummy image holder loads, we'll show the image in the validation space,
+          // but importantly, we clear the timer set above
+          i.onload = function () {
+            clearTimeout(t.timeout);
+            preview.empty().append(i);
+            i = null;
+          };
+        }
+
+        t.current = t.value;
+      }, 250);
+    }).change(function () {
+      $(this).keyup(); // call the keyup function
+    });
+  });
+  //-->
+  </script>
+</head>
+
+<%= form_for(news) do |f| %>
+  <% if news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</h2>
 
       <ul>
-      <% @news.errors.full_messages.each do |msg| %>
+      <% news.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -20,14 +86,22 @@
     <%= f.text_field :url %>
   </div>
 
+  <div>
+    <label for="avatar">URL</label>
+    <input type="text" name="avatar" size="50" value="" id="avatar" />
+    <span id="validateAvatar"></span>
+  </div>
+
   <div class="field">
+    <!--
   	<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
-	<script type="text/javascript">
-	tinyMCE.init({
-        // General options
-        mode : "textareas"
-	});
-	</script>
+    <script type="text/javascript">
+    tinyMCE.init({
+          // General options
+          mode : "textareas"
+    });
+    </script>
+    -->
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
