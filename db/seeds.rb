@@ -17,9 +17,10 @@ User.create(:first_name => 'Reporter', :last_name => 'TW',:email => 'reporter.tw
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Area~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
-Area.create(:name => 'Taiwan' , :primary_tag => 'Taiwan')
-Area.create(:name => 'China' , :primary_tag => 'China')
-Area.create(:name => 'US' , :primary_tag => 'US')
+Area.create(:name => 'TW' , :primary_tag => 'Taiwan')
+Area.create(:name => 'CN' , :primary_tag => 'China')
+Area.create(:name => 'US' , :primary_tag => 'USA')
+Area.create(:name => 'JP' , :primary_tag => 'Japan')
 
 
 
@@ -38,7 +39,9 @@ Tag.create(:name => 'East_TW', :parent_tag => 'Taiwan')
 Tag.create(:name => 'China', :parent_tag => nil)
 Tag.create(:name => 'TW_HK', :parent_tag => 'China')
 
-Tag.create(:name => 'US', :parent_tag => nil)
+Tag.create(:name => 'USA', :parent_tag => nil)
+Tag.create(:name => 'Japan', :parent_tag => nil)
+
 Tag.create(:name => 'Business', :parent_tag => nil)
 Tag.create(:name => 'Stock', :parent_tag => 'Business')
 
