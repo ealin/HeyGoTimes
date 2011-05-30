@@ -12,64 +12,38 @@
 
 ActiveRecord::Schema.define(:version => 20110529165224) do
 
-  create_table "ad_grids", :force => true do |t|
-    t.string   "ad_id"
-    t.string   "paper_id"
-    t.integer  "user_id"
-    t.string   "url_link"
-    t.string   "image"
-    t.integer  "page"
-    t.integer  "row"
-    t.integer  "column"
-    t.integer  "fee"
-    t.datetime "issued_tate"
-    t.integer  "public_days"
-    t.datetime "valid_through"
-  end
-
   create_table "area_filters", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "areas", :force => true do |t|
-    t.string   "area_id"
     t.string   "name"
-    t.string   "parent_area_id"
-    t.integer  "level"
-    t.string   "latitude"
-    t.string   "longtitude"
-    t.string   "map_id"
+    t.string   "primary_tag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "comment_id"
-    t.string   "news_id"
     t.integer  "user_id"
-    t.text     "comment"
-    t.integer  "head_vote"
-    t.integer  "suck_vote"
+    t.string   "news_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "date_filters", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "filters", :force => true do |t|
-    t.integer  "subscription_id"
-    t.integer  "tag_id"
+    t.integer  "user_id"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "friend_filters", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.integer "type"
+    t.integer "following_id"
   end
 
   create_table "news", :force => true do |t|
@@ -77,13 +51,10 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
     t.string   "title"
     t.string   "url"
     t.string   "area"
-    t.string   "tag"
     t.text     "content"
     t.datetime "time"
     t.integer  "user_id"
     t.integer  "area_id"
-    t.integer  "head_vote"
-    t.integer  "suck_vote"
     t.integer  "rank"
     t.string   "hard_copy"
   end
@@ -101,13 +72,15 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
   end
 
   create_table "tag_filters", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.text     "description"
+    t.string   "parent_tag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

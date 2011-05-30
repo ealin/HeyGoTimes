@@ -1,12 +1,12 @@
 class CreateComments < ActiveRecord::Migration
   def self.up
     create_table :comments do |t|
-      t.string :comment_id
-      t.string :news_id
+
+      # which user has commented with which news.
+      #
       t.integer :user_id
-      t.text :comment
-      t.integer :head_vote
-      t.integer :suck_vote
+      t.string :news_id
+
 
       t.timestamps
     end
