@@ -14,7 +14,55 @@ zh_tw:
   login: "登入"
   logout: "登出"
   signup: "註冊"
+  feedback: "建議與反饋"
+  
+  filter_news: "過濾新聞"
+  ok: "完成"
+  cancel: "取消"
 
+  #--------------------------------------------------------------------------
+  # name of Area (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  TW: "台灣"
+  CN: "中國"
+  US: "美國"
+  JP: "日本"
+  
+  
+  #--------------------------------------------------------------------------
+  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  Top: "焦點"
+  World: "國際"
+  Taiwan: "台灣"
+  TW_CN: "兩岸"
+  North_TW: "北台灣"
+  Middle_TW: "中台灣"
+  South_TW: "南台灣"
+  East_TW: "東台灣"
+  
+  China: "中國"
+  TW_HK: "港台"
+  
+  USA: "美國"
+  Japan: "日本"
+  Business: "財經"
+  Stock: "股市"
+  
+  Sci_Tech: "科技"
+  Sport: "體育"
+  NBA: "NBA"
+  Baseball: "棒球"
+  
+  Entertainment: "娛樂"
+  Health: "健康"
+  Internet: "網際網路"
+  Politics: "政治"
+  Travel: "旅遊"
+  Car: "汽車"
+  Education: "教育"
+  Art: "藝文"
+  
 
 
   #----------------------------------------

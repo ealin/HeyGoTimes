@@ -41,21 +41,6 @@
 
 
  <br><br><br>
- 
- <!-- setup: user's account
-      deactive_fb_account() & connect_twitter_account() are defined in setup_controller.rb
- -->
-
- <div id= "setup_field">
-   <img src="/images/facebook_logo.png" alt="this is a facebook account" />
-   &nbsp;&nbsp;&nbsp;
-   <%= t(:user_account) %> <%= @user_account %>
-   &nbsp;&nbsp;&nbsp;
-   <input type="button" value=<%= t(:deactive_account) %> onclick="self.location.href='deactive_fb_account'"/>
-
-   <input type="button" value=<%= t(:connect_to_twitter) %> onclick="self.location.href='connect_twitter_account'"/>
-
- </div>
 
 
  <!-- setup: user's email (可收到報紙的信箱)
@@ -75,25 +60,8 @@
 
  </div>
 
- <!-- setup: 訂閱狀況 -->
-<div id= "setup_field">
-  <%= t(:subscribtion_status) %>
-  <% @user_subscribed_paper.each do |subscription| %>
-     <br>&nbsp;&nbsp;
-     <%=subscription %>
 
-     <input type="button" value=<%= t(:cancel_subscribe) %>
-             onclick="self.location.href='cancel_subscription'"/>
 
-     <input type="button" value=<%= t(:set_filter) %>
-             onclick="self.location.href='set_filter/<%= subscription %>'"/>
-  <% end %>
-
-  <br><br>&nbsp;&nbsp;
-  <input type="button" value=<%= t(:set_default) %> onclick="self.location.href='set_default_paper'"/>
-  <input type="button" value=<%= t(:create_a_new_paper) %> onclick="self.location.href='/area/index/'"/>
-
-</div>
 
  <!-- setup: 統計數字 -->
 <div id= "setup_field">
@@ -102,14 +70,9 @@
     &nbsp;&nbsp;<%= t(:report_no) + @report_no.to_s %>
     <br>&nbsp;&nbsp;<%= t(:comment_no) + @comment_no.to_s %>
 
-    <br>&nbsp;&nbsp;<%= t(:edit_no) + @edit_no.to_s %>
-    &nbsp;&nbsp;<input type="button" value=<%= t(:to_my_history) %> onclick="self.location.href='/user_history/index/'"/>
 
     <br>&nbsp;&nbsp;<%= t(:follow_no) + @follow_no.to_s %>
     <br>&nbsp;&nbsp;<%= t(:fans_no) + @fans_no.to_s %>
-
-    <br>&nbsp;&nbsp;<%= t(:AD_no) + @ad_no.to_s %>
-    &nbsp;&nbsp;<input type="button" value=<%= t(:to_my_AD) %> onclick="self.location.href='/my_ad/index/'"/>
 
 
   </p>

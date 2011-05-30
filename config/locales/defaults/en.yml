@@ -15,13 +15,63 @@ en:
   login: "Login"
   logout: "Logout"
   signup: "Signup"
+  feedback: "Feedback"
+  
+  filter_news: "Filter News"
+  ok: "OK"
+  cancel: "Cncel"
  
+  #--------------------------------------------------------------------------
+  # name of Area (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  TW: "Taiwan"
+  CN: "China"
+  US: "USA"
+  JP: "Japan"
+  
+  
+  #--------------------------------------------------------------------------
+  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  Top: "Top"
+  World: "World"
+  
+  Taiwan: "Taiwan"
+  TW_CN: "Taiwan & China"
+  North_TW: "North Taiwan"
+  Middle_TW: "Middle Taiwan"
+  South_TW: "Sourth Taiwan"
+  East_TW: "East Taiwan"
+  
+  China: "China"
+  TW_HK: "Taiwan & HongKong"
+  
+  USA: "USA"
+  Japan: "Japan"
+  Business: "Business"
+  Stock: "Stock"
+  
+  Sci_Tech: "Sciense & Technology"
+  Sport: "Sport"
+  NBA: "NBA"
+  Baseball: "Baseball"
+  Entertainment: "Entertainment"
+  Health: "Health"
+  Internet: "Internet"
+  Politics: "Politics"
+  Travel: "Travel"
+  Car: "Car"
+  Education: "Education"
+  Art: "Art"
   
   #----------------------------------------
   # name of the Link
   #----------------------------------------
   setting: "Settings"
 
+  #----------------------------------------
+  # name of each TAG
+  #----------------------------------------
 
 
 #------------------------------------

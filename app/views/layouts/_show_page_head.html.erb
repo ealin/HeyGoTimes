@@ -1,6 +1,6 @@
 
 
-  <%= link_to t(:main_page),{:controller => 'main_page'},{:title => 'Show FAQ'}%>
+  <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
 
 
   <%#= link_to t(:today_newspaper),{:controller => 'paper'},{:title => 'Show Privacy'}%>
@@ -22,7 +22,7 @@
       <%= show_logging_link %>
   <% else %>
       <% # setup-dialog would be shown only when user is logged in. %>
-      <%= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
+      <% #= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
 
       <% # show_logout_link() is defined in user_helper.rb  %>
       <%= show_logout_link %>
