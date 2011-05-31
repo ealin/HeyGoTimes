@@ -3,6 +3,7 @@
   <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
   <script type='text/javascript' src='/javascripts/jquery.js'></script>
   <script type="text/javascript">
+
   <!--
   $(document).ready(function () {
 
@@ -33,11 +34,8 @@
           t.timeout = setTimeout(function () {
             preview.html('Invalid URL.');
             //preview.html(i.src);
-            //alert(document.forms[0][3].name+'\n'+document.forms[0][4].name+'\n'+document.forms[0][5].name+'\n')
-            $.ajax({url: '<%= url_for :controller => 'news', :action => 'report' %>',
-              data: 'url=' + i.src,
-              dataType: 'script'})
-            $.getJSON("/news/report.json", function(json){
+
+            $.getJSON("/news/report.json", 'url=' + i.src, function(json){
               document.forms[0].elements[2].value = json.title;
               document.forms[0].elements[5].value = json.text;
             })
