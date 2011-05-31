@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
   end
 
   create_table "areas", :force => true do |t|
+    t.integer  "news_id"
     t.string   "name"
     t.string   "primary_tag"
     t.datetime "created_at"
@@ -28,7 +29,8 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.string   "news_id"
+    t.integer  "news_id"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
     t.string   "area"
     t.text     "content"
     t.datetime "time"
-    t.integer  "user_id"
     t.integer  "area_id"
     t.integer  "rank"
     t.string   "hard_copy"

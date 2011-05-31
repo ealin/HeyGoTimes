@@ -1,5 +1,5 @@
 class AreaFilter < ActiveRecord::Base
-  belongs_to :user
-  has_one :area
 
+  belongs_to :user
+  belongs_to :area
 end

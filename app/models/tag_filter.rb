@@ -1,5 +1,6 @@
 class TagFilter < ActiveRecord::Base
   belongs_to :user
-  has_many :tags
+  belongs_to :tag
 
 end
+
