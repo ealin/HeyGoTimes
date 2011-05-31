@@ -1,5 +1,18 @@
-<h1>Report news</h1>
+<html>
+
+<body>
+<% if session[:logged_in] == false %>
+  <%= redirect_to paper_index_path %>
+<% end %>
+
+<% require 'nokogiri' %>
+<% require 'open-uri' %>
+<% @uri = "http://tw.rd.yahoo.com/referurl/news/share/article/fb/SIG=1bcth527f/*http%3A//www.facebook.com/sharer.php?u=http://tw.news.yahoo.com/rd/*http%3A%2F%2Ftw.rd.yahoo.com%2F%2Freferurl%2Fnews%2Fshare_back%2Ffb%2F%2Ahttp%3A%2F%2Ftw.news.yahoo.com%2Farticle%2Furl%2Fd%2Fa%2F110525%2F129%2F2s553.html&t=%E6%8B%92%E7%BE%85%E6%B0%8F%E5%88%86%E7%94%A2+%E7%8E%8B%E6%B0%B8%E6%85%B6%E5%85%A9%E6%88%BF%E5%AD%90%E5%A5%B3%E5%A4%A7%E5%9C%98%E7%B5%90" %>
+<%= @doc = Nokogiri::HTML(open(@uri)) %>
+<%= @body = @doc.at_css('body').text %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', news_index_path %>
+<%= link_to 'Back', paper_index_path %>
+</body>
+</html>

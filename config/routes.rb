@@ -46,7 +46,7 @@ HeyGoTimes::Application.routes.draw do
   get "faq/show_question_list"  
   get "faq/show_answer"
 
-
+  post "news/report"
   resources :news
 
   resources :area do
