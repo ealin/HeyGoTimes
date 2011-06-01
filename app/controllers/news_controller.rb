@@ -30,21 +30,39 @@ class NewsController < ApplicationController
     @data = {}
 
     if (params[:url] != nil)
-      @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+      # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url]
 
       require 'nokogiri'
       require 'open-uri'
 
-      # @uri = "www.facebook.com/sharer.php?u=http://www.littleshell.net&t=littleshell的網站"
+      @next = ''
       @doc = Nokogiri::HTML(open(@url))
       # @body = @doc.at_css('body').text
-      @title = @doc.search('div.UIShareStage_Title')
-      # UIShareStage_Summary
-      # @data['title']="塑化劑風暴／塑化劑嚴重　衛署追查化妝保養品-Yahoo!奇摩新聞"
-      # @data['text'] = @title
+      @doc.search('h2 > div.pam', 'td').each do |data|
+        puts data.content
 
-      @data['title']="塑化劑風暴／塑化劑嚴重　衛署追查化妝保養品-Yahoo!奇摩新聞"
-      @data['text']="塑化劑風暴更擴大了，現在不只是食品，就連指甲油、香水、化妝品、乳液等保養品都牽連危機！彰化衛生局上午到屈臣氏抽查相關化妝品，要檢驗是否含塑化劑，國家衛生研究院最近更首度...."
+        if (data.content == 'Description')
+          @next = :content
+          next
+        elsif (data.content == 'Title')
+          @next = :title
+          next
+        end
+
+        if (@next == :content)
+          @text = data.content
+
+        elsif (@next == :title)
+          @title = data.content
+          break
+        end
+
+        @next = :normal
+      end
+
+      @data['title']=@title.to_s
+      @data['text']=@text.to_s
     end
 
     respond_to do |format|

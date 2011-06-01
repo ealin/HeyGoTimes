@@ -6,11 +6,12 @@ class CreateNews < ActiveRecord::Migration
       t.string :url
       t.string :area
       t.text :content
-      t.datetime :time
       t.integer :user_id
       t.integer :area_id
       t.integer :rank
       t.string :hard_copy
+
+      t.timestamps
     end
   end
 
