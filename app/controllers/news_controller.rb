@@ -91,6 +91,8 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
+    @user = User.find(session[:id])
+    @news.user = @user
 
     respond_to do |format|
       if @news.save
