@@ -94,7 +94,8 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to(@news, :notice => 'News was successfully created.') }
+        # format.html { redirect_to(@news, :notice => 'News was successfully created.') }
+        format.html { redirect_to(paper_index_path) }
         format.xml  { render :xml => @news, :status => :created, :location => @news }
       else
         format.html { render :action => "new" }
