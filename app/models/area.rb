@@ -1,5 +1,10 @@
 class Area < ActiveRecord::Base
-  belongs_to :area_filter
-  belongs_to :news, :foreign_key => "news_id"
+
+  has_many :area_filters
+  has_many :users, :through => :area_filters
+
+
+  # 會自動產生foreign key ===> news_id
+  belongs_to :news
 
 end
