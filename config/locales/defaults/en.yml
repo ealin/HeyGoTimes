@@ -17,9 +17,33 @@ en:
   signup: "Signup"
   feedback: "Feedback"
   
-  filter_news: "Filter News"
+  #filter_news: "Filter News"
   ok: "OK"
   cancel: "Cncel"
+ 
+
+  #----------------------------------------
+  # News Filter
+  #----------------------------------------
+  news_filter_head: "News Filter - create your own news site!"
+  load_my_filter: "Load my setting"
+  reset_the_filter: "Clear the setting"
+
+  filter_by_tag: "Filter by news tag:"
+  filter_by_friend: "Filter by friends:"
+  filter_by_date: "filter by date:"
+
+  my_news_only: "My news only"
+  my_friends_news_only: "My friends news only"
+ 
+  filter_save_as_default: "Save as default"
+  filter_cancel: "Cancel"
+  filter_ok: "OK"
+
+  yesterday: "Yesterday"
+  today: "Today"
+  select_date: "Select date"
+
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
@@ -33,6 +57,7 @@ en:
   #--------------------------------------------------------------------------
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
+  All: "All"
   Top: "Top"
   World: "World"
   

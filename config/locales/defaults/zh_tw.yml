@@ -16,9 +16,31 @@ zh_tw:
   signup: "註冊"
   feedback: "建議與反饋"
   
-  filter_news: "過濾新聞"
+  #filter_news: "過濾新聞"
   ok: "完成"
   cancel: "取消"
+
+  #----------------------------------------
+  # News Filter
+  #----------------------------------------
+  news_filter_head: "過濾新聞-打造您專屬的個人新聞！"
+  load_my_filter: "載入我的設定"
+  reset_the_filter: "清除所有選項"
+  
+  filter_by_tag: "選擇新聞分類："
+  filter_by_friend: "好友選項："
+  filter_by_date: "選擇日期："
+  
+  my_news_only: "只顯示我關心的新聞"
+  my_friends_news_only: "顯示所有朋友關心的新聞"
+
+  filter_save_as_default: "儲存為我的預設選項"
+  filter_cancel: "取消"
+  filter_ok: "確定"
+  
+  yesterday: "昨天"
+  today: "今天"
+  select_date: "選擇日期"
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
@@ -32,6 +54,7 @@ zh_tw:
   #--------------------------------------------------------------------------
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
+  All: "所有新聞"
   Top: "焦點"
   World: "國際"
   Taiwan: "台灣"

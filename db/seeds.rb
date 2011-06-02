@@ -26,6 +26,8 @@ Area.create(:name => 'JP' , :primary_tag => 'Japan')
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Tag~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
+Tag.create(:name => 'All', :parent_tag => nil)
+
 Tag.create(:name => 'Top', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
 
