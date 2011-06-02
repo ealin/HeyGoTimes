@@ -1,8 +1,4 @@
 
-
-  <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
-
-
   <%#= link_to t(:today_newspaper),{:controller => 'paper'},{:title => 'Show Privacy'}%>
 
   <%# if @realtime_news_flag == true%>
@@ -28,13 +24,16 @@
       <%= show_logout_link %>
 
       <br>
+      <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %><br>
       <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
 
       <%#= "id= #{current_facebook_user.birthday} alias = #{current_facebook_user.id} )" %>
       <%# fb_profile_pic(current_facebook_user.id, {:size => 'square' }) %>
-      <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %>
-
   <% end %>
+  <br>
+  <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
+
+
 
 
 
