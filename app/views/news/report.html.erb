@@ -1,5 +1,18 @@
-<h1>Report news</h1>
+<html>
+<body>
+<% if session[:logged_in] == false %>
+  <%= redirect_to paper_index_path %>
+<% end %>
 
-<%= render 'form' %>
+<% require 'nokogiri' %>
+<% require 'open-uri' %>
+<% # @uri = "www.facebook.com/sharer.php?u=http://www.littleshell.net&t=littleshell的網站" %>
+<% @uri = @url %>
+<%= @doc = Nokogiri::HTML(open(@uri)) %>
+<%= @body = @doc.at_css('body').text %>
 
-<%= link_to 'Back', news_index_path %>
+<%= render 'form', :locals => {:news => @news} %>
+
+<%= link_to 'Back', paper_index_path %>
+</body>
+</html>

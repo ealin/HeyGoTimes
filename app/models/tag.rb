@@ -1,4 +1,9 @@
 class Tag < ActiveRecord::Base
-  belongs_to :filter
-  belongs_to :news_tag
+
+  has_many :tag_filters
+  has_many :users, :through => :tag_filters
+
+  has_many :news_tags
+  has_many :news, :through => :news_tags
+
 end

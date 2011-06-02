@@ -5,15 +5,18 @@ class CreateNews < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.string :area
-      t.string :tag
       t.text :content
-      t.datetime :time
-      t.integer :user_id
+
       t.integer :area_id
-      t.integer :head_vote
-      t.integer :suck_vote
       t.integer :rank
       t.string :hard_copy
+
+      #
+      # 因為在 news.rb中已經定義 belongs_to : user, 所以自動會產生foreign key ==> user_id
+      #
+      t.string :news_id
+
+      t.timestamps
     end
   end
 

@@ -22,7 +22,7 @@
       <%= show_logging_link %>
   <% else %>
       <% # setup-dialog would be shown only when user is logged in. %>
-      <%= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
+      <% #= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>
 
       <% # show_logout_link() is defined in user_helper.rb  %>
       <%= show_logout_link %>

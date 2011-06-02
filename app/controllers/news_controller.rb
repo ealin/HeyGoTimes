@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
   # Use tiny_mce editor
   uses_tiny_mce
+
   # GET /news
   # GET /news.xml
   def index
@@ -26,12 +27,48 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
-    @news = News.new
+    @data = {}
+
+    if (params[:url] != nil)
+      # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url]
+
+      require 'nokogiri'
+      require 'open-uri'
+
+      @next = ''
+      @doc = Nokogiri::HTML(open(@url))
+      # @body = @doc.at_css('body').text
+      @doc.search('h2 > div.pam', 'td').each do |data|
+        puts data.content
+
+        if (data.content == 'Description')
+          @next = :content
+          next
+        elsif (data.content == 'Title')
+          @next = :title
+          next
+        end
+
+        if (@next == :content)
+          @text = data.content
+
+        elsif (@next == :title)
+          @title = data.content
+          break
+        end
+
+        @next = :normal
+      end
+
+      @data['title']=@title.to_s
+      @data['text']=@text.to_s
+    end
 
     respond_to do |format|
-      format.html # report.html.erb
-      format.xml  { render :xml => @news }
+      format.json { render :json => @data.to_json }
     end
+
   end
 
   # GET /news/new
@@ -57,7 +94,8 @@ class NewsController < ApplicationController
 
     respond_to do |format|
       if @news.save
-        format.html { redirect_to(@news, :notice => 'News was successfully created.') }
+        # format.html { redirect_to(@news, :notice => 'News was successfully created.') }
+        format.html { redirect_to(paper_index_path) }
         format.xml  { render :xml => @news, :status => :created, :location => @news }
       else
         format.html { render :action => "new" }

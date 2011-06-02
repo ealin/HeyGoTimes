@@ -1,3 +1,112 @@
+<head>
+  <!-- Page styles -->
+  <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
-<h1>Show AD-List here!</h1>
+  <%= javascript_include_tag 'jscal2/jscal2' %>
+  <%= javascript_include_tag 'jscal2/lang/cn.js' %>
 
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
+
+
+</head>
+
+
+<!-- 2 buttons : "load my filter" & "reset the filter"
+-->
+<div align = "right">
+  <input type = "button"  value = <%= t(:load_my_filter)%> />
+  <input type = "button" value = <%= t(:reset_the_filter) %> />
+</div>
+<hr>
+
+
+
+<!-- (ask server to) get and show all News-Tags
+-->
+<div align = "left">
+  <h3><%= t(:filter_by_tag)%> </h3>
+
+  <script type="text/javascript">
+
+    // get all tags from server.
+    $(document).ready(function ()
+    {
+      $.getJSON("/news/report.json", 'url=' + t.value, function(json)
+        {
+              document.forms[0].elements[3].value = json.title;
+              document.forms[0].elements[4].value = json.text;
+        } );
+    }
+  </script>
+
+
+
+</div>
+<hr>
+
+
+
+<!-- 2 checkbox - my news only & my friends' news only
+-->
+<div align = "left">
+  <h3><%= t(:filter_by_friend)%></h3>
+  <input type="checkbox" /> <%= t(:my_news_only)%> <br>
+  <input type="checkbox" /> <%= t(:my_friends_news_only)%>  <br>
+
+</div>
+<hr>
+
+
+<!-- select date(select one only): today, yesterday, and date-selection-box
+-->
+<style type="text/css">
+label   {
+        color: #781351;
+        background: #fee3ad;
+        }
+</style>
+
+<div align = "left">
+  <h3><%= t(:filter_by_date)%></h3>
+
+    <input type="radio" name = "date" value = "no_filter"> <%= t(:no_date_filter)   %>
+    <br>
+    <input type="radio" name = "date" value = "yesterday"> <%= t(:yesterday)   %>
+    &nbsp;&nbsp;&nbsp;
+    <input type="radio" name = "date" value = "today"> <%= t(:today)%>
+    <br>
+
+
+    <input type="radio" name = "date" value = "select"> <%= t(:filter_by_this_date) %>
+    <label id = "date_label" color = ""> <%= t(:no_limit) %>  </label>
+    &nbsp;&nbsp;&nbsp;
+    <input type="button" id="date_btn" value=<%= t(:select_date) %>
+    <br>
+
+
+    <script type="text/javascript">
+      Calendar.setup({
+        animation  : true,
+        inputField : "date_label",
+        trigger    : "date_btn",
+        onSelect   : function()  { this.hide() },
+        showTime   : false,
+        dateFormat : "%Y-%m-%d"
+      });
+    </script>
+
+</div>
+<hr>
+
+
+
+<!-- 3 buttons
+-->
+<div align = "right">
+  <input type = "button"  value = <%= t(:filter_save_as_default)%> />
+  <input type = "button" value = <%= t(:filter_cancel) %> />
+  <input type = "button" value = <%= t(:filter_ok) %> />
+</div>
+<hr>

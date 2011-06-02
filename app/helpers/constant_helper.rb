@@ -2,7 +2,8 @@ module ConstantHelper
 
 
   def site_url
-    "http://heygotimes.heroku.com/"
+    "http://localhost:3000/"
+
   end
 
 

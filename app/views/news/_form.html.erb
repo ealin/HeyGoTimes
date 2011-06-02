@@ -1,40 +1,94 @@
-<%= form_for(@news) do |f| %>
-  <% if @news.errors.any? %>
+<head>
+  <!-- Page styles -->
+  <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
+  <script type='text/javascript' src='/javascripts/jquery.js'></script>
+  <script type="text/javascript">
+
+  <!--
+  $(document).ready(function () {
+
+    // avatar validation
+    // we use keyup *and* change because
+    $('#news_url').keyup(function () {
+      var t = this;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        if (t.value == t.current) {
+            return true;
+        }
+
+        var preview = $('#validateAvatar').html('<br><img src="images/ajax-loader.gif" height="16" width="16" /> loading...');
+
+        clearTimeout(t.timeout);
+
+        if (t.value == '') {
+          preview.html('');
+        } else {
+
+          // set a timeout of x seconds to load the image, otherwise, show the fail message
+          t.timeout = setTimeout(function () {
+            //preview.html('Invalid URL.');
+
+            $.getJSON("/news/report.json", 'url=' + t.value, function(json){
+              document.forms[0].elements[3].value = json.title;
+              document.forms[0].elements[4].value = json.text;
+            });
+            preview.html('');
+          }, 1000);
+        }
+
+        t.current = t.value;
+      }, 250);
+    }).change(function () {
+      $(this).keyup(); // call the keyup function
+    });
+  });
+  //-->
+  </script>
+</head>
+
+<%= form_for(news) do |f| %>
+  <% if news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</h2>
 
       <ul>
-      <% @news.errors.full_messages.each do |msg| %>
+      <% news.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  <h2>You can input url here...</h2>
+
+  <div>
+    <label for="news_url">URL</label><br />
+    <input type="text" name="news[url]" size="50" value="" id="news_url" />
+    <span id="validateAvatar"></span>
+  </div>
+  <br />
+  <h2>Or input news here...</h2>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
 
   <div class="field">
+    <!--
   	<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
-	<script type="text/javascript">
-	tinyMCE.init({
-        // General options
-        mode : "textareas"
-	});
-	</script>
+    <script type="text/javascript">
+    tinyMCE.init({
+          // General options
+          mode : "textareas"
+    });
+    </script>
+    -->
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.datetime_select :time %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

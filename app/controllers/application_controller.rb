@@ -99,27 +99,17 @@ class ApplicationController < ActionController::Base
   #
   def get_current_user_info
 
+    @user = User.find(session[:id])
+    if @user != nil
+      logger.debug "[Database Access Error:] - @ get_current_user_info() "
+      return
+    end
+
     # Ealin: 以下變數先寫死(20110510)
-
-    @user_account = "ealin.chiu@gmail.com"
-    @user_account_connected_to = "facebook"
-
-    # 1 account has MAX 3 email-address
-    @email_for_subscription = "ealin@yahoo.com.tw"
-
-    # 取得使用者訂閱的報紙列表 (read from database)
-    @user_subscribed_paper_no = 4
-    @user_subscribed_paper = Array.new
-    @user_subscribed_paper[0] = "Taiwan"
-    @user_subscribed_paper[1] = "Silicon Valley"
-    @user_subscribed_paper[2] = "SH High School"
-    @user_subscribed_paper[3] = "7-11 Special Price "
-
 
     #statistics data:
     @report_no = 10
     @comment_no = 5
-    @edit_no = 3
     @follow_no = 6
     @fans_no = 100
     @ad_no = 6
@@ -174,13 +164,14 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = extract_locale_from_accept_language_header
 
-    #logger.debug "'#{I18n.locale}'"
+    logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    
       logger.debug env['HTTP_ACCEPT_LANGUAGE'][3]
       # Ealin: 84 == 'T' (特別處理: zh_TW)
-      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116
+      if env['HTTP_ACCEPT_LANGUAGE'][3] == 84 || env['HTTP_ACCEPT_LANGUAGE'][3] == 116   ||    \
+         env['HTTP_ACCEPT_LANGUAGE'][3] == 'T'  || env['HTTP_ACCEPT_LANGUAGE'][3] == 't'
 
         #
         # Ealin: 避免繁體與簡體可能混淆, 將繁體的locale name設為zh_tw
