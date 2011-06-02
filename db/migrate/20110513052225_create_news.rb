@@ -6,7 +6,6 @@ class CreateNews < ActiveRecord::Migration
       t.string :url
       t.string :area
       t.text :content
-      t.datetime :time
 
       t.integer :area_id
       t.integer :rank
@@ -17,6 +16,7 @@ class CreateNews < ActiveRecord::Migration
       #
       t.string :news_id
 
+      t.timestamps
     end
   end
 

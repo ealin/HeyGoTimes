@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
     t.string   "url"
     t.string   "area"
     t.text     "content"
-    t.datetime "time"
     t.integer  "area_id"
     t.integer  "rank"
     t.string   "hard_copy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "news_tags", :force => true do |t|

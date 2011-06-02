@@ -12,7 +12,7 @@ img {border:0;}
 #footer a:link, #footer a:visited {color:#888; text-decoration:none;}
 #footer a:hover {color:#333; text-decoration:underline;}
 
-TEXTAREA { width: 80%;}
+TEXTAREA { width: 80%; height: 100px; }
 FIELDSET { border: 1px solid #ccc; padding: 1em; margin: 0; }
 LEGEND { color: #ccc; font-size: 120%; }
 INPUT, TEXTAREA { font-family: Arial, verdana; font-size: 125%; padding: 7px;}
