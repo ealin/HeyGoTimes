@@ -32,6 +32,7 @@
             $.getJSON("/news/report.json", 'url=' + t.value, function(json){
               document.forms[0].elements[3].value = json.title;
               document.forms[0].elements[4].value = json.text;
+              document.forms[0].elements[5].value = json.image;
             });
             preview.html('');
           }, 1000);
@@ -87,6 +88,11 @@
     -->
     <%= f.label :content %><br />
     <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <label for="photo_url">Image URL</label><br />
+    <input type="text" name="photo_url" size="50" value="" id="photo_url" />
   </div>
 
   <div class="actions">

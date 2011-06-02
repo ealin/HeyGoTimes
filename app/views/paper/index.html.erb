@@ -8,17 +8,15 @@
 <div id="page">
   <div id="header">
     <div id="masthead">
-      <div id="branding" role="banner">
-        <div id="site-title">
+        <div id="logo">
           <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {controller =>'paper'}, {:title => 'to home page'} ) %>
           <span><%= @newspaper_title %></span>
         </div>
 
-          <div id="links" >
-            <%= show_page_head(:login_flag => true)  %>
-          </div><!-- #links -->
+        <div id="links" >
+          <%= show_page_head(:login_flag => true)  %>
+        </div><!-- #links -->
 
-      </div><!-- #branding -->
     </div><!-- #masthead -->
   </div><!-- #header -->
 

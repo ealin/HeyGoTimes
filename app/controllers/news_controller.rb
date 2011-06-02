@@ -40,7 +40,7 @@ class NewsController < ApplicationController
       @doc = Nokogiri::HTML(open(@url))
       # @body = @doc.at_css('body').text
       @doc.search('h2 > div.pam', 'td').each do |data|
-        puts data.content
+        # puts data.content
 
         if (data.content == 'Description')
           @next = :content
@@ -48,13 +48,17 @@ class NewsController < ApplicationController
         elsif (data.content == 'Title')
           @next = :title
           next
+        elsif (data.content == 'Image')
+          @next = :image
+          next
         end
 
         if (@next == :content)
-          @text = data.content
-
+          @text = data.content.to_s
+        elsif (@next == :image)
+          @image_url = data.search('a').first['href']
         elsif (@next == :title)
-          @title = data.content
+          @title = data.content.to_s
           break
         end
 
@@ -62,6 +66,7 @@ class NewsController < ApplicationController
       end
 
       @data['title']=@title.to_s
+      @data['image']=@image_url.to_s
       @data['text']=@text.to_s
     end
 
@@ -91,6 +96,8 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
+    @user = User.find(session[:id])
+    @news.user = @user
 
     respond_to do |format|
       if @news.save
