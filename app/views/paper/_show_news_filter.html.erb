@@ -9,6 +9,22 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
 
+  <script type="text/javascript">
+
+    // get all tags from server.
+    $(document).ready(function ()
+    {
+        alert('alert1');
+
+        //$.getJSON("/tag/get_all_tags.json", 'url=' + t.value, function(json)
+        //{
+            //var lab = document.getElementById("date_label")
+        //    document.write(json[0].name) ;
+        //} );
+
+    }
+  </script>
+
 
 </head>
 
@@ -58,14 +74,16 @@ label   {
 <div align = "left">
   <h3><%= t(:filter_by_date)%></h3>
 
-    <input type="radio" name = "date" value = "yesterday"> <%= t(:yesterday)   %>
+    <input type="radio" name = "date" value = "no_filter"> <%= t(:no_date_filter)   %>
     <br>
+    <input type="radio" name = "date" value = "yesterday"> <%= t(:yesterday)   %>
+    &nbsp;&nbsp;&nbsp;
     <input type="radio" name = "date" value = "today"> <%= t(:today)%>
     <br>
 
 
-    <input type="radio" name = "date" value = "select"> 只顯示以下日期的新聞:
-    <label id = "date_label" color = ""> 不限制  </label>
+    <input type="radio" name = "date" value = "select"> <%= t(:filter_by_this_date) %>
+    <label id = "date_label" color = ""> <%= t(:no_limit) %>  </label>
     &nbsp;&nbsp;&nbsp;
     <input type="button" id="date_btn" value=<%= t(:select_date) %>
     <br>

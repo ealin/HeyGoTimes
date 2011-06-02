@@ -43,7 +43,9 @@ en:
   yesterday: "Yesterday"
   today: "Today"
   select_date: "Select date"
-
+  filter_by_this_date: "Filter news by this date:"
+  no_limit: "No"
+  no_date_filter: "Don't filter news by date." 
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

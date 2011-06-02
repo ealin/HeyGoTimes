@@ -41,6 +41,10 @@ zh_tw:
   yesterday: "昨天"
   today: "今天"
   select_date: "選擇日期"
+  filter_by_this_date: "依照選定的日期篩選新聞："
+  no_limit: "無"
+  no_date_filter: "不依日期過濾新聞" 
+  
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
