@@ -3,8 +3,8 @@
 # for koala
 
 development:
- app_id: 102018533222077
- secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
+ app_id: 189797591070416
+ secret_key: 07d195276aa3daa06bdb9d866d40b664
  callback_url: http://localhost:3000/
 
 test:
@@ -15,4 +15,4 @@ test:
 production:
  app_id: 102018533222077
  secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
- callback_url: http://localhost:3000/
+ callback_url: http://heygotimes.heroku.com/
