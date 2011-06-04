@@ -9,21 +9,52 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
 
+
   <script type="text/javascript">
 
-    // get all tags from server.
-    $(document).ready(function ()
-    {
-        alert('alert1');
+  $(document).ready(function ()
+  {
 
-        //$.getJSON("/tag/get_all_tags.json", 'url=' + t.value, function(json)
-        //{
-            //var lab = document.getElementById("date_label")
-        //    document.write(json[0].name) ;
-        //} );
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - reset all
+     //
+     $('#reset_all').unbind('click').click(function()
+     {
 
-    }
-  </script>
+        for(i=0;i<($('input').length);i++)
+        {
+            if( $('input')[i].name != "each_tag" && $('input')[i].name != "friend_filter" &&
+                $('input')[i].name != "date")
+            {
+                continue ;
+            }
+
+            $('input')[i].checked = false ;
+
+        }
+
+         for(i=0;i<($('label').length);i++)
+         {
+             if( $('label')[i].id != "date_label")
+             {
+                 continue ;
+             }
+
+             $('label')[i].lastChild.textContent = "<%= t(:no_limit) %> " ;
+         }
+
+        return false ;   // to prevent click event would be issued twice!
+     }  );
+      //
+      // end of "#reset_all".click callback function
+
+
+  }  );
+  //
+  // end of "$(document).ready callback function
+
+
+ </script>
 
 
 </head>
@@ -32,10 +63,12 @@
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <input type = "button"  value = <%= t(:load_my_filter)%> />
-  <input type = "button" value = <%= t(:reset_the_filter) %> />
+  <button> <%= t(:load_my_filter)%> </button>
+  <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>
+
+
 
 
 
@@ -43,10 +76,25 @@
 -->
 <div align = "left">
   <h3><%= t(:filter_by_tag)%> </h3>
+</div>
 
+<div class = "all_tags" align = "left" >
+  <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
+  <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
+
+  <% @tags.each do |tag| %>
+    <%# using type and name to identify each Input/Checkbox here %>
+    <input type="checkbox" name ="each_tag" id="<%= tag.name %>"> <%= t(tag.name.to_sym) %> </input>
+    &nbsp;&nbsp;&nbsp;
+
+    <% if ( (tag.id == 1) || (tag.id - 1) % 6 == 0)  %>
+      <br>
+    <% end %>
+  <% end %>
 
 
 </div>
+
 <hr>
 
 
@@ -55,8 +103,8 @@
 -->
 <div align = "left">
   <h3><%= t(:filter_by_friend)%></h3>
-  <input type="checkbox" /> <%= t(:my_news_only)%> <br>
-  <input type="checkbox" /> <%= t(:my_friends_news_only)%>  <br>
+  <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%> <br>  </input>
+  <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
 
 </div>
 <hr>
@@ -74,22 +122,22 @@ label   {
 <div align = "left">
   <h3><%= t(:filter_by_date)%></h3>
 
-    <input type="radio" name = "date" value = "no_filter"> <%= t(:no_date_filter)   %>
+    <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
     <br>
-    <input type="radio" name = "date" value = "yesterday"> <%= t(:yesterday)   %>
+    <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
     &nbsp;&nbsp;&nbsp;
-    <input type="radio" name = "date" value = "today"> <%= t(:today)%>
+    <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
     <br>
 
 
-    <input type="radio" name = "date" value = "select"> <%= t(:filter_by_this_date) %>
-    <label id = "date_label" color = ""> <%= t(:no_limit) %>  </label>
+    <input type="radio" name = "date" id="filter_by_this_date" value = "select"> <%= t(:filter_by_this_date) %>
+    <label id = "date_label" > <%= t(:no_limit) %>  </label>
     &nbsp;&nbsp;&nbsp;
-    <input type="button" id="date_btn" value=<%= t(:select_date) %>
+    <input type="button" id="date_btn" value="<%= t(:select_date) %>" />
     <br>
 
+   <script>
 
-    <script type="text/javascript">
       Calendar.setup({
         animation  : true,
         inputField : "date_label",
@@ -108,8 +156,8 @@ label   {
 <!-- 3 buttons
 -->
 <div align = "right">
-  <input type = "button"  value = <%= t(:filter_save_as_default)%> />
-  <input type = "button" value = <%= t(:filter_cancel) %> />
-  <input type = "button" value = <%= t(:filter_ok) %> />
+  <button> <%= t(:filter_save_as_default)%> </button>
+  <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
+  <input type="submit" id="save_filter" value="<%= t(:filter_ok) %>">  </input>
 </div>
 <hr>

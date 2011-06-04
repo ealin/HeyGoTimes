@@ -2,6 +2,7 @@ class PaperController < NewsController
 
   def index
     @news = get_news()
+    @tags = Tag.all
 
     check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
 
@@ -11,7 +12,15 @@ class PaperController < NewsController
 
     set_newspaper_size()
     get_paper_title_info()
-  end
+
+    # keep all filters in session
+    #
+    session[:filter_tags] = "All"
+    session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
+    session[:filter_friend] = "All"       # possible filters are: "All", "Mine_only", "My_Firends_only"
+
+
+   end
 
   def get_news
     @news = News.all

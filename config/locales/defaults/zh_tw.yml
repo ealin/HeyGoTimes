@@ -37,6 +37,8 @@ zh_tw:
   filter_save_as_default: "儲存為我的預設選項"
   filter_cancel: "取消"
   filter_ok: "確定"
+  show_tags: "顯示所有新聞分類"
+  
   
   yesterday: "昨天"
   today: "今天"
