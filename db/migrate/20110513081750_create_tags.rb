@@ -4,6 +4,11 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.string :parent_tag
 
+      # Ealin: this filed is only for controller, it's not meaningful when the record saved in DB.
+      #    (it would waste a little DB space, it's ok because there's not so many tags in our application.')
+      #
+      t.integer :checked
+
       t.timestamps
     end
   end

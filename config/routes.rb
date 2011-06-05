@@ -56,14 +56,18 @@ HeyGoTimes::Application.routes.draw do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
     #
     get 'index', :on => :collection  
-    get 'to_main_page', :on => :collection  
-    get 'filiter_today_newspaper', :on => :collection
-    get 'follow', :on => :collection
+    #get 'to_main_page', :on => :collection
+    #get 'filiter_today_newspaper', :on => :collection
+    #get 'follow', :on => :collection
     get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
     get 'news/report', :on => :collection
+
+    get 'set_filter_setting', :on => :collection
+    get 'get_filter_session', :on => :collection
+
  end
 
   #get "main_page/index"

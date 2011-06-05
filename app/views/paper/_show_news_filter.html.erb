@@ -12,15 +12,172 @@
 
   <script type="text/javascript">
 
-  $(document).ready(function ()
-  {
+  $(document).ready(function (){
 
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_previous_filter
+     //
+     $('#load_previous_filter').unbind('click').click(function(){
+         $.getJSON("/paper/get_filter_session.json",'cmd=get_filter_session', function(json)
+         {
+             alert(json) ;
+
+         }  );
+
+
+     }  );
+       //
+       // end of "#save_as_default".click callback function
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_filter
+     //
+     $('#save_filter').unbind('click').click(function()
+     {
+         // send filter-setting to server, then server would save them in session
+
+         // collection all filter setting, and make it as format like:  "aa=123&bb=test"
+         var data = "tag_filter=" ;
+         var selected_tag_counter = 0 ;
+
+         // get selected tag-filter
+         for(i=0;i<($('input').length);i++)
+         {
+             if( $('input')[i].name != "each_tag")
+             {
+                 continue ;
+             }
+
+             if($('input')[i].id == "All" && $('input')[i].checked == true)
+             {
+                 selected_tag_counter = 1 ;
+                 data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
+                 break ;
+             }
+
+             if($('input')[i].checked == true)
+             {
+                data += ($('input')[i].id + "/") ;
+                selected_tag_counter++ ;
+
+             }
+         }
+         if(selected_tag_counter == 0 )
+            data +='All' ;
+
+         // get friend-filter
+         //
+         data += "&friend_filter=" ;
+         if($('#my_news_only')[0].checked == true)
+             data+="mine/" ;
+         if($('#my_friends_news_only')[0].checked == true)
+             data+="friend/" ;
+
+         // get Date-Filter
+         //
+         if($('#yesterday')[0].checked == true)
+         {
+             var mydate= new Date()
+             mydate.setDate(mydate.getDate()-1)
+
+             var theyear=mydate.getFullYear()
+             var themonth=mydate.getMonth()+1
+             var theyesterday=mydate.getDate()
+
+             data += ("&date_filter=" + theyear+"-"+themonth+"-"+theyesterday) ;
+
+         }
+         else if($('#today')[0].checked == true)
+         {
+             var M = new Date()
+             M.setDate(M.getDate())
+
+             var yy=M.getFullYear()
+             var mm=M.getMonth()+1
+             var dd=M.getDate()
+
+             data += ("&date_filter=" + yy+"-"+mm+"-"+dd) ;
+
+         }
+         else if($('#filter_by_this_date')[0].checked == true)
+         {
+             // data += ("&date_filter=" + $('label')[i].lastChild.textContent ) ;
+             for(i=0;i<($('label').length);i++)
+             {
+                  if( $('label')[i].id != "date_label")
+                  {
+                      continue ;
+                  }
+
+                  if($('label')[i].lastChild.wholeText.charAt(0) != "2".charAt(0) )
+                    data += "&date_filter=1971-11-12" ;
+                  else
+                    data += ("&date_filter=" + $('label')[i].lastChild.wholeText) ;
+
+                  break ;
+             }
+
+         }
+         else   // no selection   or  ($('#no_filter')[0].checked == true)
+         {
+              data += "&date_filter=1971-11-12" ;
+         }
+
+         // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"paper/set_filter_setting",
+             data: data
+             //success: function(html)
+             //{
+             //    $('#message').html(html) ;
+             //}
+         });
+
+         //
+
+     }  );
+       //
+       // end of "#save_filter".click callback function
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_my_filter
+     //
+     $('#load_my_filter').unbind('click').click(function()
+     {
+       alert("YYY") ;
+
+     }  );
+       //
+       // end of "#load_my_filter".click callback function
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_as_default
+     //
+     $('#save_as_default').unbind('click').click(function()
+     {
+       alert("ZZZ") ;
+
+     }  );
+       //
+       // end of "#save_as_default".click callback function
+
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - reset all
      //
      $('#reset_all').unbind('click').click(function()
      {
-
+        // un-ckeck all checkbox and radio box
         for(i=0;i<($('input').length);i++)
         {
             if( $('input')[i].name != "each_tag" && $('input')[i].name != "friend_filter" &&
@@ -33,15 +190,16 @@
 
         }
 
-         for(i=0;i<($('label').length);i++)
-         {
+        // reset the date-label
+        for(i=0;i<($('label').length);i++)
+        {
              if( $('label')[i].id != "date_label")
              {
                  continue ;
              }
 
              $('label')[i].lastChild.textContent = "<%= t(:no_limit) %> " ;
-         }
+        }
 
         return false ;   // to prevent click event would be issued twice!
      }  );
@@ -63,7 +221,8 @@
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <button> <%= t(:load_my_filter)%> </button>
+  <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
+  <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>
@@ -84,6 +243,7 @@
 
   <% @tags.each do |tag| %>
     <%# using type and name to identify each Input/Checkbox here %>
+
     <input type="checkbox" name ="each_tag" id="<%= tag.name %>"> <%= t(tag.name.to_sym) %> </input>
     &nbsp;&nbsp;&nbsp;
 
@@ -130,10 +290,10 @@ label   {
     <br>
 
 
-    <input type="radio" name = "date" id="filter_by_this_date" value = "select"> <%= t(:filter_by_this_date) %>
+    <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%= t(:filter_by_this_date) %>
     <label id = "date_label" > <%= t(:no_limit) %>  </label>
     &nbsp;&nbsp;&nbsp;
-    <input type="button" id="date_btn" value="<%= t(:select_date) %>" />
+    <button id="date_btn"> <%= t(:select_date) %> </button>
     <br>
 
    <script>
@@ -156,8 +316,8 @@ label   {
 <!-- 3 buttons
 -->
 <div align = "right">
-  <button> <%= t(:filter_save_as_default)%> </button>
+  <button id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
   <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
-  <input type="submit" id="save_filter" value="<%= t(:filter_ok) %>">  </input>
+  <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
 </div>
 <hr>

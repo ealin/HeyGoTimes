@@ -1,5 +1,6 @@
 class TagController < ApplicationController
 
+=begin
   def get_all_tags
     tags = Tag.all
 
@@ -9,4 +10,5 @@ class TagController < ApplicationController
     end
 
   end
+=end
 end
