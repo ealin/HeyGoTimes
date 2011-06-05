@@ -19,11 +19,17 @@
      //  btn - load_previous_filter
      //
      $('#load_previous_filter').unbind('click').click(function(){
-         $.getJSON("/paper/get_filter_session.json",'cmd=get_filter_session', function(json)
+
+         // ask session data from server
+          $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
          {
-             alert(json) ;
+             console.log(json.filter_tags) ;
 
          }  );
+
+         alert("mmm") ;
+
+         return false ;
 
 
      }  );
@@ -131,11 +137,11 @@
          {
              type: "GET",
              url:"paper/set_filter_setting",
-             data: data
-             //success: function(html)
-             //{
-             //    $('#message').html(html) ;
-             //}
+             data: data,
+             success: function(html)
+             {
+                 console.log(html);
+             }
          });
 
          //

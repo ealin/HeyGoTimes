@@ -228,7 +228,14 @@ class PaperController < NewsController
 
     session[:filter_date] = params[:date_filter]
 
-    logger.debug "[logging]Filter setting saved in session!"
+    #logger.debug "[logging]Filter setting saved in session!"
+
+    # IMPORTANT: it must response something to browser, or the session would not be saved in cookie!!!
+    #
+    respond_to do |format|
+      format.html { render :partial => "paper/ack" }
+    end
+
 
     # Todo:
     # redraw the paper page
@@ -243,8 +250,10 @@ class PaperController < NewsController
   #-------------------------------------------------------------------------------------
   #
   def get_filter_session
+
+
     respond_to do |format|
-      format.json { render :json => (session[:friend_filter]).to_json }
+      format.json { render :json => session.to_json }
     end
 
   end
