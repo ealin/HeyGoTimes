@@ -27,6 +27,8 @@ en:
   #----------------------------------------
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
+  load_previous_filter: "Load previous setting"
+  
   reset_the_filter: "Clear the setting"
 
   filter_by_tag: "Filter by news tag:"
@@ -39,6 +41,7 @@ en:
   filter_save_as_default: "Save as default"
   filter_cancel: "Cancel"
   filter_ok: "OK"
+  show_tags: "Show all tags"
 
   yesterday: "Yesterday"
   today: "Today"

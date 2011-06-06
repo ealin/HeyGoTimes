@@ -1,9 +1,28 @@
 
 <% if news != nil %>
   <% news.each do |news| %>
-    <h2><%= news.title %></h2>
-    <%= news.created_at %>
-    <%= news.content.html_safe %>
+    <div id="news">
+      <div id="news_title">
+        <h3>
+          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>"><%= news.title %></a>
+        </h3>
+      </div>
+      <div id="info">
+        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈
+      </div>
+      <div id="news_content">
+        <%= news.content.html_safe %>
+      </div>
+      <div id="comments">
+      <!--
+      <h3>讀者迴響</h3>
+      <div id="fb-root"></div>
+      <script src="http://connect.facebook.net/zh_TW/all.js#appId=<%= Facebooker2.app_id %>&amp;xfbml=1"></script>
+
+      <fb:comments href="<%= "http://heygotimes.heroku.com/" %>" num_posts="20" width="580"></fb:comments>
+      -->
+      </div>
+    </div>
   <% end %>
 <% end %>
 

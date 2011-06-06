@@ -5,4 +5,7 @@ module PaperHelper
     render :partial => 'news/form', :locals => {:news => @news}
   end
 
+
+
+
 end

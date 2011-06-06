@@ -4,6 +4,7 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.string :parent_tag
 
+
       t.timestamps
     end
   end

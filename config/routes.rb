@@ -5,7 +5,7 @@ HeyGoTimes::Application.routes.draw do
   get "real_time_news/to_main_page"
   resources :real_time_news
 
-
+  get "tag/get_all_tags"
 
   get "news/report"
 
@@ -15,26 +15,21 @@ HeyGoTimes::Application.routes.draw do
 
   get "privacy/index"
 
-  get "template/index"
-
-  get "edit_area/index"
 
   get "admin/index"
 
   get "translator/index"
 
-  get "area/index"
 
   get "feedback/index"
 
-  match "/setup/set_filter/:area", :to => "setup#set_filter"
-  get "setup/index"
-  get "setup/to_main_page"
-  get "setup/deactive_fb_account"
-  get "setup/connect_twitter_account"
-  get "setup/set_filter"
+  #match "/setup/set_filter/:area", :to => "setup#set_filter"
+  #get "setup/index"
+  #get "setup/to_main_page"
+  #get "setup/deactive_fb_account"
+  #get "setup/connect_twitter_account"
+  #get "setup/set_filter"
 
-  get "user_history/index"
 
   get "ad/index"
 
@@ -49,34 +44,35 @@ HeyGoTimes::Application.routes.draw do
   post "news/report"
   resources :news
 
-  resources :area do
-    get 'to_main_page', :on => :collection
-  end
 
 
-  resources :search do
-    get 'index', :on => :collection  
-    get 'do_search', :on => :collection  
-    get 'to_main_page', :on => :collection  
- end
+  #resources :search do
+  #  get 'index', :on => :collection
+  #  get 'do_search', :on => :collection
+  #  get 'to_main_page', :on => :collection
+  #end
 
   resources :paper do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
     #
     get 'index', :on => :collection  
-    get 'to_main_page', :on => :collection  
-    get 'filiter_today_newspaper', :on => :collection
-    get 'follow', :on => :collection
+    #get 'to_main_page', :on => :collection
+    #get 'filiter_today_newspaper', :on => :collection
+    #get 'follow', :on => :collection
     get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
     get 'news/report', :on => :collection
+
+    get 'set_filter_setting', :on => :collection
+    get 'get_filter_session', :on => :collection
+
  end
 
-  get "main_page/index"
-  get "main_page/to_main_page"
-  get "main_page/to_mobile_site"
+  #get "main_page/index"
+  #get "main_page/to_main_page"
+  #get "main_page/to_mobile_site"
   
 
 

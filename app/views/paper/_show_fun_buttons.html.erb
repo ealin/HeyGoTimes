@@ -20,15 +20,19 @@
   <div id="osx-modal-title">OSX Style Modal Dialog</div>
   <div class="close"><a href="#" class="simplemodal-close">x</a></div>
   <div id="osx-modal-data">
+    <% if session[:logged_in] == false %>
+      <h3>Please log in!</h3>
+    <% else %>
     <%= show_report_form() %>
-    <p><button class="simplemodal-close">Close</button> <span>(or press ESC or click the overlay)</span></p>
+    <% end %>
+    <button class="simplemodal-close">Close</button>
   </div>
 
 </div>
 
 <!-- Show "News Filter" Dialog -->
 <div id="osx-modal-content1">
-  <div id="osx-modal-title1"><h3><%= t(:news_filter_head) %></h3></script></div>
+  <div id="osx-modal-title1"><h3><%= t(:news_filter_head) %></h3></div>
   <div class="close"><a href="#" class="simplemodal-close">x</a></div>
   <div id="osx-modal-data1">
 

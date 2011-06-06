@@ -32,7 +32,7 @@ jQuery(function ($) {
             onClose: OSX.close
           })
         }
-        else
+        else if(this.name == 'btn2')
         {
           $("#osx-modal-content1").modal({
             overlayId: 'osx-overlay',
@@ -77,24 +77,24 @@ jQuery(function ($) {
 			var self = this;
 			self.container = d.container[0];
 
-			d.overlay.fadeIn('slow', function () {
+			d.overlay.fadeIn('fast', function () {
 				$("#osx-modal-content1", self.container).show();
 				var title = $("#osx-modal-title1", self.container);
 				title.show();
-				d.container.slideDown('slow', function () {
+				d.container.slideDown('fast', function () {
 					setTimeout(function () {
 						var h = $("#osx-modal-data1", self.container).height()
 							+ title.height()
 							+ 20; // padding
 						d.container.animate(
 							{height: h},
-							200,
+							100,
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data1", self.container).show();
 							}
 						);
-					}, 300);
+					}, 100);
 				});
 			})
 		},
