@@ -228,9 +228,11 @@ class ApplicationController < ActionController::Base
   def extract_locale_from_accept_language_header
     # One source of client supplied information would be an Accept-Language HTTP header.
     # People may set this in their browser
-    
-    # request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-    #request.env['HTTP_ACCEPT_LANGUAGE']
+
+    if (request.env['HTTP_ACCEPT_LANGUAGE'] != nil)
+      request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+      #request.env['HTTP_ACCEPT_LANGUAGE']
+    end
   end
   #-----------------------------------------------------------------------------------------
    
