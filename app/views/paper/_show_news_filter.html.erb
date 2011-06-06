@@ -1,4 +1,5 @@
-<head>
+
+
   <!-- Page styles -->
   <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
@@ -46,6 +47,7 @@
              data: data,
              success: function(html)
              {
+                 alert(html) ;
                  // redirect to main page in order to redraw the news by new filter!
                   window.location.replace("/");
               }
@@ -306,8 +308,6 @@
 
  </script>
 
-
-</head>
 
 
 <!-- 2 buttons : "load my filter" & "reset the filter"

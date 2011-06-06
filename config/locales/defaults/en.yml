@@ -41,6 +41,8 @@ en:
   filter_save_as_default: "Save as default"
   filter_cancel: "Cancel"
   filter_ok: "OK"
+  filter_setting_saved: "Your News-filters is saved!"
+  user_not_exist: "The user is not existed!"
   show_tags: "Show all tags"
 
   yesterday: "Yesterday"

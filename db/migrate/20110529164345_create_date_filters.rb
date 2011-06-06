@@ -8,6 +8,7 @@ class CreateDateFilters < ActiveRecord::Migration
       t.integer :user_id
 
       t.datetime :date
+      t.string :option  # possible value: "today","yesterday","no_limited","selected_date"
 
       t.timestamps
     end

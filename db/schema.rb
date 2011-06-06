@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
   create_table "date_filters", :force => true do |t|
     t.integer  "user_id"
     t.datetime "date"
+    t.string   "option"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

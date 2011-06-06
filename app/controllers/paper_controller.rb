@@ -230,8 +230,34 @@ class PaperController < NewsController
     session[:filter_date] = params[:date_filter]
     session[:filter_date_option] = params[:date_filter_option]
 
+    response_str = t(:filter_setting_saved)
     if(params[:save] == "yes")
       # save the filter setting in DB
+
+      user = User.find(session[:id])
+      if(user == nil)
+        response_str = t(:user_not_exist)
+      end
+
+      # setup user.tags
+      #
+      user.tags = []
+      tags = Tag.all
+      tags.each do |tag|
+        if (session[:filter_tags]).include?(tag.name)
+          user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+        end
+      end
+
+      # setup user.date_filter
+      #
+      temp_date_filter = DateFilter.new(:date => session[:filter_date], :option => session[:filter_date_option])
+      temp_date_filter.save
+      user.date_filter = temp_date_filter
+
+
+      #user.date_filter
+
 
     end
 
@@ -240,7 +266,8 @@ class PaperController < NewsController
     # IMPORTANT: it must response something to browser, or the session would not be saved in cookie!!!
     #
     respond_to do |format|
-      format.html { render :partial => "paper/ack" }
+      format.html { render  :inline => response_str }
+      #format.html { render  :partial => "paper/ack" }
     end
 
 

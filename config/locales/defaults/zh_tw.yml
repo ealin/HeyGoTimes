@@ -39,7 +39,8 @@ zh_tw:
   filter_cancel: "取消"
   filter_ok: "確定"
   show_tags: "顯示所有新聞分類"
-  
+  filter_setting_saved: "您的設定已儲存!"
+  user_not_exist: "使用者不存在！"
   
   yesterday: "昨天"
   today: "今天"
