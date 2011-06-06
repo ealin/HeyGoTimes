@@ -229,7 +229,7 @@ class ApplicationController < ActionController::Base
     # One source of client supplied information would be an Accept-Language HTTP header.
     # People may set this in their browser
     
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    # request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     #request.env['HTTP_ACCEPT_LANGUAGE']
   end
   #-----------------------------------------------------------------------------------------
