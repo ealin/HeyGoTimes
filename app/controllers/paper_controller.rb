@@ -20,6 +20,7 @@ class PaperController < NewsController
     #
     #session[:filter_tags] = "All"  or "Sport/NBA/"
     #session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
+    #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
     #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
 =end
 
@@ -213,7 +214,7 @@ class PaperController < NewsController
 
   # Ealin: 20110604
   #-------------------------------------------------------------------------------------
-  # method: fset_filter_setting
+  # method: set_filter_setting
   #  - this method would be called by ajax in paper/_show)news_filter.html.erb
   #-------------------------------------------------------------------------------------
   #
@@ -227,6 +228,12 @@ class PaperController < NewsController
     end
 
     session[:filter_date] = params[:date_filter]
+    session[:filter_date_option] = params[:date_filter_option]
+
+    if(params[:save] == "yes")
+      # save the filter setting in DB
+
+    end
 
     #logger.debug "[logging]Filter setting saved in session!"
 
@@ -237,10 +244,11 @@ class PaperController < NewsController
     end
 
 
-    # Todo:
-    # redraw the paper page
+    # redraw the paper page  <=== caller (JS code in _show_news_filter.html.erb would do this job!)
 
   end
+
+
 
 
   # Ealin: 20110604
