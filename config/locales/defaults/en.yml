@@ -27,7 +27,7 @@ en:
   #----------------------------------------
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
-  load_previous_filter: "Load previous setting"
+  load_current_filter: "Load current setting"
   
   reset_the_filter: "Clear the setting"
 

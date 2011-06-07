@@ -18,18 +18,6 @@
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_my_filter
-     //
-     $('#load_my_filter').unbind('click').click(function()
-     {
-       alert("YYY") ;
-
-     }  );
-       //
-       // end of "#load_my_filter".click callback function
-
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - save_as_default
      //
      $('#save_as_default').unbind('click').click(function()
@@ -119,11 +107,32 @@
 
      }
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_my_filter
+     //
+     $('#load_my_filter').unbind('click').click(function()
+     {
+
+         alert("YYYy") ;
+         /*
+         // ask session data from server
+         $.getJSON("paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
+         {
+             console.log(json) ;
+             set_each_filter(json) ;
+
+         }  );
+         */
+         return false ;
+
+     }  );
+       //
+       // end of "#load_my_filter".click callback function
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_previous_filter
+     //  btn - load_current_filter
      //
-     $('#load_previous_filter').unbind('click').click(function(){
+     $('#load_current_filter').unbind('click').click(function(){
 
          // ask session data from server
          $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
@@ -317,7 +326,7 @@
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
+  <button id = "load_current_filter"> <%= t(:load_current_filter)%> </button>
 
   <% if session[:logged_in] == true %>
       <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>

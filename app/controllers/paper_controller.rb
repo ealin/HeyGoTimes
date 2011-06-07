@@ -24,7 +24,7 @@ class PaperController < NewsController
     #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
     #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
 =end
-   load_filter_setting()
+   init_filter_setting()
 
   end
 
@@ -37,10 +37,90 @@ class PaperController < NewsController
   end
 
   #-----------------------------------------------------------------------------------
+  # method: set_tag_filter_by_locale      (Ealin: 20110607)
+  #   - # check the locale (I18n.locale ==? :zh_tw), set area tag if necessary
+  #-----------------------------------------------------------------------------------
+  def set_tag_filter_by_locale
+
+        if(I18n.locale == :zh_tw)
+          session[:filter_tags] = "Taiwan/"
+        else
+          if(I18n.locale == :en)
+            session[:filter_tags] = "USA/"
+          else
+            session[:filter_tags] = "All"
+          end
+        end
+
+        session[:filter_date] = "1971-11-12"
+        session[:filter_date_option] = "no_limited"
+        session[:filter_friend] = "all"
+
+  end
+
+ #-----------------------------------------------------------------------------------
+ # method: load_filter_setting_from_db      (Ealin: 20110607)
+ #   - load user's saved news-filter setting from DB
+ #   (private function for this controller only)
+ #-----------------------------------------------------------------------------------
+  def load_filter_setting_from_db
+        #load filter-setting from db
+        user = User.find(session[:id])
+        if(user == nil)
+          # something wrong!
+          set_tag_filter_by_locale
+          return
+        end
+
+        # get tag filter (from user.tags)
+        if(user.tags != nil)
+          session[:filter_tags] =""
+          (user.tags).each do |tag|
+            session[:filter_tags] += (tag.name + "/")
+          end
+
+          # get date filter (from user.date_filter)
+          session[:filter_date] = user.date_filter.date
+          session[:filter_date_option] = user.date_filter.option
+
+          # get friend filter (from user.friend_filter)
+          session[:filter_friend] = user.friend_filter.type
+
+        else     # (user.tags == nil)
+          set_tag_filter_by_locale
+        end
+  end
+
+  #-----------------------------------------------------------------------------------
   # method: load_filter_setting      (Ealin: 20110607)
   #   - load user's saved news-filter setting from DB
+  #   (public interface for browser)
   #-----------------------------------------------------------------------------------
-  def load_filter_setting
+   def load_filter_setting
+     load_filter_setting_from_db
+
+     respond_to do |format|
+       format.json { render :json => session.to_json }
+     end
+   end
+
+ #-----------------------------------------------------------------------------------
+ # method: init_filter_setting      (Ealin: 20110607)
+ #   - init news-filter setting
+ #-----------------------------------------------------------------------------------
+  def init_filter_setting
+
+      # 如果SESSION不是空的, 就使用目前SESSION的設定即可 (雖然SESSION裡的內容可能與DB裡的不一樣)
+    if( session[:filter_tags] == nil)
+
+      if(session[:logged_in] == true)
+        load_filter_setting_from_db
+      else   # session is empty
+         set_tag_filter_by_locale
+      end
+
+
+    end
 
   end
 
@@ -257,7 +337,7 @@ class PaperController < NewsController
 
       # setup user.tags
       #
-      user.tags = []
+      user.tags = []       #empty array
       tags = Tag.all
       tags.each do |tag|
         if (session[:filter_tags]).include?(tag.name)
@@ -273,7 +353,7 @@ class PaperController < NewsController
 
 
       #setup user.friend_filters
-      temp_friend_filter = FriendFilter.new(:type => session[:filter_date])
+      temp_friend_filter = FriendFilter.new(:type => session[:filter_friend])
       temp_friend_filter.save
       user.friend_filter = temp_friend_filter
 
@@ -282,7 +362,7 @@ class PaperController < NewsController
 
     #logger.debug "[logging]Filter setting saved in session!"
 
-    # IMPORTANT: it must response something to browser, or the session would not be saved in cookie!!!
+    # IMPORTANT: it must response something to browser, or the session would not be saved to local cookie!!!
     #
     respond_to do |format|
       format.html { render  :inline => response_str }
