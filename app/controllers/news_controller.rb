@@ -98,7 +98,10 @@ class NewsController < ApplicationController
     @news = News.new(params[:news])
     @user = User.find(session[:id])
     @news.user = @user
-    @user.save
+
+    @image = Image.create(:url => params[:image_url])
+    @image.news = @news
+    @image.save
 
     respond_to do |format|
       if @news.save
