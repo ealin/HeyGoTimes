@@ -58,17 +58,11 @@
        // end of "#save_as_default".click callback function
 
 
-
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_previous_filter
+     //  function - set_each_filter
      //
-     $('#load_previous_filter').unbind('click').click(function(){
-
-         // ask session data from server
-         $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
-         {
-             //console.log(json) ;
-
+     function set_each_filter(json)
+     {
              // SET ALL TAGS filter
              //
              for(i=0;i<($('input').length);i++)
@@ -123,12 +117,22 @@
                  }
              }
 
+     }
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_previous_filter
+     //
+     $('#load_previous_filter').unbind('click').click(function(){
+
+         // ask session data from server
+         $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+         {
+             set_each_filter(json) ;
 
          }  );
 
-
          return false ;
-
 
      }  );
        //
@@ -313,13 +317,14 @@
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
+  <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
+
   <% if session[:logged_in] == true %>
-      <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
+      <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
   <% else %>
-      <button id = "load_previous_filter" disabled="true"> <%= t(:load_previous_filter)%> </button>
+      <button id = "load_my_filter" disabled="true"> <%= t(:load_my_filter)%> </button>
   <% end %>
 
-  <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>

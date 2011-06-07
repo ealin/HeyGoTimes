@@ -6,11 +6,11 @@ class CreateFriendFilters < ActiveRecord::Migration
       #
       t.integer :user_id
 
-      # 0: me,  1: all-my-friends,  2: user-id,  3: group-id
+      # "mine",  "friend",  "all"
       #
-      t.integer :type
+      t.string :type
 
-      t.integer :following_id
+      #t.integer :following_id
 
     end
   end

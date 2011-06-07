@@ -11,6 +11,7 @@ class PaperController < NewsController
     check_logged_in(true)
     get_paper_title_info()
 
+
 =begin
     # Ealin: not necessary for new-spec.
     #check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
@@ -23,13 +24,28 @@ class PaperController < NewsController
     #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
     #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
 =end
+   load_filter_setting()
 
-   end
+  end
+
+
+
 
   def get_news
     @news = News.all
     return @news
   end
+
+  #-----------------------------------------------------------------------------------
+  # method: load_filter_setting      (Ealin: 20110607)
+  #   - load user's saved news-filter setting from DB
+  #-----------------------------------------------------------------------------------
+  def load_filter_setting
+
+  end
+
+
+
 
   #-----------------------------------------------------------------------------------
   # method: set_newspaper_size      (Ealin: 20110501)
@@ -256,7 +272,10 @@ class PaperController < NewsController
       user.date_filter = temp_date_filter
 
 
-      #user.date_filter
+      #setup user.friend_filters
+      temp_friend_filter = FriendFilter.new(:type => session[:filter_date])
+      temp_friend_filter.save
+      user.friend_filter = temp_friend_filter
 
 
     end

@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :areas, :through => :area_filters
 
   has_one :date_filter
-  has_many :friend_filters
+  has_one :friend_filter
 
 end
