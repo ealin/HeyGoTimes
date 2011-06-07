@@ -1,3 +1,10 @@
+<head>
+  <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
+  <meta property="og:type" content="news"/>
+  <meta property="og:url" content="<%= news_url %>"/>
+  <meta property="og:image" content="<%= @news.images[0].to_s %> "/>
+</head>
+
 <p id="notice"><%= notice %></p>
 
 
