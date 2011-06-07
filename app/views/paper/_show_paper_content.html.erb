@@ -7,12 +7,13 @@
           <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>"><%= news.title %></a>
         </h3>
       </div>
-      <%= news.created_at %>
+      <div id="info">
+        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈
+      </div>
       <div id="news_content">
         <%= news.content.html_safe %>
       </div>
       <div id="comments">
-
       <!--
       <h3>讀者迴響</h3>
       <div id="fb-root"></div>
@@ -20,7 +21,6 @@
 
       <fb:comments href="<%= "http://heygotimes.heroku.com/" %>" num_posts="20" width="580"></fb:comments>
       -->
-
       </div>
     </div>
   <% end %>

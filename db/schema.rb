@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
     t.string   "url"
     t.string   "area"
     t.text     "content"
+    t.integer  "user_id"
     t.integer  "area_id"
     t.integer  "rank"
     t.string   "hard_copy"
