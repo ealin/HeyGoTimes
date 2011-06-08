@@ -20,7 +20,9 @@ en:
   #filter_news: "Filter News"
   ok: "OK"
   cancel: "Cncel"
- 
+
+  popular_news: "Popular news"
+  latest_news: "Latest news"
 
   #----------------------------------------
   # News Filter
