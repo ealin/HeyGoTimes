@@ -12,10 +12,7 @@
       </div>
       <h5>
       <div id="info">
-        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
-        <% news.tags.each do |tag| %>
-            <%= t(tag.name.to_sym) + " " %>
-        <% end %>
+        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈
       </div>
       </h5>
       <div id="image">
