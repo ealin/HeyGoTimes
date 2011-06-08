@@ -31,21 +31,8 @@ class PaperController < NewsController
 
   def get_news
     @user_tags = session[:filter_tags].split("/")
-    if (@user_tags[0] == 'All')
+
       @news = News.all
-    else
-      if (News.count > 0)
-        # @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
-        #@sql = 'SELECT "news".* FROM "news" INNER JOIN "news_tags" ON "news"."id" = "news_tags"."news_id" INNER JOIN "tags" ON "tags"."id" = "news_tags"."tag_id" WHERE ("tags"."name" IN (?)) GROUP BY news.id', @user_tags
-        #@news = News.find_by_sql(@sql)
-        @news = News.find(
-                :all,
-                :joins => :tags,
-                :conditions => {:tags => {:name => @user_tags}},
-                :group => 'news.id'
-        )
-      end
-    end
 
     return @news
   end
