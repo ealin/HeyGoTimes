@@ -34,7 +34,9 @@ class PaperController < NewsController
     if (@user_tags[0] == 'All')
       @news = News.all
     else
-      @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
+      if (News.count > 0)
+        @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
+      end
     end
 
     return @news
