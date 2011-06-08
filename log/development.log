@@ -83395,3 +83395,367 @@ ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"
   
 
 Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 12:09:09 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (2.6ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.9ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1[0m
+Rendered user/_fb_logout_link.html.erb (1.0ms)
+Rendered layouts/_show_page_head.html.erb (22.5ms)
+Rendered paper/_show_paper_title.html.erb (0.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 2)[0m
+Rendered paper/_show_paper_content.html.erb (35.3ms)
+Rendered news/_form.html.erb (6.4ms)
+Rendered paper/_show_news_filter.html.erb (14.3ms)
+Rendered paper/_show_fun_buttons.html.erb (41.3ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.1ms)
+Rendered paper/index.html.erb within layouts/application (208.3ms)
+Completed 200 OK in 1276ms (Views: 237.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:09:12 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 12:09:32 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[35mNews Load (0.9ms)[0m  SELECT "news".* FROM "news"
+  [1m[36mTag Load (1.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1
+Rendered user/_fb_logout_link.html.erb (0.8ms)
+Rendered layouts/_show_page_head.html.erb (4.8ms)
+Rendered paper/_show_paper_title.html.erb (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+Rendered paper/_show_paper_content.html.erb (31.6ms)
+Rendered news/_form.html.erb (5.2ms)
+Rendered paper/_show_news_filter.html.erb (16.2ms)
+Rendered paper/_show_fun_buttons.html.erb (26.8ms)
+Rendered paper/_show_ad_list.html.erb (0.4ms)
+Rendered layouts/_show_page_tail.html.erb (3.0ms)
+Rendered paper/index.html.erb within layouts/application (226.6ms)
+Completed 200 OK in 1050ms (Views: 233.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:09:33 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 12:10:47 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (0.9ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1[0m
+Rendered user/_fb_logout_link.html.erb (0.8ms)
+Rendered layouts/_show_page_head.html.erb (4.8ms)
+Rendered paper/_show_paper_title.html.erb (0.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.5ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 2)[0m
+Rendered paper/_show_paper_content.html.erb (34.2ms)
+Rendered news/_form.html.erb (5.0ms)
+Rendered paper/_show_news_filter.html.erb (13.4ms)
+Rendered paper/_show_fun_buttons.html.erb (23.7ms)
+Rendered paper/_show_ad_list.html.erb (0.4ms)
+Rendered layouts/_show_page_tail.html.erb (2.9ms)
+Rendered paper/index.html.erb within layouts/application (85.3ms)
+Completed 200 OK in 1185ms (Views: 92.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:10:49 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 12:13:29 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[35mNews Load (0.9ms)[0m  SELECT "news".* FROM "news"
+  [1m[36mTag Load (1.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1
+Rendered user/_fb_logout_link.html.erb (0.8ms)
+Rendered layouts/_show_page_head.html.erb (5.3ms)
+Rendered paper/_show_paper_title.html.erb (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.4ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+Rendered paper/_show_paper_content.html.erb (39.8ms)
+Rendered news/_form.html.erb (5.1ms)
+Rendered paper/_show_news_filter.html.erb (166.9ms)
+Rendered paper/_show_fun_buttons.html.erb (177.1ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.3ms)
+Rendered paper/index.html.erb within layouts/application (245.3ms)
+Completed 200 OK in 1130ms (Views: 252.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:13:31 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.3ms)
+
+
+Started GET "/news/report.json?url=http://tw.news.yahoo.com/article/url/d/a/110608/2/2sxh1.html" for 127.0.0.1 at Wed Jun 08 12:13:38 +0800 2011
+  Processing by NewsController#report as JSON
+  Parameters: {"url"=>"http://tw.news.yahoo.com/article/url/d/a/110608/2/2sxh1.html"}
+'zh'
+84
+* Locale set to 'zh_tw'
+Completed 200 OK in 1604ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/news" for 127.0.0.1 at Wed Jun 08 12:13:40 +0800 2011
+  Processing by NewsController#create as HTML
+  Parameters: {"commit"=>"新增News", "image_url"=>"http://l.yimg.com/f/i/tw/news/p_logo/newslogo_140x50.png", "authenticity_token"=>"jqFhOnuo1Dbti7kRhoT1nqpZJWG8BmIeoF6RuN3Imto=", "utf8"=>"✓", "news"=>{"title"=>"退役上將登陸：國軍共軍 都是中國軍-Yahoo!奇摩新聞", "url"=>"http://tw.news.yahoo.com/article/url/d/a/110608/2/2sxh1.html", "content"=>"中共解放軍軍事科學院少將羅援五日晚間在一場兩岸退役將領的聯誼活動上，引述一名台灣退役高級將領的話說：「今後不要再分什麼國軍、共軍，我們都是中國軍隊。」北京黃埔軍校同學會...."}}
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "images" ("created_at", "url", "updated_at", "news_id", "name") VALUES ('2011-06-08 04:13:41.186072', 'http://l.yimg.com/f/i/tw/news/p_logo/newslogo_140x50.png', '2011-06-08 04:13:41.186072', NULL, NULL)[0m
+  [1m[35mAREL (0.8ms)[0m  INSERT INTO "news" ("title", "user_id", "content", "area", "news_id", "created_at", "rank", "url", "hard_copy", "area_id", "updated_at") VALUES ('退役上將登陸：國軍共軍 都是中國軍-Yahoo!奇摩新聞', 2, '中共解放軍軍事科學院少將羅援五日晚間在一場兩岸退役將領的聯誼活動上，引述一名台灣退役高級將領的話說：「今後不要再分什麼國軍、共軍，我們都是中國軍隊。」北京黃埔軍校同學會....', NULL, NULL, '2011-06-08 04:13:41.196275', NULL, 'http://tw.news.yahoo.com/article/url/d/a/110608/2/2sxh1.html', NULL, NULL, '2011-06-08 04:13:41.196275')
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE "images" SET "updated_at" = '2011-06-08 04:13:41.200940', "news_id" = 3 WHERE ("images"."id" = 3)[0m
+Redirected to http://localhost:3000/paper
+Completed 302 Found in 102ms
+
+
+Started GET "/paper" for 127.0.0.1 at Wed Jun 08 12:13:41 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[35mNews Load (1.2ms)[0m  SELECT "news".* FROM "news"
+  [1m[36mTag Load (2.9ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1
+Rendered user/_fb_logout_link.html.erb (0.9ms)
+Rendered layouts/_show_page_head.html.erb (6.7ms)
+Rendered paper/_show_paper_title.html.erb (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.4ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 3)
+Rendered paper/_show_paper_content.html.erb (39.2ms)
+Rendered news/_form.html.erb (5.0ms)
+Rendered paper/_show_news_filter.html.erb (14.7ms)
+Rendered paper/_show_fun_buttons.html.erb (188.4ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.5ms)
+Rendered paper/index.html.erb within layouts/application (260.0ms)
+Completed 200 OK in 1214ms (Views: 268.4ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:13:43 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/paper" for 127.0.0.1 at Wed Jun 08 12:15:13 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (0.9ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.2ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1[0m
+Rendered user/_fb_logout_link.html.erb (0.8ms)
+Rendered layouts/_show_page_head.html.erb (5.1ms)
+Rendered paper/_show_paper_title.html.erb (2.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 2)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 3)[0m
+Rendered paper/_show_paper_content.html.erb (38.2ms)
+Rendered news/_form.html.erb (5.3ms)
+Rendered paper/_show_news_filter.html.erb (13.8ms)
+Rendered paper/_show_fun_buttons.html.erb (24.6ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (2.9ms)
+Rendered paper/index.html.erb within layouts/application (95.0ms)
+Completed 200 OK in 1139ms (Views: 103.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:15:15 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 12:22:42 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+116
+* Locale set to 'zh_tw'
+  [1m[35mNews Load (1.0ms)[0m  SELECT "news".* FROM "news"
+  [1m[36mTag Load (1.3ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1
+Rendered user/_fb_logout_link.html.erb (0.8ms)
+Rendered layouts/_show_page_head.html.erb (5.1ms)
+Rendered paper/_show_paper_title.html.erb (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 3)
+Rendered paper/_show_paper_content.html.erb (37.4ms)
+Rendered news/_form.html.erb (4.9ms)
+Rendered paper/_show_news_filter.html.erb (13.4ms)
+Rendered paper/_show_fun_buttons.html.erb (23.2ms)
+Rendered paper/_show_ad_list.html.erb (0.4ms)
+Rendered layouts/_show_page_tail.html.erb (3.4ms)
+Rendered paper/index.html.erb within layouts/application (89.6ms)
+Completed 200 OK in 1168ms (Views: 96.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 12:22:45 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 14:04:48 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (20.8ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.9ms)[0m  SELECT "tags".* FROM "tags"
+Rendered user/_fb_logging_link.html.erb (2.1ms)
+Rendered layouts/_show_page_head.html.erb (6.7ms)
+Rendered paper/_show_paper_title.html.erb (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 3)
+Rendered paper/_show_paper_content.html.erb (87.4ms)
+Rendered paper/_show_news_filter.html.erb (13.6ms)
+Rendered paper/_show_fun_buttons.html.erb (17.0ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.3ms)
+Rendered paper/index.html.erb within layouts/application (310.8ms)
+Completed 200 OK in 1550ms (Views: 319.0ms | ActiveRecord: 24.0ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 14:04:50 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 14:04:53 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (0.9ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.2ms)[0m  SELECT "tags".* FROM "tags"
+Rendered user/_fb_logging_link.html.erb (1.9ms)
+Rendered layouts/_show_page_head.html.erb (5.8ms)
+Rendered paper/_show_paper_title.html.erb (0.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.4ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 2)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mImage Load (0.3ms)[0m  SELECT "images".* FROM "images" WHERE ("images".news_id = 3)
+Rendered paper/_show_paper_content.html.erb (246.3ms)
+Rendered paper/_show_news_filter.html.erb (13.5ms)
+Rendered paper/_show_fun_buttons.html.erb (16.7ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.0ms)
+Rendered paper/index.html.erb within layouts/application (291.3ms)
+Completed 200 OK in 340ms (Views: 298.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 14:04:55 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Jun 08 14:05:01 +0800 2011
+  Processing by PaperController#index as HTML
+'zh'
+84
+* Locale set to 'zh_tw'
+  [1m[36mNews Load (1.1ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  [1m[35mTag Load (1.3ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."host_id" = 670999089) LIMIT 1[0m
+Rendered user/_fb_logout_link.html.erb (1.2ms)
+Rendered layouts/_show_page_head.html.erb (5.8ms)
+Rendered paper/_show_paper_title.html.erb (0.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 2)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mImage Load (0.3ms)[0m  [1mSELECT "images".* FROM "images" WHERE ("images".news_id = 3)[0m
+Rendered paper/_show_paper_content.html.erb (39.0ms)
+Rendered news/_form.html.erb (5.1ms)
+Rendered paper/_show_news_filter.html.erb (13.6ms)
+Rendered paper/_show_fun_buttons.html.erb (23.9ms)
+Rendered paper/_show_ad_list.html.erb (0.5ms)
+Rendered layouts/_show_page_tail.html.erb (3.1ms)
+Rendered paper/index.html.erb within layouts/application (91.6ms)
+Completed 200 OK in 1109ms (Views: 98.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/stylesheets/images/img06.gif" for 127.0.0.1 at Wed Jun 08 14:05:03 +0800 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/images/img06.gif"):
+  
+
+Rendered /Users/apple/.gem/ruby/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (5.9ms)
