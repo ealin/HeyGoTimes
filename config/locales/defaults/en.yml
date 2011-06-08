@@ -31,6 +31,12 @@ en:
   
   reset_the_filter: "Clear the setting"
 
+  input_news_url_hint: "You can input news URL here:"
+  input_news_hint: "Or input news:"
+  news_title_field: "Title"
+  news_content_field: "Content"
+  news_image_url_field: "Image URL"
+
   filter_by_tag: "Filter by news tag:"
   filter_by_friend: "Filter by friends:"
   filter_by_date: "filter by date:"

@@ -73,7 +73,7 @@ class PaperController < NewsController
         end
 
         # get tag filter (from user.tags)
-        if(user.tags != nil)
+        if(user.tags != [])
           session[:filter_tags] =""
           (user.tags).each do |tag|
             session[:filter_tags] += (tag.name + "/")

@@ -103,6 +103,14 @@ class NewsController < ApplicationController
     @image.news = @news
     @image.save
 
+    @tags = ""
+    params.each_pair do |key, value|
+      if (value == 'on')
+        @tag = Tag.find_by_name(key)
+        @news.tags << @tag
+      end
+    end
+
     respond_to do |format|
       if @news.save
         # format.html { redirect_to(@news, :notice => 'News was successfully created.') }
