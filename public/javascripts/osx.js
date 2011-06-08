@@ -63,13 +63,13 @@ jQuery(function ($) {
 							+ 20; // padding
 						d.container.animate(
 							{height: h}, 
-							200,
+							100,
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data", self.container).show();
 							}
 						);
-					}, 300);
+					}, 100);
 				});
 			})
 		},

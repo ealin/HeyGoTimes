@@ -67,6 +67,7 @@ a img {
 /* Logo */
 #logo {
 	float: left;
+    width: 500px;
 }
 
 /* Link */
@@ -120,6 +121,10 @@ a img {
 
 #menu .active a {
 	background: url(images/img02.gif) no-repeat 100% -40px;
+}
+
+#news {
+  margin: 10px 10px 10px 10px;
 }
 
 .post {

@@ -10,7 +10,7 @@
     <div id="masthead">
         <div id="logo">
           <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {controller =>'paper'}, {:title => 'to home page'} ) %>
-          <span><%= @newspaper_title %></span>
+          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
         </div>
 
         <div id="links" >
@@ -23,10 +23,8 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <li id="menu-item-lv1" class="menu-item"><a title="Level1" href="<%= paper_index_path+'/taiwan' %>">台灣</a></li>
-        <li id="menu-item-lv2" class="menu-item"><a title="Level2" href="<%= paper_index_path+'/north' %>">北區</a></li>
-        <li id="menu-item-lv3" class="menu-item"><a title="Level3" href="<%= paper_index_path+'/taipei' %>">台北市</a></li>
-        <li id="menu-item-lv4" class="menu-item current-menu-item"><a title="Level4" href="<%= paper_index_path+'/sonshan' %>">松山區</a></li>
+        <li id="menu-item-rank" class="menu-item"><a title="Rank" href="<%= paper_index_path %>"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item current-menu-item"><a title="Latest" href="<%= paper_index_path %>"><%=t(:latest_news)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->
@@ -34,9 +32,11 @@
   <div id="main">
     <div id="content">
       <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
+      <!--
       <div id="title">
-        <%= render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
+        <%# = render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
       </div>
+      -->
       <div id="paperContent">
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
