@@ -80,11 +80,11 @@ class PaperController < NewsController
           end
 
           # get date filter (from user.date_filter)
-          session[:filter_date] = user.date_filter.date
+          session[:filter_date] = (user.date_filter.date).to_date
           session[:filter_date_option] = user.date_filter.option
 
           # get friend filter (from user.friend_filter)
-          session[:filter_friend] = user.friend_filter.type
+          session[:filter_friend] = user.friend_filter.friend_filter_type
 
         else     # (user.tags == nil)
           set_tag_filter_by_locale
@@ -353,7 +353,8 @@ class PaperController < NewsController
 
 
       #setup user.friend_filters
-      temp_friend_filter = FriendFilter.new(:type => session[:filter_friend])
+      temp_friend_filter = FriendFilter.new()
+      temp_friend_filter.friend_filter_type = session[:filter_friend]
       temp_friend_filter.save
       user.friend_filter = temp_friend_filter
 

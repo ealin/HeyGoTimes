@@ -8,7 +8,7 @@ class CreateFriendFilters < ActiveRecord::Migration
 
       # "mine",  "friend",  "all"
       #
-      t.string :type
+      t.string :friend_filter_type
 
       #t.integer :following_id
 

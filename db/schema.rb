@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
 
   create_table "friend_filters", :force => true do |t|
     t.integer "user_id"
-    t.string  "type"
+    t.string  "friend_filter_type"
   end
 
   create_table "images", :force => true do |t|

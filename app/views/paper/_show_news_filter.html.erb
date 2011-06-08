@@ -22,10 +22,11 @@
      //
      $('#save_as_default').unbind('click').click(function()
      {
+         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+
          // send filter-setting to server, then server would save them in session
          var data = collect_all_selection() ;
          data += "&save=yes" ;
-
 
          // send to server
          $.ajax(
@@ -41,6 +42,7 @@
               }
          });
 
+         return false ;
      }  );
        //
        // end of "#save_as_default".click callback function
@@ -109,12 +111,11 @@
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - load_my_filter
+
      //
      $('#load_my_filter').unbind('click').click(function()
      {
 
-         alert("YYYy") ;
-         /*
          // ask session data from server
          $.getJSON("paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
          {
@@ -122,7 +123,7 @@
              set_each_filter(json) ;
 
          }  );
-         */
+
          return false ;
 
      }  );
@@ -146,6 +147,24 @@
      }  );
        //
        // end of "#save_as_default".click callback function
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  Function:  get_today_as_string
+     //
+     function get_today_as_string()
+     {
+         var data = "";
+         var M = new Date()
+         M.setDate(M.getDate())
+
+         var yy=M.getFullYear()
+         var mm=M.getMonth()+1
+         var dd=M.getDate()
+
+         data = (yy+"-"+mm+"-"+dd) ;
+         return data ;
+
+     }
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -209,14 +228,7 @@
          }
          else if($('#today')[0].checked == true)
          {
-             var M = new Date()
-             M.setDate(M.getDate())
-
-             var yy=M.getFullYear()
-             var mm=M.getMonth()+1
-             var dd=M.getDate()
-
-             data += ("&date_filter=" + yy+"-"+mm+"-"+dd) ;
+             data += ("&date_filter=" + get_today_as_string() ) ;
              date_data += "today" ;
          }
          else if($('#filter_by_this_date')[0].checked == true)
@@ -252,10 +264,40 @@
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  Function:  check_date_selected_or_not
+     //     - 當"選擇日期" RADIO BOX被CHECKED時, 應檢查是否已經輸入了合法日期
+     //     - 若使用者沒輸入, 則將日期設定為今日
+     //
+     function check_date_selected_or_not()
+     {
+         if($('#filter_by_this_date')[0].checked == true)
+         {
+             for(i=0;i<($('label').length);i++)
+             {
+                  if( $('label')[i].id != "date_label")
+                      continue ;
+
+                  if($('label')[i].lastChild.wholeText.charAt(0) != "2".charAt(0) )
+                  {
+                    $('label')[i].lastChild.textContent = get_today_as_string() ;
+                    return false ;
+                  }
+
+                  break ;
+             }
+         }
+
+         return true ;
+     }
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - save_filter
      //
      $('#save_filter').unbind('click').click(function()
      {
+         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+
          // send filter-setting to server, then server would save them in session
          var data = collect_all_selection() ;
          data += "&save=no" ;
@@ -272,6 +314,8 @@
                   window.location.replace("/");
              }
          });
+
+         return false ;
 
      }  );
        //
