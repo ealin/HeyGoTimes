@@ -1,9 +1,11 @@
-<head>
+
+
   <!-- Page styles -->
   <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
   <%= javascript_include_tag 'jscal2/jscal2' %>
-  <%= javascript_include_tag 'jscal2/lang/cn.js' %>
+  <%= javascript_include_tag 'jscal2/lang/cn' %>
+  <%#= javascript_include_tag 'jquery_cookie' %>
 
 
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
@@ -16,38 +18,165 @@
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_previous_filter
+     //  btn - save_as_default
      //
-     $('#load_previous_filter').unbind('click').click(function(){
+     $('#save_as_default').unbind('click').click(function()
+     {
+         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
 
-         // ask session data from server
-          $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+         // send filter-setting to server, then server would save them in session
+         var data = collect_all_selection() ;
+         data += "&save=yes" ;
+
+         // send to server
+         $.ajax(
          {
-             console.log(json.filter_tags) ;
-
-         }  );
-
-         alert("mmm") ;
+             type: "GET",
+             url:"paper/set_filter_setting",
+             data: data,
+             success: function(html)
+             {
+                 alert(html) ;
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/");
+              }
+         });
 
          return false ;
-
-
      }  );
        //
        // end of "#save_as_default".click callback function
 
 
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  function - set_each_filter
+     //
+     function set_each_filter(json)
+     {
+             // SET ALL TAGS filter
+             //
+             for(i=0;i<($('input').length);i++)
+             {
+                 if( $('input')[i].name != "each_tag")
+                 {
+                     continue ;
+                 }
+
+                 if((json.filter_tags).match($('input')[i].id) )
+                     $('input')[i].checked = true ;
+                 else
+                     $('input')[i].checked = false ;
+             }
+
+             // set friend filter
+             if((json.filter_friend).match("all"))
+             {
+                $('#my_news_only')[0].checked = false ;
+                $('#my_friends_news_only')[0].checked = false ;
+             }
+             else
+             {
+                 if((json.filter_friend).match("mine"))
+                     $('#my_news_only')[0].checked = true ;
+                 else
+                     $('#my_news_only')[0].checked = false ;
+
+                 if((json.filter_friend).match("friend"))
+                     $('#my_friends_news_only')[0].checked = true ;
+                 else
+                     $('#my_friends_news_only')[0].checked = false ;
+              }
+
+             // set date filter
+             if(json.filter_date_option.match("no_limited"))
+                $('#no_filter')[0].checked = true ;
+             else if(json.filter_date_option.match("today"))
+                 $('#today')[0].checked = true ;
+             else if(json.filter_date_option.match("yesterday"))
+                 $('#yesterday')[0].checked = true ;
+             else
+             {
+                 $('#filter_by_this_date')[0].checked = true ;
+                 for(i=0;i<($('label').length);i++)
+                 {
+                      if( $('label')[i].id != "date_label")
+                          continue ;
+
+                      $('label')[i].lastChild.textContent =json.filter_date ;
+                      break ;
+                 }
+             }
+
+     }
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_my_filter
+
+     //
+     $('#load_my_filter').unbind('click').click(function()
+     {
+
+         // ask session data from server
+         $.getJSON("paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
+         {
+             console.log(json) ;
+             set_each_filter(json) ;
+
+         }  );
+
+         return false ;
+
+     }  );
+       //
+       // end of "#load_my_filter".click callback function
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - save_filter
+     //  btn - load_current_filter
      //
-     $('#save_filter').unbind('click').click(function()
-     {
-         // send filter-setting to server, then server would save them in session
+     $('#load_current_filter').unbind('click').click(function(){
 
+         // ask session data from server
+         $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+         {
+             set_each_filter(json) ;
+
+         }  );
+
+         return false ;
+
+     }  );
+       //
+       // end of "#save_as_default".click callback function
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  Function:  get_today_as_string
+     //
+     function get_today_as_string()
+     {
+         var data = "";
+         var M = new Date()
+         M.setDate(M.getDate())
+
+         var yy=M.getFullYear()
+         var mm=M.getMonth()+1
+         var dd=M.getDate()
+
+         data = (yy+"-"+mm+"-"+dd) ;
+         return data ;
+
+     }
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  function:  collect_all_selection
+     //    - collect all selection and save them in a string (for caller using ajax call)
+     //
+     function collect_all_selection()
+     {
          // collection all filter setting, and make it as format like:  "aa=123&bb=test"
          var data = "tag_filter=" ;
          var selected_tag_counter = 0 ;
+         var date_data = "&date_filter_option=" ;
 
          // get selected tag-filter
          for(i=0;i<($('input').length);i++)
@@ -94,19 +223,13 @@
              var theyesterday=mydate.getDate()
 
              data += ("&date_filter=" + theyear+"-"+themonth+"-"+theyesterday) ;
+             date_data += "yesterday" ;
 
          }
          else if($('#today')[0].checked == true)
          {
-             var M = new Date()
-             M.setDate(M.getDate())
-
-             var yy=M.getFullYear()
-             var mm=M.getMonth()+1
-             var dd=M.getDate()
-
-             data += ("&date_filter=" + yy+"-"+mm+"-"+dd) ;
-
+             data += ("&date_filter=" + get_today_as_string() ) ;
+             date_data += "today" ;
          }
          else if($('#filter_by_this_date')[0].checked == true)
          {
@@ -125,56 +248,78 @@
 
                   break ;
              }
+             date_data += "selected_date" ;
 
          }
          else   // no selection   or  ($('#no_filter')[0].checked == true)
          {
               data += "&date_filter=1971-11-12" ;
+              date_data += "no_limited" ;
+
          }
+
+         data += date_data ;
+         return data ;
+     }
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  Function:  check_date_selected_or_not
+     //     - 當"選擇日期" RADIO BOX被CHECKED時, 應檢查是否已經輸入了合法日期
+     //     - 若使用者沒輸入, 則將日期設定為今日
+     //
+     function check_date_selected_or_not()
+     {
+         if($('#filter_by_this_date')[0].checked == true)
+         {
+             for(i=0;i<($('label').length);i++)
+             {
+                  if( $('label')[i].id != "date_label")
+                      continue ;
+
+                  if($('label')[i].lastChild.wholeText.charAt(0) != "2".charAt(0) )
+                  {
+                    $('label')[i].lastChild.textContent = get_today_as_string() ;
+                    return false ;
+                  }
+
+                  break ;
+             }
+         }
+
+         return true ;
+     }
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_filter
+     //
+     $('#save_filter').unbind('click').click(function()
+     {
+         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+
+         // send filter-setting to server, then server would save them in session
+         var data = collect_all_selection() ;
+         data += "&save=no" ;
 
          // send to server
          $.ajax(
          {
              type: "GET",
-             url:"paper/set_filter_setting",
+             url:"/paper/set_filter_setting",
              data: data,
              success: function(html)
              {
-                 console.log(html);
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/");
              }
          });
 
-         //
+         return false ;
 
      }  );
        //
        // end of "#save_filter".click callback function
-
-
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_my_filter
-     //
-     $('#load_my_filter').unbind('click').click(function()
-     {
-       alert("YYY") ;
-
-     }  );
-       //
-       // end of "#load_my_filter".click callback function
-
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - save_as_default
-     //
-     $('#save_as_default').unbind('click').click(function()
-     {
-       alert("ZZZ") ;
-
-     }  );
-       //
-       // end of "#save_as_default".click callback function
-
 
 
 
@@ -221,14 +366,18 @@
  </script>
 
 
-</head>
-
 
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
-  <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
+  <button id = "load_current_filter"> <%= t(:load_current_filter)%> </button>
+
+  <% if session[:logged_in] == true %>
+      <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
+  <% else %>
+      <button id = "load_my_filter" disabled="true"> <%= t(:load_my_filter)%> </button>
+  <% end %>
+
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>
@@ -322,7 +471,11 @@ label   {
 <!-- 3 buttons
 -->
 <div align = "right">
-  <button id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
+  <% if session[:logged_in] == true %>
+      <button class="simplemodal-close" id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
+  <% else %>
+      <button class="simplemodal-close" id="save_as_default" disabled="true"> <%= t(:filter_save_as_default)%> </button>
+  <% end %>
   <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
   <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
 </div>

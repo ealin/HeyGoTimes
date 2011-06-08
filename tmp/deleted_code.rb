@@ -1,6 +1,158 @@
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3897509087802836";
+/* heygotimes_ad */
+google_ad_slot = "2636855508";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
 
-只顯示以下日期的新聞
-不限制
+
+
+
+  <% if session[:login] == true %>
+      <button id = "load_previous_filter"> <%= t(:load_previous_filter)%> </button>
+  <% else %>
+      <button id = "load_previous_filter" disabled="true"> <%= t(:load_previous_filter)%> </button>
+  <% end %>
+
+
+
+
+     # Ealin: this filed is only for controller, it's not meaningful when the record saved in DB.
+      #    (it would waste a little DB space, it's ok because there's not so many tags in our application.')
+      #
+      t.integer :checked
+
+
+
+    # get selected tags from session(or cookie)
+
+    @tags.each do |tag|
+          if(session[:filter_tags] == nil)
+            tag.checked = false
+          else
+            if (session[:filter_tags]).sub!(tag.name)
+              tag.checked = true
+            else
+              tag.checked = false
+            end
+          end
+        end
+
+
+
+  <input type="submit" id="save_filter" value="<%= t(:filter_ok) %>">  </input>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~ask all tags from server 2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#<div align = "left">
+#  <h3><%= t(:filter_by_tag)%> </h3>
+#  <button id="show_tags"><%= t(:show_tags) %></button>
+#</div>#
+
+#<div class = "setup_field" align = "center" >        <%#define my own ccs class!!! %>
+
+#</div>
+
+#<hr>
+
+
+<script type="text/javascript">
+
+ //  $(document).ready(function () {
+
+  // get all tags from server.
+
+//      $('#show_tags').unbind('click').click(function() {
+
+  function get_all_tags()
+  {
+      // make sure this function would be executed only once!
+      if( typeof get_all_tags.counter == 'undefined' )
+      {
+        get_all_tags.counter = 0;
+      }
+
+      if(get_all_tags.counter == 0)
+        get_all_tags.counter = 1 ;
+      else
+        return ;
+
+       $.getJSON("/tag/get_all_tags.json",'cmd=get_all_tag', function(json)
+       {
+
+             var append_html =  '<input type="checkbox"> ' ;
+             append_html +=  json[0].tag.name ;
+             append_html +=  '</input>' ;
+
+             append_html +=  '<br><input type="checkbox"> ' ;
+             append_html +=  json[1].tag.name ;
+             append_html +=  '</input>' ;
+
+            //$('#show_tags').
+            $('.setup_field').append(append_html) ;
+
+            //
+            //$('#date_label')[0].lastChild.data = json[0].tag.name ;
+
+            // disable the button
+            $('#show_tags').attr("disabled", true);
+
+            return false ;   // to prevent click event would be issued twice!
+       } );
+
+  }
+
+  get_all_tags() ;
+
+//      }  );
+
+//  }  );
+ </script>
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~ask all tags from server 1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+//  $(document).ready(function () {
+
+  // get all tags from server.
+
+//      $('#show_tags').unbind('click').click(function() {
+         $.getJSON("/tag/get_all_tags.json",'cmd=get_all_tag', function(json)
+         {
+
+             var append_html =  '<input type="checkbox"> ' ;
+             append_html +=  json[0].tag.name ;
+             append_html +=  '</input>' ;
+
+             append_html +=  '<br><input type="checkbox"> ' ;
+             append_html +=  json[1].tag.name ;
+             append_html +=  '</input>' ;
+
+            //$('#show_tags').
+            $('.setup_field').append(append_html) ;
+
+            //
+            //$('#date_label')[0].lastChild.data = json[0].tag.name ;
+
+            // disable the button
+            $('#show_tags').attr("disabled", true);
+
+            return false ;   // to prevent click event would be issued twice!
+         } );
+
+
+//      }  );
+
+//  }  );
+ </script>
+
 ~~~~~~~~~~~~~~~~~~~~~~~網頁上用點選方式選擇日期~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <script language="javascript">

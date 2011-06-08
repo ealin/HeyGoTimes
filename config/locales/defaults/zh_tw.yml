@@ -25,7 +25,7 @@ zh_tw:
   #----------------------------------------
   news_filter_head: "過濾新聞-打造您專屬的個人新聞！"
   load_my_filter: "載入我的設定"
-  load_previous_filter: "載入前一個設定"  
+  load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
   
   filter_by_tag: "選擇新聞分類："
@@ -39,7 +39,8 @@ zh_tw:
   filter_cancel: "取消"
   filter_ok: "確定"
   show_tags: "顯示所有新聞分類"
-  
+  filter_setting_saved: "您的設定已儲存!"
+  user_not_exist: "使用者不存在！"
   
   yesterday: "昨天"
   today: "今天"

@@ -67,6 +67,7 @@ HeyGoTimes::Application.routes.draw do
 
     get 'set_filter_setting', :on => :collection
     get 'get_filter_session', :on => :collection
+    get 'load_filter_setting', :on => :collection
 
  end
 
