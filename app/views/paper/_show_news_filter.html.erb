@@ -378,21 +378,20 @@
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <!-- Ealin: the button"載入目前的設定" is unused any more.
-  <button id = "load_current_filter"> <%= t(:load_current_filter)%> </button>
+  <%# Ealin: the button"載入目前的設定" is unused any more. %>
+  <!--
+  <button id = "load_current_filter"> <%#= t(:load_current_filter)%> </button>
   -->
 
   <% if session[:logged_in] == true %>
       <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
   <% else %>
-      <#button id = "load_my_filter" disabled="true"> <%= t(:load_my_filter)%> </button>
+      <button id = "load_my_filter" disabled="true"> <%= t(:load_my_filter)%> </button>
   <% end %>
 
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>
-
-
 
 
 
