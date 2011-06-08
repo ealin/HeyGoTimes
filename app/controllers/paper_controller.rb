@@ -29,10 +29,14 @@ class PaperController < NewsController
   end
 
 
-
-
   def get_news
-    @news = News.all
+    @user_tags = session[:filter_tags].split("/")
+    if (@user_tags[0] == 'All')
+      @news = News.all
+    else
+      @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
+    end
+
     return @news
   end
 

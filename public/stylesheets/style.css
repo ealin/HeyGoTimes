@@ -122,6 +122,10 @@ a img {
 	background: url(images/img02.gif) no-repeat 100% -40px;
 }
 
+#news {
+  margin: 10px 10px 10px 10px;
+}
+
 .post {
 	margin: 0px 0px 30px 0px;
 }

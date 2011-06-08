@@ -20,6 +20,9 @@ zh_tw:
   ok: "完成"
   cancel: "取消"
 
+  popular_news: "熱門新聞"
+  latest_news: "最新新聞"
+
   #----------------------------------------
   # News Filter
   #----------------------------------------
@@ -27,6 +30,12 @@ zh_tw:
   load_my_filter: "載入我的設定"
   load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
+
+  input_news_url_hint: "您可以在此輸入新聞網址："
+  input_news_hint: "或者輸入新聞內容："
+  news_title_field: "標題"
+  news_content_field: "內容"
+  news_image_url_field: "圖片網址"
   
   filter_by_tag: "選擇新聞分類："
   filter_by_friend: "好友選項："
