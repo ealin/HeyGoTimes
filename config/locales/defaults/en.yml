@@ -42,6 +42,7 @@ en:
   news_image_url_field: "Image URL"
 
   filter_by_tag: "Filter by news tag:"
+  filter_by_area: "Filter by area："
   filter_by_friend: "Filter by friends:"
   filter_by_date: "filter by date:"
 
@@ -65,19 +66,6 @@ en:
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
-  TW: "Taiwan"
-  CN: "China"
-  US: "USA"
-  JP: "Japan"
-  
-  
-  #--------------------------------------------------------------------------
-  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
-  #--------------------------------------------------------------------------
-  All: "All"
-  Top: "Top"
-  World: "World"
-  
   Taiwan: "Taiwan"
   TW_CN: "Taiwan & China"
   North_TW: "North Taiwan"
@@ -90,6 +78,15 @@ en:
   
   USA: "USA"
   Japan: "Japan"
+  
+  
+  #--------------------------------------------------------------------------
+  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  All: "All"
+  #Top: "Top"
+  World: "World"
+  
   Business: "Business"
   Stock: "Stock"
   

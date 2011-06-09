@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529165224) do
+ActiveRecord::Schema.define(:version => 20110609083911) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -20,9 +20,8 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
   end
 
   create_table "areas", :force => true do |t|
-    t.integer  "news_id"
     t.string   "name"
-    t.string   "primary_tag"
+    t.string   "parent_area"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,6 +67,11 @@ ActiveRecord::Schema.define(:version => 20110529165224) do
     t.string   "hard_copy"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "news_areas", :force => true do |t|
+    t.string  "news_id"
+    t.integer "area_id"
   end
 
   create_table "news_tags", :force => true do |t|

@@ -18,6 +18,17 @@
      //
      function set_each_filter(json)
      {
+
+             // set all areas filter
+             //
+             for(i=0;i<($('option').length);i++)
+             {
+                if((json.filter_area).match($('option')[i].id) )
+                    $('option')[i].selected = true
+                else
+                    $('option')[i].selected = false
+             }
+
              // SET ALL TAGS filter
              //
              for(i=0;i<($('input').length);i++)
@@ -182,6 +193,16 @@
          var data = "tag_filter=" ;
          var selected_tag_counter = 0 ;
          var date_data = "&date_filter_option=" ;
+         var area_data = "&area_filter="
+
+         // get selected area-filter
+         for(i=0;i<($('option').length);i++)
+         {
+            if($('option')[i].selected == true)
+            {
+                area_data += ($('option')[i].id + "/")
+            }
+         }
 
          // get selected tag-filter
          for(i=0;i<($('input').length);i++)
@@ -264,6 +285,7 @@
          }
 
          data += date_data ;
+         data += area_data ;
          return data ;
      }
      //
@@ -337,6 +359,11 @@
      //
      $('#reset_all').unbind('click').click(function()
      {
+        //console.log($('option'))
+        for(i=0;i<($('option').length);i++)
+            $('option')[i].selected = false ;
+
+
         // un-ckeck all checkbox and radio box
         for(i=0;i<($('input').length);i++)
         {
@@ -375,6 +402,7 @@
  </script>
 
 
+
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
@@ -393,6 +421,30 @@
 </div>
 <hr>
 
+
+
+
+<!-- (ask server to) get and show all Areas
+-->
+<div align = "left">
+  <h3><%= t(:filter_by_area)%> </h3>
+</div>
+
+<div class = "all_areas" align = "left" >
+  <select multiple="yes" size="3">
+
+        <% @areas.each do |area| %>
+       <% if session[:filter_area].include?(area.name) %>
+          <option id="<%= area.name %>" selected="yes"><%= t(area.name.to_sym)  %></option>
+       <% else %>
+          <option id="<%= area.name %>" ><%= t(area.name.to_sym)  %></option>
+       <% end %>
+    <% end %>
+
+  </select>
+</div>
+
+<hr>
 
 
 <!-- (ask server to) get and show all News-Tags
@@ -499,4 +551,3 @@ label   {
   <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
   <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
 </div>
-<hr>
