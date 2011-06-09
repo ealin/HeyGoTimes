@@ -99,7 +99,7 @@ class NewsController < ApplicationController
     @user = User.find(session[:id])
     @news.user = @user
 
-    @image = Image.new(:url => params[:image_url])
+    @image = Image.create(:url => params[:image_url])
     @image.news = @news
     @image.save
 

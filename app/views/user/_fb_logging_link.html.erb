@@ -1,7 +1,7 @@
 
 
 <!--
-current_facebook_user : 可以用的欄位 (defined in mogli)
+current_facebook_user : ?�以?��?�?? (defined in mogli)
   (https://github.com/mmangino/mogli/blob/master/lib/mogli/user.rb)
 
 define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
@@ -15,8 +15,8 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 
   <% if current_facebook_user != nil && session[:logged_in] != false%>
 
-    <% # fetch可能失敗(user主動自FACEBOOK中LOGOUT) ==> 必須處理 Mogli::Client::OAuthException %>
-    <% # 這個動作在 check_logged_in() /  application_controller.rb 執行 %>
+    <% # fetch?��?失�?(user主�??�FACEBOOK中LOGOUT) ==> �????? Mogli::Client::OAuthException %>
+    <% # ????????check_logged_in() /  application_controller.rb ?��? %>
     <% #current_facebook_user.fetch %>
     <br>
     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name} (#{current_facebook_user.email})" %>
@@ -30,7 +30,7 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
     # to access the user's facebook email and birthday
     %>
 
-    <%= fb_login_and_redirect(site_url(),:perms => 'email,user_birthday') %>
+    <%= fb_login_and_redirect(root_url, :perms => 'email,user_birthday') %>
 
     <% session[:logged_in] = false %>
   <% end %>

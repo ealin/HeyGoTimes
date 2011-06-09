@@ -10,7 +10,7 @@
     <div id="masthead">
         <div id="logo">
           <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {controller =>'paper'}, {:title => 'to home page'} ) %>
-          <span><%= @newspaper_title %></span>
+          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
         </div>
 
         <div id="links" >

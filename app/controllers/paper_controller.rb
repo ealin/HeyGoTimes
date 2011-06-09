@@ -9,7 +9,6 @@ class PaperController < NewsController
     # for checking login status in View, we must define an obj-attribute @logged_flag and
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
-    get_paper_title_info()
 
 
 =begin
@@ -26,13 +25,33 @@ class PaperController < NewsController
 =end
    init_filter_setting()
 
+   # this function would use data in session, so it must be called after init_filter_setting()
+   get_paper_title_info()
+
   end
 
 
   def get_news
     @user_tags = session[:filter_tags].split("/")
-
+    if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku
+      if (@user_tags[0] == 'All')
+        @news = News.all
+      else
+        if (News.count > 0)
+          # @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
+          #@sql = 'SELECT "news".* FROM "news" INNER JOIN "news_tags" ON "news"."id" = "news_tags"."news_id" INNER JOIN "tags" ON "tags"."id" = "news_tags"."tag_id" WHERE ("tags"."name" IN (?)) GROUP BY news.id', @user_tags
+          #@news = News.find_by_sql(@sql)
+          @news = News.find(
+                  :all,
+                  :joins => :tags,
+                  :conditions => {:tags => {:name => @user_tags}},
+                  :group => 'news.id'
+          )
+        end
+      end
+    else
       @news = News.all
+    end
 
     return @news
   end
@@ -154,11 +173,27 @@ class PaperController < NewsController
     #
     # Ealin: should access database here
     #
-    @newspaper_title = t :sample_paper_name
-    @newspaper_slogan = t :sample_paper_slogan
-    @weather = :Thunderstorms  # need to define
-    @layout_style = :normal    # need to define
-    
+
+    # check filters in session ==> make all filters as news-title
+    #
+    counter = 0
+    @newspaper_title = "您的專屬新聞 - "
+    @tags.each do |tag|
+      if session[:filter_tags].include?(tag.name)
+        @newspaper_title += (t(tag.name.to_sym) + " ")
+        counter += 1
+        if counter >= 5
+          @newspaper_title += "..."
+          break
+        end
+      end
+    end
+
+
+    #@newspaper_slogan = t :sample_paper_slogan
+    #@weather = :Thunderstorms  # need to define
+    #@layout_style = :normal    # need to define
+
     temp_time = Time.new
     @date = temp_time.inspect
 

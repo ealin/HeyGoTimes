@@ -11,8 +11,23 @@
         </h3>
       </div>
       <h5>
+
       <div id="info">
-        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈
+        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
+        <% if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku %>
+          <% news.tags.each do |tag| %>
+              <%= t(tag.name.to_sym) + " " %>
+          <% end %>
+        <% end %>
+        <span class="button-group">
+          <button onclick=";return false;" title="我喜歡" type="button" class="like" id="watch-like" data-button-action="hg.www.watch.actions.like" role="button" aria-pressed="false">
+            <img class="button-icon-like" src="/images/like_buton.png" alt="">
+            <span class="button-content-like">喜歡</span>
+          </button>
+          <button onclick=";return false;" title="我不喜歡" type="button" class="unlike" id="watch-unlike" data-button-action="hg.www.watch.actions.unlike" role="button" aria-pressed="false">
+            <img class="button-icon-unlike" src="/images/unlike_buton.png" alt="">
+          </button>
+        </span>
       </div>
       </h5>
       <div id="image">
@@ -21,8 +36,8 @@
       <div id="news_content">
         <%= news.content.html_safe %>
       </div>
+      <% if (ENV['RAILS_ENV'] != "development") %>
       <div id="comments">
-
       <h3>讀者迴響</h3>
       <div id="fb-root"></div>
       <script src="http://connect.facebook.net/zh_TW/all.js#appId=<%= Facebooker2.app_id %>&amp;xfbml=1"></script>
@@ -30,6 +45,7 @@
       <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="600"></fb:comments>
 
       </div>
+      <% end # if (ENV['RAILS_ENV'] != "development") %>
     </div>
   <% end %>
 <% end %>

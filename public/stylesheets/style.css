@@ -67,6 +67,7 @@ a img {
 /* Logo */
 #logo {
 	float: left;
+    width: 500px;
 }
 
 /* Link */
