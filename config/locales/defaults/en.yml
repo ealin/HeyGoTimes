@@ -27,9 +27,11 @@ en:
   #----------------------------------------
   # News Filter
   #----------------------------------------
+  tip_for_filter:   "You could setup your own news filter by button on page rightside."  
+  
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
-  load_current_filter: "Load current setting"
+  #load_current_filter: "Load current setting"
   
   reset_the_filter: "Clear the setting"
 

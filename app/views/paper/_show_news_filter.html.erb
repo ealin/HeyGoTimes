@@ -11,42 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
 
-
   <script type="text/javascript">
-
-  $(document).ready(function (){
-
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - save_as_default
-     //
-     $('#save_as_default').unbind('click').click(function()
-     {
-         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
-
-         // send filter-setting to server, then server would save them in session
-         var data = collect_all_selection() ;
-         data += "&save=yes" ;
-
-         // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"paper/set_filter_setting",
-             data: data,
-             success: function(html)
-             {
-                 alert(html) ;
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/");
-              }
-         });
-
-         return false ;
-     }  );
-       //
-       // end of "#save_as_default".click callback function
-
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  function - set_each_filter
@@ -108,6 +73,45 @@
              }
 
      }
+     //
+     // end of function - set_each_filter
+
+
+
+
+  $(document).ready(function (){
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_as_default
+     //
+     $('#save_as_default').unbind('click').click(function()
+     {
+         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+
+         // send filter-setting to server, then server would save them in session
+         var data = collect_all_selection() ;
+         data += "&save=yes" ;
+
+         // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"paper/set_filter_setting",
+             data: data,
+             success: function(html)
+             {
+                 alert(html) ;
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/");
+              }
+         });
+
+         return false ;
+     }  );
+       //
+       // end of "#save_as_default".click callback function
+
+
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - load_my_filter
@@ -133,6 +137,7 @@
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - load_current_filter
      //
+     /*   // Ealin: the button"載入目前的設定" is unused any more.
      $('#load_current_filter').unbind('click').click(function(){
 
          // ask session data from server
@@ -145,8 +150,7 @@
          return false ;
 
      }  );
-       //
-       // end of "#save_as_default".click callback function
+     */
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  Function:  get_today_as_string
@@ -165,6 +169,7 @@
          return data ;
 
      }
+     // end of function get_today_as_string
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -261,6 +266,8 @@
          data += date_data ;
          return data ;
      }
+     //
+     // end of function:  collect_all_selection
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -289,6 +296,8 @@
 
          return true ;
      }
+     //
+     // end of Function:  check_date_selected_or_not
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -366,11 +375,13 @@
  </script>
 
 
-
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
 <div align = "right">
-  <button id = "load_current_filter"> <%= t(:load_current_filter)%> </button>
+  <%# Ealin: the button"載入目前的設定" is unused any more. %>
+  <!--
+  <button id = "load_current_filter"> <%#= t(:load_current_filter)%> </button>
+  -->
 
   <% if session[:logged_in] == true %>
       <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
@@ -381,8 +392,6 @@
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
 </div>
 <hr>
-
-
 
 
 
@@ -399,16 +408,27 @@
   <% @tags.each do |tag| %>
     <%# using type and name to identify each Input/Checkbox here %>
 
-    <input type="checkbox" name ="each_tag" id="<%= tag.name %>"> <%= t(tag.name.to_sym) %> </input>
-    &nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name ="each_tag" id="<%= tag.name %>" > <%= t(tag.name.to_sym) %> </input>
 
+    &nbsp;&nbsp;&nbsp;
     <% if ( (tag.id == 1) || (tag.id - 1) % 6 == 0)  %>
       <br>
     <% end %>
   <% end %>
 
-
 </div>
+
+<script type="text/javascript">
+  // load session to initialize all selection item
+  //
+    $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+    {
+        set_each_filter(json) ;
+
+    }  );
+</script>
+
+
 
 <hr>
 
