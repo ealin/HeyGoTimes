@@ -365,6 +365,10 @@
         for(i=0;i<($('option').length);i++)
             $('option')[i].selected = false ;
 
+            // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
+            //
+            $("#area_filter").dropdownchecklist( { emptyText: "Please Select...", width: 150 });
+
 
         // un-ckeck all checkbox and radio box
         for(i=0;i<($('input').length);i++)
@@ -396,27 +400,14 @@
       // end of "#reset_all".click callback function
 
 
+
   }  );
   //
   // end of "$(document).ready callback function
 
-     $("#s8").dropdownchecklist( { emptyText: "Please Select...", width: 400 });
 
 
  </script>
-
-
-
-        <select id="s8" multiple="multiple">
-            <option style='color:green'>Low</option>
-            <option style='color:orange'>Medium</option>
-            <option style='color:red'>High</option>
-        </select>
-
-
-
-
-
 
 
 <!-- 2 buttons : "load my filter" & "reset the filter"

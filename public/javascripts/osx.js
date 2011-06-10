@@ -92,7 +92,13 @@ jQuery(function ($) {
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data1", self.container).show();
+
+                                // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
+                                //
+                                $("#area_filter").dropdownchecklist( { emptyText: "Please Select...", width: 150 });
+
 							}
+
 						);
 					}, 100);
 				});
