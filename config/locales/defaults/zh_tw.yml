@@ -62,6 +62,7 @@ zh_tw:
   no_limit: "無"
   no_date_filter: "不依日期過濾新聞" 
   
+  same_as_select_all: "(視同以下分類全部勾選)"
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
@@ -83,7 +84,7 @@ zh_tw:
   #--------------------------------------------------------------------------
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
-  All: "所有新聞(視同以下分類全部勾選)"
+  All: "所有新聞"
   #Top: "焦點"
   World: "國際"
   Business: "財經"

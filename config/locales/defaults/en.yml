@@ -62,6 +62,8 @@ en:
   filter_by_this_date: "Filter news by this date:"
   no_limit: "No"
   no_date_filter: "Don't filter news by date." 
+
+  same_as_select_all: "(similar as select all)"
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
