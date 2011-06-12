@@ -41,8 +41,12 @@ class PaperController < NewsController
       @news = News.all
       return @news
     end
+    if (session[:filter_tags] != nil)
+      @user_tags = session[:filter_tags].split("/")
+    else
+      @user_tags[0] = 'All'
+    end
 
-    @user_tags = session[:filter_tags].split("/")
     if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku
       if (@user_tags[0] == 'All')
         @news = News.all

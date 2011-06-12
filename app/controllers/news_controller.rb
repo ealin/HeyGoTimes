@@ -24,6 +24,29 @@ class NewsController < ApplicationController
     end
   end
 
+  def like
+
+    @data = {}
+    if (params[:user] == session[:id].to_s)
+      @user = User.find(session[:id])
+      @news = News.find(params[:news])
+      if (params[:like] == 1.to_s)
+        @news.likes.push(@user)
+        @data['total'] = @news.likes.count
+      else
+        @news.dislikes.push(@user)
+        @data['total'] = @news.dislikes.count
+      end
+
+      @data['name'] = @user.first_name + ' ' + @user.last_name
+
+    end
+
+    respond_to do |format|
+      format.json { render :json => @data.to_json }
+    end
+  end
+
   # GET /report/new
   # GET /report/new.xml
   def report
@@ -150,4 +173,5 @@ class NewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

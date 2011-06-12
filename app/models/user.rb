@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
   has_one :date_filter
   has_one :friend_filter
 
+  has_many :user_likes
+  has_many :likes, :through => :user_likes, :uniq => true, :class_name => "News", :source => :news
+
+  has_many :user_dislikes
+  has_many :dislikes, :through => :user_dislikes, :uniq => true, :class_name => "News", :source => :news
+
 end

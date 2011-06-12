@@ -24,6 +24,12 @@ en:
   popular_news: "Popular news"
   latest_news: "Latest news"
 
+  get_news: "Get news"
+  like_btn: "Like"
+  like_hint: "I like it"
+  dislike_hint: "I don't like it"
+  comments: "Comments"
+
   #----------------------------------------
   # News Filter
   #----------------------------------------

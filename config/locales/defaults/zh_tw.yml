@@ -23,6 +23,12 @@ zh_tw:
   popular_news: "熱門新聞"
   latest_news: "最新新聞"
 
+  get_news: "取得新聞"
+  like_btn: "喜歡"
+  like_hint: "我喜歡"
+  dislike_hint: "我不喜歡"
+  comments: "讀者回應"
+
   #----------------------------------------
   # News Filter
   #----------------------------------------

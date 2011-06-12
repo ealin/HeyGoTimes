@@ -41,6 +41,8 @@ HeyGoTimes::Application.routes.draw do
   get "faq/show_question_list"  
   get "faq/show_answer"
 
+  get "news/like"
+  post "news/like"
   post "news/report"
   resources :news
 
@@ -64,6 +66,7 @@ HeyGoTimes::Application.routes.draw do
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
     get 'news/report', :on => :collection
+    get 'news/like', :on => :collection
 
     get 'set_filter_setting', :on => :collection
     get 'get_filter_session', :on => :collection

@@ -1,3 +1,20 @@
+<script type="text/javascript">
+  function like(user, news, like)
+  {
+    // ask session data from server
+    $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
+    {
+      if (like == 1)
+        alert(json.name+' like this news, total: '+json.total);
+      else
+        alert(json.name+' dislike this news, total: '+json.total);
+
+    }  );
+
+  }
+
+</script>
+
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
@@ -20,12 +37,12 @@
           <% end %>
         <% end %>
         <span class="button-group">
-          <button onclick=";return false;" title="我喜歡" type="button" class="like" id="watch-like" data-button-action="hg.www.watch.actions.like" role="button" aria-pressed="false">
-            <img class="button-icon-like" src="/images/like_buton.png" alt="">
-            <span class="button-content-like">喜歡</span>
+          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-"<%= news.id %>>
+            <img class="button-icon-like" src="/images/like_button.png" alt="">
+            <span class="button-content-like"><%= t(:like_btn) %></span>
           </button>
-          <button onclick=";return false;" title="我不喜歡" type="button" class="unlike" id="watch-unlike" data-button-action="hg.www.watch.actions.unlike" role="button" aria-pressed="false">
-            <img class="button-icon-unlike" src="/images/unlike_buton.png" alt="">
+          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike">
+            <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
           </button>
         </span>
       </div>
@@ -38,7 +55,7 @@
       </div>
       <% if (ENV['RAILS_ENV'] != "development") %>
       <div id="comments">
-      <h3>讀者迴響</h3>
+      <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
       <script src="http://connect.facebook.net/zh_TW/all.js#appId=<%= Facebooker2.app_id %>&amp;xfbml=1"></script>
 

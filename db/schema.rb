@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110609083911) do
+ActiveRecord::Schema.define(:version => 20110612091814) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +91,16 @@ ActiveRecord::Schema.define(:version => 20110609083911) do
     t.string   "parent_tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_dislikes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "news_id"
+  end
+
+  create_table "user_likes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "news_id"
   end
 
   create_table "users", :force => true do |t|
