@@ -63,19 +63,20 @@ zh_tw:
   no_date_filter: "不依日期過濾新聞" 
   
   same_as_select_all: "(視同以下分類全部勾選)"
+  hit_here_to_select_area: "請按此選擇區域："
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
   Taiwan: "台灣"
-  TW_CN: "--兩岸"
-  North_TW: "--北台灣"
-  Middle_TW: "--中台灣"
-  South_TW: "--南台灣"
-  East_TW: "--東台灣"
+  TW_CN: "兩岸"
+  North_TW: "北台灣"
+  Middle_TW: "中台灣"
+  South_TW: "南台灣"
+  East_TW: "東台灣"
   
   China: "中國"
-  TW_HK: "--港台"
+  TW_HK: "港台"
   
   USA: "美國"
   Japan: "日本"

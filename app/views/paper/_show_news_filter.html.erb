@@ -113,13 +113,18 @@
              data: data,
              success: function(html)
              {
-                 alert(html) ;
+                 // Ealin: 不知道為什麼, 加了這行ALERT, 會導致SESSION無法被update?????
+                 //alert("xxxx") ;
+
                  // redirect to main page in order to redraw the news by new filter!
                   window.location.replace("/");
               }
          });
 
          return false ;
+
+
+
      }  );
        //
        // end of "#save_as_default".click callback function
@@ -136,8 +141,13 @@
          // ask session data from server
          $.getJSON("paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
          {
-             console.log(json) ;
+             //console.log(json) ;
+
              set_each_filter(json) ;
+
+               // reset area-selection-box
+             $("#area_filter").dropdownchecklist("destroy");
+             $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 240,maxDropHeight: 150 });
 
          }  );
 
@@ -367,7 +377,9 @@
 
             // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
             //
-            $("#area_filter").dropdownchecklist( { emptyText: "Please Select...", width: 150 });
+            $("#area_filter").dropdownchecklist("destroy");
+
+            $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 400,maxDropHeight: 150 });
 
 
         // un-ckeck all checkbox and radio box
@@ -405,14 +417,12 @@
   //
   // end of "$(document).ready callback function
 
-
-
  </script>
 
 
 <!-- 2 buttons : "load my filter" & "reset the filter"
 -->
-<div align = "right">
+<div id="filter_btn_grp1">
   <%# Ealin: the button"載入目前的設定" is unused any more. %>
   <!--
   <button id = "load_current_filter"> <%#= t(:load_current_filter)%> </button>
@@ -425,7 +435,22 @@
   <% end %>
 
   <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
+
 </div>
+
+<div id="filter_btn_grp2">
+
+  <% if session[:logged_in] == true %>
+      <button class="simplemodal-close" id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
+  <% else %>
+      <button class="simplemodal-close" id="save_as_default" disabled="true"> <%= t(:filter_save_as_default)%> </button>
+  <% end %>
+  <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
+  <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
+
+</div>
+
+<br>
 <hr>
 
 
@@ -433,31 +458,41 @@
 
 <!-- (ask server to) get and show all Areas
 -->
-<div align = "left">
-  <h3><%= t(:filter_by_area)%> </h3>
+<div align = "left" id="filter_dlg_t2">
+  <%= t(:filter_by_area)%>
+  &nbsp;&nbsp;
 </div>
 
-<div class = "all_areas" align = "left" >
+
+<div class = "all_areas" align = "left" id = "area_select_box">
   <select id="area_filter" multiple="multiple" >
 
         <% @areas.each do |area| %>
            <% if session[:filter_area].include?(area.name) %>
-              <option id="<%= area.name %>" selected="yes"><%= t(area.name.to_sym)  %></option>
+              <% if area.parent_area != nil %>
+                  <option id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+              <% else %>
+                  <option id="<%= area.name %>" selected="yes" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+              <% end %>
            <% else %>
-              <option id="<%= area.name %>" ><%= t(area.name.to_sym)  %></option>
+              <% if area.parent_area != nil %>
+                 <option id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+              <% else %>
+                 <option id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+              <% end %>
            <% end %>
         <% end %>
 
   </select>
 </div>
-
+<br><br>
 <hr>
 
 
 <!-- (ask server to) get and show all News-Tags
 -->
-<div align = "left">
-  <h3><%= t(:filter_by_tag)%> </h3>
+<div align = "left" id="filter_dlg_t3">
+  <%= t(:filter_by_tag)%>
 </div>
 
 <div class = "all_tags" align = "left" >
@@ -498,9 +533,12 @@
 
 <!-- 2 checkbox - my news only & my friends' news only
 -->
+<div align = "left" id="filter_dlg_t4">
+  <%= t(:filter_by_friend)%>
+</div>
 <div align = "left">
-  <h3><%= t(:filter_by_friend)%></h3>
-  <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%> <br>  </input>
+  <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>   </input>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
 
 </div>
@@ -508,27 +546,29 @@
 
 
 <!-- select date(select one only): today, yesterday, and date-selection-box
--->
+
 <style type="text/css">
 label   {
         color: #781351;
         background: #fee3ad;
         }
 </style>
+-->
+
+<div align = "left" id="filter_dlg_t5">
+  <%= t(:filter_by_date)%>
+</div>
 
 <div align = "left">
-  <h3><%= t(:filter_by_date)%></h3>
-
     <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
-    <br>
+    &nbsp;&nbsp;&nbsp;
     <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
     &nbsp;&nbsp;&nbsp;
     <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+
     <br>
-
-
     <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%= t(:filter_by_this_date) %>
-    <label id = "date_label" > <%= t(:no_limit) %>  </label>
+    <label id = "date_label" style='color:blue'> <%= t(:no_limit) %>  </label>
     &nbsp;&nbsp;&nbsp;
     <button id="date_btn"> <%= t(:select_date) %> </button>
     <br>
@@ -546,18 +586,4 @@ label   {
     </script>
 
 </div>
-<hr>
-
-
-
-<!-- 3 buttons
--->
-<div align = "right">
-  <% if session[:logged_in] == true %>
-      <button class="simplemodal-close" id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
-  <% else %>
-      <button class="simplemodal-close" id="save_as_default" disabled="true"> <%= t(:filter_save_as_default)%> </button>
-  <% end %>
-  <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
-  <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
-</div>
+<br>

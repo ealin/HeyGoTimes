@@ -1,3 +1,15 @@
+#filter_dlg_t1 {color:#3a6d8c; font-size:20px; line-height:20px; font-weight:normal; margin:0 0 8px 0;}
+
+#filter_dlg_t2 {float: left;color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#area_select_box { float: left; display: inline;}
+
+#filter_dlg_t3 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#filter_dlg_t4 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#filter_dlg_t5 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+
+
+#filter_btn_grp1 { float: left; display: inline;}
+#filter_btn_grp2 { float: right; display: inline;}
 /* Link List (on front of the page)*/
 #link_list {
 	
