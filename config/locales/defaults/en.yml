@@ -16,6 +16,10 @@ en:
   logout: "Logout"
   signup: "Signup"
   feedback: "Feedback"
+  response: "Our Response"
+  notice: "Notice"
+  mobileSite: "Mobile Site"
+
   
   #filter_news: "Filter News"
   ok: "OK"
@@ -89,7 +93,9 @@ en:
   All: "All"
   #Top: "Top"
   World: "World"
-  
+  HGTimesNotice: "HG-Times Notice"
+  Feedback: "Feedback and Response"
+
   Business: "Business"
   Stock: "Stock"
   

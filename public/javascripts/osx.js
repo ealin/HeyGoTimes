@@ -90,7 +90,7 @@ jQuery(function ($) {
 				title.show();
 				d.container.slideDown('fast', function () {
 					setTimeout(function () {
-						var h = $("#osx-modal-data1", self.container).height() + title.height() -20;
+						var h = $("#osx-modal-data1", self.container).height() + title.height() ;
 						d.container.animate(
 							{height: h},
 							100,

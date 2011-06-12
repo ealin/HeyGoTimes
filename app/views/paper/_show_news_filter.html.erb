@@ -379,7 +379,7 @@
             //
             $("#area_filter").dropdownchecklist("destroy");
 
-            $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 400,maxDropHeight: 150 });
+            $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 240,maxDropHeight: 150 });
 
 
         // un-ckeck all checkbox and radio box
@@ -502,13 +502,30 @@
   <% @tags.each do |tag| %>
     <%# using type and name to identify each Input/Checkbox here %>
 
-    <input type="checkbox" name ="each_tag" id="<%= tag.name %>" > <%= t(tag.name.to_sym) %> </input>
+    <% if tag.id <= 3 %>
+          <div id="tag_grp1">
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+             <%= t(tag.name.to_sym) %>
+          </input>
+          &nbsp;&nbsp;&nbsp;
+          </div>
+    <% else %>
+          <div id="tag_grp2">
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+             <%= t(tag.name.to_sym) %>
+          </input>
+          &nbsp;&nbsp;&nbsp;
+          </div>
+    <% end%>
 
-    &nbsp;&nbsp;&nbsp;
-    <% if (tag.id - 1) % 6 == 0  %>
-      <% if (tag.id == 1) %>
-         <%= t(:same_as_select_all) %>
-      <% end %>
+
+    <% if (tag.id == 1) %>
+          <%= t(:same_as_select_all) %>
+          <br>
+          <% next %>
+    <% end %>
+
+    <% if (tag.id - 3) % 6 == 0  %>
       <br>
     <% end %>
   <% end %>
@@ -526,8 +543,7 @@
 </script>
 
 
-
-<hr>
+<br><hr>
 
 
 
