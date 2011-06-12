@@ -36,6 +36,8 @@ Area.create(:name => 'Japan', :parent_area => nil)
 #
 Tag.create(:name => 'All', :parent_tag => nil)
 
+Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
+Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
 
 Tag.create(:name => 'Business', :parent_tag => nil)

@@ -23,7 +23,7 @@ class PaperController < NewsController
     #session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
     #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
     #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
-    #session[:area]
+    #session[:filter_area]
 =end
    init_filter_setting()
 

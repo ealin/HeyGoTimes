@@ -6,13 +6,26 @@
 HeyGo © 2011 &nbsp;&nbsp;	
 
 
-<%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>
-<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>
-<%= link_to t(:terms),{:controller => 'terms_of_service'},{:title => '使用條款'}%>
+<%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>  &nbsp;
+<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%> &nbsp;
+<%= link_to t(:terms),{:controller => 'terms_of_service'},{:title => '使用條款'}%>   &nbsp;
 
-<% # FEEDBACK功能就是一個新聞頁面 %>
-<% # tddo: 必須傳參數進去, PAPER PAGE應該對FEEDBACK頁面作一些特別處理 %>
-<%= link_to t(:feedback),{:controller => 'paper'},{:title => '建議與問題反饋'}%>
+
+<%# ~~~~~~~~~~~To do ~~~~~~~~~~~~~~~~~~ %>
+
+<% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
+<% # tddo: 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
+<%= link_to t(:feedback),{:controller => 'paper'},{:title => '建議與問題反饋'}%> &nbsp;
+
+<%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
+<%= link_to t(:response),{:controller => 'paper'},{:title => '顯示所有反饋與官方回應'}%> &nbsp;
+
+<%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
+<%= link_to t(:notice),{:controller => 'paper'},{:title => '官方公告'}%> &nbsp;
+
+
+<%# 進入手機瀏覽模式  %>
+<%= link_to t(:mobileSite),{:controller => 'paper'},{:title => '手機瀏覽模式'}%>  &nbsp;
 
 
 </div>

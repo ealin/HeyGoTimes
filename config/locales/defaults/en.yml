@@ -16,6 +16,10 @@ en:
   logout: "Logout"
   signup: "Signup"
   feedback: "Feedback"
+  response: "Our Response"
+  notice: "Notice"
+  mobileSite: "Mobile Site"
+
   
   #filter_news: "Filter News"
   ok: "OK"
@@ -70,6 +74,7 @@ en:
   no_date_filter: "Don't filter news by date." 
 
   same_as_select_all: "(similar as select all)"
+  hit_here_to_select_area: "Hit here to select area："
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
@@ -94,7 +99,9 @@ en:
   All: "All"
   #Top: "Top"
   World: "World"
-  
+  HGTimesNotice: "HG-Times Notice"
+  Feedback: "Feedback and Response"
+
   Business: "Business"
   Stock: "Stock"
   

@@ -15,7 +15,10 @@ zh_tw:
   logout: "登出"
   signup: "註冊"
   feedback: "建議與反饋"
-  
+  response: "官方回覆"
+  notice: "公告"
+  mobileSite: "Mobile Site"
+
   #filter_news: "過濾新聞"
   ok: "完成"
   cancel: "取消"
@@ -69,19 +72,20 @@ zh_tw:
   no_date_filter: "不依日期過濾新聞" 
   
   same_as_select_all: "(視同以下分類全部勾選)"
+  hit_here_to_select_area: "請按此選擇區域："
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
   Taiwan: "台灣"
-  TW_CN: "--兩岸"
-  North_TW: "--北台灣"
-  Middle_TW: "--中台灣"
-  South_TW: "--南台灣"
-  East_TW: "--東台灣"
+  TW_CN: "兩岸"
+  North_TW: "北台灣"
+  Middle_TW: "中台灣"
+  South_TW: "南台灣"
+  East_TW: "東台灣"
   
   China: "中國"
-  TW_HK: "--港台"
+  TW_HK: "港台"
   
   USA: "美國"
   Japan: "日本"
@@ -91,6 +95,9 @@ zh_tw:
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
   All: "所有新聞"
+  HGTimesNotice: "HG-Times官方公告"
+  FeedbackTag: "反饋與回覆"
+
   #Top: "焦點"
   World: "國際"
   Business: "財經"
