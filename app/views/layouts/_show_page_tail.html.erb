@@ -2,8 +2,8 @@
 
 <div  class="footer" align = "center">
 
-<br>
-HeyGo © 2011 &nbsp;&nbsp;	
+
+HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 
 <%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>  &nbsp;
@@ -25,8 +25,9 @@ HeyGo © 2011 &nbsp;&nbsp;
 
 
 <%# 進入手機瀏覽模式  %>
-<%= link_to t(:mobileSite),{:controller => 'paper'},{:title => '手機瀏覽模式'}%>  &nbsp;
-
+<div style="float:right;">
+<%= link_to t(:mobileSite),{:controller => 'mobile'},{:title => '手機瀏覽模式'}%>  &nbsp;
+</div>
 
 </div>
 
