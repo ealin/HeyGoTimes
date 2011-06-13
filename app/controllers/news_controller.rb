@@ -31,9 +31,15 @@ class NewsController < ApplicationController
       @user = User.find(session[:id])
       @news = News.find(params[:news])
       if (params[:like] == 1.to_s)
+        if (@news.dislikes.include?(@user))
+          @news.dislikes.delete(@user)
+        end
         @news.likes.push(@user)
         @data['total'] = @news.likes.count
       else
+        if (@news.likes.include?(@user))
+          @news.likes.delete(@user)
+        end
         @news.dislikes.push(@user)
         @data['total'] = @news.dislikes.count
       end
