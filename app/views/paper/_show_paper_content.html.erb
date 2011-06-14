@@ -1,13 +1,13 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
-    <% if (index != 0) %>
+    <%# if (index != 0) %>
       <hr>
-    <% end %>
+    <%# end %>
     <div id="news">
       <div id="news_title">
         <h3>
-          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>"><%= news.title %></a>
+          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>" onclick="window.open('<%= news_index_path+'/'+news.id.to_s %>'); return false;"><%= news.title %></a>
         </h3>
       </div>
       <h5>
@@ -20,12 +20,12 @@
           <% end %>
         <% end %>
         <span class="button-group">
-          <button onclick=";return false;" title="我喜歡" type="button" class="like" id="watch-like" data-button-action="hg.www.watch.actions.like" role="button" aria-pressed="false">
-            <img class="button-icon-like" src="/images/like_buton.png" alt="">
-            <span class="button-content-like">喜歡</span>
+          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
+            <img class="button-icon-like" src="/images/like_button.png" alt="">
+            <span class="button-content-like"><%= t(:like_btn) %></span>
           </button>
-          <button onclick=";return false;" title="我不喜歡" type="button" class="unlike" id="watch-unlike" data-button-action="hg.www.watch.actions.unlike" role="button" aria-pressed="false">
-            <img class="button-icon-unlike" src="/images/unlike_buton.png" alt="">
+          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike-<%= news.id %>">
+            <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
           </button>
         </span>
       </div>
@@ -38,10 +38,8 @@
       </div>
       <% if (ENV['RAILS_ENV'] != "development") %>
       <div id="comments">
-      <h3>讀者迴響</h3>
+      <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
-      <script src="http://connect.facebook.net/zh_TW/all.js#appId=<%= Facebooker2.app_id %>&amp;xfbml=1"></script>
-
       <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="600"></fb:comments>
 
       </div>

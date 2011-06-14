@@ -5,7 +5,8 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    @news = News.all
+    # @news = News.paginate(:page => 1, :per_page => 3)
+    @news = News.all.paginate(:page => params[:page], :per_page => 3)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +22,35 @@ class NewsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @news }
+    end
+  end
+
+  def like
+
+    @data = {}
+    if (params[:user] == session[:id].to_s)
+      @user = User.find(session[:id])
+      @news = News.find(params[:news])
+      if (params[:like] == 1.to_s)
+        if (@news.dislikes.include?(@user))
+          @news.dislikes.delete(@user)
+        end
+        @news.likes.push(@user)
+        @data['total'] = @news.likes.count
+      else
+        if (@news.likes.include?(@user))
+          @news.likes.delete(@user)
+        end
+        @news.dislikes.push(@user)
+        @data['total'] = @news.dislikes.count
+      end
+
+      @data['name'] = @user.first_name + ' ' + @user.last_name
+
+    end
+
+    respond_to do |format|
+      format.json { render :json => @data.to_json }
     end
   end
 
@@ -150,4 +180,5 @@ class NewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

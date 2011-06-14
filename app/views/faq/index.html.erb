@@ -1,3 +1,29 @@
+<script type="text/javascript">
+
+
+    $(document).ready(function (){
+
+        $("#s8").dropdownchecklist( { emptyText: "Please Select...", width: 400 });
+
+    }  );
+      //
+      // end of "#reset_all".click callback function
+
+
+
+
+</script>
+
+
+
+       <select id="s8" multiple="multiple">
+           <option style='color:green'>Low</option>
+           <option style='color:orange'>Medium</option>
+           <option style='color:red'>High</option>
+       </select>
+
+
+
 
 <div id="header">
 <!-- 顯示頁首的所有元素 - logo, search bar, 許多功能連結, login/logout... -->
@@ -9,7 +35,7 @@
   </div>
 
   <div align = "right">	
-    <%= link_to "Back(MAIN MENU)", {:controller => 'main_page'}, {:title => '回主畫面'} %>
+    <%= link_to "Back(MAIN MENU)", {:controller => 'paper'}, {:title => '回主畫面'} %>
   </div>
   
  </div>

@@ -1,7 +1,11 @@
 
 <!-- Page styles -->
 <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
+
+<!--  already loaded in application.html.erb
 <script type='text/javascript' src='/javascripts/jquery.js'></script>
+-->
+
 <script type="text/javascript">
 
 <!--
@@ -72,7 +76,7 @@ $(document).ready(function () {
   <div class="field">
     URL
     <input type="text" name="news[url]" value="" id="news_url" />
-    <button id = "get_news"> Get news! </button>
+    <button id = "get_news"> <%= t(:get_news) %> </button>
     <span id="validateAvatar"></span>
   </div>
 

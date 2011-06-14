@@ -1,9 +1,10 @@
 class PaperController < NewsController
 
   def index
-    @news = get_news()
+    @news = get_news(params[:page])
 
     @tags = Tag.all
+    @areas = Area.all
 
 
     # for checking login status in View, we must define an obj-attribute @logged_flag and
@@ -22,39 +23,54 @@ class PaperController < NewsController
     #session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
     #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
     #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
+    #session[:filter_area]
 =end
    init_filter_setting()
+
 
    # this function would use data in session, so it must be called after init_filter_setting()
    get_paper_title_info()
 
   end
 
+  def _show_paper_content
+    @news = get_news(params[:page])
+    respond_to do |format|
+      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
+    end
 
-  def get_news
+  end
+
+  def get_news(page)
+    @user_tags = []
+    if (session[:filter_tags] != nil)
+      @user_tags = session[:filter_tags].split("/")
+    else
+      # session may be empty (e.g. first time using)
+      #
+      @user_tags[0] = 'All'
+    end
 
     if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku
-      @user_tags = session[:filter_tags].split("/")
       if (@user_tags[0] == 'All')
-        @news = News.all
+        @news = News.find_by_tags(@user_tags)
       else
         if (News.count > 0)
-          # @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
-          #@sql = 'SELECT "news".* FROM "news" INNER JOIN "news_tags" ON "news"."id" = "news_tags"."news_id" INNER JOIN "tags" ON "tags"."id" = "news_tags"."tag_id" WHERE ("tags"."name" IN (?)) GROUP BY news.id', @user_tags
-          #@news = News.find_by_sql(@sql)
-          @news = News.find(
-                  :all,
-                  :joins => :tags,
-                  :conditions => {:tags => {:name => @user_tags}},
-                  :group => 'news.id'
-          )
+          @news = News.find_by_tags(@user_tags)
         end
       end
     else
-      @news = News.all
+      @news = News.get_all
     end
 
+    @news = @news.paginate :page => page, :per_page => 3
+
     return @news
+  end
+
+  def more_news
+    @page_num = params[:page_num]
+
   end
 
   #-----------------------------------------------------------------------------------
@@ -64,15 +80,16 @@ class PaperController < NewsController
   def set_tag_filter_by_locale
 
         if(I18n.locale == :zh_tw)
-          session[:filter_tags] = "Taiwan/"
+          session[:filter_area] = "Taiwan/"
         else
           if(I18n.locale == :en)
-            session[:filter_tags] = "USA/"
+            session[:filter_area] = "USA/"
           else
-            session[:filter_tags] = "All"
+            session[:filter_area] = "All"
           end
         end
 
+        session[:filter_tags] = "All"
         session[:filter_date] = "1971-11-12"
         session[:filter_date_option] = "no_limited"
         session[:filter_friend] = "all"
@@ -98,6 +115,12 @@ class PaperController < NewsController
           session[:filter_tags] =""
           (user.tags).each do |tag|
             session[:filter_tags] += (tag.name + "/")
+          end
+
+          # ger area filter from user.areas
+          session[:filter_area] =""
+          (user.areas).each do |area|
+            session[:filter_area] += (area.name + "/")
           end
 
           # get date filter (from user.date_filter)
@@ -353,6 +376,7 @@ class PaperController < NewsController
   #
   def set_filter_setting
     session[:filter_tags] = params[:tag_filter]
+    session[:filter_area] = params[:area_filter]
 
     if(params[:friend_filter] == "")
       session[:filter_friend] = "all"
@@ -379,6 +403,16 @@ class PaperController < NewsController
       tags.each do |tag|
         if (session[:filter_tags]).include?(tag.name)
           user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+        end
+      end
+
+      # setup user.areas
+      #
+      user.areas = []       #empty array
+      areas = Area.all
+      areas.each do |area|
+        if (session[:filter_area]).include?(area.name)
+          user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
         end
       end
 
