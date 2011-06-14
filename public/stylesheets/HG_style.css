@@ -1,3 +1,19 @@
+#filter_dlg_t1 {color:#3a6d8c; font-size:20px; line-height:20px; font-weight:normal; margin:0 0 8px 0;}
+
+#filter_dlg_t2 {float: left;color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#area_select_box { float: left; display: inline;}
+
+#filter_dlg_t3 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#filter_dlg_t4 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+#filter_dlg_t5 {color:#3a6d8c; font-size:16px; line-height:18px; font-weight:normal; margin:0 0 8px 0;}
+
+#tag_grp1 {float: left;color:#3a6d8c; }
+#tag_grp2 {float: left;color:#000000; }
+
+
+
+#filter_btn_grp1 { float: left; display: inline;font-size:12px; line-height:12px; }
+#filter_btn_grp2 { float: right; display: inline;font-size:12px; line-height:12px; }
 /* Link List (on front of the page)*/
 #link_list {
 	
@@ -36,10 +52,10 @@
 
 #footer {
 	clear: both;
-	width: 900px;
-	height: 50px;
+	width: 740px;
+	height: 30px;
 	margin: 0px auto 30px auto;
-	background: #c23939 url(images/img06.gif) no-repeat left top;
+	background: #c23939 left top;
 	color: #FFFFFF;
 }
 
