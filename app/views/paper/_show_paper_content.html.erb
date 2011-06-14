@@ -7,7 +7,7 @@
     <div id="news">
       <div id="news_title">
         <h3>
-          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>"><%= news.title %></a>
+          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>" onclick="window.open('<%= news_index_path+'/'+news.id.to_s %>'); return false;"><%= news.title %></a>
         </h3>
       </div>
       <h5>

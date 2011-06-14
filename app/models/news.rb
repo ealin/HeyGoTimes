@@ -37,7 +37,7 @@ class News < ActiveRecord::Base
   end
 
   def self.get_all
-    find (:all,:limit => 10)
+    find(:all, :limit => 10)
   end
 
 end
