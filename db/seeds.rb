@@ -17,32 +17,28 @@ User.create(:first_name => 'Reporter', :last_name => 'TW',:email => 'reporter.tw
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Area~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
-Area.create(:name => 'TW' , :primary_tag => 'Taiwan')
-Area.create(:name => 'CN' , :primary_tag => 'China')
-Area.create(:name => 'US' , :primary_tag => 'USA')
-Area.create(:name => 'JP' , :primary_tag => 'Japan')
 
+Area.create(:name => 'Taiwan', :parent_area =>nil)
+Area.create(:name => 'TW_CN', :parent_area => 'Taiwan')
+Area.create(:name => 'North_TW', :parent_area => 'Taiwan')
+Area.create(:name => 'Middle_TW', :parent_area => 'Taiwan')
+Area.create(:name => 'South_TW', :parent_area => 'Taiwan')
+Area.create(:name => 'East_TW', :parent_area => 'Taiwan')
+
+Area.create(:name => 'China', :parent_area => nil)
+Area.create(:name => 'TW_HK', :parent_area => "China")
+
+Area.create(:name => 'USA', :parent_area => nil)
+Area.create(:name => 'Japan', :parent_area => nil)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Tag~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 Tag.create(:name => 'All', :parent_tag => nil)
 
-Tag.create(:name => 'Top', :parent_tag => nil)
+Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
+Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
-
-Tag.create(:name => 'Taiwan', :parent_tag =>nil)
-Tag.create(:name => 'TW_CN', :parent_tag => 'Taiwan')
-Tag.create(:name => 'North_TW', :parent_tag => 'Taiwan')
-Tag.create(:name => 'Middle_TW', :parent_tag => 'Taiwan')
-Tag.create(:name => 'South_TW', :parent_tag => 'Taiwan')
-Tag.create(:name => 'East_TW', :parent_tag => 'Taiwan')
-
-Tag.create(:name => 'China', :parent_tag => nil)
-Tag.create(:name => 'TW_HK', :parent_tag => 'China')
-
-Tag.create(:name => 'USA', :parent_tag => nil)
-Tag.create(:name => 'Japan', :parent_tag => nil)
 
 Tag.create(:name => 'Business', :parent_tag => nil)
 Tag.create(:name => 'Stock', :parent_tag => 'Business')

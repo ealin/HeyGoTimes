@@ -2,7 +2,7 @@ class CreateTags < ActiveRecord::Migration
   def self.up
     create_table :tags do |t|
       t.string :name
-      t.string :parent_tag
+      t.string :parent_tag            # possible value may be: tag name of its 'parent
 
 
       t.timestamps
