@@ -1,7 +1,7 @@
 class PaperController < NewsController
 
   def index
-    @news = get_news()
+    @news = get_news(params[:page])
 
     @tags = Tag.all
     @areas = Area.all
@@ -33,41 +33,44 @@ class PaperController < NewsController
 
   end
 
-
-  def get_news
-    if(session[:filter_tags] == nil)
-      # session may be empty (e.g. first time using)
-      #
-      @news = News.all
-      return @news
+  def _show_paper_content
+    @news = get_news(params[:page])
+    respond_to do |format|
+      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
     end
+
+  end
+
+  def get_news(page)
+    @user_tags = []
     if (session[:filter_tags] != nil)
       @user_tags = session[:filter_tags].split("/")
     else
+      # session may be empty (e.g. first time using)
+      #
       @user_tags[0] = 'All'
     end
 
     if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku
       if (@user_tags[0] == 'All')
-        @news = News.all
+        @news = News.find_by_tags(@user_tags)
       else
         if (News.count > 0)
-          # @news = News.joins(:tags).where('tags.name' => @user_tags).group('news.id')
-          #@sql = 'SELECT "news".* FROM "news" INNER JOIN "news_tags" ON "news"."id" = "news_tags"."news_id" INNER JOIN "tags" ON "tags"."id" = "news_tags"."tag_id" WHERE ("tags"."name" IN (?)) GROUP BY news.id', @user_tags
-          #@news = News.find_by_sql(@sql)
-          @news = News.find(
-                  :all,
-                  :joins => :tags,
-                  :conditions => {:tags => {:name => @user_tags}},
-                  :group => 'news.id'
-          )
+          @news = News.find_by_tags(@user_tags)
         end
       end
     else
-      @news = News.all
+      @news = News.get_all
     end
 
+    @news = @news.paginate :page => page, :per_page => 3
+
     return @news
+  end
+
+  def more_news
+    @page_num = params[:page_num]
+
   end
 
   #-----------------------------------------------------------------------------------

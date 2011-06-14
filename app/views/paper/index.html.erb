@@ -4,6 +4,35 @@
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
 
+  <script type="text/javascript">
+    function like(user, news, like)
+    {
+      // ask session data from server
+      $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
+      {
+        if (like == 1)
+          alert(json.name+' like this news, total: '+json.total);
+        else
+          alert(json.name+' dislike this news, total: '+json.total);
+
+      }  );
+
+    }
+
+    function loadMore(pageNo) {
+      var url = '/paper/_show_paper_content?page=';
+      $.get(url + pageNo, function(response) {
+        $("#paperContent").append(response);
+      });
+    }
+
+    $(document).ready(function() {
+      var currPage = 1;
+      $('#more_news').unbind('click').click(function() {
+        loadMore(++currPage);
+      });
+    });
+  </script>
 
 </head>
 
@@ -44,6 +73,9 @@
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
       </div>
+      <%#= link_to "View more news", "#", :class => "next" %>
+      <%#= link_to "View more news", :id => "more_news", :remote => true %>
+      <button id = "more_news"> <%= t(:more_news) %> </button>
     </div>
 
     <div id="sub">

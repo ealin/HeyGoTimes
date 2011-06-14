@@ -2,11 +2,53 @@
   <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
-  <meta property="og:image" content="<%= @news.images[0].to_s %> "/>
+  <meta property="og:image" content="<%= @news.images[0].url.to_s %> "/>
 </head>
+<div id="page">
+  <div id="header">
+    <div id="masthead">
+        <div id="logo">
+          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {controller =>'paper'}, {:title => 'to home page'} ) %>
+          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
+        </div>
 
-<p id="notice"><%= notice %></p>
+        <div id="links" >
+          <%= show_page_head(:login_flag => true)  %>
+        </div><!-- #links -->
+
+    </div><!-- #masthead -->
+  </div><!-- #header -->
 
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+
+  <div id="main">
+    <div id="content">
+      <div id="news">
+        <% # TODO: use @paper_width %>
+          <iframe height="900" width="700" src="<%= @news.url %>">
+             Your browser can't display IFRAMEs
+          </iframe>
+      </div>
+    </div>
+
+    <div id="sub">
+      <!-- show AD list-->
+      <div id="ad">
+        <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <%= render :partial => 'paper/show_ad_list' %>
+      </div>
+    </div>
+  </div><!-- #main -->
+
+  <%= link_to 'Edit', edit_news_path(@news) %> |
+  <%= link_to 'Back', news_index_path %>
+
+  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
+    <div id="footer">
+      <%= show_page_tail %>
+    </div>
+
+</div> <!-- #page -->
+
+
+

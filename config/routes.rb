@@ -48,8 +48,6 @@ HeyGoTimes::Application.routes.draw do
   post "news/report"
   resources :news
 
-
-
   #resources :search do
   #  get 'index', :on => :collection
   #  get 'do_search', :on => :collection
@@ -73,7 +71,8 @@ HeyGoTimes::Application.routes.draw do
     get 'set_filter_setting', :on => :collection
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
-
+    get '_show_paper_content', :on => :collection
+    post '_show_paper_content', :on => :collection
  end
 
   #get "main_page/index"
