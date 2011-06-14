@@ -16,6 +16,10 @@ en:
   logout: "Logout"
   signup: "Signup"
   feedback: "Feedback"
+  response: "Our Response"
+  notice: "Notice"
+  mobileSite: "Mobile Site"
+
   
   #filter_news: "Filter News"
   ok: "OK"
@@ -23,6 +27,13 @@ en:
 
   popular_news: "Popular news"
   latest_news: "Latest news"
+
+  get_news: "Get news"
+  more_news: "More News"
+  like_btn: "Like"
+  like_hint: "I like it"
+  dislike_hint: "I don't like it"
+  comments: "Comments"
 
   #----------------------------------------
   # News Filter
@@ -42,6 +53,7 @@ en:
   news_image_url_field: "Image URL"
 
   filter_by_tag: "Filter by news tag:"
+  filter_by_area: "Filter by area："
   filter_by_friend: "Filter by friends:"
   filter_by_date: "filter by date:"
 
@@ -61,23 +73,13 @@ en:
   filter_by_this_date: "Filter news by this date:"
   no_limit: "No"
   no_date_filter: "Don't filter news by date." 
+
+  same_as_select_all: "(similar as select all)"
+  hit_here_to_select_area: "Hit here to select area："
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
-  TW: "Taiwan"
-  CN: "China"
-  US: "USA"
-  JP: "Japan"
-  
-  
-  #--------------------------------------------------------------------------
-  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
-  #--------------------------------------------------------------------------
-  All: "All"
-  Top: "Top"
-  World: "World"
-  
   Taiwan: "Taiwan"
   TW_CN: "Taiwan & China"
   North_TW: "North Taiwan"
@@ -90,6 +92,17 @@ en:
   
   USA: "USA"
   Japan: "Japan"
+  
+  
+  #--------------------------------------------------------------------------
+  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  All: "All"
+  #Top: "Top"
+  World: "World"
+  HGTimesNotice: "HG-Times Notice"
+  Feedback: "Feedback and Response"
+
   Business: "Business"
   Stock: "Stock"
   

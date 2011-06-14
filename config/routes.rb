@@ -1,6 +1,8 @@
 HeyGoTimes::Application.routes.draw do
 
 
+  get "mobile/index"
+
   get "real_time_news/report"
   get "real_time_news/to_main_page"
   resources :real_time_news
@@ -41,10 +43,10 @@ HeyGoTimes::Application.routes.draw do
   get "faq/show_question_list"  
   get "faq/show_answer"
 
+  get "news/like"
+  post "news/like"
   post "news/report"
   resources :news
-
-
 
   #resources :search do
   #  get 'index', :on => :collection
@@ -64,11 +66,13 @@ HeyGoTimes::Application.routes.draw do
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
     get 'news/report', :on => :collection
+    get 'news/like', :on => :collection
 
     get 'set_filter_setting', :on => :collection
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
-
+    get '_show_paper_content', :on => :collection
+    post '_show_paper_content', :on => :collection
  end
 
   #get "main_page/index"

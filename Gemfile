@@ -22,6 +22,9 @@ gem 'jrails'
 # html/xml parser
 gem 'nokogiri'
 
+# page segmentation
+gem 'will_paginate'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
