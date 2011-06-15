@@ -36,7 +36,7 @@ class News < ActiveRecord::Base
     #  :group => 'news.id'
     #)
 
-    joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.title, news.url, news.content, news.user_id').order('news.created_at DESC')
+    joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.title, news.url, news.content, news.user_id, news.created_at').order('news_tags.id DESC')
   end
 
   def self.get_all
