@@ -75,7 +75,18 @@ jQuery(function ($) {
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data", self.container).show();
-                                $("#area_filter2").dropdownchecklist( { emptyText: "press here to select area：", width: 240,maxDropHeight: 160 });
+
+                                $("#area_filter2").dropdownchecklist( { emptyText: "press here to select area：",
+                                    width: 240,maxDropHeight: 160 , onComplete: function(selector) {
+
+                                        //console.log(selector.options) ;
+                                        alert(selector.options.length) ;
+                                        console.log($("#hide_text_box")) ;
+                                        //$("#hide_text_box").value = "1234" ;
+                                         document.forms[0].elements[5].value = "1234" ;
+                                    }
+                            });
+
 							}
 						);
 					}, 100);
