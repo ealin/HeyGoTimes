@@ -25,7 +25,7 @@ class News < ActiveRecord::Base
       :order => "created_at DESC",
       :joins => :tags,
       :conditions => {:tags => {:name => user_tags}},
-      :group => 'news.id'
+      :group => 'news.id, news.title'
     )
     #find(
     #  :all,
