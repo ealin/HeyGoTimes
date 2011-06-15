@@ -133,11 +133,11 @@ class NewsController < ApplicationController
     @image.news = @news
     @image.save
 
-    @tags = ""
+    @news.tags = ""
     params.each_pair do |key, value|
       if (value == 'on')
         @tag = Tag.find_by_name(key)
-        @news.tags << @tag
+        @tags << @tag
       end
     end
 

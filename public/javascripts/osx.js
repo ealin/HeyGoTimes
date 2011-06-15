@@ -25,6 +25,9 @@ jQuery(function ($) {
             containerId: 'osx-container',
             closeHTML: null,
             minHeight: 80,
+            //maxWidth: 500,
+            focus: true,
+            autoResize: true,
             opacity: 65,
             position: ['0',],
             overlayClose: true,
@@ -57,11 +60,11 @@ jQuery(function ($) {
 			var self = this;
 			self.container = d.container[0];
 
-			d.overlay.fadeIn('slow', function () {
+			d.overlay.fadeIn('fast', function () {
 				$("#osx-modal-content", self.container).show();
 				var title = $("#osx-modal-title", self.container);
 				title.show();
-				d.container.slideDown('slow', function () {
+				d.container.slideDown('fast', function () {
 					setTimeout(function () {
 						var h = $("#osx-modal-data", self.container).height()
 							+ title.height()
@@ -72,6 +75,7 @@ jQuery(function ($) {
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data", self.container).show();
+                                $("#area_filter2").dropdownchecklist( { emptyText: "press here to select area：", width: 240,maxDropHeight: 160 });
 							}
 						);
 					}, 100);
@@ -83,7 +87,6 @@ jQuery(function ($) {
 			self.container = d.container[0];
 
 			d.overlay.fadeIn('fast', function () {
-				//$("#osx-modal-content1", self.container)[0].style.overflow = "scroll" ;
                 $("#osx-modal-content1", self.container).show();
 
 				var title = $("#osx-modal-title1", self.container);
@@ -95,10 +98,7 @@ jQuery(function ($) {
 							{height: h},
 							100,
 							function () {
-                                //$("div.close", self.container)[0].style.overflow = "scroll" ;
-								$("div.close", self.container).show();
-
-                                //$("#osx-modal-data1", self.container)[0].style.overflow = "scroll" ;
+  								$("div.close", self.container).show();
 								$("#osx-modal-data1", self.container).show();
 
                                 // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list

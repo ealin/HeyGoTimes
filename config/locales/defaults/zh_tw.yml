@@ -36,13 +36,14 @@ zh_tw:
   #----------------------------------------
   # News Filter
   #----------------------------------------
-  
+  report_a_news: "發表新新聞"
   tip_for_filter:   "您可透過右方過濾器按鈕，設定您專屬的新聞選項。"
   
   news_filter_head: "打造您專屬的個人新聞！"
   load_my_filter: "載入我的設定"
   #load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
+  set_tag_and_area: "設定此篇新聞的區域與屬性："
 
   input_news_url_hint: "您可以在此輸入新聞網址："
   input_news_hint: "或者輸入新聞內容："

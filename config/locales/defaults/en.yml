@@ -39,12 +39,14 @@ en:
   # News Filter
   #----------------------------------------
   tip_for_filter:   "You could setup your own news filter by button on page rightside."  
+  report_a_news: "Report a new news"
   
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
   #load_current_filter: "Load current setting"
   
   reset_the_filter: "Clear the setting"
+  set_tag_and_area: "Setup area and Tags:"
 
   input_news_url_hint: "You can input news URL here:"
   input_news_hint: "Or input news:"

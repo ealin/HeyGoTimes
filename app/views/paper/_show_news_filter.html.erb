@@ -17,16 +17,23 @@
      //
      function set_each_filter(json)
      {
-
+             //  console.log( $('option')[1].parentNode.id) ;
+             //console.log(json.filter_area)
 
              // set all areas filter
              //
              for(i=0;i<($('option').length);i++)
              {
+                if( $('option')[i].parentNode.id != "area_filter")
+                     continue ;
+                 //console.log( $('option')[i].parentNode.id) ;
+                 //console.log( $('option')[i].id) ;
+
                 if((json.filter_area).match($('option')[i].id) )
                     $('option')[i].selected = true
                 else
                     $('option')[i].selected = false
+                //console.log( $('option')[i].selected) ;
              }
 
              // SET ALL TAGS filter
@@ -34,9 +41,7 @@
              for(i=0;i<($('input').length);i++)
              {
                  if( $('input')[i].name != "each_tag")
-                 {
                      continue ;
-                 }
 
                  if((json.filter_tags).match($('input')[i].id) )
                      $('input')[i].checked = true ;
@@ -210,6 +215,12 @@
          // get selected area-filter
          for(i=0;i<($('option').length);i++)
          {
+
+           // console.log($('option') ) ;
+
+            if( $('option')[i].parentNode.id != "area_filter")
+                  continue ;
+
             if($('option')[i].selected == true)
             {
                 area_data += ($('option')[i].id + "/")
@@ -373,8 +384,12 @@
      {
         //console.log($('option'))
         for(i=0;i<($('option').length);i++)
-            $('option')[i].selected = false ;
+        {
+            if( $('option')[i].parentNode.id != "area_filter")
+                 continue ;
 
+            $('option')[i].selected = false ;
+        }
             // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
             //
             $("#area_filter").dropdownchecklist("destroy");
@@ -464,21 +479,21 @@
 </div>
 
 
-<div class = "all_areas" align = "left" id = "area_select_box">
-  <select id="area_filter" multiple="multiple" >
+<div  align = "left" id = "area_select_box">
+  <select id="area_filter"  multiple="multiple" >
 
         <% @areas.each do |area| %>
            <% if session[:filter_area].include?(area.name) %>
               <% if area.parent_area != nil %>
-                  <option name="area_sel_1" id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <option  id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% else %>
-                  <option name="area_sel_1" id="<%= area.name %>" selected="yes" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <option  id="<%= area.name %>" selected="yes" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
            <% else %>
               <% if area.parent_area != nil %>
-                 <option name="area_sel_1" id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% else %>
-                 <option name="area_sel_1" id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                 <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
            <% end %>
         <% end %>
