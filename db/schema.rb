@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612091814) do
+ActiveRecord::Schema.define(:version => 20110615094237) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20110612091814) do
   end
 
   create_table "news", :force => true do |t|
-    t.string   "news_id"
     t.string   "title"
     t.string   "url"
     t.string   "area"
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20110612091814) do
     t.integer  "area_id"
     t.integer  "rank"
     t.string   "hard_copy"
+    t.string   "news_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20110612091814) do
   end
 
   create_table "news_tags", :force => true do |t|
-    t.string  "news_id"
+    t.integer "news_id"
     t.integer "tag_id"
   end
 
@@ -99,6 +99,11 @@ ActiveRecord::Schema.define(:version => 20110612091814) do
   end
 
   create_table "user_likes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "news_id"
+  end
+
+  create_table "user_watches", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end

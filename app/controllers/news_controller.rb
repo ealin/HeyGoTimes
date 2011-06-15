@@ -23,6 +23,11 @@ class NewsController < ApplicationController
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
 
+    if (current_facebook_user != nil)
+      @user = User.find(session[:id])
+      @news.watches.push(@user)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @news }

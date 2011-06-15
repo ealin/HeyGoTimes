@@ -19,6 +19,9 @@ class News < ActiveRecord::Base
   has_many :user_dislikes
   has_many :dislikes, :through => :user_dislikes, :uniq => true, :class_name => "User", :source => :user
 
+  has_many :user_watches
+  has_many :watches, :through => :user_watches, :uniq => true, :class_name => "User", :source => :user
+
   def self.find_by_tags(user_tags)
     #find(
     #  :all,
