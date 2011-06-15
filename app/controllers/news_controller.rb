@@ -19,6 +19,8 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
 
+    check_logged_in(false)
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @news }
