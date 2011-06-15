@@ -1,7 +1,6 @@
 class CreateNews < ActiveRecord::Migration
   def self.up
     create_table :news do |t|
-      t.string :news_id
       t.string :title
       t.string :url
       t.string :area
