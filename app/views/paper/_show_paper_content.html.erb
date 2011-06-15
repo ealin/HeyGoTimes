@@ -1,9 +1,6 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
-    <%# if (index != 0) %>
-      <hr>
-    <%# end %>
     <div id="news">
       <div id="news_title">
         <h3>
@@ -14,10 +11,8 @@
 
       <div id="info">
         由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
-        <% if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku %>
-          <% news.tags.each do |tag| %>
-              <%= t(tag.name.to_sym) + " " %>
-          <% end %>
+        <% news.tags.each do |tag| %>
+            <%= t(tag.name.to_sym) + " " %>
         <% end %>
         <span class="button-group">
           <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
@@ -36,17 +31,17 @@
       <div id="news_content">
         <%= news.content.html_safe %>
       </div>
-      <% if (ENV['RAILS_ENV'] != "development") %>
+
       <div id="comments">
       <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
-      <script src="http://connect.facebook.net/zh_TW/all.js#appId=<%= Facebooker2.app_id %>&amp;xfbml=1"></script>
-
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="600"></fb:comments>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="650"></fb:comments>
 
       </div>
-      <% end # if (ENV['RAILS_ENV'] != "development") %>
     </div>
+    <%# if (index != 0) %>
+      <hr>
+    <%# end %>
   <% end %>
 <% end %>
 

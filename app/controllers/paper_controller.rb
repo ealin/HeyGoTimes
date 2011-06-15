@@ -51,16 +51,12 @@ class PaperController < NewsController
       @user_tags[0] = 'All'
     end
 
-    if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku
-      if (@user_tags[0] == 'All')
-        @news = News.find_by_tags(@user_tags)
-      else
-        if (News.count > 0)
-          @news = News.find_by_tags(@user_tags)
-        end
-      end
+    if (@user_tags[0] == 'All')
+      @news = News.find_by_tags(@user_tags)
     else
-      @news = News.get_all
+      if (News.count > 0)
+        @news = News.find_by_tags(@user_tags)
+      end
     end
 
     @news = @news.paginate :page => page, :per_page => 3
