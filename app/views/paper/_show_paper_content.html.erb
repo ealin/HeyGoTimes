@@ -1,9 +1,7 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
-    <%# if (index != 0) %>
-      <hr>
-    <%# end %>
+    
     <div id="news">
       <div id="news_title">
         <h3>
@@ -38,11 +36,14 @@
       <div id="comments">
       <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="600"></fb:comments>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="650"></fb:comments>
 
       </div>
       <% end # if (ENV['RAILS_ENV'] != "development") %>
     </div>
+    <%# if (index != 0) %>
+      <hr>
+    <%# end %>
   <% end %>
 <% end %>
 
