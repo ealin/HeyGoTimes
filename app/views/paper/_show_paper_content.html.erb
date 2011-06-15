@@ -14,11 +14,9 @@
 
       <div id="info">
         由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
-        <% if (ENV['RAILS_ENV'] == "development") # TODO: temp solution, can't get news record on heroku %>
           <% news.tags.each do |tag| %>
               <%= t(tag.name.to_sym) + " " %>
           <% end %>
-        <% end %>
         <span class="button-group">
           <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
             <img class="button-icon-like" src="/images/like_button.png" alt="">
