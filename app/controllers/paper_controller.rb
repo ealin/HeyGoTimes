@@ -35,7 +35,6 @@ class PaperController < NewsController
 
   def _show_paper_content
     @news = get_news(params[:page])
-
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
     end

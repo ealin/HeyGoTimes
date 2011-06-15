@@ -137,7 +137,7 @@ class NewsController < ApplicationController
     params.each_pair do |key, value|
       if (value == 'on')
         @tag = Tag.find_by_name(key)
-        @tags << @tag
+        @news.tags << @tag
       end
     end
 

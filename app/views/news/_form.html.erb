@@ -155,14 +155,14 @@ $(document).ready(function () {
               <% end %>
 
               <div id="tag_grp1">
-              <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
                  <%= t(tag.name.to_sym) %>
               </input>
               &nbsp;&nbsp;&nbsp;
               </div>
         <% else %>
               <div id="tag_grp2">
-              <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
                  <%= t(tag.name.to_sym) %>
               </input>
               &nbsp;&nbsp;&nbsp;
