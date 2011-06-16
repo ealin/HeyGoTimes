@@ -20,17 +20,41 @@
 
     }
 
-    function loadMore(pageNo) {
-      var url = '/paper/_show_paper_content?page=';
-      $.get(url + pageNo, function(response) {
+    function loadMore(type, pageNo) {
+      var url = '/paper/_show_paper_content?type='+type+'&page='+pageNo;
+      $.get(url, function(response) {
         $("#paperContent").append(response);
+      });
+    }
+
+    function changePaperType(type) {
+      var url = '/paper/_show_paper_content?type='+type+'&page=1';
+      $.get(url, function(response) {
+        //$("#paperContent").replaceWith(response);
+        $("#paperContent").fadeOut('slow').load(response).fadeIn('slow');
       });
     }
 
     $(document).ready(function() {
       var currPage = 1;
+      var currType = 'latest';
+
       $('#more_news').unbind('click').click(function() {
-        loadMore(++currPage);
+        loadMore(currType, ++currPage);
+      });
+
+      $('#menu-item-rank').unbind('click').click(function(){
+        $('#menu-item-latest').removeClass("current-menu-item")
+        $(this).addClass("current-menu-item")
+        currType = 'rank';
+        changePaperType(currType);
+      });
+
+      $('#menu-item-latest').unbind('click').click(function(){
+        $('#menu-item-rank').removeClass("current-menu-item")
+        $(this).addClass("current-menu-item")
+        currType = 'latest';
+        changePaperType(currType);
       });
     });
   </script>
@@ -56,8 +80,12 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <li id="menu-item-rank" class="menu-item"><a title="Rank" href="<%= paper_index_path %>"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item current-menu-item"><a title="Latest" href="<%= paper_index_path %>"><%=t(:latest_news)%></a></li>
+        <!--
+        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="<%= paper_index_path %>?type=rank"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="<%= paper_index_path %>?type=latest"><%=t(:latest_news)%></a></li>
+        -->
+        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->

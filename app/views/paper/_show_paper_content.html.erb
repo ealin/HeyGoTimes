@@ -1,7 +1,6 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
-    
     <div id="news">
       <div id="news_title">
         <h3>
@@ -12,9 +11,9 @@
 
       <div id="info">
         由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
-          <% news.tags.each do |tag| %>
-              <%= t(tag.name.to_sym) + " " %>
-          <% end %>
+        <% news.tags.each do |tag| %>
+            <%= t(tag.name.to_sym) + " " %>
+        <% end %>
         <span class="button-group">
           <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
             <img class="button-icon-like" src="/images/like_button.png" alt="">
@@ -32,14 +31,13 @@
       <div id="news_content">
         <%= news.content.html_safe %>
       </div>
-      <% if (ENV['RAILS_ENV'] != "development") %>
+
       <div id="comments">
       <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
       <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="650"></fb:comments>
 
       </div>
-      <% end # if (ENV['RAILS_ENV'] != "development") %>
     </div>
     <%# if (index != 0) %>
       <hr>

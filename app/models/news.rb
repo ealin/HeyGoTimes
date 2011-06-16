@@ -19,13 +19,16 @@ class News < ActiveRecord::Base
   has_many :user_dislikes
   has_many :dislikes, :through => :user_dislikes, :uniq => true, :class_name => "User", :source => :user
 
-  def self.find_by_tags(user_tags)
+  has_many :user_watches
+  has_many :watches, :through => :user_watches, :uniq => true, :class_name => "User", :source => :user
+
+  def self.find_by_tags(type, user_tags)
     #find(
     #  :all,
     #  :order => "created_at DESC",
     #  :joins => :tags,
     #  :conditions => {:tags => {:name => user_tags}},
-    #  :group => 'news.id, news.title'
+    #  :group => 'news.id'
     #)
 
     #find(
@@ -35,8 +38,11 @@ class News < ActiveRecord::Base
     #  :conditions => {:tags => {:name => user_tags}},
     #  :group => 'news.id'
     #)
-
-    joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+    if (type == 'latest')
+      joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+    else
+      joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.rank DESC')
+    end
   end
 
   def self.get_all
