@@ -45,8 +45,12 @@ class News < ActiveRecord::Base
     end
   end
 
-  def self.get_all
-    find (:all,:limit => 10)
+  def self.get_all(type)
+    if (type == 'latest')
+      find(:all, :order => 'created_at DESC', :limit => 10)
+    else
+      find(:all, :order => 'rank DESC', :limit => 10)
+    end
 
   end
 
