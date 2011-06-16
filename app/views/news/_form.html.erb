@@ -112,12 +112,19 @@ $(document).ready(function () {
     <%= f.text_area :content %>
   </div>
 
+    <!--
+    <input type="text" name="hide" value="" id="hide_text_box" />
+    -->
+
   <div>
     <%= t(:news_image_url_field)%>
     <input type="text" name="image_url" size="50" value="" id="image_url" />
   </div>
   <hr>
 
+   <div style="display: none;">
+      <%= f.text_area :area_string %>
+   </div>
 
   <div align = "left" id="filter_dlg_t2">
     <%= t(:set_tag_and_area)%>
@@ -138,9 +145,8 @@ $(document).ready(function () {
 
       </select>
     </div>
-    <input type="text" name="hide" value="" id="hide_text_box" />
 
-    <br><br><br>
+    <br><br>
 
 
 

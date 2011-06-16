@@ -1,7 +1,7 @@
 
 
 <!--
-current_facebook_user : ?¯ä»¥?¨ç?æ¬?? (defined in mogli)
+current_facebook_user :  (defined in mogli)
   (https://github.com/mmangino/mogli/blob/master/lib/mogli/user.rb)
 
 define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
@@ -15,8 +15,8 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 
   <% if current_facebook_user != nil && session[:logged_in] != false%>
 
-    <% # fetch?¯è?å¤±æ?(userä¸»å??ªFACEBOOKä¸­LOGOUT) ==> å¿????? Mogli::Client::OAuthException %>
-    <% # ????????check_logged_in() /  application_controller.rb ?·è? %>
+    <% # fetch?ï¿½ï¿½?å¤±ï¿½?(userä¸»ï¿½??ï¿½FACEBOOKä¸­LOGOUT) ==> ï¿½????? Mogli::Client::OAuthException %>
+    <% # ????????check_logged_in() /  application_controller.rb ?ï¿½ï¿½? %>
     <% #current_facebook_user.fetch %>
     <br>
     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name} (#{current_facebook_user.email})" %>

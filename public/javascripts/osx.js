@@ -67,8 +67,7 @@ jQuery(function ($) {
 				d.container.slideDown('fast', function () {
 					setTimeout(function () {
 						var h = $("#osx-modal-data", self.container).height()
-							+ title.height()
-							+ 20; // padding
+							+ title.height() + 10; // padding
 						d.container.animate(
 							{height: h}, 
 							100,
@@ -76,14 +75,21 @@ jQuery(function ($) {
 								$("div.close", self.container).show();
 								$("#osx-modal-data", self.container).show();
 
-                                $("#area_filter2").dropdownchecklist( { emptyText: "press here to select area：",
+                                $("#area_filter2").dropdownchecklist( { icon: {},emptyText: "選擇區域(可複選)：",
                                     width: 240,maxDropHeight: 160 , onComplete: function(selector) {
 
                                         //console.log(selector.options) ;
-                                        alert(selector.options.length) ;
-                                        console.log($("#hide_text_box")) ;
+                                        //alert(selector.options.length) ;
                                         //$("#hide_text_box").value = "1234" ;
-                                         document.forms[0].elements[5].value = "1234" ;
+                                        document.forms[0].elements[7].value = "" ;
+                                        for(i=0;i<selector.options.length;i++)
+                                        {
+                                            console.log(selector.options[i].id) ;
+                                          if(selector.options[i].selected)
+                                          {
+                                            document.forms[0].elements[7].value += (selector.options[i].id + '/') ;
+                                          }
+                                        }
                                     }
                             });
 
