@@ -2,7 +2,13 @@ class PaperController < NewsController
 
   def index
 
-    session[:news_type] = 'latest' if (session[:news_type] == nil)
+    if (params[:type] != nil)
+      session[:news_type] = params[:type]
+    end
+
+    if (session[:news_type] == nil)
+      session[:news_type] = 'latest'
+    end
 
     @news = get_news(session[:news_type], params[:page])
 

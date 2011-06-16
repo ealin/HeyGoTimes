@@ -30,7 +30,8 @@
     function changePaperType(type) {
       var url = '/paper/_show_paper_content?type='+type+'&page=1';
       $.get(url, function(response) {
-        $("#paperContent").replaceWith(response);
+        //$("#paperContent").replaceWith(response);
+        $("#paperContent").fadeOut('slow').load(response).fadeIn('slow');
       });
     }
 
@@ -79,8 +80,12 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <li id="menu-item-rank" class="menu-item"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item current-menu-item"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
+        <!--
+        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="<%= paper_index_path %>?type=rank"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="<%= paper_index_path %>?type=latest"><%=t(:latest_news)%></a></li>
+        -->
+        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->
