@@ -10,13 +10,30 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 
 -->
 
+<%#= fb_connect_async_js%>
 
-<%= fb_connect_async_js%>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+             xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+
+    // Todo: we need to check the locale!!!!!!!!!!!!
+    //
+    e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+
+
 
   <% if current_facebook_user != nil && session[:logged_in] != false%>
 
-    <% # fetch?��?失�?(user主�??�FACEBOOK中LOGOUT) ==> �????? Mogli::Client::OAuthException %>
-    <% # ????????check_logged_in() /  application_controller.rb ?��? %>
+    <% # fetch is called in check_logged_in() /  application_controller.rb  %>
     <% #current_facebook_user.fetch %>
     <br>
     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name} (#{current_facebook_user.email})" %>
