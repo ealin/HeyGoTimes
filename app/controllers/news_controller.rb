@@ -23,6 +23,11 @@ class NewsController < ApplicationController
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
 
+    if (current_facebook_user != nil)
+      @user = User.find(session[:id])
+      @news.watches.push(@user)
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @news }
@@ -32,9 +37,12 @@ class NewsController < ApplicationController
   def like
 
     @data = {}
+    # check session id of user
     if (params[:user] == session[:id].to_s)
       @user = User.find(session[:id])
       @news = News.find(params[:news])
+
+      # check if like/dislike of user already exists
       if (params[:like] == 1.to_s)
         if (@news.dislikes.include?(@user))
           @news.dislikes.delete(@user)
@@ -49,8 +57,17 @@ class NewsController < ApplicationController
         @data['total'] = @news.dislikes.count
       end
 
+      # calculate rank
+      @like_count = @news.likes.count
+      @dislike_count = @news.dislikes.count
+
+      if (@like_count > @dislike_count)
+        @news.rank = @like_count - @dislike_count
+      end
+
       @data['name'] = @user.first_name + ' ' + @user.last_name
 
+      @news.save
     end
 
     respond_to do |format|

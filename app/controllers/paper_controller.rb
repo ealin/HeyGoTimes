@@ -1,16 +1,23 @@
 class PaperController < NewsController
 
   def index
-    @news = get_news(params[:page])
+
+    if (params[:type] != nil)
+      session[:news_type] = params[:type]
+    end
+
+    if (session[:news_type] == nil)
+      session[:news_type] = 'latest'
+    end
+
+    @news = get_news(session[:news_type], params[:page])
 
     @tags = Tag.all
     @areas = Area.all
 
-
     # for checking login status in View, we must define an obj-attribute @logged_flag and
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
-
 
 =begin
     # Ealin: not necessary for new-spec.
@@ -35,14 +42,20 @@ class PaperController < NewsController
   end
 
   def _show_paper_content
-    @news = get_news(params[:page])
+    # params:
+    # :type => latest / rank
+    # :page => page num to fetch
+
+    session[:news_type] = params[:type]
+    @news = get_news(params[:type], params[:page])
+
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
     end
-
   end
 
-  def get_news(page)
+  def get_news(type, page)
+
     @user_tags = []
     if (session[:filter_tags] != nil)
       @user_tags = session[:filter_tags].split("/")
@@ -53,10 +66,10 @@ class PaperController < NewsController
     end
 
     if (@user_tags[0] == 'All')
-      @news = News.find_by_tags(@user_tags)
+      @news = News.get_all()
     else
       if (News.count > 0)
-        @news = News.find_by_tags(@user_tags)
+        @news = News.find_by_tags(type, @user_tags)
       end
     end
 
@@ -66,11 +79,6 @@ class PaperController < NewsController
 
 
     return @news
-  end
-
-  def more_news
-    @page_num = params[:page_num]
-
   end
 
   #-----------------------------------------------------------------------------------

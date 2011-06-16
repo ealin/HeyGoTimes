@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612091814) do
+ActiveRecord::Schema.define(:version => 20110615094237) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -99,6 +99,11 @@ ActiveRecord::Schema.define(:version => 20110612091814) do
   end
 
   create_table "user_likes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "news_id"
+  end
+
+  create_table "user_watches", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end
