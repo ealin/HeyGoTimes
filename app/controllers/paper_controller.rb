@@ -65,7 +65,7 @@ class PaperController < NewsController
     end
 
     if (@user_tags[0] == 'All')
-      @news = News.get_all()
+      @news = News.get_all(type)
     else
       if (News.count > 0)
         @news = News.find_by_tags(type, @user_tags)
