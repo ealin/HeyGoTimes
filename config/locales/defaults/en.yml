@@ -36,6 +36,15 @@ en:
   comments: "Comments"
 
   #----------------------------------------
+  # for mobile site
+  #----------------------------------------
+  m_report: "Report News"
+  m_filter: "Filter News"
+  m_login: "Login"
+  m_logout: "Logout"
+
+
+  #----------------------------------------
   # News Filter
   #----------------------------------------
   tip_for_filter:   "You could setup your own news filter by button on page rightside."  

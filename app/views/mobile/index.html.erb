@@ -21,12 +21,17 @@
 
 
    <ul id="paper" title=<%= t(:HeyGoTimes) %> selected="true">
-      <div id="fun_icon" align = "left">
 
+      <div id="fun_icon" align = "left">
+        <a href="#filter"><button style="width:30%;height:20px;font-size:16px;"><%= t(:m_filter) %></button></a>
+        <a href="#report"><button style="width:30%;"><%= t(:m_report) %></button></a>
+        <% if session[:logged_in] == true %>
+            <a href="#filter"><button style="width:30%;"><%= t(:m_logout) %></button></a>
+        <% else %>
+            <a href="#filter"><button style="width:30%;"><%= t(:m_login) %></button></a>
+        <% end %>
       </div>
 
-      <li><a href="#report">Report</a></li>
-      <li><a href="#filter">Filter</a></li>
 
       <div>
       <%#= render :partial => 'mobile/show_fun_buttons'%>
