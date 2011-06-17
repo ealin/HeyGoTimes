@@ -22,7 +22,7 @@ $(document).ready(function () {
         return true;
     }
 
-    var preview = $('#validateAvatar').html('<br><img src="images/ajax-loader.gif" height="16" width="16" /> loading...');
+    var preview = $('#loading_animate').html('<img src="images/fb_loading_large.gif" height="16" width="16" />');
 
     if (t.value == '') {
       preview.html('');
@@ -30,14 +30,15 @@ $(document).ready(function () {
 
       // set a timeout of x seconds to load the image, otherwise, show the fail message
       t.timeout = setTimeout(function () {
-        //preview.html('Invalid URL.');
-
         $.getJSON("/news/report.json", 'url=' + t.value, function(json){
           document.forms[0].elements[4].value = json.title;
           document.forms[0].elements[5].value = json.text;
           document.forms[0].elements[6].value = json.image;
         });
-        preview.html('');
+        t.timeout = setTimeout(function () {
+          preview.html('');
+        }, 1500);
+
       }, 1000);
     }
 
@@ -83,7 +84,7 @@ $(document).ready(function () {
     URL
     <input type="text" name="news[url]" value="" id="news_url" />
     <button id = "get_news"> <%= t(:get_news) %> </button>
-    <span id="validateAvatar"></span>
+    <span id="loading_animate"></span>
   </div>
 
   <hr>
