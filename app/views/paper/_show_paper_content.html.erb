@@ -2,14 +2,14 @@
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
     <div id="news">
-      <div id="news_title">
+      <div class="news_title">
         <h3>
           <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>" onclick="window.open('<%= news_index_path+'/'+news.id.to_s %>'); return false;"><%= news.title %></a>
         </h3>
       </div>
       <h5>
 
-      <div id="info">
+      <div class="info">
         由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
         <% news.tags.each do |tag| %>
             <%= t(tag.name.to_sym) + " " %>
@@ -25,16 +25,31 @@
         </span>
       </div>
       </h5>
-      <div id="image">
+      <div class="image">
          <img src="<%=news.images[0].url.to_s%>" alt="image">
       </div>
-      <div id="news_content">
+      <div class="news_content">
         <%= news.content.html_safe %>
       </div>
 
       <div id="comments">
       <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                   xfbml: true});
+        };
+        (function() {
+          var e = document.createElement('script'); e.async = true;
+
+          // Todo: we need to check the locale!!!!!!!!!!!!
+          //
+          e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+          document.getElementById('fb-root').appendChild(e);
+        }());
+      </script>
       <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="650"></fb:comments>
 
       </div>

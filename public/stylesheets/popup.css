@@ -16,7 +16,7 @@ TEXTAREA { width: 80%; height: 50px; resize: none;}
 FIELDSET { border: 1px solid #ccc; padding: 1em; margin: 0; }
 LEGEND { color: #ccc; font-size: 120%; }
 INPUT, TEXTAREA { font-family: Arial, verdana; font-size: 125%; }
-IMG { margin: 5px; }
+IMG { margin: 5px; vertical-align: middle; }
 #message {
     border: 1px solid #ccc;
     background-color: #ffa;
@@ -29,7 +29,4 @@ DIV.submit {
   padding: 1em;
   text-align: right;
   margin-bottom: 20px;
-}
-IMG.avatar {
-    vertical-align: top;
 }
