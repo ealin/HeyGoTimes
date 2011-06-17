@@ -50,6 +50,7 @@
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("current-menu-item")
         $(this).addClass("current-menu-item")
+        currPage = 1;
         currType = 'rank';
         changePaperType(currType);
       });
@@ -57,6 +58,7 @@
       $('#menu-item-latest').unbind('click').click(function(){
         $('#menu-item-rank').removeClass("current-menu-item")
         $(this).addClass("current-menu-item")
+        currPage = 1;
         currType = 'latest';
         changePaperType(currType);
       });

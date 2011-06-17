@@ -60,10 +60,7 @@ class NewsController < ApplicationController
       # calculate rank
       @like_count = @news.likes.count
       @dislike_count = @news.dislikes.count
-
-      if (@like_count > @dislike_count)
-        @news.rank = @like_count - @dislike_count
-      end
+      @news.rank = @like_count - @dislike_count
 
       @data['name'] = @user.first_name + ' ' + @user.last_name
 
