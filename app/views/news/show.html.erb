@@ -29,6 +29,31 @@
              Your browser can't display IFRAMEs
           </iframe>
       </div>
+      <div id="comments">
+        <h3><%= t(:comments)%></h3>
+        <div id="fb-root"></div>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                     xfbml: true});
+          };
+          (function() {
+            var e = document.createElement('script'); e.async = true;
+
+            // Todo: we need to check the locale!!!!!!!!!!!!
+            //
+            e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        </script>
+        <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
+
+        </div>
+      </div>
+
+      <%= link_to 'Edit', edit_news_path(@news) %>
+
     </div>
 
     <div id="sub">
@@ -40,8 +65,7 @@
     </div>
   </div><!-- #main -->
 
-  <%= link_to 'Edit', edit_news_path(@news) %> |
-  <%= link_to 'Back', news_index_path %>
+
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
     <div id="footer">

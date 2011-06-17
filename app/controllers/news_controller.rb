@@ -154,13 +154,31 @@ class NewsController < ApplicationController
     @image.news = @news
     @image.save
 
-    @tags = ""
+    @news.tags = ""
+    counter = 0
     params.each_pair do |key, value|
       if (value == 'on')
-        @tag = Tag.find_by_name(key)
-        @news.tags << @tag
+        tag = Tag.find_by_name(key)
+        @news.tags << tag
+        counter += 1
       end
     end
+
+    if(counter == 0)  #user didn't 'select any tag
+      tag = Tag.find_by_name("All")
+      @news.tags << tag
+    end
+
+
+    # setup areas of this news
+    areas = Area.all
+    areas.each do |area|
+      if @news.area_string.include?(area.name)
+        @news.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+      end
+    end
+
+
 
     respond_to do |format|
       if @news.save

@@ -11,6 +11,8 @@
 <!--
 $(document).ready(function () {
 
+
+
   $('#get_news').unbind('click').click(function()
   {
     var t = document.forms[0].elements[2];
@@ -20,7 +22,7 @@ $(document).ready(function () {
         return true;
     }
 
-    var preview = $('#validateAvatar').html('<br><img src="images/ajax-loader.gif" height="16" width="16" /> loading...');
+    var preview = $('#loading_animate').html('<img src="images/fb_loading_large.gif" height="16" width="16" />');
 
     if (t.value == '') {
       preview.html('');
@@ -28,14 +30,15 @@ $(document).ready(function () {
 
       // set a timeout of x seconds to load the image, otherwise, show the fail message
       t.timeout = setTimeout(function () {
-        //preview.html('Invalid URL.');
-
         $.getJSON("/news/report.json", 'url=' + t.value, function(json){
           document.forms[0].elements[4].value = json.title;
           document.forms[0].elements[5].value = json.text;
           document.forms[0].elements[6].value = json.image;
         });
-        preview.html('');
+        t.timeout = setTimeout(function () {
+          preview.html('');
+        }, 1500);
+
       }, 1000);
     }
 
@@ -58,6 +61,8 @@ $(document).ready(function () {
 </script>
 
 
+
+
 <%= form_for(news) do |f| %>
   <% if news.errors.any? %>
     <div id="error_explanation">
@@ -71,22 +76,27 @@ $(document).ready(function () {
     </div>
   <% end %>
 
-  <h3><%= t(:input_news_url_hint)%></h3>
+  <div align ="left"  id="filter_dlg_t2" >
+    <%= t(:input_news_url_hint)%>
+  </div>
 
   <div class="field">
     URL
     <input type="text" name="news[url]" value="" id="news_url" />
     <button id = "get_news"> <%= t(:get_news) %> </button>
-    <span id="validateAvatar"></span>
+    <span id="loading_animate"></span>
   </div>
 
   <hr>
 
-  <h3><%= t(:input_news_hint)%></h3>
+    <div align ="left"  id="filter_dlg_t2" >
+      <%= t(:input_news_hint)%>
+    </div>
 
   <div class="field">
     <%= t(:news_title_field)%>
     <%= f.text_field :title %>
+    <br><br>
   </div>
 
   <div class="field">
@@ -99,38 +109,98 @@ $(document).ready(function () {
     });
     </script>
     -->
-    <%= t(:news_content_field)%>
+    <%= t(:news_content_field)%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <%= f.text_area :content %>
   </div>
+
+    <!--
+    <input type="text" name="hide" value="" id="hide_text_box" />
+    -->
 
   <div>
     <%= t(:news_image_url_field)%>
     <input type="text" name="image_url" size="50" value="" id="image_url" />
   </div>
   <hr>
-  <div align = "left">
-    <h3><%= t(:filter_by_tag)%> </h3>
+
+   <div style="display: none;">
+      <%= f.text_area :area_string %>
+   </div>
+
+  <div align = "left" id="filter_dlg_t2">
+    <%= t(:set_tag_and_area)%>
+    &nbsp;&nbsp;
   </div>
 
-  <div class = "all_tags" align = "left" >
+  <%# Area Selection  %>
+    <div align = "left" id = "area_select_box2">
+      <select id="area_filter2"  multiple="multiple" >
+
+            <% @areas.each do |area| %>
+                  <% if area.parent_area != nil %>
+                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <% else %>
+                     <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <% end %>
+            <% end %>
+
+      </select>
+    </div>
+
+    <br><br>
+
+
+
+    <div class = "all_tags" align = "left" >
     <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
     <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
 
-    <% @tags.each do |tag| %>
-      <%# using type and name to identify each Input/Checkbox here %>
 
-      <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>"> <%= t(tag.name.to_sym) %> </input>
-      &nbsp;&nbsp;&nbsp;
+      <% @tags.each do |tag| %>
+        <%# using type and name to identify each Input/Checkbox here %>
 
-      <% if ( (tag.id == 1) || (tag.id - 1) % 6 == 0)  %>
-        <br>
+        <% if tag.id <= 3 %>
+
+              <% if tag.id == 2 || tag.id == 3  %>
+               <%# todo:  這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
+                <% next %>
+              <% end %>
+
+              <div id="tag_grp1">
+              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                 <%= t(tag.name.to_sym) %>
+              </input>
+              &nbsp;&nbsp;&nbsp;
+              </div>
+        <% else %>
+              <div id="tag_grp2">
+              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                 <%= t(tag.name.to_sym) %>
+              </input>
+              &nbsp;&nbsp;&nbsp;
+              </div>
+        <% end%>
+
+
+        <% if (tag.id == 1) %>
+              <%= t(:same_as_select_all) %>
+              <br>
+              <% next %>
+        <% end %>
+
+        <% if (tag.id - 3) % 6 == 0  %>
+          <br>
+        <% end %>
+
       <% end %>
-    <% end %>
   </div>
+  <br>
   <hr>
-  <div class="actions" align="right">
-    <input id="news_submit" name="commit" type="submit" value="新增News" />
-    <input class="simplemodal-close" id="news_cancel" name="cancel" type="submit" value="取消" />
-    <!-- <button class="simplemodal-close">取消</button> -->
-  </div>
+
+    <div class="actions" align="right">
+      <input id="news_submit" name="commit" type="submit" value="新增News" />
+      <input class="simplemodal-close" id="news_cancel" name="cancel" type="submit" value="取消" />
+      <!-- <button class="simplemodal-close">取消</button> -->
+    </div>
+
 <% end %>

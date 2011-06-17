@@ -38,6 +38,7 @@ class PaperController < NewsController
    # this function would use data in session, so it must be called after init_filter_setting()
    get_paper_title_info()
 
+
   end
 
   def _show_paper_content
@@ -72,7 +73,10 @@ class PaperController < NewsController
       end
     end
 
-    @news = @news.paginate :page => page, :per_page => 3
+    if(@news != nil)
+      @news = @news.paginate :page => page, :per_page => 3
+    end
+
 
     return @news
   end

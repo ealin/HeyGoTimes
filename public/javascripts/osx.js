@@ -25,6 +25,9 @@ jQuery(function ($) {
             containerId: 'osx-container',
             closeHTML: null,
             minHeight: 80,
+            //maxWidth: 500,
+            focus: true,
+            autoResize: true,
             opacity: 65,
             position: ['0',],
             overlayClose: true,
@@ -57,21 +60,39 @@ jQuery(function ($) {
 			var self = this;
 			self.container = d.container[0];
 
-			d.overlay.fadeIn('slow', function () {
+			d.overlay.fadeIn('fast', function () {
 				$("#osx-modal-content", self.container).show();
 				var title = $("#osx-modal-title", self.container);
 				title.show();
-				d.container.slideDown('slow', function () {
+				d.container.slideDown('fast', function () {
 					setTimeout(function () {
 						var h = $("#osx-modal-data", self.container).height()
-							+ title.height()
-							+ 20; // padding
+							+ title.height() + 10; // padding
 						d.container.animate(
 							{height: h}, 
 							100,
 							function () {
 								$("div.close", self.container).show();
 								$("#osx-modal-data", self.container).show();
+
+                                $("#area_filter2").dropdownchecklist( { icon: {},emptyText: "選擇區域(可複選)：",
+                                    width: 240,maxDropHeight: 160 , onComplete: function(selector) {
+
+                                        //console.log(selector.options) ;
+                                        //alert(selector.options.length) ;
+                                        //$("#hide_text_box").value = "1234" ;
+                                        document.forms[0].elements[7].value = "" ;
+                                        for(i=0;i<selector.options.length;i++)
+                                        {
+                                            console.log(selector.options[i].id) ;
+                                          if(selector.options[i].selected)
+                                          {
+                                            document.forms[0].elements[7].value += (selector.options[i].id + '/') ;
+                                          }
+                                        }
+                                    }
+                            });
+
 							}
 						);
 					}, 100);
@@ -83,7 +104,6 @@ jQuery(function ($) {
 			self.container = d.container[0];
 
 			d.overlay.fadeIn('fast', function () {
-				//$("#osx-modal-content1", self.container)[0].style.overflow = "scroll" ;
                 $("#osx-modal-content1", self.container).show();
 
 				var title = $("#osx-modal-title1", self.container);
@@ -95,10 +115,7 @@ jQuery(function ($) {
 							{height: h},
 							100,
 							function () {
-                                //$("div.close", self.container)[0].style.overflow = "scroll" ;
-								$("div.close", self.container).show();
-
-                                //$("#osx-modal-data1", self.container)[0].style.overflow = "scroll" ;
+  								$("div.close", self.container).show();
 								$("#osx-modal-data1", self.container).show();
 
                                 // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list

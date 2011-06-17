@@ -7,7 +7,7 @@ class SetupController < ApplicationController
      # also defined in in application_controller.rb, it will set following obj-variables:
      #  -@user_account, @user_account_connected_to, @user_account_email[0~2]
      #
-     get_current_user_info
+     #get_current_user_info
 
 
   end
