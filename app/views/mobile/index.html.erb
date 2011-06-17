@@ -12,19 +12,32 @@
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 </head>
 
+
+
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
       <a id="backButton" class="button" href="#"></a>
    </div>
-   <ul id="screen1" title="Screen 1" selected="true">
-      <li><a href="#screen2">Go to Screen #2</a></li>
+
+
+   <ul id="paper" title=<%= t(:HeyGoTimes) %> selected="true">
+      <li><a href="#report">Report</a></li>
+      <li><a href="#filter">Filter</a></li>
+
+      <div>
+      <%#= render :partial => 'mobile/show_fun_buttons'%>
+      </div>
+      <%#= render :partial => 'mobile/show_paper_content'%>
    </ul>
 
 
-   <ul id="screen2" title="Screen 2" >
-     <li><a href="#screen3">Go to Screen #3</a></li>
+   <ul id="report" title="report_page" >
+
+     <%#= render :partial => 'mobile/report'%>
    </ul>
 
-   <div id="screen3" title="Screen 3" class="panel">
-      Hello World
+   <div id="filter" title="filter_page 3" class="panel">
+      <%#= render :partial => 'mobile/show_paper_filter'%>
    </div>
+
+

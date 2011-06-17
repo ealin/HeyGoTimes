@@ -125,7 +125,7 @@ class PaperController < NewsController
             session[:filter_tags] += (tag.name + "/")
           end
 
-          # ger area filter from user.areas
+          # get area filter from user.areas
           session[:filter_area] =""
           (user.areas).each do |area|
             session[:filter_area] += (area.name + "/")
