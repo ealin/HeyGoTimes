@@ -27,7 +27,7 @@
       <div>
       <%#= render :partial => 'mobile/show_fun_buttons'%>
       </div>
-      <%#= render :partial => 'mobile/show_paper_content'%>
+      <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
    </ul>
 
 

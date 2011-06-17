@@ -1,5 +1,4 @@
-class MobileController < ApplicationController
-  def index
-  end
+class MobileController < PaperController
+
 
 end
