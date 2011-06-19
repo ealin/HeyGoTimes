@@ -126,7 +126,7 @@ body[orient="landscape"] > .toolbar > h1 {
 .whiteButton,
 .redButton,
 .grayButton {
- /*   display: block; // marked by ealin */
+    /*display: block; // marked by ealin*/
     border-width: 0 12px;
     padding: 6px;
     text-align: center;

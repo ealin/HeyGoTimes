@@ -2,14 +2,17 @@
    <title>Page Title</title>
    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 
-  <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
+   <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
    <link rel="apple-touch-icon" href="/images/HeyGoTimes_logo.png" />
+
+   <meta name="apple-touch-fullscreen" content="YES" />
    <meta name="apple-mobile-web-app-capable" content="yes" />
 
    <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
 
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+
 </head>
 
 <script>
@@ -18,7 +21,7 @@
     {
         /* On Facebook Login */
         var my_client_id  = "189797591070416";
-        var my_redirect_uri   = "http://localhost:3000/mobile/index/";
+        var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
         my_type           = "user_agent";
         my_display        = "touch" ;
 
@@ -47,52 +50,32 @@
 
         });
 
-        /*
-        function onLogoutBtn()
-        {
-            FB.logout() ;
-            window.location.replace("http://localhost:3000/mobile/index/")
-
-        } */
-
 
         FB.getLoginStatus(function(response)
         {
+          // must reload the page when login-status is different between facebook and "facebooker2"
+          //
           logging_status_in_server = "<%= session[:logged_in] %>"
 
           if (response.session)
           {
             // logged in and connected user, someone you know
 
-              console.log("inininininin")
-              console.log(logging_status_in_server)
+              //console.log("inininininin")
+              //console.log(logging_status_in_server)
               if(logging_status_in_server == "false")
-                 window.location.replace("http://localhost:3000/mobile/index/") ;
+                 window.location.replace("<%= root_url+'mobile/index/' %>") ;
+                 //window.location.replace("http://localhost:3000/mobile/index/") ;
 
           }
-          else {
+          //else {
             // no user session available, someone you dont know
-              console.log("outoutout") ;
-              console.log(logging_status_in_server)
-          }
+              //console.log("outoutout") ;
+              //console.log(logging_status_in_server)
+          //}
         });
 
      </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
    <div class="toolbar">
@@ -100,37 +83,37 @@
       <a id="backButton" class="button" href="#"></a>
    </div>
 
+
+
    <!-- !!!!!!!!! Page - NewsPaper  -->
-   <ul id="paper" title=<%= t(:HeyGoTimes) %>  selected= "true" >
 
-        <div align = "left" >
-        <a href="#filter"><button class="whiteButton" style="width:32%;"><%= t(:m_filter) %></button></a>
-        <a href="#report"><button class="whiteButton" style="width:32%;"><%= t(:m_report) %></button></a>
+     <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
 
-        <% if session[:logged_in] == true %>
-              <a><button class="whiteButton" style="width:32%;">
-              <%= fb_logout_link("Logout", root_url+"mobile/index") %>
-              <%#= t(:m_logout) %>
-              </button></a>
-        <% else %>
-              <a><button class="whiteButton" style="width:32%;" onclick="onLoginBtn()"><%= t(:m_login) %></button></a>
-        <% end %>
+      <div align="right">
+         <% if session[:logged_in] == true %>
+             <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
+             <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
+                    :style => "padding: 2px 6px 0px 0px;" %>
+         <% else %>
+            <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
+         <% end %>
+      </div>
 
+       <div align = "left" >
+          <a href="#filter"><button class="whiteButton" style="width:49%;"><%= t(:m_filter) %> </button></a>
+
+          <a href="#report"><button class="whiteButton" style="width:49%;"><%= t(:m_report) %></button></a>
        </div>
 
-
-
-        <% if session[:logged_in] == true %>
-             <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %><br>
-             <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
-        <% end %>
+       <hr>
 
 
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
-        <button class="redButton" style="width:98%;"><%= t(:m_more) %></button>
+
+        <div align="center">
+           <button class="redButton" style="width:100%;"><%= t(:m_more) %></button>
+        </div>
    </ul>
-
-
 
 
 
