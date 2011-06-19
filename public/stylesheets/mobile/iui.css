@@ -1,3 +1,5 @@
+
+
 /*
    Copyright (c) 2007-9, iUI Project Members
    See LICENSE.txt for licensing terms
@@ -93,7 +95,7 @@ body[orient="landscape"] > .toolbar > h1 {
     height: 30px;
     line-height: 30px;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     color: #FFFFFF;
     text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
@@ -124,11 +126,11 @@ body[orient="landscape"] > .toolbar > h1 {
 .whiteButton,
 .redButton,
 .grayButton {
-    display: block;
+ /*   display: block; // marked by ealin */
     border-width: 0 12px;
-    padding: 10px;
+    padding: 6px;
     text-align: center;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     text-decoration: inherit;
     color: inherit;

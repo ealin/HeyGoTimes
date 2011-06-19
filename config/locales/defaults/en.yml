@@ -38,10 +38,11 @@ en:
   #----------------------------------------
   # for mobile site
   #----------------------------------------
-  m_report: "Report News"
-  m_filter: "Filter News"
+  m_report: "Report"
+  m_filter: "Filter"
   m_login: "Login"
   m_logout: "Logout"
+  m_more: "More News..."
 
 
   #----------------------------------------

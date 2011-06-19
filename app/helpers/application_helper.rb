@@ -26,7 +26,7 @@ module ApplicationHelper
   #-----------------------------------------------------------------------------------
   # 
   def show_page_head (option = {:faq_flag => false, :setup_flag => false, :login_flag => false} )
-    
+=begin
     if option[:realtime_news_flag] == true
       @realtime_news_flag = true
     else
@@ -46,6 +46,7 @@ module ApplicationHelper
     else
       @setup_flag = false
     end   
+=end
 
     # 在某些不需要LOGIN就可以使用的頁面, 必須視狀況, 顯示LOGIN的ICON
     #

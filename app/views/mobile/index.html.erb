@@ -12,6 +12,87 @@
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 </head>
 
+<script>
+
+    function onLoginBtn()
+    {
+        /* On Facebook Login */
+        var my_client_id  = "189797591070416";
+        var my_redirect_uri   = "http://localhost:3000/mobile/index/";
+        my_type           = "user_agent";
+        my_display        = "touch" ;
+
+        var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+        authorize_url += "client_id="+my_client_id;
+        authorize_url += "&redirect_uri="+my_redirect_uri;
+        authorize_url += "&display="+my_display;
+        authorize_url += "&scope=publish_stream"
+
+
+        window.location.replace(authorize_url);
+    }
+
+</script>
+
+
+    <div id="fb-root"></div>
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+        FB.init({
+            appId  : '189797591070416',
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml  : true  // parse XFBML
+
+        });
+
+        /*
+        function onLogoutBtn()
+        {
+            FB.logout() ;
+            window.location.replace("http://localhost:3000/mobile/index/")
+
+        } */
+
+
+        FB.getLoginStatus(function(response)
+        {
+          logging_status_in_server = "<%= session[:logged_in] %>"
+
+          if (response.session)
+          {
+            // logged in and connected user, someone you know
+
+              console.log("inininininin")
+              console.log(logging_status_in_server)
+              if(logging_status_in_server == "false")
+                 window.location.replace("http://localhost:3000/mobile/index/") ;
+
+          }
+          else {
+            // no user session available, someone you dont know
+              console.log("outoutout") ;
+              console.log(logging_status_in_server)
+          }
+        });
+
+     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    <div class="toolbar">
@@ -19,34 +100,52 @@
       <a id="backButton" class="button" href="#"></a>
    </div>
 
+   <!-- !!!!!!!!! Page - NewsPaper  -->
+   <ul id="paper" title=<%= t(:HeyGoTimes) %>  selected= "true" >
 
-   <ul id="paper" title=<%= t(:HeyGoTimes) %> selected="true">
+        <div align = "left" >
+        <a href="#filter"><button class="whiteButton" style="width:32%;"><%= t(:m_filter) %></button></a>
+        <a href="#report"><button class="whiteButton" style="width:32%;"><%= t(:m_report) %></button></a>
 
-      <div id="fun_icon" align = "left">
-        <a href="#filter"><button style="width:30%;height:20px;font-size:16px;"><%= t(:m_filter) %></button></a>
-        <a href="#report"><button style="width:30%;"><%= t(:m_report) %></button></a>
         <% if session[:logged_in] == true %>
-            <a href="#filter"><button style="width:30%;"><%= t(:m_logout) %></button></a>
+              <a><button class="whiteButton" style="width:32%;">
+              <%= fb_logout_link("Logout", root_url+"mobile/index") %>
+              <%#= t(:m_logout) %>
+              </button></a>
         <% else %>
-            <a href="#filter"><button style="width:30%;"><%= t(:m_login) %></button></a>
+              <a><button class="whiteButton" style="width:32%;" onclick="onLoginBtn()"><%= t(:m_login) %></button></a>
         <% end %>
-      </div>
+
+       </div>
 
 
-      <div>
-      <%#= render :partial => 'mobile/show_fun_buttons'%>
-      </div>
-      <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
+
+        <% if session[:logged_in] == true %>
+             <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %><br>
+             <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
+        <% end %>
+
+
+        <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
+        <button class="redButton" style="width:98%;"><%= t(:m_more) %></button>
    </ul>
 
 
+
+
+
+    <!-- !!!!!!!!! Page - Filter  -->
+   <div id="filter" title="filter_page 3" class="panel">
+  <%#= render :partial => 'mobile/show_paper_filter'%>
+   </div>
+
+
+    <!-- !!!!!!!!! Page - Report  -->
    <ul id="report" title="report_page" >
 
      <%#= render :partial => 'mobile/report'%>
    </ul>
 
-   <div id="filter" title="filter_page 3" class="panel">
-      <%#= render :partial => 'mobile/show_paper_filter'%>
-   </div>
+
 
 
