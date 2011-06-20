@@ -40,9 +40,14 @@ en:
   #----------------------------------------
   m_report: "Report"
   m_filter: "Filter"
+  m_filter_setting: "Filter Setting"
+  m_report_news: "Repor News"
   m_login: "Login"
   m_logout: "Logout"
   m_more: "More News..."
+  
+  m_function: "Function List:"
+  m_setting_list: "Setting List:"
 
 
   #----------------------------------------
@@ -74,7 +79,7 @@ en:
  
   filter_save_as_default: "Save as default"
   filter_cancel: "Cancel"
-  filter_ok: "OK"
+  filter_ok: "Apply"
   filter_setting_saved: "Your News-filters is saved!"
   user_not_exist: "The user is not existed!"
   show_tags: "Show all tags"

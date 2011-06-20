@@ -10,6 +10,8 @@
 
    <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
+   <link type='text/css' href='/stylesheets/mobile/iui-panel-list.css' rel='stylesheet'  />
+  <link type='text/css' href='/stylesheets/mobile/iui_ext.css' rel='stylesheet'  />
 
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
@@ -73,6 +75,7 @@
 
      </script>
 
+ <body>
 
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
@@ -134,10 +137,42 @@
 
     <!-- !!!!!!!!! Page - Filter  -->
 
-    <div id="filter" title="filter_page 3" class="panel">
-
-  <%#= render :partial => 'mobile/show_paper_filter'%>
+   <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
+      <%= render :partial => 'mobile/m_set_filter'%>
    </div>
+
+
+        <!-- Area filter selection PAGE-->
+        <div id="select_area" title="<%= t(:filter_by_area) %>" class="panel">
+
+
+        </div>
+
+
+        <!-- tag filter selection PAGE-->
+        <div id="select_tag" title="<%= t(:filter_by_tag) %>" class="panel">
+
+
+        </div>
+
+
+        <!-- friend filter selection PAGE-->
+        <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
+
+
+        </div>
+
+
+
+<!-- date filter selection PAGE-->
+<div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
+
+
+</div>
+
+
+
+
 
 
     <!-- !!!!!!!!! Page - Report  -->
@@ -148,24 +183,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
