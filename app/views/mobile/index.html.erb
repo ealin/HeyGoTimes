@@ -1,169 +1,154 @@
 <head>
-   <title>Page Title</title>
-   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 
-   <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
-   <link rel="apple-touch-icon" href="/images/HeyGoTimes_logo.png" />
+  <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
+  <link rel="apple-touch-icon" href="/images/HeyGoTimes_logo.png" />
 
-   <meta name="apple-touch-fullscreen" content="YES" />
-   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="YES" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-   <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
-   <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
+  <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
+  <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
 
-   <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
-   <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+  <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
+  <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 
-</head>
 
-<script>
-
+  <script>
     function onLoginBtn()
     {
-        /* On Facebook Login */
-        var my_client_id  = "<%= Facebooker2.app_id %>";
-        var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
-        my_type           = "user_agent";
-        my_display        = "touch" ;
+      /* On Facebook Login */
+      var my_client_id  = "<%= Facebooker2.app_id %>";
+      var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
+      my_type           = "user_agent";
+      my_display        = "touch" ;
 
-        var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
-        authorize_url += "client_id="+my_client_id;
-        authorize_url += "&redirect_uri="+my_redirect_uri;
-        authorize_url += "&display="+my_display;
-        authorize_url += "&scope=publish_stream"
+      var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+      authorize_url += "client_id="+my_client_id;
+      authorize_url += "&redirect_uri="+my_redirect_uri;
+      authorize_url += "&display="+my_display;
+      authorize_url += "&scope=publish_stream"
 
 
-        window.location.replace(authorize_url);
+      window.location.replace(authorize_url);
+    }
+  </script>
+
+  <script type="text/javascript">
+    function loadMore(type, pageNo) {
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      $.get(url, function(response) {
+        $("#paperContent").append(response);
+        FB.XFBML.parse(document.getElementById('comments'));
+      });
     }
 
+    $(document).ready(function() {
+      var currPage = 1;
+      var currType = 'latest';
+
+      $('#more_news').unbind('click').click(function() {
+        loadMore(currType, ++currPage);
+      });
+    });
+  </script>
+</head>
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/zh_TW/all.js"></script>
+<script>
+  FB.init({
+    appId  : '<=% Facebooker2.app_id %>',
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true  // parse XFBML
+  });
+
+  FB.getLoginStatus(function(response)
+  {
+    // must reload the page when login-status is different between facebook and "facebooker2"
+    //
+    logging_status_in_server = "<%= session[:logged_in] %>"
+
+    if (response.session)
+    {
+      // logged in and connected user, someone you know
+        if(logging_status_in_server == "false")
+           window.location.replace("<%= root_url+'mobile/index/' %>") ;
+           //window.location.replace("http://localhost:3000/mobile/index/") ;
+
+    }
+    //else {
+      // no user session available, someone you dont know
+    //}
+  });
 </script>
 
+<div class="toolbar">
+  <h1 id="pageTitle"></h1>
+  <a id="backButton" class="button" href="#"></a>
+  <div align="right" style="padding:2px 0px;    ">
+    <a  href="#filter"><img src="/images/logo_57x57.png" width="40" height="40"/></a>
+  </div>
 
-    <div id="fb-root"></div>
-
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script>
-        FB.init({
-            appId  : '<=% Facebooker2.app_id %>',
-            status : true, // check login status
-            cookie : true, // enable cookies to allow the server to access the session
-            xfbml  : true  // parse XFBML
-
-        });
+</div>
 
 
-        FB.getLoginStatus(function(response)
-        {
-          // must reload the page when login-status is different between facebook and "facebooker2"
-          //
-          logging_status_in_server = "<%= session[:logged_in] %>"
-
-          if (response.session)
-          {
-            // logged in and connected user, someone you know
-              if(logging_status_in_server == "false")
-                 window.location.replace("<%= root_url+'mobile/index/' %>") ;
-                 //window.location.replace("http://localhost:3000/mobile/index/") ;
-
-          }
-          //else {
-            // no user session available, someone you dont know
-          //}
-        });
-
-     </script>
-
-
-   <div class="toolbar">
-      <h1 id="pageTitle"></h1>
-      <a id="backButton" class="button" href="#"></a>
-      <div align="right" style="padding:2px 0px;    ">
-      <a  href="#filter"><img src="/images/logo_57x57.png" width="40" height="40"/></a>
+<!-- !!!!!!!!! Page - NewsPaper  -->
+<ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+  <div>
+    <% if session[:logged_in] == true %>
+      <div id="head_photo">
+         <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
+              :style => 'padding: 2px 6px 0px 0px;width:"30%" ' %>
       </div>
 
-   </div>
+      <div  id="welcome_logout">
+         <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
+         <br>
+         <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
+      </div>
+
+      <div align = "left" >
+         <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
+
+         <a href="#report"><button class="whiteButton" style="width:40%;"><%= t(:m_report) %></button></a>
+      </div>
+
+    <% else %>
+       <div align = "right">
+         <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
+         <br>
+       </div>
+       <a href="#filter"><button class="whiteButton" style="width:99%;"><%= t(:m_filter) %> </button></a>
+    <% end %>
+  </div>
+
+<hr>
+  <div id="paperContent">
+    <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
+  </div>
+
+  <div align="center">
+     <button id="more_news" class="redButton" style="width:100%;"><%= t(:m_more) %></button>
+  </div>
+</ul>
 
 
+<!-- !!!!!!!!! Page - Filter  -->
 
-   <!-- !!!!!!!!! Page - NewsPaper  -->
+<div id="filter" title="filter_page 3" class="panel">
 
-     <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
-
-            <div>
-             <% if session[:logged_in] == true %>
-
-                  <div id="head_photo">
-                     <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
-                          :style => 'padding: 2px 6px 0px 0px;width:"30%" ' %>
-                  </div>
-
-                  <div  id="welcome_logout">
-                     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
-                     <br>
-                     <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
-                  </div>
-
-                  <div align = "left" >
-                     <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
-
-                     <a href="#report"><button class="whiteButton" style="width:40%;"><%= t(:m_report) %></button></a>
-                  </div>
-
-             <% else %>
-                 <div align = "right">
-                   <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
-                   <br>
-                 </div>
-                 <a href="#filter"><button class="whiteButton" style="width:99%;"><%= t(:m_filter) %> </button></a>
-              <% end %>
-           </div>
+<%#= render :partial => 'mobile/show_paper_filter'%>
+</div>
 
 
+<!-- !!!!!!!!! Page - Report  -->
+<ul id="report" title="report_page" >
 
-       <hr>
-
-
-        <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
-
-        <div align="center">
-           <button class="redButton" style="width:100%;"><%= t(:m_more) %></button>
-        </div>
-   </ul>
-
-
-
-    <!-- !!!!!!!!! Page - Filter  -->
-
-    <div id="filter" title="filter_page 3" class="panel">
-
-  <%#= render :partial => 'mobile/show_paper_filter'%>
-   </div>
-
-
-    <!-- !!!!!!!!! Page - Report  -->
-   <ul id="report" title="report_page" >
-
-     <%#= render :partial => 'mobile/report'%>
-   </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ <%#= render :partial => 'mobile/report'%>
+</ul>
 
 
 
