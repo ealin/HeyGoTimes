@@ -1,4 +1,5 @@
-
+#welcome_logout {float:right;}
+#head_photo {float:right;}
 
 /*
    Copyright (c) 2007-9, iUI Project Members
@@ -95,7 +96,7 @@ body[orient="landscape"] > .toolbar > h1 {
     height: 30px;
     line-height: 30px;
     font-family: inherit;
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
     color: #FFFFFF;
     text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
@@ -126,11 +127,15 @@ body[orient="landscape"] > .toolbar > h1 {
 .whiteButton,
 .redButton,
 .grayButton {
-    /*display: block; // marked by ealin*/
+    /*display: block;*/
+    top: 2px;
+    right: 2px;
+    height: auto;
+
     border-width: 0 12px;
-    padding: 6px;
+    padding: 8px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     text-decoration: inherit;
     color: inherit;
@@ -138,6 +143,8 @@ body[orient="landscape"] > .toolbar > h1 {
 
 /* TG */ .grayButton[selected], .grayButton:active,
 .whiteButton {
+    font-size: 14px;
+
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 /* TG */ background:transparent !important;
 }
@@ -146,6 +153,7 @@ body[orient="landscape"] > .toolbar > h1 {
 /* TG */ background:transparent !important;
     color:#fff;
     text-shadow: #7a0001 0 -1px 0;
+    height: 26px;
 }
 
 /* TG */ .whiteButton[selected], .whiteButton:active,
