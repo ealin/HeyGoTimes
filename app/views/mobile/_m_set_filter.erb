@@ -36,12 +36,42 @@
   </li>
 
 </ul>
+<br>
+<hr>
+
+
+<!-- select Area-->
+<h2>Select Area:</h2>
+<select id="area_filter" name="area_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
+   <% @areas.each do |area| %>
+     <% if session[:filter_area].include?(area.name) %>
+             <option  id="<%= area.name %>" selected="yes" ><%= t(area.name.to_sym)  %></option>
+     <% else %>
+           <option  id="<%= area.name %>" ><%= t(area.name.to_sym)  %></option>
+     <% end %>
+   <% end %>
+</select>
+<br><br>
+<hr>
+
+<!-- select tag-->
+<h2>Select Area:</h2>
+<select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
+   <% @tags.each do |tag| %>
+     <% if session[:filter_tags].include?(tag.name) %>
+            <option  id="<%= tag.name %>" selected="yes" ><%= t(tag.name.to_sym)  %></option>
+     <% else %>
+           <option  id="<%= tag.name %>" ><%= t(tag.name.to_sym)  %></option>
+     <% end %>
+   <% end %>
+</select>
+<br><br>
+<hr>
+
 
 
 <h2> <%= t(:m_setting_list) %> </h2>
 <ul>
-  <li><a href="#select_area"> <%= t(:filter_by_area) %> </a></li>
-  <li><a href="#select_tag"> <%= t(:filter_by_tag) %> </a></li>
   <li><a href="#select_friend"> <%= t(:filter_by_friend) %> </a></li>
   <li><a href="#select_date"> <%= t(:filter_by_date) %> </a></li>
 

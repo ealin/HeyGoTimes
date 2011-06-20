@@ -47,7 +47,7 @@ en:
   m_more: "More News..."
   
   m_function: "Function List:"
-  m_setting_list: "Setting List:"
+  m_setting_list: "Setting about Friends & Date:"
 
 
   #----------------------------------------
@@ -118,7 +118,7 @@ en:
   #Top: "Top"
   World: "World"
   HGTimesNotice: "HG-Times Notice"
-  Feedback: "Feedback and Response"
+  FeedbackTag: "Feedback and Response"
 
   Business: "Business"
   Stock: "Stock"

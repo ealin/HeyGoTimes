@@ -11,10 +11,12 @@
    <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/iui-panel-list.css' rel='stylesheet'  />
-  <link type='text/css' href='/stylesheets/mobile/iui_ext.css' rel='stylesheet'  />
+   <link type='text/css' href='/stylesheets/mobile/iui_ext.css' rel='stylesheet'  />
 
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+
+
 
 </head>
 
@@ -149,23 +151,14 @@
    </div>
 
 
-        <!-- Area filter selection PAGE-->
-        <div id="select_area" title="<%= t(:filter_by_area) %>" class="panel">
-
-
-        </div>
-
-
-        <!-- tag filter selection PAGE-->
-        <div id="select_tag" title="<%= t(:filter_by_tag) %>" class="panel">
-
-
-        </div>
 
 
         <!-- friend filter selection PAGE-->
         <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
-
+            <h1>Friend option:</h1>
+              <input type="checkbox" id="my_news_only" name="friend_filter"><h32> <%= t(:my_news_only)%> </h2>  </input>
+              <br>
+              <input type="checkbox" id="my_friends_news_only" name="friend_filter"></h2> <%= t(:my_friends_news_only)%> </h2> <br> </input>
 
         </div>
 
@@ -173,6 +166,19 @@
 
         <!-- date filter selection PAGE-->
         <div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
+          <h1>Select Date:</h1>
+          <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+          <br>
+          <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+          <br>
+          <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+          <br>
+          <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%= t(:filter_by_this_date) %>
+
+
+          <input name="travelDate" id="buy_travelDate" type="date" class="date future today" value="Today">
+
+
 
 
         </div>
