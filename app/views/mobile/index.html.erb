@@ -20,7 +20,7 @@
     function onLoginBtn()
     {
         /* On Facebook Login */
-        var my_client_id  = "189797591070416";
+        var my_client_id  = "<%= Facebooker2.app_id %>";
         var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
         my_type           = "user_agent";
         my_display        = "touch" ;
@@ -43,7 +43,7 @@
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
         FB.init({
-            appId  : '189797591070416',
+            appId  : '<=% Facebooker2.app_id %>',
             status : true, // check login status
             cookie : true, // enable cookies to allow the server to access the session
             xfbml  : true  // parse XFBML
