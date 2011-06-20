@@ -11,6 +11,7 @@
    <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
 
+   <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 
 </head>
@@ -60,9 +61,6 @@
           if (response.session)
           {
             // logged in and connected user, someone you know
-
-              //console.log("inininininin")
-              //console.log(logging_status_in_server)
               if(logging_status_in_server == "false")
                  window.location.replace("<%= root_url+'mobile/index/' %>") ;
                  //window.location.replace("http://localhost:3000/mobile/index/") ;
@@ -70,8 +68,6 @@
           }
           //else {
             // no user session available, someone you dont know
-              //console.log("outoutout") ;
-              //console.log(logging_status_in_server)
           //}
         });
 
@@ -81,6 +77,10 @@
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
       <a id="backButton" class="button" href="#"></a>
+      <div align="right" style="padding:2px 0px;    ">
+      <a  href="#filter"><img src="/images/logo_57x57.png" width="40" height="40"/></a>
+      </div>
+
    </div>
 
 
@@ -89,21 +89,36 @@
 
      <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
 
-      <div align="right">
-         <% if session[:logged_in] == true %>
-             <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
-             <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
-                    :style => "padding: 2px 6px 0px 0px;" %>
-         <% else %>
-            <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
-         <% end %>
-      </div>
+            <div>
+             <% if session[:logged_in] == true %>
 
-       <div align = "left" >
-          <a href="#filter"><button class="whiteButton" style="width:49%;"><%= t(:m_filter) %> </button></a>
+                  <div id="head_photo">
+                     <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
+                          :style => 'padding: 2px 6px 0px 0px;width:"30%" ' %>
+                  </div>
 
-          <a href="#report"><button class="whiteButton" style="width:49%;"><%= t(:m_report) %></button></a>
-       </div>
+                  <div  id="welcome_logout">
+                     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
+                     <br>
+                     <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
+                  </div>
+
+                  <div align = "left" >
+                     <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
+
+                     <a href="#report"><button class="whiteButton" style="width:40%;"><%= t(:m_report) %></button></a>
+                  </div>
+
+             <% else %>
+                 <div align = "right">
+                   <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
+                   <br>
+                 </div>
+                 <a href="#filter"><button class="whiteButton" style="width:99%;"><%= t(:m_filter) %> </button></a>
+              <% end %>
+           </div>
+
+
 
        <hr>
 
@@ -118,7 +133,9 @@
 
 
     <!-- !!!!!!!!! Page - Filter  -->
-   <div id="filter" title="filter_page 3" class="panel">
+
+    <div id="filter" title="filter_page 3" class="panel">
+
   <%#= render :partial => 'mobile/show_paper_filter'%>
    </div>
 
@@ -128,6 +145,26 @@
 
      <%#= render :partial => 'mobile/report'%>
    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
