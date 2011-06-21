@@ -6,37 +6,34 @@
 
 
 <h2><%= t(:m_function) %> </h2>
-<ul>
   <% if session[:logged_in] == true %>    <!-- Registered user only -->
-      <li>
+
         <div alogn align="center">
           <button id = "load_my_filter" class="whiteButton" style='width:96%;'><%= t(:load_my_filter) %> </button>
         </div>
-      </li>
+
   <% end %>
 
-  <li>
+
     <div alogn align="center">
       <button id = "reset_all" class="whiteButton" style='width:96%;'><%= t(:reset_the_filter) %> </button>
     </div>
-  </li>
+
 
   <% if session[:logged_in] == true %>    <!-- Registered user only -->
-      <li>
+
         <div alogn align="center">
-          <button id="save_as_default" class="redButton" style='width:96%;'><%= t(:filter_save_as_default) %> </button>
+          <button id="save_as_default" class="redButton" style='width:96%;font-size:14px'><%= t(:filter_save_as_default) %> </button>
         </div>
-      </li>
+
   <% end %>
 
-  <li>
-    <div alogn align="center">
-      <button id="save_filter" class="redButton" style='width:96%;'><%= t(:filter_ok) %> </button>
-    </div>
-  </li>
 
-</ul>
-<br>
+    <div align="center">
+      <button id="save_filter" class="redButton" style='width:96%;;font-size:14px'><%= t(:filter_ok) %> </button>
+    </div>
+
+
 <hr>
 
 
@@ -51,7 +48,7 @@
      <% end %>
    <% end %>
 </select>
-<br><br>
+<br>
 <hr>
 
 <!-- select tag-->
@@ -65,15 +62,15 @@
      <% end %>
    <% end %>
 </select>
-<br><br>
+<br>
 <hr>
 
 
 
 <h2> <%= t(:m_setting_list) %> </h2>
 <ul>
-  <li><a href="#select_friend"> <%= t(:filter_by_friend) %> </a></li>
-  <li><a href="#select_date"> <%= t(:filter_by_date) %> </a></li>
+  <li><a href="#select_friend" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_friend) %> </a></li>
+  <li><a href="#select_date" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_date) %> </a></li>
 
 
 </ul>
