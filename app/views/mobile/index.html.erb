@@ -17,11 +17,25 @@
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 
    <script type="text/javascript">
+    function like(user, news, like)
+    {
+      // ask session data from server
+      $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
+      {
+        if (like == 1)
+          alert(json.name+' like this news, total: '+json.total);
+        else
+          alert(json.name+' dislike this news, total: '+json.total);
+
+      }  );
+
+    }
+
     function loadMore(type, pageNo) {
       var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
       $.get(url, function(response) {
-        $("#paperContent").append(response);
-        FB.XFBML.parse(document.getElementById('comments'));
+        $("#m_paperContent").append(response);
+        FB.XFBML.parse(document.getElementById('m_comments'));
       });
     }
 
@@ -38,14 +52,6 @@
 </head>
 
  <script type="text/javascript">
-    function loadMore(type, pageNo) {
-      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
-      $.get(url, function(response) {
-        $("#paperContent").append(response);
-        FB.XFBML.parse(document.getElementById('comments'));
-      });
-
-    }
 
   function onLoginBtn()
   {
@@ -151,7 +157,7 @@
        <hr>
 
 
-       <div id="paperContent">
+       <div id="m_paperContent">
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
        </div>
         <div align="center">
