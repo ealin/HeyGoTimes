@@ -16,7 +16,24 @@
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
 
+   <script type="text/javascript">
+    function loadMore(type, pageNo) {
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      $.get(url, function(response) {
+        $("#paperContent").append(response);
+        FB.XFBML.parse(document.getElementById('comments'));
+      });
+    }
 
+    $(document).ready(function() {
+      var currPage = 1;
+      var currType = 'latest';
+
+      $('#more_news').unbind('click').click(function() {
+        loadMore(currType, ++currPage);
+      });
+    });
+  </script>
 
 </head>
 
@@ -84,7 +101,6 @@
 
  </script>
 
- <body>
 
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
@@ -135,10 +151,11 @@
        <hr>
 
 
+       <div id="paperContent">
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
-
+       </div>
         <div align="center">
-           <button class="redButton" style="width:100%;"><%= t(:m_more) %></button>
+           <button class="redButton" id="more_news" style="width:100%;"><%= t(:m_more) %></button>
         </div>
    </ul>
 
@@ -195,5 +212,3 @@
    </ul>
 
 
-
-</body>
