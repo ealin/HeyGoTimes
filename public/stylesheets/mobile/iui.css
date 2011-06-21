@@ -404,6 +404,16 @@ fieldset > .row:last-child {
     text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 0;
 }
 
+.m_news {
+    float: left;
+    width: 80%;
+}
+
+.m_like {
+    float: right;
+    width: 20%;
+}
+
 /************************************************************************************************/
 
 #preloader {

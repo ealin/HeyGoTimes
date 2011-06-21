@@ -18,33 +18,58 @@
 
    <script type="text/javascript">
 
-      function loadMore(type, pageNo) {
-          var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
-          $.get(url, function(response) {
-            $("#paperContent").append(response);
-            FB.XFBML.parse(document.getElementById('comments'));
-          });
-
-      }
-
-      function onLoginBtn()
+    function like(user, news, like)
+    {
+      // ask session data from server
+      $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
-        /* On Facebook Login */
-        var my_client_id  = "<%= Facebooker2.app_id %>";
-        var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
-        my_type           = "user_agent";
-        my_display        = "touch" ;
+        if (like == 1)
+          alert(json.name+' like this news, total: '+json.total);
+        else
+          alert(json.name+' dislike this news, total: '+json.total);
 
-        var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
-        authorize_url += "client_id="+my_client_id;
-        authorize_url += "&redirect_uri="+my_redirect_uri;
-        authorize_url += "&display="+my_display;
-        authorize_url += "&scope=publish_stream"
+      }  );
+
+    }
+
+    function loadMore(type, pageNo) {
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      $.get(url, function(response) {
+        $("#m_paperContent").append(response);
+        FB.XFBML.parse(document.getElementById('m_comments'));
+      });
+    }
+
+    $(document).ready(function() {
+      var currPage = 1;
+      var currType = 'latest';
+
+      $('#more_news').unbind('click').click(function() {
+        loadMore(currType, ++currPage);
+      });
+    });
 
 
-        window.location.replace(authorize_url);
-      }
-   </script>
+    function onLoginBtn()
+    {
+      /* On Facebook Login */
+      var my_client_id  = "<%= Facebooker2.app_id %>";
+      var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
+      my_type           = "user_agent";
+      my_display        = "touch" ;
+
+      var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+      authorize_url += "client_id="+my_client_id;
+      authorize_url += "&redirect_uri="+my_redirect_uri;
+      authorize_url += "&display="+my_display;
+      authorize_url += "&scope=publish_stream"
+
+
+      window.location.replace(authorize_url);
+    }
+
+
+  </script>
 
 </head>
 
@@ -85,7 +110,6 @@
 
  </script>
 
- <body>
 
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
@@ -135,10 +159,11 @@
        <br><hr>
 
 
+       <div id="m_paperContent">
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
-
+       </div>
         <div align="center">
-           <button class="redButton" style="width:100%;"><%= t(:m_more) %></button>
+           <button class="redButton" id="more_news" style="width:100%;"><%= t(:m_more) %></button>
         </div>
    </ul>
 
@@ -187,5 +212,3 @@
    </ul>
    -->
 
-
-</body>
