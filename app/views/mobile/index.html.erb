@@ -158,7 +158,6 @@
            </div>
        <br><hr>
 
-
        <div id="m_paperContent">
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
        </div>
@@ -173,6 +172,12 @@
 
    <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
       <%= render :partial => 'mobile/m_set_filter'%>
+
+      <div align ="center" >
+         <br> <br><hr>
+         <%= render :partial => "m_show_ad" %>
+       </div>
+
    </div>
 
 
@@ -194,7 +199,10 @@
                  <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
               <% end %>
 
-              <br>
+              <div align ="center" >
+                 <br> <br> <br><hr>
+                 <%= render :partial => "m_show_ad" %>
+              </div>
         </div>
 
 
@@ -221,6 +229,12 @@
           <% else %>
               <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
           <% end %>
+
+          <div align ="center" >
+             <br> <br> <br><hr>
+             <%= render :partial => "m_show_ad" %>
+          </div>
+
 
         </div>
 
