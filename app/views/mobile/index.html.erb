@@ -115,7 +115,7 @@
       <h1 id="pageTitle"></h1>
       <a id="backButton" class="button" href="#"></a>
       <div align="right" style="padding:2px 0px;    ">
-      <a  href="#filter"><img src="/images/logo_57x57.png" width="40" height="40"/></a>
+      <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="40" height="40"/></a>
       </div>
 
    </div>
@@ -181,9 +181,19 @@
         <!-- friend filter selection PAGE-->
         <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
             <h2>Friend option:</h2>
-              <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+              <% if session[:filter_friend].include?("mine")  %>
+                <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
+              <% else %>
+                <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+              <% end %>
               <br>
-              <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
+
+              <% if session[:filter_friend].include?("friend")  %>
+                 <input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
+              <% else %>
+                 <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
+              <% end %>
+
               <br>
         </div>
 
@@ -192,11 +202,25 @@
         <!-- date filter selection PAGE-->
         <div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
           <h1>Select Date:</h1>
-          <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+          <% if session[:filter_date_option].include?("no_limited") %>
+             <input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
+          <% else %>
+              <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+          <% end %>
           <br>
-          <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+
+          <% if session[:filter_date_option].include?("yesterday") %>
+             <input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
+          <% else %>
+              <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+          <% end %>
           <br>
-          <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+
+          <% if session[:filter_date_option].include?("today") %>
+             <input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
+          <% else %>
+              <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+          <% end %>
 
         </div>
 

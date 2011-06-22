@@ -1,6 +1,314 @@
 
 <script>
 
+    $(document).ready(function (){
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  function - set_each_filter
+     //
+     function set_each_filter(json)
+     {
+
+             // set all areas filter
+             //
+             for(i=0;i<($('option').length);i++)
+             {
+                if( $('option')[i].parentNode.id != "area_filter")
+                     continue ;
+
+                if((json.filter_area).match($('option')[i].id) )
+                    $('option')[i].selected = true
+                else
+                    $('option')[i].selected = false
+             }
+
+             // SET ALL TAGS filter
+             //
+             for(i=0;i<($('option').length);i++)
+              {
+                 if( $('option')[i].parentNode.id != "tag_filter")
+                      continue ;
+
+                 if((json.filter_tags).match($('option')[i].id) )
+                     $('option')[i].selected = true
+                 else
+                     $('option')[i].selected = false
+              }
+
+
+             // set friend filter
+             if((json.filter_friend).match("all"))
+             {
+                $('#my_news_only')[0].checked = false ;
+                $('#my_friends_news_only')[0].checked = false ;
+             }
+             else
+             {
+                 if((json.filter_friend).match("mine"))
+                     $('#my_news_only')[0].checked = true ;
+                 else
+                     $('#my_news_only')[0].checked = false ;
+
+                 if((json.filter_friend).match("friend"))
+                     $('#my_friends_news_only')[0].checked = true ;
+                 else
+                     $('#my_friends_news_only')[0].checked = false ;
+              }
+
+             // set date filter
+             if(json.filter_date_option.match("today"))
+                 $('#today')[0].checked = true ;
+             else if(json.filter_date_option.match("yesterday"))
+                 $('#yesterday')[0].checked = true ;
+             else                                      // if(json.filter_date_option.match("no_limited"))
+                 $('#no_filter')[0].checked = true ;
+
+     }
+     //
+     // end of function - set_each_filter
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - load_my_filter
+
+     //
+     $('#load_my_filter').unbind('click').click(function()
+     {
+
+         // ask session data from server
+         $.getJSON("/paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
+         {
+             set_each_filter(json) ;
+         }  );
+
+         return false ;
+
+     }  );
+       //
+       // end of "#load_my_filter".click callback function
+
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  Function:  get_today_as_string
+     //
+     function get_today_as_string()
+     {
+         var data = "";
+         var M = new Date()
+         M.setDate(M.getDate())
+
+         var yy=M.getFullYear()
+         var mm=M.getMonth()+1
+         var dd=M.getDate()
+
+         data = (yy+"-"+mm+"-"+dd) ;
+         return data ;
+
+     }
+     // end of function get_today_as_string
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  function:  collect_all_selection
+     //    - collect all selection and save them in a string (for caller using ajax call)
+     //
+     function collect_all_selection()
+     {
+         // collection all filter setting, and make it as format like:  "aa=123&bb=test"
+         var data = "tag_filter=" ;
+         var selected_tag_counter = 0 ;
+         var date_data = "&date_filter_option=" ;
+         var area_data = "&area_filter="
+
+         // get selected area-filter
+         for(i=0;i<($('option').length);i++)
+         {
+
+            if( $('option')[i].parentNode.id != "area_filter")
+                  continue ;
+
+            if($('option')[i].selected == true)
+            {
+                area_data += ($('option')[i].id + "/")
+            }
+         }
+
+         // get selected tag-filter
+         for(i=0;i<($('option').length);i++)
+         {
+
+            if( $('option')[i].parentNode.id != "tag_filter")
+                  continue ;
+
+             if($('option')[i].id == "All" && $('option')[i].selected == true)
+             {
+                 selected_tag_counter = 1 ;
+                 data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
+                 break ;
+             }
+
+             if($('option')[i].selected == true)
+             {
+                data += ($('option')[i].id + "/") ;
+                selected_tag_counter++ ;
+
+             }
+         }
+         if(selected_tag_counter == 0 )
+            data +='All' ;
+
+         // get friend-filter
+         //
+         data += "&friend_filter=" ;
+         if($('#my_news_only')[0].checked == true)
+             data+="mine/" ;
+         if($('#my_friends_news_only')[0].checked == true)
+             data+="friend/" ;
+
+         // get Date-Filter
+         //
+         if($('#yesterday')[0].checked == true)
+         {
+             var mydate= new Date()
+             mydate.setDate(mydate.getDate()-1)
+
+             var theyear=mydate.getFullYear()
+             var themonth=mydate.getMonth()+1
+             var theyesterday=mydate.getDate()
+
+             data += ("&date_filter=" + theyear+"-"+themonth+"-"+theyesterday) ;
+             date_data += "yesterday" ;
+
+         }
+         else if($('#today')[0].checked == true)
+         {
+             data += ("&date_filter=" + get_today_as_string() ) ;
+             date_data += "today" ;
+         }
+         else   // no selection   or  ($('#no_filter')[0].checked == true)
+         {
+              data += "&date_filter=1971-11-12" ;
+              date_data += "no_limited" ;
+
+         }
+
+         data += date_data ;
+         data += area_data ;
+         return data ;
+     }
+     //
+     // end of function:  collect_all_selection
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_as_default
+     //
+     $('#save_as_default').unbind('click').click(function()
+     {
+
+         // send filter-setting to server, then server would save them in session
+         var data = collect_all_selection() ;
+         data += "&save=yes" ;
+
+         // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/paper/set_filter_setting",
+             data: data,
+             success: function(html)
+             {
+                 //alert("Filter Setting Saved");
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/mobile/index/");
+              }
+         });
+
+         return false ;
+
+
+
+     }  );
+       //
+       // end of "#save_as_default".click callback function
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_filter
+     //
+     $('#save_filter').unbind('click').click(function()
+     {
+
+         // send filter-setting to server, then server would save them in session(session only, not db)
+         var data = collect_all_selection() ;
+         data += "&save=no" ;
+
+         // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/paper/set_filter_setting",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/mobile/index/");
+             }
+         });
+
+         return false ;
+
+     }  );
+       //
+       // end of "#save_filter".click callback function
+
+
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - reset all
+     //
+     $('#reset_all').unbind('click').click(function()
+     {
+        for(i=0;i<($('option').length);i++)
+        {
+            if( $('option')[i].parentNode.id != "area_filter")
+                 continue ;
+
+            $('option')[i].selected = false ;
+        }
+
+         for(i=0;i<($('option').length);i++)
+         {
+             if( $('option')[i].parentNode.id != "tag_filter")
+                  continue ;
+
+             $('option')[i].selected = false ;
+         }
+
+         for(i=0;i<($('input').length);i++)
+         {
+             if( $('input')[i].name != "friend_filter" && $('input')[i].name != "date")
+             {
+                 continue ;
+             }
+
+             $('input')[i].checked = false ;
+         }
+
+
+     }) ;
+
+
+
+
+    }) ;
+
+
 
 </script>
 
@@ -52,7 +360,7 @@
 <hr>
 
 <!-- select tag-->
-<h2>Select Area:</h2>
+<h2>Select Tags:</h2>
 <select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @tags.each do |tag| %>
      <% if session[:filter_tags].include?(tag.name) %>
