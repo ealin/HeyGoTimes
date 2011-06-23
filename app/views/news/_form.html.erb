@@ -61,8 +61,6 @@ $(document).ready(function () {
 </script>
 
 
-
-
 <%= form_for(news) do |f| %>
   <% if news.errors.any? %>
     <div id="error_explanation">
@@ -138,7 +136,7 @@ $(document).ready(function () {
 
             <% @areas.each do |area| %>
                   <% if area.parent_area != nil %>
-                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= "        " + t(area.name.to_sym)  %></option>
                   <% else %>
                      <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
                   <% end %>
@@ -147,7 +145,7 @@ $(document).ready(function () {
       </select>
     </div>
 
-    <br><br>
+    <br><br><br>
 
 
 
@@ -162,11 +160,13 @@ $(document).ready(function () {
         <% if tag.id <= 3 %>
 
               <% if tag.id == 2 || tag.id == 3  %>
-               <%# todo:  這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
-                <% next %>
+               <%# 這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
+                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>"  style="display: none;"
+                     value="<%= t(tag.name.to_sym) %>" />
+                  <% next %>
               <% end %>
 
-              <div id="tag_grp1">
+              <div id="tag_grp1" >
               <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
                  <%= t(tag.name.to_sym) %>
               </input>

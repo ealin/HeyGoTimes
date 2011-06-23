@@ -76,8 +76,8 @@ zh_tw:
   filter_by_friend: "好友選項："
   filter_by_date: "選擇日期："
   
-  my_news_only: "只顯示我關心的新聞"
-  my_friends_news_only: "顯示所有朋友關心的新聞"
+  my_news_only: "只顯示我的新聞"
+  my_friends_news_only: "只顯示所有朋友的新聞"
 
   filter_save_as_default: "儲存為我的預設選項"
   filter_cancel: "取消"
@@ -111,6 +111,9 @@ zh_tw:
   
   USA: "美國"
   Japan: "日本"
+  Europe: "歐洲"
+  Asia: "亞洲"
+  Others: "其他地區"
   
   
   #--------------------------------------------------------------------------
@@ -130,7 +133,8 @@ zh_tw:
   NBA: "NBA"
   Baseball: "棒球"
   
-  Entertainment: "娛樂"
+  Life: "生活"
+  Entertainment: "娛樂/影劇"
   Health: "健康"
   Internet: "網際網路"
   Politics: "政治"
@@ -139,7 +143,7 @@ zh_tw:
   Education: "教育"
   Art: "藝文"
   
-
+  
 
   #----------------------------------------
   # name of the Link

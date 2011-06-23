@@ -405,48 +405,51 @@ class PaperController < NewsController
     session[:filter_date_option] = params[:date_filter_option]
 
     response_str = t(:filter_setting_saved)
-    if(params[:save] == "yes")
+
+
+    if(params[:save] == "yes" && session[:logged_in] != false)
       # save the filter setting in DB
+
 
       user = User.find(session[:id])
       if(user == nil)
         response_str = t(:user_not_exist)
-      end
+      else
 
-      # setup user.tags
-      #
-      user.tags = []       #empty array
-      tags = Tag.all
-      tags.each do |tag|
-        if (session[:filter_tags]).include?(tag.name)
-          user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+        # setup user.tags
+        #
+        user.tags = []       #empty array
+        tags = Tag.all
+        tags.each do |tag|
+          if (session[:filter_tags]).include?(tag.name)
+            user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+          end
         end
-      end
 
-      # setup user.areas
-      #
-      user.areas = []       #empty array
-      areas = Area.all
-      areas.each do |area|
-        if (session[:filter_area]).include?(area.name)
-          user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+        # setup user.areas
+        #
+        user.areas = []       #empty array
+        areas = Area.all
+        areas.each do |area|
+          if (session[:filter_area]).include?(area.name)
+            user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+          end
         end
-      end
 
-      # setup user.date_filter
-      #
-      temp_date_filter = DateFilter.new(:date => session[:filter_date], :option => session[:filter_date_option])
-      temp_date_filter.save
-      user.date_filter = temp_date_filter
-
-
-      #setup user.friend_filters
-      temp_friend_filter = FriendFilter.new()
-      temp_friend_filter.friend_filter_type = session[:filter_friend]
-      temp_friend_filter.save
-      user.friend_filter = temp_friend_filter
+        # setup user.date_filter
+        #
+        temp_date_filter = DateFilter.new(:date => session[:filter_date], :option => session[:filter_date_option])
+        temp_date_filter.save
+        user.date_filter = temp_date_filter
 
 
+        #setup user.friend_filters
+        temp_friend_filter = FriendFilter.new()
+        temp_friend_filter.friend_filter_type = session[:filter_friend]
+        temp_friend_filter.save
+        user.friend_filter = temp_friend_filter
+
+       end
     end
 
     #logger.debug "[logging]Filter setting saved in session!"

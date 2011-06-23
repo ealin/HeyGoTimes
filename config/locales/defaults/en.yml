@@ -109,11 +109,13 @@ en:
   East_TW: "East Taiwan"
   
   China: "China"
-  TW_HK: "Taiwan & HongKong"
+  TW_HK: "TW & HK"
   
   USA: "USA"
   Japan: "Japan"
-  
+  Europe: "Europe"
+  Asia: "Asia"
+  Others: "Others"
   
   #--------------------------------------------------------------------------
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
@@ -122,16 +124,17 @@ en:
   #Top: "Top"
   World: "World"
   HGTimesNotice: "HG-Times Notice"
-  FeedbackTag: "Feedback and Response"
+  FeedbackTag: "Feedback"
 
   Business: "Business"
   Stock: "Stock"
   
-  Sci_Tech: "Sciense & Technology"
+  Sci_Tech: "Sciense & Tech."
   Sport: "Sport"
   NBA: "NBA"
   Baseball: "Baseball"
   Entertainment: "Entertainment"
+  Life: "Life"  
   Health: "Health"
   Internet: "Internet"
   Politics: "Politics"

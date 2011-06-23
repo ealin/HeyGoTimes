@@ -1,3 +1,30 @@
+<script>
+  function to_report_dialog()
+  {
+      for(i=0;i<($('input').length);i++)
+       {
+           if( $('input')[i].name != "report_tag")
+               continue ;
+
+           if( ($('input')[i].id) == "HGTimesNotice" )
+           {
+               $('input')[i].checked = true ;
+               $('input')[i].style.display = "block" ;
+               $('input')[i].appendTo("feedback") ;
+           }
+           else
+           {
+               $('input')[i].checked = false ;
+               $('input')[i].style.display = "none" ;
+
+           }
+       }
+
+
+  }
+
+</script>
+
 
 
 <div  class="footer" align = "center">
@@ -15,7 +42,9 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 <% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
 <% # tddo: 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
-<%= link_to t(:feedback),{:controller => 'paper'},{:title => '建議與問題反饋'}%> &nbsp;
+ &nbsp;
+ <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog()"><%= t(:feedback) %></a>
+
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
 <%= link_to t(:response),{:controller => 'paper'},{:title => '顯示所有反饋與官方回應'}%> &nbsp;
