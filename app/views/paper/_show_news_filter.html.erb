@@ -3,14 +3,6 @@
   <!-- Page styles -->
   <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
-
-<!-- skip "specified date" function
-  <%#= javascript_include_tag 'jscal2/jscal2' %>
-  <%#= javascript_include_tag 'jscal2/lang/cn' %>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
--->
-
   <script type="text/javascript">
 
 
@@ -19,7 +11,7 @@
      //
      function set_each_filter(json)
      {
-             //  console.log( $('option')[1].parentNode.id) ;
+             // console.log( $('option')[1].parentNode.id) ;
              //console.log(json.filter_area)
 
              // set all areas filter
@@ -28,8 +20,9 @@
              {
                 if( $('option')[i].parentNode.id != "area_filter")
                      continue ;
-                 //console.log( $('option')[i].parentNode.id) ;
-                 //console.log( $('option')[i].id) ;
+                // console.log( $('option')[i].parentNode.id) ;
+                // console.log( $('option')[i].id) ;
+                // console.log( $('option')[i].selected) ;
 
                 if((json.filter_area).match($('option')[i].id) )
                     $('option')[i].selected = true
@@ -37,6 +30,7 @@
                     $('option')[i].selected = false
                 //console.log( $('option')[i].selected) ;
              }
+
 
              // SET ALL TAGS filter
              //
@@ -77,112 +71,15 @@
                  $('#today')[0].checked = true ;
              else //if(json.filter_date_option.match("yesterday"))
                  $('#yesterday')[0].checked = true ;
-             /*
-             // skip "specified date" function
-             else
-             {
-                 $('#filter_by_this_date')[0].checked = true ;
-                 for(i=0;i<($('label').length);i++)
-                 {
-                      if( $('label')[i].id != "date_label")
-                          continue ;
-
-                      $('label')[i].lastChild.textContent =json.filter_date ;
-                      break ;
-                 }
-             } */
 
      }
      //
      // end of function - set_each_filter
 
 
-  //var $ = jQuery.noConflict();
 
   $(document).ready(function (){
 
-
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - save_as_default
-     //
-     $('#save_as_default').unbind('click').click(function()
-     {
-         //check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
-
-         // send filter-setting to server, then server would save them in session
-         var data = collect_all_selection() ;
-         data += "&save=yes" ;
-
-         // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_filter_setting",
-             data: data,
-             success: function(html)
-             {
-                 // Ealin: 不知道為什麼, 加了這行ALERT, 會導致SESSION無法被update?????
-                 //alert("xxxx") ;
-
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/");
-              }
-         });
-
-         return false ;
-
-
-
-     }  );
-       //
-       // end of "#save_as_default".click callback function
-
-
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_my_filter
-
-     //
-     $('#load_my_filter').unbind('click').click(function()
-     {
-
-         // ask session data from server
-         $.getJSON("paper/load_filter_setting.json",'cmd=get_all_tag', function(json)
-         {
-             //console.log(json) ;
-
-             set_each_filter(json) ;
-
-               // reset area-selection-box
-             $("#area_filter").dropdownchecklist("destroy");
-             $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 240,maxDropHeight: 150 });
-
-         }  );
-
-         return false ;
-
-     }  );
-       //
-       // end of "#load_my_filter".click callback function
-
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - load_current_filter
-     //
-     /*   // Ealin: the button"載入目前的設定" is unused any more.
-     $('#load_current_filter').unbind('click').click(function(){
-
-         // ask session data from server
-         $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
-         {
-             set_each_filter(json) ;
-
-         }  );
-
-         return false ;
-
-     }  );
-     */
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  Function:  get_today_as_string
@@ -279,33 +176,11 @@
              date_data += "yesterday" ;
 
          }
-         else if($('#today')[0].checked == true)
+         else if($('#today')[0].checked  == true)
          {
              data += ("&date_filter=" + get_today_as_string() ) ;
              date_data += "today" ;
          }
-         /*
-         // skip "specified date" function
-         else if($('#filter_by_this_date')[0].checked == true)
-         {
-             // data += ("&date_filter=" + $('label')[i].lastChild.textContent ) ;
-             for(i=0;i<($('label').length);i++)
-             {
-                  if( $('label')[i].id != "date_label")
-                  {
-                      continue ;
-                  }
-
-                  if($('label')[i].lastChild.wholeText.charAt(0) != "2".charAt(0) )
-                    data += "&date_filter=1971-11-12" ;
-                  else
-                    data += ("&date_filter=" + $('label')[i].lastChild.wholeText) ;
-
-                  break ;
-             }
-             date_data += "selected_date" ;
-
-         } */
          else   // no selection   or  ($('#no_filter')[0].checked == true)
          {
               data += "&date_filter=1971-11-12" ;
@@ -321,37 +196,6 @@
      // end of function:  collect_all_selection
 
 
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  Function:  check_date_selected_or_not
-     //     - 當"選擇日期" RADIO BOX被CHECKED時, 應檢查是否已經輸入了合法日期
-     //     - 若使用者沒輸入, 則將日期設定為今日
-     //
-      /*
-     function check_date_selected_or_not()
-     {
-         if($('#filter_by_this_date')[0].checked == true)
-         {
-             for(i=0;i<($('label').length);i++)
-             {
-                  if( $('label')[i].id != "date_label")
-                      continue ;
-
-                  if($('label')[i].lastChild.wholeText.charAt(0) != "2".charAt(0) )
-                  {
-                    $('label')[i].lastChild.textContent = get_today_as_string() ;
-                    return false ;
-                  }
-
-                  break ;
-             }
-         }
-
-         return true ;
-     }  */
-
-     //
-     // end of Function:  check_date_selected_or_not
-
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - save_filter
@@ -362,7 +206,7 @@
 
          // send filter-setting to server, then server would save them in session
          var data = collect_all_selection() ;
-         data += "&save=no" ;
+         data += "&save=yes" ;
 
          // send to server
          $.ajax(
@@ -385,90 +229,13 @@
 
 
 
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - reset all
-     //
-     $('#reset_all').unbind('click').click(function()
-     {
-        //console.log($('option'))
-        for(i=0;i<($('option').length);i++)
-        {
-            if( $('option')[i].parentNode.id != "area_filter")
-                 continue ;
-
-            $('option')[i].selected = false ;
-        }
-            // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
-            //
-            $("#area_filter").dropdownchecklist("destroy");
-
-            $("#area_filter").dropdownchecklist( { emptyText: "<%= t(:hit_here_to_select_area) %>", width: 240,maxDropHeight: 150 });
-
-
-        // un-ckeck all checkbox and radio box
-        for(i=0;i<($('input').length);i++)
-        {
-            if( $('input')[i].name != "each_tag" && $('input')[i].name != "friend_filter" &&
-                $('input')[i].name != "date")
-            {
-                continue ;
-            }
-
-            $('input')[i].checked = false ;
-
-        }
-
-         /*  skip "specified date" function
-        // reset the date-label
-        for(i=0;i<($('label').length);i++)
-        {
-             if( $('label')[i].id != "date_label")
-             {
-                 continue ;
-             }
-
-             $('label')[i].lastChild.textContent = "<%= t(:no_limit) %> " ;
-        }  */
-
-        return false ;   // to prevent click event would be issued twice!
-     }  );
-      //
-      // end of "#reset_all".click callback function
-
-
-
   }  );
-  //
-  // end of "$(document).ready callback function
 
  </script>
 
 
-<!-- 2 buttons : "load my filter" & "reset the filter"
--->
-<div id="filter_btn_grp1">
-  <%# Ealin: the button"載入目前的設定" is unused any more. %>
-  <!--
-  <button id = "load_current_filter"> <%#= t(:load_current_filter)%> </button>
-  -->
-
-  <% if session[:logged_in] == true %>
-      <button id = "load_my_filter"> <%= t(:load_my_filter)%> </button>
-  <% else %>
-      <button id = "load_my_filter" disabled="true"> <%= t(:load_my_filter)%> </button>
-  <% end %>
-
-  <button id = "reset_all"> <%= t(:reset_the_filter) %> </button>
-
-</div>
-
 <div id="filter_btn_grp2">
 
-  <% if session[:logged_in] == true %>
-      <button class="simplemodal-close" id="save_as_default"> <%= t(:filter_save_as_default)%> </button>
-  <% else %>
-      <button class="simplemodal-close" id="save_as_default" disabled="true"> <%= t(:filter_save_as_default)%> </button>
-  <% end %>
   <button class="simplemodal-close"> <%= t(:filter_cancel) %>  </button>
   <button class="simplemodal-close" id="save_filter"> <%= t(:filter_ok) %>  </button>
 
@@ -494,13 +261,14 @@
         <% @areas.each do |area| %>
            <% if session[:filter_area].include?(area.name) %>
               <% if area.parent_area != nil %>
-                  <option  id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <option  id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'>
+                      <%= "        " + t(area.name.to_sym)  %></option>
               <% else %>
                   <option  id="<%= area.name %>" selected="yes" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
            <% else %>
               <% if area.parent_area != nil %>
-                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= "        " + t(area.name.to_sym)  %></option>
               <% else %>
                  <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
@@ -531,7 +299,7 @@
           <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
              <%= t(tag.name.to_sym) %>
           </input>
-          &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
           </div>
     <% else %>
           <div id="tag_grp2">
@@ -575,15 +343,6 @@
 <hr>
 
 
-<!-- select date(select one only): today, yesterday, and date-selection-box
-
-<style type="text/css">
-label   {
-        color: #781351;
-        background: #fee3ad;
-        }
-</style>
--->
 
 <div align = "left" id="filter_dlg_t5">
   <%= t(:filter_by_date)%>
@@ -597,27 +356,6 @@ label   {
     <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
 
 
-<!-- skip "specified date" function
-
-    <br>
-    <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%#= t(:filter_by_this_date) %>
-    <label id = "date_label" style='color:blue'> <%#= t(:no_limit) %>  </label>
-    &nbsp;&nbsp;&nbsp;
-    <button id="date_btn"> <%#= t(:select_date) %> </button>
-    <br>
-
-   <script>
-
-      Calendar.setup({
-        animation  : true,
-        inputField : "date_label",
-        trigger    : "date_btn",
-        onSelect   : function()  { this.hide() },
-        showTime   : false,
-        dateFormat : "%Y-%m-%d"
-      });
-    </script>
--->
 
 </div>
 <br>
@@ -626,7 +364,7 @@ label   {
 <script type="text/javascript">
   // load session to initialize all selection item
   //
-    $.getJSON("paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+    $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
     {
         set_each_filter(json) ;
 
