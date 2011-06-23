@@ -150,6 +150,25 @@ a img {
   border-style:dashed;*/
 }
 
+#more_news{
+  margin: auto;
+  text-align:center;
+  height: 30px;
+  width:60%;
+  background: #edeff4;
+}
+
+#more_news a{
+  height: 30px;
+  font-size: 20px;
+}
+
+#more_news:hover > a{
+  display: block;
+  background: #6d84b4;
+	color: #fff;
+}
+
 /* =Menu
 -------------------------------------------------------------- */
 
