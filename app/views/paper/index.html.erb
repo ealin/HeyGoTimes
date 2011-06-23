@@ -20,23 +20,24 @@
     }
 
     function loadMore(type, pageNo) {
+      var t = $("#paperContent");
       var url = '/paper/_show_paper_content?type='+type+'&page='+pageNo;
-      $.get(url, function(response) {
-        $("#paperContent").append(response);
-        FB.XFBML.parse(document.getElementById('comments'));
-      });
+      var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
+
+      t.timeout = setTimeout(function () {
+        $.get(url, function(response) {
+          $("#paperContent").append(response);
+          FB.XFBML.parse(document.getElementById('comments'));
+        });
+        preview.html('');
+      }, 2000);
     }
 
     function changePaperType(type) {
       var url = '/paper/_show_paper_content?type='+type+'&page=1';
-      //$.get(url, function(response) {
-        //$("#paperContent").replaceWith(response);
-      //  $("#paperContent").fadeOut('slow').load(response).fadeIn('slow');
-      //});
       $("#paperContent").fadeOut('slow').load(url);
       FB.XFBML.parse(document.getElementById('comments'));
       $("#paperContent").fadeIn('slow');
-
     }
 
     $(document).ready(function() {
@@ -76,9 +77,9 @@
           <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
         </div>
 
-        <div id="links" >
+        <div id="page_head" >
           <%= show_page_head(:login_flag => true)  %>
-        </div><!-- #links -->
+        </div><!-- #page_head -->
 
     </div><!-- #masthead -->
   </div><!-- #header -->
@@ -86,32 +87,21 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <!--
-        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="<%= paper_index_path %>?type=rank"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="<%= paper_index_path %>?type=latest"><%=t(:latest_news)%></a></li>
-        -->
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
+        <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#"><%=t(:m_report)%></a></li>
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#"><%=t(:m_filter)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->
 
   <div id="main">
     <div id="content">
-      <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
-      <!--
-      <div id="title">
-        <%# = render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
-      </div>
-      -->
       <div id="paperContent">
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
       </div>
-      <%#= link_to "View more news", "#", :class => "next" %>
-      <%#= link_to "View more news", :id => "more_news", :remote => true %>
-      <button id = "more_news"> <%= t(:more_news) %> </button>
-
+      <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>
     </div>
 
     <div id="sub">
