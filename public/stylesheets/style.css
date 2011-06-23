@@ -93,8 +93,9 @@ a img {
 
 /* Sub area */
 #sub{
-    float: right;
-    width: 150px;
+  float: right;
+  margin-top: 10px;
+  width: 150px;
 }
 
 #menu ul {
@@ -168,6 +169,15 @@ div.menu li {
 	text-decoration: none;
 }
 
+#access .fun-btn {
+  position:relative;
+  left:550px;
+}
+
+#access .fun-btn a {
+  color: #fff;
+}
+
 #access ul ul li {
 	min-width: 180px;
 }
@@ -178,7 +188,7 @@ div.menu li {
 
 #access li:hover > a,
 #access ul ul :hover > a {
-	background: #333;
+	background: #6d84b4;
 	color: #fff;
 }
 #access ul li:hover > ul {

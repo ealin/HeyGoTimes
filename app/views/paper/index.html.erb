@@ -83,6 +83,8 @@
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
+        <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#"><%=t(:m_report)%></a></li>
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#"><%=t(:m_filter)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->
