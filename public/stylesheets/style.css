@@ -76,6 +76,7 @@ a img {
 
 /* Page head */
 #page_head {
+  padding-right: 10px;
   float: right;
   height: 85px;
 }
@@ -154,7 +155,7 @@ a img {
   margin: auto;
   text-align:center;
   height: 30px;
-  width:60%;
+  width:70%;
   background: #edeff4;
 }
 
