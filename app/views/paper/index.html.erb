@@ -29,14 +29,9 @@
 
     function changePaperType(type) {
       var url = '/paper/_show_paper_content?type='+type+'&page=1';
-      //$.get(url, function(response) {
-        //$("#paperContent").replaceWith(response);
-      //  $("#paperContent").fadeOut('slow').load(response).fadeIn('slow');
-      //});
       $("#paperContent").fadeOut('slow').load(url);
       FB.XFBML.parse(document.getElementById('comments'));
       $("#paperContent").fadeIn('slow');
-
     }
 
     $(document).ready(function() {
@@ -76,9 +71,9 @@
           <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
         </div>
 
-        <div id="links" >
+        <div id="page_head" >
           <%= show_page_head(:login_flag => true)  %>
-        </div><!-- #links -->
+        </div><!-- #page_head -->
 
     </div><!-- #masthead -->
   </div><!-- #header -->
@@ -86,10 +81,6 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <!--
-        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="<%= paper_index_path %>?type=rank"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="<%= paper_index_path %>?type=latest"><%=t(:latest_news)%></a></li>
-        -->
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
       </ul>
@@ -98,18 +89,10 @@
 
   <div id="main">
     <div id="content">
-      <!-- Show NewsPaper's title.  Call show_paper_title() & render show_paper_title.html.erb -->
-      <!--
-      <div id="title">
-        <%# = render :partial => 'paper/show_paper_title', :locals => {:title => @newspaper_title, :slogan => @newspaper_slogan, :weather => @weather.to_s, :date => @date} %>
-      </div>
-      -->
       <div id="paperContent">
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
       </div>
-      <%#= link_to "View more news", "#", :class => "next" %>
-      <%#= link_to "View more news", :id => "more_news", :remote => true %>
       <button id = "more_news"> <%= t(:more_news) %> </button>
 
     </div>
