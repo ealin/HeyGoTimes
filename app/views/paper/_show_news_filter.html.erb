@@ -3,11 +3,13 @@
   <!-- Page styles -->
   <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
-  <%= javascript_include_tag 'jscal2/jscal2' %>
-  <%= javascript_include_tag 'jscal2/lang/cn' %>
+
+<!-- skip "specified date" function
+  <%#= javascript_include_tag 'jscal2/jscal2' %>
+  <%#= javascript_include_tag 'jscal2/lang/cn' %>
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/jscal2.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/jscal2/border-radius.css" />
-
+-->
 
   <script type="text/javascript">
 
@@ -73,8 +75,10 @@
                 $('#no_filter')[0].checked = true ;
              else if(json.filter_date_option.match("today"))
                  $('#today')[0].checked = true ;
-             else if(json.filter_date_option.match("yesterday"))
+             else //if(json.filter_date_option.match("yesterday"))
                  $('#yesterday')[0].checked = true ;
+             /*
+             // skip "specified date" function
              else
              {
                  $('#filter_by_this_date')[0].checked = true ;
@@ -86,7 +90,7 @@
                       $('label')[i].lastChild.textContent =json.filter_date ;
                       break ;
                  }
-             }
+             } */
 
      }
      //
@@ -104,7 +108,7 @@
      //
      $('#save_as_default').unbind('click').click(function()
      {
-         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+         //check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
 
          // send filter-setting to server, then server would save them in session
          var data = collect_all_selection() ;
@@ -280,6 +284,8 @@
              data += ("&date_filter=" + get_today_as_string() ) ;
              date_data += "today" ;
          }
+         /*
+         // skip "specified date" function
          else if($('#filter_by_this_date')[0].checked == true)
          {
              // data += ("&date_filter=" + $('label')[i].lastChild.textContent ) ;
@@ -299,7 +305,7 @@
              }
              date_data += "selected_date" ;
 
-         }
+         } */
          else   // no selection   or  ($('#no_filter')[0].checked == true)
          {
               data += "&date_filter=1971-11-12" ;
@@ -320,6 +326,7 @@
      //     - 當"選擇日期" RADIO BOX被CHECKED時, 應檢查是否已經輸入了合法日期
      //     - 若使用者沒輸入, 則將日期設定為今日
      //
+      /*
      function check_date_selected_or_not()
      {
          if($('#filter_by_this_date')[0].checked == true)
@@ -340,7 +347,8 @@
          }
 
          return true ;
-     }
+     }  */
+
      //
      // end of Function:  check_date_selected_or_not
 
@@ -350,7 +358,7 @@
      //
      $('#save_filter').unbind('click').click(function()
      {
-         check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
+         //check_date_selected_or_not() ;   // 若使用者沒輸入, 則將日期設定為今日
 
          // send filter-setting to server, then server would save them in session
          var data = collect_all_selection() ;
@@ -410,6 +418,7 @@
 
         }
 
+         /*  skip "specified date" function
         // reset the date-label
         for(i=0;i<($('label').length);i++)
         {
@@ -419,7 +428,7 @@
              }
 
              $('label')[i].lastChild.textContent = "<%= t(:no_limit) %> " ;
-        }
+        }  */
 
         return false ;   // to prevent click event would be issued twice!
      }  );
@@ -587,11 +596,14 @@ label   {
     &nbsp;&nbsp;&nbsp;
     <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
 
+
+<!-- skip "specified date" function
+
     <br>
-    <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%= t(:filter_by_this_date) %>
-    <label id = "date_label" style='color:blue'> <%= t(:no_limit) %>  </label>
+    <input type="radio" name = "date" id="filter_by_this_date" value = "filter_by_this_date"> <%#= t(:filter_by_this_date) %>
+    <label id = "date_label" style='color:blue'> <%#= t(:no_limit) %>  </label>
     &nbsp;&nbsp;&nbsp;
-    <button id="date_btn"> <%= t(:select_date) %> </button>
+    <button id="date_btn"> <%#= t(:select_date) %> </button>
     <br>
 
    <script>
@@ -605,6 +617,7 @@ label   {
         dateFormat : "%Y-%m-%d"
       });
     </script>
+-->
 
 </div>
 <br>
