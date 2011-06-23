@@ -54,11 +54,11 @@ a img {
 
 /* Header */
 #header {
-	width: 880px;
+	width: 900px;
 	height: 100px;
   margin-top: 0px;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
   margin-bottom: 0px;
   background-color: #6d84b4;
 }
@@ -98,41 +98,57 @@ a img {
   width: 150px;
 }
 
-#menu ul {
-	margin: 0px;
-	padding: 0px 0px 0px 0px;
-	list-style: none;
-	line-height: normal;
+#sub #ad {
+  padding-left: 20px;
 }
 
-#menu li {
-	float: left;
-	margin: 0px 0px 0px 1px;
+/* News content*/
+.news {
+  padding: 10px;
 }
 
-#menu a {
-	display: block;
-	width: auto;
-	height: 28px;
-	padding: 12px 20px 0px 20px;
+.news .news_title {
+  width: 80%;
+  float: left;
+  font-size: 200%;
 }
 
-#menu a:hover {
-	text-decoration: underline;
+.news .button-group {
+  width: 20%;
+  float: right;
 }
 
-#menu .active {
-	background: #6d84b4 0px 0px;
+.news .info {
+  font-style: italic;
+  clear: both;
+  width: 100%;
 }
 
-#menu .active a {
-	background: url(images/img02.gif) no-repeat 100% -40px;
+.news .image {
+  padding-left: 10px;
+  float: left;
+  width: 20%;
 }
 
-#news {
-  margin: 10px 10px 10px 10px;
+.news .news_content {
+  text-indent: 30pt;
+  font-size: 150%;
+  padding-top: 10px;
+  padding-right: 40px;
+  float: right;
+  width: 70%;
 }
 
+.news .comments {
+  clear: both;
+  width: 680px;
+  background: #f2f2f2;
+  position:relative;
+  top: 10px;
+  left:30px;
+  /*border-width:medium;
+  border-style:dashed;*/
+}
 
 /* =Menu
 -------------------------------------------------------------- */
@@ -159,7 +175,7 @@ div.menu ul {
 div.menu li {
 	float: left;
 	position: relative;
-    list-style: none;
+  list-style: none;
 }
 #access a {
 	color: #aaa;

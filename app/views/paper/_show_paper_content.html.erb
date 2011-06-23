@@ -1,43 +1,34 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
-    <div id="news">
+    <div class="news">
       <div class="news_title">
-        <h3>
-          <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>" onclick="window.open('<%= news_index_path+'/'+news.id.to_s %>'); return false;"><%= news.title %></a>
-        </h3>
+        <a title="<%= news.title %>" href="<%= news_index_path+'/'+news.id.to_s %>" onclick="window.open('<%= news_index_path+'/'+news.id.to_s %>'); return false;"><%= news.title %></a>
       </div>
-      <h5>
+
+      <div class="button-group">
+        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
+        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-dislike" src="/images/dislike_button.png" alt="" /></a>
+        <a href="#" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-dislike" src="/images/facebook_icon.png" alt="" /></a>
+      </div>
 
       <div class="info">
-        由 <%= news.user.first_name %> 於 <%= news.created_at %> 發佈, Tags:
+        由 <%= news.user.first_name %> 於 <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d") %> 發佈, Tags:
         <% news.tags.each do |tag| %>
             <%= t(tag.name.to_sym) + " " %>
         <% end %>
-        <span class="button-group">
-          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
-            <img class="button-icon-like" src="/images/like_button.png" alt="">
-            <span class="button-content-like"><%= t(:like_btn) %></span>
-          </button>
-          <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike-<%= news.id %>">
-            <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
-          </button>
-          <button onClick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>">
-            <img class="button-icon-fb-share" src="/images/facebook_icon.png" alt="">
-            <span class="button-fb-share"><%= t(:share) %></span>
-          </button>
 
-        </span>
       </div>
-      </h5>
+
       <div class="image">
          <img src="<%=news.images[0].url.to_s%>" alt="image">
       </div>
+
       <div class="news_content">
         <%= news.content.html_safe %>
       </div>
 
-      <div id="comments">
+      <div class="comments">
       <h3><%= t(:comments)%></h3>
       <div id="fb-root"></div>
       <script>
@@ -55,7 +46,7 @@
           document.getElementById('fb-root').appendChild(e);
         }());
       </script>
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="2" width="650"></fb:comments>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="1" width="650"></fb:comments>
 
       </div>
     </div>
