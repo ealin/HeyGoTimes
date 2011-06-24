@@ -37,6 +37,7 @@ en:
   share: "Share"
   share_hint: "Share to Facebook"
   report_this_news: "Report this news"
+  news_already_exist: "News already exist!"
 
   #----------------------------------------
   # for mobile site
