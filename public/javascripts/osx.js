@@ -78,10 +78,7 @@ jQuery(function ($) {
                                 $("#area_filter2").dropdownchecklist( { icon: {},emptyText: "選擇區域(可複選)：",
                                     width: 240,maxDropHeight: 160 , onComplete: function(selector) {
 
-                                        //console.log(selector.options) ;
-                                        //alert(selector.options.length) ;
-                                        //$("#hide_text_box").value = "1234" ;
-                                        document.forms[0].elements[7].value = "" ;
+                                       document.forms[0].elements[7].value = "" ;
                                         for(i=0;i<selector.options.length;i++)
                                         {
                                             console.log(selector.options[i].id) ;
