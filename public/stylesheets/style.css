@@ -126,7 +126,6 @@ a img {
 }
 
 .news .image {
-  padding-left: 10px;
   float: left;
   width: 20%;
 }
@@ -157,6 +156,9 @@ a img {
   height: 30px;
   width:70%;
   background: #edeff4;
+  border-width :1px;
+  border-color: #bdc7d8;
+  border-style:dashed;
 }
 
 #more_news a{
@@ -164,9 +166,9 @@ a img {
   font-size: 20px;
 }
 
-#more_news:hover > a{
+#more_news:hover {
   display: block;
-  background: #6d84b4;
+  background: #bdc7d8;
 	color: #fff;
 }
 
