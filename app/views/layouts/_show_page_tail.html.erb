@@ -1,6 +1,13 @@
 <script>
   function to_report_dialog()
   {
+
+      $('#FeedbackTag2')[0].checked = true ;
+      $('#FeedbackTag2')[0].style.display= "" ;
+      $('#FeedbackTag2')[0].append(document.createTextNode("Hello")) ;
+      console.log($('#FeedbackTag2')) ;
+
+     /*
       for(i=0;i<($('input').length);i++)
        {
            if( $('input')[i].name != "report_tag")
@@ -19,7 +26,7 @@
 
            }
        }
-
+       */
 
   }
 

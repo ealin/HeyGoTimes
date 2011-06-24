@@ -57,7 +57,7 @@ class PaperController < NewsController
   def get_news(type, page)
 
     @user_areas = []
-    if (session[:filter_area] != nil)
+    if (session[:filter_area] != nil && session[:filter_area] != "")
       @user_areas = session[:filter_area].split("/")
     else
       # session may be empty (e.g. first time using)

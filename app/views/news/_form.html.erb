@@ -161,7 +161,7 @@ $(document).ready(function () {
 
               <% if tag.id == 2 || tag.id == 3  %>
                <%# 這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
-                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>"  style="display: none;"
+                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "2" %>"  style="display: none;"
                      value="<%= t(tag.name.to_sym) %>" />
                   <% next %>
               <% end %>
