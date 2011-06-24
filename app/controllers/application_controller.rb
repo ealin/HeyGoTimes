@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
 
     # check status of logging-in FB or not
 
-    if !(current_facebook_user.nil?)
+   session[:logged_in] = false
+   #if !(current_facebook_user.nil?)
       begin
         current_facebook_user.fetch
 
@@ -42,9 +43,9 @@ class ApplicationController < ActionController::Base
         session[:logged_in] = false
 
       end
-    else
-      session[:logged_in] = false
-    end
+   # else
+   #   session[:logged_in] = false
+   #end
 
 
     # if logged-in FB, 判斷此USER是否已經建立帳號

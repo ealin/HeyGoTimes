@@ -32,6 +32,27 @@ zh_tw:
   like_hint: "我喜歡"
   dislike_hint: "我不喜歡"
   comments: "讀者回應"
+  share: "分享"
+  share_hint: "分享至Facebook"
+  report_this_news: "發佈此則新聞"
+  news_already_exist: "此新聞已經存在"
+  
+  #----------------------------------------
+  # for mobile site
+  #----------------------------------------
+  m_report: "發佈新聞"
+  m_filter: "篩選新聞"
+  m_filter_setting: "篩選條件設定"
+  m_report_news: "發佈新聞"
+  m_login: "登入"
+  m_logout: "登出"
+  m_more: "載入更多新聞..."
+  
+  m_function: "功能選單:"
+  m_setting_list: "朋友與日期選項:"
+  
+  m_prev: "回前頁"
+  
 
   #----------------------------------------
   # News Filter
@@ -61,7 +82,7 @@ zh_tw:
 
   filter_save_as_default: "儲存為我的預設選項"
   filter_cancel: "取消"
-  filter_ok: "確定"
+  filter_ok: "套用設定"
   show_tags: "顯示所有新聞分類"
   filter_setting_saved: "您的設定已儲存!"
   user_not_exist: "使用者不存在！"

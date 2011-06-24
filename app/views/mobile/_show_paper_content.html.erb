@@ -1,0 +1,59 @@
+
+<% if news != nil %>
+  <% news.each do |news| %>
+    <div class="m_news">
+      <div class="m_news_title">
+          <a href="<%= news_index_path+'/'+news.id.to_s %>"><%= news.title %></a>
+      </div>
+
+      <div class="m_image">
+         <img src="<%=news.images[0].url.to_s%>" alt="image">
+      </div>
+      <div class="m_news_content">
+        <%= news.content.html_safe %>
+      </div>
+
+      <div id="m_comments">
+      <%= t(:comments)%>
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                   xfbml: true});
+        };
+        (function() {
+          var e = document.createElement('script'); e.async = true;
+
+          // Todo: we need to check the locale!!!!!!!!!!!!
+          //
+          e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+          document.getElementById('fb-root').appendChild(e);
+        }());
+      </script>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="1" ></fb:comments>
+
+      </div>
+    </div>
+
+    <div class="m_like">
+      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
+        <img class="button-icon-like" src="/images/like_button.png" alt="">
+        <span class="button-content-like"><%= t(:like_btn) %></span>
+      </button>
+      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike-<%= news.id %>">
+        <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
+      </button>
+    </div>
+    <%# if (index != 0) %>
+
+    <%# end %>
+  <% end %>
+
+  <div class="m_ad">
+    <%= render :partial => "m_show_ad" %>
+  </div>
+
+<% end %>
+
+

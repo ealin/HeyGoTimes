@@ -56,6 +56,15 @@ class PaperController < NewsController
 
   def get_news(type, page)
 
+    @user_areas = []
+    if (session[:filter_area] != nil)
+      @user_areas = session[:filter_area].split("/")
+    else
+      # session may be empty (e.g. first time using)
+      #
+      @user_areas[0] = 'All'
+    end
+
     @user_tags = []
     if (session[:filter_tags] != nil)
       @user_tags = session[:filter_tags].split("/")
@@ -69,7 +78,7 @@ class PaperController < NewsController
       @news = News.get_all(type)
     else
       if (News.count > 0)
-        @news = News.find_by_tags(type, @user_tags)
+        @news = News.find_by_tags(type, @user_areas, @user_tags)
       end
     end
 
@@ -125,7 +134,7 @@ class PaperController < NewsController
             session[:filter_tags] += (tag.name + "/")
           end
 
-          # ger area filter from user.areas
+          # get area filter from user.areas
           session[:filter_area] =""
           (user.areas).each do |area|
             session[:filter_area] += (area.name + "/")

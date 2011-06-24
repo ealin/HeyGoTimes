@@ -72,8 +72,12 @@ HeyGoTimes::Application.routes.draw do
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
     get '_show_paper_content', :on => :collection
-    post '_show_paper_content', :on => :collection
- end
+  end
+
+  resources :mobile do
+    get 'index', :on => :collection
+    get '_show_paper_content', :on => :collection
+  end
 
   #get "main_page/index"
   #get "main_page/to_main_page"

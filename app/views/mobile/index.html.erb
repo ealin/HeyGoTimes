@@ -2,29 +2,251 @@
    <title>Page Title</title>
    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 
-  <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
+   <link rel="icon" type="image/png" href="/images/HeyGoTimes_logo.png">
    <link rel="apple-touch-icon" href="/images/HeyGoTimes_logo.png" />
+
+   <meta name="apple-touch-fullscreen" content="YES" />
    <meta name="apple-mobile-web-app-capable" content="yes" />
 
    <link type='text/css' href='/stylesheets/mobile/iui.css' rel='stylesheet'  />
    <link type='text/css' href='/stylesheets/mobile/default-theme.css' rel='stylesheet'  />
+   <link type='text/css' href='/stylesheets/mobile/iui-panel-list.css' rel='stylesheet'  />
+   <link type='text/css' href='/stylesheets/mobile/iui_ext.css' rel='stylesheet'  />
 
+   <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+
+   <script type="text/javascript">
+
+    function like(user, news, like)
+    {
+      // ask session data from server
+      $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
+      {
+        if (like == 1)
+          alert(json.name+' like this news, total: '+json.total);
+        else
+          alert(json.name+' dislike this news, total: '+json.total);
+
+      }  );
+
+    }
+
+    function loadMore(type, pageNo) {
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      $.get(url, function(response) {
+        $("#m_paperContent").append(response);
+        FB.XFBML.parse(document.getElementById('m_comments'));
+      });
+    }
+
+    $(document).ready(function() {
+      var currPage = 1;
+      var currType = 'latest';
+
+      $('#more_news').unbind('click').click(function() {
+        loadMore(currType, ++currPage);
+      });
+    });
+
+
+    function onLoginBtn()
+    {
+      /* On Facebook Login */
+      var my_client_id  = "<%= Facebooker2.app_id %>";
+      var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
+      my_type           = "user_agent";
+      my_display        = "touch" ;
+
+      var authorize_url  = "https://graph.facebook.com/oauth/authorize?";
+      authorize_url += "client_id="+my_client_id;
+      authorize_url += "&redirect_uri="+my_redirect_uri;
+      authorize_url += "&display="+my_display;
+      authorize_url += "&scope=publish_stream"
+
+
+      window.location.replace(authorize_url);
+    }
+
+
+  </script>
+
 </head>
+
+
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/zh_TW/all.js"></script>
+
+<script>
+
+        FB.init({
+            appId  : "<%= Facebooker2.app_id %>",
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml  : true  // parse XFBML
+        });
+
+
+        FB.getLoginStatus(function(response)
+        {
+          // must reload the page when login-status is different between facebook and "facebooker2"
+          //
+          logging_status_in_server = "<%= session[:logged_in] %>"
+
+
+          if (response.session)
+          {
+            // logged in and connected user, someone you know
+              if(logging_status_in_server == "false")
+                 window.location.replace("<%= root_url+'mobile/index/' %>") ;
+          }
+          //else {
+            // no user session available, someone you dont know
+          //}
+        });
+
+
+
+ </script>
+
 
    <div class="toolbar">
       <h1 id="pageTitle"></h1>
       <a id="backButton" class="button" href="#"></a>
+      <div align="right" style="padding:2px 0px;    ">
+      <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="40" height="40"/></a>
+      </div>
+
    </div>
-   <ul id="screen1" title="Screen 1" selected="true">
-      <li><a href="#screen2">Go to Screen #2</a></li>
+
+
+
+   <!-- !!!!!!!!! Page - NewsPaper  -->
+
+     <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+
+            <div>
+             <% if session[:logged_in] == true %>
+
+                  <div id="head_photo">
+                     <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
+                          :style => 'padding: 2px 6px 0px 0px;width:"30%" ' %>
+                  </div>
+
+                  <div  id="welcome_logout">
+                     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
+                     <br>
+                     <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
+                  </div>
+
+                  <div align = "left" >
+                     <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
+
+                    <!-- MOBILE VER.先不提供 REPORT的功能
+                     <a href="#report"><button class="whiteButton" style="width:40%;"><%= t(:m_report) %></button></a>
+                     -->
+                  </div>
+
+             <% else %>
+                 <div align = "right">
+                   <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
+                   <br>
+                 </div>
+                 <a href="#filter"><button class="whiteButton" style="width:99%;"><%= t(:m_filter) %> </button></a>
+              <% end %>
+           </div>
+       <br><hr>
+
+       <div id="m_paperContent">
+        <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
+       </div>
+        <div align="center">
+           <button class="redButton" id="more_news" style="width:100%;"><%= t(:m_more) %></button>
+        </div>
    </ul>
 
 
-   <ul id="screen2" title="Screen 2" >
-     <li><a href="#screen3">Go to Screen #3</a></li>
-   </ul>
 
-   <div id="screen3" title="Screen 3" class="panel">
-      Hello World
+    <!-- !!!!!!!!! Page - Filter  -->
+
+   <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
+      <%= render :partial => 'mobile/m_set_filter'%>
+
+      <div align ="center" >
+         <br> <br><hr>
+         <%= render :partial => "m_show_ad" %>
+       </div>
+
    </div>
+
+
+
+
+        <!-- friend filter selection PAGE-->
+        <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
+            <h2>Friend option:</h2>
+              <% if session[:filter_friend].include?("mine")  %>
+                <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
+              <% else %>
+                <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+              <% end %>
+              <br>
+
+              <% if session[:filter_friend].include?("friend")  %>
+                 <input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
+              <% else %>
+                 <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
+              <% end %>
+
+              <div align ="center" >
+                 <br> <br> <br><hr>
+                 <%= render :partial => "m_show_ad" %>
+              </div>
+        </div>
+
+
+
+        <!-- date filter selection PAGE-->
+        <div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
+          <h1>Select Date:</h1>
+          <% if session[:filter_date_option].include?("no_limited") %>
+             <input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
+          <% else %>
+              <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+          <% end %>
+          <br>
+
+          <% if session[:filter_date_option].include?("yesterday") %>
+             <input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
+          <% else %>
+              <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+          <% end %>
+          <br>
+
+          <% if session[:filter_date_option].include?("today") %>
+             <input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
+          <% else %>
+              <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+          <% end %>
+
+          <div align ="center" >
+             <br> <br> <br><hr>
+             <%= render :partial => "m_show_ad" %>
+          </div>
+
+
+        </div>
+
+
+
+
+
+   <!-- MOBILE VER.先不提供 REPORT的功能-->
+   <!-- !!!!!!!!! Page - Report  -->
+   <!--
+   <ul id="report" title="report_page"  class="panel">
+     <%#= render :partial => 'mobile/m_report'%>
+   </ul>
+   -->
+

@@ -2,7 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  HeyGoTimes: "Hey!Go Times"
+  HeyGoTimes: "HeyGo!Times"
 
   #----------------------------------------
   # name of each page(controller/view)
@@ -34,6 +34,27 @@ en:
   like_hint: "I like it"
   dislike_hint: "I don't like it"
   comments: "Comments"
+  share: "Share"
+  share_hint: "Share to Facebook"
+  report_this_news: "Report this news"
+  news_already_exist: "News already exist!"
+
+  #----------------------------------------
+  # for mobile site
+  #----------------------------------------
+  m_report: "Report"
+  m_filter: "Filter"
+  m_filter_setting: "Filter Setting"
+  m_report_news: "Repor News"
+  m_login: "Login"
+  m_logout: "Logout"
+  m_more: "More News..."
+  
+  m_function: "Function List:"
+  m_setting_list: "Setting about Friends & Date:"
+
+  m_prev: "Previous Page"
+
 
   #----------------------------------------
   # News Filter
@@ -64,7 +85,7 @@ en:
  
   filter_save_as_default: "Save as default"
   filter_cancel: "Cancel"
-  filter_ok: "OK"
+  filter_ok: "Apply"
   filter_setting_saved: "Your News-filters is saved!"
   user_not_exist: "The user is not existed!"
   show_tags: "Show all tags"
@@ -103,7 +124,7 @@ en:
   #Top: "Top"
   World: "World"
   HGTimesNotice: "HG-Times Notice"
-  Feedback: "Feedback and Response"
+  FeedbackTag: "Feedback and Response"
 
   Business: "Business"
   Stock: "Stock"
