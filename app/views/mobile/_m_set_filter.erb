@@ -186,6 +186,10 @@
 <h2>Select Tags:</h2>
 <select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @tags.each do |tag| %>
+     <% if tag.id == 2 || tag.id == 3 %>
+          <% next %>
+     <% end %>
+
      <% if session[:filter_tags].include?(tag.name) %>
             <option  id="<%= tag.name %>" selected="yes" ><%= t(tag.name.to_sym)  %></option>
      <% else %>

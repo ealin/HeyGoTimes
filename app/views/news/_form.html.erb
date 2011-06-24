@@ -78,8 +78,8 @@ $(document).ready(function () {
     <%= t(:input_news_url_hint)%>
   </div>
 
-  <div class="field">
-    URL
+  <div class="field" id="url_input">
+    <%= t(:news_URL) %>
     <input type="text" name="news[url]" value="" id="news_url" />
     <button id = "get_news"> <%= t(:get_news) %> </button>
     <span id="loading_animate"></span>
@@ -87,7 +87,7 @@ $(document).ready(function () {
 
   <hr>
 
-    <div align ="left"  id="filter_dlg_t2" >
+    <div align ="left"  id="filter_dlg_t6" >
       <%= t(:input_news_hint)%>
     </div>
 
@@ -115,7 +115,7 @@ $(document).ready(function () {
     <input type="text" name="hide" value="" id="hide_text_box" />
     -->
 
-  <div>
+  <div id="image_url">
     <%= t(:news_image_url_field)%>
     <input type="text" name="image_url" size="50" value="" id="image_url" />
   </div>
@@ -161,8 +161,11 @@ $(document).ready(function () {
 
               <% if tag.id == 2 || tag.id == 3  %>
                <%# 這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
-                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "2" %>"  style="display: none;"
-                     value="<%= t(tag.name.to_sym) %>" />
+                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "_box" %>"  style="display: none;" />
+                     <span style="display: none;" id="<%= tag.name + "_lab" %>" >
+                        <%= t(tag.name.to_sym) %>
+                     </span>
+                  </input>
                   <% next %>
               <% end %>
 

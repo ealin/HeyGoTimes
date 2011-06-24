@@ -2,31 +2,34 @@
   function to_report_dialog()
   {
 
-      $('#FeedbackTag2')[0].checked = true ;
-      $('#FeedbackTag2')[0].style.display= "" ;
-      $('#FeedbackTag2')[0].append(document.createTextNode("Hello")) ;
-      console.log($('#FeedbackTag2')) ;
 
-     /*
+      //console.log($('#FeedbackTag2')) ;
+
+      //var oNewP = $("<span>Feedback</span>");
+      //oNewP.insertAfter("#All");
+      alert("<%= t(:feedback_hint)%>") ;
+
       for(i=0;i<($('input').length);i++)
-       {
-           if( $('input')[i].name != "report_tag")
-               continue ;
-
-           if( ($('input')[i].id) == "HGTimesNotice" )
-           {
-               $('input')[i].checked = true ;
-               $('input')[i].style.display = "block" ;
-               $('input')[i].appendTo("feedback") ;
-           }
-           else
-           {
+      {
+          console.log($('input')[i]) ;
+          if( $('input')[i].type == "checkbox")
+          {
+               $('input')[i].disabled = true ;
                $('input')[i].checked = false ;
-               $('input')[i].style.display = "none" ;
+          }
+      }
 
-           }
-       }
-       */
+      $('#FeedbackTag_box')[0].disabled = false ;
+      $('#FeedbackTag_box')[0].checked = true ;
+      $('#FeedbackTag_box')[0].style.display= "" ;
+      $('#FeedbackTag_lab')[0].style.display= "" ;
+
+      $('#filter_dlg_t2')[0].style.display = "none" ;
+      $('#filter_dlg_t6')[0].style.display = "none" ;
+      $('#url_input')[0].style.display = "none" ;
+      $('#image_url')[0].style.display = "none" ;
+
+
 
   }
 
@@ -53,6 +56,7 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
 <%= link_to t(:response),{:controller => 'paper'},{:title => '顯示所有反饋與官方回應'}%> &nbsp;
+
 
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
 <%= link_to t(:notice),{:controller => 'paper'},{:title => '官方公告'}%> &nbsp;

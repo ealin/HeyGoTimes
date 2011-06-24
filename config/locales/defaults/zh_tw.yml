@@ -70,6 +70,7 @@ zh_tw:
   news_title_field: "標題"
   news_content_field: "內容"
   news_image_url_field: "圖片網址"
+  news_URL: "新聞網址"
   
   filter_by_tag: "選擇您感興趣的新聞分類："
   filter_by_area: "選擇區域(可複選)："
@@ -95,6 +96,9 @@ zh_tw:
   
   same_as_select_all: "(視同以下分類全部勾選)"
   hit_here_to_select_area: "請按此選擇區域："
+
+  feedback_hint: "感謝您對黑狗日報的意見, 發表意見就像發佈一篇新新聞一樣簡單！"
+
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

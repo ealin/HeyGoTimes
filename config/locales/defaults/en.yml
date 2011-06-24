@@ -72,6 +72,7 @@ en:
   news_title_field: "Title"
   news_content_field: "Content"
   news_image_url_field: "Image URL"
+  news_URL: "News URL"
 
   filter_by_tag: "Filter by news tag:"
   filter_by_area: "Filter by area："
@@ -97,6 +98,8 @@ en:
 
   same_as_select_all: "(similar as select all)"
   hit_here_to_select_area: "Hit here to select area："
+  
+  feedback_hint: "Thanks for your feedback, it's quick easy - just like report a new news!"
  
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
