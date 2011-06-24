@@ -82,7 +82,7 @@ $(document).ready(function () {
 
   <div class="field" style="position:relative;left:10px;" id="url_input" >
     <%= t(:news_URL) %>
-    <input type="text" name="news[url]" value="" id="news_url" size="32"/>
+    <input type="text" name="news[url]" value="" id="news_url" size="30"/>
 
     <button id = "get_news"> <%= t(:get_news) %> </button>
     <span id="loading_animate"></span>
@@ -167,6 +167,7 @@ $(document).ready(function () {
                           <%= t(tag.name.to_sym) %>
                        </span>
                     </input>
+                    <%next%>
          <% elsif tag.id == 2  %>
               <%# 這個items是system notice, 只有在administrator才顯示這個選項 %>
               <%if(session[:host_id] == 670999089)%>
