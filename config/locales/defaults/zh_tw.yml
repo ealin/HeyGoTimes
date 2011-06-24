@@ -98,7 +98,8 @@ zh_tw:
   hit_here_to_select_area: "請按此選擇區域："
 
   feedback_hint: "感謝您對黑狗日報的意見, 發表意見就像發佈一篇新新聞一樣簡單！"
-
+  response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
+  notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

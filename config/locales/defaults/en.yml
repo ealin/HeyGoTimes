@@ -101,7 +101,9 @@ en:
   hit_here_to_select_area: "Hit here to select area："
   
   feedback_hint: "Thanks for your feedback, it's quick easy - just like report a new news!"
- 
+  response_hint: "The default setting will show your own feedback and response only, you could modify it by 'News Filter' function." 
+  notice_hint: "The default setting will show your local notice only, you could modify it by 'News Filter' function."
+
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------

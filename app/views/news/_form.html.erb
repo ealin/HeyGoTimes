@@ -48,8 +48,6 @@ $(document).ready(function () {
 //-->
 </script>
 
-
-
 <%= form_for(news) do |f| %>
   <% if news.errors.any? %>
     <div id="error_explanation">
@@ -125,7 +123,7 @@ $(document).ready(function () {
 
             <% @areas.each do |area| %>
                   <% if area.parent_area != nil %>
-                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= "        " + t(area.name.to_sym)  %></option>
+                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
                   <% else %>
                      <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
                   <% end %>
@@ -148,8 +146,8 @@ $(document).ready(function () {
 
         <% if tag.id <= 3 %>
 
-              <% if tag.id == 2 || tag.id == 3  %>
-               <%# 這兩個items是與feedback & notice, 只有在feedback與系統管理者發言時才顯示這兩個選項 %>
+              <% if tag.id == 3  %>
+               <%# 這個items是與feedback, 只有在feedback才顯示這個選項 %>
                   <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "_box" %>"  style="display: none;" />
                      <span style="display: none;" id="<%= tag.name + "_lab" %>" >
                         <%= t(tag.name.to_sym) %>
@@ -158,27 +156,28 @@ $(document).ready(function () {
                   <% next %>
               <% end %>
 
+
               <div id="tag_grp1" >
-              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
-                 <%= t(tag.name.to_sym) %>
-              </input>
-              &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                   <%= t(tag.name.to_sym) %>
+                </input>
+
+                <% if tag.id==1 %>
+                  &nbsp; &nbsp;&nbsp;
+                  <%= t(:same_as_select_all) %>
+                  <br>
+                <% end %>
+                <% next %>
+
               </div>
         <% else %>
               <div id="tag_grp2">
-              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
-                 <%= t(tag.name.to_sym) %>
-              </input>
-              &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                   <%= t(tag.name.to_sym) %>
+                </input>
+                &nbsp;&nbsp;&nbsp;
               </div>
         <% end%>
-
-
-        <% if (tag.id == 1) %>
-              <%= t(:same_as_select_all) %>
-              <br>
-              <% next %>
-        <% end %>
 
         <% if (tag.id - 3) % 6 == 0  %>
           <br>

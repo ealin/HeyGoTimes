@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
       if user != nil
         # already existed
         session[:id] = user.id
+        session[:host_id] = user.host_id
 
       else
 
@@ -77,6 +78,7 @@ class ApplicationController < ActionController::Base
 )
         if user.save!
            session[:id] = user.id
+           session[:host_id] = user.host_id
         else
            logger.debug "Create User-" + current_facebook_user.email + " to DB error!!"
         end
