@@ -33,6 +33,54 @@
 
   }
 
+
+  function show_feedback_list()
+  {
+      alert("<%= t(:response_hint) %>") ;
+
+      var data = "tag_filter=FeedbackTag/&friend_filter=mine/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=" ;
+
+      // send to server
+      $.ajax(
+      {
+          type: "GET",
+          url:"/paper/set_filter_setting",
+          data: data,
+          success: function(html)
+          {
+              // redirect to main page in order to redraw the news by new filter!
+               window.location.replace("/");
+          }
+      });
+
+      return false ;
+
+  }
+
+  function show_notice_list()
+  {
+      alert("<%= t(:notice_hint) %>") ;
+
+      // TODO: 必須判斷user的locale, 據此設定area filter
+      var data = "tag_filter=HGTimesNotice/&friend_filter=/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=Taiwan" ;
+
+      // send to server
+      $.ajax(
+      {
+          type: "GET",
+          url:"/paper/set_filter_setting",
+          data: data,
+          success: function(html)
+          {
+              // redirect to main page in order to redraw the news by new filter!
+               window.location.replace("/");
+          }
+      });
+
+      return false ;
+
+  }
+
 </script>
 
 
@@ -55,11 +103,15 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
-<%= link_to t(:response),{:controller => 'paper'},{:title => '顯示所有反饋與官方回應'}%> &nbsp;
+ &nbsp;
+ <a href='#'  onclick="show_feedback_list()"><%= t(:response) %></a>
 
 
+
+&nbsp;
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
-<%= link_to t(:notice),{:controller => 'paper'},{:title => '官方公告'}%> &nbsp;
+<a href='#'  onclick="show_notice_list()"><%= t(:notice) %></a>
+
 
 
 <%# 進入手機瀏覽模式  %>
