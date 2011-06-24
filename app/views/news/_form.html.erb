@@ -29,9 +29,23 @@ $(document).ready(function () {
       // set a timeout of x seconds to load the image, otherwise, show the fail message
       t.timeout = setTimeout(function () {
         $.getJSON("/news/report.json", 'url=' + t.value, function(json){
-          document.forms[0].elements[4].value = json.title;
-          document.forms[0].elements[5].value = json.text;
-          document.forms[0].elements[6].value = json.image;
+          if (json.ret == 'url exist')
+          {
+            document.forms[0].elements[4].value = '';
+            document.forms[0].elements[5].value = '';
+            document.forms[0].elements[6].value = '';
+            alert("<%= t(:news_already_exist) %>");
+          }
+          else if (json.ret == 'bad url')
+          {
+            alert("Bad URL!");
+          }
+          else
+          {
+            document.forms[0].elements[4].value = json.title;
+            document.forms[0].elements[5].value = json.text;
+            document.forms[0].elements[6].value = json.image;
+          }
         });
         t.timeout = setTimeout(function () {
           preview.html('');
@@ -65,9 +79,11 @@ $(document).ready(function () {
     <%= t(:input_news_url_hint)%>
   </div>
 
-  <div class="field" id="url_input">
+
+  <div class="field" style="position:relative;left:10px;" id="url_input" >
     <%= t(:news_URL) %>
-    <input type="text" name="news[url]" value="" id="news_url" />
+    <input type="text" name="news[url]" value="" id="news_url" size="32"/>
+
     <button id = "get_news"> <%= t(:get_news) %> </button>
     <span id="loading_animate"></span>
   </div>
@@ -78,9 +94,9 @@ $(document).ready(function () {
       <%= t(:input_news_hint)%>
     </div>
 
-  <div class="field">
+  <div class="field" style="clear:both;">
     <%= t(:news_title_field)%>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :style=>"position:relative;left:34px;", :size=>64 %>
     <br><br>
   </div>
 
@@ -94,17 +110,18 @@ $(document).ready(function () {
     });
     </script>
     -->
-    <%= t(:news_content_field)%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.text_area :content %>
+    <%= t(:news_content_field)%>
+    <%= f.text_area :content, :style=>"position:relative;left:34px;" %>
   </div>
 
     <!--
     <input type="text" name="hide" value="" id="hide_text_box" />
     -->
 
-  <div id="image_url">
+  <div id="image_url" class="field" style="clear:both;">
+
     <%= t(:news_image_url_field)%>
-    <input type="text" name="image_url" size="50" value="" id="image_url" />
+    <input type="text" name="image_url" size="64" value="" id="image_url" style="position:relative;left:10px;"/>
   </div>
   <hr>
 
@@ -118,7 +135,7 @@ $(document).ready(function () {
   </div>
 
   <%# Area Selection  %>
-    <div align = "left" id = "area_select_box2">
+    <div align = "left" id = "area_select_box2" >
       <select id="area_filter2"  multiple="multiple" >
 
             <% @areas.each do |area| %>
@@ -135,8 +152,7 @@ $(document).ready(function () {
     <br><br><br>
 
 
-
-    <div class = "all_tags" align = "left" >
+    <div class = "all_tags" align = "left" style="clear:both;" >
     <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
     <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
 

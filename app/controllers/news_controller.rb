@@ -81,13 +81,26 @@ class NewsController < ApplicationController
 
     if (params[:url] != nil)
       # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
-      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url]
+      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url].to_s
+
+      if (params[:url] != nil)
+        @news = News.find_all_by_url(params[:url])
+        if (@news.count != 0)
+          @data['ret'] = 'url exist'
+        end
+      end
 
       require 'nokogiri'
       require 'open-uri'
 
       @next = ''
-      @doc = Nokogiri::HTML(open(@url))
+      @doc = Nokogiri::HTML(open(URI.encode(@url)))
+
+      #@error = @doc.search('lint > lint_error')
+      #if (@error != nil)
+      #  @data['ret'] = 'bad url'
+      #end
+
       # @body = @doc.at_css('body').text
       @doc.search('h2 > div.pam', 'td').each do |data|
         # puts data.content
