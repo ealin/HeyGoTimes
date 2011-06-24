@@ -12,14 +12,12 @@
           <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
         </div>
 
-        <div id="links" >
+        <div id="page_head" >
           <%= show_page_head(:login_flag => true)  %>
         </div><!-- #links -->
 
     </div><!-- #masthead -->
   </div><!-- #header -->
-
-
 
   <div id="main">
     <div id="content">
@@ -52,7 +50,7 @@
         </div>
       </div>
 
-      <%= link_to 'Edit', edit_news_path(@news) %>
+      <%#= link_to 'Edit', edit_news_path(@news) %>
 
     </div>
 
@@ -64,8 +62,6 @@
       </div>
     </div>
   </div><!-- #main -->
-
-
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
     <div id="footer">
