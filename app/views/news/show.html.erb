@@ -3,7 +3,22 @@
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
   <meta property="og:image" content="<%= @news.images[0].url.to_s %> "/>
+
+  <script type="text/javascript">
+    function getSrc(obj)
+    {
+      // document.forms[0].elements[4].value = obj.src;
+      document.getElementById('news_url').value = obj.src;
+
+      $.getJSON("/news/report.json", 'url=' + obj.src, function(json){
+        document.forms[0].elements[4].value = json.title;
+        document.forms[0].elements[5].value = json.text;
+        document.forms[0].elements[6].value = json.image;
+      });
+    }
+  </script>
 </head>
+
 <div id="page">
   <div id="header">
     <div id="masthead">
@@ -21,11 +36,16 @@
 
   <div id="main">
     <div id="content">
+      <a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a>
       <div id="news">
         <% # TODO: use @paper_width %>
-          <iframe height="900" width="700" src="<%= @news.url %>">
+          <iframe id="news_frame" height="900" width="700" src="<%= @news.url %>">
              Your browser can't display IFRAMEs
           </iframe>
+      </div>
+      <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
+      <div id="functionalButton">
+        <%= render :partial => 'paper/show_fun_buttons' %>
       </div>
       <div id="comments">
         <h3><%= t(:comments)%></h3>
@@ -47,12 +67,12 @@
         </script>
         <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
 
-        </div>
       </div>
+    </div>
 
       <%#= link_to 'Edit', edit_news_path(@news) %>
 
-    </div>
+    </div><!-- #main -->
 
     <div id="sub">
       <!-- show AD list-->
@@ -61,7 +81,6 @@
         <%= render :partial => 'paper/show_ad_list' %>
       </div>
     </div>
-  </div><!-- #main -->
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
     <div id="footer">

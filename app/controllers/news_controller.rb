@@ -18,6 +18,8 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find(params[:id])
+    @tags = Tag.all
+    @areas = Area.all
 
     # check login status,
     # prevent direct link to news page => cause exception: current_facebook_user is nil

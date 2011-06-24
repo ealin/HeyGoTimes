@@ -11,8 +11,6 @@
 <!--
 $(document).ready(function () {
 
-
-
   $('#get_news').unbind('click').click(function()
   {
     var t = document.forms[0].elements[2];
@@ -51,18 +49,6 @@ $(document).ready(function () {
 </script>
 
 
-<script language="JavaScript">
-  <!--
-  function displayNote(){
-    alert("Have you considered the 4-door version?");
-    document.orderForm.door4.click();
-  }
-  -->
-</script>
-
-
-
-
 <%= form_for(news) do |f| %>
   <% if news.errors.any? %>
     <div id="error_explanation">
@@ -81,7 +67,6 @@ $(document).ready(function () {
   </div>
 
   <div class="field">
-    URL
     <input type="text" name="news[url]" value="" id="news_url" />
     <button id = "get_news"> <%= t(:get_news) %> </button>
     <span id="loading_animate"></span>
@@ -89,9 +74,9 @@ $(document).ready(function () {
 
   <hr>
 
-    <div align ="left"  id="filter_dlg_t2" >
-      <%= t(:input_news_hint)%>
-    </div>
+  <div align ="left"  id="filter_dlg_t2" >
+    <%= t(:input_news_hint)%>
+  </div>
 
   <div class="field">
     <%= t(:news_title_field)%>
