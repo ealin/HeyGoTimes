@@ -295,6 +295,10 @@
     <%# using type and name to identify each Input/Checkbox here %>
 
     <% if tag.id <= 3 %>
+          <% if tag.id == 2 || tag.id == 3 %>
+            <% next %>
+          <% end %>
+
           <div id="tag_grp1">
           <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
              <%= t(tag.name.to_sym) %>
@@ -321,6 +325,18 @@
       <br>
     <% end %>
   <% end %>
+
+  <br>
+  <div id="tag_grp1">
+    <input type="checkbox" name ="each_tag" id="<%= @tags[1].name %>" >
+       <%= t(@tags[1].name.to_sym) %>
+    </input>
+    &nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name ="each_tag" id="<%= @tags[2].name %>" >
+       <%= t(@tags[2].name.to_sym) %>
+    </input>
+  </div>
+
 
 </div>
 
