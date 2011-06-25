@@ -98,17 +98,15 @@
 
 <div id="page">
   <div id="header">
-    <div id="masthead">
-        <div id="logo">
-          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
-          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
-        </div>
+    <div id="logo">
+      <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+    </div>
+    <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
 
-        <div id="page_head" >
-          <%= show_page_head(:login_flag => true)  %>
-        </div><!-- #page_head -->
+    <div id="page_head" >
+      <%= show_page_head(:login_flag => true)  %>
+    </div><!-- #page_head -->
 
-    </div><!-- #masthead -->
   </div><!-- #header -->
 
   <div id="access">

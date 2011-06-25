@@ -84,7 +84,7 @@ class NewsController < ApplicationController
       @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url].to_s
 
       if (params[:url] != nil)
-        @news = News.find_all_by_url(params[:url])
+        @news = News.find_all_by_url(params[:url].to_s)
         if (@news.count != 0)
           @data['ret'] = 'url exist'
         end

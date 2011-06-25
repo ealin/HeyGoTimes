@@ -68,6 +68,11 @@ a img {
 	color: #FFFFFF;
 }
 
+#header span {
+  position:relative;
+  top: 30px;
+}
+
 /* Logo */
 #logo {
 	float: left;
