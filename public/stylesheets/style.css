@@ -68,9 +68,9 @@ a img {
 	color: #FFFFFF;
 }
 
-#header span {
+#header #filter_hint {
   position:relative;
-  top: 30px;
+  top: 20px;
 }
 
 /* Logo */
@@ -84,6 +84,7 @@ a img {
   padding-right: 10px;
   float: right;
   height: 85px;
+  width: 100px;
 }
 
 /* Menu */
