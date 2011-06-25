@@ -120,7 +120,7 @@ a img {
   font-size: 200%;
 }
 
-.news .button-group {
+.news .button_group {
   width: 20%;
   float: right;
 }
@@ -186,13 +186,13 @@ a img {
 	display: block;
 	float: left;
 	margin: 0 auto;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header,
 div.menu {
 	font-size: 13px;
 	margin-left: 12px;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header ul,
 div.menu ul {

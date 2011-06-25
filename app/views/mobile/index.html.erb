@@ -40,12 +40,34 @@
       });
     }
 
+    function changePaperType(type) {
+      var url = '/mobile/_show_paper_content?type='+type+'&page=1';
+      $("#m_paperContent").load(url);
+      FB.XFBML.parse(document.getElementById('comments'));
+    }
+
     $(document).ready(function() {
       var currPage = 1;
       var currType = 'latest';
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, ++currPage);
+      });
+
+      $('#menu-item-rank').unbind('click').click(function(){
+        $('#menu-item-latest').removeClass("current-menu-item")
+        $(this).addClass("current-menu-item")
+        currPage = 1;
+        currType = 'rank';
+        changePaperType(currType);
+      });
+
+      $('#menu-item-latest').unbind('click').click(function(){
+        $('#menu-item-rank').removeClass("current-menu-item")
+        $(this).addClass("current-menu-item")
+        currPage = 1;
+        currType = 'latest';
+        changePaperType(currType);
       });
     });
 
@@ -79,7 +101,6 @@
 <script src="http://connect.facebook.net/zh_TW/all.js"></script>
 
 <script>
-
         FB.init({
             appId  : "<%= Facebooker2.app_id %>",
             status : true, // check login status
@@ -105,9 +126,6 @@
             // no user session available, someone you dont know
           //}
         });
-
-
-
  </script>
 
 
@@ -115,48 +133,48 @@
       <h1 id="pageTitle"></h1>
       <a id="backButton" class="button" href="#"></a>
       <div align="right" style="padding:2px 0px;    ">
-      <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="40" height="40"/></a>
+      <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="32" height="32"/></a>
       </div>
 
    </div>
 
+    <!-- !!!!!!!!! Page - NewsPaper  -->
 
+    <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
 
-   <!-- !!!!!!!!! Page - NewsPaper  -->
+    <!--div id="cmd_bar">
+      <div id="news_type" style="float:left;width:30%;">
+        <button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button>
+      </div>
+      <div id="fun_btn" style="float:right; width:50%;">
+        <div id="filter_btn" style="width:50%;float:left;">
+          <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
+        </div>
+        <div id="login_out_btn" style="width:50%;float:right;">
+          <% if session[:logged_in] == true %>
+            <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
+          <% else %>
+            <button onclick="onLoginBtn()" style="background: #bdc7d8;"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" />Login</button>
+          <% end %>
+        </div>
+      </div>
+    </div-->
+      <div id="m_cmd_bar">
+        <div class="menu-header">
+          <ul id="menu-area" class="menu">
+            <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
+            <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
+            <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
+            <% if session[:logged_in] == true %>
+              <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
+            <% else %>
+              <li id="menu-item-fb" class="menu-item fun-btn"><a onclick="onLoginBtn()"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" /><%= t(:login) %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div><!-- #access -->
 
-     <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
-
-            <div>
-             <% if session[:logged_in] == true %>
-
-                  <div id="head_photo">
-                     <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" ,
-                          :style => 'padding: 2px 6px 0px 0px;width:"30%" ' %>
-                  </div>
-
-                  <div  id="welcome_logout">
-                     <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}" %>
-                     <br>
-                     <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
-                  </div>
-
-                  <div align = "left" >
-                     <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
-
-                    <!-- MOBILE VER.先不提供 REPORT的功能
-                     <a href="#report"><button class="whiteButton" style="width:40%;"><%= t(:m_report) %></button></a>
-                     -->
-                  </div>
-
-             <% else %>
-                 <div align = "right">
-                   <img src="/images/mobile/login_with_facebook.jpeg" style="padding: 2px 6px 0px 0px;" title="facebook login" onclick="onLoginBtn()"/>
-                   <br>
-                 </div>
-                 <a href="#filter"><button class="whiteButton" style="width:99%;"><%= t(:m_filter) %> </button></a>
-              <% end %>
-           </div>
-       <br><hr>
+       <hr style="clear:both;">
 
        <div id="m_paperContent">
         <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
