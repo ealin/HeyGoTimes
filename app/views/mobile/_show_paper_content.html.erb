@@ -13,7 +13,7 @@
         <%= news.content.html_safe %>
       </div>
 
-      <div id="m_comments">
+      <div class="m_comments">
       <%= t(:comments)%>
       <div id="fb-root"></div>
       <script>
@@ -31,12 +31,12 @@
           document.getElementById('fb-root').appendChild(e);
         }());
       </script>
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="1" ></fb:comments>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts='1' width="320"></fb:comments>
 
       </div>
     </div>
 
-    <div class="m_like">
+    <div class="button_group">
       <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
         <img class="button-icon-like" src="/images/like_button.png" alt="">
         <span class="button-content-like"><%= t(:like_btn) %></span>

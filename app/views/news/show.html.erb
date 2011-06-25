@@ -11,9 +11,19 @@
       document.getElementById('news_url').value = obj.src;
 
       $.getJSON("/news/report.json", 'url=' + obj.src, function(json){
-        document.forms[0].elements[4].value = json.title;
-        document.forms[0].elements[5].value = json.text;
-        document.forms[0].elements[6].value = json.image;
+        if (json.ret == 'url exist')
+          {
+            document.forms[0].elements[4].value = '';
+            document.forms[0].elements[5].value = '';
+            document.forms[0].elements[6].value = '';
+            alert("<%= t(:news_already_exist) %>");
+          }
+          else
+          {
+            document.forms[0].elements[4].value = json.title;
+            document.forms[0].elements[5].value = json.text;
+            document.forms[0].elements[6].value = json.image;
+          }
       });
     }
   </script>

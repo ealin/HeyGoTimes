@@ -409,13 +409,13 @@ fieldset > .row:last-child {
     width: 80%;
 }
 
-.m_like {
+.button_group {
     float: right;
     width: 20%;
 }
 
 .m_ad {
-    float: right;
+    clear:both;
     width: 100%;
 }
 
@@ -423,4 +423,86 @@ fieldset > .row:last-child {
 
 #preloader {
     display: none;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#m_cmd_bar {
+	background: #3b5998;
+	display: block;
+	float: left;
+	margin: 0 auto;
+	width: 100%;
+}
+#m_cmd_bar .menu-header,
+div.menu {
+	font-size: 12px;
+	margin-left: 0px;
+	width: 100%;
+}
+#m_cmd_bar .menu-header ul,
+div.menu ul {
+	list-style: none;
+	margin: 0;
+}
+#m_cmd_bar .menu-header li,
+div.menu li {
+	float: left;
+	position: relative;
+  list-style: none;
+}
+#m_cmd_bar a {
+	color: #aaa;
+	display: block;
+	line-height: 32px;
+	padding: 0 5px;
+	text-decoration: none;
+}
+
+#m_cmd_bar .type-btn {
+  position:relative;
+  left:0px;
+}
+
+#m_cmd_bar .fun-btn {
+  /*
+  position:relative;
+  left:30%;
+  */
+}
+
+#m_cmd_bar .fun-btn a {
+  color: #fff;
+}
+
+#m_cmd_bar ul ul li {
+	min-width: 40px;
+}
+#m_cmd_bar ul ul ul {
+	left: 100%;
+	top: 0;
+}
+
+#m_cmd_bar li:hover > a,
+#m_cmd_bar ul ul :hover > a {
+	background: #6d84b4;
+	color: #fff;
+}
+#m_cmd_bar ul li:hover > ul {
+	display: block;
+}
+#m_cmd_bar ul li.current_page_item > a,
+#m_cmd_bar ul li.current-menu-ancestor > a,
+#m_cmd_bar ul li.current-menu-item > a,
+#m_cmd_bar ul li.current-menu-parent > a {
+	color: #fff;
+}
+* html #access ul li.current_page_item a,
+* html #access ul li.current-menu-ancestor a,
+* html #access ul li.current-menu-item a,
+* html #access ul li.current-menu-parent a,
+* html #access ul li a:hover {
+	color: #fff;
 }

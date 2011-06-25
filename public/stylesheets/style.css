@@ -68,6 +68,11 @@ a img {
 	color: #FFFFFF;
 }
 
+#header #filter_hint {
+  position:relative;
+  top: 20px;
+}
+
 /* Logo */
 #logo {
 	float: left;
@@ -79,6 +84,7 @@ a img {
   padding-right: 10px;
   float: right;
   height: 85px;
+  width: 100px;
 }
 
 /* Menu */
@@ -114,7 +120,7 @@ a img {
   font-size: 200%;
 }
 
-.news .button-group {
+.news .button_group {
   width: 20%;
   float: right;
 }
@@ -180,13 +186,13 @@ a img {
 	display: block;
 	float: left;
 	margin: 0 auto;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header,
 div.menu {
 	font-size: 13px;
 	margin-left: 12px;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header ul,
 div.menu ul {
