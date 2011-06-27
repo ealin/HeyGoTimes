@@ -3481,7 +3481,7 @@ tinymce.create('static tinymce.util.XHR', {
 					// Some times a Runtime error of the 800a025e type gets thrown
 					// especially when the caret is placed before a table.
 					// This is a somewhat strange location for the caret.
-					// TODO: Find a better solution for this would possible require a rewrite of the setRng method
+					// TO-DO: Find a better solution for this would possible require a rewrite of the setRng method
 				}
 
 				return;
@@ -4031,7 +4031,7 @@ var Expr = Sizzle.selectors = {
 				match[3] = test[3] - 0;
 			}
 
-			// TODO: Move to normal caching system
+			// TO-DO: Move to normal caching system
 			match[0] = done++;
 
 			return match;
@@ -6769,7 +6769,7 @@ window.tinymce.dom.Sizzle = Sizzle;
 
 			// Most browsers support this feature so we report errors
 			// for those at least to help users track their missing plugins etc
-			// todo: Removed since it produced error if the document is unloaded by navigating away, re-add it as an option
+			// to-do: Removed since it produced error if the document is unloaded by navigating away, re-add it as an option
 			/*elm.onerror = function() {
 				alert('Failed to load: ' + url);
 			};*/
@@ -11047,7 +11047,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 
 				// WebKit produces lists within block elements so we need to split them
 				// we will replace the native list creation logic to custom logic later on
-				// TODO: Remove this when the list creation logic is removed
+				// TO-DO: Remove this when the list creation logic is removed
 				listElm = dom.getParent(selection.getNode(), 'ol,ul');
 				if (listElm) {
 					listParent = listElm.parentNode;

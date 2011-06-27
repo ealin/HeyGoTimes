@@ -144,7 +144,7 @@ function applyFormTagValue(tag)
 		{
 			if (tag.tagName=="SELECT")
 			{
-				// TODO
+				// TO-DO
 			}
 			else if (tag.tagName=="VAR")
 			{

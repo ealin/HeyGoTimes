@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
   #    - admin_data module would call this function before entering admin-mode
   #  https://github.com/neerajdotname/admin_data/wiki/admin_data-security-configuration-for-a-Rails3-application
   #-------------------------------------------------------------------------------
+  # Todo: check ths function (admin_logged_in?) would be called back in production mode or not?
+  #  (reference: config/init.../admin_controller.rb)
   #
   def admin_logged_in?
     if session[:logged_in] == true && session[:host_id] == 670999089
