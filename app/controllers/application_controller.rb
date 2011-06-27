@@ -111,28 +111,23 @@ class ApplicationController < ActionController::Base
   end
 
 
-  #===========================================================================
-
-  #----------------------------------------------------
-  # method: login (Ealin: 20110430)
-  #----------------------------------------------------
-  #
-  def login
-
-
-   render "/user/login"
-  end
-  #===========================================================================
+   #===========================================================================
 
 
   #----------------------------------------------------
-  # method: logout (Ealin: 20110430)
+  # method: mapping_locale_to_area
   #----------------------------------------------------
   #
-  def logout
 
-   render "/user/logout"
+  def mapping_locale_to_area
+    if I18n.locale == :en
+      session[:default_area] = "USA"
+    else
+      session[:default_area] = "Taiwan"
+    end
+
   end
+
   #===========================================================================
 
   
@@ -147,7 +142,7 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = extract_locale_from_accept_language_header
 
-    logger.debug "'#{I18n.locale}'"
+    #logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    
@@ -162,9 +157,12 @@ class ApplicationController < ActionController::Base
         I18n.locale = :zh_tw
       end
     end
+
+    # save mapped area to session[:default_area]
+    mapping_locale_to_area
   
     #logger.debug I18n.locale.length
-    logger.debug "* Locale set to '#{I18n.locale}'"
+    #logger.debug "* Locale set to '#{I18n.locale}'"
   end
   #-----------------------------------------------------------------------------------------
   

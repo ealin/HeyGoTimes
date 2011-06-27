@@ -42,6 +42,7 @@ Tag.create(:name => 'All', :parent_tag => nil)
 Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
 Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
+Tag.create(:name => 'Local', :parent_tag => nil)
 
 Tag.create(:name => 'Politics', :parent_tag => nil)
 Tag.create(:name => 'Life', :parent_tag => nil)

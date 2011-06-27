@@ -142,7 +142,11 @@ $(document).ready(function () {
                   <% if area.parent_area != nil %>
                      <option  id="<%= area.name %>" style='color:blue;font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
                   <% else %>
-                     <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                     <% if session[:default_area] == area.name %>
+                       <option  id="<%= area.name %>" selected='true' style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                     <% else %>
+                        <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                     <% end %>
                   <% end %>
             <% end %>
 
