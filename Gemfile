@@ -23,7 +23,11 @@ gem 'jrails'
 gem 'nokogiri'
 
 # page segmentation
-gem 'will_paginate'
+gem 'will_paginate' , '3.0.pre2'
+
+
+gem 'admin_data'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

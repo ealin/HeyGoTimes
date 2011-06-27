@@ -3,9 +3,9 @@ HeyGoTimes::Application.routes.draw do
 
   get "mobile/index"
 
-  get "real_time_news/report"
-  get "real_time_news/to_main_page"
-  resources :real_time_news
+  #get "real_time_news/report"
+  #get "real_time_news/to_main_page"
+  #resources :real_time_news
 
   get "tag/get_all_tags"
 
