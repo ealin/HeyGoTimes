@@ -15,7 +15,23 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   
- 
+
+
+  #-------------------------------------------------------------------------------
+  # method: admin_logged_in?
+  #    - admin_data module would call this function before entering admin-mode
+  #  https://github.com/neerajdotname/admin_data/wiki/admin_data-security-configuration-for-a-Rails3-application
+  #-------------------------------------------------------------------------------
+  #
+  def admin_logged_in?
+    if session[:logged_in] == true && session[:host_id] == 670999089
+      true
+    else
+      false
+    end
+
+  end
+
 
   #-----------------------------------------------------------
   # method: check_logged_in (Ealin: 20110430)
@@ -95,33 +111,6 @@ class ApplicationController < ActionController::Base
 
   #===========================================================================
 
-=begin
-  #----------------------------------------------------
-  # method: get_current_user_info (Ealin: 20110510)
-  #----------------------------------------------------
-  #
-  def get_current_user_info
-
-    @user = User.find(session[:id])
-    if @user != nil
-      logger.debug "[Database Access Error:] - @ get_current_user_info() "
-      return
-    end
-
-    # Ealin: 以下變數先寫死(20110510)
-
-    #statistics data:
-    @report_no = 10
-    @comment_no = 5
-    @follow_no = 6
-    @fans_no = 100
-    @ad_no = 6
-
-  end
-  #===========================================================================
-=end
-
- 
   #----------------------------------------------------
   # method: login (Ealin: 20110430)
   #----------------------------------------------------
@@ -143,17 +132,6 @@ class ApplicationController < ActionController::Base
    render "/user/logout"
   end
   #===========================================================================
-
-
-  #----------------------------------------------------
-  # method: signup (Ealin: 20110430)
-  #----------------------------------------------------
-  #
-  #def signup
-  # render "/user/signup"
-  #end
-  #===========================================================================
-
 
   
   # Ealin: 20110411
