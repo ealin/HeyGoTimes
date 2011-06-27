@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   # Use tiny_mce editor
-  uses_tiny_mce
+  #uses_tiny_mce
 
   # GET /news
   # GET /news.xml
