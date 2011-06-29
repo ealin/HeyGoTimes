@@ -80,57 +80,61 @@ class NewsController < ApplicationController
     @data = {}
 
     if (params[:url] != nil)
-      # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
-      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url].to_s
 
+      # Check URL existence
       if (params[:url] != nil)
-        @news = News.find_all_by_url(params[:url].to_s)
-        if (@news.count != 0)
+        @news = News.find_by_url(params[:url].to_s)
+        if (@news != nil)
           @data['ret'] = 'url exist'
         end
       end
 
-      require 'nokogiri'
-      require 'open-uri'
+      # Parse data
+      if (@data['ret'] != 'url exist')
+        require 'nokogiri'
+        require 'open-uri'
 
-      @next = ''
-      @doc = Nokogiri::HTML(open(URI.encode(@url)))
+        # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+        @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+        @next = ''
+        @doc = Nokogiri::HTML(open(@url))
 
-      #@error = @doc.search('lint > lint_error')
-      #if (@error != nil)
-      #  @data['ret'] = 'bad url'
-      #end
+        #@error = @doc.search('lint > lint_error')
+        #if (@error != nil)
+        #  @data['ret'] = 'bad url'
+        #end
 
-      # @body = @doc.at_css('body').text
-      @doc.search('h2 > div.pam', 'td').each do |data|
-        # puts data.content
+        # @body = @doc.at_css('body').text
+        @doc.search('h2 > div.pam', 'td').each do |data|
+          # puts data.content
 
-        if (data.content == 'Description')
-          @next = :content
-          next
-        elsif (data.content == 'Title')
-          @next = :title
-          next
-        elsif (data.content == 'Image')
-          @next = :image
-          next
+          if (data.content == 'Description')
+            @next = :content
+            next
+          elsif (data.content == 'Title')
+            @next = :title
+            next
+          elsif (data.content == 'Image')
+            @next = :image
+            next
+          end
+
+          if (@next == :content)
+            @text = data.content.to_s
+          elsif (@next == :image)
+            @image_url = data.search('a').first['href']
+          elsif (@next == :title)
+            @title = data.content.to_s
+            break
+          end
+
+          @next = :normal
         end
 
-        if (@next == :content)
-          @text = data.content.to_s
-        elsif (@next == :image)
-          @image_url = data.search('a').first['href']
-        elsif (@next == :title)
-          @title = data.content.to_s
-          break
-        end
-
-        @next = :normal
+        @data['title']=@title.to_s
+        @data['image']=@image_url.to_s
+        @data['text']=@text.to_s
       end
-
-      @data['title']=@title.to_s
-      @data['image']=@image_url.to_s
-      @data['text']=@text.to_s
     end
 
     respond_to do |format|
