@@ -1,4 +1,4 @@
-class UserDislike < ActiveRecord::Base
+class UserUnlike < ActiveRecord::Base
   belongs_to :user
   belongs_to :news
 end

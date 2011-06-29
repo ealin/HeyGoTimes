@@ -32,7 +32,7 @@ en:
   more_news: "More News"
   like_btn: "Like"
   like_hint: "I like it"
-  dislike_hint: "I don't like it"
+  unlike_hint: "I don't like it"
   comments: "Comments"
   share: "Share"
   share_hint: "Share to Facebook"

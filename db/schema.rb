@@ -98,12 +98,12 @@ ActiveRecord::Schema.define(:version => 20110628090257) do
     t.datetime "updated_at"
   end
 
-  create_table "user_dislikes", :force => true do |t|
+  create_table "user_likes", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end
 
-  create_table "user_likes", :force => true do |t|
+  create_table "user_unlikes", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end

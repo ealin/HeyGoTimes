@@ -41,8 +41,8 @@
         <img class="button-icon-like" src="/images/like_button.png" alt="">
         <span class="button-content-like"><%= t(:like_btn) %></span>
       </button>
-      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike-<%= news.id %>">
-        <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
+      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:unlike_hint) %>" type="button" class="unlike" id="watch-unlike-<%= news.id %>">
+        <img class="button-icon-unlike" src="/images/unlike_button.png" alt="">
       </button>
     </div>
     <%# if (index != 0) %>

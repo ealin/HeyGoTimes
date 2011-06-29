@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   has_many :user_likes
   has_many :likes, :through => :user_likes, :uniq => true, :class_name => "News", :source => :news
 
-  has_many :user_dislikes
-  has_many :dislikes, :through => :user_dislikes, :uniq => true, :class_name => "News", :source => :news
+  has_many :user_unlikes
+  has_many :unlikes, :through => :user_unlikes, :uniq => true, :class_name => "News", :source => :news
 
   has_many :user_watches
   has_many :watches, :through => :user_watches, :uniq => true, :class_name => "News", :source => :news

@@ -44,10 +44,10 @@ class NewsController < ApplicationController
       @user = User.find(session[:id])
       @news = News.find(params[:news])
 
-      # check if like/dislike of user already exists
+      # check if like/unlike of user already exists
       if (params[:like] == 1.to_s)
-        if (@news.dislikes.include?(@user))
-          @news.dislikes.delete(@user)
+        if (@news.unlikes.include?(@user))
+          @news.unlikes.delete(@user)
         end
         @news.likes.push(@user)
         @data['total'] = @news.likes.count
@@ -55,14 +55,14 @@ class NewsController < ApplicationController
         if (@news.likes.include?(@user))
           @news.likes.delete(@user)
         end
-        @news.dislikes.push(@user)
-        @data['total'] = @news.dislikes.count
+        @news.unlikes.push(@user)
+        @data['total'] = @news.unlikes.count
       end
 
       # calculate rank
       @like_count = @news.likes.count
-      @dislike_count = @news.dislikes.count
-      @news.rank = @like_count - @dislike_count
+      @unlike_count = @news.unlikes.count
+      @news.rank = @like_count - @unlike_count
 
       @data['name'] = @user.first_name + ' ' + @user.last_name
 
