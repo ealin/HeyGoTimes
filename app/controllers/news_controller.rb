@@ -27,7 +27,10 @@ class NewsController < ApplicationController
 
     if (current_facebook_user != nil)
       @user = User.find(session[:id])
-      @news.watches.push(@user)
+      if (!@user.watches.include?(@news))
+        @news.watches.push(@user)
+        news_rank_action(@user, @news, :watch)
+      end
     end
 
     respond_to do |format|
@@ -39,6 +42,7 @@ class NewsController < ApplicationController
   def like
 
     @data = {}
+
     # check session id of user
     if (params[:user] == session[:id].to_s)
       @user = User.find(session[:id])
@@ -49,13 +53,19 @@ class NewsController < ApplicationController
         if (@news.unlikes.include?(@user))
           @news.unlikes.delete(@user)
         end
-        @news.likes.push(@user)
+        if (!@news.likes.include?(@user))
+          @news.likes.push(@user)
+          news_rank_action(@user, @news, :like)
+        end
         @data['total'] = @news.likes.count
       else
         if (@news.likes.include?(@user))
           @news.likes.delete(@user)
         end
-        @news.unlikes.push(@user)
+        if (!@news.unlikes.include?(@user))
+          @news.unlikes.push(@user)
+          news_rank_action(@user, @news, :unlike)
+        end
         @data['total'] = @news.unlikes.count
       end
 
@@ -143,6 +153,48 @@ class NewsController < ApplicationController
 
   end
 
+  # Description: find user friends and update news rank
+  # params:
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def news_rank_action(user, news, type)
+     user.inverse_friends.each do |friend|
+       update_user_news_rank(friend, news, type)
+     end
+  end
+
+  # Description: calculate user-news rank
+  # params:
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def update_user_news_rank(user, news, type)
+    case type
+      when :like
+        @rank = 2
+      when :unlike
+        @rank = -1
+      when :watch
+        @rank = 1
+      when :report
+        @rank = 5
+    end
+
+    @user_news_rank_records = UserNewsRank.where("user_id = ? AND news_id = ?", user.id, news.id)
+
+    if (@user_news_rank_records.count != 0)
+      @user_news_rank = @user_news_rank_records[0]
+      @user_news_rank.rank += @rank
+    else
+      user.friend_news << news
+      @user_news_rank = user.user_news_ranks.last
+      @user_news_rank.rank = @rank
+    end
+
+    @user_news_rank.save
+  end
+
   # GET /news/new
   # GET /news/new.xml
   def new
@@ -194,7 +246,7 @@ class NewsController < ApplicationController
       end
     end
 
-
+    news_rank_action(@user, @news, :report)
 
     respond_to do |format|
       if @news.save
