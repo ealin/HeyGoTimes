@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20110629073624) do
     t.string   "host_account"
     t.integer  "host_id"
     t.integer  "host_site"
+    t.boolean  "admin",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
