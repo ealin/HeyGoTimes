@@ -10,7 +10,7 @@
         <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
         <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
         <a href="#" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
-        <a href="#" onclick="report(<%= session[:id] %>, <%= news.id %>);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
+        <a href="#" onclick="report(<%= session[:id] %>, <%= news.id %>);"><img class="button-icon-like" src="/images/report.png" alt="" /></a>
       </div>
 
       <div class="info">
