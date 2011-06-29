@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615094237) do
+ActiveRecord::Schema.define(:version => 20110628090257) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(:version => 20110615094237) do
   create_table "friend_filters", :force => true do |t|
     t.integer "user_id"
     t.string  "friend_filter_type"
+  end
+
+  create_table "friendships", :force => true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
   end
 
   create_table "images", :force => true do |t|

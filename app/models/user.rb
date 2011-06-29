@@ -21,4 +21,10 @@ class User < ActiveRecord::Base
   has_many :user_watches
   has_many :watches, :through => :user_watches, :uniq => true, :class_name => "News", :source => :news
 
+  # friendship
+  has_many :friendships
+  has_many :friends, :through => :friendships, :uniq => true
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
 end
