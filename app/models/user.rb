@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   has_many :user_news_ranks
   has_many :friend_news, :through => :user_news_ranks, :uniq => true, :class_name => "News", :source => :news
 
+  # news rank for my news filter
+  has_many :my_news_ranks
+  has_many :my_news, :through => :my_news_ranks, :uniq => true, :class_name => "News", :source => :news
+
 end

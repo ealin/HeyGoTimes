@@ -154,14 +154,53 @@ class NewsController < ApplicationController
   end
 
   # Description: find user friends and update news rank
-  # params:
   # user => User object
   # news => News object
   # type => :like/:unlike/:watch/:report
   def news_rank_action(user, news, type)
-     user.inverse_friends.each do |friend|
-       update_user_news_rank(friend, news, type)
-     end
+    @rank = calculate_rank(type)
+
+    update_my_news_rank(user, news, @rank)
+
+    user.inverse_friends.each do |friend|
+      update_user_news_rank(friend, news, @rank)
+    end
+
+  end
+
+  # Description: calculate rank by type
+  # type => :like/:unlike/:watch/:report
+  def calculate_rank(type)
+    case type
+      when :like
+        return 2
+      when :unlike
+        return -1
+      when :watch
+        return 1
+      when :report
+        return 5
+    end
+  end
+
+  # Description: calculate my-news rank
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def update_my_news_rank(user, news, rank)
+
+    @my_news_rank_records = MyNewsRank.where("user_id = ? AND news_id = ?", user.id, news.id)
+
+    if (@my_news_rank_records.count != 0)
+      @my_news_rank = @my_news_rank_records[0]
+      @my_news_rank.rank += rank
+    else
+      user.my_news.push(news)
+      @my_news_rank = user.my_news_ranks.last
+      @my_news_rank.rank = rank
+    end
+
+    @my_news_rank.save
   end
 
   # Description: calculate user-news rank
@@ -169,27 +208,17 @@ class NewsController < ApplicationController
   # user => User object
   # news => News object
   # type => :like/:unlike/:watch/:report
-  def update_user_news_rank(user, news, type)
-    case type
-      when :like
-        @rank = 2
-      when :unlike
-        @rank = -1
-      when :watch
-        @rank = 1
-      when :report
-        @rank = 5
-    end
+  def update_user_news_rank(user, news, rank)
 
     @user_news_rank_records = UserNewsRank.where("user_id = ? AND news_id = ?", user.id, news.id)
 
     if (@user_news_rank_records.count != 0)
       @user_news_rank = @user_news_rank_records[0]
-      @user_news_rank.rank += @rank
+      @user_news_rank.rank += rank
     else
-      user.friend_news << news
+      user.friend_news.push(news)
       @user_news_rank = user.user_news_ranks.last
-      @user_news_rank.rank = @rank
+      @user_news_rank.rank = rank
     end
 
     @user_news_rank.save
