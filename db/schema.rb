@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615094237) do
+ActiveRecord::Schema.define(:version => 20110629073624) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -47,10 +47,23 @@ ActiveRecord::Schema.define(:version => 20110615094237) do
     t.string  "friend_filter_type"
   end
 
+  create_table "friendships", :force => true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+  end
+
   create_table "images", :force => true do |t|
     t.string   "name"
     t.string   "url"
     t.integer  "news_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "my_news_ranks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "news_id"
+    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,12 +106,20 @@ ActiveRecord::Schema.define(:version => 20110615094237) do
     t.datetime "updated_at"
   end
 
-  create_table "user_dislikes", :force => true do |t|
+  create_table "user_likes", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end
 
-  create_table "user_likes", :force => true do |t|
+  create_table "user_news_ranks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "news_id"
+    t.integer  "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_unlikes", :force => true do |t|
     t.integer "user_id"
     t.integer "news_id"
   end
@@ -117,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20110615094237) do
     t.string   "host_account"
     t.integer  "host_id"
     t.integer  "host_site"
+    t.boolean  "admin",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

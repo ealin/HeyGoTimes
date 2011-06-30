@@ -19,6 +19,10 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
+    if (session[:logged_in] == true)
+      #get_friends(session[:id])
+    end
+
 =begin
     # Ealin: not necessary for new-spec.
     #check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
@@ -74,15 +78,37 @@ class PaperController < NewsController
       @user_tags[0] = 'All'
     end
 
-    if (@user_tags[0] == 'All')
-      @news = News.get_all(type)
+    if (session[:id] != nil)
+      @user_id = session[:id]
+      if (session[:filter_friend] != nil)
+        @friend_tags = session[:filter_friend].split("/")
+        if (@friend_tags[0] == 'all')
+          @friend_type = :none
+        elsif (@friend_tags[0] == 'mine' && @friend_tags[1] == 'friend')
+          @friend_type = :both
+        elsif (@friend_tags[0] == 'friend')
+          @friend_type = :friend
+        else
+          @friend_type = :mine
+        end
+      else
+        # session may be empty (e.g. first time using)
+        #
+        @friend_type = :none
+      end
     else
-      if (News.count > 0)
-        @news = News.find_by_tags(type, @user_areas, @user_tags)
+      @friend_type = :none
+    end
+
+    if (News.count > 0)
+      if (@user_tags[0] == 'All')
+        @news = News.get_all(type, @friend_type, @user_id)
+      else
+        @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
       end
     end
 
-    if(@news != nil)
+    if(@news.count > 3)
       @news = @news.paginate :page => page, :per_page => 3
     end
 
@@ -479,6 +505,26 @@ class PaperController < NewsController
       format.json { render :json => session.to_json }
     end
 
+  end
+
+  #-----------------------------------------------------------------------------------
+  # method: get_friends
+  #   - # get user friends and save to friendship table
+  #-----------------------------------------------------------------------------------
+  def get_friends(id)
+    @facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
+    @access_token = @facebook_cookies["access_token"]
+    @graph = Koala::Facebook::GraphAPI.new(@access_token)
+    @friends = @graph.get_connections("me", "friends")
+
+    @user = User.find(id)
+
+    @friends.each do |friend|
+      @friend = User.find_by_host_id(friend["id"])
+      if (@friend != nil && !@user.friends.include?(@friend))
+        @user.friends << @friend
+      end
+    end
   end
 
 end
