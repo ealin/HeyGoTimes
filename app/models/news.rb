@@ -119,7 +119,9 @@ class News < ActiveRecord::Base
           @user.friend_news_by_rank.order('news.created_at DESC', :limit => 10)
         end
       when :both
-       #joins(:my_news_ranks, :user_news_ranks).where(:my_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:user_id => user_id}).order('news.created_at DESC', :limit => 10)
+        @user = User.find(user_id)
+        @user.my_news.joins(@user.friend_news)
+       #joins(:my_news_ranks, :user_news_ranks).where(:my_news_ranks=>{:user_id=>user_id}, :user_news_ranks=>{:user_id=>user_id}).order('news.created_at DESC', :limit => 10)
     end
 
   end
