@@ -252,7 +252,6 @@ class PaperController < NewsController
     #get newspaper's title
     get_paper_title_info()
    
-    # render _show_paper_title.html.erb
     render :layout => nil
     
     
@@ -299,9 +298,7 @@ class PaperController < NewsController
   #-----------------------------------------------------------------------------------
   # 
   def show_fun_buttons
-   
-   
-    # render _show_paper_title.html.erb
+
     render :layout => nil
     
   end

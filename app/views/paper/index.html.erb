@@ -19,10 +19,6 @@
 
     }
 
-    function report(user, news)
-    {
-      return;
-    }
 
     function loadMore(type, pageNo) {
       var t = $("#paperContent");
@@ -74,11 +70,13 @@
     {
         for(i=0;i<($('input').length);i++)
         {
-            console.log($('input')[i]) ;
+            //console.log($('input')[i]) ;
             if( $('input')[i].type == "checkbox")
             {
                  $('input')[i].disabled = false ;
                  $('input')[i].checked = false ;
+
+                 $('input')[i].style.display = "" ;
             }
         }
 
@@ -92,6 +90,8 @@
         $('#url_input')[0].style.display = "" ;
         $('#image_url')[0].style.display = "" ;
 
+        $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_a_news) %>" ;
+        $('#news_submit')[0].value = "<%= t(:add_news) %>" ;
 
 
     }

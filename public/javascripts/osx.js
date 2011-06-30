@@ -81,7 +81,8 @@ jQuery(function ($) {
                                        document.forms[0].elements[7].value = "" ;
                                         for(i=0;i<selector.options.length;i++)
                                         {
-                                            console.log(selector.options[i].id) ;
+                                            //console.log(selector.options[i].id) ;
+                                            //console.log(selector.options[i].selected) ;
                                           if(selector.options[i].selected)
                                           {
                                             document.forms[0].elements[7].value += (selector.options[i].id + '/') ;

@@ -15,6 +15,7 @@ zh_tw:
   logout: "登出"
   signup: "註冊"
   feedback: "建議與反饋"
+  report_spam: "檢舉垃圾新聞"
   response: "官方回覆"
   notice: "公告"
   mobileSite: "Mobile Site"
@@ -99,10 +100,13 @@ zh_tw:
   hit_here_to_select_area: "請按此選擇區域："
 
   feedback_hint: "感謝您對黑狗日報的意見, 發表意見就像發佈一篇新新聞一樣簡單！"
+  report_spam_hint: "檢舉此篇新聞:"
   response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
   notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
 
   please_log_in: "請先以facebook的帳號登入。"
+  add_news: "報導此新聞"
+  cancel: "取消"
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

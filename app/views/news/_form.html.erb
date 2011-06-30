@@ -11,6 +11,9 @@
 <!--
 $(document).ready(function () {
 
+   // set default value of area!
+  document.forms[0].elements[7].value = "<%= session[:default_area] %>" + "/";
+
   $('#get_news').unbind('click').click(function()
   {
     var t = document.forms[0].elements[2];
@@ -210,8 +213,10 @@ $(document).ready(function () {
   <hr>
 
     <div class="actions" align="right">
-      <input id="news_submit" name="commit" type="submit" value="新增News" />
-      <input class="simplemodal-close" id="news_cancel" name="cancel" type="submit" value="取消" />
+
+      <input id="news_submit" name="commit" type="submit" value="<%= t(:add_news) %>" />
+
+      <input class="simplemodal-close" id="news_cancel" name="cancel" type="submit" value="<%= t(:cancel) %>" />
       <!-- <button class="simplemodal-close">取消</button> -->
     </div>
 
