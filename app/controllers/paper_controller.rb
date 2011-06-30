@@ -20,7 +20,7 @@ class PaperController < NewsController
     check_logged_in(true)
 
     if (session[:logged_in] == true)
-      get_friends(session[:id])
+      #get_friends(session[:id])
     end
 
 =begin
@@ -78,15 +78,37 @@ class PaperController < NewsController
       @user_tags[0] = 'All'
     end
 
-    if (@user_tags[0] == 'All')
-      @news = News.get_all(type)
+    if (session[:id] != nil)
+      @user_id = session[:id]
+      if (session[:filter_friend] != nil)
+        @friend_tags = session[:filter_friend].split("/")
+        if (@friend_tags[0] == 'all')
+          @friend_type = :none
+        elsif (@friend_tags[0] == 'mine' && @friend_tags[1] == 'friend')
+          @friend_type = :both
+        elsif (@friend_tags[0] == 'friend')
+          @friend_type = :friend
+        else
+          @friend_type = :mine
+        end
+      else
+        # session may be empty (e.g. first time using)
+        #
+        @friend_type = :none
+      end
     else
-      if (News.count > 0)
-        @news = News.find_by_tags(type, @user_areas, @user_tags)
+      @friend_type = :none
+    end
+
+    if (News.count > 0)
+      if (@user_tags[0] == 'All')
+        @news = News.get_all(type, @friend_type, @user_id)
+      else
+        @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
       end
     end
 
-    if(@news != nil)
+    if(@news.count > 3)
       @news = @news.paginate :page => page, :per_page => 3
     end
 
@@ -489,7 +511,7 @@ class PaperController < NewsController
   end
 
   #-----------------------------------------------------------------------------------
-  # method: get_friends      (Ealin: 20110628)
+  # method: get_friends
   #   - # get user friends and save to friendship table
   #-----------------------------------------------------------------------------------
   def get_friends(id)

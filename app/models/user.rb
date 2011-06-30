@@ -29,10 +29,30 @@ class User < ActiveRecord::Base
 
   # news rank for friend filter
   has_many :user_news_ranks
-  has_many :friend_news, :through => :user_news_ranks, :uniq => true, :class_name => "News", :source => :news
+  has_many :friend_news,
+           :through => :user_news_ranks,
+           :uniq => true,
+           :class_name => "News",
+           :source => :news
+  has_many :friend_news_by_rank,
+           :through => :user_news_ranks,
+           :uniq => true,
+           :order => 'user_news_ranks.rank DESC',
+           :class_name => "News",
+           :source => :news
 
   # news rank for my news filter
   has_many :my_news_ranks
-  has_many :my_news, :through => :my_news_ranks, :uniq => true, :class_name => "News", :source => :news
+  has_many :my_news,
+           :through => :my_news_ranks,
+           :uniq => true,
+           :class_name => "News",
+           :source => :news
+  has_many :my_news_by_rank,
+           :through => :my_news_ranks,
+           :uniq => true,
+           :order => 'my_news_ranks.rank DESC',
+           :class_name => "News",
+           :source => :news
 
 end
