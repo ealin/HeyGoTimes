@@ -131,6 +131,11 @@ a img {
   float: right;
 }
 
+.news .comments .button_group .like_count, .unlike_count
+{
+  font-size: 1.4em;
+}
+
 .news .info {
   font-style: italic;
   clear: both;
@@ -154,6 +159,7 @@ a img {
 .news .comments {
   clear: both;
   width: 680px;
+  color: #3b5998;
   background: #f2f2f2;
   position:relative;
   top: 10px;
