@@ -190,17 +190,19 @@ class NewsController < ApplicationController
   # type => :like/:unlike/:watch/:report
   def update_my_news_rank(user, news, rank)
 
-    @my_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, true)
+    my_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, true)
 
-    if (@my_news_rank_records.count != 0)
-      @my_news_rank_records[0].rank += rank
+    if (my_news_rank_records.count != 0)
+      news_rank_record = my_news_rank_records[0]
+      news_rank_record.rank += rank
     else
       user.my_news.push(news)
-      @my_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, true)
-      @my_news_rank_records[0].rank = rank
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
+      news_rank_record.my_news = true
+      news_rank_record.rank = rank
     end
 
-    @my_news_rank_records[0].save
+    news_rank_record.save
   end
 
   # Description: calculate user-news rank
@@ -210,17 +212,18 @@ class NewsController < ApplicationController
   # type => :like/:unlike/:watch/:report
   def update_user_news_rank(user, news, rank)
 
-    @user_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
+    friend_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
 
-    if (@user_news_rank_records.count != 0)
-      @user_news_rank_records[0].rank += rank
+    if (friend_news_rank_records.count != 0)
+      news_rank_record = friend_news_rank_records[0]
+      news_rank_record.rank += rank
     else
-      user.friend_news.push(news)
-      @user_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
-      @user_news_rank_records[0].rank = rank
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
+      news_rank_record.my_news = false
+      news_rank_record.rank = rank
     end
 
-    @user_news_rank_records[0].save
+    news_rank_record.save
   end
 
   # GET /news/new

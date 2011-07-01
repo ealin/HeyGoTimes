@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   # =======================================================================
   has_many :my_news,
            :through => :user_news_ranks,
-          :conditions => ['user_news_ranks.my_news = ?', true],
+           :conditions => ['user_news_ranks.my_news = ?', true],
            :uniq => true,
            :class_name => "News",
            :source => :news

@@ -106,14 +106,14 @@ class PaperController < NewsController
       else
         @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
       end
-    end
 
-    if(@news.count > 0)
-      @news = @news.paginate :page => page, :per_page => 3
+      if(@news.count > 0)
+        @news = @news.paginate :page => page, :per_page => 3
+      end
     end
-
 
     return @news
+
   end
 
   #-----------------------------------------------------------------------------------

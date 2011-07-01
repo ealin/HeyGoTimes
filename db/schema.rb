@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.integer  "area_id"
     t.integer  "rank"
     t.string   "hard_copy"
-    t.string   "news_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

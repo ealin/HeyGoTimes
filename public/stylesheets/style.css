@@ -115,13 +115,19 @@ a img {
 }
 
 .news .news_title {
-  width: 80%;
-  float: left;
+  width: 100%;
   font-size: 200%;
 }
 
-.news .button_group {
-  width: 20%;
+.news .comments .comment_title {
+  font-size: 2em;
+  color: #3b5998;
+  width: 70%;
+  float: left;
+}
+
+.news .comments .button_group {
+  width: 30%;
   float: right;
 }
 
