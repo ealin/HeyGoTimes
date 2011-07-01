@@ -64,7 +64,6 @@ class News < ActiveRecord::Base
           end
         end
       when :mine
-        @user = User.find(user_id)
         if (user_areas[0] == 'All')
           if (type == 'latest')
             joins(:my_news_ranks, :areas, :tags).select('DISTINCT (news.id), news.*').where(:my_news_ranks=>{:user_id => user_id}, :areas => {:name => user_areas}, :tags => {:name => user_tags}).order('news.created_at DESC')

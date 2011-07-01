@@ -108,7 +108,7 @@ class PaperController < NewsController
       end
     end
 
-    if(@news.count > 3)
+    if(@news.count > 0)
       @news = @news.paginate :page => page, :per_page => 3
     end
 
