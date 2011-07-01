@@ -57,7 +57,6 @@ class NewsController < ApplicationController
           @news.likes.push(@user)
           news_rank_action(@user, @news, :like)
         end
-        @data['total'] = @news.likes.count
       else
         if (@news.likes.include?(@user))
           @news.likes.delete(@user)
@@ -66,12 +65,11 @@ class NewsController < ApplicationController
           @news.unlikes.push(@user)
           news_rank_action(@user, @news, :unlike)
         end
-        @data['total'] = @news.unlikes.count
       end
 
       # calculate rank
-      @like_count = @news.likes.count
-      @unlike_count = @news.unlikes.count
+      @data['like_count'] = @like_count = @news.likes.count
+      @data['unlike_count'] = @unlike_count = @news.unlikes.count
       @news.rank = @like_count - @unlike_count
 
       @data['name'] = @user.first_name + ' ' + @user.last_name

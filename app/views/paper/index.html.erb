@@ -10,11 +10,14 @@
       // ask session data from server
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
+        $('#like_count'+news).html(json.like_count);
+        $('#unlike_count'+news).html(json.unlike_count);
+        /*
         if (like == 1)
           alert(json.name+' like this news, total: '+json.total);
         else
           alert(json.name+' unlike this news, total: '+json.total);
-
+        */
       }  );
 
     }

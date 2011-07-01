@@ -25,8 +25,8 @@
       <div class="comments">
       <div class="comment_title"><%= t(:comments)%></div>
       <div class="button_group">
-        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
-        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
+        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span id='like_count<%= news.id %>'><%= news.likes.count %></span>
+        <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
         <a href="#" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
 
         <%# 檢舉 - 視同 feedback  %>
