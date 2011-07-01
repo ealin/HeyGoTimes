@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629073624) do
+ActiveRecord::Schema.define(:version => 20110629040839) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -56,14 +56,6 @@ ActiveRecord::Schema.define(:version => 20110629073624) do
     t.string   "name"
     t.string   "url"
     t.integer  "news_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "my_news_ranks", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "news_id"
-    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -115,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20110629073624) do
     t.integer  "user_id"
     t.integer  "news_id"
     t.integer  "rank"
+    t.boolean  "my_news"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

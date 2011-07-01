@@ -27,31 +27,56 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  # =======================================================================
   # news rank for friend filter
+  # =======================================================================
   has_many :user_news_ranks
   has_many :friend_news,
            :through => :user_news_ranks,
+           :conditions => ['user_news_ranks.my_news = ?', false],
            :uniq => true,
            :class_name => "News",
            :source => :news
+
   has_many :friend_news_by_rank,
            :through => :user_news_ranks,
+           :conditions => ['user_news_ranks.my_news = ?', false],
            :uniq => true,
            :order => 'user_news_ranks.rank DESC',
            :class_name => "News",
            :source => :news
 
-  # news rank for my news filter
-  has_many :my_news_ranks
+  # =======================================================================
+  # news rank for my filter
+  # =======================================================================
   has_many :my_news,
-           :through => :my_news_ranks,
+           :through => :user_news_ranks,
+          :conditions => ['user_news_ranks.my_news = ?', true],
            :uniq => true,
            :class_name => "News",
            :source => :news
+
   has_many :my_news_by_rank,
-           :through => :my_news_ranks,
+           :through => :user_news_ranks,
+           :conditions => ['user_news_ranks.my_news = ?', true],
            :uniq => true,
-           :order => 'my_news_ranks.rank DESC',
+           :order => 'user_news_ranks.rank DESC',
+           :class_name => "News",
+           :source => :news
+
+  # =======================================================================
+  # news rank for both filter
+  # =======================================================================
+  has_many :both_news,
+           :through => :user_news_ranks,
+           :uniq => true,
+           :class_name => "News",
+           :source => :news
+
+  has_many :both_news_by_rank,
+           :through => :user_news_ranks,
+           :uniq => true,
+           :order => 'user_news_ranks.rank DESC',
            :class_name => "News",
            :source => :news
 
