@@ -21,7 +21,15 @@
       }  );
 
     }
+    function expand_comment(news_id)
+    {
+      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'";
+      comment_str += "num_posts='1' width='650'></fb:comments>"
 
+      $('#expand_comment'+news_id).html("");
+      $('#fb_comment'+news_id).append(comment_str);
+      FB.XFBML.parse(document.getElementById('comments'));
+    }
 
     function loadMore(type, pageNo) {
       var t = $("#paperContent");
@@ -134,6 +142,7 @@
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
       </div>
+
       <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>
     </div>
 

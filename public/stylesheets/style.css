@@ -98,6 +98,10 @@ a img {
 	width: 750px;
 }
 
+#paperContent {
+  padding-bottom: 30px;
+}
+
 /* Sub area */
 #sub{
   float: right;
@@ -169,6 +173,7 @@ a img {
 }
 
 #more_news{
+  clear: both;
   margin: auto;
   text-align:center;
   height: 30px;
