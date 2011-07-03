@@ -85,6 +85,9 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
+    require 'open-uri'
+    require 'nokogiri'
+
     @data = {}
 
     if (params[:url] != nil)
@@ -99,14 +102,23 @@ class NewsController < ApplicationController
 
       # Parse data
       if (@data['ret'] != 'url exist')
-        require 'nokogiri'
-        require 'open-uri'
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-        @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.decode(params[:url])
-        @next = ''
-        @doc = Nokogiri::HTML(open(@url))
+        url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+        next_element = ''
+        title = ''
+        image_url = ''
+        text = ''
+
+        begin
+          stream = open(url)
+        rescue
+          # try again
+          stream = open(url)
+        end
+
+        doc = Nokogiri::HTML(stream)
 
         #@error = @doc.search('lint > lint_error')
         #if (@error != nil)
@@ -114,35 +126,35 @@ class NewsController < ApplicationController
         #end
 
         # @body = @doc.at_css('body').text
-        @doc.search('h2 > div.pam', 'td').each do |data|
+        doc.search('h2 > div.pam', 'td').each do |data|
           # puts data.content
 
           if (data.content == 'Description')
-            @next = :content
+            next_element = :content
             next
           elsif (data.content == 'Title')
-            @next = :title
+            next_element = :title
             next
           elsif (data.content == 'Image')
-            @next = :image
+            next_element = :image
             next
           end
 
-          if (@next == :content)
-            @text = data.content.to_s
-          elsif (@next == :image)
-            @image_url = data.search('a').first['href']
-          elsif (@next == :title)
-            @title = data.content.to_s
+          if (next_element == :content)
+            text = data.content.to_s
+          elsif (next_element == :image)
+            image_url = data.search('a').first['href']
+          elsif (next_element == :title)
+            title = data.content.to_s
             break
           end
 
-          @next = :normal
+          next_element = :normal
         end
 
-        @data['title']=@title.to_s
-        @data['image']=@image_url.to_s
-        @data['text']=@text.to_s
+        @data['title']=title.to_s
+        @data['image']=image_url.to_s
+        @data['text']=text.to_s
       end
     end
 

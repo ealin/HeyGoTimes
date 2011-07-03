@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>HeyGoTimes</title>
 
+
     <%= stylesheet_link_tag "style","HG_style" %>
     <!-- Page styles -->
     <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
@@ -29,9 +30,6 @@
 
 
     <%= csrf_meta_tag %>
-    <meta property="og:site_name" content="HeyGoTimes"/>
-    <meta property="og:description"
-          content="A real time news with facebook friend connect."/>
 
     <%#code for Google Analytics %>
     <script type="text/javascript">
@@ -47,15 +45,11 @@
       })();
 
     </script>
-
-
-
-</head>
-<body>
+    <meta property="og:site_name" content="HeyGoTimes"/>
+    <meta property="og:description"
+          content="A real time news with facebook friend connect."/>
 
 <%= yield %>
 
 
-
-</body>
 </html>

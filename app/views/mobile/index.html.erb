@@ -32,6 +32,15 @@
 
     }
 
+    function expand_comment(news_id)
+    {
+      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='1' width='320'></fb:comments>";
+
+      $('#expand_comment'+news_id).html("");
+      $('#fb_comment'+news_id).append(comment_str);
+      FB.XFBML.parse(document.getElementById('comments'));
+    }
+
     function loadMore(type, pageNo) {
       var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
       $.get(url, function(response) {

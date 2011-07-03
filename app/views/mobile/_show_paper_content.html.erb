@@ -7,44 +7,43 @@
       </div>
 
       <div class="m_image">
-         <img src="<%=news.images[0].url.to_s%>" alt="image">
+         <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
       </div>
       <div class="m_news_content">
         <%= news.content.html_safe %>
       </div>
 
       <div class="m_comments">
-      <%= t(:comments)%>
-      <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-                   xfbml: true});
-        };
-        (function() {
-          var e = document.createElement('script'); e.async = true;
+        <div class="m_comment_title"><%= t(:comments)%><span id='expand_comment<%= news.id %>'><a href="#_paper" onclick="expand_comment(<%= news.id %>);"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
+        <div class="m_button_group">
+          <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
+          <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
+          <a href="#" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+        </div>
+        <div class="fb_comment" id="fb_comment<%= news.id %>">
+          <div id="fb-root"></div>
+          <script>
+            window.fbAsyncInit = function() {
+              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                       xfbml: true});
+            };
+            (function() {
+              var e = document.createElement('script'); e.async = true;
 
-          // Todo: we need to check the locale!!!!!!!!!!!!
-          //
-          e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+              // Todo: we need to check the locale!!!!!!!!!!!!
+              //
+              e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
 
-          document.getElementById('fb-root').appendChild(e);
-        }());
-      </script>
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts='1' width="320"></fb:comments>
+              document.getElementById('fb-root').appendChild(e);
+            }());
+          </script>
 
-      </div>
+        </div><!-- fb_comment -->
+        <div style="clear: both;"></div>
+      </div><!-- m_comments -->
     </div>
+    <hr>
 
-    <div class="button_group">
-      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
-        <img class="button-icon-like" src="/images/like_button.png" alt="">
-        <span class="button-content-like"><%= t(:like_btn) %></span>
-      </button>
-      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:unlike_hint) %>" type="button" class="unlike" id="watch-unlike-<%= news.id %>">
-        <img class="button-icon-unlike" src="/images/unlike_button.png" alt="">
-      </button>
-    </div>
     <%# if (index != 0) %>
 
     <%# end %>

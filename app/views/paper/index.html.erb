@@ -1,4 +1,4 @@
-<head>
+
   <meta property="og:title" content="HeyGoTimes"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= root_url %>"/>
@@ -21,6 +21,7 @@
       }  );
 
     }
+
     function expand_comment(news_id)
     {
       var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='1' width='650'></fb:comments>";
@@ -112,8 +113,9 @@
 
   </script>
 
-</head>
+</head> <%# end tag for <head> in application.html.erb %>
 
+<body>
 
 <div id="page">
   <div id="header">
@@ -177,3 +179,4 @@
     </div>
 </div> <!-- /page -->
   <!-- news/_show_page_tail.html.erb  -->
+</body>

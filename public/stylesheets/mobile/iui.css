@@ -405,13 +405,26 @@ fieldset > .row:last-child {
 }
 
 .m_news {
-    float: left;
-    width: 80%;
+    width: 100%;
 }
 
-.button_group {
+.m_news_title {
+    font-size: 1.4em;
+}
+
+.m_button_group .like_count, .unlike_count {
+    font-size: 1.4em;
+}
+
+.m_comments .m_comment_title {
+    font-size: 1.6em;
+    width: 50%;
+    float: left;
+}
+
+.m_comments .m_button_group {
+    width: 50%;
     float: right;
-    width: 20%;
 }
 
 .m_ad {
