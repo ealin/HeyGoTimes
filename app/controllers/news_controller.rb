@@ -270,6 +270,10 @@ class NewsController < ApplicationController
         tag = Tag.find_by_name(key)
         @news.tags << tag
         counter += 1
+
+        if(tag.name == "FeedbackTag" || tag.name == "HGTimesNotice")
+          @news.special_flag= true
+        end
       end
     end
 
