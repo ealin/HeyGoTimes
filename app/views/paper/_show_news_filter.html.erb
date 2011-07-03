@@ -125,6 +125,8 @@
             if($('option')[i].selected == true)
             {
                 area_data += ($('option')[i].id + "/")
+                if($('option')[i].id == "All_area")
+                    break ;
             }
          }
 
@@ -230,6 +232,21 @@
 
 
   }  );
+
+
+
+
+     // checkbox of friend-filter could not work if the user is not logged in
+     //
+     function disable_friend_filter()
+     {
+         alert("<%= t(:login_for_set_friend_filter) %>") ;
+
+         $("#my_friends_news_only")[0].checked = false ;
+         $("#my_news_only")[0].checked = false ;
+
+     }
+
 
  </script>
 
@@ -351,10 +368,17 @@
   <%= t(:filter_by_friend)%>
 </div>
 <div align = "left">
-  <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>   </input>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
-
+  <% if session[:logged_in] == false %>
+      <input type="checkbox" id="my_news_only" name="friend_filter" onClick="disable_friend_filter()" >
+        <%= t(:my_news_only)%>   </input>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="my_friends_news_only" name="friend_filter" onClick="disable_friend_filter()">
+        <%= t(:my_friends_news_only)%>  <br> </input>
+  <% else %>
+     <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>   </input>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
+  <% end %>
 </div>
 <hr>
 

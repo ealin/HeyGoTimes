@@ -65,13 +65,14 @@ zh_tw:
   load_my_filter: "載入我的設定"
   #load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
-  set_tag_and_area: "設定此篇新聞的區域與屬性："
+  set_areas: "設定此篇新聞的區域："
+  set_tags: "設定此篇新聞的屬性："
 
   input_news_url_hint: "您可以在此輸入新聞網址："
   input_news_hint: "或者輸入新聞內容："
-  news_title_field: "標題"
-  news_content_field: "內容"
-  news_image_url_field: "圖片網址"
+  news_title_field: "標題:"
+  news_content_field: "內容:"
+  news_image_url_field: "圖片網址:"
   news_URL: "新聞網址"
   
   filter_by_tag: "選擇您感興趣的新聞分類："
@@ -103,7 +104,7 @@ zh_tw:
   report_spam_hint: "檢舉此篇新聞:"
   response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
   notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
-
+  login_for_set_friend_filter: "您必須登入後才可以使用此功能！"
   please_log_in: "請先以facebook的帳號登入。"
   add_news: "報導此新聞"
   cancel: "取消"
@@ -111,6 +112,8 @@ zh_tw:
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
+  All_area: "所有地區"
+  
   Taiwan: "台灣"
   TW_CN: "兩岸"
   North_TW: "北台灣"
@@ -136,6 +139,7 @@ zh_tw:
   FeedbackTag: "反饋與回覆"
 
   #Top: "焦點"
+  Mobile: "行動"
   World: "國際"
   Local: "區域"
   Business: "財經"

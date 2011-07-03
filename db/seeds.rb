@@ -18,6 +18,7 @@ User.create(:first_name => 'Reporter', :last_name => 'TW',:email => 'reporter.tw
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Area~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 
+Area.create(:name => 'All_area', :parent_area =>nil)
 Area.create(:name => 'Taiwan', :parent_area =>nil)
 Area.create(:name => 'TW_CN', :parent_area => 'Taiwan')
 Area.create(:name => 'North_TW', :parent_area => 'Taiwan')
@@ -41,6 +42,8 @@ Tag.create(:name => 'All', :parent_tag => nil)
 
 Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
 Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
+
+Tag.create(:name => 'Mobile', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
 Tag.create(:name => 'Local', :parent_tag => nil)
 
@@ -52,8 +55,8 @@ Tag.create(:name => 'Stock', :parent_tag => 'Business')
 
 Tag.create(:name => 'Sci_Tech' , :parent_tag => nil)
 Tag.create(:name => 'Sport', :parent_tag => nil)
-Tag.create(:name => 'NBA', :parent_tag => 'Sport')
-Tag.create(:name => 'Baseball', :parent_tag => 'Sport')
+#Tag.create(:name => 'NBA', :parent_tag => 'Sport')
+#Tag.create(:name => 'Baseball', :parent_tag => 'Sport')
 
 Tag.create(:name => 'Entertainment', :parent_tag => nil)
 Tag.create(:name => 'Health', :parent_tag => nil)

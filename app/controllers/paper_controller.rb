@@ -19,19 +19,6 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
-=begin
-    # Ealin: not necessary for new-spec.
-    #check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
-    #set_newspaper_size()
-
-    # keep all filters in session
-    #
-    #session[:filter_tags] = "All"  or "Sport/NBA/"
-    #session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
-    #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
-    #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
-    #session[:filter_area]
-=end
    init_filter_setting()
 
 
@@ -62,7 +49,7 @@ class PaperController < NewsController
     else
       # session may be empty (e.g. first time using)
       #
-      @user_areas[0] = 'All'
+      @user_areas[0] = 'All_area'
     end
 
     @user_tags = []
@@ -124,7 +111,7 @@ class PaperController < NewsController
           if(I18n.locale == :en)
             session[:filter_area] = "USA/"
           else
-            session[:filter_area] = "All"
+            session[:filter_area] = "All_area"
           end
         end
 
@@ -496,6 +483,11 @@ class PaperController < NewsController
   #
   def get_filter_session
 
+    # friend filter could not work if the user is not logged in.
+    #
+    if(session[:logged_in] == false)
+      session[:filter_friend] = "all"
+    end
 
     respond_to do |format|
       format.json { render :json => session.to_json }

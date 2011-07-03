@@ -28,7 +28,7 @@ class News < ActiveRecord::Base
 
     case friend_type
       when :none
-        if (user_areas[0] == 'All')
+        if (user_areas[0] == 'All_area')
           if (type == 'latest')
             joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
           else
@@ -51,7 +51,7 @@ class News < ActiveRecord::Base
       when :mine, :friend
         my_news = (friend_type == :mine)? true: false
 
-        if (user_areas[0] == 'All')
+        if (user_areas[0] == 'All_area')
           if (type == 'latest')
             joins(:user_news_ranks, :tags).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :tags => {:name => user_tags}).order('news.created_at DESC')
           else

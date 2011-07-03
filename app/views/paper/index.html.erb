@@ -76,7 +76,7 @@
       });
     });
 
-    function init_checkbox()
+    function init_checkbox(reporter_flag)
     {
         for(i=0;i<($('input').length);i++)
         {
@@ -90,19 +90,23 @@
             }
         }
 
-        $('#FeedbackTag_box')[0].disabled = true ;
-        $('#FeedbackTag_box')[0].checked = false ;
-        $('#FeedbackTag_box')[0].style.display= "none" ;
-        $('#FeedbackTag_lab')[0].style.display= "none" ;
 
-        $('#filter_dlg_t2')[0].style.display = "" ;
-        $('#filter_dlg_t6')[0].style.display = "" ;
-        $('#url_input')[0].style.display = "" ;
-        $('#image_url')[0].style.display = "" ;
+         if(reporter_flag == 1)
+         {
 
-        $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_a_news) %>" ;
-        $('#news_submit')[0].value = "<%= t(:add_news) %>" ;
+             $('#filter_dlg_t2')[0].style.display = "" ;
+             $('#filter_dlg_t6')[0].style.display = "" ;
+             $('#url_input')[0].style.display = "" ;
+             $('#image_url')[0].style.display = "" ;
 
+             $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_a_news) %>" ;
+             $('#news_submit')[0].value = "<%= t(:add_news) %>" ;
+
+             $('#FeedbackTag_box')[0].disabled = true ;
+             $('#FeedbackTag_box')[0].checked = false ;
+             $('#FeedbackTag_box')[0].style.display= "none" ;
+             $('#FeedbackTag_lab')[0].style.display= "none" ;
+         }
 
     }
 
@@ -129,8 +133,14 @@
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
-        <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#" onclick="init_checkbox()"><%=t(:m_report)%></a></li>
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#" onclick="init_checkbox()"><%=t(:m_filter)%></a></li>
+
+        <% if session[:logged_in] == true %>
+           <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#" onclick="init_checkbox(1)"><%=t(:m_report)%></a></li>
+        <% else %>
+            <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#"><%=t(:m_report)%></a></li>
+        <% end %>
+
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#" onclick="init_checkbox(0)"><%=t(:m_filter)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->

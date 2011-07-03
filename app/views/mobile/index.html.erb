@@ -203,7 +203,15 @@
 
         <!-- friend filter selection PAGE-->
         <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
-            <h2>Friend option:</h2>
+          <% if session[:logged_in] == false %>
+
+            <h1> <%= t(:login_for_set_friend_filter) %> </h1>
+
+          <% else %>
+
+            <h1> <%= t(:filter_by_friend) %></h1>
+            <br>
+            <div style="font-size:14px">
               <% if session[:filter_friend].include?("mine")  %>
                 <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
               <% else %>
@@ -216,11 +224,13 @@
               <% else %>
                  <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
               <% end %>
+            </div>
 
               <div align ="center" >
                  <br> <br> <br><hr>
                  <%= render :partial => "m_show_ad" %>
               </div>
+          <% end %>
         </div>
 
 

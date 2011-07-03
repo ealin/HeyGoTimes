@@ -72,18 +72,20 @@ en:
   
   reset_the_filter: "Clear the setting"
   set_tag_and_area: "Setup area and Tags:"
+  set_areas: "Set area of this news："
+  set_tags: "Set tags of this news："
 
   input_news_url_hint: "You can input news URL here:"
   input_news_hint: "Or input news:"
-  news_title_field: "Title"
-  news_content_field: "Content"
-  news_image_url_field: "Image URL"
+  news_title_field: "Title:"
+  news_content_field: "Content:"
+  news_image_url_field: "Image URL:"
   news_URL: "News URL"
 
   filter_by_tag: "Filter by news tag:"
   filter_by_area: "Filter by area："
-  filter_by_friend: "Filter by friends:"
-  filter_by_date: "filter by date:"
+  filter_by_friend: "Friends Filter:"
+  filter_by_date: "Date Filter:"
 
   my_news_only: "My news only"
   my_friends_news_only: "My friends news only"
@@ -109,6 +111,7 @@ en:
   report_spam_hint: "Report this news as spam: "
   response_hint: "The default setting will show your own feedback and response only, you could modify it by 'News Filter' function." 
   notice_hint: "The default setting will show your local notice only, you could modify it by 'News Filter' function."
+  login_for_set_friend_filter: "You must login for using this feature！"
   
   please_log_in: "Please login before your reporting."
   
@@ -117,6 +120,8 @@ en:
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
+  All_area: "The World"  
+  
   Taiwan: "Taiwan"
   TW_CN: "Taiwan & China"
   North_TW: "North Taiwan"
@@ -137,11 +142,13 @@ en:
   # name of NEWS tag (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
   All: "All"
+  HGTimesNotice: "HG-Times Notice"
+  FeedbackTag: "Feedback"
+
+  Mobile: "Mobile"
   #Top: "Top"
   World: "World"
   Local: "Local"
-  HGTimesNotice: "HG-Times Notice"
-  FeedbackTag: "Feedback"
 
   Business: "Business"
   Stock: "Stock"

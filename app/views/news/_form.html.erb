@@ -97,24 +97,16 @@ $(document).ready(function () {
       <%= t(:input_news_hint)%>
     </div>
 
-  <div class="field" style="clear:both;">
+  <div class="field" style="clear:both; padding-bottom:5px">
     <%= t(:news_title_field)%>
     <%= f.text_field :title, :style=>"position:relative;left:34px;", :size=>64 %>
-    <br><br>
+    <br>
   </div>
 
-  <div class="field">
-    <!--
-  	<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
-    <script type="text/javascript">
-    tinyMCE.init({
-          // General options
-          mode : "textareas"
-    });
-    </script>
-    -->
+  <div class="field" style="clear:both;">
+
     <%= t(:news_content_field)%>
-    <%= f.text_area :content, :style=>"position:relative;left:34px;" %>
+    <%= f.text_area :content, :style=>"position:relative;left:34px" %>
   </div>
 
     <!--
@@ -133,7 +125,7 @@ $(document).ready(function () {
    </div>
 
   <div align = "left" id="filter_dlg_t2">
-    <%= t(:set_tag_and_area)%>
+    <%= t(:set_areas)%>
     &nbsp;&nbsp;
   </div>
 
@@ -156,8 +148,12 @@ $(document).ready(function () {
       </select>
     </div>
 
-    <br><br><br>
+    <br><br>
 
+    <div align = "left" id="filter_dlg_t2">
+       <%= t(:set_tags)%>
+       <br>
+    </div>
 
     <div class = "all_tags" align = "left" style="clear:both;" >
     <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
@@ -212,7 +208,7 @@ $(document).ready(function () {
   <br>
   <hr>
 
-    <div class="actions" align="right">
+    <div align="right" style="padding-bottom:10px">
 
       <input id="news_submit" name="commit" type="submit" value="<%= t(:add_news) %>" />
 
