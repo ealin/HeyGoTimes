@@ -104,7 +104,7 @@ class NewsController < ApplicationController
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-        @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.decode(params[:url])
+        @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url]
         @next = ''
         @doc = Nokogiri::HTML(open(@url))
 
