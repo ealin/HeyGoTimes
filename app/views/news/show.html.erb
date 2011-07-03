@@ -1,4 +1,4 @@
-<head>
+
   <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
@@ -27,7 +27,9 @@
       });
     }
   </script>
-</head>
+</head>  <%# end tag for <head> in application.html.erb %>
+
+<body>
 
 <div id="page">
   <div id="header">
@@ -110,5 +112,5 @@
 
 </div> <!-- #page -->
 
-
+</body>
 
