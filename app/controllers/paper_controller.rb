@@ -244,7 +244,7 @@ class PaperController < NewsController
     # check filters in session ==> make all filters as news-title
     #
     counter = 0
-    @newspaper_title = "您的專屬新聞 - "
+    @newspaper_title = t(:slogan)
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + " ")

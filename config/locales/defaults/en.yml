@@ -3,6 +3,8 @@
 
 en:
   HeyGoTimes: "HeyGo!Times"
+  slogan: "Your News - "
+  
 
   #----------------------------------------
   # name of each page(controller/view)

@@ -9,3 +9,10 @@ production:
   api_key: 2319e379d48fc8942775e6b91c7249f9
 
 
+# Bench
+#
+#production:
+#  app_id: 232082580155289
+#  secret: d379aa018768e1ce194518f1eb22812e
+#  api_key: 12dae39195e3dbd01b1f9af7aaef7f49
+

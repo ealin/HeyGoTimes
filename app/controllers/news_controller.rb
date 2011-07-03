@@ -251,7 +251,7 @@ class NewsController < ApplicationController
     @image.news = @news
     @image.save
 
-    @news.tags = ""
+    @news.tags = []
     counter = 0
     params.each_pair do |key, value|
       if (value == 'on')

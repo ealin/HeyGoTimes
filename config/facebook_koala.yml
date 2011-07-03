@@ -16,3 +16,12 @@ production:
  app_id: 102018533222077
  secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
  callback_url: http://heygotimes.heroku.com/
+
+# Bench
+#
+#production:
+# app_id: 232082580155289
+# secret_key: d379aa018768e1ce194518f1eb22812e
+# callback_url: http://heygotimes-bench.heroku.com/
+
+
