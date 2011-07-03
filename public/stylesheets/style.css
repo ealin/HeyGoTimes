@@ -135,7 +135,7 @@ a img {
 }
 
 .news .news_content {
-  text-indent: 30pt;
+  /* text-indent: 30pt;  */
   font-size: 150%;
   padding-top: 10px;
   padding-right: 40px;
@@ -173,10 +173,6 @@ a img {
 {
   font-size: 1.4em;
 }
-
-
-
-
 
 #more_news{
   clear: both;
