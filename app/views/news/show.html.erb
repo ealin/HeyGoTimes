@@ -11,9 +11,19 @@
       document.getElementById('news_url').value = obj.src;
 
       $.getJSON("/news/report.json", 'url=' + obj.src, function(json){
-        document.forms[0].elements[4].value = json.title;
-        document.forms[0].elements[5].value = json.text;
-        document.forms[0].elements[6].value = json.image;
+        if (json.ret == 'url exist')
+          {
+            document.forms[0].elements[4].value = '';
+            document.forms[0].elements[5].value = '';
+            document.forms[0].elements[6].value = '';
+            alert("<%= t(:news_already_exist) %>");
+          }
+          else
+          {
+            document.forms[0].elements[4].value = json.title;
+            document.forms[0].elements[5].value = json.text;
+            document.forms[0].elements[6].value = json.image;
+          }
       });
     }
   </script>
@@ -21,53 +31,64 @@
 
 <div id="page">
   <div id="header">
-    <div id="masthead">
-        <div id="logo">
-          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
-          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
-        </div>
+    <div id="logo">
+      <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+      <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
+    </div>
 
-        <div id="page_head" >
-          <%= show_page_head(:login_flag => true)  %>
-        </div><!-- #links -->
-
-    </div><!-- #masthead -->
+    <div id="page_head" >
+      <%= show_page_head(:login_flag => true)  %>
+    </div><!-- #links -->
   </div><!-- #header -->
 
   <div id="main">
     <div id="content">
-      <a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a>
-      <div id="news">
-        <% # TODO: use @paper_width %>
-          <iframe id="news_frame" height="900" width="700" src="<%= @news.url %>">
-             Your browser can't display IFRAMEs
-          </iframe>
-      </div>
-      <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
-      <div id="functionalButton">
-        <%= render :partial => 'paper/show_fun_buttons' %>
-      </div>
-      <div id="comments">
-        <h3><%= t(:comments)%></h3>
-        <div id="fb-root"></div>
-        <script>
-          window.fbAsyncInit = function() {
-            FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-                     xfbml: true});
-          };
-          (function() {
-            var e = document.createElement('script'); e.async = true;
+      <div class="news">
+        <% if @news.url != "" %>
+          <a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a>
+          <div id="news_frame">
+            <% # TODO: use @paper_width %>
+              <iframe id="news_frame" height="900" width="700" src="<%= @news.url %>">
+                 Your browser can't display IFRAMEs
+              </iframe>
+          </div>
+        <% else %>
+          <%# if @news.images[0].url != "" %>
+            <div class="image">
+             <img src="<%=@news.images[0].url%>" alt="image">
+            </div>
+          <%# end %>
 
-            // Todo: we need to check the locale!!!!!!!!!!!!
-            //
-            e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+          <div class="news_content">
+            <%= @news.content.html_safe %>
+          </div>
+        <% end %>
+        <div style="clear: both;"></div>
+      </div> <!-- news -->
+      <div class="comments">
+        <div class="comment_title"><%= t(:comments)%></div>
+        <div class="button_group"></div>
+        <div class="fb_comment" id="fb_comment<%= @news.id %>">
+          <div id="fb-root"></div>
+          <script>
+            window.fbAsyncInit = function() {
+              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                       xfbml: true});
+            };
+            (function() {
+              var e = document.createElement('script'); e.async = true;
 
-            document.getElementById('fb-root').appendChild(e);
-          }());
-        </script>
-        <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
+              // Todo: we need to check the locale!!!!!!!!!!!!
+              //
+              e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
 
-      </div>
+              document.getElementById('fb-root').appendChild(e);
+            }());
+          </script>
+          <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
+          <div style="clear: both;"></div>
+        </div> <!-- fb_comment -->
+      </div> <!-- comments -->
     </div>
 
       <%#= link_to 'Edit', edit_news_path(@news) %>

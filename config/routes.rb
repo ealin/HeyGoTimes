@@ -3,9 +3,9 @@ HeyGoTimes::Application.routes.draw do
 
   get "mobile/index"
 
-  get "real_time_news/report"
-  get "real_time_news/to_main_page"
-  resources :real_time_news
+  #get "real_time_news/report"
+  #get "real_time_news/to_main_page"
+  #resources :real_time_news
 
   get "tag/get_all_tags"
 
@@ -61,7 +61,7 @@ HeyGoTimes::Application.routes.draw do
     #get 'to_main_page', :on => :collection
     #get 'filiter_today_newspaper', :on => :collection
     #get 'follow', :on => :collection
-    get 'show_paper_title', :on => :collection
+    #get 'show_paper_title', :on => :collection
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection

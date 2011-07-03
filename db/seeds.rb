@@ -30,6 +30,9 @@ Area.create(:name => 'TW_HK', :parent_area => "China")
 
 Area.create(:name => 'USA', :parent_area => nil)
 Area.create(:name => 'Japan', :parent_area => nil)
+Area.create(:name => 'Europe', :parent_area => nil)
+Area.create(:name => 'Asia', :parent_area => nil)
+Area.create(:name => 'Others', :parent_area => nil)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Tag~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,6 +42,10 @@ Tag.create(:name => 'All', :parent_tag => nil)
 Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
 Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
+Tag.create(:name => 'Local', :parent_tag => nil)
+
+Tag.create(:name => 'Politics', :parent_tag => nil)
+Tag.create(:name => 'Life', :parent_tag => nil)
 
 Tag.create(:name => 'Business', :parent_tag => nil)
 Tag.create(:name => 'Stock', :parent_tag => 'Business')
@@ -51,7 +58,6 @@ Tag.create(:name => 'Baseball', :parent_tag => 'Sport')
 Tag.create(:name => 'Entertainment', :parent_tag => nil)
 Tag.create(:name => 'Health', :parent_tag => nil)
 Tag.create(:name => 'Internet', :parent_tag => nil)
-Tag.create(:name => 'Politics', :parent_tag => nil)
 Tag.create(:name => 'Travel', :parent_tag => nil)
 Tag.create(:name => 'Car', :parent_tag => nil)
 Tag.create(:name => 'Education', :parent_tag => nil)

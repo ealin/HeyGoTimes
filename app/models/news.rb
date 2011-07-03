@@ -16,49 +16,102 @@ class News < ActiveRecord::Base
   has_many :user_likes
   has_many :likes, :through => :user_likes, :uniq => true, :class_name => "User", :source => :user
 
-  has_many :user_dislikes
-  has_many :dislikes, :through => :user_dislikes, :uniq => true, :class_name => "User", :source => :user
+  has_many :user_unlikes
+  has_many :unlikes, :through => :user_unlikes, :uniq => true, :class_name => "User", :source => :user
 
   has_many :user_watches
   has_many :watches, :through => :user_watches, :uniq => true, :class_name => "User", :source => :user
 
-  def self.find_by_tags(type, user_areas, user_tags)
-    #find(
-    #  :all,
-    #  :order => "created_at DESC",
-    #  :joins => :tags,
-    #  :conditions => {:tags => {:name => user_tags}},
-    #  :group => 'news.id'
-    #)
+  has_many :user_news_ranks
 
-    #find(
-    #  :all,
-    #  :order => "created_at DESC",
-    #  :include => [:news_tags, :tags],
-    #  :conditions => {:tags => {:name => user_tags}},
-    #  :group => 'news.id'
-    #)
-    if (user_areas[0] == 'All')
-      if (type == 'latest')
-        joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
-      else
-        joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
-      end
-    else
-      if (type == 'latest')
-        joins(:areas, :tags).where(:areas => {:name => user_areas}, :tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
-      else
-        joins(:areas, :tags).where(:areas => {:name => user_areas}, :tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
-      end
+  def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+
+    case friend_type
+      when :none
+        if (user_areas[0] == 'All')
+          if (type == 'latest')
+            joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+          else
+            joins(:tags).where(:tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
+          end
+        elsif (user_tags[0] == 'All')
+          if (type == 'latest')
+            joins(:areas).where(:areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+          else
+            joins(:areas).where(:areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
+          end
+        else
+          if (type == 'latest')
+            joins(:areas, :tags).where(:areas => {:name => user_areas}, :tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+          else
+            joins(:areas, :tags).where(:areas => {:name => user_areas}, :tags => {:name => user_tags}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
+          end
+        end
+
+      when :mine, :friend
+        my_news = (friend_type == :mine)? true: false
+
+        if (user_areas[0] == 'All')
+          if (type == 'latest')
+            joins(:user_news_ranks, :tags).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :tags => {:name => user_tags}).order('news.created_at DESC')
+          else
+            joins(:user_news_ranks, :tags).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :tags => {:name => user_tags}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          end
+        elsif (user_tags[0] == 'All')
+          if (type == 'latest')
+            joins(:user_news_ranks, :areas).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}).order('news.created_at DESC')
+          else
+            joins(:user_news_ranks, :areas).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          end
+        else
+          if (type == 'latest')
+            joins(:user_news_ranks, :areas, :tags).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}, :tags => {:name => user_tags}).order('news.created_at DESC')
+          else
+            joins(:user_news_ranks, :areas, :tags).select('DISTINCT (news.id), news.*').where(:user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}, :tags => {:name => user_tags}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          end
+        end
+
+      when :both
+        @user = User.find(user_id)
+        @user.both_news.joins(:areas, :tags).where(:areas => {:name => user_areas}, :tags => {:name => user_tags}).order('my_news_ranks.rank DESC, news.created_at DESC')
     end
 
   end
 
-  def self.get_all(type)
-    if (type == 'latest')
-      find(:all, :order => 'created_at DESC', :limit => 10)
-    else
-      find(:all, :order => 'rank DESC', :limit => 10)
+# @param type [String=>latest/rank]
+# @param friend_type [Symbol=>none/both/mine/friend]
+# @param user_id [Integer], valid if friend_type != none
+  def self.get_all(type, friend_type, user_id)
+
+    if (friend_type != :none)
+      @user = User.find(user_id)
+    end
+
+    case friend_type
+      when :none
+        if (type == 'latest')
+          find(:all, :order => 'created_at DESC', :limit => 10)
+        else
+          find(:all, :order => 'rank DESC', :limit => 10)
+        end
+
+      when :mine
+        if (type == 'latest')
+          @user.my_news.order('news.created_at DESC', :limit => 10)
+        else
+          @user.my_news_by_rank.order('news.created_at DESC', :limit => 10)
+        end
+
+      when :friend
+        if (type == 'latest')
+          @user.friend_news.order('news.created_at DESC', :limit => 10)
+        else
+          @user.friend_news_by_rank.order('news.created_at DESC', :limit => 10)
+        end
+
+      when :both
+        @user.both_news.order('news.created_at DESC', :limit => 10)
+       #joins(:my_news_ranks, :user_news_ranks).where(:my_news_ranks=>{:user_id=>user_id}, :user_news_ranks=>{:user_id=>user_id}).order('news.created_at DESC', :limit => 10)
     end
 
   end

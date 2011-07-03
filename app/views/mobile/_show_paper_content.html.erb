@@ -13,7 +13,7 @@
         <%= news.content.html_safe %>
       </div>
 
-      <div id="m_comments">
+      <div class="m_comments">
       <%= t(:comments)%>
       <div id="fb-root"></div>
       <script>
@@ -31,18 +31,18 @@
           document.getElementById('fb-root').appendChild(e);
         }());
       </script>
-      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts="1" ></fb:comments>
+      <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+news.id.to_s %>" num_posts='1' width="320"></fb:comments>
 
       </div>
     </div>
 
-    <div class="m_like">
+    <div class="button_group">
       <button onclick="like(<%= session[:id] %>, <%= news.id %>, 1);" title="<%= t(:like_hint) %>" type="button" class="like" id="watch-like-<%= news.id %>">
         <img class="button-icon-like" src="/images/like_button.png" alt="">
         <span class="button-content-like"><%= t(:like_btn) %></span>
       </button>
-      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:dislike_hint) %>" type="button" class="dislike" id="watch-dislike-<%= news.id %>">
-        <img class="button-icon-dislike" src="/images/dislike_button.png" alt="">
+      <button onclick="like(<%= session[:id] %>, <%= news.id %>, 0);" title="<%= t(:unlike_hint) %>" type="button" class="unlike" id="watch-unlike-<%= news.id %>">
+        <img class="button-icon-unlike" src="/images/unlike_button.png" alt="">
       </button>
     </div>
     <%# if (index != 0) %>

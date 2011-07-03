@@ -10,13 +10,24 @@
       // ask session data from server
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
+        $('#like_count'+news).html(json.like_count);
+        $('#unlike_count'+news).html(json.unlike_count);
+        /*
         if (like == 1)
           alert(json.name+' like this news, total: '+json.total);
         else
-          alert(json.name+' dislike this news, total: '+json.total);
-
+          alert(json.name+' unlike this news, total: '+json.total);
+        */
       }  );
 
+    }
+    function expand_comment(news_id)
+    {
+      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='1' width='650'></fb:comments>";
+
+      $('#expand_comment'+news_id).html("");
+      $('#fb_comment'+news_id).append(comment_str);
+      FB.XFBML.parse(document.getElementById('comments'));
     }
 
     function loadMore(type, pageNo) {
@@ -64,6 +75,37 @@
         changePaperType(currType);
       });
     });
+
+    function init_checkbox()
+    {
+        for(i=0;i<($('input').length);i++)
+        {
+            //console.log($('input')[i]) ;
+            if( $('input')[i].type == "checkbox")
+            {
+                 $('input')[i].disabled = false ;
+                 $('input')[i].checked = false ;
+
+                 $('input')[i].style.display = "" ;
+            }
+        }
+
+        $('#FeedbackTag_box')[0].disabled = true ;
+        $('#FeedbackTag_box')[0].checked = false ;
+        $('#FeedbackTag_box')[0].style.display= "none" ;
+        $('#FeedbackTag_lab')[0].style.display= "none" ;
+
+        $('#filter_dlg_t2')[0].style.display = "" ;
+        $('#filter_dlg_t6')[0].style.display = "" ;
+        $('#url_input')[0].style.display = "" ;
+        $('#image_url')[0].style.display = "" ;
+
+        $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_a_news) %>" ;
+        $('#news_submit')[0].value = "<%= t(:add_news) %>" ;
+
+
+    }
+
   </script>
 
 </head>
@@ -71,17 +113,15 @@
 
 <div id="page">
   <div id="header">
-    <div id="masthead">
-        <div id="logo">
-          <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
-          <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
-        </div>
+    <div id="logo">
+      <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+    </div>
+    <span id="filter_hint" title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
 
-        <div id="page_head" >
-          <%= show_page_head(:login_flag => true)  %>
-        </div><!-- #page_head -->
+    <div id="page_head" >
+      <%= show_page_head(:login_flag => true)  %>
+    </div><!-- #page_head -->
 
-    </div><!-- #masthead -->
   </div><!-- #header -->
 
   <div id="access">
@@ -89,8 +129,8 @@
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#"><%=t(:latest_news)%></a></li>
-        <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#"><%=t(:m_report)%></a></li>
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#"><%=t(:m_filter)%></a></li>
+        <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="#" onclick="init_checkbox()"><%=t(:m_report)%></a></li>
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="#" onclick="init_checkbox()"><%=t(:m_filter)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->
@@ -101,6 +141,7 @@
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
       </div>
+
       <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>
     </div>
 

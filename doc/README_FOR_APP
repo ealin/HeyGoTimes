@@ -1,2 +1,29 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+todo: 自己寫的新聞, 跳到Content頁面無內容
+
+todo: set comment bar size = 320
+
+todo: "發佈此則新聞"時, 總是顯示"此則新聞已存在"
+
+todo: "發佈此則新聞" 後, 不要回到主畫面
+      (回主畫面會妨礙使用者 看新聞/發新聞 的節奏, 只要使用者在 新聞content頁面 發佈新聞,
+       comment bar就應該收起來！)
+
+todo: report-news時, 應該要判斷某欄位未填值的狀況
+
+xxx to-do: 發佈新聞時, default area 設定為與 user.locale 相對應
+    (go on maintain mapping_locale_to_area() in application_controller.rb when adding new country )
+
+todo:  發佈新聞時, 處理 錯誤URL, 或抓不到內容的狀況 （show alert box, 並且不准其送出資料）
+
+xxx to-do: add tag-"local"
+
+todo: tag="all news"時, 應該不要顯示feedback的新聞
+
+todo: like/un-like, 旁邊顯示數字（數字即為link,  pop up出一個小窗口, 顯示 who like/unlike）
+
+todo: un-like 要有理由, 1. not for me,  2. 檢舉  3. duplicate
+
+todo: [bug - Chrome only] in filter dialog, area選多個area再開, 只會顯示一個area
+
+todo: 新聞照片太大張的排版
+      （e.g. http://loveyears.goaheadgo.com/view/4e0464b1ea8e8 ）

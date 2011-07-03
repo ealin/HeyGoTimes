@@ -15,7 +15,25 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   
- 
+
+
+  #-------------------------------------------------------------------------------
+  # method: admin_logged_in?
+  #    - admin_data module would call this function before entering admin-mode
+  #  https://github.com/neerajdotname/admin_data/wiki/admin_data-security-configuration-for-a-Rails3-application
+  #-------------------------------------------------------------------------------
+  # Todo: check ths function (admin_logged_in?) would be called back in production mode or not?
+  #  (reference: config/init.../admin_controller.rb)
+  #
+  def admin_logged_in?
+    if session[:logged_in] == true && session[:host_id] == 670999089
+      true
+    else
+      false
+    end
+
+  end
+
 
   #-----------------------------------------------------------
   # method: check_logged_in (Ealin: 20110430)
@@ -63,6 +81,7 @@ class ApplicationController < ActionController::Base
       if user != nil
         # already existed
         session[:id] = user.id
+        session[:host_id] = user.host_id
 
       else
 
@@ -77,6 +96,7 @@ class ApplicationController < ActionController::Base
 )
         if user.save!
            session[:id] = user.id
+           session[:host_id] = user.host_id
         else
            logger.debug "Create User-" + current_facebook_user.email + " to DB error!!"
         end
@@ -91,67 +111,24 @@ class ApplicationController < ActionController::Base
   end
 
 
-  #===========================================================================
+   #===========================================================================
 
-=begin
+
   #----------------------------------------------------
-  # method: get_current_user_info (Ealin: 20110510)
+  # method: mapping_locale_to_area
   #----------------------------------------------------
   #
-  def get_current_user_info
 
-    @user = User.find(session[:id])
-    if @user != nil
-      logger.debug "[Database Access Error:] - @ get_current_user_info() "
-      return
+  def mapping_locale_to_area
+    if I18n.locale == :en
+      session[:default_area] = "USA"
+    else
+      session[:default_area] = "Taiwan"
     end
 
-    # Ealin: 以下變數先寫死(20110510)
-
-    #statistics data:
-    @report_no = 10
-    @comment_no = 5
-    @follow_no = 6
-    @fans_no = 100
-    @ad_no = 6
-
   end
+
   #===========================================================================
-=end
-
- 
-  #----------------------------------------------------
-  # method: login (Ealin: 20110430)
-  #----------------------------------------------------
-  #
-  def login
-
-
-   render "/user/login"
-  end
-  #===========================================================================
-
-
-  #----------------------------------------------------
-  # method: logout (Ealin: 20110430)
-  #----------------------------------------------------
-  #
-  def logout
-
-   render "/user/logout"
-  end
-  #===========================================================================
-
-
-  #----------------------------------------------------
-  # method: signup (Ealin: 20110430)
-  #----------------------------------------------------
-  #
-  #def signup
-  # render "/user/signup"
-  #end
-  #===========================================================================
-
 
   
   # Ealin: 20110411
@@ -165,7 +142,7 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = extract_locale_from_accept_language_header
 
-    logger.debug "'#{I18n.locale}'"
+    #logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    
@@ -180,9 +157,12 @@ class ApplicationController < ActionController::Base
         I18n.locale = :zh_tw
       end
     end
+
+    # save mapped area to session[:default_area]
+    mapping_locale_to_area
   
     #logger.debug I18n.locale.length
-    logger.debug "* Locale set to '#{I18n.locale}'"
+    #logger.debug "* Locale set to '#{I18n.locale}'"
   end
   #-----------------------------------------------------------------------------------------
   

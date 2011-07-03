@@ -1,3 +1,106 @@
+<script>
+  function to_report_dialog( news_id, news_title )
+  {
+      // both "feedback" and "report spam" will callback this function
+      // if news_id == 0, means the function is issued by "feedback".
+
+      if(news_id == 0)
+        alert("<%= t(:feedback_hint)%>") ;
+      else
+      {
+          alert("<%= t(:report_spam_hint)%>" + "\n\n" + news_title) ;
+      }
+
+      for(i=0;i<($('input').length);i++)
+      {
+          //console.log($('input')[i]) ;
+          if( $('input')[i].type == "checkbox")
+          {
+               $('input')[i].disabled = true ;
+               $('input')[i].checked = false ;
+
+               // make all tag disappear
+               //$('input')[i].style.display= "none" ;
+          }
+      }
+
+      $('#FeedbackTag_box')[0].disabled = false ;
+      $('#FeedbackTag_box')[0].checked = true ;
+      $('#FeedbackTag_box')[0].style.display= "" ;
+      $('#FeedbackTag_lab')[0].style.display= "" ;
+
+      $('#filter_dlg_t2')[0].style.display = "none" ;
+      $('#filter_dlg_t6')[0].style.display = "none" ;
+      $('#url_input')[0].style.display = "none" ;
+      $('#image_url')[0].style.display = "none" ;
+
+
+      if(news_id == 0)
+      {
+          $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:feedback) %>" ;
+          $('#news_submit')[0].value = "<%= t(:feedback) %>" ;
+          document.forms[0].elements[4].value = "" ;
+      }
+      else
+      {
+          $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_spam) %>" ;
+          $('#news_submit')[0].value = "<%= t(:report_spam) %>" ;
+          document.forms[0].elements[4].value = "[SPAM REPORT]ID=" + news_id;
+
+      }
+
+  }
+
+
+  function show_feedback_list()
+  {
+      alert("<%= t(:response_hint) %>") ;
+
+      var data = "tag_filter=FeedbackTag/&friend_filter=mine/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=" ;
+
+      // send to server
+      $.ajax(
+      {
+          type: "GET",
+          url:"/paper/set_filter_setting",
+          data: data,
+          success: function(html)
+          {
+              // redirect to main page in order to redraw the news by new filter!
+               window.location.replace("/");
+          }
+      });
+
+      return false ;
+
+  }
+
+  function show_notice_list()
+  {
+      alert("<%= t(:notice_hint) %>") ;
+
+      // TODO: 必須判斷user的locale, 據此設定area filter
+      var data = "tag_filter=HGTimesNotice/&friend_filter=/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=Taiwan" ;
+
+      // send to server
+      $.ajax(
+      {
+          type: "GET",
+          url:"/paper/set_filter_setting",
+          data: data,
+          success: function(html)
+          {
+              // redirect to main page in order to redraw the news by new filter!
+               window.location.replace("/");
+          }
+      });
+
+      return false ;
+
+  }
+
+</script>
+
 
 
 <div  class="footer" align = "center">
@@ -12,14 +115,21 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 <%# ~~~~~~~~~~~To do ~~~~~~~~~~~~~~~~~~ %>
 <% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
-<% # tddo: 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
-<%= link_to t(:feedback),{:controller => 'paper'},{:title => '建議與問題反饋'}%> &nbsp;
+<% # [KO!]t0-do: 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
+ &nbsp;
+ <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog(0,' ')"><%= t(:feedback) %></a>
+
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
-<%= link_to t(:response),{:controller => 'paper'},{:title => '顯示所有反饋與官方回應'}%> &nbsp;
+ &nbsp;
+ <a href='#'  onclick="show_feedback_list()"><%= t(:response) %></a>
 
+
+
+&nbsp;
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
-<%= link_to t(:notice),{:controller => 'paper'},{:title => '官方公告'}%> &nbsp;
+<a href='#'  onclick="show_notice_list()"><%= t(:notice) %></a>
+
 
 
 <%# 進入手機瀏覽模式  %>

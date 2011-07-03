@@ -68,6 +68,11 @@ a img {
 	color: #FFFFFF;
 }
 
+#header #filter_hint {
+  position:relative;
+  top: 20px;
+}
+
 /* Logo */
 #logo {
 	float: left;
@@ -79,6 +84,7 @@ a img {
   padding-right: 10px;
   float: right;
   height: 85px;
+  width: 100px;
 }
 
 /* Menu */
@@ -90,6 +96,10 @@ a img {
 #content {
 	float: left;
 	width: 750px;
+}
+
+#paperContent {
+  padding-bottom: 30px;
 }
 
 /* Sub area */
@@ -106,22 +116,16 @@ a img {
 /* News content*/
 .news {
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .news .news_title {
-  width: 80%;
-  float: left;
+  width: 100%;
   font-size: 200%;
-}
-
-.news .button-group {
-  width: 20%;
-  float: right;
 }
 
 .news .info {
   font-style: italic;
-  clear: both;
   width: 100%;
 }
 
@@ -139,18 +143,43 @@ a img {
   width: 70%;
 }
 
-.news .comments {
-  clear: both;
-  width: 680px;
+.comments {
+  margin-left: 40px;
+  width: 90%;
+  color: #3b5998;
   background: #f2f2f2;
-  position:relative;
-  top: 10px;
-  left:30px;
+
   /*border-width:medium;
   border-style:dashed;*/
 }
+.comments .comment_title {
+  margin-bottom: 10px;
+  font-size: 2em;
+  color: #3b5998;
+  width: 65%;
+  float: left;
+}
+
+.comments .fb_comment {
+  margin-left: 10px;
+}
+
+.comments .button_group {
+  width: 35%;
+  float: right;
+}
+
+.comments .button_group .like_count, .unlike_count
+{
+  font-size: 1.4em;
+}
+
+
+
+
 
 #more_news{
+  clear: both;
   margin: auto;
   text-align:center;
   height: 30px;
@@ -180,13 +209,13 @@ a img {
 	display: block;
 	float: left;
 	margin: 0 auto;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header,
 div.menu {
 	font-size: 13px;
 	margin-left: 12px;
-	width: 900px;
+	width: 100%;
 }
 #access .menu-header ul,
 div.menu ul {

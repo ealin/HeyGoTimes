@@ -15,6 +15,7 @@ zh_tw:
   logout: "登出"
   signup: "註冊"
   feedback: "建議與反饋"
+  report_spam: "檢舉垃圾新聞"
   response: "官方回覆"
   notice: "公告"
   mobileSite: "Mobile Site"
@@ -30,7 +31,7 @@ zh_tw:
   more_news: "更多新聞"
   like_btn: "喜歡"
   like_hint: "我喜歡"
-  dislike_hint: "我不喜歡"
+  unlike_hint: "我不喜歡"
   comments: "讀者回應"
   share: "分享"
   share_hint: "分享至Facebook"
@@ -71,14 +72,15 @@ zh_tw:
   news_title_field: "標題"
   news_content_field: "內容"
   news_image_url_field: "圖片網址"
+  news_URL: "新聞網址"
   
   filter_by_tag: "選擇您感興趣的新聞分類："
   filter_by_area: "選擇區域(可複選)："
   filter_by_friend: "好友選項："
   filter_by_date: "選擇日期："
   
-  my_news_only: "只顯示我關心的新聞"
-  my_friends_news_only: "顯示所有朋友關心的新聞"
+  my_news_only: "只顯示我的新聞"
+  my_friends_news_only: "只顯示所有朋友的新聞"
 
   filter_save_as_default: "儲存為我的預設選項"
   filter_cancel: "取消"
@@ -97,6 +99,15 @@ zh_tw:
   same_as_select_all: "(視同以下分類全部勾選)"
   hit_here_to_select_area: "請按此選擇區域："
 
+  feedback_hint: "感謝您對黑狗日報的意見, 發表意見就像發佈一篇新新聞一樣簡單！"
+  report_spam_hint: "檢舉此篇新聞:"
+  response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
+  notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
+
+  please_log_in: "請先以facebook的帳號登入。"
+  add_news: "報導此新聞"
+  cancel: "取消"
+
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
@@ -112,6 +123,9 @@ zh_tw:
   
   USA: "美國"
   Japan: "日本"
+  Europe: "歐洲"
+  Asia: "亞洲"
+  Others: "其他地區"
   
   
   #--------------------------------------------------------------------------
@@ -123,6 +137,7 @@ zh_tw:
 
   #Top: "焦點"
   World: "國際"
+  Local: "區域"
   Business: "財經"
   Stock: "股市"
   
@@ -131,7 +146,8 @@ zh_tw:
   NBA: "NBA"
   Baseball: "棒球"
   
-  Entertainment: "娛樂"
+  Life: "生活"
+  Entertainment: "娛樂/影劇"
   Health: "健康"
   Internet: "網際網路"
   Politics: "政治"
@@ -140,7 +156,7 @@ zh_tw:
   Education: "教育"
   Art: "藝文"
   
-
+  
 
   #----------------------------------------
   # name of the Link

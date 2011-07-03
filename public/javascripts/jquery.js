@@ -1443,7 +1443,7 @@ jQuery.extend({
 		if ( !cache[ id ] ) {
 			cache[ id ] = {};
 
-			// TODO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
+			// TO-DO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
 			// metadata on plain JS objects when the object is serialized using
 			// JSON.stringify
 			if ( !isNode ) {
@@ -1478,7 +1478,7 @@ jQuery.extend({
 			thisCache[ name ] = data;
 		}
 
-		// TODO: This is a hack for 1.5 ONLY. It will be removed in 1.6. Users should
+		// TO-DO: This is a hack for 1.5 ONLY. It will be removed in 1.6. Users should
 		// not attempt to inspect the internal events object using jQuery.data, as this
 		// internal data object is undocumented and subject to change.
 		if ( name === "events" && !thisCache[name] ) {
@@ -1548,7 +1548,7 @@ jQuery.extend({
 		// data if it existed
 		if ( internalCache ) {
 			cache[ id ] = {};
-			// TODO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
+			// TO-DO: This is a hack for 1.5 ONLY. Avoids exposing jQuery
 			// metadata on plain JS objects when the object is serialized using
 			// JSON.stringify
 			if ( !isNode ) {
@@ -1686,7 +1686,7 @@ function dataAttr( elem, key, data ) {
 	return data;
 }
 
-// TODO: This is a hack for 1.5 ONLY to allow objects with a single toJSON
+// TO-DO: This is a hack for 1.5 ONLY to allow objects with a single toJSON
 // property to be considered empty objects; this property always exists in
 // order to make sure JSON.stringify does not expose internal metadata
 function isEmptyDataObject( obj ) {
@@ -2753,7 +2753,7 @@ jQuery.event = {
 
 		// Handle a global trigger
 		if ( !elem ) {
-			// TODO: Stop taunting the data cache; remove global events and always attach to document
+			// TO-DO: Stop taunting the data cache; remove global events and always attach to document
 			jQuery.each( jQuery.cache, function() {
 				// internalKey variable is just used to make it easier to find
 				// and potentially change this stuff later; currently it just
@@ -4166,7 +4166,7 @@ var Expr = Sizzle.selectors = {
 				Sizzle.error( match[0] );
 			}
 
-			// TODO: Move to normal caching system
+			// TO-DO: Move to normal caching system
 			match[0] = done++;
 
 			return match;

@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   # Use tiny_mce editor
-  uses_tiny_mce
+  #uses_tiny_mce
 
   # GET /news
   # GET /news.xml
@@ -27,7 +27,10 @@ class NewsController < ApplicationController
 
     if (current_facebook_user != nil)
       @user = User.find(session[:id])
-      @news.watches.push(@user)
+      if (!@user.watches.include?(@news))
+        @news.watches.push(@user)
+        news_rank_action(@user, @news, :watch)
+      end
     end
 
     respond_to do |format|
@@ -39,30 +42,35 @@ class NewsController < ApplicationController
   def like
 
     @data = {}
+
     # check session id of user
     if (params[:user] == session[:id].to_s)
       @user = User.find(session[:id])
       @news = News.find(params[:news])
 
-      # check if like/dislike of user already exists
+      # check if like/unlike of user already exists
       if (params[:like] == 1.to_s)
-        if (@news.dislikes.include?(@user))
-          @news.dislikes.delete(@user)
+        if (@news.unlikes.include?(@user))
+          @news.unlikes.delete(@user)
         end
-        @news.likes.push(@user)
-        @data['total'] = @news.likes.count
+        if (!@news.likes.include?(@user))
+          @news.likes.push(@user)
+          news_rank_action(@user, @news, :like)
+        end
       else
         if (@news.likes.include?(@user))
           @news.likes.delete(@user)
         end
-        @news.dislikes.push(@user)
-        @data['total'] = @news.dislikes.count
+        if (!@news.unlikes.include?(@user))
+          @news.unlikes.push(@user)
+          news_rank_action(@user, @news, :unlike)
+        end
       end
 
       # calculate rank
-      @like_count = @news.likes.count
-      @dislike_count = @news.dislikes.count
-      @news.rank = @like_count - @dislike_count
+      @data['like_count'] = @like_count = @news.likes.count
+      @data['unlike_count'] = @unlike_count = @news.unlikes.count
+      @news.rank = @like_count - @unlike_count
 
       @data['name'] = @user.first_name + ' ' + @user.last_name
 
@@ -80,63 +88,140 @@ class NewsController < ApplicationController
     @data = {}
 
     if (params[:url] != nil)
-      # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
-      @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url].to_s
 
+      # Check URL existence
       if (params[:url] != nil)
-        @news = News.find_all_by_url(params[:url])
-        if (@news.count != 0)
+        @news = News.find_by_url(params[:url].to_s)
+        if (@news != nil)
           @data['ret'] = 'url exist'
         end
       end
 
-      require 'nokogiri'
-      require 'open-uri'
+      # Parse data
+      if (@data['ret'] != 'url exist')
+        require 'nokogiri'
+        require 'open-uri'
 
-      @next = ''
-      @doc = Nokogiri::HTML(open(URI.encode(@url)))
+        # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+        # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+        @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.decode(params[:url])
+        @next = ''
+        @doc = Nokogiri::HTML(open(@url))
 
-      #@error = @doc.search('lint > lint_error')
-      #if (@error != nil)
-      #  @data['ret'] = 'bad url'
-      #end
+        #@error = @doc.search('lint > lint_error')
+        #if (@error != nil)
+        #  @data['ret'] = 'bad url'
+        #end
 
-      # @body = @doc.at_css('body').text
-      @doc.search('h2 > div.pam', 'td').each do |data|
-        # puts data.content
+        # @body = @doc.at_css('body').text
+        @doc.search('h2 > div.pam', 'td').each do |data|
+          # puts data.content
 
-        if (data.content == 'Description')
-          @next = :content
-          next
-        elsif (data.content == 'Title')
-          @next = :title
-          next
-        elsif (data.content == 'Image')
-          @next = :image
-          next
+          if (data.content == 'Description')
+            @next = :content
+            next
+          elsif (data.content == 'Title')
+            @next = :title
+            next
+          elsif (data.content == 'Image')
+            @next = :image
+            next
+          end
+
+          if (@next == :content)
+            @text = data.content.to_s
+          elsif (@next == :image)
+            @image_url = data.search('a').first['href']
+          elsif (@next == :title)
+            @title = data.content.to_s
+            break
+          end
+
+          @next = :normal
         end
 
-        if (@next == :content)
-          @text = data.content.to_s
-        elsif (@next == :image)
-          @image_url = data.search('a').first['href']
-        elsif (@next == :title)
-          @title = data.content.to_s
-          break
-        end
-
-        @next = :normal
+        @data['title']=@title.to_s
+        @data['image']=@image_url.to_s
+        @data['text']=@text.to_s
       end
-
-      @data['title']=@title.to_s
-      @data['image']=@image_url.to_s
-      @data['text']=@text.to_s
     end
 
     respond_to do |format|
       format.json { render :json => @data.to_json }
     end
 
+  end
+
+  # Description: find user friends and update news rank
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def news_rank_action(user, news, type)
+    @rank = calculate_rank(type)
+
+    update_my_news_rank(user, news, @rank)
+
+    user.inverse_friends.each do |friend|
+      update_user_news_rank(friend, news, @rank)
+    end
+
+  end
+
+  # Description: calculate rank by type
+  # type => :like/:unlike/:watch/:report
+  def calculate_rank(type)
+    case type
+      when :like
+        return 2
+      when :unlike
+        return -1
+      when :watch
+        return 1
+      when :report
+        return 5
+    end
+  end
+
+  # Description: calculate my-news rank
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def update_my_news_rank(user, news, rank)
+
+    my_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, true)
+
+    if (my_news_rank_records.count != 0)
+      news_rank_record = my_news_rank_records[0]
+      news_rank_record.rank += rank
+    else
+      user.my_news.push(news)
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
+      news_rank_record.my_news = true
+      news_rank_record.rank = rank
+    end
+
+    news_rank_record.save
+  end
+
+  # Description: calculate user-news rank
+  # params:
+  # user => User object
+  # news => News object
+  # type => :like/:unlike/:watch/:report
+  def update_user_news_rank(user, news, rank)
+
+    friend_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
+
+    if (friend_news_rank_records.count != 0)
+      news_rank_record = friend_news_rank_records[0]
+      news_rank_record.rank += rank
+    else
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
+      news_rank_record.my_news = false
+      news_rank_record.rank = rank
+    end
+
+    news_rank_record.save
   end
 
   # GET /news/new
@@ -190,7 +275,7 @@ class NewsController < ApplicationController
       end
     end
 
-
+    news_rank_action(@user, @news, :report)
 
     respond_to do |format|
       if @news.save

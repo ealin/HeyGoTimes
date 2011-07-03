@@ -19,6 +19,10 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
+    if (session[:logged_in] == true)
+      #get_friends(session[:id])
+    end
+
 =begin
     # Ealin: not necessary for new-spec.
     #check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
@@ -57,7 +61,7 @@ class PaperController < NewsController
   def get_news(type, page)
 
     @user_areas = []
-    if (session[:filter_area] != nil)
+    if (session[:filter_area] != nil && session[:filter_area] != "")
       @user_areas = session[:filter_area].split("/")
     else
       # session may be empty (e.g. first time using)
@@ -74,20 +78,42 @@ class PaperController < NewsController
       @user_tags[0] = 'All'
     end
 
-    if (@user_tags[0] == 'All')
-      @news = News.get_all(type)
+    if (session[:id] != nil)
+      @user_id = session[:id]
+      if (session[:filter_friend] != nil)
+        @friend_tags = session[:filter_friend].split("/")
+        if (@friend_tags[0] == 'all')
+          @friend_type = :none
+        elsif (@friend_tags[0] == 'mine' && @friend_tags[1] == 'friend')
+          @friend_type = :both
+        elsif (@friend_tags[0] == 'friend')
+          @friend_type = :friend
+        else
+          @friend_type = :mine
+        end
+      else
+        # session may be empty (e.g. first time using)
+        #
+        @friend_type = :none
+      end
     else
-      if (News.count > 0)
-        @news = News.find_by_tags(type, @user_areas, @user_tags)
+      @friend_type = :none
+    end
+
+    if (News.count > 0)
+      if (@user_tags[0] == 'All')
+        @news = News.get_all(type, @friend_type, @user_id)
+      else
+        @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
+      end
+
+      if(@news.count > 0)
+        @news = @news.paginate :page => page, :per_page => 3
       end
     end
 
-    if(@news != nil)
-      @news = @news.paginate :page => page, :per_page => 3
-    end
-
-
     return @news
+
   end
 
   #-----------------------------------------------------------------------------------
@@ -252,7 +278,6 @@ class PaperController < NewsController
     #get newspaper's title
     get_paper_title_info()
    
-    # render _show_paper_title.html.erb
     render :layout => nil
     
     
@@ -299,9 +324,7 @@ class PaperController < NewsController
   #-----------------------------------------------------------------------------------
   # 
   def show_fun_buttons
-   
-   
-    # render _show_paper_title.html.erb
+
     render :layout => nil
     
   end
@@ -405,48 +428,51 @@ class PaperController < NewsController
     session[:filter_date_option] = params[:date_filter_option]
 
     response_str = t(:filter_setting_saved)
-    if(params[:save] == "yes")
+
+
+    if(params[:save] == "yes" && session[:logged_in] != false)
       # save the filter setting in DB
+
 
       user = User.find(session[:id])
       if(user == nil)
         response_str = t(:user_not_exist)
-      end
+      else
 
-      # setup user.tags
-      #
-      user.tags = []       #empty array
-      tags = Tag.all
-      tags.each do |tag|
-        if (session[:filter_tags]).include?(tag.name)
-          user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+        # setup user.tags
+        #
+        user.tags = []       #empty array
+        tags = Tag.all
+        tags.each do |tag|
+          if (session[:filter_tags]).include?(tag.name)
+            user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+          end
         end
-      end
 
-      # setup user.areas
-      #
-      user.areas = []       #empty array
-      areas = Area.all
-      areas.each do |area|
-        if (session[:filter_area]).include?(area.name)
-          user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+        # setup user.areas
+        #
+        user.areas = []       #empty array
+        areas = Area.all
+        areas.each do |area|
+          if (session[:filter_area]).include?(area.name)
+            user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+          end
         end
-      end
 
-      # setup user.date_filter
-      #
-      temp_date_filter = DateFilter.new(:date => session[:filter_date], :option => session[:filter_date_option])
-      temp_date_filter.save
-      user.date_filter = temp_date_filter
-
-
-      #setup user.friend_filters
-      temp_friend_filter = FriendFilter.new()
-      temp_friend_filter.friend_filter_type = session[:filter_friend]
-      temp_friend_filter.save
-      user.friend_filter = temp_friend_filter
+        # setup user.date_filter
+        #
+        temp_date_filter = DateFilter.new(:date => session[:filter_date], :option => session[:filter_date_option])
+        temp_date_filter.save
+        user.date_filter = temp_date_filter
 
 
+        #setup user.friend_filters
+        temp_friend_filter = FriendFilter.new()
+        temp_friend_filter.friend_filter_type = session[:filter_friend]
+        temp_friend_filter.save
+        user.friend_filter = temp_friend_filter
+
+       end
     end
 
     #logger.debug "[logging]Filter setting saved in session!"
@@ -479,6 +505,26 @@ class PaperController < NewsController
       format.json { render :json => session.to_json }
     end
 
+  end
+
+  #-----------------------------------------------------------------------------------
+  # method: get_friends
+  #   - # get user friends and save to friendship table
+  #-----------------------------------------------------------------------------------
+  def get_friends(id)
+    @facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
+    @access_token = @facebook_cookies["access_token"]
+    @graph = Koala::Facebook::GraphAPI.new(@access_token)
+    @friends = @graph.get_connections("me", "friends")
+
+    @user = User.find(id)
+
+    @friends.each do |friend|
+      @friend = User.find_by_host_id(friend["id"])
+      if (@friend != nil && !@user.friends.include?(@friend))
+        @user.friends << @friend
+      end
+    end
   end
 
 end

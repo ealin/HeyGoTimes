@@ -17,6 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       # host site -   0: hey-go times,  1: facebook
       t.integer :host_site
 
+      t.boolean :admin, :default => 0
 
       t.timestamps
     end
