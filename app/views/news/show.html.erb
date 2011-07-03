@@ -63,9 +63,12 @@
             <%= @news.content.html_safe %>
           </div>
         <% end %>
-        <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
-        <div class="comments">
-          <h3><%= t(:comments)%></h3>
+        <div style="clear: both;"></div>
+      </div> <!-- news -->
+      <div class="comments">
+        <div class="comment_title"><%= t(:comments)%></div>
+        <div class="button_group"></div>
+        <div class="fb_comment" id="fb_comment<%= @news.id %>">
           <div id="fb-root"></div>
           <script>
             window.fbAsyncInit = function() {
@@ -83,10 +86,9 @@
             }());
           </script>
           <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
-
-        </div>
-
-      </div>
+          <div style="clear: both;"></div>
+        </div> <!-- fb_comment -->
+      </div> <!-- comments -->
     </div>
 
       <%#= link_to 'Edit', edit_news_path(@news) %>

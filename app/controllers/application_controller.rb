@@ -97,6 +97,7 @@ class ApplicationController < ActionController::Base
         if user.save!
            session[:id] = user.id
            session[:host_id] = user.host_id
+           get_friends(session[:id])
         else
            logger.debug "Create User-" + current_facebook_user.email + " to DB error!!"
         end
@@ -106,13 +107,30 @@ class ApplicationController < ActionController::Base
     end
 
 
-    
-
   end
 
 
    #===========================================================================
 
+  #-----------------------------------------------------------------------------------
+  # method: get_friends
+  #   - # get user friends and save to friendship table
+  #-----------------------------------------------------------------------------------
+  def get_friends(id)
+    @facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
+    @access_token = @facebook_cookies["access_token"]
+    @graph = Koala::Facebook::GraphAPI.new(@access_token)
+    @friends = @graph.get_connections("me", "friends")
+
+    @user = User.find(id)
+
+    @friends.each do |friend|
+      @friend = User.find_by_host_id(friend["id"])
+      if (@friend != nil && !@user.friends.include?(@friend))
+        @user.friends << @friend
+      end
+    end
+  end
 
   #----------------------------------------------------
   # method: mapping_locale_to_area
