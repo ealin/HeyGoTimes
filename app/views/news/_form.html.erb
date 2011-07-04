@@ -156,12 +156,16 @@ $(document).ready(function () {
     </div>
 
     <div class = "all_tags" align = "left" style="clear:both;" >
-    <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
+    <%# !!!!!!!!!!! Todo:  將所有tags排整齊    %>
     <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
 
 
       <% @tags.each do |tag| %>
         <%# using type and name to identify each Input/Checkbox here %>
+
+        <% if tag.name == "FAQ" %>
+              <% break %>
+        <% end %>
 
          <% if tag.id == 3  %>
                <%# 這個items是feedback, 只有在feedback才顯示這個選項 %>

@@ -10,6 +10,9 @@
 #
 User.create(:first_name => 'Reporter', :last_name => 'TW',:email => 'reporter.tw@heygotimes.com',
     :locale => 'zh_TW', :birthday => '2011-05-01 09:00:00',  :host_id => 0,  :host_site => 0)
+
+User.create(:first_name => '黑狗日報', :last_name => '台灣',:email => 'heygoinc@gmail.com',
+    :locale => 'zh_TW', :birthday => '2011-07-01 09:00:00',  :host_id => 0,  :host_site => 0)
 #
 #  :host_site = 0  means this account is belongs to HeyGoTimes
 
@@ -66,5 +69,55 @@ Tag.create(:name => 'Car', :parent_tag => nil)
 Tag.create(:name => 'Education', :parent_tag => nil)
 Tag.create(:name => 'Art', :parent_tag => nil)
 
+# NOTE: FAQ should be the last one!!!
+#
+Tag.create(:name => 'FAQ', :parent_tag => nil)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~Create Default News (for FAQ)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  Title = Q,  Content = A
+
+image = Image.create(:url => "http://heygotimes-bench.heroku.com/images/HeyGoTimes_logo.png?1309676569")
+tag = Tag.find_by_name("FAQ")
+area_tw = Area.find_by_name("Taiwan")
+area_usa = Area.find_by_name("USA")
+user = User.find(2)
+
+# SOP to create a new FAQ entry
+#
+# ---------- Q1 (TW) --------------
+#
+news = News.new(:special_flag => true)
+news.tags = []
+news.tags << tag
+news.areas = []
+news.areas << area_tw
+news.user = user
+news.title = "Q1"
+news.content = "A1"
+news.url = "http://www.yahoo.com"
+news.area_string = ""
+
+news.save
+image.news = news
+image.save
+
+# ---------- Q2 (TW) --------------
+#
+image = Image.create(:url => "http://heygotimes-bench.heroku.com/images/HeyGoTimes_logo.png?1309676569")
+news = News.new(:special_flag => true)
+news.tags = []
+news.tags << tag
+news.areas = []
+news.areas << area_tw
+news.user = user
+news.title = "Q2"
+news.content = "A1"
+news.url = "http://www.yahoo.com"
+news.area_string = ""
+
+news.save
+image.news = news
+image.save
 
 

@@ -104,6 +104,7 @@ zh_tw:
   report_spam_hint: "檢舉此篇新聞:"
   response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
   notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
+  
   login_for_set_friend_filter: "您必須登入後才可以使用此功能！"
   please_log_in: "請先以facebook的帳號登入。"
   add_news: "報導此新聞"
@@ -159,6 +160,8 @@ zh_tw:
   Car: "汽車"
   Education: "教育"
   Art: "藝文"
+  
+  FAQ: "常見問題"
   
   
 
