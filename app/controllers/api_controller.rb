@@ -13,7 +13,7 @@ class ApiController < ApplicationController
     if (params[:url] != nil)
 
       # Check URL existence
-      @news = News.find_by_url(params[:url].to_s)
+      @news = News.find_by_url(params[:url])
       if (@news != nil)
           @data[:ret] = 'url exist'
       end
@@ -76,8 +76,9 @@ class ApiController < ApplicationController
       @user = User.find(2)   #reporter
       @news.user = @user
 
-      @news.title = @data[:title] ;
-      @news.content = @data[:text] ;
+      @news.title = @data[:title]
+      @news.content = @data[:text]
+      @news.url = params[:url]
 
       @image = Image.create(@data[:image])
       @image.news = @news
@@ -104,8 +105,11 @@ class ApiController < ApplicationController
     end
 
 
-
-    response_str = "title=" + @data[:title] + "  text=" + @data[:text] + "  image url="+  @data[:image]
+    if @data[:ret] == 'url exist'
+      response_str = 'duplicate!!'
+    else
+      response_str = "title=" + @data[:title] + "  text=" + @data[:text] + "  image url="+  @data[:image]
+    end
 
     respond_to do |format|
       format.html { render  :inline => response_str }
