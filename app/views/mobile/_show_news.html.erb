@@ -1,0 +1,52 @@
+
+    <div id="m_content">
+      <div class="m_news">
+        <% if @news.url != "" %>
+          <div class="news_frame">
+            <% # TODO: use @paper_width %>
+              <iframe id="news_frame" height="500" width="320" src="<%= @news.url %>">
+                 Your browser can't display IFRAMEs
+              </iframe>
+          </div>
+        <% else %>
+          <%# if @news.images[0].url != "" %>
+            <div class="m_image">
+             <img src="<%=@news.images[0].url%>" alt="image">
+            </div>
+          <%# end %>
+
+          <div class="m_news_content">
+            <%= @news.content.html_safe %>
+          </div>
+        <% end %>
+        <div style="clear: both;"></div>
+      </div> <!-- news -->
+      <div class="m_comments">
+        <div class="m_comment_title"><%= t(:comments)%></div>
+        <div class="m_button_group"></div>
+        <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
+          <div id="fb-root"></div>
+          <script>
+            window.fbAsyncInit = function() {
+              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                       xfbml: true});
+            };
+            (function() {
+              var e = document.createElement('script'); e.async = true;
+
+              // Todo: we need to check the locale!!!!!!!!!!!!
+              //
+              e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+              document.getElementById('fb-root').appendChild(e);
+            }());
+          </script>
+          <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="1" width="320"></fb:comments>
+          <div style="clear: both;"></div>
+        </div> <!-- fb_comment -->
+      </div> <!-- comments -->
+    </div>
+
+
+
+

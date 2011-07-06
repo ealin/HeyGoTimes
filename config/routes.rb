@@ -77,6 +77,7 @@ HeyGoTimes::Application.routes.draw do
   resources :mobile do
     get 'index', :on => :collection
     get '_show_paper_content', :on => :collection
+    get 'show_news', :on => :collection
   end
 
   #get "main_page/index"
