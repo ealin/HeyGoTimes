@@ -17,7 +17,6 @@ User.create(:first_name => '黑狗日報', :last_name => '台灣',:email => 'hey
 #  :host_site = 0  means this account is belongs to HeyGoTimes
 
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~Create Default Area~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 
@@ -46,7 +45,7 @@ Tag.create(:name => 'All', :parent_tag => nil)
 Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
 Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 
-Tag.create(:name => 'Mobile', :parent_tag => nil)
+#Tag.create(:name => 'Mobile', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
 Tag.create(:name => 'Local', :parent_tag => nil)
 
@@ -65,7 +64,7 @@ Tag.create(:name => 'Entertainment', :parent_tag => nil)
 Tag.create(:name => 'Health', :parent_tag => nil)
 Tag.create(:name => 'Internet', :parent_tag => nil)
 Tag.create(:name => 'Travel', :parent_tag => nil)
-Tag.create(:name => 'Car', :parent_tag => nil)
+#Tag.create(:name => 'Car', :parent_tag => nil)
 Tag.create(:name => 'Education', :parent_tag => nil)
 Tag.create(:name => 'Art', :parent_tag => nil)
 

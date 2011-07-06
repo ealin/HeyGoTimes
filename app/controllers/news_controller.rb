@@ -93,12 +93,12 @@ class NewsController < ApplicationController
     if (params[:url] != nil)
 
       # Check URL existence
-      if (params[:url] != nil)
+      #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
           @data['ret'] = 'url exist'
         end
-      end
+      #end
 
       # Parse data
       if (@data['ret'] != 'url exist')
