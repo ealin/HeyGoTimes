@@ -48,8 +48,6 @@ require 'net/http'
 
 while true
 
-    puts "sleeping awhile"
-    sleep 300   # seconds
 
     for i in (0..(yahoo_rss_tag.length - 1))
 
@@ -80,6 +78,10 @@ while true
         end
 
     end
+
+    puts "sleeping awhile"
+    sleep 300   # seconds
+
 
 
 end

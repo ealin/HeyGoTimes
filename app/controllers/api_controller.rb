@@ -86,6 +86,7 @@ class ApiController < ApplicationController
 
           @image = Image.create(@data[:image])
           @image.news = @news
+          @image.url = @data[:image]
           @image.save
 
           @news.tags = []

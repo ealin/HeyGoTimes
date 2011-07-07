@@ -1,2 +1,90 @@
-<h1>Review#tw</h1>
-<p>Find me in app/views/review/tw.html.erb</p>
+<script>
+
+  function delete_news(news_id)
+  {
+        data = "news_id=" + news_id
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/delete_news",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/review/tw");
+             }
+         });
+
+  }
+
+
+  function delete_img_and_publish(news_id)
+  {
+      data = "news_id=" + news_id
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/delete_img_and_publish",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/review/tw");
+             }
+         });
+  }
+
+
+  function publish_news(news_id)
+  {
+      data = "news_id=" + news_id
+
+       // send to server
+        $.ajax(
+        {
+            type: "GET",
+            url:"/review/publish_news",
+            data: data,
+            success: function(html)
+            {
+                // redirect to main page in order to redraw the news by new filter!
+                 window.location.replace("/review/tw");
+            }
+        });
+  }
+
+</script>
+
+
+
+<h1>Delay Live Review</h1>
+
+<br><br>
+<% for i in (0..20) %>
+    <p>
+      #<%= @news_for_review[i].id %>: <%= @news_for_review[i].title %>
+      <br>
+      <%= @news_for_review[i].content %>
+      <br>
+      <% if @news_for_review[i].images != [] %>
+        <img src="<%= @news_for_review[i].images[0].url %>"/>
+      <% end %>
+
+      <a href="<%= @news_for_review[i].url %>">新聞連結</a>
+      <br>
+
+      <!-- 3 buttons : 1.delete this news   2.delete image    3. report this news -->
+      <button onclick="delete_news(<%= @news_for_review[i].id %>);">刪除此新聞</button>
+      <button onclick="delete_img_and_publish(<%= @news_for_review[i].id %>) ;">刪除圖片並發佈</button>
+      <button onclick="publish_news(<%= @news_for_review[i].id %>) ;">發佈此新聞</button>
+
+
+    </p>
+    <hr>
+
+
+<% end %>
