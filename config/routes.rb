@@ -1,6 +1,8 @@
 HeyGoTimes::Application.routes.draw do
 
 
+  get "review/tw"
+
   get "api/new_news"
 
   get "mobile/index"

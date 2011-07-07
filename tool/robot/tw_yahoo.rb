@@ -49,7 +49,7 @@ require 'net/http'
 while true
 
     puts "sleeping awhile"
-    sleep 120   # seconds
+    sleep 300   # seconds
 
     for i in (0..(yahoo_rss_tag.length - 1))
 
