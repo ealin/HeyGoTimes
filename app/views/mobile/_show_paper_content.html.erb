@@ -3,7 +3,7 @@
   <% news.each do |news| %>
     <div class="m_news">
       <div class="m_news_title">
-          <a href="#_paper" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
+          <a href="javascript:void(null)" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
       </div>
 
       <div class="m_image">
@@ -14,11 +14,11 @@
       </div>
 
       <div class="m_comments">
-        <div class="m_comment_title"><%= t(:comments)%><span id='expand_comment<%= news.id %>'><a href="#_paper" onclick="expand_comment(<%= news.id %>);"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
+        <div class="m_comment_title"><%= t(:comments)%><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)" onclick="expand_comment(<%= news.id %>);"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
         <div class="m_button_group">
-          <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
-          <a href="#" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
-          <a href="#" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+          <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
+          <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
+          <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
         </div>
         <div class="fb_comment" id="fb_comment<%= news.id %>">
           <div id="fb-root"></div>

@@ -2,9 +2,9 @@
     <div id="m_content">
       <div class="m_news">
         <% if @news.url != "" %>
-          <div class="news_frame">
+          <div class="news_frame" style="width: 320px;">
             <% # TODO: use @paper_width %>
-              <iframe id="news_frame" height="500" width="320" src="<%= @news.url %>">
+              <iframe id="news_frame" width="100%" src="<%= @news.url %>">
                  Your browser can't display IFRAMEs
               </iframe>
           </div>
@@ -21,7 +21,7 @@
         <% end %>
         <div style="clear: both;"></div>
       </div> <!-- news -->
-      <div class="m_comments">
+      <div class="m_news_comments">
         <div class="m_comment_title"><%= t(:comments)%></div>
         <div class="m_button_group"></div>
         <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
