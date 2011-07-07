@@ -11,7 +11,7 @@
 User.create(:first_name => 'Reporter', :last_name => 'TW',:email => 'reporter.tw@heygotimes.com',
     :locale => 'zh_TW', :birthday => '2011-05-01 09:00:00',  :host_id => 0,  :host_site => 0)
 
-User.create(:first_name => '黑狗日報', :last_name => '台灣',:email => 'heygoinc@gmail.com',
+User.create(:first_name => 'HGTimes', :last_name => 'Taiwan',:email => 'heygoinc@gmail.com',
     :locale => 'zh_TW', :birthday => '2011-07-01 09:00:00',  :host_id => 0,  :host_site => 0)
 #
 #  :host_site = 0  means this account is belongs to HeyGoTimes
@@ -47,6 +47,7 @@ Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 
 #Tag.create(:name => 'Mobile', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
+Tag.create(:name => 'Society', :parent_tag => nil)
 Tag.create(:name => 'Local', :parent_tag => nil)
 
 Tag.create(:name => 'Politics', :parent_tag => nil)
@@ -67,6 +68,8 @@ Tag.create(:name => 'Travel', :parent_tag => nil)
 #Tag.create(:name => 'Car', :parent_tag => nil)
 Tag.create(:name => 'Education', :parent_tag => nil)
 Tag.create(:name => 'Art', :parent_tag => nil)
+Tag.create(:name => 'Special', :parent_tag => nil)
+
 
 # NOTE: FAQ should be the last one!!!
 #

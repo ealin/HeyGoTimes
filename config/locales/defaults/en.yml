@@ -148,6 +148,7 @@ en:
   Mobile: "Mobile"
   #Top: "Top"
   World: "World"
+  Society: "Society"  
   Local: "Local"
 
   Business: "Business"
@@ -166,6 +167,7 @@ en:
   Car: "Car"
   Education: "Education"
   Art: "Art"
+  Special: "Special"
   
   FAQ: "FAQ"
   

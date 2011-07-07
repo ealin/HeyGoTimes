@@ -2,8 +2,6 @@ class News < ActiveRecord::Base
 
   belongs_to :user
 
-  has_one :area
-
   has_many :comments
   has_many :images
 
