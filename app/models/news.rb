@@ -114,4 +114,8 @@ class News < ActiveRecord::Base
 
   end
 
+  def get_all_special(areas, tags)
+    joins(:areas, :tags).where(:news=>{:special_flag => true}, :areas => {:name => areas}, :tags => {:name => tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+  end
+
 end

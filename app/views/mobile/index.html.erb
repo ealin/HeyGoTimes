@@ -55,6 +55,13 @@
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
+    function showNews(id){
+      var url = '/mobile/show_news?id='+id;
+      iui.showPageByHref(url, "", "GET", "", function(){
+        FB.XFBML.parse(document.getElementById('comments'));
+      });
+    }
+
     $(document).ready(function() {
       var currPage = 1;
       var currType = 'latest';
