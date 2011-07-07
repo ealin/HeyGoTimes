@@ -7,7 +7,9 @@
       </div>
 
       <div class="m_image">
-         <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
+         <% if news.images != [] %>
+            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
+         <% end %>
       </div>
       <div class="m_news_content">
         <%= news.content.html_safe %>
