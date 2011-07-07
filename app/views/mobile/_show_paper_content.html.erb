@@ -3,7 +3,7 @@
   <% news.each do |news| %>
     <div class="m_news">
       <div class="m_news_title">
-          <a href="<%= '/mobile/show_news?id='+news.id.to_s %>"><%= news.title %></a>
+          <a href="#_paper" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
       </div>
 
       <div class="m_image">
