@@ -12,8 +12,7 @@ en:
   main_page:  "Main Page"
   today_newspaper: "Today's Newspaper"
   privacy: "Privacy"
-  terms: "Terms"
-  realtime_news: "Realtime-News"
+  #realtime_news: "Realtime-News"
   login: "Login"
   logout: "Logout"
   signup: "Signup"
@@ -23,6 +22,7 @@ en:
   response: "Our Response"
   notice: "Notice"
   mobileSite: "Mobile Site"
+  terms: "Terms of service"
 
   
   #filter_news: "Filter News"
@@ -120,7 +120,7 @@ en:
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
-  All_area: "The World"  
+  All_area: "All World"  
   
   Taiwan: "Taiwan"
   TW_CN: "Taiwan & China"
@@ -145,8 +145,10 @@ en:
   HGTimesNotice: "HG-Times Notice"
   FeedbackTag: "Feedback"
 
-  Mobile: "Mobile"
+  #Mobile: "Mobile"
   #Top: "Top"
+  Motion: "Motion News"
+
   World: "World"
   Society: "Society"  
   Local: "Local"

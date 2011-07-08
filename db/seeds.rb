@@ -46,6 +46,7 @@ Tag.create(:name => 'HGTimesNotice', :parent_tag => nil)
 Tag.create(:name => 'FeedbackTag', :parent_tag => nil)
 
 #Tag.create(:name => 'Mobile', :parent_tag => nil)
+Tag.create(:name => 'Motion', :parent_tag => nil)
 Tag.create(:name => 'World', :parent_tag => nil)
 Tag.create(:name => 'Society', :parent_tag => nil)
 Tag.create(:name => 'Local', :parent_tag => nil)
@@ -54,7 +55,7 @@ Tag.create(:name => 'Politics', :parent_tag => nil)
 Tag.create(:name => 'Life', :parent_tag => nil)
 
 Tag.create(:name => 'Business', :parent_tag => nil)
-Tag.create(:name => 'Stock', :parent_tag => 'Business')
+#Tag.create(:name => 'Stock', :parent_tag => 'Business')
 
 Tag.create(:name => 'Sci_Tech' , :parent_tag => nil)
 Tag.create(:name => 'Sport', :parent_tag => nil)

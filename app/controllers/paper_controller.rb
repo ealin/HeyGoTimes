@@ -228,6 +228,13 @@ class PaperController < NewsController
     #
     counter = 0
     @newspaper_title = t(:slogan)
+    @areas.each do |area|
+      if session[:filter_area].include?(area.name)
+        @newspaper_title += (t(area.name.to_sym) + " ")
+      end
+    end
+
+
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + " ")
@@ -238,6 +245,8 @@ class PaperController < NewsController
         end
       end
     end
+
+
 
 
     #@newspaper_slogan = t :sample_paper_slogan

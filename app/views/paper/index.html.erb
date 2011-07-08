@@ -122,7 +122,9 @@
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
     </div>
-    <span id="filter_hint" title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
+    <span id="filter_hint" title ="<%= t(:tip_for_filter)%>">
+        <%= @newspaper_title.to_s %>
+    </span>
 
     <div id="page_head" >
       <%= show_page_head(:login_flag => true)  %>

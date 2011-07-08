@@ -9,8 +9,7 @@ zh_tw:
   main_page:  "主頁"
   today_newspaper: "今日報紙"
   privacy: "隱私條款"
-  terms: "使用條款"
-  realtime_news: "即時新聞編輯"
+  #realtime_news: "即時新聞編輯"
   login: "登入"
   logout: "登出"
   signup: "註冊"
@@ -18,7 +17,8 @@ zh_tw:
   report_spam: "檢舉垃圾新聞"
   response: "官方回覆"
   notice: "公告"
-  mobileSite: "Mobile Site"
+  mobileSite: "手機版本"
+  terms: "服務條款"
 
   #filter_news: "過濾新聞"
   ok: "完成"
@@ -102,7 +102,7 @@ zh_tw:
 
   feedback_hint: "感謝您對黑狗日報的意見, 發表意見就像發佈一篇新新聞一樣簡單！"
   report_spam_hint: "檢舉此篇新聞:"
-  response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中進行設定！ " 
+  response_hint: "預設只顯示您的意見與回覆,若您想要讀取所有使用者的意見, 您可至'篩選新聞'中設定區域！ " 
   notice_hint: "預設只顯示您所在地區的公告,若您想要讀取所有公告, 您可至'篩選新聞'中進行設定！ " 
   
   login_for_set_friend_filter: "您必須登入後才可以使用此功能！"
@@ -140,7 +140,8 @@ zh_tw:
   FeedbackTag: "反饋與回覆"
 
   #Top: "焦點"
-  Mobile: "手機新聞"
+  #Mobile: "手機新聞"
+  Motion: "動新聞"
   World: "全球觀察"
   Society: "社會新聞"
   Local: "在地新聞"

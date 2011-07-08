@@ -311,6 +311,11 @@
   <% @tags.each do |tag| %>
     <%# using type and name to identify each Input/Checkbox here %>
 
+    <!-- not need to show "FAQ" tag here -->
+    <% if tag.name == 'FAQ' %>
+      <% next %>
+    <% end %>
+
     <% if tag.id <= 3 %>
           <% if tag.id == 2 || tag.id == 3 %>
             <% next %>
@@ -344,6 +349,9 @@
   <% end %>
 
   <br>
+
+  <!--  don't need to show "feedback", "faq", "systemNotice" tags here!
+
   <div id="tag_grp1">
     <input type="checkbox" name ="each_tag" id="<%= @tags[1].name %>" >
        <%= t(@tags[1].name.to_sym) %>
@@ -353,7 +361,7 @@
        <%= t(@tags[2].name.to_sym) %>
     </input>
   </div>
-
+  -->
 
 </div>
 

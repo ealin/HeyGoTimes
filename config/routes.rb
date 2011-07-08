@@ -5,6 +5,7 @@ HeyGoTimes::Application.routes.draw do
   get "review/delete_news"
   get "review/delete_img_and_publish"
   get "review/publish_news"
+  get "review/change_image"
 
   get "api/new_news"
 

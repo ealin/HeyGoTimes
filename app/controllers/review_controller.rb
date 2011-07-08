@@ -7,6 +7,10 @@ class ReviewController < NewsController
 
     # todo: must check reviewer's id (prevent normal user using this function)
     #
+    if session[:logged_in] != true || session[:host_id] != 670999089
+      render  :inline => "You got no right to enter this page!"
+      return
+    end
 
     # get all news which area = Taiwan & special_flag == true
     #
@@ -15,6 +19,11 @@ class ReviewController < NewsController
           "Sport","Entertainment", "Health", "Internet","Travel","Education","Art","Special"] ;
 
     @news_for_review = News.get_all_special(areas,tags)
+    if @news_for_review.count >= 20
+      @count = 20
+    else
+      @count = @news_for_review.count
+    end
 
   end
 
@@ -54,14 +63,14 @@ class ReviewController < NewsController
 
     if(news != nil)
       images = Image.find_by_news_id(news_id)
-      images.delete
-
-      news.images = []
-
-
+      if(images != nil)
+        images.delete
+        news.images = []
+      end
       news.special_flag= false
       news.save
       response_str = "OK"
+
     end
 
     respond_to do |format|
@@ -94,6 +103,34 @@ class ReviewController < NewsController
 
   end
 
+
+
+
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, jump to admin_data page to change the image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  #
+  def change_image
+
+    response_str = "NG"
+    url = root_url + "admin_data/klass/image/"
+
+    news_id = Integer(params[:news_id])
+    news = News.find(news_id)
+
+    if(news != nil)
+      images = Image.find_by_news_id(news_id)
+      url += (images.id).to_s
+      url += "/edit"
+
+      response_str = url
+    end
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+
+  end
 
 
 end
