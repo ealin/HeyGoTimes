@@ -19,84 +19,115 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
-   init_filter_setting()
+    init_filter_setting()
 
 
-   # this function would use data in session, so it must be called after init_filter_setting()
-   get_paper_title_info()
-
+    # this function would use data in session, so it must be called after init_filter_setting()
+    get_paper_title_info()
 
   end
 
   def _show_paper_content
     # params:
-    # :type => latest / rank
+    # :type => latest / rank / special
     # :page => page num to fetch
 
-    session[:news_type] = params[:type]
-    @news = get_news(params[:type], params[:page])
+    if (params[:type] == 'special')
+      news = get_special_news(params[:sub_type], params[:page])
+    else
+      session[:news_type] = params[:type]
+      news = get_news(params[:type], params[:page])
+    end
 
     respond_to do |format|
-      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
+      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => news}}
     end
   end
 
   def get_news(type, page)
 
-    @user_areas = []
+    user_areas = []
     if (session[:filter_area] != nil && session[:filter_area] != "")
-      @user_areas = session[:filter_area].split("/")
+      user_areas = session[:filter_area].split("/")
     else
       # session may be empty (e.g. first time using)
       #
-      @user_areas[0] = 'All_area'
+      user_areas[0] = 'All_area'
     end
 
-    @user_tags = []
+    user_tags = []
     if (session[:filter_tags] != nil)
-      @user_tags = session[:filter_tags].split("/")
+      user_tags = session[:filter_tags].split("/")
     else
       # session may be empty (e.g. first time using)
       #
-      @user_tags[0] = 'All'
+      user_tags[0] = 'All'
     end
 
     if (session[:id] != nil)
-      @user_id = session[:id]
+      user_id = session[:id]
       if (session[:filter_friend] != nil)
-        @friend_tags = session[:filter_friend].split("/")
-        if (@friend_tags[0] == 'all')
-          @friend_type = :none
-        elsif (@friend_tags[0] == 'mine' && @friend_tags[1] == 'friend')
-          @friend_type = :both
-        elsif (@friend_tags[0] == 'friend')
-          @friend_type = :friend
+        friend_tags = session[:filter_friend].split("/")
+        if (friend_tags[0] == 'all')
+          friend_type = :none
+        elsif (friend_tags[0] == 'mine' && friend_tags[1] == 'friend')
+          friend_type = :both
+        elsif (friend_tags[0] == 'friend')
+          friend_type = :friend
         else
-          @friend_type = :mine
+          friend_type = :mine
         end
       else
         # session may be empty (e.g. first time using)
         #
-        @friend_type = :none
+        friend_type = :none
       end
     else
-      @friend_type = :none
+      user_id = nil
+      friend_type = :none
     end
 
     if (News.count > 0)
-      if (@user_tags[0] == 'All')
-        @news = News.get_all(type, @friend_type, @user_id)
+      if (user_tags[0] == 'All')
+        news = News.get_all(type, friend_type, user_id)
       else
-        @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
+        news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      if(@news.count > 0)
-        @news = @news.paginate :page => page, :per_page => 3
+      if(news.count > 0)
+        news = news.paginate :page => page, :per_page => 5
       end
     end
 
-    return @news
+    return news
 
+  end
+
+  def get_special_news(type, page)
+    if (type == 'notice')
+      tags = ["HGTimesNotice"]
+      areas = ["Taiwan"]
+      friend_type = :none
+      user_id = nil
+    elsif (type == 'faq')
+      tags = ["FAQ"]
+      areas = ["Taiwan"]
+      friend_type = :none
+      user_id = nil
+    elsif (type == 'feedback')
+      tags = ["FeedbackTag"]
+      areas = ["All_area"]
+      friend_type = :mine
+      user_id = session[:id]
+    end
+
+    news = News.get_all_special(areas, tags, friend_type, user_id)
+
+    if(news.count > 0)
+      news = news.paginate :page => page, :per_page => 5
+    end
+
+    return news
   end
 
   #-----------------------------------------------------------------------------------

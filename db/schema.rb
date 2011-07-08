@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.string   "area_string"
     t.text     "content"
     t.integer  "user_id"
+    t.integer  "area_id"
     t.integer  "rank"
     t.text     "hard_copy"
     t.boolean  "special_flag", :default => false
