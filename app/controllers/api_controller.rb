@@ -86,6 +86,7 @@ class ApiController < ApplicationController
 
           @image = Image.create(@data[:image])
           @image.news = @news
+          @image.url = @data[:image]
           @image.save
 
           @news.tags = []
@@ -109,7 +110,7 @@ class ApiController < ApplicationController
     end
 
 
-    response_str = "title=" + @data[:title] + "  text=" + @data[:text] + "  image url="+  @data[:image]
+    response_str = "OK!"  #title=" + @data[:title] + "  text=" + @data[:text] + "  image url="+  @data[:image]
 
     respond_to do |format|
       format.html { render  :inline => response_str }

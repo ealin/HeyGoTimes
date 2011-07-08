@@ -32,3 +32,6 @@ todo: report-dialog ==> 所有的EDITBOX應該對齊
 
 todo: 目前slogan只有顯示tag, 應該也要顯示area
 
+todo: load-more多次會load不到新聞
+
+
