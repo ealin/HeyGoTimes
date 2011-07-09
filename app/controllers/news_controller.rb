@@ -292,6 +292,7 @@ class NewsController < ApplicationController
     end
 	if (@news.special_flag == false)
 		news_rank_action(@user, @news, :report)
+	end
 
     respond_to do |format|
       if @news.save
