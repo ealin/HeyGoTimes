@@ -3,7 +3,7 @@
   <% news.each do |news| %>
     <div class="m_news">
       <div class="m_news_title">
-          <a href="javascript:void(null)" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
+          <a href="#m_news_page" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
       </div>
 
       <div class="m_image">

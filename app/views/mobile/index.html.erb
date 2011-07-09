@@ -23,10 +23,8 @@
       // ask session data from server
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
-        if (like == 1)
-          alert(json.name+' like this news, total: '+json.total);
-        else
-          alert(json.name+' unlike this news, total: '+json.total);
+        $('#like_count'+news).html(json.like_count);
+        $('#unlike_count'+news).html(json.unlike_count);
 
       }  );
 
@@ -34,7 +32,7 @@
 
     function expand_comment(news_id)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='1' width='320'></fb:comments>";
+      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='320'></fb:comments>";
 
       $('#expand_comment'+news_id).html("");
       $('#fb_comment'+news_id).append(comment_str);
@@ -45,6 +43,7 @@
       var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
       $.get(url, function(response) {
         $("#m_paperContent").append(response);
+        // default not showing comment
         //FB.XFBML.parse(document.getElementById('m_comments'));
       });
     }
@@ -52,14 +51,16 @@
     function changePaperType(type) {
       var url = '/mobile/_show_paper_content?type='+type+'&page=1';
       $("#m_paperContent").load(url);
-      FB.XFBML.parse(document.getElementById('comments'));
+      // default not showing comment
+      //FB.XFBML.parse(document.getElementById('comments'));
     }
 
     function showNews(id){
       var url = '/mobile/show_news?id='+id;
-      iui.showPageByHref(url, "", "GET", "", function(){
-        FB.XFBML.parse(document.getElementById('comments'));
-      });
+      //iui.showPageByHref(url, "", "GET", "", function(){
+      //  FB.XFBML.parse(document.getElementById('comments'));
+      //});
+      $("#m_news_main").load(url);
     }
 
     $(document).ready(function() {
@@ -117,175 +118,163 @@
 <script src="http://connect.facebook.net/zh_TW/all.js"></script>
 
 <script>
-    FB.init({
-        appId  : "<%= Facebooker2.app_id %>",
-        status : true, // check login status
-        cookie : true, // enable cookies to allow the server to access the session
-        xfbml  : true  // parse XFBML
-    });
+  FB.init({
+      appId  : "<%= Facebooker2.app_id %>",
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml  : true  // parse XFBML
+  });
 
 
-    FB.getLoginStatus(function(response)
+  FB.getLoginStatus(function(response)
+  {
+    // must reload the page when login-status is different between facebook and "facebooker2"
+    //
+    logging_status_in_server = "<%= session[:logged_in] %>"
+
+
+    if (response.session)
     {
-      // must reload the page when login-status is different between facebook and "facebooker2"
-      //
-      logging_status_in_server = "<%= session[:logged_in] %>"
-
-
-      if (response.session)
-      {
-        // logged in and connected user, someone you know
-          if(logging_status_in_server == "false")
-             window.location.replace("<%= root_url+'mobile/index/' %>") ;
-      }
-      //else {
-        // no user session available, someone you dont know
-      //}
-    });
- </script>
-
-
-   <div class="toolbar">
-      <h1 id="pageTitle"></h1>
-      <a id="backButton" class="button" href="#"></a>
-      <div align="right" style="padding:2px 0px;    ">
-      <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="32" height="32"/></a>
-      </div>
-
-   </div>
-
-    <!-- !!!!!!!!! Page - NewsPaper  -->
-
-    <ul id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
-
-    <!--div id="cmd_bar">
-      <div id="news_type" style="float:left;width:30%;">
-        <button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button>
-      </div>
-      <div id="fun_btn" style="float:right; width:50%;">
-        <div id="filter_btn" style="width:50%;float:left;">
-          <a href="#filter"><button class="whiteButton" style="width:40%;"><%= t(:m_filter) %> </button></a>
-        </div>
-        <div id="login_out_btn" style="width:50%;float:right;">
-          <% if session[:logged_in] == true %>
-            <%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %>
-          <% else %>
-            <button onclick="onLoginBtn()" style="background: #bdc7d8;"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" />Login</button>
-          <% end %>
-        </div>
-      </div>
-    </div-->
-      <div id="m_cmd_bar">
-        <div class="menu-header">
-          <ul id="menu-area" class="menu">
-            <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
-            <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
-            <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
-            <% if session[:logged_in] == true %>
-              <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
-            <% else %>
-              <li id="menu-item-fb" class="menu-item fun-btn"><a onclick="onLoginBtn()"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" /><%= t(:login) %></a></li>
-            <% end %>
-          </ul>
-        </div>
-      </div><!-- #access -->
-
-       <hr style="clear:both;">
-
-       <div id="m_paperContent">
-        <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
-       </div>
-        <div class="m_ad">
-           <%= render :partial => "m_show_ad" %>
-        </div>
-        <div align="center">
-           <button class="redButton" id="more_news" style="width:100%;font-size:14px;"><%= t(:m_more) %></button>
-        </div>
-   </ul>
+      // logged in and connected user, someone you know
+        if(logging_status_in_server == "false")
+           window.location.replace("<%= root_url+'mobile/index/' %>") ;
+    }
+    //else {
+      // no user session available, someone you dont know
+    //}
+  });
+</script>
 
 
 
-    <!-- !!!!!!!!! Page - Filter  -->
-
-   <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
-      <%= render :partial => 'mobile/m_set_filter'%>
-
-      <div align ="center" >
-         <br> <br><hr>
-         <%= render :partial => "m_show_ad" %>
-       </div>
-
-   </div>
-
-
-
-
-  <!-- friend filter selection PAGE-->
-  <div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
-    <% if session[:logged_in] == false %>
-
-      <h1> <%= t(:login_for_set_friend_filter) %> </h1>
-
-    <% else %>
-
-      <h1> <%= t(:filter_by_friend) %></h1>
-      <br>
-      <div style="font-size:14px">
-        <% if session[:filter_friend].include?("mine")  %>
-          <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
-        <% else %>
-          <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
-        <% end %>
-        <br>
-
-        <% if session[:filter_friend].include?("friend")  %>
-           <input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
-        <% else %>
-           <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
-        <% end %>
-      </div>
-
-        <div align ="center" >
-           <br> <br> <br><hr>
-           <%= render :partial => "m_show_ad" %>
-        </div>
-    <% end %>
+<div class="toolbar">
+  <h1 id="pageTitle"></h1>
+  <a id="backButton" class="button" href="#"></a>
+  <div align="right" style="padding:2px 0px;    ">
+  <a  href="#filter"><img src="/images/mobile/dog_48x40.png" width="32" height="32"/></a>
   </div>
 
+</div>
 
 
-  <!-- date filter selection PAGE-->
-  <div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
-    <h1>Select Date:</h1>
-    <% if session[:filter_date_option].include?("no_limited") %>
-       <input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
-    <% else %>
-        <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
-    <% end %>
+
+<!-- !!!!!!!!! Page - NewsPaper  -->
+<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+  <div id="m_cmd_bar">
+    <div class="menu-header">
+      <ul id="menu-area" class="menu">
+        <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
+        <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
+        <% if session[:logged_in] == true %>
+          <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
+        <% else %>
+          <li id="menu-item-fb" class="menu-item fun-btn"><a onclick="onLoginBtn()"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" /><%= t(:login) %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div><!-- #m_cmd_bar -->
+
+  <hr style="clear:both;">
+
+  <div id="m_paperContent">
+    <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
+  </div>
+  <div class="m_ad">
+    <%= render :partial => "m_show_ad" %>
+  </div>
+  <div align="center">
+    <button class="redButton" id="more_news" style="width:100%;font-size:14px;"><%= t(:m_more) %></button>
+  </div>
+</div>
+
+
+
+<div id="m_news_page">
+  <div id="m_news_main">
+  </div> <!-- m_news_main -->
+  <div class="m_ad">
+    <%= render :partial => "m_show_ad" %>
+  </div>
+</div>
+
+
+
+<!-- !!!!!!!!! Page - Filter  -->
+<div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
+  <%= render :partial => 'mobile/m_set_filter'%>
+
+  <div align ="center" >
+     <br> <br><hr>
+     <%= render :partial => "m_show_ad" %>
+   </div>
+</div>
+
+
+
+<!-- friend filter selection PAGE-->
+<div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
+  <% if session[:logged_in] == false %>
+
+    <h1> <%= t(:login_for_set_friend_filter) %> </h1>
+
+  <% else %>
+
+    <h1> <%= t(:filter_by_friend) %></h1>
     <br>
+    <div style="font-size:14px">
+      <% if session[:filter_friend].include?("mine")  %>
+        <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
+      <% else %>
+        <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+      <% end %>
+      <br>
 
-    <% if session[:filter_date_option].include?("yesterday") %>
-       <input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
-    <% else %>
-        <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
-    <% end %>
-    <br>
-
-    <% if session[:filter_date_option].include?("today") %>
-       <input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
-    <% else %>
-        <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
-    <% end %>
-
-    <div align ="center" >
-       <br> <br> <br><hr>
-       <%= render :partial => "m_show_ad" %>
+      <% if session[:filter_friend].include?("friend")  %>
+         <input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
+      <% else %>
+         <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
+      <% end %>
     </div>
 
+      <div align ="center" >
+         <br> <br> <br><hr>
+         <%= render :partial => "m_show_ad" %>
+      </div>
+  <% end %>
+</div>
 
+
+
+<!-- date filter selection PAGE-->
+<div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
+  <h1>Select Date:</h1>
+  <% if session[:filter_date_option].include?("no_limited") %>
+     <input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
+  <% else %>
+      <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+  <% end %>
+  <br>
+
+  <% if session[:filter_date_option].include?("yesterday") %>
+     <input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
+  <% else %>
+      <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+  <% end %>
+  <br>
+
+  <% if session[:filter_date_option].include?("today") %>
+     <input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
+  <% else %>
+      <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+  <% end %>
+
+  <div align ="center" >
+     <br> <br> <br><hr>
+     <%= render :partial => "m_show_ad" %>
   </div>
 
-
+</div>
 
 
 
