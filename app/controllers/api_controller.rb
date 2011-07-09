@@ -82,7 +82,7 @@ class ApiController < ApplicationController
           @news.title = @data[:title]
           @news.content = @data[:text]
           @news.url = params[:url]
-          @news.special_flag=false 
+          @news.special_flag=true 
 
           @image = Image.create(@data[:image])
           @image.news = @news
