@@ -1,0 +1,52 @@
+body{background:white;margin-top:0 !important;}
+ #yhtw_masthead{_height:1px;color:black; font-size:12px;font-family:"MingLiU","PMingLiU";margin:0;padding:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #yhtw_masthead { 	/*min-width-hack*/ 	behavior:expression(	this.style.width =  (document.documentElement.offsetWidth<750)?"750px":"auto"); 	min-width:750px; }
+ #yhtw_masthead a{color:#003399; text-decoration:none;}
+ #yhtw_masthead a:hover{text-decoration:underline;}
+ #yhtw_masthead .mhlogo{display:inline;float:left;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #yhtw_masthead .mhlogo img{height:50px !important;margin:12px 3px 0 0;padding:0;background:white;border:solid 0 white;}
+ #yhtw_masthead .mhinfo{background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;float:left;width:216px;margin:0;padding:12px 0 0 0;}
+ #yhtw_masthead .mhinfo p{margin:0;padding:2px 4px;border-left:solid 1px #CECECE;border-right:solid 1px #CECECE;}
+ #yhtw_masthead .mhuser{float:left;padding:14px 0 3px 0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;}
+ #yhtw_masthead .mhuser div{border-left:solid 1px #CECECE;padding:0 0 0 5px;;}
+ #yhtw_masthead .mhuser b{display:block;margin:2px 2px 1px 0;font-weight:normal;color:black !important;}
+ #yhtw_masthead .mhuser div b a{font-weight:bold;color:#0000bb !important;}
+ #yhtw_masthead .mhuser q{quotes:"" "";display:block;margin:4px 2px 1px 0;font-weight:normal;color:black;}
+ #yhtw_masthead .mhuser q a{color:#0000bb;}
+ #yhtw_masthead .mhuser p{margin:0;padding:2px 4px 2px 0;font-family:"PMing-LiU","Ming-LiU" !important}
+ #yhtw_masthead .mhuser a{color:#0000bb;}
+
+ #yhtw_masthead .mhsch{background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_paddle_bg.gif) repeat-x;float:right;width:222px;float:right;}
+ #yhtw_masthead .mhsch p{margin:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_bg.gif) repeat-x;padding:12px 6px 0 0;text-align:right;_height:40px;min-height:40px; font-size:13px;}
+ #yhtw_masthead .mhsch form{margin:0 !important;padding:0;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_paddle.gif) no-repeat;padding:0 0 0 42px;}
+ #yhtw_masthead .mhsch form p{margin:0;padding:0;_height:22px;background:transparent;text-align:left;font-size:13px;}
+ #yhtw_masthead .mhsch form p .t{display:block;width:94px;float:left;margin:0 0 3px 0;}
+ #yhtw_masthead .mhsch form p .s{cursor:hand;cursor:pointer;display:block;width:79px;margin:0 0 3px 0;float:right;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_submit_bg_2.gif) left bottom no-repeat;}
+ #yhtw_masthead .mhsch form p .t input{font-family:"Arial","Verdana","PMingLiU";width:92px;border:solid 1px #999999;margin:2px 0 5px 0;font-size:12px;padding:2px;}
+ #yhtw_masthead[id] .mhsch form p .t input{margin-top:4px;}
+ #yhtw_masthead .mhsch form p .s input{font-family:"Arial","Verdana","PMingLiU";cursor:hand;cursor:pointer;font-size:12px;margin:2px 0 5px 0;width:79px;_height:18px;background:url(http://tw.yimg.com/i/tw/hp/masthead/yhtw_mh_submit_bg_1.gif) left top no-repeat;;border:solid 0 white;padding:2px 0 0 0;_padding:5px 0 0 0;}
+ #yhtw_masthead .mhsch form p .s:hover input{color:blue;}
+ #yhtw_masthead .mhsch form div {white-space:nowrap;_position:relative;left:6px;}
+ #yhtw_masthead .mhsch form div a{_padding-top/**/:4px;_height/**/:1.2em;}
+ #yhtw_masthead .mhsch b{font-weight:normal;padding:0 1px 0 1px;font-size:15px;color:#aaa;} /** new **/
+ #yhtw_masthead .mhsch form p:after{content:url(http://tw.yimg.com/i/tw/hp/masthead/transparent.gif);display:block;clear:both;height:1px;width:1px;}
+ #yhtw_masthead:after{content:url(http://tw.yimg.com/i/tw/hp/masthead/transparent.gif);display:block;clear:both;height:1px;width:1px;}
+
+#yhtw_mastfoot{clear:both;border-top:1px solid #c7c7c7;color:#777;font-size:12px;font-family:"MingLiU","PMingLiU"; font-family/**/:/**/"Arial","MingLiU","PMingLiU";padding:5px 0;text-align:left;}
+#yhtw_mastfoot { 	/*min-width-hack*/ 	behavior:expression(	this.style.width =  (document.documentElement.offsetWidth<720)?"720px":"auto"); 	min-width:720px; }
+#yhtw_mastfoot a{color:#003399; text-decoration:none;}
+#yhtw_mastfoot a:hover{text-decoration:underline;}
+#yhtw_mastfoot .cp{float:left;}
+#yhtw_mastfoot .ln{float:right;}
+#yhtw_mastfoot .ln a
+{
+	padding:0 0 0 5px;padding/**/:/**/0 1px 0 5px;border-left:1px solid #aaa;
+	behavior:expression(
+	this.runtimeStyle.behavior =  this.className =  (this.parentNode.all.tags(this.tagName)[0] == this)?"first-child":"null"
+	);
+}
+#yhtw_mastfoot .ln a:first-child{border-left:0;}
+#yhtw_mastfoot .ln a.first-child{border-left:0;}
+
+#yhtw_mastfoot .cb{clear:both;}
+#yhtw_mastfoot .other{clear:both;margin-top:1em;}

@@ -1,0 +1,116 @@
+<script>
+
+  function delete_news(news_id)
+  {
+        data = "news_id=" + news_id
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/delete_news",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/review/tw");
+             }
+         });
+
+  }
+
+
+  function delete_img_and_publish(news_id)
+  {
+      data = "news_id=" + news_id
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/delete_img_and_publish",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/review/tw");
+             }
+         });
+  }
+
+
+  function publish_news(news_id)
+  {
+      data = "news_id=" + news_id
+
+       // send to server
+        $.ajax(
+        {
+            type: "GET",
+            url:"/review/publish_news",
+            data: data,
+            success: function(html)
+            {
+                // redirect to main page in order to redraw the news by new filter!
+                 window.location.replace("/review/tw");
+            }
+        });
+  }
+
+
+  function change_image(news_id)
+  {
+      data = "news_id=" + news_id
+
+       // send to server
+        $.ajax(
+        {
+            type: "GET",
+            url:"/review/change_image",
+            data: data,
+            success: function(html)
+            {
+                // redirect to main page in order to redraw the news by new filter!
+                 //window.location.replace(html);
+                window.open(html,'修改此新聞的照片','alwaysRaised=yes') ;
+            }
+        });
+  }
+
+</script>
+
+
+
+<h1>Delay Live Review</h1>
+
+<br><br>
+<% for i in (1..(20)) %>
+
+    <p style="font-size:14px;">
+      <% if @count-i < 0%>
+          <% break %>
+      <% end %>
+
+      #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
+      <br>
+      <%= @news_for_review[@count-i].content %>
+      <br>
+      <% if @news_for_review[@count-i].images != [] %>
+        <img src="<%= @news_for_review[@count-i].images[0].url %>"/>
+      <% end %>
+
+      <a href="<%= @news_for_review[@count-i].url %>">新聞連結</a>
+      <br>
+
+      <!-- 3 buttons : 1.delete this news   2.delete image    3. report this news -->
+      <button style="font-size:14px;color:red;" onclick="delete_news(<%= @news_for_review[@count-i].id %>);">刪除此新聞</button> &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="delete_img_and_publish(<%= @news_for_review[@count-i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="publish_news(<%= @news_for_review[@count-i].id %>) ;">發佈此新聞</button>
+
+
+    </p>
+    <hr>
+
+
+<% end %>
