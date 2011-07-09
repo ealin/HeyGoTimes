@@ -84,25 +84,29 @@
 <h1>Delay Live Review</h1>
 
 <br><br>
-<% for i in (0..(@count-1)) %>
-    <p style="font-size:14px;">
+<% for i in (1..(20)) %>
 
-      #<%= @news_for_review[i].id %>: <%= @news_for_review[i].title %>
-      <br>
-      <%= @news_for_review[i].content %>
-      <br>
-      <% if @news_for_review[i].images != [] %>
-        <img src="<%= @news_for_review[i].images[0].url %>"/>
+    <p style="font-size:14px;">
+      <% if @count-i < 0%>
+          <% break %>
       <% end %>
 
-      <a href="<%= @news_for_review[i].url %>">新聞連結</a>
+      #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
+      <br>
+      <%= @news_for_review[@count-i].content %>
+      <br>
+      <% if @news_for_review[@count-i].images != [] %>
+        <img src="<%= @news_for_review[@count-i].images[0].url %>"/>
+      <% end %>
+
+      <a href="<%= @news_for_review[@count-i].url %>">新聞連結</a>
       <br>
 
       <!-- 3 buttons : 1.delete this news   2.delete image    3. report this news -->
-      <button style="font-size:14px;color:red;" onclick="delete_news(<%= @news_for_review[i].id %>);">刪除此新聞</button> &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="change_image(<%= @news_for_review[i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="delete_img_and_publish(<%= @news_for_review[i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="publish_news(<%= @news_for_review[i].id %>) ;">發佈此新聞</button>
+      <button style="font-size:14px;color:red;" onclick="delete_news(<%= @news_for_review[@count-i].id %>);">刪除此新聞</button> &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="delete_img_and_publish(<%= @news_for_review[@count-i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
+      <button style="font-size:14px;color:red;" onclick="publish_news(<%= @news_for_review[@count-i].id %>) ;">發佈此新聞</button>
 
 
     </p>
