@@ -290,8 +290,8 @@ class NewsController < ApplicationController
         @news.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
       end
     end
-
-    news_rank_action(@user, @news, :report)
+	if (@news.special_flag == false)
+		news_rank_action(@user, @news, :report)
 
     respond_to do |format|
       if @news.save
