@@ -271,7 +271,7 @@ class NewsController < ApplicationController
         @news.tags << tag
         counter += 1
 
-        if(tag.name == "FeedbackTag" || tag.name == "HGTimesNotice")
+        if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
         end
       end
