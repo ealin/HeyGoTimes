@@ -2,7 +2,9 @@
   <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
-  <meta property="og:image" content="<%= @news.images[0].url.to_s %> "/>
+  <% if (@news.images[0] != nil) %>
+  <meta property="og:image" content="<%= @news.images[0].url %> "/>
+  <% end %>
 
   <script type="text/javascript">
     function getSrc(obj)
@@ -62,7 +64,9 @@
         <% else %>
           <%# if @news.images[0].url != "" %>
             <div class="image">
+            <% if (@news.images[0] != nil) %>
              <img src="<%=@news.images[0].url%>" alt="image">
+            <% end %>
             </div>
           <%# end %>
 

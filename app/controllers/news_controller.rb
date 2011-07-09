@@ -271,7 +271,7 @@ class NewsController < ApplicationController
         @news.tags << tag
         counter += 1
 
-        if(tag.name == "FeedbackTag" || tag.name == "HGTimesNotice")
+        if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
         end
       end
@@ -290,8 +290,9 @@ class NewsController < ApplicationController
         @news.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
       end
     end
-
-    news_rank_action(@user, @news, :report)
+	if (@news.special_flag == false)
+		news_rank_action(@user, @news, :report)
+	end
 
     respond_to do |format|
       if @news.save
