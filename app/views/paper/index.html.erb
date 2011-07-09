@@ -24,7 +24,7 @@
 
     function expand_comment(news_id)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='1' width='650'></fb:comments>";
+      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='650'></fb:comments>";
 
       $('#expand_comment'+news_id).html("");
       $('#fb_comment'+news_id).append(comment_str);
@@ -39,7 +39,8 @@
       t.timeout = setTimeout(function () {
         $.get(url, function(response) {
           $("#paperContent").append(response);
-          FB.XFBML.parse(document.getElementById('comments'));
+          // default not showing comment
+          // FB.XFBML.parse(document.getElementById('comments'));
         });
         preview.html('');
       }, 2000);
@@ -48,7 +49,8 @@
     function changePaperType(type, subType) {
       var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
       $("#paperContent").fadeOut('slow').load(url);
-      FB.XFBML.parse(document.getElementById('comments'));
+      // default not showing comment
+      // FB.XFBML.parse(document.getElementById('comments'));
       $("#paperContent").fadeIn('slow');
     }
 

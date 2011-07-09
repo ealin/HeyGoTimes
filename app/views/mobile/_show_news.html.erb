@@ -1,57 +1,54 @@
-
-    <div id="m_content">
-      <div class="m_news">
-        <% if @news.url != "" %>
-          <div class="news_frame" style="width: 100%;">
-            <% # TODO: use @paper_width %>
-              <% if (@news.url.include?'youtu') %>
-                <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
-                <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
-              <% else %>
-                <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
-                <iframe id="news_frame" width="100%" src="<%= url %>">
-                  Your browser can't display IFRAMEs
-                </iframe>
-              <% end %>
-          </div>
-        <% else %>
-          <%# if @news.images[0].url != "" %>
-            <div class="m_image">
-             <img src="<%=@news.images[0].url%>" alt="image">
-            </div>
-          <%# end %>
-
-          <div class="m_news_content">
-            <%= @news.content.html_safe %>
-          </div>
-        <% end %>
-        <div style="clear: both;"></div>
-      </div> <!-- news -->
-      <div class="m_news_comments">
-        <div class="m_comment_title"><%= t(:comments)%></div>
-        <div class="m_button_group"></div>
-        <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
-          <div id="fb-root"></div>
-          <script>
-            window.fbAsyncInit = function() {
-              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-                       xfbml: true});
-            };
-            (function() {
-              var e = document.createElement('script'); e.async = true;
-
-              // Todo: we need to check the locale!!!!!!!!!!!!
-              //
-              e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
-
-              document.getElementById('fb-root').appendChild(e);
-            }());
-          </script>
-          <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="1" width="320"></fb:comments>
-          <div style="clear: both;"></div>
-        </div> <!-- fb_comment -->
-      </div> <!-- comments -->
+<button><a target="_webapp" href="#m_news_comments" style="text-decoration: none;"><img src="/images/arrow_down.png" alt=""/><%= t(:m_to_comment) %></a></button>
+<% if @news.url != "" %>
+  <div class="news_frame" style="width: 100%;">
+    <% # TODO: use @paper_width %>
+      <% if (@news.url.include?'youtu') %>
+        <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
+        <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+      <% else %>
+        <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
+        <iframe id="news_frame" width="100%" src="<%= url %>">
+          Your browser can't display IFRAMEs
+        </iframe>
+      <% end %>
+  </div>
+<% else %>
+  <%# if @news.images[0].url != "" %>
+    <div class="m_image">
+     <img src="<%=@news.images[0].url%>" alt="image">
     </div>
+  <%# end %>
+
+  <div class="m_news_content">
+    <%= @news.content.html_safe %>
+  </div>
+<% end %>
+<div style="clear: both;"></div>
+
+<div id="m_news_comments">
+  <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><button onclick="iui.goBack();"><img src="/images/arrow_left.png" alt=""/><%= t(:m_prev) %></button></span></div>
+  <div class="m_button_group"></div>
+  <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                 xfbml: true});
+      };
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+
+        // Todo: we need to check the locale!!!!!!!!!!!!
+        //
+        e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    </script>
+    <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="320"></fb:comments>
+    <div style="clear: both;"></div>
+  </div> <!-- fb_comment -->
+</div> <!-- comments -->
 
 
 
