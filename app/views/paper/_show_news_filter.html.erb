@@ -276,7 +276,7 @@
   <select id="area_filter"  multiple="multiple" >
 
         <% @areas.each do |area| %>
-           <% if session[:filter_area].include?(area.name) %>
+           <% if session[:filter_area]!=nil && session[:filter_area].include?(area.name) %>
               <% if area.parent_area != nil %>
                   <option  id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'>
                       <%= "        " + t(area.name.to_sym)  %></option>
