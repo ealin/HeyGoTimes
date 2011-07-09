@@ -50,55 +50,6 @@
       }
 
   }
-
-
-  function show_feedback_list()
-  {
-      alert("<%= t(:response_hint) %>") ;
-
-      var data = "tag_filter=FeedbackTag/&friend_filter=mine/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=" ;
-
-      // send to server
-      $.ajax(
-      {
-          type: "GET",
-          url:"/paper/set_filter_setting",
-          data: data,
-          success: function(html)
-          {
-              // redirect to main page in order to redraw the news by new filter!
-               window.location.replace("/");
-          }
-      });
-
-      return false ;
-
-  }
-
-  function show_notice_list()
-  {
-      alert("<%= t(:notice_hint) %>") ;
-
-      // TODO: 必須判斷user的locale, 據此設定area filter
-      var data = "tag_filter=HGTimesNotice/&friend_filter=/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=Taiwan" ;
-
-      // send to server
-      $.ajax(
-      {
-          type: "GET",
-          url:"/paper/set_filter_setting",
-          data: data,
-          success: function(html)
-          {
-              // redirect to main page in order to redraw the news by new filter!
-               window.location.replace("/");
-          }
-      });
-
-      return false ;
-
-  }
-
 </script>
 
 
@@ -109,26 +60,32 @@
 HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 
-<%= link_to 'FAQ',{:controller => 'faq'},{:title => 'Show FAQ'}%>  &nbsp;
-<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%> &nbsp;
-<%= link_to t(:terms),{:controller => 'terms_of_service'},{:title => '使用條款'}%>   &nbsp;
+<%# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %>
+<% # FAQ功能就是一個新聞頁面 (it's a tag - "FAQ") %>
+<%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
+&nbsp;
+<a id='show_faq' href='#'><%= t(:FAQ) %></a>
+&nbsp;
 
-<%# ~~~~~~~~~~~To do ~~~~~~~~~~~~~~~~~~ %>
+<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>  &nbsp;
+<%= link_to t(:terms),{:controller => 'terms_of_service'}%>   &nbsp;
+
+<%# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %>
 <% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
-<% # [KO!]t0-do: 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
+<% # 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
  &nbsp;
  <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog(0,' ')"><%= t(:feedback) %></a>
 
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
  &nbsp;
- <a href='#'  onclick="show_feedback_list()"><%= t(:response) %></a>
+ <a id='show_feedback' href='#'><%= t(:response) %></a>
 
 
 
 &nbsp;
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
-<a href='#'  onclick="show_notice_list()"><%= t(:notice) %></a>
+<a id='show_notice' href='#'><%= t(:notice) %></a>
 
 
 

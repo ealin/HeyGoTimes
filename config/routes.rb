@@ -1,6 +1,14 @@
 HeyGoTimes::Application.routes.draw do
 
 
+  get "review/tw"
+  get "review/delete_news"
+  get "review/delete_img_and_publish"
+  get "review/publish_news"
+  get "review/change_image"
+
+  get "api/new_news"
+
   get "mobile/index"
 
   #get "real_time_news/report"
@@ -77,6 +85,7 @@ HeyGoTimes::Application.routes.draw do
   resources :mobile do
     get 'index', :on => :collection
     get '_show_paper_content', :on => :collection
+    get 'show_news', :on => :collection
   end
 
   #get "main_page/index"

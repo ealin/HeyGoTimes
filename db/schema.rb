@@ -68,13 +68,15 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.integer  "user_id"
     t.integer  "area_id"
     t.integer  "rank"
-    t.string   "hard_copy"
+    t.text     "hard_copy"
+    t.boolean  "special_flag", :default => false
+    t.boolean  "mobile_flag",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "news_areas", :force => true do |t|
-    t.string  "news_id"
+    t.integer "news_id"
     t.integer "area_id"
   end
 

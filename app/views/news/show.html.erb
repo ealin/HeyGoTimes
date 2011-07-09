@@ -48,11 +48,16 @@
       <div class="news">
         <% if @news.url != "" %>
           <a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a>
-          <div id="news_frame">
+          <div>
             <% # TODO: use @paper_width %>
-              <iframe id="news_frame" height="900" width="700" src="<%= @news.url %>">
-                 Your browser can't display IFRAMEs
-              </iframe>
+              <% if (@news.url.include?'youtu') %>
+                <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
+                <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+              <% else %>
+                <iframe id="news_frame" width="700" height="900" src="<%= @news.url %>">
+                  Your browser can't display IFRAMEs
+                </iframe>
+              <% end %>
           </div>
         <% else %>
           <%# if @news.images[0].url != "" %>
@@ -67,6 +72,10 @@
         <% end %>
         <div style="clear: both;"></div>
       </div> <!-- news -->
+      <!-- Show functional buttons: Report_this_news-->
+      <div id="functionalButton">
+        <%= render :partial => 'paper/show_fun_buttons' %>
+      </div>
       <div class="comments">
         <div class="comment_title"><%= t(:comments)%></div>
         <div class="button_group"></div>

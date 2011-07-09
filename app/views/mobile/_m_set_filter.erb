@@ -48,6 +48,8 @@
             if($('option')[i].selected == true)
             {
                 area_data += ($('option')[i].id + "/")
+                if($('option')[i].id == "All_area" )
+                    break ;
             }
          }
 
@@ -186,7 +188,7 @@
 <h2>Select Tags:</h2>
 <select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @tags.each do |tag| %>
-     <% if tag.id == 2 || tag.id == 3 %>
+     <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' %>
           <% next %>
      <% end %>
 
@@ -205,6 +207,7 @@
 <h2> <%= t(:m_setting_list) %> </h2>
 <ul>
   <li><a href="#select_friend" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_friend) %> </a></li>
+
   <li><a href="#select_date" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_date) %> </a></li>
 
 <hr>

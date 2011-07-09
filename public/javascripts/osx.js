@@ -86,6 +86,8 @@ jQuery(function ($) {
                                           if(selector.options[i].selected)
                                           {
                                             document.forms[0].elements[7].value += (selector.options[i].id + '/') ;
+                                            if(selector.options[i].id == "All_area")
+                                                break ;
                                           }
                                         }
                                     }

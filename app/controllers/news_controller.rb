@@ -25,7 +25,7 @@ class NewsController < ApplicationController
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
 
-    if (current_facebook_user != nil)
+    if (current_facebook_user != nil && session[:id] != nil)
       @user = User.find(session[:id])
       if (!@user.watches.include?(@news))
         @news.watches.push(@user)
@@ -85,28 +85,40 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
+    require 'open-uri'
+    require 'nokogiri'
+
     @data = {}
 
     if (params[:url] != nil)
 
       # Check URL existence
-      if (params[:url] != nil)
+      #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
           @data['ret'] = 'url exist'
         end
-      end
+      #end
 
       # Parse data
       if (@data['ret'] != 'url exist')
-        require 'nokogiri'
-        require 'open-uri'
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-        @url = 'http://developers.facebook.com/tools/lint/?url=' + params[:url]
-        @next = ''
-        @doc = Nokogiri::HTML(open(@url))
+        url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+        next_element = ''
+        title = ''
+        image_url = ''
+        text = ''
+
+        begin
+          stream = open(url)
+        rescue
+          # try again
+          stream = open(url)
+        end
+
+        doc = Nokogiri::HTML(stream)
 
         #@error = @doc.search('lint > lint_error')
         #if (@error != nil)
@@ -114,35 +126,35 @@ class NewsController < ApplicationController
         #end
 
         # @body = @doc.at_css('body').text
-        @doc.search('h2 > div.pam', 'td').each do |data|
+        doc.search('h2 > div.pam', 'td').each do |data|
           # puts data.content
 
           if (data.content == 'Description')
-            @next = :content
+            next_element = :content
             next
           elsif (data.content == 'Title')
-            @next = :title
+            next_element = :title
             next
           elsif (data.content == 'Image')
-            @next = :image
+            next_element = :image
             next
           end
 
-          if (@next == :content)
-            @text = data.content.to_s
-          elsif (@next == :image)
-            @image_url = data.search('a').first['href']
-          elsif (@next == :title)
-            @title = data.content.to_s
+          if (next_element == :content)
+            text = data.content.to_s
+          elsif (next_element == :image)
+            image_url = data.search('a').first['href']
+          elsif (next_element == :title)
+            title = data.content.to_s
             break
           end
 
-          @next = :normal
+          next_element = :normal
         end
 
-        @data['title']=@title.to_s
-        @data['image']=@image_url.to_s
-        @data['text']=@text.to_s
+        @data['title']=title.to_s
+        @data['image']=image_url.to_s
+        @data['text']=text.to_s
       end
     end
 
@@ -251,13 +263,17 @@ class NewsController < ApplicationController
     @image.news = @news
     @image.save
 
-    @news.tags = ""
+    @news.tags = []
     counter = 0
     params.each_pair do |key, value|
       if (value == 'on')
         tag = Tag.find_by_name(key)
         @news.tags << tag
         counter += 1
+
+        if(tag.name == "FeedbackTag" || tag.name == "HGTimesNotice")
+          @news.special_flag= true
+        end
       end
     end
 

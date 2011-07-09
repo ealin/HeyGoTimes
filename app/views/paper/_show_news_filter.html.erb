@@ -125,6 +125,8 @@
             if($('option')[i].selected == true)
             {
                 area_data += ($('option')[i].id + "/")
+                if($('option')[i].id == "All_area")
+                    break ;
             }
          }
 
@@ -231,6 +233,21 @@
 
   }  );
 
+
+
+
+     // checkbox of friend-filter could not work if the user is not logged in
+     //
+     function disable_friend_filter()
+     {
+         alert("<%= t(:login_for_set_friend_filter) %>") ;
+
+         $("#my_friends_news_only")[0].checked = false ;
+         $("#my_news_only")[0].checked = false ;
+
+     }
+
+
  </script>
 
 
@@ -288,11 +305,16 @@
 </div>
 
 <div class = "all_tags" align = "left" >
-  <%# !!!!!!!!!!! Todo1:  將所有tags排整齊    %>
+  <%# !!!!!!!!!!! Todo:  將所有tags排整齊    %>
   <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
 
   <% @tags.each do |tag| %>
     <%# using type and name to identify each Input/Checkbox here %>
+
+    <!-- not need to show "FAQ" tag here -->
+    <% if tag.name == 'FAQ' %>
+      <% next %>
+    <% end %>
 
     <% if tag.id <= 3 %>
           <% if tag.id == 2 || tag.id == 3 %>
@@ -327,6 +349,9 @@
   <% end %>
 
   <br>
+
+  <!--  don't need to show "feedback", "faq", "systemNotice" tags here!
+
   <div id="tag_grp1">
     <input type="checkbox" name ="each_tag" id="<%= @tags[1].name %>" >
        <%= t(@tags[1].name.to_sym) %>
@@ -336,7 +361,7 @@
        <%= t(@tags[2].name.to_sym) %>
     </input>
   </div>
-
+  -->
 
 </div>
 
@@ -351,10 +376,17 @@
   <%= t(:filter_by_friend)%>
 </div>
 <div align = "left">
-  <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>   </input>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
-
+  <% if session[:logged_in] == false %>
+      <input type="checkbox" id="my_news_only" name="friend_filter" onClick="disable_friend_filter()" >
+        <%= t(:my_news_only)%>   </input>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" id="my_friends_news_only" name="friend_filter" onClick="disable_friend_filter()">
+        <%= t(:my_friends_news_only)%>  <br> </input>
+  <% else %>
+     <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>   </input>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+     <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  <br> </input>
+  <% end %>
 </div>
 <hr>
 

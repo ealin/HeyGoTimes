@@ -19,101 +19,115 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
-    if (session[:logged_in] == true)
-      #get_friends(session[:id])
-    end
-
-=begin
-    # Ealin: not necessary for new-spec.
-    #check_followed()   #一開始就要判斷目前user是否有訂閱這份報紙
-    #set_newspaper_size()
-
-    # keep all filters in session
-    #
-    #session[:filter_tags] = "All"  or "Sport/NBA/"
-    #session[:filter_date] ="1971-11-12"   # "1971-11-12" means no filter for date
-    #session[:filter_date_option] ="yesterday"   # possible value= "no_limited","today","yesterday","selected_date"
-    #session[:filter_friend] = "all"       # possible filters are: "all", "mine", "friend"
-    #session[:filter_area]
-=end
-   init_filter_setting()
+    init_filter_setting()
 
 
-   # this function would use data in session, so it must be called after init_filter_setting()
-   get_paper_title_info()
-
+    # this function would use data in session, so it must be called after init_filter_setting()
+    get_paper_title_info()
 
   end
 
   def _show_paper_content
     # params:
-    # :type => latest / rank
+    # :type => latest / rank / special
     # :page => page num to fetch
 
-    session[:news_type] = params[:type]
-    @news = get_news(params[:type], params[:page])
+    if (params[:type] == 'special')
+      news = get_special_news(params[:sub_type], params[:page])
+    else
+      session[:news_type] = params[:type]
+      news = get_news(params[:type], params[:page])
+    end
 
     respond_to do |format|
-      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => @news}}
+      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => news}}
     end
   end
 
   def get_news(type, page)
 
-    @user_areas = []
+    user_areas = []
     if (session[:filter_area] != nil && session[:filter_area] != "")
-      @user_areas = session[:filter_area].split("/")
+      user_areas = session[:filter_area].split("/")
     else
       # session may be empty (e.g. first time using)
       #
-      @user_areas[0] = 'All'
+      user_areas[0] = 'All_area'
     end
 
-    @user_tags = []
+    user_tags = []
     if (session[:filter_tags] != nil)
-      @user_tags = session[:filter_tags].split("/")
+      user_tags = session[:filter_tags].split("/")
     else
       # session may be empty (e.g. first time using)
       #
-      @user_tags[0] = 'All'
+      user_tags[0] = 'All'
     end
 
     if (session[:id] != nil)
-      @user_id = session[:id]
+      user_id = session[:id]
       if (session[:filter_friend] != nil)
-        @friend_tags = session[:filter_friend].split("/")
-        if (@friend_tags[0] == 'all')
-          @friend_type = :none
-        elsif (@friend_tags[0] == 'mine' && @friend_tags[1] == 'friend')
-          @friend_type = :both
-        elsif (@friend_tags[0] == 'friend')
-          @friend_type = :friend
+        friend_tags = session[:filter_friend].split("/")
+        if (friend_tags[0] == 'all')
+          friend_type = :none
+        elsif (friend_tags[0] == 'mine' && friend_tags[1] == 'friend')
+          friend_type = :both
+        elsif (friend_tags[0] == 'friend')
+          friend_type = :friend
         else
-          @friend_type = :mine
+          friend_type = :mine
         end
       else
         # session may be empty (e.g. first time using)
         #
-        @friend_type = :none
+        friend_type = :none
       end
     else
-      @friend_type = :none
+      user_id = nil
+      friend_type = :none
     end
 
     if (News.count > 0)
-      if (@user_tags[0] == 'All')
-        @news = News.get_all(type, @friend_type, @user_id)
+      if (user_tags[0] == 'All')
+        news = News.get_all(type, friend_type, user_id)
       else
-        @news = News.find_by_tags(type, @friend_type, @user_id, @user_areas, @user_tags)
+        news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      if(@news.count > 0)
-        @news = @news.paginate :page => page, :per_page => 3
+      if(news.count > 0)
+        news = news.paginate :page => page, :per_page => 5
       end
     end
 
-    return @news
+    return news
 
+  end
+
+  def get_special_news(type, page)
+    if (type == 'notice')
+      tags = ["HGTimesNotice"]
+      areas = ["Taiwan"]
+      friend_type = :none
+      user_id = nil
+    elsif (type == 'faq')
+      tags = ["FAQ"]
+      areas = ["Taiwan"]
+      friend_type = :none
+      user_id = nil
+    elsif (type == 'feedback')
+      tags = ["FeedbackTag"]
+      areas = ["All_area"]
+      friend_type = :mine
+      user_id = session[:id]
+    end
+
+    news = News.get_all_special(areas, tags, friend_type, user_id)
+
+    if(news.count > 0)
+      news = news.paginate :page => page, :per_page => 5
+    end
+
+    return news
   end
 
   #-----------------------------------------------------------------------------------
@@ -128,7 +142,7 @@ class PaperController < NewsController
           if(I18n.locale == :en)
             session[:filter_area] = "USA/"
           else
-            session[:filter_area] = "All"
+            session[:filter_area] = "All_area"
           end
         end
 
@@ -244,7 +258,14 @@ class PaperController < NewsController
     # check filters in session ==> make all filters as news-title
     #
     counter = 0
-    @newspaper_title = "您的專屬新聞 - "
+    @newspaper_title = t(:slogan)
+    @areas.each do |area|
+      if session[:filter_area].include?(area.name)
+        @newspaper_title += (t(area.name.to_sym) + " ")
+      end
+    end
+
+
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + " ")
@@ -255,6 +276,8 @@ class PaperController < NewsController
         end
       end
     end
+
+
 
 
     #@newspaper_slogan = t :sample_paper_slogan
@@ -500,31 +523,16 @@ class PaperController < NewsController
   #
   def get_filter_session
 
+    # friend filter could not work if the user is not logged in.
+    #
+    if(session[:logged_in] == false)
+      session[:filter_friend] = "all"
+    end
 
     respond_to do |format|
       format.json { render :json => session.to_json }
     end
 
-  end
-
-  #-----------------------------------------------------------------------------------
-  # method: get_friends
-  #   - # get user friends and save to friendship table
-  #-----------------------------------------------------------------------------------
-  def get_friends(id)
-    @facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
-    @access_token = @facebook_cookies["access_token"]
-    @graph = Koala::Facebook::GraphAPI.new(@access_token)
-    @friends = @graph.get_connections("me", "friends")
-
-    @user = User.find(id)
-
-    @friends.each do |friend|
-      @friend = User.find_by_host_id(friend["id"])
-      if (@friend != nil && !@user.friends.include?(@friend))
-        @user.friends << @friend
-      end
-    end
   end
 
 end

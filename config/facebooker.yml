@@ -3,9 +3,12 @@ development:
   secret: 07d195276aa3daa06bdb9d866d40b664
   api_key: f4e5938a99557450e9855b8f8c9083dd
 
-production:
-  app_id: 102018533222077
-  secret: 4ada4e1e25a7850e8b416c08ec63baa1
-  api_key: 2319e379d48fc8942775e6b91c7249f9
 
+
+# Bench
+#
+production:
+  app_id: 232082580155289
+  secret: d379aa018768e1ce194518f1eb22812e
+  api_key: 12dae39195e3dbd01b1f9af7aaef7f49
 

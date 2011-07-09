@@ -7,7 +7,6 @@ class CreateImages < ActiveRecord::Migration
 
       #
       # 因為在 image.rb中已經定義 belongs_to : news, 所以自動會產生foreign key ==> news_id
-      # 因為在 image.rb中已經定義 belongs_to : news, 所以自動會產生foreign key ==> news_id
       #
       t.integer :news_id
 
