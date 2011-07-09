@@ -50,80 +50,6 @@
       }
 
   }
-
-
-  function show_feedback_list()
-  {
-      alert("<%= t(:response_hint) %>") ;
-
-      var data = "tag_filter=FeedbackTag/&friend_filter=mine/&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=" ;
-
-      // send to server
-      $.ajax(
-      {
-          type: "GET",
-          url:"/paper/set_filter_setting",
-          data: data,
-          success: function(html)
-          {
-              // redirect to main page in order to redraw the news by new filter!
-               window.location.replace("/");
-          }
-      });
-
-      return false ;
-
-  }
-
-  function show_notice_list()
-  {
-      alert("<%= t(:notice_hint) %>") ;
-
-      // TODO: 必須判斷user的locale, 據此設定area filter
-      var data = "tag_filter=HGTimesNotice/&friend_filter=&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=Taiwan" ;
-
-      // send to server
-      $.ajax(
-      {
-          type: "GET",
-          url:"/paper/set_filter_setting",
-          data: data,
-          success: function(html)
-          {
-              // redirect to main page in order to redraw the news by new filter!
-               window.location.replace("/");
-          }
-      });
-
-      return false ;
-
-  }
-
-
-  function show_faq_list()
-  {
-
-      // TODO: 必須判斷user的locale, 據此設定area filter
-      var data = "tag_filter=FAQ/&friend_filter=&date_filter_option=no_limited&date_filter=1971-11-12&area_filter=Taiwan/" ;
-
-      // send to server
-      $.ajax(
-      {
-          type: "GET",
-          url:"/paper/set_filter_setting",
-          data: data,
-          success: function(html)
-          {
-              // redirect to main page in order to redraw the news by new filter!
-               window.location.replace("/");
-          }
-      });
-
-      return false ;
-
-  }
-
-
 </script>
 
 
@@ -138,7 +64,7 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 <% # FAQ功能就是一個新聞頁面 (it's a tag - "FAQ") %>
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
 &nbsp;
-<a href='#'  onclick="show_faq_list()"><%= t(:FAQ) %></a>
+<a id='show_faq' href='#'><%= t(:FAQ) %></a>
 &nbsp;
 
 <%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>  &nbsp;
@@ -153,13 +79,13 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
  &nbsp;
- <a href='#'  onclick="show_feedback_list()"><%= t(:response) %></a>
+ <a id='show_feedback' href='#'><%= t(:response) %></a>
 
 
 
 &nbsp;
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
-<a href='#'  onclick="show_notice_list()"><%= t(:notice) %></a>
+<a id='show_notice' href='#'><%= t(:notice) %></a>
 
 
 

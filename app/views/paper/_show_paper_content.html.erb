@@ -27,7 +27,7 @@
     </div> <!-- news -->
 
     <div class="comments">
-      <div class="comment_title"><%= t(:comments)%><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)" onclick="expand_comment(<%= news.id %>);"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
+      <div class="comment_title" onclick="expand_comment(<%= news.id %>);"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
       <div class="button_group">
         <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
         <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>

@@ -2,11 +2,17 @@
     <div id="m_content">
       <div class="m_news">
         <% if @news.url != "" %>
-          <div class="news_frame" style="width: 320px;">
+          <div class="news_frame" style="width: 100%;">
             <% # TODO: use @paper_width %>
-              <iframe id="news_frame" width="100%" src="<%= @news.url %>">
-                 Your browser can't display IFRAMEs
-              </iframe>
+              <% if (@news.url.include?'youtu') %>
+                <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
+                <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+              <% else %>
+                <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
+                <iframe id="news_frame" width="100%" src="<%= url %>">
+                  Your browser can't display IFRAMEs
+                </iframe>
+              <% end %>
           </div>
         <% else %>
           <%# if @news.images[0].url != "" %>

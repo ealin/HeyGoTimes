@@ -31,9 +31,9 @@
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
-    function loadMore(type, pageNo) {
+    function loadMore(type, subType, pageNo) {
       var t = $("#paperContent");
-      var url = '/paper/_show_paper_content?type='+type+'&page='+pageNo;
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo;
       var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
 
       t.timeout = setTimeout(function () {
@@ -45,8 +45,8 @@
       }, 2000);
     }
 
-    function changePaperType(type) {
-      var url = '/paper/_show_paper_content?type='+type+'&page=1';
+    function changePaperType(type, subType) {
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
       $("#paperContent").fadeOut('slow').load(url);
       FB.XFBML.parse(document.getElementById('comments'));
       $("#paperContent").fadeIn('slow');
@@ -55,25 +55,47 @@
     $(document).ready(function() {
       var currPage = 1;
       var currType = 'latest';
+      var subType = '';
 
       $('#more_news').unbind('click').click(function() {
-        loadMore(currType, ++currPage);
+        loadMore(currType, subType, ++currPage);
       });
 
       $('#menu-item-rank').unbind('click').click(function(){
-        $('#menu-item-latest').removeClass("current-menu-item")
-        $(this).addClass("current-menu-item")
+        $('#menu-item-latest').removeClass("current-menu-item");
+        $(this).addClass("current-menu-item");
         currPage = 1;
         currType = 'rank';
-        changePaperType(currType);
+        changePaperType(currType, '');
       });
 
       $('#menu-item-latest').unbind('click').click(function(){
-        $('#menu-item-rank').removeClass("current-menu-item")
-        $(this).addClass("current-menu-item")
+        $('#menu-item-rank').removeClass("current-menu-item");
+        $(this).addClass("current-menu-item");
         currPage = 1;
         currType = 'latest';
-        changePaperType(currType);
+        changePaperType(currType, '');
+      });
+
+      $('#show_faq').unbind('click').click(function() {
+        currPage = 1;
+        currType = 'special';
+        subType = 'faq';
+        changePaperType(currType, subType);
+      });
+
+      $('#show_feedback').unbind('click').click(function() {
+        currPage = 1;
+        currType = 'special';
+        subType = 'feedback';
+        changePaperType(currType, subType);
+      });
+
+      $('#show_notice').unbind('click').click(function() {
+        currPage = 1;
+        currType = 'special';
+        subType = 'notice';
+        changePaperType(currType, subType);
       });
     });
 

@@ -1,6 +1,6 @@
 xxx to-do: 自己寫的新聞, 跳到Content頁面無內容
 
-todo: set comment bar size = 320
+xxx to-do: set comment bar size = 320
 
 todo: "發佈此則新聞"時, 總是顯示"此則新聞已存在"
 
@@ -30,8 +30,13 @@ xxxx to-do: 新聞照片太大張的排版
 
 todo: report-dialog ==> 所有的EDITBOX應該對齊
 
-todo: 目前slogan只有顯示tag, 應該也要顯示area
+xxx to-do: 目前slogan只有顯示tag, 應該也要顯示area
 
-todo: load-more多次會load不到新聞
+xxx to-do: load-more多次會load不到新聞
+
+todo: report時要將edit box都清空 （否則會遺留前一次的內容）
+
+todo: 第四篇新聞後，檢舉按鈕無效
+
 
 

@@ -70,8 +70,8 @@ class News < ActiveRecord::Base
         end
 
       when :both
-        @user = User.find(user_id)
-        @user.both_news.joins(:areas, :tags).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}, :tags => {:name => user_tags}).order('my_news_ranks.rank DESC, news.created_at DESC')
+        user = User.find(user_id)
+        user.both_news.joins(:areas, :tags).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}, :tags => {:name => user_tags}).order('my_news_ranks.rank DESC, news.created_at DESC')
     end
 
   end
@@ -82,40 +82,46 @@ class News < ActiveRecord::Base
   def self.get_all(type, friend_type, user_id)
 
     if (friend_type != :none)
-      @user = User.find(user_id)
+      user = User.find(user_id)
     end
 
     case friend_type
       when :none
         if (type == 'latest')
-          find(:all, :conditions => {:news=>{:special_flag => false}}, :order => 'created_at DESC', :limit => 10)
+          find(:all, :conditions => {:news=>{:special_flag => false}}, :order => 'created_at DESC')
         else
-          find(:all, :conditions => {:news=>{:special_flag => false}}, :order => 'rank DESC', :limit => 10)
+          find(:all, :conditions => {:news=>{:special_flag => false}}, :order => 'rank DESC')
         end
 
       when :mine
         if (type == 'latest')
-          @user.my_news.where(:news=>{:special_flag => false}).order('news.created_at DESC', :limit => 10)
+          user.my_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
         else
-          @user.my_news_by_rank.where(:news=>{:special_flag => false}).order('news.created_at DESC', :limit => 10)
+          user.my_news_by_rank.where(:news=>{:special_flag => false}).order('news.created_at DESC')
         end
 
       when :friend
         if (type == 'latest')
-          @user.friend_news.where(:news=>{:special_flag => false}).order('news.created_at DESC', :limit => 10)
+          user.friend_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
         else
-          @user.friend_news_by_rank.where(:news=>{:special_flag => false}).order('news.created_at DESC', :limit => 10)
+          user.friend_news_by_rank.where(:news=>{:special_flag => false}).order('news.created_at DESC')
         end
 
       when :both
-        @user.both_news.where(:news=>{:special_flag => false}).order('news.created_at DESC', :limit => 10)
+        user.both_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
        #joins(:my_news_ranks, :user_news_ranks).where(:my_news_ranks=>{:user_id=>user_id}, :user_news_ranks=>{:user_id=>user_id}).order('news.created_at DESC', :limit => 10)
     end
 
   end
 
-  def self.get_all_special(areas, tags)
-    joins(:areas, :tags).where(:news=>{:special_flag => true}, :areas => {:name => areas}, :tags => {:name => tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+  def self.get_all_special(areas, tags, friend_type, user_id)
+
+    if (friend_type == :mine)
+      user = User.find(user_id)
+      user.my_news.joins(:areas, :tags).where(:news=>{:special_flag => true}, :areas => {:name => areas}, :tags => {:name => tags}).select('news.*').order('news.created_at DESC')
+    else
+      joins(:areas, :tags).where(:news=>{:special_flag => true}, :areas => {:name => areas}, :tags => {:name => tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+    end
   end
 
 end

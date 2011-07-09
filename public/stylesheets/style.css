@@ -155,12 +155,14 @@ a img {
 }
 .comments .comment_title {
   margin-bottom: 10px;
-  font-size: 2em;
-  color: #3b5998;
+  font-size: 1.8em;
   width: 65%;
   float: left;
 }
-
+.comments .comment_title a {
+  color: #6d84b4;
+  text-decoration: none;
+}
 .comments .fb_comment {
   margin-left: 10px;
 }
@@ -185,6 +187,7 @@ a img {
   border-width :1px;
   border-color: #bdc7d8;
   border-style:dashed;
+  cursor:pointer;
 }
 
 #more_news a{
