@@ -2,13 +2,16 @@
   <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
-  <meta property="og:image" content="<%= @news.images[0].url.to_s %> "/>
+  <% if (@news.images[0] != nil) %>
+  <meta property="og:image" content="<%= @news.images[0].url %> "/>
+  <% end %>
 
   <script type="text/javascript">
     function getSrc(obj)
     {
-      // document.forms[0].elements[4].value = obj.src;
       document.getElementById('news_url').value = obj.src;
+      //document.getElementById('news_url').value = obj.contentDocument.URL;
+      //document.getElementById('news_url').value = obj.contentWindow.location.href;
 
       $.getJSON("/news/report.json", 'url=' + obj.src, function(json){
         if (json.ret == 'url exist')
@@ -62,9 +65,11 @@
         <% else %>
           <%# if @news.images[0].url != "" %>
             <div class="image">
-               <% if @news.images[0].url != "" %>
+
+               <% if @news.images[0].url != "" && @news.images[0] != nil%>
                   <img src="<%=@news.images[0].url%>" alt="image" width="140px">
                <% end %>
+
             </div>
           <%# end %>
 

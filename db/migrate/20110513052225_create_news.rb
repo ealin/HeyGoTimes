@@ -7,8 +7,7 @@ class CreateNews < ActiveRecord::Migration
       t.text :content
 
       t.integer :user_id
-      t.integer :area_id
-      t.integer :rank
+      t.integer :rank, :default => 0
       t.text :hard_copy
 
       t.boolean :special_flag, :default => false
