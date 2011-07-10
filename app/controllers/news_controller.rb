@@ -256,12 +256,12 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
-    @user = User.find(session[:id])
-    @news.user = @user
+    user = User.find(session[:id])
+    @news.user = user
 
-    @image = Image.create(:url => params[:image_url])
-    @image.news = @news
-    @image.save
+    image = Image.create(:url => params[:image_url])
+    image.news = @news
+    image.save
 
     @news.tags = []
     counter = 0
@@ -271,7 +271,7 @@ class NewsController < ApplicationController
         @news.tags << tag
         counter += 1
 
-        if(tag.name == "FeedbackTag" || tag.name == "HGTimesNotice")
+        if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
         end
       end
@@ -291,7 +291,9 @@ class NewsController < ApplicationController
       end
     end
 
-    news_rank_action(@user, @news, :report)
+    if (news.special_flag == false)
+      news_rank_action(user, @news, :report)
+    end
 
     respond_to do |format|
       if @news.save
