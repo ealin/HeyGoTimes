@@ -1,0 +1,130 @@
+<script>
+
+
+    function close_news(news_id)
+    {
+          data = "news_id=" + news_id
+
+          // send to server
+           $.ajax(
+           {
+               type: "GET",
+               url:"/review/close_news",
+               data: data,
+               success: function(html)
+               {
+                   // redirect to main page in order to redraw the news by new filter!
+                    window.location.replace("/review/spam");
+               }
+           });
+
+    }
+
+
+
+    function close_report(news_id)
+    {
+          data = "news_id=" + news_id
+
+          // send to server
+           $.ajax(
+           {
+               type: "GET",
+               url:"/review/close_report",
+               data: data,
+               success: function(html)
+               {
+                   // redirect to main page in order to redraw the news by new filter!
+                    window.location.replace("/review/spam");
+               }
+           });
+
+    }
+
+  function expand_comment(news_id)
+  {
+    var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='650'></fb:comments>";
+
+    $('#expand_comment'+news_id).html("");
+    $('#fb_comment'+news_id).append(comment_str);
+    FB.XFBML.parse(document.getElementById('comments'));
+  }
+
+</script>
+
+
+
+<h1>處理 被檢舉的新聞</h1>
+
+<br><br>
+<% for i in (1..(20)) %>
+
+    <p style="font-size:14px;">
+      <% if @count-i < 0%>
+          <% break %>
+      <% end %>
+
+      <h3>檢舉理由：</h3>
+          #<%= @spam_report[@count-i].id %>: <%= @spam_report[@count-i].title %>
+          <br>
+          <%= @spam_report[@count-i].content %>
+          <br> <br>
+
+
+      <h3>被檢舉新聞的資訊</h3>
+          #<%= @spam_news[@count-i].id %>: <%= @spam_news[@count-i].title %>
+          <br>
+          <%= @spam_news[@count-i].content %><br>
+
+          <% if @spam_news[@count-i].images[0] != nil && @spam_news[@count-i].images[0].url != "" %>
+              <img src="<%= @spam_news[@count-i].images[0].url %>"/>
+          <% end %>
+
+          <% if @spam_news[@count-i].url != "" %>
+            <a href="<%= @spam_news[@count-i].url %>">被檢舉的新聞連結</a>
+          <% end %>
+
+
+
+        <br> <br>
+        <div class="comments">
+          <div class="comment_title" onclick="expand_comment(<%= @spam_report[@count-i].id %>);">
+            <a href="javascript:void(null)"><%= "回覆檢舉者" %></a><span id='expand_comment<%= @spam_report[@count-i].id %>'>
+            <a href="javascript:void(null)"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span>
+          </div>
+
+
+           <div class="fb_comment" id="fb_comment<%= @spam_report[@count-i].id %>">
+            <div id="fb-root"></div>
+            <script>
+              window.fbAsyncInit = function() {
+                FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
+                         xfbml: true});
+              };
+              (function() {
+                var e = document.createElement('script'); e.async = true;
+
+                // Todo: we need to check the locale!!!!!!!!!!!!
+                //
+                e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+
+                document.getElementById('fb-root').appendChild(e);
+              }());
+            </script>
+          </div> <!-- fb_comment -->
+          <div style="clear: both;"></div>
+
+        </div> <!-- comments -->
+
+    <br>
+
+    <!-- 只會標示TAG, 不會真正刪除記錄（避免以後有統計的需求）-->
+    <button style="font-size:14px;color:red;" onclick="close_news(<%= @spam_news[@count-i].id %>);">封鎖被檢舉的新聞</button> &nbsp;&nbsp;
+    <br>
+    <button style="font-size:14px;color:blue;" onclick="close_report(<%= @spam_report[@count-i].id %>);">結案</button> &nbsp;&nbsp;
+
+    </p>
+    <hr>
+
+
+<% end %>

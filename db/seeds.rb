@@ -72,6 +72,10 @@ Tag.create(:name => 'Art', :parent_tag => nil)
 Tag.create(:name => 'Special', :parent_tag => nil)
 
 
+
+Tag.create(:name => 'Closed_spam', :parent_tag => nil)
+Tag.create(:name => 'Closed_spam_report', :parent_tag => nil)
+
 # NOTE: FAQ should be the last one!!!
 #
 Tag.create(:name => 'FAQ', :parent_tag => nil)

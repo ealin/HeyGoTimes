@@ -19,7 +19,7 @@ en:
   feedback: "Feedback"
   report_spam: "Report a spam."
 
-  response: "Our Response"
+  response: "Spam-Report"
   notice: "Notice"
   mobileSite: "Mobile Site"
   terms: "Terms of service"
@@ -172,6 +172,7 @@ en:
   Art: "Art"
   Special: "Special"
   
+  Closed_spam_report: "Spam-Report(Closed)"
   FAQ: "FAQ"
   
   #----------------------------------------

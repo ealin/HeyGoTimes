@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
 
+
   #-----------------------------------------------------------
   # method: check_logged_in (Ealin: 20110430)
   #     - create_account_flag : if true ==> 必要時建立USER帳號

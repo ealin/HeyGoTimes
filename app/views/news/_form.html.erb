@@ -124,93 +124,99 @@ $(document).ready(function () {
       <%= f.text_area :area_string %>
    </div>
 
-  <div align = "left" id="filter_dlg_t2">
-    <%= t(:set_areas)%>
-    &nbsp;&nbsp;
-  </div>
 
-  <%# Area Selection  %>
-    <div align = "left" id = "area_select_box2" >
-      <select id="area_filter2"  multiple="multiple" >
+    <div id="sel_area_and_tag" style="display: ;">   <!-- show area and tags -->
 
-            <% @areas.each do |area| %>
-                  <% if area.parent_area != nil %>
-                     <option  id="<%= area.name %>" style='color:blue;font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
-                  <% else %>
-                     <% if session[:default_area] == area.name %>
-                       <option  id="<%= area.name %>" selected='true' style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+              <div align = "left" id="filter_dlg_t2">
+                <%= t(:set_areas)%>
+                &nbsp;&nbsp;
+              </div>
+
+              <%# Area Selection  %>
+                <div align = "left" id = "area_select_box2" >
+                  <select id="area_filter2"  multiple="multiple" >
+
+                        <% @areas.each do |area| %>
+                              <% if area.parent_area != nil %>
+                                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
+                              <% else %>
+                                 <% if session[:default_area] == area.name %>
+                                   <option  id="<%= area.name %>" selected='true' style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                                 <% else %>
+                                    <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                                 <% end %>
+                              <% end %>
+                        <% end %>
+
+                  </select>
+                </div>
+
+                <br><br>
+
+                <div align = "left" id="filter_dlg_t2">
+                   <%= t(:set_tags)%>
+                   <br>
+                </div>
+
+                <div class = "all_tags" align = "left" style="clear:both;" >
+                <%# !!!!!!!!!!! Todo:  將所有tags排整齊    %>
+                <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
+
+
+                  <% @tags.each do |tag| %>
+                    <%# using type and name to identify each Input/Checkbox here %>
+
+                    <% if tag.name == "FAQ" || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
+                          <% break %>
+                    <% end %>
+
+                     <% if tag.id == 3  %>
+                           <%# 這個items是feedback, 只有在feedback才顯示這個選項 %>
+                                <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "_box" %>"  style="display: none;" />
+                                   <span style="display: none;" id="<%= tag.name + "_lab" %>" >
+                                      <%= t(tag.name.to_sym) %>
+                                   </span>
+                                </input>
+                                <%next%>
+                     <% elsif tag.id == 2  %>
+                          <%# 這個items是system notice, 只有在administrator才顯示這個選項 %>
+                          <%if(session[:host_id] == 670999089)%>
+                               <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>"  />
+                                     <%= t(tag.name.to_sym) %>
+                               </input>
+                          <% end %>
+                     <% elsif tag.id == 1 %>
+
+                            <div id="tag_grp1" >
+                              <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                                 <%= t(tag.name.to_sym) %>
+                              </input>
+                              &nbsp;&nbsp;&nbsp;
+                            </div>
+                            <%= t(:same_as_select_all) %>
+                            <br>
                      <% else %>
-                        <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                            <div id="tag_grp2">
+                            <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
+                               <%= t(tag.name.to_sym) %>
+                            </input>
+                            &nbsp;&nbsp;&nbsp;
+                            </div>
+                     <% end%>
+
+
+                     <% if (tag.id - 3) % 6 == 0  %>
+                        <br>
                      <% end %>
+
+
                   <% end %>
-            <% end %>
-
-      </select>
-    </div>
-
-    <br><br>
-
-    <div align = "left" id="filter_dlg_t2">
-       <%= t(:set_tags)%>
-       <br>
-    </div>
-
-    <div class = "all_tags" align = "left" style="clear:both;" >
-    <%# !!!!!!!!!!! Todo:  將所有tags排整齊    %>
-    <%# !!!!!!!!!!! Todo2:  sub-tag用不同字體 or color    %>
+              </div>
+              <br>
+              <hr>
+    </div>     <!-- end: show area and tags -->
 
 
-      <% @tags.each do |tag| %>
-        <%# using type and name to identify each Input/Checkbox here %>
-
-        <% if tag.name == "FAQ" %>
-              <% break %>
-        <% end %>
-
-         <% if tag.id == 3  %>
-               <%# 這個items是feedback, 只有在feedback才顯示這個選項 %>
-                    <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name + "_box" %>"  style="display: none;" />
-                       <span style="display: none;" id="<%= tag.name + "_lab" %>" >
-                          <%= t(tag.name.to_sym) %>
-                       </span>
-                    </input>
-                    <%next%>
-         <% elsif tag.id == 2  %>
-              <%# 這個items是system notice, 只有在administrator才顯示這個選項 %>
-              <%if(session[:host_id] == 670999089)%>
-                   <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>"  />
-                         <%= t(tag.name.to_sym) %>
-                   </input>
-              <% end %>
-         <% elsif tag.id == 1 %>
-
-                <div id="tag_grp1" >
-                  <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
-                     <%= t(tag.name.to_sym) %>
-                  </input>
-                  &nbsp;&nbsp;&nbsp;
-                </div>
-                <%= t(:same_as_select_all) %>
-                <br>
-         <% else %>
-                <div id="tag_grp2">
-                <input type="checkbox" name ="<%= tag.name %>" id="<%= tag.name %>" >
-                   <%= t(tag.name.to_sym) %>
-                </input>
-                &nbsp;&nbsp;&nbsp;
-                </div>
-         <% end%>
-
-
-         <% if (tag.id - 3) % 6 == 0  %>
-            <br>
-         <% end %>
-
-
-      <% end %>
-  </div>
-  <br>
-  <hr>
 
     <div align="right" style="padding-bottom:10px">
 

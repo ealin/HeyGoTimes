@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.integer  "rank"
     t.text     "hard_copy"
     t.boolean  "special_flag", :default => false
-    t.boolean  "mobile_flag",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

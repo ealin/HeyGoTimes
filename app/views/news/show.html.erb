@@ -62,7 +62,9 @@
         <% else %>
           <%# if @news.images[0].url != "" %>
             <div class="image">
-             <img src="<%=@news.images[0].url%>" alt="image" width="140px">
+               <% if @news.images[0].url != "" %>
+                  <img src="<%=@news.images[0].url%>" alt="image" width="140px">
+               <% end %>
             </div>
           <%# end %>
 

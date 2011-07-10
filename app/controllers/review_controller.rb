@@ -5,9 +5,9 @@ class ReviewController < NewsController
   #
   def tw
 
-    # todo: must check reviewer's id (prevent normal user using this function)
+    # - must check reviewer's id (prevent normal user using this function)
     #
-    if session[:logged_in] != true || session[:host_id] != 670999089
+    if !(admin_logged_in?)
       render  :inline => "You got no right to enter this page!"
       return
     end
@@ -28,6 +28,43 @@ class ReviewController < NewsController
 
 
   end
+
+
+
+  #~~~~~~~~~~~~~~~~~~~~~prepare data for reviewing spam ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  #
+  def spam
+    # - must check reviewer's id (prevent normal user using this function)
+    #
+    if !(admin_logged_in?)
+      render  :inline => "You got no right to enter this page!"
+      return
+    end
+
+    # get all news which area = Taiwan & special_flag == true
+    #
+    areas = ["Taiwan"] ;
+    tags = ["FeedbackTag"] ;
+
+    @spam_news = []
+
+    @spam_report = News.get_all_special(areas,tags,:none,nil)
+    @count = @spam_report.count
+
+    @spam_report.each do |report|
+       id = Integer((report.title)[('[SPAM REPORT]ID='.length)..(report.title).length])
+
+      @spam_news << (News.find(id))
+
+    end
+
+  end
+
+
+
+
+
 
 
   #~~~~~~~~~~~~~~~~~~~~~called by AJAX, delete a news ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -125,6 +162,66 @@ class ReviewController < NewsController
       url += "/edit"
 
       response_str = url
+    end
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+
+  end
+
+
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, close the spam news ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # - set special_flag = true & set tag = Closed_spam
+  #
+  def close_news
+
+    response_str = "NG"
+
+    news_id = Integer(params[:news_id])
+    news = News.find(news_id)
+
+    if(news != nil)
+      news.special_flag= true
+
+      tag = Tag.find_by_name("Closed_spam") ;
+      news.tags << tag
+      news.save
+
+      response_str = "OK"
+    end
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+
+  end
+
+
+
+
+
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, close the spam report ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # - set special_flag = true & set tag = Closed_spam
+  #
+  def close_report
+
+    response_str = "NG"
+
+    news_id = Integer(params[:news_id])
+    news = News.find(news_id)
+
+    if(news != nil)
+      news.special_flag= true
+
+      news.tags = []
+      tag = Tag.find_by_name("Closed_spam_report") ;
+      news.tags << tag
+      news.save
+
+      response_str = "OK"
     end
 
     respond_to do |format|

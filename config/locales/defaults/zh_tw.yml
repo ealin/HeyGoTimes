@@ -15,7 +15,7 @@ zh_tw:
   signup: "註冊"
   feedback: "建議與反饋"
   report_spam: "檢舉垃圾新聞"
-  response: "官方回覆"
+  response: "檢舉記錄"
   notice: "公告"
   mobileSite: "手機版本"
   terms: "服務條款"
@@ -164,6 +164,7 @@ zh_tw:
   Education: "教育學習"
   Art: "藝文時尚"
   Special: "特色新聞"
+  Closed_spam_report: "檢舉(已結案)"
   
   FAQ: "常見問題"
   
