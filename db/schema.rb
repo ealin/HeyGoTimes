@@ -66,8 +66,7 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.string   "area_string"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "area_id"
-    t.integer  "rank"
+    t.integer  "rank",         :default => 0
     t.text     "hard_copy"
     t.boolean  "special_flag", :default => false
     t.datetime "created_at"
@@ -106,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
   create_table "user_news_ranks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "news_id"
-    t.integer  "rank"
+    t.integer  "rank",       :default => 0
     t.boolean  "my_news"
     t.datetime "created_at"
     t.datetime "updated_at"

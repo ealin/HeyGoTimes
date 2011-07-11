@@ -152,9 +152,9 @@ class NewsController < ApplicationController
           next_element = :normal
         end
 
-        @data['title']=title.to_s
-        @data['image']=image_url.to_s
-        @data['text']=text.to_s
+        @data['title']=title
+        @data['image']=image_url
+        @data['text']=text
       end
     end
 
@@ -291,7 +291,7 @@ class NewsController < ApplicationController
       end
     end
 
-    if (news.special_flag == false)
+    if (@news.special_flag == false)
       news_rank_action(user, @news, :report)
     end
 

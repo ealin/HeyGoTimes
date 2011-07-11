@@ -174,6 +174,10 @@ en:
   
   Closed_spam_report: "Spam-Report(Closed)"
   FAQ: "FAQ"
+  I_want_to_report_spam: "I want to report a spam news - <"
+  reason_is: "> ,the reason is："
+  feedback_message: "Our user-feedback-management system would be online soon，before that，please send your message to：heygoinc@gmail.com"
+
   
   #----------------------------------------
   # name of the Link

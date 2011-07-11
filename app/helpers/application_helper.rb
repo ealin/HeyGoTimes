@@ -19,6 +19,20 @@ module ApplicationHelper
   #===========================================================================
 
 
+   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+
+   def detect_Mobile_browser
+     agent = request.headers["HTTP_USER_AGENT"].downcase
+     MOBILE_BROWSERS.each do |m|
+       if agent.match(m)
+        return true
+       end
+     end
+     return false
+   end
+
+
+
   #-----------------------------------------------------------------------------------
   # method: show_page_head      (Ealin: 20110502)
   #   - 包含以下聯結: to main page/ to today's newspaper / logout

@@ -86,12 +86,14 @@
 <br><br>
 <% for i in (1..(20)) %>
 
-    <p style="font-size:14px;">
+    <p style="font-size:16px;">
       <% if @count-i < 0%>
           <% break %>
       <% end %>
 
+      <span style="color: blue;">
       #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
+      </span>
       <br>
       <%= @news_for_review[@count-i].content %>
       <br>
@@ -104,9 +106,10 @@
 
       <!-- 3 buttons : 1.delete this news   2.delete image    3. report this news -->
       <button style="font-size:14px;color:red;" onclick="delete_news(<%= @news_for_review[@count-i].id %>);">刪除此新聞</button> &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="delete_img_and_publish(<%= @news_for_review[@count-i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
-      <button style="font-size:14px;color:red;" onclick="publish_news(<%= @news_for_review[@count-i].id %>) ;">發佈此新聞</button>
+      &nbsp;&nbsp;
+      <button style="font-size:14px;color:blue;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
+      <button style="font-size:14px;color:blue;" onclick="delete_img_and_publish(<%= @news_for_review[@count-i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
+      <button style="font-size:14px;color:blue;" onclick="publish_news(<%= @news_for_review[@count-i].id %>) ;">發佈此新聞</button>
 
 
     </p>
