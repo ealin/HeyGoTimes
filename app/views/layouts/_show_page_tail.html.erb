@@ -47,6 +47,8 @@
           $('#news_submit')[0].value = "<%= t(:report_spam) %>" ;
           document.forms[0].elements[4].value = "[SPAM REPORT]ID=" + news_id;
 
+          $('#sel_area_and_tag')[0].style.display = "none" ;
+
       }
 
   }
@@ -74,7 +76,10 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 <% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
 <% # 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
  &nbsp;
- <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog(0,' ')"><%= t(:feedback) %></a>
+ <!--
+ <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog(0,' ')">
+ -->
+   <a href='#' onclick="alert('comming soon!') ;"><%= t(:feedback) %></a>
 
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>

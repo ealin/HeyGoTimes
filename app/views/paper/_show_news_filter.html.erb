@@ -312,8 +312,8 @@
     <%# using type and name to identify each Input/Checkbox here %>
 
     <!-- not need to show "FAQ" tag here -->
-    <% if tag.name == 'FAQ' %>
-      <% next %>
+    <% if tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
+      <% break %>
     <% end %>
 
     <% if tag.id <= 3 %>

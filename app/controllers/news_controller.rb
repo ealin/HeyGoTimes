@@ -256,12 +256,12 @@ class NewsController < ApplicationController
   # POST /news.xml
   def create
     @news = News.new(params[:news])
-    @user = User.find(session[:id])
-    @news.user = @user
+    user = User.find(session[:id])
+    @news.user = user
 
-    @image = Image.create(:url => params[:image_url])
-    @image.news = @news
-    @image.save
+    image = Image.create(:url => params[:image_url])
+    image.news = @news
+    image.save
 
     @news.tags = []
     counter = 0
@@ -290,9 +290,10 @@ class NewsController < ApplicationController
         @news.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
       end
     end
-	if (@news.special_flag == false)
-		news_rank_action(@user, @news, :report)
-	end
+
+    if (news.special_flag == false)
+      news_rank_action(user, @news, :report)
+    end
 
     respond_to do |format|
       if @news.save

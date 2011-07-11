@@ -40,7 +40,8 @@ class PaperController < NewsController
     end
 
     respond_to do |format|
-      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => news}}
+      format.html {render :partial => 'paper/show_paper_content',
+                    :locals => {:news => news,:type => params[:sub_type]}}
     end
   end
 
@@ -115,8 +116,8 @@ class PaperController < NewsController
       friend_type = :none
       user_id = nil
     elsif (type == 'feedback')
-      tags = ["FeedbackTag"]
-      areas = ["All_area"]
+      tags = ["FeedbackTag","Closed_spam_report"]
+      areas = ["Taiwan"]
       friend_type = :mine
       user_id = session[:id]
     end

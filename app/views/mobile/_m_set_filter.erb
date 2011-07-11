@@ -188,7 +188,7 @@
 <h2>Select Tags:</h2>
 <select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @tags.each do |tag| %>
-     <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' %>
+     <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
           <% next %>
      <% end %>
 
