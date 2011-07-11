@@ -96,12 +96,12 @@ class NewsController < ApplicationController
       #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
-          @data['ret'] = 'url exist'
+          @data[:ret] = 'url exist'
         end
       #end
 
       # Parse data
-      if (@data['ret'] != 'url exist')
+      if (@data[:ret] != 'url exist')
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
@@ -118,7 +118,8 @@ class NewsController < ApplicationController
           stream = open(url)
         end
 
-        doc = Nokogiri::HTML(stream)
+        doc = Nokogiri::HTML(stream, nil, 'utf-8')
+
 
         #@error = @doc.search('lint > lint_error')
         #if (@error != nil)
@@ -141,25 +142,25 @@ class NewsController < ApplicationController
           end
 
           if (next_element == :content)
-            text = data.content.to_s
+            text = data.content
           elsif (next_element == :image)
             image_url = data.search('a').first['href']
           elsif (next_element == :title)
-            title = data.content.to_s
+            title = data.content
             break
           end
 
           next_element = :normal
         end
 
-        @data['title']=title
-        @data['image']=image_url
-        @data['text']=text
+        @data[:title]=title
+        @data[:image]=image_url
+        @data[:text]=text
       end
     end
 
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => (@data.to_json) }
     end
 
   end

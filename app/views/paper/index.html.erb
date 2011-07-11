@@ -143,6 +143,10 @@
 
 <body>
 
+<% if detect_Mobile_browser == true %>
+    <%= redirect_to  :controller => 'mobile', :action => 'index' %>
+<% end %>
+
 <div id="page">
   <div id="header">
     <div id="logo">
