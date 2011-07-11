@@ -118,8 +118,8 @@ class PaperController < NewsController
     elsif (type == 'feedback')
       tags = ["FeedbackTag","Closed_spam_report"]
       areas = ["Taiwan"]
-      friend_type = :mine
-      user_id = session[:id]
+      friend_type = :none
+      user_id = nil
     end
 
     news = News.get_all_special(areas, tags, friend_type, user_id)
