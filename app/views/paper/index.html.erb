@@ -138,6 +138,27 @@
 
     } */
 
+    function set_default_locale(new_locale)
+    {
+        // ask server to set session[:default_locale] then reload the main-page
+        data = "locale=" + new_locale
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/paper/set_default_locale",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/");
+             }
+         });
+
+
+    }
+
   </script>
 
 </head> <%# end tag for <head> in application.html.erb %>
@@ -162,9 +183,9 @@
     <div id="page_head" >
       <%= show_page_head(:login_flag => true)  %>
       <div id="page_head2" >
-         <a href="#">繁體中文</a>
-         <a href="#">简体中文</a>
-         <a href="#">English</a>
+         <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
+         <a href="#" onclick="set_default_locale('zh')">简体中文</a>
+         <a href="#" onclick="set_default_locale('en')">English</a>
       </div><!-- #page_head -->
     </div><!-- #page_head -->
 

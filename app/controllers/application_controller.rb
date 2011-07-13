@@ -135,6 +135,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  #-----------------------------------------------------------------------------------
+  # method: set_default_locale
+  #   // ask server to set session[:default_locale] then reload the main-page(new_locale)
+  #-----------------------------------------------------------------------------------
+  def set_default_locale()
+
+    session[:default_locale] = params[:locale]
+
+    respond_to do |format|
+      format.html { render  :inline => "OK" }
+    end
+
+
+  end
+
+
+
+
+
   #----------------------------------------------------
   # method: mapping_locale_to_area
   #----------------------------------------------------
@@ -153,7 +173,9 @@ class ApplicationController < ActionController::Base
 
   #===========================================================================
 
-  
+
+
+
   # Ealin: 20110411
   #--------------------------
   # method: set_locale
@@ -164,7 +186,8 @@ class ApplicationController < ActionController::Base
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
 
     if session[:default_locale] != nil
-      I18n.locale = session[:default_locale]
+      I18n.locale = (session[:default_locale]).to_sym
+      mapping_locale_to_area
       return
     end
 

@@ -9,7 +9,7 @@ en:
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------
-  main_page:  "Main Page"
+  main_page:  "Home"
   today_newspaper: "Today's Newspaper"
   privacy: "Privacy"
   #realtime_news: "Realtime-News"

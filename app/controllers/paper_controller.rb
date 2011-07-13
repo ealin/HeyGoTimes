@@ -131,6 +131,8 @@ class PaperController < NewsController
     return news
   end
 
+
+
   #-----------------------------------------------------------------------------------
   # method: set_tag_filter_by_locale      (Ealin: 20110607)
   #   - # check the locale (I18n.locale ==? :zh_tw), set area tag if necessary

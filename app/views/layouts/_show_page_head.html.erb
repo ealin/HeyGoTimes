@@ -1,6 +1,6 @@
 
 <span>
-    <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
+    <%= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>   &nbsp;&nbsp;
     <% if @login_flag && session[:logged_in] == false %>
       <%= show_logging_link %>
     <% else %>
