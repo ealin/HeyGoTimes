@@ -55,6 +55,11 @@ class ApplicationController < ActionController::Base
 
         session[:logged_in] = true
 
+        user = User.find_by_host_id(current_facebook_user.id)
+        if (user != nil) && ((Date.today - user.last_update_friends) > 30)
+          get_friends(user.id)
+        end
+
       rescue Exception => e
 
         # OAuthException : user主動自FACEBOOK中LOGOUT
@@ -133,6 +138,9 @@ class ApplicationController < ActionController::Base
         user.friends << friend
       end
     end
+
+    user.last_update_friends = Date.today
+    user.save
   end
 
   #----------------------------------------------------
