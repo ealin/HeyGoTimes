@@ -53,6 +53,7 @@ en:
   m_login: "Login"
   m_logout: "Logout"
   m_more: "More News..."
+  m_no_more: "No More News..."
   
   m_function: "Function List:"
   m_setting_list: "Setting about Friends & Date:"

@@ -33,15 +33,15 @@ class PaperController < NewsController
     # :page => page num to fetch
 
     if (params[:type] == 'special')
-      news = get_special_news(params[:sub_type], params[:page])
+      @news = get_special_news(params[:sub_type], params[:page])
     else
       session[:news_type] = params[:type]
-      news = get_news(params[:type], params[:page])
+      @news = get_news(params[:type], params[:page])
     end
 
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content',
-                    :locals => {:news => news,:type => params[:sub_type]}}
+                    :locals => {:news => @news,:type => params[:sub_type]}}
     end
   end
 

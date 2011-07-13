@@ -38,9 +38,10 @@
 
       t.timeout = setTimeout(function () {
         $.get(url, function(response) {
-          $("#paperContent").append(response);
-          // default not showing comment
-          // FB.XFBML.parse(document.getElementById('comments'));
+          if (jQuery.trim(response) == '')
+            $("#more_news").html('<a><%= t(:m_no_more) %></a>');
+          else
+            $("#paperContent").append(response);
         });
         preview.html('');
       }, 2000);
@@ -49,8 +50,8 @@
     function changePaperType(type, subType) {
       var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
       $("#paperContent").fadeOut('slow').load(url);
-      // default not showing comment
-      // FB.XFBML.parse(document.getElementById('comments'));
+      $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
+
       $("#paperContent").fadeIn('slow');
     }
 
