@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
         session[:logged_in] = true
 
         user = User.find_by_host_id(current_facebook_user.id)
-        if (user != nil) && ((Date.today - user.last_update_friends) > 30)
+        if (user != nil) && ((Date.today - user.last_update_friends) > 0)
           get_friends(user.id)
         end
 
