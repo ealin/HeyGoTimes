@@ -73,13 +73,17 @@
     </div> <!-- news -->
 
     <div class="comments">
-      <div class="comment_title" onclick="expand_comment(<%= news.id %>);"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
+      <% graph = Koala::Facebook::GraphAPI.new() %>
+      <% comment_obj = graph.get_object("http://heygotimes.heroku.com/news/"+news.id.to_s) %>
+      <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>
+      <% shared = (comment_obj['shares'] == nil)? 0: comment_obj['shares'] %>
+      <div class="comment_title" onclick="expand_comment(<%= news.id %>);"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + comments.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
 
       <% if type != "feedback" %>
           <div class="button_group">
             <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
             <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
-            <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+            <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a><span class='share_count' id='share_count<%= news.id %>'><%= shared %></span>
 
             <%# 檢舉 - 視同 report a spam news %>
             <!--

@@ -5,13 +5,13 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    # @news = News.paginate(:page => 1, :per_page => 3)
-    @news = News.all.paginate(:page => params[:page], :per_page => 3)
+    redirect_to(root_url)
+    #@news = News.all.paginate(:page => params[:page], :per_page => 5)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @news }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @news }
+    #end
   end
 
   # GET /news/1
@@ -26,10 +26,10 @@ class NewsController < ApplicationController
     check_logged_in(false)
 
     if (current_facebook_user != nil && session[:id] != nil)
-      @user = User.find(session[:id])
-      if (!@user.watches.include?(@news))
-        @news.watches.push(@user)
-        news_rank_action(@user, @news, :watch)
+      user = User.find(session[:id])
+      if (!user.watches.include?(@news))
+        @news.watches.push(user)
+        news_rank_action(user, @news, :watch)
       end
     end
 

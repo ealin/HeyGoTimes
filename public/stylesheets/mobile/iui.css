@@ -416,10 +416,21 @@ fieldset > .row:last-child {
     font-size: 1.4em;
 }
 
+.m_comments {
+  width: 100%;
+  color: #3b5998;
+  background: #f2f2f2;
+}
+
 .m_comments .m_comment_title {
     font-size: 1.6em;
     width: 50%;
     float: left;
+}
+
+.m_comments .m_comment_title a {
+  color: #6d84b4;
+  text-decoration: none;
 }
 
 .m_comments .m_button_group {

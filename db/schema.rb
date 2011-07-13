@@ -130,7 +130,8 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.string   "host_account"
     t.integer  "host_id"
     t.integer  "host_site"
-    t.boolean  "admin",        :default => false
+    t.boolean  "admin",               :default => false
+    t.date     "last_update_friends"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

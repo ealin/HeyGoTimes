@@ -18,14 +18,25 @@ module ApplicationHelper
   end
   #===========================================================================
 
-
+   MOBILE_EXCEPTIONS = ["ipad"]
    MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
 
-   def detect_Mobile_browser
+   def detect_Mobile_browser(type)
+
      agent = request.headers["HTTP_USER_AGENT"].downcase
+
+     # check except list
+     if type == :list
+       MOBILE_EXCEPTIONS.each do |e|
+         if agent.match(e)
+           return false
+         end
+       end
+     end
+
      MOBILE_BROWSERS.each do |m|
        if agent.match(m)
-        return true
+         return true
        end
      end
      return false
