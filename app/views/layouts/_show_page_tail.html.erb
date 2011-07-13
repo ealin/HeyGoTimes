@@ -1,6 +1,10 @@
 <script>
+
+
+/*
   function to_report_dialog( news_id, news_title )
   {
+
       // both "feedback" and "report spam" will callback this function
       // if news_id == 0, means the function is issued by "feedback".
 
@@ -52,6 +56,7 @@
       }
 
   }
+  */
 </script>
 
 
@@ -74,11 +79,10 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 
  &nbsp;
 
-   <!-- todo:  find a suitable FEEDBACK-Management-System !!!!! -->
+   <!-- todo:  find a suitable FEEDBACK-Management-System !!!!! ....  using facebook-fans-group first -->
    <a href='#' onclick="alert('<%= t(:feedback_message) %>') ;"><%= t(:feedback) %></a>
 
 
-<%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>
  &nbsp;
  <a id='show_feedback' href='#'><%= t(:response) %></a>
 

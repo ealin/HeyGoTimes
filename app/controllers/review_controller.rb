@@ -63,6 +63,54 @@ class ReviewController < NewsController
 
 
 
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, report a spam ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  #
+  def report_spam
+
+    response_str = t(:report_spam_ng)
+
+    news_id = Integer(params[:news_id])
+    news = News.find(news_id)
+
+    if(news != nil)
+
+      report = News.new
+      report.title= '[SPAM REPORT]ID='+params[:news_id]
+
+      area = Area.find_by_name(session[:default_area])
+      report.areas << area
+
+      tag = Tag.find_by_name('FeedbackTag')
+      report.tags << tag
+
+      report.images = []
+
+      user = User.find(session[:id])
+      user.my_news << report
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, report.id).last
+      news_rank_record.my_news = true
+      news_rank_record.save
+
+      content = t(:news_title) + news.title + "<br><br>" + params[:content]
+      report.content = content
+
+      report.special_flag= true
+      report.area_string= session[:default_area] + '/'
+      report.user = user
+
+
+      report.save
+
+
+      response_str = t(:report_spam_done)
+    end
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+  end
 
 
 
@@ -186,6 +234,7 @@ class ReviewController < NewsController
       news.special_flag= true
 
       tag = Tag.find_by_name("Closed_spam") ;
+      news.tags =[]
       news.tags << tag
       news.save
 
@@ -230,6 +279,46 @@ class ReviewController < NewsController
 
 
   end
+
+
+
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, delete photo then close the spam report ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # - delete the photo
+  # - set special_flag = true & set tag = Closed_spam
+  #
+  def delete_photo_and_close_report
+
+    response_str = "NG"
+
+    spam_id = Integer(params[:spam_id])
+    spam = News.find(spam_id)
+
+    report_id = Integer(params[:report_id])
+    report = News.find(report_id)
+
+    if(spam != nil && report != nil)
+      images = Image.find_by_news_id(spam_id)
+      if(images != nil)
+        images.delete
+        spam.images = []
+      end
+
+      report.special_flag= true
+
+      report.tags = []
+      tag = Tag.find_by_name("Closed_spam_report") ;
+      report.tags << tag
+      report.save
+
+      response_str = "OK"
+    end
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+  end
+
 
 
 end

@@ -266,6 +266,7 @@ class NewsController < ApplicationController
 
     @news.tags = []
     counter = 0
+    feedback = false;
     params.each_pair do |key, value|
       if (value == 'on')
         tag = Tag.find_by_name(key)
@@ -274,6 +275,9 @@ class NewsController < ApplicationController
 
         if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
+          if (tag.name.downcase == "feedbacktag")
+            feedback = true;
+          end
         end
       end
     end
@@ -292,7 +296,7 @@ class NewsController < ApplicationController
       end
     end
 
-    if (@news.special_flag == false)
+    if (@news.special_flag == false || feedback == true )
       news_rank_action(user, @news, :report)
     end
 

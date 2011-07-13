@@ -143,6 +143,8 @@ class ApplicationController < ActionController::Base
   def mapping_locale_to_area
     if I18n.locale == :en
       session[:default_area] = "USA"
+    elsif I18n.locale == :zh
+      session[:default_area] = "China"
     else
       session[:default_area] = "Taiwan"
     end
@@ -161,9 +163,16 @@ class ApplicationController < ActionController::Base
     #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
 
+    if session[:default_locale] != nil
+      I18n.locale = session[:default_locale]
+      return
+    end
+
+    logger.debug "'#{I18n.locale}'"
+
     I18n.locale = extract_locale_from_accept_language_header
 
-    #logger.debug "'#{I18n.locale}'"
+    logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    

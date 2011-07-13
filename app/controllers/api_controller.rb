@@ -100,9 +100,11 @@ class ApiController < ApplicationController
           # setup areas of this news
           areas = Area.all
           @news.areas = []
+          @news.area_string = ""
           areas.each do |area|
             if params[:area].include?(area.name)
               @news.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
+              @news.area_string += (area.name + '/')
             end
           end
 
