@@ -11,7 +11,7 @@ class CreateNews < ActiveRecord::Migration
       t.text :hard_copy
 
       t.boolean :special_flag, :default => false
-      t.boolean :mobile_flag, :default => false
+      #t.boolean :mobile_flag, :default => false
 
       t.timestamps
     end

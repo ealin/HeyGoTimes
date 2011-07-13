@@ -12,17 +12,17 @@ en:
   main_page:  "Main Page"
   today_newspaper: "Today's Newspaper"
   privacy: "Privacy"
-  terms: "Terms"
-  realtime_news: "Realtime-News"
+  #realtime_news: "Realtime-News"
   login: "Login"
   logout: "Logout"
   signup: "Signup"
   feedback: "Feedback"
   report_spam: "Report a spam."
 
-  response: "Our Response"
+  response: "Spam-Report"
   notice: "Notice"
   mobileSite: "Mobile Site"
+  terms: "Terms of service"
 
   
   #filter_news: "Filter News"
@@ -121,7 +121,7 @@ en:
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
   #--------------------------------------------------------------------------
-  All_area: "The World"  
+  All_area: "All World"  
   
   Taiwan: "Taiwan"
   TW_CN: "Taiwan & China"
@@ -146,8 +146,10 @@ en:
   HGTimesNotice: "HG-Times Notice"
   FeedbackTag: "Feedback"
 
-  Mobile: "Mobile"
+  #Mobile: "Mobile"
   #Top: "Top"
+  Motion: "Motion News"
+
   World: "World"
   Society: "Society"  
   Local: "Local"
@@ -170,7 +172,12 @@ en:
   Art: "Art"
   Special: "Special"
   
+  Closed_spam_report: "Spam-Report(Closed)"
   FAQ: "FAQ"
+  I_want_to_report_spam: "I want to report a spam news - <"
+  reason_is: "> ,the reason is："
+  feedback_message: "Our user-feedback-management system would be online soon，before that，please send your message to：heygoinc@gmail.com"
+
   
   #----------------------------------------
   # name of the Link

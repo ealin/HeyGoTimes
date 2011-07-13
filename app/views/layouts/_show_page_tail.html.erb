@@ -46,6 +46,8 @@
           $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_spam) %>" ;
           $('#news_submit')[0].value = "<%= t(:report_spam) %>" ;
           document.forms[0].elements[4].value = "[SPAM REPORT]ID=" + news_id;
+          document.forms[0].elements[5].value = "<%= t(:I_want_to_report_spam) %>" + news_title + "<%= t(:reason_is) %>"
+          $('#sel_area_and_tag')[0].style.display = "none" ;
 
       }
 
@@ -67,14 +69,13 @@ HeyGo © 2011 &nbsp;&nbsp;&nbsp;&nbsp;
 <a id='show_faq' href='#'><%= t(:FAQ) %></a>
 &nbsp;
 
-<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%> &nbsp;
-<%= link_to t(:terms),{:controller => 'terms_of_service'},{:title => '使用條款'}%>   &nbsp;
+<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>  &nbsp;
+<%= link_to t(:terms),{:controller => 'terms_of_service'}%>   &nbsp;
 
-<%# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %>
-<% # Feedback功能就是一個新聞頁面 (it's a tag - "FeedbackTag") %>
-<% # 效果如同Report的畫面, 但會無條件設定 FeedbackTag 這個tag %>
  &nbsp;
- <a href='#' name='btn1' class='osx btn1' onclick="to_report_dialog(0,' ')"><%= t(:feedback) %></a>
+
+   <!-- todo:  find a suitable FEEDBACK-Management-System !!!!! -->
+   <a href='#' onclick="alert('<%= t(:feedback_message) %>') ;"><%= t(:feedback) %></a>
 
 
 <%# 將session[:filter_tags]設為"FeedbackTag", 並顯示新聞畫面 %>

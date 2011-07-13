@@ -40,7 +40,8 @@ class PaperController < NewsController
     end
 
     respond_to do |format|
-      format.html {render :partial => 'paper/show_paper_content', :locals => {:news => news}}
+      format.html {render :partial => 'paper/show_paper_content',
+                    :locals => {:news => news,:type => params[:sub_type]}}
     end
   end
 
@@ -115,10 +116,10 @@ class PaperController < NewsController
       friend_type = :none
       user_id = nil
     elsif (type == 'feedback')
-      tags = ["FeedbackTag"]
-      areas = ["All_area"]
-      friend_type = :mine
-      user_id = session[:id]
+      tags = ["FeedbackTag","Closed_spam_report"]
+      areas = ["Taiwan"]
+      friend_type = :none
+      user_id = nil
     end
 
     news = News.get_all_special(areas, tags, friend_type, user_id)
@@ -259,6 +260,13 @@ class PaperController < NewsController
     #
     counter = 0
     @newspaper_title = t(:slogan)
+    @areas.each do |area|
+      if session[:filter_area].include?(area.name)
+        @newspaper_title += (t(area.name.to_sym) + " ")
+      end
+    end
+
+
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + " ")
@@ -269,6 +277,8 @@ class PaperController < NewsController
         end
       end
     end
+
+
 
 
     #@newspaper_slogan = t :sample_paper_slogan

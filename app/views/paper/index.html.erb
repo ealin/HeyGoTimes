@@ -103,6 +103,8 @@
 
     function init_checkbox(reporter_flag)
     {
+        $('#sel_area_and_tag')[0].style.display = "" ;
+
         for(i=0;i<($('input').length);i++)
         {
             //console.log($('input')[i]) ;
@@ -141,12 +143,18 @@
 
 <body>
 
+<% if detect_Mobile_browser == true %>
+    <%= redirect_to  :controller => 'mobile', :action => 'index' %>
+<% end %>
+
 <div id="page">
   <div id="header">
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
     </div>
-    <span id="filter_hint" title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
+    <span id="filter_hint" title ="<%= t(:tip_for_filter)%>">
+        <%= @newspaper_title.to_s %>
+    </span>
 
     <div id="page_head" >
       <%= show_page_head(:login_flag => true)  %>

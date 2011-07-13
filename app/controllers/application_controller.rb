@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   
 
 
+
+
   #-------------------------------------------------------------------------------
   # method: admin_logged_in?
   #    - admin_data module would call this function before entering admin-mode
@@ -33,6 +35,7 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
 
 
   #-----------------------------------------------------------

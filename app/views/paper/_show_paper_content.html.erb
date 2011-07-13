@@ -14,7 +14,7 @@
       </div>
 
       <div class="image">
-         <% if news.images != [] %>
+         <% if news.images != [] && news.images[0].url != "" %>
             <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
          <% end %>
       </div>
@@ -28,17 +28,21 @@
 
     <div class="comments">
       <div class="comment_title" onclick="expand_comment(<%= news.id %>);"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
-      <div class="button_group">
-        <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
-        <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
-        <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
 
-        <%# 檢舉 - 視同 feedback  %>
-        <a href='javascript:void(null)' name='btn1' class='osx btn1' onclick="to_report_dialog( <%= news.id %>,'<%= news.title %>')">
-          <img class="button-icon-like" src="/images/stop_button.png" width="30px" height="30px"
-               alt="" title="<%= t(:report_spam)%>" />
-        </a>
-      </div>
+      <% if type != "feedback" %>
+          <div class="button_group">
+            <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
+            <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
+            <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+
+            <%# 檢舉 - 視同 feedback  %>
+            <a href='javascript:void(null)' name='btn1' class='osx btn1' onclick="to_report_dialog( <%= news.id %>,'<%= news.title %>')">
+              <img class="button-icon-like" src="/images/stop_button.png" width="30px" height="30px"
+                   alt="" title="<%= t(:report_spam)%>" />
+            </a>
+          </div>
+      <% end %>
+
       <div class="fb_comment" id="fb_comment<%= news.id %>">
         <div id="fb-root"></div>
         <script>
