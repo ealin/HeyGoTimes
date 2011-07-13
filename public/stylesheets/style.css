@@ -172,7 +172,7 @@ a img {
   float: right;
 }
 
-.comments .button_group .like_count, .unlike_count
+.comments .button_group .like_count, .unlike_count, .share_count
 {
   font-size: 1.4em;
 }
