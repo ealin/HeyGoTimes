@@ -33,6 +33,9 @@
 </head>  <%# end tag for <head> in application.html.erb %>
 
 <body>
+<% if detect_Mobile_browser == true %>
+    <%= redirect_to(root_url + 'mobile/show_news?redirect_from_web=1&id=' + @news.id.to_s) %>
+<% end %>
 
 <div id="page">
   <div id="header">
