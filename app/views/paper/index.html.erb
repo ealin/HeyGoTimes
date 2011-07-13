@@ -143,7 +143,7 @@
 
 <body>
 
-<% if detect_Mobile_browser == true %>
+<% if detect_Mobile_browser(:list) == true %>
     <%= redirect_to  :controller => 'mobile', :action => 'index' %>
 <% end %>
 
