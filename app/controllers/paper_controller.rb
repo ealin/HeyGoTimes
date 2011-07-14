@@ -41,7 +41,7 @@ class PaperController < NewsController
 
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content',
-                    :locals => {:news => @news,:type => params[:sub_type]}}
+                    :locals => {:news => @news, :news_sub_type => params[:sub_type]}}
     end
   end
 

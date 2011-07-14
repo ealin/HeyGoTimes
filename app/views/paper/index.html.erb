@@ -12,14 +12,7 @@
       {
         $('#like_count'+news).html(json.like_count);
         $('#unlike_count'+news).html(json.unlike_count);
-        /*
-        if (like == 1)
-          alert(json.name+' like this news, total: '+json.total);
-        else
-          alert(json.name+' unlike this news, total: '+json.total);
-        */
-      }  );
-
+      });
     }
 
     function expand_comment(news_id)
@@ -31,7 +24,8 @@
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
-    function loadMore(type, subType, pageNo) {
+    function loadMore(type, subType, pageNo)
+    {
       var t = $("#paperContent");
       var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo;
       var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
@@ -47,15 +41,17 @@
       }, 2000);
     }
 
-    function changePaperType(type, subType) {
+    function changePaperType(type, subType)
+    {
       var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
+
       $("#paperContent").fadeOut('slow').load(url);
       $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
-
       $("#paperContent").fadeIn('slow');
     }
 
-    $(document).ready(function() {
+    $(document).ready(function()
+    {
       var currPage = 1;
       var currType = 'latest';
       var subType = '';
@@ -102,43 +98,6 @@
       });
     });
 
-    /*
-    function init_checkbox(reporter_flag)
-    {
-        $('#sel_area_and_tag')[0].style.display = "" ;
-
-        for(i=0;i<($('input').length);i++)
-        {
-            //console.log($('input')[i]) ;
-            if( $('input')[i].type == "checkbox")
-            {
-                 $('input')[i].disabled = false ;
-                 $('input')[i].checked = false ;
-
-                 $('input')[i].style.display = "" ;
-            }
-        }
-
-
-         if(reporter_flag == 1)
-         {
-
-             $('#filter_dlg_t2')[0].style.display = "" ;
-             $('#filter_dlg_t6')[0].style.display = "" ;
-             $('#url_input')[0].style.display = "" ;
-             $('#image_url')[0].style.display = "" ;
-
-             $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_a_news) %>" ;
-             $('#news_submit')[0].value = "<%= t(:add_news) %>" ;
-
-             $('#FeedbackTag_box')[0].disabled = true ;
-             $('#FeedbackTag_box')[0].checked = false ;
-             $('#FeedbackTag_box')[0].style.display= "none" ;
-             $('#FeedbackTag_lab')[0].style.display= "none" ;
-         }
-
-    } */
-
     function set_default_locale(new_locale)
     {
         // ask server to set session[:default_locale] then reload the main-page
@@ -156,8 +115,38 @@
                   window.location.replace("/");
              }
          });
+    }
 
+    function report_the_spam(spam_new_id, spam_news_title)
+    {
 
+        if(<%= session[:logged_in]%> == false)
+        {
+            alert('<%= t(:please_log_in)  %>') ;
+            return ;
+        }
+
+        message = '<%= t(:I_want_to_report_spam) %>' + ': [ ' + spam_news_title  + ' ]';
+        result_msg = prompt(message, '<%= t(:spam_reason)%>') ;
+
+        if(!(result_msg))
+          return ;
+
+        data = "news_id=" + spam_new_id + '&' + 'content=' + result_msg
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/report_spam",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                 // window.location.replace("/review/spam");
+                 alert(html) ;
+             }
+         });
     }
 
   </script>
@@ -216,7 +205,7 @@
     <div id="content">
       <div id="paperContent">
         <% # TODO: use @paper_width %>
-        <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news} %>
+        <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news, :news_sub_type => ""} %>
       </div>
 
       <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>

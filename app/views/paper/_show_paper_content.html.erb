@@ -1,49 +1,4 @@
 
-<script>
-
-  function report_the_spam(spam_new_id, spam_news_title)
-  {
-
-      if(<%= session[:logged_in]%> == false)
-      {
-          alert('<%= t(:please_log_in)  %>') ;
-          return ;
-      }
-
-      message = '<%= t(:I_want_to_report_spam) %>' + ': [ ' + spam_news_title  + ' ]';
-      result_msg = prompt(message, '<%= t(:spam_reason)%>') ;
-
-      if(!(result_msg))
-        return ;
-
-
-      data = "news_id=" + spam_new_id + '&' + 'content=' + result_msg
-
-      // send to server
-       $.ajax(
-       {
-           type: "GET",
-           url:"/review/report_spam",
-           data: data,
-           success: function(html)
-           {
-               // redirect to main page in order to redraw the news by new filter!
-               // window.location.replace("/review/spam");
-
-               alert(html) ;
-           }
-       });
-
-
-
-  }
-
-
-
-
-</script>
-
-
 
 <% if news != nil %>
   <% news.each_with_index do |news, index| %>
@@ -79,19 +34,12 @@
       <% shared = (comment_obj['shares'] == nil)? 0: comment_obj['shares'] %>
       <div class="comment_title" onclick="expand_comment(<%= news.id %>);"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + comments.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
 
-      <% if type != "feedback" %>
+      <% if news_sub_type != "feedback" %>
           <div class="button_group">
             <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a><span class='like_count' id='like_count<%= news.id %>'><%= news.likes.count %></span>
             <a href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a><span class='unlike_count' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span>
             <a href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a><span class='share_count' id='share_count<%= news.id %>'><%= shared %></span>
 
-            <%# 檢舉 - 視同 report a spam news %>
-            <!--
-            <a name='btn1' class='osx btn1' onclick="to_report_dialog( <%= news.id %>,'<%= news.title %>')">
-              <img class="button-icon-like" src="/images/stop_button.png" width="30px" height="30px"
-                   alt="" title="<%= t(:report_spam)%>" />
-            </a>
-            -->
             <a href="javascript:void(null)" onclick="report_the_spam( <%= news.id %>,'<%= news.title %>')">
               <img class="button-icon-like" src="/images/stop_button.png" width="30px" height="30px"
                    alt="" title="<%= t(:report_spam)%>" />
