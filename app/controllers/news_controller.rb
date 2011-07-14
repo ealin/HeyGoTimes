@@ -225,7 +225,7 @@ class NewsController < ApplicationController
 
     friend_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
 
-    begin
+   
       if (friend_news_rank_records.count != 0)
         news_rank_record = friend_news_rank_records[0]
         news_rank_record.rank += rank
@@ -235,9 +235,9 @@ class NewsController < ApplicationController
         news_rank_record.my_news = false
         news_rank_record.rank = rank
       end
+	  
       news_rank_record.save
-    rescue
-    end
+    
   end
 
   # GET /news/new
