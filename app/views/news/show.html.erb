@@ -53,7 +53,6 @@
     <div id="content">
       <div class="news">
         <% if @news.url != "" %>
-          <a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a>
           <div>
             <% # TODO: use @paper_width %>
               <% if (@news.url.include?'youtu') %>
