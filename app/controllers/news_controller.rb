@@ -170,12 +170,12 @@ class NewsController < ApplicationController
   # news => News object
   # type => :like/:unlike/:watch/:report
   def news_rank_action(user, news, type)
-    @rank = calculate_rank(type)
+    rank = calculate_rank(type)
 
-    update_my_news_rank(user, news, @rank)
+    update_my_news_rank(user, news, rank)
 
     user.inverse_friends.each do |friend|
-      update_user_news_rank(friend, news, @rank)
+      update_user_news_rank(friend, news, rank)
     end
 
   end
@@ -225,19 +225,17 @@ class NewsController < ApplicationController
 
     friend_news_rank_records = UserNewsRank.where("user_id=? AND news_id=? AND my_news=?", user.id, news.id, false)
 
-   
-      if (friend_news_rank_records.count != 0)
-        news_rank_record = friend_news_rank_records[0]
-        news_rank_record.rank += rank
-      else
-		user.friend_news.push(news)
-        news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
-        news_rank_record.my_news = false
-        news_rank_record.rank = rank
-      end
-	  
-      news_rank_record.save
-    
+    if (friend_news_rank_records.count != 0)
+      news_rank_record = friend_news_rank_records[0]
+      news_rank_record.rank += rank
+    else
+      user.friend_news.push(news)
+      news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
+      news_rank_record.my_news = false
+      news_rank_record.rank = rank
+    end
+    news_rank_record.save
+
   end
 
   # GET /news/new

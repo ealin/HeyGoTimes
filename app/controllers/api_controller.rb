@@ -82,7 +82,12 @@ class ApiController < ApplicationController
           @news.title = @data[:title]
           @news.content = @data[:text]
           @news.url = params[:url]
-          @news.special_flag= true
+
+          if(params[:publish] == "yes")
+            @news.special_flag= false
+          else
+            @news.special_flag= true
+          end
 
           @image = Image.create(@data[:image])
           @image.news = @news

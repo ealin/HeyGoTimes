@@ -2,7 +2,7 @@ require 'rss/2.0'
 require 'open-uri'
 require 'net/http'
 
-    rss_url = [
+    google_rss_url = [
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=w&output=rss",
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=n&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=b&output=rss" ,
@@ -17,7 +17,7 @@ require 'net/http'
     ] ;
 
 
-    rss_tag = [
+    google_rss_tag = [
         "World",
         "Local" ,
         "Business" ,
@@ -37,16 +37,16 @@ require 'net/http'
 
 while true
 
-    for i in (0..(rss_tag.length - 1))
+    for i in (0..(google_rss_tag.length - 1))
 
 
-        feed_url = rss_url[i]
+        feed_url = google_rss_url[i]
 
-        command = 'http://localhost:3000/api/new_news?area=Taiwan/&tags='
-        #command = 'http://heygotimes-bench.heroku.com/api/new_news?area=Taiwan&tags='
-        #command = 'http://heygotimes.heroku.com/api/new_news?area=Taiwan&tags='
+        command = 'http://localhost:3000/api/new_news?publish=no&area=Taiwan/&tags='
+        #command = 'http://heygotimes-bench.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
+        #command = 'http://heygotimes.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
 
-        command = command + rss_tag[i] + "&url="
+        command = command + google_rss_tag[i] + "&url="
 
         begin
             open(feed_url) do |feed|

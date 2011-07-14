@@ -156,6 +156,71 @@
 
     }) ;
 
+    function check_tags(the_box)
+    {
+
+        if(the_box != "All")
+        {
+            for(i=0;i<($('option').length);i++)
+            {
+
+               if( $('option')[i].parentNode.id != "tag_filter")
+                     continue ;
+
+                if($('option')[i].id == "All" && $('option')[i].selected == true)
+                {
+                    $('option')[i].selected = false ;
+                    break ;
+                }
+
+            }
+
+        }
+        else
+        {
+
+            for(i=0;i<($('option').length);i++)
+            {
+
+               if( $('option')[i].parentNode.id != "tag_filter")
+                     continue ;
+
+                if($('option')[i].id == "All")
+                    continue ;
+
+                $('option')[i].selected = false ;
+
+            }
+
+        }
+
+
+
+                      /*
+        // get selected tag-filter
+         for(i=0;i<($('option').length);i++)
+         {
+
+            if( $('option')[i].parentNode.id != "tag_filter")
+                  continue ;
+
+             if($('option')[i].id == "All" && $('option')[i].selected == true)
+             {
+                 selected_tag_counter = 1 ;
+                 data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
+                 break ;
+             }
+
+             if($('option')[i].selected == true)
+             {
+                data += ($('option')[i].id + "/") ;
+                selected_tag_counter++ ;
+
+             }
+         }              */
+
+    }
+
 
 
 </script>
@@ -193,9 +258,9 @@
      <% end %>
 
      <% if session[:filter_tags].include?(tag.name) %>
-            <option  id="<%= tag.name %>" selected="yes" ><%= t(tag.name.to_sym)  %></option>
+            <option  id="<%= tag.name %>" selected="yes" onclick="check_tags(id)" ><%= t(tag.name.to_sym)  %></option>
      <% else %>
-           <option  id="<%= tag.name %>" ><%= t(tag.name.to_sym)  %></option>
+           <option  id="<%= tag.name %>"  onclick="check_tags(id)"><%= t(tag.name.to_sym)  %></option>
      <% end %>
    <% end %>
 </select>
