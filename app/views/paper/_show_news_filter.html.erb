@@ -248,6 +248,47 @@
      }
 
 
+     function check_tags(the_checkbox)
+     {
+        if(the_checkbox.id != 'All')
+        {
+            // set checkbox- "All" as not selected!
+
+            for(i=0;i<($('input').length);i++)
+             {
+                 if( $('input')[i].name != "each_tag")
+                 {
+                     continue ;
+                 }
+
+                 if($('input')[i].id == "All" && $('input')[i].checked == true)
+                 {
+                     $('input')[i].checked = false ;
+                     break ;
+                 }
+
+              }
+       }
+       else
+       {
+
+           for(i=0;i<($('input').length);i++)
+           {
+                 if( $('input')[i].name != "each_tag")
+                     continue ;
+\
+                 if($('input')[i].id == "All")
+                     continue ;
+
+                 $('input')[i].checked = false ;
+
+           }
+
+       }
+     }
+
+
+
  </script>
 
 
@@ -322,14 +363,14 @@
           <% end %>
 
           <div id="tag_grp1">
-          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" onclick="check_tags(this)">
              <%= t(tag.name.to_sym) %>
           </input>
             &nbsp;&nbsp;&nbsp;
           </div>
     <% else %>
           <div id="tag_grp2">
-          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" >
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>"  onclick="check_tags(this)">
              <%= t(tag.name.to_sym) %>
           </input>
           &nbsp;&nbsp;&nbsp;
@@ -350,18 +391,6 @@
 
   <br>
 
-  <!--  don't need to show "feedback", "faq", "systemNotice" tags here!
-
-  <div id="tag_grp1">
-    <input type="checkbox" name ="each_tag" id="<%= @tags[1].name %>" >
-       <%= t(@tags[1].name.to_sym) %>
-    </input>
-    &nbsp;&nbsp;&nbsp;
-    <input type="checkbox" name ="each_tag" id="<%= @tags[2].name %>" >
-       <%= t(@tags[2].name.to_sym) %>
-    </input>
-  </div>
-  -->
 
 </div>
 

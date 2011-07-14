@@ -16,6 +16,7 @@
       </div>
 
       <div class="m_comments">
+
         <% graph = Koala::Facebook::GraphAPI.new() %>
         <% comment_obj = graph.get_object("http://heygotimes.heroku.com/news/"+news.id.to_s) %>
         <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>

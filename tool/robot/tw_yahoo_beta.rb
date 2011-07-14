@@ -3,6 +3,13 @@ require 'open-uri'
 require 'net/http'
 
     yahoo_rss_url = [
+        "http://beta.tw.news.yahoo.com/rss/taipei",
+        "http://beta.tw.news.yahoo.com/rss/north-taiwan",
+        "http://beta.tw.news.yahoo.com/rss/mid-taiwan",
+        "http://beta.tw.news.yahoo.com/rss/south-taiwan",
+        "http://beta.tw.news.yahoo.com/rss/east-taiwan",
+        "http://beta.tw.news.yahoo.com/rss/local/",
+
       "http://beta.tw.news.yahoo.com/rss/entertainment",
       "http://beta.tw.news.yahoo.com/rss/celebrity",
       "http://beta.tw.news.yahoo.com/rss/music",
@@ -34,13 +41,6 @@ require 'net/http'
       "http://beta.tw.news.yahoo.com/rss/real-estate",
       "http://beta.tw.news.yahoo.com/rss/money-career",
 
-      "http://beta.tw.news.yahoo.com/rss/local/",
-      "http://beta.tw.news.yahoo.com/rss/taipei",
-      "http://beta.tw.news.yahoo.com/rss/north-taiwan",
-      "http://beta.tw.news.yahoo.com/rss/mid-taiwan",
-      "http://beta.tw.news.yahoo.com/rss/south-taiwan",
-      "http://beta.tw.news.yahoo.com/rss/east-taiwan",
-
       "http://beta.tw.news.yahoo.com/rss/lifestyle",
       "http://beta.tw.news.yahoo.com/rss/weather",
       "http://beta.tw.news.yahoo.com/rss/consumption",
@@ -59,59 +59,37 @@ require 'net/http'
 
 
     yahoo_rss_tag = [
-
+        "Local","Local","Local","Local","Local","Local",
         "Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment",
-
-        "Sport",
-        "Sport",
-        "Sport",
-        "Sport",
-        "Sport",
-        "Sport",
-
+        "Sport","Sport","Sport","Sport","Sport","Sport",
         "Politics",
-
         "Society",
-
-        "World",
-        "World",
-        "World",
-        "World",
-        "World",
-
-        "Business",
-        "Business",
-        "Business",
-        "Business",
-        "Business",
-        "Business",
-
-        "Local",
-        "Local",
-        "Local",
-        "Local",
-        "Local",
-        "Local",
-
-        "Life",
-        "Life",
-        "Life",
+        "World","World","World","World","World",
+        "Business","Business","Business","Business","Business","Business",
+        "Life","Life","Life",
         "Travel",
         "Education",
         "Art",
         "Life",
-
-        "Health",
-        "Health",
-        "Health",
-
-        "Sci_Tech",
-        "Sci_Tech",
-        "Sci_Tech"] ;
+        "Health","Health","Health",
+        "Sci_Tech","Sci_Tech","Sci_Tech"] ;
 
 
-    #yahoo_rss_area = [
-     #   ] ;
+    yahoo_rss_area = [
+        "Taiwan/North_TW/","Taiwan/North_TW/","Taiwan/Middle_TW/","Taiwan/South_TW/","Taiwan/East_TW/","Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/",
+        "Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/",
+        "Taiwan/",
+        "Taiwan/",
+        "Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/",
+        "Taiwan/","Taiwan/","Taiwan/"] ;
 
 
 
@@ -125,11 +103,11 @@ while true
 
         feed_url = yahoo_rss_url[i]
 
-        command = 'http://localhost:3000/api/new_news?area=Taiwan&tags='
+        command = 'http://localhost:3000/api/new_news?tags='
         #command = 'http://heygotimes-bench.heroku.com/api/new_news?area=Taiwan&tags='
         #command = 'http://heygotimes.heroku.com/api/new_news?area=Taiwan&tags='
 
-        command = command + yahoo_rss_tag[i] + "&url="
+        command = command + yahoo_rss_tag[i] + '&area=' + yahoo_rss_area[i] + "&url="
 
         begin
             open(feed_url) do |feed|

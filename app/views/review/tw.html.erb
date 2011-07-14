@@ -93,6 +93,8 @@
 
       <span style="color: blue;">
       #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
+      <br>
+      [ 新聞屬性： <%= t(@news_for_review[@count-i].tags[0].name.to_sym) %>  ]
       </span>
       <br>
       <%= @news_for_review[@count-i].content %>
@@ -107,9 +109,11 @@
       <!-- 3 buttons : 1.delete this news   2.delete image    3. report this news -->
       <button style="font-size:14px;color:red;" onclick="delete_news(<%= @news_for_review[@count-i].id %>);">刪除此新聞</button> &nbsp;&nbsp;
       &nbsp;&nbsp;
-      <button style="font-size:14px;color:blue;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
       <button style="font-size:14px;color:blue;" onclick="delete_img_and_publish(<%= @news_for_review[@count-i].id %>) ;">刪除圖片並發佈</button>  &nbsp;&nbsp;
       <button style="font-size:14px;color:blue;" onclick="publish_news(<%= @news_for_review[@count-i].id %>) ;">發佈此新聞</button>
+
+      <br>
+      <button style="font-size:14px;color:green; float:right;" onclick="change_image(<%= @news_for_review[@count-i].id %>);">修改此新聞的照片</button>   &nbsp;&nbsp;
 
 
     </p>

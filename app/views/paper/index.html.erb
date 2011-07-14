@@ -88,6 +88,13 @@
       });
 
       $('#show_feedback').unbind('click').click(function() {
+        if(<%= session[:logged_in]%> == false)
+        {
+            alert("<%= t(:login_for_set_friend_filter) %>") ;
+            return ;
+        }
+
+
         currPage = 1;
         currType = 'special';
         subType = 'feedback';

@@ -20,12 +20,7 @@ class ReviewController < NewsController
 
 
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
-    #if @news_for_review.count >= 20
-    #  @count = 20
-    #else
-      @count = @news_for_review.count
-    #end
-
+    @count = @news_for_review.count
 
   end
 
