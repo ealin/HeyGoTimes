@@ -60,7 +60,7 @@ $(document).ready(function () {
           }
           else
           {
-            console.log(json) ;
+            $('#news_submit').attr("disabled", false);
 
             document.forms[0].elements[4].value = json.title;
             document.forms[0].elements[5].value = json.text;
