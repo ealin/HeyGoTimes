@@ -89,7 +89,7 @@ class PaperController < NewsController
     end
 
     if (News.count > 0)
-      if (user_tags[0] == 'All')
+      if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
         news = News.get_all(type, friend_type, user_id)
       else
         news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
