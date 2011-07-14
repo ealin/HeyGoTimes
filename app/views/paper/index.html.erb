@@ -102,6 +102,7 @@
       });
     });
 
+    /*
     function init_checkbox(reporter_flag)
     {
         $('#sel_area_and_tag')[0].style.display = "" ;
@@ -136,6 +137,27 @@
              $('#FeedbackTag_lab')[0].style.display= "none" ;
          }
 
+    } */
+
+    function set_default_locale(new_locale)
+    {
+        // ask server to set session[:default_locale] then reload the main-page
+        data = "locale=" + new_locale
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/paper/set_default_locale",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/");
+             }
+         });
+
+
     }
 
   </script>
@@ -143,6 +165,7 @@
 </head> <%# end tag for <head> in application.html.erb %>
 
 <body>
+
 
 <% if detect_Mobile_browser(:list) == true %>
     <%= redirect_to  :controller => 'mobile', :action => 'index' %>
@@ -157,9 +180,18 @@
         <%= @newspaper_title.to_s %>
     </span>
 
+
     <div id="page_head" >
       <%= show_page_head(:login_flag => true)  %>
+      <div id="page_head2" >
+         <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
+         <a href="#" onclick="set_default_locale('zh')">简体中文</a>
+         <a href="#" onclick="set_default_locale('en')">English</a>
+      </div><!-- #page_head -->
     </div><!-- #page_head -->
+
+
+
 
   </div><!-- #header -->
 
@@ -170,12 +202,12 @@
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
 
         <% if session[:logged_in] == true %>
-           <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" onclick="init_checkbox(1)"><%=t(:m_report)%></a></li>
+           <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" ><%=t(:m_report)%></a></li>
         <% else %>
             <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
         <% end %>
 
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" onclick="init_checkbox(0)"><%=t(:m_filter)%></a></li>
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
       </ul>
     </div>
   </div><!-- #access -->

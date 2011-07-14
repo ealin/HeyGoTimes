@@ -67,7 +67,7 @@ zh_tw:
   load_my_filter: "載入我的設定"
   #load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
-  set_areas: "設定此篇新聞的區域："
+  set_areas: "此篇新聞發佈給哪個區域的讀者："
   set_tags: "設定此篇新聞的屬性："
 
   input_news_url_hint: "您可以在此輸入新聞網址："
@@ -112,9 +112,14 @@ zh_tw:
   add_news: "報導此新聞"
   cancel: "取消"
 
-  I_want_to_report_spam: "我要檢舉垃圾新聞 - <"
-  reason_is: "> ,理由是："
+  I_want_to_report_spam: "我要檢舉垃圾新聞 "
+
   feedback_message: "我們的使用者意見管理系統即將上線，再此之前，請先發送訊息到：heygoinc@gmail.com"
+  report_spam_done: "謝謝您協助監督新聞品質，我們會儘快處理。"
+  report_spam_ng: "您檢舉的新聞並不存在！"
+  news_title: "新聞標題："
+  spam_reason: "檢舉理由："
+  
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

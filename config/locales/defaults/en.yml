@@ -9,7 +9,7 @@ en:
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------
-  main_page:  "Main Page"
+  main_page:  "Home"
   today_newspaper: "Today's Newspaper"
   privacy: "Privacy"
   #realtime_news: "Realtime-News"
@@ -175,9 +175,13 @@ en:
   
   Closed_spam_report: "Spam-Report(Closed)"
   FAQ: "FAQ"
-  I_want_to_report_spam: "I want to report a spam news - <"
-  reason_is: "> ,the reason is："
+  I_want_to_report_spam: "I want to report a spam news "
+
   feedback_message: "Our user-feedback-management system would be online soon，before that，please send your message to：heygoinc@gmail.com"
+  report_spam_done: "Thank you very much, we would check this news soon!"
+  report_spam_ng: "The news you reported is not existed!"
+  news_title: "News Title:"
+  spam_reason: "My reason is："
 
   
   #----------------------------------------

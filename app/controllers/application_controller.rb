@@ -143,6 +143,26 @@ class ApplicationController < ActionController::Base
     user.save
   end
 
+
+  #-----------------------------------------------------------------------------------
+  # method: set_default_locale
+  #   // ask server to set session[:default_locale] then reload the main-page(new_locale)
+  #-----------------------------------------------------------------------------------
+  def set_default_locale()
+
+    session[:default_locale] = params[:locale]
+
+    respond_to do |format|
+      format.html { render  :inline => "OK" }
+    end
+
+
+  end
+
+
+
+
+
   #----------------------------------------------------
   # method: mapping_locale_to_area
   #----------------------------------------------------
@@ -151,6 +171,8 @@ class ApplicationController < ActionController::Base
   def mapping_locale_to_area
     if I18n.locale == :en
       session[:default_area] = "USA"
+    elsif I18n.locale == :zh
+      session[:default_area] = "China"
     else
       session[:default_area] = "Taiwan"
     end
@@ -159,7 +181,9 @@ class ApplicationController < ActionController::Base
 
   #===========================================================================
 
-  
+
+
+
   # Ealin: 20110411
   #--------------------------
   # method: set_locale
@@ -169,9 +193,17 @@ class ApplicationController < ActionController::Base
     #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
 
+    if session[:default_locale] != nil
+      I18n.locale = (session[:default_locale]).to_sym
+      mapping_locale_to_area
+      return
+    end
+
+    logger.debug "'#{I18n.locale}'"
+
     I18n.locale = extract_locale_from_accept_language_header
 
-    #logger.debug "'#{I18n.locale}'"
+    logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    

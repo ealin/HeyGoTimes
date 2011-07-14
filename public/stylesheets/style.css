@@ -71,8 +71,12 @@ a img {
 #header #filter_hint {
   position:relative;
   top: 20px;
-  font-size: 14px
+  font-size: 14px;
+
 }
+
+
+
 
 /* Logo */
 #logo {
@@ -88,6 +92,12 @@ a img {
   width: 100px;
 }
 
+#page_head2 {
+  padding-right: 10px;
+  float: right;
+  height: 85px;
+  width: 150px;
+}
 /* Menu */
 #menu {
 	float: left;

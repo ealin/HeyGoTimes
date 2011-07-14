@@ -117,9 +117,9 @@ class PaperController < NewsController
       user_id = nil
     elsif (type == 'feedback')
       tags = ["FeedbackTag","Closed_spam_report"]
-      areas = ["Taiwan"]
-      friend_type = :none
-      user_id = nil
+      areas = ["Taiwan","All_area"]
+      friend_type = :mine
+      user_id = session[:id]
     end
 
     news = News.get_all_special(areas, tags, friend_type, user_id)
@@ -130,6 +130,8 @@ class PaperController < NewsController
 
     return news
   end
+
+
 
   #-----------------------------------------------------------------------------------
   # method: set_tag_filter_by_locale      (Ealin: 20110607)

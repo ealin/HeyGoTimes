@@ -1,0 +1,402 @@
+zh:
+
+  HeyGoTimes: "黑狗日报"
+  slogan: "您的专属新闻 - "
+
+  #----------------------------------------
+  # name of each page(controller/view)
+  #----------------------------------------
+  main_page:  "主页"
+  today_newspaper: "今日报纸"
+  privacy: "隐私条款"
+  #realtime_news: "即时新闻编辑"
+  login: "登入"
+  logout: "登出"
+  signup: "注册"
+  feedback: "建议与反馈"
+  report_spam: "检举垃圾新闻"
+  response: "检举记录"
+  notice: "公告"
+  mobileSite: "手机版本"
+  terms: "服务条款"
+
+  #filter_news: "过滤新闻"
+  ok: "完成"
+  cancel: "取消"
+
+  popular_news: "热门新闻"
+  latest_news: "最新新闻"
+
+  get_news: "取得新闻"
+  more_news: "更多新闻"
+  like_btn: "喜欢"
+  like_hint: "我喜欢"
+  unlike_hint: "我不喜欢"
+  comments: "读者回应"
+  share: "分享"
+  share_hint: "分享至Facebook"
+  report_this_news: "发布此则新闻"
+  news_already_exist: "此新闻已经存在"
+  
+  #----------------------------------------
+  # for mobile site
+  #----------------------------------------
+  m_report: "发布新闻"
+  m_filter: "筛选新闻"
+  m_filter_setting: "筛选条件设定"
+  m_report_news: "发布新闻"
+  m_login: "登入"
+  m_logout: "登出"
+  m_more: "载入更多新闻..."
+  
+  m_function: "功能选单:"
+  m_setting_list: "朋友与日期选项:"
+
+  m_to_comment: "到读者回应"
+  m_prev: "回前页"
+  
+
+  #----------------------------------------
+  # News Filter
+  #----------------------------------------
+  report_a_news: "发表新新闻"
+  tip_for_filter:   "您可透过右方过滤器按钮，设定您专属的新闻选项。"
+  
+  news_filter_head: "打造您专属的个人新闻！"
+  load_my_filter: "载入我的设定"
+  #load_current_filter: "载入目前的设定"  
+  reset_the_filter: "清除所有选项"
+  set_areas: "此篇新闻发布给哪个区域的读者："
+  set_tags: "设定此篇新闻的属性："
+
+  input_news_url_hint: "您可以在此输入新闻网址："
+  input_news_hint: "或者输入新闻内容："
+  news_title_field: "标题:"
+  news_content_field: "内容:"
+  news_image_url_field: "图片网址:"
+  news_URL: "新闻网址"
+  
+  filter_by_tag: "选择您感兴趣的新闻分类："
+  filter_by_area: "选择区域(可复选)："
+  filter_by_friend: "好友选项："
+  filter_by_date: "选择日期："
+  
+  my_news_only: "只显示我的新闻"
+  my_friends_news_only: "只显示所有朋友的新闻"
+
+  filter_save_as_default: "储存为我的预设选项"
+  filter_cancel: "取消"
+  filter_ok: "套用设定"
+  show_tags: "显示所有新闻分类"
+  filter_setting_saved: "您的设定已储存!"
+  user_not_exist: "使用者不存在！"
+  
+  yesterday: "昨天"
+  today: "今天"
+  select_date: "选择日期"
+  filter_by_this_date: "依照选定的日期筛选新闻："
+  no_limit: "无"
+  no_date_filter: "不依日期过滤新闻" 
+  
+  same_as_select_all: "(视同以下分类全部勾选)"
+  hit_here_to_select_area: "请按此选择区域："
+
+  feedback_hint: "感谢您对黑狗日报的意见, 发表意见就像发布一篇新新闻一样简单！"
+  report_spam_hint: "检举此篇新闻:"
+  response_hint: "预设只显示您的意见与回覆,若您想要读取所有使用者的意见, 您可至'筛选新闻'中设定区域！ " 
+  notice_hint: "预设只显示您所在地区的公告,若您想要读取所有公告, 您可至'筛选新闻'中进行设定！ " 
+  
+  login_for_set_friend_filter: "您必须登入后才可以使用此功能！"
+  please_log_in: "请先以facebook的帐号登入。"
+  add_news: "报导此新闻"
+  cancel: "取消"
+
+  I_want_to_report_spam: "我要检举垃圾新闻 "
+
+  feedback_message: "我们的使用者意见管理系统即将上线，再此之前，请先发送讯息到：heygoinc@gmail.com"
+  report_spam_done: "谢谢您协助监督新闻品质，我们会尽快处理。"
+  report_spam_ng: "您检举的新闻并不存在！"
+  news_title: "新闻标题："
+  spam_reason: "检举理由："
+  
+
+  #--------------------------------------------------------------------------
+  # name of Area (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  All_area: "所有地区"
+  
+  Taiwan: "台湾"
+  TW_CN: "两岸"
+  North_TW: "北台湾"
+  Middle_TW: "中台湾"
+  South_TW: "南台湾"
+  East_TW: "东台湾"
+  
+  China: "中国"
+  TW_HK: "港台"
+  
+  USA: "美国"
+  Japan: "日本"
+  Europe: "欧洲"
+  Asia: "亚洲"
+  Others: "其他地区"
+  
+  
+  #--------------------------------------------------------------------------
+  # name of NEWS tag (name of each symbol should be similar with in seed.rb)
+  #--------------------------------------------------------------------------
+  All: "所有新闻"
+  HGTimesNotice: "HG-Times官方公告"
+  FeedbackTag: "反馈与回覆"
+
+  #Top: "焦点"
+  #Mobile: "手机新闻"
+  Motion: "动画新闻"
+  World: "全球观察"
+  Society: "社会新闻"
+  Local: "在地新闻"
+  Business: "财经产业"
+  Stock: "股市新闻"
+  
+  Sci_Tech: "科技新知"
+  Sport: "体育运动"
+  #NBA: "NBA"
+  #Baseball: "棒球"
+  
+  Life: "生活天气"
+  Entertainment: "娱乐影剧"
+  Health: "健康医药"
+  Internet: "网际网路"
+  Politics: "政治新闻"
+  Travel: "休闲旅游"
+  #Car: "汽车"
+  Education: "教育学习"
+  Art: "艺文时尚"
+  Special: "特色新闻"
+  Closed_spam_report: "检举(已结案)"
+  
+  FAQ: "常见问题"
+  
+  
+
+  #----------------------------------------
+  # name of the Link
+  #----------------------------------------
+  setting: "帐号设定"
+
+   #----------------------------------------
+   # temp
+   #----------------------------------------
+
+#------------------------------------
+# contens below are loaded from :
+# https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/zh-TW.yml
+#------------------------------------
+
+# Chinese (Taiwan) translations for Ruby on Rails
+# by tsechingho (http://github.com/tsechingho)
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+    day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [日, 一, 二, 三, 四, 五, 六]
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    order: [ :year, :month, :day ]
+
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M:%S %Z"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one: "不到一秒"
+        other: "不到 %{count} 秒"
+      x_seconds:
+        one: "一秒"
+        other: "%{count} 秒"
+      less_than_x_minutes:
+        one: "不到一分钟"
+        other: "不到 %{count} 分钟"
+      x_minutes:
+        one: "一分钟"
+        other: "%{count} 分钟"
+      about_x_hours:
+        one: "大约一小时"
+        other: "大约 %{count} 小时"
+      x_days:
+        one: "一天"
+        other: "%{count} 天"
+      about_x_months:
+        one: "大约一个月"
+        other: "大约 %{count} 个月"
+      x_months:
+        one: "一个月"
+        other: "%{count} 个月"
+      about_x_years:
+        one: "大约一年"
+        other: "大约 %{count} 年"
+      over_x_years:
+        one: "一年多"
+        other: "%{count} 年多"
+      almost_x_years:
+        one:   "接近一年"
+        other: "接近 %{count} 年"
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "时"
+      minute: "分"
+      second: "秒"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%u %n"
+        unit: "NT$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          # 10^-21 zepto, 10^-24 yocto
+          atto: "渺"  # 10^-18
+          femto: "飞" # 10^-15 毫微微
+          pico: "漠"  # 10^-12 微微
+          nano: "奈"  # 10^-9 毫微
+          micro: "微" # 10^-6
+          mili: "毫"  # 10^-3 milli
+          centi: "厘" # 10^-2
+          deci: "分"  # 10^-1
+          unit: ""
+          ten:
+            one: "十"
+            other: "十"  # 10^1
+          hundred: "百"  # 10^2
+          thousand: "千" # 10^3 kilo
+          million: "百万" # 10^6 mega
+          billion: "十亿" # 10^9 giga
+          trillion: "兆" # 10^12 tera
+          quadrillion: "千兆" # 10^15 peta
+          # 10^18 exa, 10^21 zetta, 10^24 yotta
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+    select:
+      prompt: "请选择"
+
+  activerecord:
+    errors:
+      template: # ~ 2.3.5 backward compatible
+        header:
+          one: "有 1 个错误发生使得“%{model}”无法被储存。"
+          other: "有 %{count} 个错误发生使得“%{model}”无法被储存。"
+        body: "以下栏位发生问题："
+      full_messages:
+        format: "%{attribute} %{message}"
+      messages:
+        inclusion: "没有包含在列表中"
+        exclusion: "是被保留的关键字"
+        invalid: "是无效的"
+        confirmation: "不符合确认值"
+        accepted: "必须是可被接受的"
+        empty: "不能留空"
+        blank: "不能是空白字元"
+        too_long: "过长（最长是 %{count} 个字）"
+        too_short: "过短（最短是 %{count} 个字）"
+        wrong_length: "字数错误（必须是 %{count} 个字）"
+        not_a_number: "不是数字"
+        not_an_integer: "必须是整数"
+        greater_than: "必须大于 %{count}"
+        greater_than_or_equal_to: "必须大于或等于 %{count}"
+        equal_to: "必须等于 %{count}"
+        less_than: "必须小于 %{count}"
+        less_than_or_equal_to: "必须小于或等于 %{count}"
+        odd: "必须是奇数"
+        even: "必须是偶数"
+        taken: "已经被使用"
+        record_invalid: "校验失败: %{errors}"
+
+  activemodel:
+    errors:
+      template:
+        header:
+          one: "有 1 个错误发生使得“%{model}”无法被储存。"
+          other: "有 %{count} 个错误发生使得“%{model}”无法被储存。"
+        body: "以下栏位发生问题："
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      inclusion: "没有包含在列表中"
+      exclusion: "是被保留的关键字"
+      invalid: "是无效的"
+      confirmation: "不符合确认值"
+      accepted: "必须是可被接受的"
+      empty: "不能留空"
+      blank: "不能是空白字元"
+      too_long: "过长（最长是 %{count} 个字）"
+      too_short: "过短（最短是 %{count} 个字）"
+      wrong_length: "字数错误（必须是 %{count} 个字）"
+      not_a_number: "不是数字"
+      not_an_integer: "必须是整数"
+      greater_than: "必须大于 %{count}"
+      greater_than_or_equal_to: "必须大于或等于 %{count}"
+      equal_to: "必须等于 %{count}"
+      less_than: "必须小于 %{count}"
+      less_than_or_equal_to: "必须小于或等于 %{count}"
+      odd: "必须是奇数"
+      even: "必须是偶数"
+
+  helpers:
+    select:
+      prompt: "请选择"
+    submit:
+      create: "新增%{model}"
+      update: "更新%{model}"
+      submit: "储存%{model}"
+
