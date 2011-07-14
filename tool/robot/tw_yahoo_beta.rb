@@ -2,7 +2,7 @@ require 'rss/2.0'
 require 'open-uri'
 require 'net/http'
 
-    yahoo_rss_url = [
+    yahoo_beta_rss_url = [
         "http://beta.tw.news.yahoo.com/rss/taipei",
         "http://beta.tw.news.yahoo.com/rss/north-taiwan",
         "http://beta.tw.news.yahoo.com/rss/mid-taiwan",
@@ -58,7 +58,7 @@ require 'net/http'
       "http://beta.tw.news.yahoo.com/rss/science" ] ;
 
 
-    yahoo_rss_tag = [
+    yahoo_beta_rss_tag = [
         "Local","Local","Local","Local","Local","Local",
         "Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment",
         "Sport","Sport","Sport","Sport","Sport","Sport",
@@ -75,7 +75,7 @@ require 'net/http'
         "Sci_Tech","Sci_Tech","Sci_Tech"] ;
 
 
-    yahoo_rss_area = [
+    yahoo_beta_rss_area = [
         "Taiwan/North_TW/","Taiwan/North_TW/","Taiwan/Middle_TW/","Taiwan/South_TW/","Taiwan/East_TW/","Taiwan/",
         "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
         "Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/","Taiwan/",
@@ -98,16 +98,16 @@ require 'net/http'
 
 while true
 
-    for i in (0..(yahoo_rss_tag.length - 1))
+    for i in (0..(yahoo_beta_rss_tag.length - 1))
 
 
-        feed_url = yahoo_rss_url[i]
+        feed_url = yahoo_beta_rss_url[i]
 
-        command = 'http://localhost:3000/api/new_news?tags='
-        #command = 'http://heygotimes-bench.heroku.com/api/new_news?area=Taiwan&tags='
-        #command = 'http://heygotimes.heroku.com/api/new_news?area=Taiwan&tags='
+        command = 'http://localhost:3000/api/new_news?publish=yes&tags='
+        #command = 'http://heygotimes-bench.heroku.com/api/new_news?publish=yes&tags='
+        #command = 'http://heygotimes.heroku.com/api/new_news?publish=yes&tags='
 
-        command = command + yahoo_rss_tag[i] + '&area=' + yahoo_rss_area[i] + "&url="
+        command = command + yahoo_beta_rss_tag[i] + '&area=' + yahoo_beta_rss_area[i] + "&url="
 
         begin
             open(feed_url) do |feed|

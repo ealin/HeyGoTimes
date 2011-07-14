@@ -80,6 +80,14 @@
 
   $(document).ready(function (){
 
+      // load session to initialize all selection item
+      //
+        $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+        {
+            set_each_filter(json) ;
+
+        }  );
+
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  Function:  get_today_as_string
@@ -276,7 +284,7 @@
            {
                  if( $('input')[i].name != "each_tag")
                      continue ;
-\
+
                  if($('input')[i].id == "All")
                      continue ;
 
@@ -436,15 +444,4 @@
 
 </div>
 <br>
-
-
-<script type="text/javascript">
-  // load session to initialize all selection item
-  //
-    $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
-    {
-        set_each_filter(json) ;
-
-    }  );
-</script>
 
