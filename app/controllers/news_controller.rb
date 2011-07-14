@@ -230,6 +230,7 @@ class NewsController < ApplicationController
         news_rank_record = friend_news_rank_records[0]
         news_rank_record.rank += rank
       else
+		user.friend_news.push(news)
         news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, news.id).last
         news_rank_record.my_news = false
         news_rank_record.rank = rank
