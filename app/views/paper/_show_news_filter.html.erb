@@ -76,11 +76,6 @@
      //
      // end of function - set_each_filter
 
-
-
-  $(document).ready(function (){
-
-
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  Function:  get_today_as_string
      //
@@ -199,6 +194,11 @@
 
 
 
+  $(document).ready(function (){
+
+
+
+
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - save_filter
      //
@@ -219,7 +219,9 @@
              success: function(html)
              {
                  // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/");
+                 // window.location.replace("/");
+                 alert('test');
+                 location.href=("/");
              }
          });
 
@@ -228,7 +230,11 @@
      }  );
        //
        // end of "#save_filter".click callback function
+     $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
+     {
+        set_each_filter(json) ;
 
+     }  );
 
 
   }  );
@@ -276,7 +282,7 @@
            {
                  if( $('input')[i].name != "each_tag")
                      continue ;
-\
+
                  if($('input')[i].id == "All")
                      continue ;
 
@@ -437,14 +443,4 @@
 </div>
 <br>
 
-
-<script type="text/javascript">
-  // load session to initialize all selection item
-  //
-    $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
-    {
-        set_each_filter(json) ;
-
-    }  );
-</script>
 
