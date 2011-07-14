@@ -166,7 +166,7 @@ a img {
 .comments .comment_title {
   margin-bottom: 10px;
   font-size: 1.8em;
-  width: 65%;
+  width: 40%;
   float: left;
 }
 .comments .comment_title a {
@@ -178,8 +178,15 @@ a img {
 }
 
 .comments .button_group {
-  width: 35%;
+  width: 60%;
   float: right;
+}
+
+.comments .count_span {
+  float: right;
+  position: relative;
+  top: 8px;
+  padding-right: 10px;
 }
 
 .comments .button_group .like_count, .unlike_count, .share_count
@@ -246,9 +253,14 @@ div.menu li {
 	text-decoration: none;
 }
 
-#access .fun-btn {
-  position:relative;
-  left:550px;
+#access #menu-type-btn {
+  width: 80%;
+  float: left;
+}
+
+#access #menu-fun-btn {
+  width: 20%;
+  float: right;
 }
 
 #access .fun-btn a {

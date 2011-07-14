@@ -20,6 +20,7 @@ module ApplicationHelper
 
    MOBILE_EXCEPTIONS = ["ipad"]
    MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+   APPLE_MOBILE_BROWSERS = ["ipad", "ipod", "iphone"]
 
    def detect_Mobile_browser(type)
 
@@ -42,7 +43,15 @@ module ApplicationHelper
      return false
    end
 
-
+   def detect_apple_browser()
+     agent = request.headers["HTTP_USER_AGENT"].downcase
+     APPLE_MOBILE_BROWSERS.each do |m|
+       if agent.match(m)
+         return true
+       end
+     end
+     return false
+   end
 
   #-----------------------------------------------------------------------------------
   # method: show_page_head      (Ealin: 20110502)

@@ -5,7 +5,12 @@
     <% # TODO: use @paper_width %>
       <% if (@news.url.include?'youtu') %>
         <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
-        <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+        <% if detect_apple_browser() %>
+          <% link = 'http://m.youtube.com/#/watch?v='+@news.url[-11..-1] %>
+          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影片" width="320" style="border:0;" /></a>
+        <% else %>
+          <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+        <% end %>
       <% else %>
         <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
         <iframe id="news_frame" width="100%" src="<%= url %>">

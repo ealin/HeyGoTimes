@@ -423,7 +423,7 @@ fieldset > .row:last-child {
 }
 
 .m_comments .m_comment_title {
-    font-size: 1.6em;
+    font-size: 1.0em;
     width: 50%;
     float: left;
 }
@@ -434,19 +434,24 @@ fieldset > .row:last-child {
 }
 
 .m_comments .m_button_group {
-    width: 50%;
-    float: right;
+  font-size: 0.6em;
+  width: 50%;
+  float: right;
+}
+
+.m_comments .count_span {
+  float: right;
 }
 
 .m_ad {
-    clear:both;
-    width: 100%;
+  clear:both;
+  width: 100%;
 }
 
 /************************************************************************************************/
 
 #preloader {
-    display: none;
+  display: none;
 }
 
 

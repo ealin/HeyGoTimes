@@ -41,7 +41,7 @@ class PaperController < NewsController
 
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content',
-                    :locals => {:news => @news,:type => params[:sub_type]}}
+                    :locals => {:news => @news, :news_sub_type => params[:sub_type]}}
     end
   end
 
@@ -89,7 +89,7 @@ class PaperController < NewsController
     end
 
     if (News.count > 0)
-      if (user_tags[0] == 'All')
+      if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
         news = News.get_all(type, friend_type, user_id)
       else
         news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
