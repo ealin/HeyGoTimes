@@ -246,9 +246,14 @@ div.menu li {
 	text-decoration: none;
 }
 
-#access .fun-btn {
-  position:relative;
-  left:550px;
+#access #menu-type-btn {
+  width: 80%;
+  float: left;
+}
+
+#access #menu-fun-btn {
+  width: 20%;
+  float: right;
 }
 
 #access .fun-btn a {

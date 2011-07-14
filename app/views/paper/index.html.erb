@@ -187,9 +187,11 @@
   <div id="access">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
+        <div id="menu-type-btn">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
-
+        </div>
+        <div id="menu-fun-btn">
         <% if session[:logged_in] == true %>
            <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" ><%=t(:m_report)%></a></li>
         <% else %>
@@ -197,6 +199,7 @@
         <% end %>
 
         <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
+        </div>
       </ul>
     </div>
   </div><!-- #access -->
