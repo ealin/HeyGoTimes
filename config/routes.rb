@@ -9,6 +9,9 @@ HeyGoTimes::Application.routes.draw do
   get "review/change_image"
   get "review/close_news"
   get "review/close_report"
+  get "review/report_spam"
+  get "review/delete_photo_and_close_report"
+
 
   get "api/new_news"
 
@@ -69,10 +72,7 @@ HeyGoTimes::Application.routes.draw do
     #Ealin: 關於 :on => :collection 可參考 "http://guides.rubyonrails.org/routing.html" chapter-2.9.2
     #
     get 'index', :on => :collection  
-    #get 'to_main_page', :on => :collection
-    #get 'filiter_today_newspaper', :on => :collection
-    #get 'follow', :on => :collection
-    #get 'show_paper_title', :on => :collection
+
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
@@ -83,6 +83,9 @@ HeyGoTimes::Application.routes.draw do
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
     get '_show_paper_content', :on => :collection
+    get 'set_default_locale', :on => :collection
+
+
   end
 
   resources :mobile do

@@ -33,15 +33,15 @@ class PaperController < NewsController
     # :page => page num to fetch
 
     if (params[:type] == 'special')
-      news = get_special_news(params[:sub_type], params[:page])
+      @news = get_special_news(params[:sub_type], params[:page])
     else
       session[:news_type] = params[:type]
-      news = get_news(params[:type], params[:page])
+      @news = get_news(params[:type], params[:page])
     end
 
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content',
-                    :locals => {:news => news,:type => params[:sub_type]}}
+                    :locals => {:news => @news, :news_sub_type => params[:sub_type]}}
     end
   end
 
@@ -89,7 +89,7 @@ class PaperController < NewsController
     end
 
     if (News.count > 0)
-      if (user_tags[0] == 'All')
+      if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
         news = News.get_all(type, friend_type, user_id)
       else
         news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
@@ -117,9 +117,9 @@ class PaperController < NewsController
       user_id = nil
     elsif (type == 'feedback')
       tags = ["FeedbackTag","Closed_spam_report"]
-      areas = ["Taiwan"]
-      friend_type = :none
-      user_id = nil
+      areas = ["Taiwan","All_area"]
+      friend_type = :mine
+      user_id = session[:id]
     end
 
     news = News.get_all_special(areas, tags, friend_type, user_id)
@@ -130,6 +130,8 @@ class PaperController < NewsController
 
     return news
   end
+
+
 
   #-----------------------------------------------------------------------------------
   # method: set_tag_filter_by_locale      (Ealin: 20110607)

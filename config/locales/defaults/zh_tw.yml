@@ -48,6 +48,7 @@ zh_tw:
   m_login: "登入"
   m_logout: "登出"
   m_more: "載入更多新聞..."
+  m_no_more: "已無更多新聞..."
   
   m_function: "功能選單:"
   m_setting_list: "朋友與日期選項:"
@@ -66,7 +67,7 @@ zh_tw:
   load_my_filter: "載入我的設定"
   #load_current_filter: "載入目前的設定"  
   reset_the_filter: "清除所有選項"
-  set_areas: "設定此篇新聞的區域："
+  set_areas: "此篇新聞發佈給哪個區域的讀者："
   set_tags: "設定此篇新聞的屬性："
 
   input_news_url_hint: "您可以在此輸入新聞網址："
@@ -110,6 +111,15 @@ zh_tw:
   please_log_in: "請先以facebook的帳號登入。"
   add_news: "報導此新聞"
   cancel: "取消"
+
+  I_want_to_report_spam: "我要檢舉垃圾新聞 "
+
+  feedback_message: "感謝您對 HeyGo! Times(黑狗日報) 的批評與指教，請在我們的粉絲團上留言，我們會儘速處理！"
+  report_spam_done: "謝謝您協助監督新聞品質，我們會儘快處理。"
+  report_spam_ng: "您檢舉的新聞並不存在！"
+  news_title: "新聞標題："
+  spam_reason: "檢舉理由："
+  
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

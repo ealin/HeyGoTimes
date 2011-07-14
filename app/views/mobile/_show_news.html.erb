@@ -1,10 +1,16 @@
-<button><a target="_webapp" href="#m_news_comments" style="text-decoration: none;"><img src="/images/arrow_down.png" alt=""/><%= t(:m_to_comment) %></a></button>
+
+<button><a <% if !redirect_from_web %> target="_webapp" <% end %>href="#m_news_comments" style="text-decoration: none;"><img src="/images/arrow_down.png" alt=""/><%= t(:m_to_comment) %></a></button>
 <% if @news.url != "" %>
   <div class="news_frame" style="width: 100%;">
     <% # TODO: use @paper_width %>
       <% if (@news.url.include?'youtu') %>
         <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
-        <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+        <% if detect_apple_browser() %>
+          <% link = 'http://m.youtube.com/#/watch?v='+@news.url[-11..-1] %>
+          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影片" width="320" style="border:0;" /></a>
+        <% else %>
+          <iframe id="news_frame" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+        <% end %>
       <% else %>
         <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
         <iframe id="news_frame" width="100%" src="<%= url %>">
@@ -26,7 +32,7 @@
 <div style="clear: both;"></div>
 
 <div id="m_news_comments">
-  <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><button onclick="iui.goBack();"><img src="/images/arrow_left.png" alt=""/><%= t(:m_prev) %></button></span></div>
+  <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><% if !redirect_from_web %><button onclick="iui.goBack();"><img src="/images/arrow_left.png" alt=""/><%= t(:m_prev) %></button><% end %></span></div>
   <div class="m_button_group"></div>
   <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
     <div id="fb-root"></div>
@@ -49,6 +55,12 @@
     <div style="clear: both;"></div>
   </div> <!-- fb_comment -->
 </div> <!-- comments -->
+
+<% if redirect_from_web %>
+  <div class="m_ad">
+    <%= render :partial => "m_show_ad" %>
+  </div>
+<% end %>
 
 
 

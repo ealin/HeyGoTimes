@@ -19,6 +19,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.boolean :admin, :default => false
 
+      t.date :last_update_friends
+
       t.timestamps
     end
   end

@@ -41,6 +41,30 @@
 
     }
 
+
+
+    function delete_photo_and_close_report(report_id,spam_id)
+    {
+        data = "spam_id=" + spam_id + '&report_id=' + report_id ;
+
+        // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/review/delete_photo_and_close_report",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/review/spam");
+             }
+         });
+
+
+    }
+
+
+
   function expand_comment(news_id)
   {
     var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='650'></fb:comments>";
@@ -59,19 +83,22 @@
 <br><br>
 <% for i in (1..(20)) %>
 
-    <p style="font-size:14px;">
+    <p>
       <% if @count-i < 0%>
           <% break %>
       <% end %>
 
       <h3>檢舉理由：</h3>
+      <span style="font-size:14px;">
           #<%= @spam_report[@count-i].id %>: <%= @spam_report[@count-i].title %>
           <br>
           <%= @spam_report[@count-i].content %>
           <br> <br>
-
+      </span>
 
       <h3>被檢舉新聞的資訊</h3>
+      <span style="font-size:14px;">
+
           #<%= @spam_news[@count-i].id %>: <%= @spam_news[@count-i].title %>
           <br>
           <%= @spam_news[@count-i].content %><br>
@@ -80,10 +107,11 @@
               <img src="<%= @spam_news[@count-i].images[0].url %>"/>
           <% end %>
 
+
           <% if @spam_news[@count-i].url != "" %>
             <a href="<%= @spam_news[@count-i].url %>">被檢舉的新聞連結</a>
           <% end %>
-
+       </span>
 
 
         <br> <br>
@@ -120,6 +148,16 @@
 
     <!-- 只會標示TAG, 不會真正刪除記錄（避免以後有統計的需求）-->
     <button style="font-size:14px;color:red;" onclick="close_news(<%= @spam_news[@count-i].id %>);">封鎖被檢舉的新聞</button> &nbsp;&nbsp;
+    <% @spam_news[@count-i].tags.each do |tag| %>
+      <% if tag.name == 'Closed_spam' %>
+           <span style="color: red;">!!!此新聞已封鎖!!!&nbsp;</span>
+      <% end %>
+    <% end %>
+
+    <br>
+    <button style="font-size:14px;color:blue;" onclick="delete_photo_and_close_report(
+            <%= @spam_report[@count-i].id %>,<%= @spam_news[@count-i].id %>);">刪除新聞照片並結案</button> &nbsp;&nbsp;
+
     <br>
     <button style="font-size:14px;color:blue;" onclick="close_report(<%= @spam_report[@count-i].id %>);">結案</button> &nbsp;&nbsp;
 

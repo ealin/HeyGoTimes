@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   
 
 
+
+
   #-------------------------------------------------------------------------------
   # method: admin_logged_in?
   #    - admin_data module would call this function before entering admin-mode
@@ -52,6 +54,11 @@ class ApplicationController < ActionController::Base
         current_facebook_user.fetch
 
         session[:logged_in] = true
+
+        user = User.find_by_host_id(current_facebook_user.id)
+        if (user != nil) && ((Date.today - user.last_update_friends) > 0)
+          get_friends(user.id)
+        end
 
       rescue Exception => e
 
@@ -118,20 +125,43 @@ class ApplicationController < ActionController::Base
   #   - # get user friends and save to friendship table
   #-----------------------------------------------------------------------------------
   def get_friends(id)
-    @facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
-    @access_token = @facebook_cookies["access_token"]
-    @graph = Koala::Facebook::GraphAPI.new(@access_token)
-    @friends = @graph.get_connections("me", "friends")
+    facebook_cookies = Koala::Facebook::OAuth.new(Facebooker2.app_id, Facebooker2.secret).get_user_info_from_cookie(cookies)
+    access_token = facebook_cookies["access_token"]
+    graph = Koala::Facebook::GraphAPI.new(access_token)
+    friends = graph.get_connections("me", "friends")
 
-    @user = User.find(id)
+    user = User.find(id)
 
-    @friends.each do |friend|
-      @friend = User.find_by_host_id(friend["id"])
-      if (@friend != nil && !@user.friends.include?(@friend))
-        @user.friends << @friend
+    friends.each do |friend|
+      friend = User.find_by_host_id(friend["id"])
+      if (friend != nil && !user.friends.include?(friend))
+        user.friends << friend
       end
     end
+
+    user.last_update_friends = Date.today
+    user.save
   end
+
+
+  #-----------------------------------------------------------------------------------
+  # method: set_default_locale
+  #   // ask server to set session[:default_locale] then reload the main-page(new_locale)
+  #-----------------------------------------------------------------------------------
+  def set_default_locale()
+
+    session[:default_locale] = params[:locale]
+
+    respond_to do |format|
+      format.html { render  :inline => "OK" }
+    end
+
+
+  end
+
+
+
+
 
   #----------------------------------------------------
   # method: mapping_locale_to_area
@@ -141,6 +171,8 @@ class ApplicationController < ActionController::Base
   def mapping_locale_to_area
     if I18n.locale == :en
       session[:default_area] = "USA"
+    elsif I18n.locale == :zh
+      session[:default_area] = "China"
     else
       session[:default_area] = "Taiwan"
     end
@@ -149,7 +181,9 @@ class ApplicationController < ActionController::Base
 
   #===========================================================================
 
-  
+
+
+
   # Ealin: 20110411
   #--------------------------
   # method: set_locale
@@ -159,9 +193,17 @@ class ApplicationController < ActionController::Base
     #logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
     #logger.debug request.env['HTTP_ACCEPT_LANGUAGE']
 
+    if session[:default_locale] != nil
+      I18n.locale = (session[:default_locale]).to_sym
+      mapping_locale_to_area
+      return
+    end
+
+    logger.debug "'#{I18n.locale}'"
+
     I18n.locale = extract_locale_from_accept_language_header
 
-    #logger.debug "'#{I18n.locale}'"
+    logger.debug "'#{I18n.locale}'"
 
     if I18n.locale == :"zh"
    

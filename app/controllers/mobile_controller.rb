@@ -18,15 +18,15 @@ class MobileController < PaperController
     check_logged_in(false)
 
     if (current_facebook_user != nil)
-      @user = User.find(session[:id])
-      if (!@user.watches.include?(@news))
-        @news.watches.push(@user)
-        news_rank_action(@user, @news, :watch)
+      user = User.find(session[:id])
+      if (!user.watches.include?(@news))
+        @news.watches.push(user)
+        news_rank_action(user, @news, :watch)
       end
     end
 
     respond_to do |format|
-      format.html {render :partial => 'show_news', :locals => {:news => @news}}
+      format.html {render :partial => 'show_news', :locals => {:news => @news, :redirect_from_web => params['redirect_from_web']}}
     end
   end
 

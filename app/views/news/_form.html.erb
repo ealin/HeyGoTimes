@@ -9,10 +9,25 @@
 <script type="text/javascript">
 
 <!--
+function validate_input(){
+  if ((document.forms[0].elements[4].value == '') || (document.forms[0].elements[5].value == ''))
+    $('#news_submit').attr("disabled", true);
+  else
+    $('#news_submit').attr("disabled", false);
+}
+
 $(document).ready(function () {
 
    // set default value of area!
   document.forms[0].elements[7].value = "<%= session[:default_area] %>" + "/";
+
+  $('#news_form_title').keyup(function () {
+    validate_input();
+  });
+
+  $('#news_form_content').keyup(function () {
+    validate_input();
+  });
 
   $('#get_news').unbind('click').click(function()
   {
@@ -45,6 +60,8 @@ $(document).ready(function () {
           }
           else
           {
+            console.log(json) ;
+
             document.forms[0].elements[4].value = json.title;
             document.forms[0].elements[5].value = json.text;
             document.forms[0].elements[6].value = json.image;
@@ -99,14 +116,14 @@ $(document).ready(function () {
 
   <div class="field" style="clear:both; padding-bottom:5px">
     <%= t(:news_title_field)%>
-    <%= f.text_field :title, :style=>"position:relative;left:34px;", :size=>64 %>
+    <%= f.text_field :title, :id=>"news_form_title", :style=>"position:relative;left:34px;", :size=>64 %>
     <br>
   </div>
 
   <div class="field" style="clear:both;">
 
     <%= t(:news_content_field)%>
-    <%= f.text_area :content, :style=>"position:relative;left:34px" %>
+    <%= f.text_area :content, :id=>"news_form_content", :style=>"position:relative;left:34px" %>
   </div>
 
     <!--
@@ -220,7 +237,7 @@ $(document).ready(function () {
 
     <div align="right" style="padding-bottom:10px">
 
-      <input id="news_submit" name="commit" type="submit" value="<%= t(:add_news) %>" />
+      <input id="news_submit" name="commit" type="submit" disabled="disabled" value="<%= t(:add_news) %>" />
 
       <input class="simplemodal-close" id="news_cancel" name="cancel" type="submit" value="<%= t(:cancel) %>" />
       <!-- <button class="simplemodal-close">取消</button> -->

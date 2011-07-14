@@ -5,13 +5,13 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.xml
   def index
-    # @news = News.paginate(:page => 1, :per_page => 3)
-    @news = News.all.paginate(:page => params[:page], :per_page => 3)
+    redirect_to(root_url)
+    #@news = News.all.paginate(:page => params[:page], :per_page => 5)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @news }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @news }
+    #end
   end
 
   # GET /news/1
@@ -26,10 +26,10 @@ class NewsController < ApplicationController
     check_logged_in(false)
 
     if (current_facebook_user != nil && session[:id] != nil)
-      @user = User.find(session[:id])
-      if (!@user.watches.include?(@news))
-        @news.watches.push(@user)
-        news_rank_action(@user, @news, :watch)
+      user = User.find(session[:id])
+      if (!user.watches.include?(@news))
+        @news.watches.push(user)
+        news_rank_action(user, @news, :watch)
       end
     end
 
@@ -96,12 +96,12 @@ class NewsController < ApplicationController
       #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
-          @data['ret'] = 'url exist'
+          @data[:ret] = 'url exist'
         end
       #end
 
       # Parse data
-      if (@data['ret'] != 'url exist')
+      if (@data[:ret] != 'url exist')
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
@@ -118,7 +118,8 @@ class NewsController < ApplicationController
           stream = open(url)
         end
 
-        doc = Nokogiri::HTML(stream)
+        doc = Nokogiri::HTML(stream, nil, 'utf-8')
+
 
         #@error = @doc.search('lint > lint_error')
         #if (@error != nil)
@@ -141,25 +142,25 @@ class NewsController < ApplicationController
           end
 
           if (next_element == :content)
-            text = data.content.to_s
+            text = data.content
           elsif (next_element == :image)
             image_url = data.search('a').first['href']
           elsif (next_element == :title)
-            title = data.content.to_s
+            title = data.content
             break
           end
 
           next_element = :normal
         end
 
-        @data['title']=title
-        @data['image']=image_url
-        @data['text']=text
+        @data[:title]=title
+        @data[:image]=image_url
+        @data[:text]=text
       end
     end
 
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => (@data.to_json) }
     end
 
   end
@@ -265,6 +266,7 @@ class NewsController < ApplicationController
 
     @news.tags = []
     counter = 0
+    feedback = false;
     params.each_pair do |key, value|
       if (value == 'on')
         tag = Tag.find_by_name(key)
@@ -273,6 +275,9 @@ class NewsController < ApplicationController
 
         if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
+          if (tag.name.downcase == "feedbacktag")
+            feedback = true;
+          end
         end
       end
     end
@@ -291,7 +296,7 @@ class NewsController < ApplicationController
       end
     end
 
-    if (@news.special_flag == false)
+    if (@news.special_flag == false || feedback == true )
       news_rank_action(user, @news, :report)
     end
 

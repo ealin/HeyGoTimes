@@ -71,8 +71,12 @@ a img {
 #header #filter_hint {
   position:relative;
   top: 20px;
-  font-size: 14px
+  font-size: 14px;
+
 }
+
+
+
 
 /* Logo */
 #logo {
@@ -88,6 +92,12 @@ a img {
   width: 100px;
 }
 
+#page_head2 {
+  padding-right: 10px;
+  float: right;
+  height: 85px;
+  width: 150px;
+}
 /* Menu */
 #menu {
 	float: left;
@@ -156,7 +166,7 @@ a img {
 .comments .comment_title {
   margin-bottom: 10px;
   font-size: 1.8em;
-  width: 65%;
+  width: 40%;
   float: left;
 }
 .comments .comment_title a {
@@ -168,11 +178,18 @@ a img {
 }
 
 .comments .button_group {
-  width: 35%;
+  width: 60%;
   float: right;
 }
 
-.comments .button_group .like_count, .unlike_count
+.comments .count_span {
+  float: right;
+  position: relative;
+  top: 8px;
+  padding-right: 10px;
+}
+
+.comments .button_group .like_count, .unlike_count, .share_count
 {
   font-size: 1.4em;
 }
@@ -236,9 +253,14 @@ div.menu li {
 	text-decoration: none;
 }
 
-#access .fun-btn {
-  position:relative;
-  left:550px;
+#access #menu-type-btn {
+  width: 80%;
+  float: left;
+}
+
+#access #menu-fun-btn {
+  width: 20%;
+  float: right;
 }
 
 #access .fun-btn a {
