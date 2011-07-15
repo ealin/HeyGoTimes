@@ -88,7 +88,7 @@ class ReviewController < NewsController
       news_rank_record.my_news = true
       news_rank_record.save
 
-      content = t(:news_title) + news.title + "<br><br>" + URI.encode(params[:content])
+      content = t(:news_title) + news.title + "<br><br>" + (params[:content]).toutf8
       report.content = content
 
       report.special_flag= true
