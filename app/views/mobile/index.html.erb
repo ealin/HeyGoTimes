@@ -18,6 +18,8 @@
 
    <script type="text/javascript">
 
+    var news_id;
+
     function like(user, news, like){
       // ask session data from server
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
@@ -63,6 +65,7 @@
 
     function showNews(id){
       var url = '/mobile/show_news?id='+id;
+      news_id = id;
       $("#m_news_main").load(url);
     }
 
@@ -95,6 +98,10 @@
         currPage = 1;
         currType = 'latest';
         changePaperType(currType);
+      });
+
+      $('#backButton').unbind('click').click(function(){
+        iui.goBack(function(){document.getElementById('m_news'+news_id).scrollIntoView()});
       });
 
       loading_animate(false);
@@ -181,7 +188,7 @@
 
 <div class="toolbar">
   <h1 id="pageTitle"></h1>
-  <a id="backButton" class="button" href="#"></a>
+  <a id="backButton" class="button" ></a>
   <div align="right" style="padding:2px 0px;    ">
   <img src="/images/mobile/dog_48x40.png" width="32" height="32"/>
   </div>
