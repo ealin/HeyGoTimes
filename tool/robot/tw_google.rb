@@ -2,6 +2,11 @@ require 'rss/2.0'
 require 'open-uri'
 require 'net/http'
 
+@host = "http://localhost:3000/"
+#@host = "http://heygotimes.heroku.com/"
+
+
+
     google_rss_url = [
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=w&output=rss",
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=n&output=rss" ,
@@ -42,9 +47,7 @@ while true
 
         feed_url = google_rss_url[i]
 
-        command = 'http://localhost:3000/api/new_news?publish=no&area=Taiwan/&tags='
-        #command = 'http://heygotimes-bench.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
-        #command = 'http://heygotimes.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
+        command = @host+ 'api/new_news?publish=no&area=Taiwan/&tags='
 
         command = command + google_rss_tag[i] + "&url="
 

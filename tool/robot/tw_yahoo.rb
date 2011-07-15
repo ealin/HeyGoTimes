@@ -2,6 +2,10 @@ require 'rss/2.0'
 require 'open-uri'
 require 'net/http'
 
+@host = "http://localhost:3000/"
+#@host = "http://heygotimes.heroku.com/"
+
+
     yahoo_rss_url = [
       "http://tw.news.yahoo.com/rss/politics",
       "http://tw.news.yahoo.com/rss/society",
@@ -53,9 +57,7 @@ while true
 
         feed_url = yahoo_rss_url[i]
 
-        command = 'http://localhost:3000/api/new_news?publish=yes&area=Taiwan/&tags='
-        #command = 'http://heygotimes-bench.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
-        #command = 'http://heygotimes.heroku.com/api/new_news?publish=yes&area=Taiwan&tags='
+        command = @host+ 'api/new_news?publish=yes&area=Taiwan/&tags='
 
         command = command + yahoo_rss_tag[i] + "&url="
 
