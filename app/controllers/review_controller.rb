@@ -83,11 +83,12 @@ class ReviewController < NewsController
 
       user = User.find(session[:id])
       user.my_news << report
+
       news_rank_record = UserNewsRank.where("user_id=? AND news_id=?", user.id, report.id).last
       news_rank_record.my_news = true
       news_rank_record.save
 
-      content = t(:news_title) + news.title + "<br><br>" + params[:content]
+      content = t(:news_title) + news.title + "<br><br>" + URI.encode(params[:content])
       report.content = content
 
       report.special_flag= true
