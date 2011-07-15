@@ -441,6 +441,7 @@ fieldset > .row:last-child {
 
 .m_comments .count_span {
   float: right;
+  padding-right: 10px;
 }
 
 .m_ad {

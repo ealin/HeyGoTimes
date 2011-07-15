@@ -136,4 +136,6 @@ ActiveRecord::Schema.define(:version => 20110715032923) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["host_id"], :name => "index_users_on_host_id"
+
 end
