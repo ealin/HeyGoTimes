@@ -1,5 +1,5 @@
 
-  <meta property="og:title" content="HeyGoTimes - <%= @news.title %>"/>
+  <meta property="og:title" content="<%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
   <% if (@news.images[0] != nil) %>
@@ -31,7 +31,7 @@
     }
   </script>
 </head>  <%# end tag for <head> in application.html.erb %>
-
+<% news_id = @news.id %>
 <body>
 <% if detect_Mobile_browser(:show) == true %>
     <%= redirect_to(root_url + 'mobile/show_news?redirect_from_web=1&id=' + @news.id.to_s) %>
@@ -89,7 +89,7 @@
       <div class="comments">
         <div class="comment_title"><%= t(:comments)%></div>
         <div class="button_group"></div>
-        <div class="fb_comment" id="fb_comment<%= @news.id %>">
+        <div class="fb_comment" id="fb_comment<%= news_id %>">
           <div id="fb-root"></div>
           <script>
             window.fbAsyncInit = function() {
@@ -106,7 +106,7 @@
               document.getElementById('fb-root').appendChild(e);
             }());
           </script>
-          <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s %>" num_posts="2" width="650"></fb:comments>
+          <fb:comments href='http://heygotimes.heroku.com/news/<%= news_id %>' num_posts='2' width='650'></fb:comments>
           <div style="clear: both;"></div>
         </div> <!-- fb_comment -->
       </div> <!-- comments -->
