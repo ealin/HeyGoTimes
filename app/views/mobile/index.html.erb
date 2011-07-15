@@ -18,20 +18,17 @@
 
    <script type="text/javascript">
 
-    function like(user, news, like)
-    {
+    function like(user, news, like){
       // ask session data from server
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
         $('#like_count'+news).html(json.like_count);
         $('#unlike_count'+news).html(json.unlike_count);
 
-      }  );
-
+      });
     }
 
-    function expand_comment(news_id)
-    {
+    function expand_comment(news_id){
       var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='320'></fb:comments>";
 
       $('#expand_comment'+news_id).html("");
@@ -40,27 +37,40 @@
     }
 
     function loadMore(type, pageNo) {
+      var t = $("#m_paperContent");
       var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      var preview = $("#loading_more_news").html("<img src='/images/fb_loading_large.gif' width='20' height='20' />");
+
       $.get(url, function(response) {
-        $("#m_paperContent").append(response);
-        // default not showing comment
-        //FB.XFBML.parse(document.getElementById('m_comments'));
+        if (jQuery.trim(response) == '')
+          $("#more_news").html('<%= t(:m_no_more) %>');
+        else
+          $("#m_paperContent").append(response);
       });
+      t.timeout = setTimeout(function () {
+        preview.html('');
+      }, 3000);
     }
 
     function changePaperType(type) {
       var url = '/mobile/_show_paper_content?type='+type+'&page=1';
-      $("#m_paperContent").load(url);
-      // default not showing comment
-      //FB.XFBML.parse(document.getElementById('comments'));
+      loading_animate(true);
+      $("#m_paperContent").load(url, function(response, status, xhr) {
+        loading_animate(false);
+        $("#more_news").html("<%= t(:m_more) %><span id='loading_more_news'></span>");
+      });
     }
 
     function showNews(id){
       var url = '/mobile/show_news?id='+id;
-      //iui.showPageByHref(url, "", "GET", "", function(){
-      //  FB.XFBML.parse(document.getElementById('comments'));
-      //});
       $("#m_news_main").load(url);
+    }
+
+    function loading_animate(on){
+      if (on)
+        $('#loading_animate').html("<img src='/images/fb_loading_large.gif'/>");
+      else
+        $('#loading_animate').html('');
     }
 
     $(document).ready(function() {
@@ -86,6 +96,8 @@
         currType = 'latest';
         changePaperType(currType);
       });
+
+      loading_animate(false);
     });
 
 
@@ -196,6 +208,7 @@
   </div><!-- #m_cmd_bar -->
 
   <hr style="clear:both;">
+  <div id="loading_animate" style="position:fixed;top:80px;left:50%;margin-left:-16px;"><img src="/images/fb_loading_large.gif" alt=""/></div>
 
   <div id="m_paperContent">
     <%= render :partial => 'mobile/show_paper_content', :locals => {:news => @news} %>
@@ -204,20 +217,15 @@
     <%= render :partial => "m_show_ad" %>
   </div>
   <div align="center">
-    <button class="redButton" id="more_news" style="width:100%;font-size:14px;"><%= t(:m_more) %></button>
+    <button id="more_news" style="height: 30px; width:100%;font-size:1.0em;"><%= t(:m_more) %><span id="loading_more_news"></span></button>
   </div>
 
   <div class="menu-item" align="center">
-
     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
     <a href="#" onclick="set_default_locale('en')">English</a>
   </div>
-
-
 </div>
-
-
 
 <div id="m_news_page">
   <div id="m_news_main">
@@ -226,8 +234,6 @@
     <%= render :partial => "m_show_ad" %>
   </div>
 </div>
-
-
 
 <!-- !!!!!!!!! Page - Filter  -->
 <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
