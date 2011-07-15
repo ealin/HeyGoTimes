@@ -73,3 +73,15 @@
 #footer a {
 	color: #FFFFFF;
 }
+
+
+#toolbar-box {
+_display:none;
+position:fixed;
+left:0%;
+bottom:20px;
+width:40px;
+height:110px;
+z-index:1000000;
+background-color: transparent;
+}

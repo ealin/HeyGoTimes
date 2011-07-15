@@ -5,7 +5,7 @@ require 'thread'
 
 # SOP to add new robot:
 #    add m.synchronize{
-#    add sleep(30)
+#    add sleep(50)
 #
 
 #@host = "http://localhost:3000/"
@@ -87,7 +87,7 @@ Thread.start{
 
                       puts "\n"
                     }
-                    sleep(30)
+                    sleep(50)
                   end
 
 
@@ -232,7 +232,7 @@ Thread.start{
 
                       puts "\n"
                     }
-                    sleep(30)
+                    sleep(50)
                   end
 
 
@@ -254,13 +254,13 @@ Thread.start{
 
   ############  TW-Google   ############
     google_rss_url = [
+      "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=c&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=w&output=rss",
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=n&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=b&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=t&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=s&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=e&output=rss" ,
-      "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=c&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=y&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=m&output=rss" ,
       "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=po&output=rss"
@@ -269,13 +269,13 @@ Thread.start{
 
 
     google_rss_tag = [
+        "Local" ,     # todo: area += TW_CH
         "World",
         "Local" ,
         "Business" ,
         "Sci_Tech" ,
         "Sport" ,
         "Entertainment" ,
-        "Local" ,     # todo: area += TW_CH
         "Society" ,
         "Health" ,
         "Special"
@@ -292,7 +292,11 @@ while true
 
         feed_url = google_rss_url[i]
 
-        command = @host+ 'api/new_news?publish=no&area=Taiwan&tags='
+        if i == 0
+          command = @host+ 'api/new_news?publish=no&area=Taiwan/TW_CN/&tags='
+        else
+          command = @host+ 'api/new_news?publish=no&area=Taiwan/&tags='
+        end
 
         command = command + google_rss_tag[i] + "&url="
 
@@ -311,7 +315,7 @@ while true
 
                     puts "\n"
                   }
-                  sleep(30)
+                  sleep(50)
                 end
 
 
