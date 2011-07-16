@@ -409,11 +409,15 @@ fieldset > .row:last-child {
 }
 
 .m_news_title {
-    font-size: 1.4em;
+    font-size: 1.6em;
+}
+
+.m_news_content {
+    font-size: 1.2em;
 }
 
 .m_button_group .like_count, .unlike_count {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 .m_comments {
@@ -423,7 +427,7 @@ fieldset > .row:last-child {
 }
 
 .m_comments .m_comment_title {
-    font-size: 1.0em;
+    font-size: 1.2em;
     width: 50%;
     float: left;
 }
@@ -434,7 +438,6 @@ fieldset > .row:last-child {
 }
 
 .m_comments .m_button_group {
-  font-size: 0.6em;
   width: 50%;
   float: right;
 }
@@ -468,8 +471,7 @@ fieldset > .row:last-child {
 }
 #m_cmd_bar .menu-header,
 div.menu {
-	font-size: 12px;
-	margin-left: 0px;
+	font-size: 1.1em;
 	width: 100%;
 }
 #m_cmd_bar .menu-header ul,
@@ -480,7 +482,6 @@ div.menu ul {
 #m_cmd_bar .menu-header li,
 div.menu li {
 	float: left;
-	position: relative;
   list-style: none;
 }
 #m_cmd_bar a {
@@ -492,8 +493,6 @@ div.menu li {
 }
 
 #m_cmd_bar .type-btn {
-  position:relative;
-  left:0px;
 }
 
 #m_cmd_bar .fun-btn {
@@ -508,7 +507,7 @@ div.menu li {
 }
 
 #m_cmd_bar ul ul li {
-	min-width: 40px;
+	min-width: 0px;
 }
 #m_cmd_bar ul ul ul {
 	left: 100%;

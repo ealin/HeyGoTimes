@@ -15,6 +15,28 @@
       });
     }
 
+    function comment(resp)
+    {
+      var id_pos = resp.href.indexOf('/news/');
+      var id = resp.href.substring(id_pos+6);
+      $.ajax({
+        type: "POST",
+        url: "/news/comment",
+        data: "news_id="+id
+      });
+    }
+
+    function share(id, title)
+    {
+      var url = 'http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/'+id+'&t='+title;
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id="+id
+      });
+      location.href=url;
+    }
+
     function expand_comment(news_id)
     {
       var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"'"+"num_posts='2' width='650'></fb:comments>";
@@ -62,7 +84,7 @@
     $(document).ready(function()
     {
       var currPage = 1;
-      var currType = 'latest';
+      var currType = 'rank';
       var subType = '';
 
       $('#more_news').unbind('click').click(function() {
@@ -113,6 +135,10 @@
       });
 
       loading_animate(false);
+
+      FB.Event.subscribe('comment.create',function(resp){
+        comment(resp);
+      });
     });
 
     function set_default_locale(new_locale)
@@ -149,7 +175,7 @@
         if(!(result_msg))
           return ;
 
-        data = "news_id=" + spam_new_id + '&' + 'content=' + encodeURIComponent(result_msg)
+        data = "news_id=" + spam_new_id + '&' + 'content=' + result_msg
 
         // send to server
          $.ajax(
