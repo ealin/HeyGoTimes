@@ -118,19 +118,23 @@ class ReviewController < NewsController
 
     response_str = "NG"
 
-    #logger.debug params
     news_id = Integer(params[:news_id])
     news = News.find(news_id)
 
     if(news != nil)
-      news.delete
+      news.special_flag= true
+
+      tag = Tag.find_by_name("Closed_spam") ;
+      news.tags =[]
+      news.tags << tag
+      news.save
+
       response_str = "OK"
     end
 
     respond_to do |format|
       format.html { render  :inline => response_str }
     end
-
 
   end
 
