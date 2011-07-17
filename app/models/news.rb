@@ -59,7 +59,7 @@ class News < ActiveRecord::Base
           if (type == 'latest')
             joins(:user_news_ranks, :areas).select('DISTINCT (news.id), news.*').where(:news=>{:special_flag => false}, :user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}).order('news.created_at DESC')
           else
-            joins(:user_news_ranks, :areas).select('DISTINCT (news.id), news.*').where(:news=>{:special_flag => false}, :user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}).order('user_news_ranks.rank DESC, news.created_at DESC')
+            joins(:user_news_ranks, :areas).select('DISTINCT (news.id), news.*, user_news_ranks.rank').where(:news=>{:special_flag => false}, :user_news_ranks=>{:user_id => user_id}, :user_news_ranks=>{:my_news => my_news}, :areas => {:name => user_areas}).order('user_news_ranks.rank DESC, news.created_at DESC')
           end
         else
           if (type == 'latest')
