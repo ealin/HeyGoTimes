@@ -184,7 +184,7 @@ $(document).ready(function () {
                     <%# using type and name to identify each Input/Checkbox here %>
 
                     <% if tag.name == "FAQ" || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
-                          <% break %>
+                          <% next %>
                     <% end %>
 
                      <% if tag.id == 3  %>

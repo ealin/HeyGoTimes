@@ -113,7 +113,7 @@ class ApiController < ApplicationController
           end
 
           if(params[:focus_flag] == 'yes')
-                # Ealin: 我給 news_rank_action 多了一個type - : focus, 但在這裡應該CALL不到news_rank_action
+              @news.rank = 3
            end
 
           @news.save
