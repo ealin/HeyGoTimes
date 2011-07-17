@@ -12,12 +12,21 @@ require 'thread'
 #@host = "http://heygotimes.heroku.com/"
 
 
-@sleep_period = 5
+@sleep_period = 50
 
 m = Mutex.new
 
 
 =begin
+    ############  TW-Google   ############
+require 'tw_google.rb'
+
+Thread.start{
+ get_news_from_tw_google(m,@sleep_period)
+}
+=end
+
+
 
       ############  TW-Yahoo   ############
 require 'tw_yahoo.rb'
@@ -36,16 +45,6 @@ Thread.start{
 }
 
 
-
-    ############  TW-Google   ############
-require 'tw_google.rb'
-
-Thread.start{
- get_news_from_tw_google(m,@sleep_period)
-}
-
-=end
-
     ############  TW-Apple-focus   ############
 require 'tw_apple_focus.rb'
 
@@ -58,9 +57,33 @@ Thread.start{
     ############  TW-Apple   ############
 require 'tw_apple.rb'
 
-#Thread.start{
+Thread.start{
  get_news_from_tw_apple(m,@sleep_period)
-#}
+}
+
+
+
+    ############  NOW-NEWS-Focus   ############
+require 'tw_nownews_focus.rb'
+
+Thread.start{
+ get_news_from_tw_nownews_focus(m,@sleep_period)
+}
+
+
+    ############  TW-Google-Focus   ############
+require 'tw_google_focus.rb'
+
+Thread.start{
+ get_news_from_tw_google_focus(m,@sleep_period)
+}
+
+
+
+
+while true
+
+end
 
 
 

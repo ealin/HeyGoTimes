@@ -16,7 +16,7 @@ class ReviewController < NewsController
     #
     areas = ["Taiwan"] ;
     tags = ["All","World","Society","Local","Politics","Life","Business","Stock","Sci_Tech",
-          "Sport","Entertainment", "Health", "Internet","Travel","Education","Art","Special"] ;
+          "Sport","Entertainment", "Health", "Internet","Travel","Education","Art","Special","Focus"] ;
 
 
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
