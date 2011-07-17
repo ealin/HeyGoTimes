@@ -119,6 +119,8 @@ zh:
   news_title: "新闻标题："
   spam_reason: "检举理由："
   
+  to_top: "回頁首"
+  
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)

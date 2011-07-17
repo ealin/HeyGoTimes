@@ -108,7 +108,7 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-
+=begin
 Thread.start{
 
       yahoo_beta_rss_url = [
@@ -249,7 +249,7 @@ Thread.start{
     end
 
 }
-
+=end
 
 
   ############  TW-Google   ############

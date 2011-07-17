@@ -230,23 +230,6 @@ class PaperController < NewsController
 
 
 
-
-  #-----------------------------------------------------------------------------------
-  # method: set_newspaper_size      (Ealin: 20110501)
-  #   - （設定報紙頁面中, 一些與size有關的attributes）
-  #-----------------------------------------------------------------------------------
-=begin
-  def set_newspaper_size
-    @paper_width = 600
-    @title_height = 210
-
-    @ad_width = 120
-    @ad_height = 60
-    @ad_no = 10
-  end
-=end
-  #===========================================================================
- 
  
   #-----------------------------------------------------------------------------------
   # method: get_paper_title_info      (Ealin: 20110430)
@@ -356,82 +339,6 @@ class PaperController < NewsController
   end
 
   #===========================================================================
-
-
-  #---------------------------------------------------------
-  # method: check_followed
-  #   - 目前的user是否有訂閱這份報紙？  (Ealin: 20110430)
-  #---------------------------------------------------------
-  #
-=begin
-  def check_followed
-    # 目前的user是否有訂閱這份報紙？
-    @followed_flag = false
-
-    return @followed_flag
-  end
-=end
-  #===========================================================================
-
-
-
-  # Ealin: 20110430
-  #-----------------------------------------
-  # method: follow
-  #   - 訂閱 或 取消訂閱 這份報紙
-  #-----------------------------------------
-  #
-=begin
-  def follow 
-
-    if params[:flag] == "true"
-      if @followed_flag == false
-        #logger.degug "新增訂戶"
-        @followed_flag = true
-      end
-    else   
-     if @followed_flag == true
-        #logger.degug "取消訂戶"
-        @followed_flag = false
-      end      
-    end    
-
-  end
-=end
-  #-----------------------------------------
-
-
-
-
-  # Ealin: 20110411
-  #--------------------------
-  # method: to_main_page
-  #--------------------------
-  #
-=begin
- def to_main_page
-    
-    # link to "main_page/index" 
-    #
-    redirect_to  :controller => 'main_page', :action => 'index'
- end
-=end
-  #-----------------------------------------
-
-
-  # Ealin: 20110426
-  #----------------------------------------
-  # method: filiter_today_newspaper  過濾新聞
-  #----------------------------------------
-  #
-=begin
-  def filiter_today_newspaper
-    
-    logger.debug '[logging] filiter_papers executed'
-
-  end
-=end
-  #-----------------------------------------
 
 
   # Ealin: 20110604

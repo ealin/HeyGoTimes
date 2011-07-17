@@ -192,6 +192,8 @@ class NewsController < ApplicationController
         return 1
       when :report
         return 5
+      when :focus   # 焦點新聞
+        return 3
     end
   end
 

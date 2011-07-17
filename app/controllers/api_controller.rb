@@ -112,6 +112,10 @@ class ApiController < ApplicationController
             end
           end
 
+          if(params[:focus_flag] == 'yes')
+
+           end
+
           @news.save
     end
 

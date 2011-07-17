@@ -80,7 +80,7 @@
       var currPage = 1;
       var currType = 'latest';
 
-      $('#more_news').unbind('click').click(function() {
+       $('#more_news').unbind('click').click(function() {
         loadMore(currType, ++currPage);
       });
 
@@ -146,6 +146,8 @@
 
 
     }
+
+
 
   </script>
 
@@ -231,6 +233,19 @@
     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
     <a href="#" onclick="set_default_locale('en')">English</a>
+
+
+<input
+type="button"
+   name="groovybtn1"
+   class="groovybutton"
+   value="<%= t(:to_top) %>"
+   title=""
+   style="float: right"
+    onclick="window.scrollTo(0,0) ;">
+
+
+
   </div>
 </div>
 
