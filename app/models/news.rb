@@ -100,23 +100,23 @@ class News < ActiveRecord::Base
 
       when :mine
         if (type == 'latest')
-          user.my_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
+          user.my_news.select('DISTINCT (news.id), news.*').where(:news=>{:special_flag => false}).order('news.created_at DESC')
         else
-          user.my_news_by_rank.where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          user.my_news_by_rank.select('DISTINCT (news.id), news.*, user_news_ranks.rank').where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
         end
 
       when :friend
         if (type == 'latest')
-          user.friend_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
+          user.friend_news.select('DISTINCT (news.id), news.*').where(:news=>{:special_flag => false}).order('news.created_at DESC')
         else
-          user.friend_news_by_rank.where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          user.friend_news_by_rank.select('DISTINCT (news.id), news.*, user_news_ranks.rank').where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
         end
 
       when :both
         if (type == 'latest')
           user.both_news.where(:news=>{:special_flag => false}).order('news.created_at DESC')
         else
-          user.both_news.where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
+          user.both_news.select('DISTINCT (news.id), news.*, user_news_ranks.rank').where(:news=>{:special_flag => false}).order('user_news_ranks.rank DESC, news.created_at DESC')
         end
 
        #joins(:my_news_ranks, :user_news_ranks).where(:my_news_ranks=>{:user_id=>user_id}, :user_news_ranks=>{:user_id=>user_id}).order('news.created_at DESC', :limit => 10)
