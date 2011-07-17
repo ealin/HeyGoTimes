@@ -39,7 +39,7 @@
             <img class="button-icon-like" src="/images/stop_button.png" width="30px" height="30px"
                  alt="" title="<%= t(:report_spam)%>" />
           </a>
-          <span class='share_count count_span' id='share_count<%= news.id %>'><%= shared %></span><a style="float: right;" href="javascript:void(null)" onclick="location.href='http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/<%= news.id.to_s %>&t=<%= news.title %>'" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+          <span class='share_count count_span' id='share_count<%= news.id %>'><%= shared %></span><a style="float: right;" href="javascript:void(null)" onclick="share('<%= news.id %>', '<%= news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
           <span class='unlike_count count_span' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
           <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.likes.count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
         </div>
