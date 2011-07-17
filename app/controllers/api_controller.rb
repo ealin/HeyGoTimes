@@ -112,6 +112,10 @@ class ApiController < ApplicationController
             end
           end
 
+          if(params[:focus_flag] == 'yes')
+              @news.rank = 3
+           end
+
           @news.save
     end
 

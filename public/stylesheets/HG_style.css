@@ -85,3 +85,15 @@ height:110px;
 z-index:1000000;
 background-color: transparent;
 }
+
+
+input.groovybutton
+{
+ font-size:14px;
+   font-family:Trebuchet MS,sans-serif;
+   font-weight:bold;
+   color:#FFFFFF;
+   height:19px;
+   background-color:#0077BB;
+   border-style:none;
+}

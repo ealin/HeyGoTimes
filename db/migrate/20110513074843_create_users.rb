@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :host_account
 
       # e.g. facebook account of this user, this field would be a serial-number
-      t.integer :host_id
+      t.integer :host_id, :limit => 8
 
       # host site -   0: hey-go times,  1: facebook
       t.integer :host_site

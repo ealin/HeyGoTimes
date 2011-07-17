@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
   has_many :friend_news_by_rank,
            :through => :user_news_ranks,
            :conditions => ['user_news_ranks.my_news = ?', false],
-           :uniq => true,
            :order => 'user_news_ranks.rank DESC',
            :class_name => "News",
            :source => :news
@@ -59,7 +58,6 @@ class User < ActiveRecord::Base
   has_many :my_news_by_rank,
            :through => :user_news_ranks,
            :conditions => ['user_news_ranks.my_news = ?', true],
-           :uniq => true,
            :order => 'user_news_ranks.rank DESC',
            :class_name => "News",
            :source => :news
@@ -75,7 +73,6 @@ class User < ActiveRecord::Base
 
   has_many :both_news_by_rank,
            :through => :user_news_ranks,
-           :uniq => true,
            :order => 'user_news_ranks.rank DESC',
            :class_name => "News",
            :source => :news

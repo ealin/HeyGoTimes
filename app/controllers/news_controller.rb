@@ -41,45 +41,61 @@ class NewsController < ApplicationController
 
   def like
 
-    @data = {}
+    data = {}
 
     # check session id of user
     if (params[:user] == session[:id].to_s)
-      @user = User.find(session[:id])
+      user = User.find(session[:id])
       @news = News.find(params[:news])
 
       # check if like/unlike of user already exists
       if (params[:like] == 1.to_s)
-        if (@news.unlikes.include?(@user))
-          @news.unlikes.delete(@user)
+        if (@news.unlikes.include?(user))
+          @news.unlikes.delete(user)
         end
-        if (!@news.likes.include?(@user))
-          @news.likes.push(@user)
-          news_rank_action(@user, @news, :like)
+        if (!@news.likes.include?(user))
+          @news.likes.push(user)
+          news_rank_action(user, @news, :like)
         end
       else
-        if (@news.likes.include?(@user))
-          @news.likes.delete(@user)
+        if (@news.likes.include?(user))
+          @news.likes.delete(user)
         end
-        if (!@news.unlikes.include?(@user))
-          @news.unlikes.push(@user)
-          news_rank_action(@user, @news, :unlike)
+        if (!@news.unlikes.include?(user))
+          @news.unlikes.push(user)
+          news_rank_action(user, @news, :unlike)
         end
       end
 
-      # calculate rank
-      @data['like_count'] = @like_count = @news.likes.count
-      @data['unlike_count'] = @unlike_count = @news.unlikes.count
-      @news.rank = @like_count - @unlike_count
+      data['like_count'] = @news.likes.count
+      data['unlike_count'] = @news.unlikes.count
 
-      @data['name'] = @user.first_name + ' ' + @user.last_name
+      data['name'] = user.first_name + ' ' + user.last_name
 
       @news.save
     end
 
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => data.to_json }
     end
+  end
+
+  def comment
+    if (session[:id])
+      user = User.find(session[:id])
+    end
+
+    news = News.find(params[:news_id])
+    news_rank_action(user, news, :comment)
+  end
+
+  def share
+    if (session[:id])
+      user = User.find(session[:id])
+    end
+
+    news = News.find(params[:news_id])
+    news_rank_action(user, news, :share)
   end
 
   # GET /report/new
@@ -88,7 +104,7 @@ class NewsController < ApplicationController
     require 'open-uri'
     require 'nokogiri'
 
-    @data = {}
+    data = {}
 
     if (params[:url] != nil)
 
@@ -96,12 +112,12 @@ class NewsController < ApplicationController
       #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
-          @data[:ret] = 'url exist'
+          data[:ret] = 'url exist'
         end
       #end
 
       # Parse data
-      if (@data[:ret] != 'url exist')
+      if (data[:ret] != 'url exist')
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
@@ -153,14 +169,14 @@ class NewsController < ApplicationController
           next_element = :normal
         end
 
-        @data[:title]=title
-        @data[:image]=image_url
-        @data[:text]=text
+        data[:title]=title
+        data[:image]=image_url
+        data[:text]=text
       end
     end
 
     respond_to do |format|
-      format.json { render :json => (@data.to_json) }
+      format.json { render :json => (data.to_json) }
     end
 
   end
@@ -172,10 +188,17 @@ class NewsController < ApplicationController
   def news_rank_action(user, news, type)
     rank = calculate_rank(type)
 
-    update_my_news_rank(user, news, rank)
+    # update news rank
+    news.rank += rank
+    news.save
 
-    user.inverse_friends.each do |friend|
-      update_user_news_rank(friend, news, rank)
+    if (user != nil)
+      #update friendship rank
+      update_my_news_rank(user, news, rank)
+
+      user.inverse_friends.each do |friend|
+        update_user_news_rank(friend, news, rank)
+      end
     end
 
   end
@@ -192,6 +215,12 @@ class NewsController < ApplicationController
         return 1
       when :report
         return 5
+      when :focus   # 焦點新聞
+        return 3
+      when :share
+        return 4
+      when :comment
+        return 3
     end
   end
 

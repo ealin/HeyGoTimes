@@ -96,12 +96,14 @@ window.iui =
 		}
 	},
 	
-	goBack: function()
+	goBack: function(cb)
 	{
 		pageHistory.pop();	// pop current page
 		var pageID = pageHistory.pop();  // pop/get parent
 		var page = $(pageID);
 		iui.showPage(page, true);
+    if (cb)
+			setTimeout(cb, 1000, true);
 	},
 
 	showPageByHref: function(href, args, method, replace, cb)
@@ -296,7 +298,7 @@ addEventListener("click", function(event)
 		}
 		else if (link == $("backButton"))
 		{
-			iui.goBack();
+			//iui.goBack();
 		}
 		else if (link.getAttribute("type") == "submit")
 		{

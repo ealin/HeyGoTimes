@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629040839) do
+ActiveRecord::Schema.define(:version => 20110715032923) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -135,7 +135,5 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["host_id"], :name => "index_users_on_host_id"
 
 end

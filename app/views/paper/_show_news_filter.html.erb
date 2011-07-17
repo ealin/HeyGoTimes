@@ -362,7 +362,7 @@
 
     <!-- not need to show "FAQ" tag here -->
     <% if tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
-      <% break %>
+      <% next %>
     <% end %>
 
     <% if tag.id <= 3 %>
