@@ -60,6 +60,7 @@
 	margin: 0px auto 30px auto;
 	background: #3b5998 left top;
 	color: #FFFFFF;
+    font-size: 14px
 }
 
 #footer p {
@@ -97,3 +98,15 @@ input.groovybutton
    background-color:#0077BB;
    border-style:none;
 }
+
+input.groovybutton_W
+{
+ font-size:14px;
+   font-family:Trebuchet MS,sans-serif;
+   font-weight:bold;
+   color:#FFFFFF;
+   height:30px;
+   background-color:#0077BB;
+   border-style:none;
+}
+

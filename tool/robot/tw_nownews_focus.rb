@@ -22,36 +22,32 @@ nownews_focus_rss_tag = [
 
         feed_url = nownews_focus_rss_url[i]
 
-        command = @host+ 'api/new_news?publish=no&focus_flag=yes&area=Taiwan/&tags='
-
+        command = @host+ 'api/new_news?publish=yes&focus_flag=yes&area=Taiwan/&tags='
         command = command + nownews_focus_rss_tag[i] + "&url="
 
-          begin
-              open(feed_url) do |feed|
-                RSS::Parser.parse(feed.read , false).items.each do |item|
-                  m.synchronize{
 
-                    link = URI.encode(item.link)
+        open(feed_url) {|f|
+          f.each_line {|line|
+            if line.include?("<feedburner:origLink>")
+              temp_str = (line.split("feedburner:origLink>"))[1]
+              link =  temp_str[0..temp_str.length-3]
+              #p link
 
-                    puts '[NOW-NEWS TW FOCUS]News Link :' + link
+              m.synchronize{
+                puts '[NOW-NEWS TW FOCUS]News Link :' + link
+                open(command + link) {|f|
+                   f.each_line {|line| p line}
+                 }
 
-                    open(command + link) {|f|
-                       f.each_line {|line| p line}
-                     }
+                puts "\n"
+              }
+              sleep(sleep_period)
 
-                    puts "\n"
-                  }
-                  sleep(sleep_period)
-                end
+            end
+          }
+        }
 
 
-              end
-
-          rescue OpenURI::HTTPError => the_error
-              the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
-              next
-          end
-        #}
 
     end
 

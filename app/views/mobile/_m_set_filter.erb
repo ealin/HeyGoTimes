@@ -1,8 +1,6 @@
 
 <script>
 
-    $(document).ready(function (){
-
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,10 +78,13 @@
          // get friend-filter
          //
          data += "&friend_filter=" ;
-         if($('#my_news_only')[0].checked == true)
-             data+="mine/" ;
-         if($('#my_friends_news_only')[0].checked == true)
-             data+="friend/" ;
+         if(<%= session[:logged_in] %> == true)
+         {
+             if($('#my_news_only')[0].checked == true)
+                 data+="mine/" ;
+             if($('#my_friends_news_only')[0].checked == true)
+                 data+="friend/" ;
+         }
 
          // get Date-Filter
          //
@@ -122,39 +123,6 @@
 
 
 
-     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     //  btn - save_filter
-     //
-     $('#save_filter').unbind('click').click(function()
-     {
-
-         // send filter-setting to server, then server would save them in session(session only, not db)
-         var data = collect_all_selection() ;
-         data += "&save=yes" ;
-
-         // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_filter_setting",
-             data: data,
-             success: function(html)
-             {
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/mobile/index/");
-             }
-         });
-
-         return false ;
-
-     }  );
-       //
-       // end of "#save_filter".click callback function
-
-
-
-
-    }) ;
 
     function check_tags(the_box)
     {
@@ -196,31 +164,41 @@
 
 
 
-                      /*
-        // get selected tag-filter
-         for(i=0;i<($('option').length);i++)
-         {
-
-            if( $('option')[i].parentNode.id != "tag_filter")
-                  continue ;
-
-             if($('option')[i].id == "All" && $('option')[i].selected == true)
-             {
-                 selected_tag_counter = 1 ;
-                 data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
-                 break ;
-             }
-
-             if($('option')[i].selected == true)
-             {
-                data += ($('option')[i].id + "/") ;
-                selected_tag_counter++ ;
-
-             }
-         }              */
 
     }
 
+
+
+     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     //  btn - save_filter
+     //
+     //$('#save_filter').unbind('click').click(function()
+     function fn_save_filter()
+     {
+
+         // send filter-setting to server, then server would save them in session(session only, not db)
+         var data = collect_all_selection() ;
+         data += "&save=yes" ;
+
+
+         // send to server
+         $.ajax(
+         {
+             type: "GET",
+             url:"/paper/set_filter_setting",
+             data: data,
+             success: function(html)
+             {
+                 // redirect to main page in order to redraw the news by new filter!
+                  window.location.replace("/mobile/index/");
+             }
+         });
+
+         return false ;
+
+     }
+       //
+       // end of "#save_filter".click callback function
 
 
 </script>
@@ -228,7 +206,7 @@
 
 
 <!-- select Area-->
-<h2>Select Area:</h2>
+<h2> <%= t(:filter_by_area) %> </h2>
 <select id="area_filter" name="area_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @areas.each do |area| %>
      <% if session[:filter_area].include?(area.name) %>
@@ -250,7 +228,7 @@
 <hr>
 
 <!-- select tag-->
-<h2>Select Tags:</h2>
+<h2><%= t(:filter_by_tag) %></h2>
 <select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
    <% @tags.each do |tag| %>
      <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
@@ -285,7 +263,8 @@
 <hr>
 
   <div align="center">
-    <button id="save_filter" class="redButton" style='width:96%;;font-size:14px'><%= t(:filter_ok) %> </button>
+    <button id="save_filter" class="redButton" style='width:96%; font-size:14px;'
+            onclick="fn_save_filter() ;"><%= t(:filter_ok) %> </button>
   </div>
 
 

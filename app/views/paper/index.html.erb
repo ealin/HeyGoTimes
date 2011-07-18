@@ -175,7 +175,7 @@
         if(!(result_msg))
           return ;
 
-        data = "news_id=" + spam_new_id + '&' + 'content=' + result_msg
+        data = "news_id=" + spam_new_id + '&' + 'content=' + encodeURIComponent(result_msg)
 
         // send to server
          $.ajax(
@@ -254,6 +254,7 @@
       </div>
 
       <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>
+
     </div>
 
     <div id="sub">
