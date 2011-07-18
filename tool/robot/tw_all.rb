@@ -3,10 +3,6 @@ require 'open-uri'
 require 'net/http'
 require 'thread'
 
-# SOP to add new robot:
-#    add m.synchronize{
-#    add sleep(50)
-#
 
 @host = "http://localhost:3000/"
 #@host = "http://heygotimes.heroku.com/"
@@ -27,7 +23,7 @@ Thread.start{
 =end
 
 
-
+=begin
       ############  TW-Yahoo   ############
 require 'tw_yahoo.rb'
 
@@ -63,13 +59,6 @@ Thread.start{
 
 
 
-    ############  NOW-NEWS-Focus   ############
-require 'tw_nownews_focus.rb'
-
-Thread.start{
- get_news_from_tw_nownews_focus(m,@sleep_period)
-}
-
 
     ############  TW-Google-Focus   ############
 require 'tw_google_focus.rb'
@@ -78,6 +67,15 @@ Thread.start{
  get_news_from_tw_google_focus(m,@sleep_period)
 }
 
+=end
+
+
+    ############  NOW-NEWS-Focus   ############
+require './tw_nownews_focus.rb'
+
+Thread.start{
+ get_news_from_tw_nownews_focus(m,@sleep_period)
+}
 
 
 

@@ -9,7 +9,7 @@ class ApiController < ApplicationController
 
     response_str = ""
 
-    @data = {}
+    @data = Hash.new
     if (params[:url] != nil)
 
       # Check URL existence

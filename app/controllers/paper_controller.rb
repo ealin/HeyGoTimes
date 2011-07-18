@@ -366,21 +366,14 @@ class PaperController < NewsController
     if(params[:save] == "yes" && session[:logged_in] != false)
       # save the filter setting in DB
 
+      # if selected area is a sub-area, tag "Local" should be selected also!
+      sub_area_flag = false
+
 
       user = User.find(session[:id])
       if(user == nil)
         response_str = t(:user_not_exist)
       else
-
-        # setup user.tags
-        #
-        user.tags = []       #empty array
-        tags = Tag.all
-        tags.each do |tag|
-          if (session[:filter_tags]).include?(tag.name)
-            user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
-          end
-        end
 
         # setup user.areas
         #
@@ -388,9 +381,32 @@ class PaperController < NewsController
         areas = Area.all
         areas.each do |area|
           if (session[:filter_area]).include?(area.name)
+            if area.parent_area != nil || area.parent_area != ''
+              sub_area_flag = true
+            end
+
             user.areas << area  # many-to-many relationship ==> it would be saved to DB automatically
           end
         end
+
+        # setup user.tags
+        #
+        user.tags = []       #empty array
+        tags = Tag.all
+        tags.each do |tag|
+
+          if sub_area_flag == true && tag.name == 'Local'
+            user.tags << tag
+            session[:filter_tags] += "Local/"
+            next
+          end
+
+          if (session[:filter_tags]).include?(tag.name)
+            user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+          end
+        end
+
+
 
         # setup user.date_filter
         #
@@ -405,6 +421,7 @@ class PaperController < NewsController
         temp_friend_filter.save
         user.friend_filter = temp_friend_filter
 
+        user.save
        end
     end
 

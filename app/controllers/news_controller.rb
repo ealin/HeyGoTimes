@@ -104,7 +104,7 @@ class NewsController < ApplicationController
     require 'open-uri'
     require 'nokogiri'
 
-    data = {}
+    datas = Hash.new
 
     if (params[:url] != nil)
 
@@ -112,12 +112,12 @@ class NewsController < ApplicationController
       #if (params[:url] != nil)
         @news = News.find_by_url(params[:url].to_s)
         if (@news != nil)
-          data[:ret] = 'url exist'
+          datas[:ret] = 'url exist'
         end
       #end
 
       # Parse data
-      if (data[:ret] != 'url exist')
+      if (datas[:ret] != 'url exist')
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
         # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
@@ -169,14 +169,14 @@ class NewsController < ApplicationController
           next_element = :normal
         end
 
-        data[:title]=title
-        data[:image]=image_url
-        data[:text]=text
+        datas[:title]=title
+        datas[:image]=image_url
+        datas[:text]=text
       end
     end
 
     respond_to do |format|
-      format.json { render :json => (data.to_json) }
+      format.json { render :json => (datas.to_json) }
     end
 
   end
