@@ -381,7 +381,7 @@ class PaperController < NewsController
         areas = Area.all
         areas.each do |area|
           if (session[:filter_area]).include?(area.name)
-            if area.parent_area != nil || area.parent_area != ''
+            if area.parent_area != nil && area.parent_area != ''
               sub_area_flag = true
             end
 
@@ -403,6 +403,10 @@ class PaperController < NewsController
 
           if (session[:filter_tags]).include?(tag.name)
             user.tags << tag  # many-to-many relationship ==> it would be saved to DB automatically
+            if(tag.name == 'All')
+              session[:filter_tags] = 'All'
+              break
+            end
           end
         end
 

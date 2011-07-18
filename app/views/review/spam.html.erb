@@ -92,7 +92,12 @@
       <span style="font-size:14px;">
           #<%= @spam_report[@count-i].id %>: <%= @spam_report[@count-i].title %>
           <br>
-          <%= @spam_report[@count-i].content %>
+
+          <%= (@spam_report[@count-i].content).split("<br><br>").first %>
+          <br>
+          <span style="color:red;">
+             =====>>> <%= (@spam_report[@count-i].content).split("<br><br>").last %>
+          </span>
           <br> <br>
       </span>
 
