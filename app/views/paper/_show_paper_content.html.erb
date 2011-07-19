@@ -16,7 +16,7 @@
 
       <div class="image">
          <% if news.images != [] && news.images[0].url != "" %>
-            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
+            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150" onerror="javascript:this.src='http://c3connections.files.wordpress.com/2010/08/newspaper_bw.jpg'">
          <% end %>
       </div>
 
