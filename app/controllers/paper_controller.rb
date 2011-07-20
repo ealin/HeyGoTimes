@@ -96,7 +96,7 @@ class PaperController < NewsController
       end
 
       if(news.count > 0)
-        news = news.paginate :page => page, :per_page => 5
+        news = news.paginate :page => page, :per_page => 8
       end
     end
 
@@ -125,7 +125,7 @@ class PaperController < NewsController
     news = News.get_all_special(areas, tags, friend_type, user_id)
 
     if(news.count > 0)
-      news = news.paginate :page => page, :per_page => 5
+      news = news.paginate :page => page, :per_page => 8
     end
 
     return news

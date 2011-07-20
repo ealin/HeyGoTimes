@@ -153,15 +153,18 @@ class ReviewController < NewsController
 
 
     dead_line = DateTime.now - @day
+    counter = 0
 
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
     @news_for_review.each do |news|
       if news.updated_at < dead_line
         pool_news = News.find(news.id)
         pool_news.delete
+        counter += 1
       end
     end
 
+    response_str += (",共" + counter.to_s + "筆。")
 
     respond_to do |format|
       format.html { render  :inline => response_str }
@@ -178,7 +181,7 @@ class ReviewController < NewsController
   def clear_older_news
 
     # 確實清除N天前的NEWS
-    @day = 4
+    @day = 7
     dead_line = DateTime.now - @day
 
     response_str = @day.to_s + "天前的新聞已自資料庫中刪除"
