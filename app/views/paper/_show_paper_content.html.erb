@@ -8,6 +8,7 @@
       </div>
 
       <div class="info">
+        <!-- todo: 時區需要判斷  -->
         由 <%= news.user.first_name %> 於 <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d") %> 發佈, Tags:
         <% news.tags.each do |tag| %>
             <%= t(tag.name.to_sym) + " " %>

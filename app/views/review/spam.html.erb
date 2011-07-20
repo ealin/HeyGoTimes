@@ -77,11 +77,38 @@
 
   function clear_older_spams()
   {
+      data = ""
+
+      // send to server
+       $.ajax(
+       {
+           type: "GET",
+           url:"/review/clear_older_spams",
+           data: data,
+           success: function(html)
+           {
+                alert(html);
+           }
+       });
 
   }
 
   function clear_older_news()
   {
+      data = ""
+
+      // send to server
+       $.ajax(
+       {
+           type: "GET",
+           url:"/review/clear_older_news",
+           data: data,
+           success: function(html)
+           {
+               alert(html);
+           }
+       });
+
 
   }
 
