@@ -8,7 +8,8 @@
 
       <div class="m_image">
          <% if news.images != [] %>
-            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150">
+            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150"
+                    onerror="javascript:this.src='http://heygotimes.heroku.com/images/newspaper_bw.jpg'">
          <% end %>
       </div>
       <div class="m_news_content">

@@ -83,6 +83,14 @@ class ApiController < ApplicationController
 
             return
           end
+        else
+          response_str = 'no title!!'
+          respond_to do |format|
+            format.html { render  :inline => response_str }
+          end
+
+          return
+
         end
 
           #
