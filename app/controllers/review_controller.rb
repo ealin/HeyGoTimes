@@ -144,7 +144,7 @@ class ReviewController < NewsController
   def clear_older_spams
 
     # 確實清除N天前的SPAM
-    @day = 5
+    @day = 4 
 
     response_str = @day.to_s + "天前的垃圾新聞已自資料庫中刪除"
 
