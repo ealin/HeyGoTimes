@@ -4,8 +4,8 @@ require 'net/http'
 require 'thread'
 
 
-#@host = "http://localhost:3000/"
-@host = "http://heygotimes.heroku.com/"
+@host = "http://localhost:3000/"
+#@host = "http://heygotimes.heroku.com/"
 
 
 @sleep_period = 50
@@ -61,6 +61,16 @@ Thread.start{
 
 
 
+
+  ############  TW-Yahoo-beta   ############
+require './tw_yahoo_beta.rb'
+
+Thread.start{
+  get_news_from_tw_yahoo_beta(m,@sleep_period)
+}
+
+
+
     ############  NOW-NEWS-Focus   ############
 require './tw_nownews_focus.rb'
 
@@ -70,24 +80,13 @@ Thread.start{
 
 
 
+
     ############  NOW-NEWS-Focus   ############
 require './tw_nownews.rb'
 
-Thread.start{
- get_news_from_tw_nownews(m,@sleep_period)
-}
-
-
-
-
-  ############  TW-Yahoo-beta   ############
-require './tw_yahoo_beta.rb'
-
 #Thread.start{
-  get_news_from_tw_yahoo_beta(m,@sleep_period)
+ get_news_from_tw_nownews(m,@sleep_period)
 #}
-
-
 
 
 
