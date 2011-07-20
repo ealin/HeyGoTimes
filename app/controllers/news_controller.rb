@@ -175,6 +175,14 @@ class NewsController < ApplicationController
       end
     end
 
+    if(title != nil && title != "")
+      @news = News.find_by_title(title)
+      if (@news != nil)
+        datas[:ret] = 'url exist'
+      end
+    end
+
+
     respond_to do |format|
       format.json { render :json => (datas.to_json) }
     end
