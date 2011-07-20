@@ -144,7 +144,7 @@ class ReviewController < NewsController
   def clear_older_spams
 
     # 確實清除N天前的SPAM
-    @day = 4 
+    @day = 5
 
     response_str = @day.to_s + "天前的垃圾新聞已自資料庫中刪除"
 
@@ -177,14 +177,26 @@ class ReviewController < NewsController
   #
   def clear_older_news
 
-    response_str = "NG"
+    # 確實清除N天前的NEWS
+    @day = 4
+    dead_line = DateTime.now - @day
 
-    response_str = "OK"
+    response_str = @day.to_s + "天前的新聞已自資料庫中刪除"
 
+    @pool_news = News.where("updated_at < ? AND special_flag=?", dead_line,false)
+    count = @pool_news.count
+
+    @pool_news.each do |news|
+
+      news.delete
+    end
+
+    response_str += (",共" + count.to_s + "筆。")
 
     respond_to do |format|
       format.html { render  :inline => response_str }
     end
+
 
 
   end
