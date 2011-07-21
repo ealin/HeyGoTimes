@@ -7,6 +7,14 @@
   <% end %>
 
   <script type="text/javascript">
+    <%# TODO: how to prevent iframe redirect %>
+    <% if (@news.url.include?("nownews")) %>
+    window.onbeforeunload = function(){
+      window.onbeforeunload = '';
+      return "是否要離開此頁面";
+    };
+    <% end %>
+
     function getSrc(obj)
     {
       document.getElementById('news_url').value = obj.src;
