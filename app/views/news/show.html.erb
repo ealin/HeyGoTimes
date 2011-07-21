@@ -116,12 +116,11 @@
 
     </div><!-- #main -->
 
-    <div id="sub">
+
+    <div id="ad" align="center">
       <!-- show AD list-->
-      <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list' %>
-      </div>
+        <%= render :partial => 'paper/show_ad_list2'  %>  <!-- AD type = 橫幅廣告 -->
     </div>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
