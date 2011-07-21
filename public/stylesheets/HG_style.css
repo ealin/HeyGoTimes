@@ -63,7 +63,7 @@
     font-size: 14px
 }
 
-#footer p {
+#footer,#news_footer p {
 	margin: 0px;
 	padding: 19px 0px 0px 0px;
 	text-align: left;
@@ -71,8 +71,18 @@
 	font-size: smaller;
 }
 
-#footer a {
+#footer,#news_footer a {
 	color: #FFFFFF;
+}
+
+#news_footer {
+	clear: both;
+	width: 100%;
+	height: 30px;
+	margin: 0px auto 30px auto;
+	background: #3b5998 left top;
+	color: #FFFFFF;
+    font-size: 14px
 }
 
 

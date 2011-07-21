@@ -63,6 +63,24 @@ a img {
   background-color: #6d84b4;
 }
 
+#news_gage {
+  width: 100%;
+	margin: 0px auto;
+	padding: 0px 0px;
+  background: #fff;
+	margin-top: 20px;
+}
+
+#news_header {
+	width: 100%;
+	height: 100px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  background-color: #6d84b4;
+}
+
 #header a {
 	text-decoration: none;
 	color: #FFFFFF;
@@ -106,7 +124,7 @@ a img {
 /* Content */
 #content {
 	float: left;
-	width: 750px;
+	width: 85%;
 }
 
 #paperContent {
@@ -117,7 +135,7 @@ a img {
 #sub{
   float: right;
   margin-top: 10px;
-  width: 150px;
+  width: 15%;
 }
 
 #sub #ad {

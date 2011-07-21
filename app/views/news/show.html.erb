@@ -45,8 +45,8 @@
     <%= redirect_to(root_url + 'mobile/show_news?redirect_from_web=1&id=' + @news.id.to_s) %>
 <% end %>
 
-<div id="page">
-  <div id="header">
+<div id="news_page">
+  <div id="news_header">
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
       <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
@@ -68,7 +68,7 @@
                 <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
                 <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
               <% else %>
-                <iframe id="news_frame" width="700" height="900" src="<%= @news.url %>">
+                <iframe id="news_frame" width='100%' height="900" src="<%= @news.url %>">
                   Your browser can't display IFRAMEs
                 </iframe>
               <% end %>
@@ -114,7 +114,7 @@
               document.getElementById('fb-root').appendChild(e);
             }());
           </script>
-          <fb:comments href='http://heygotimes.heroku.com/news/<%= news_id %>' num_posts='2' width='650'></fb:comments>
+          <fb:comments href='http://heygotimes.heroku.com/news/<%= news_id %>' num_posts='5' width='900'></fb:comments>
           <div style="clear: both;"></div>
         </div> <!-- fb_comment -->
       </div> <!-- comments -->
@@ -133,7 +133,7 @@
     </div>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
-    <div id="footer">
+    <div id="news_footer">
       <%= show_page_tail %>
     </div>
 
