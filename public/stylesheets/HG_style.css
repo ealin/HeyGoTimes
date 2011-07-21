@@ -63,7 +63,7 @@
     font-size: 14px
 }
 
-#footer,#news_footer p {
+#footer p {
 	margin: 0px;
 	padding: 19px 0px 0px 0px;
 	text-align: left;
@@ -71,7 +71,7 @@
 	font-size: smaller;
 }
 
-#footer,#news_footer a {
+#footer a {
 	color: #FFFFFF;
 }
 
@@ -83,6 +83,19 @@
 	background: #3b5998 left top;
 	color: #FFFFFF;
     font-size: 14px
+}
+
+#news_footer p {
+	margin: 0px;
+	padding: 19px 0px 0px 0px;
+	text-align: left;
+	line-height: normal;
+	font-size: smaller;
+}
+
+#news_footer a {
+	color: #FFFFFF;
+  text-decoration: none;
 }
 
 
