@@ -43,6 +43,12 @@ en:
   report_this_news: "Report this news"
   news_already_exist: "News already exist!"
 
+  #news info
+  info_1: "By"
+  info_2: ","
+  info_3: ""
+  info_tags: "Tags"
+
   #----------------------------------------
   # for mobile site
   #----------------------------------------
