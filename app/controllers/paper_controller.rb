@@ -319,12 +319,6 @@ class PaperController < NewsController
   # 
   def show_ad_list
 
-     if params[:type] == 'landscape'
-       @type = 0   # landscape
-     else
-       @type = 1
-     end
-
      # render _show_ad_list.html.erb
      render :layout => nil
    

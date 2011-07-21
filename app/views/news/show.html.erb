@@ -7,14 +7,6 @@
   <% end %>
 
   <script type="text/javascript">
-    <%# TODO: how to prevent iframe redirect %>
-    <% if (@news.url.include?("nownews")) %>
-    window.onbeforeunload = function(){
-      window.onbeforeunload = '';
-      return "是否要離開此頁面";
-    };
-    <% end %>
-
     function getSrc(obj)
     {
       document.getElementById('news_url').value = obj.src;
@@ -125,10 +117,12 @@
     </div><!-- #main -->
 
 
-    <div id="ad" align="center">
+    <div id="sub">
       <!-- show AD list-->
+      <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list2'  %>  <!-- AD type = 橫幅廣告 -->
+        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 橫幅廣告 -->
+      </div>
     </div>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
