@@ -11,6 +11,8 @@ HeyGoTimes::Application.routes.draw do
   get "review/close_report"
   get "review/report_spam"
   get "review/delete_photo_and_close_report"
+  get "review/clear_older_spams"
+  get "review/clear_older_news"
 
 
   get "api/new_news"
@@ -78,6 +80,7 @@ HeyGoTimes::Application.routes.draw do
     get 'show_fun_buttons', :on => :collection
     get 'show_paper_content', :on => :collection
     get 'show_ad_list', :on => :collection
+    get 'show_ad_list2', :on => :collection
     get 'news/report', :on => :collection
 
     get 'set_filter_setting', :on => :collection

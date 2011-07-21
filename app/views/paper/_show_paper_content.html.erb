@@ -8,6 +8,7 @@
       </div>
 
       <div class="info">
+        <!-- todo: 時區需要判斷  -->
         由 <%= news.user.first_name %> 於 <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d") %> 發佈, Tags:
         <% news.tags.each do |tag| %>
             <%= t(tag.name.to_sym) + " " %>
@@ -16,7 +17,7 @@
 
       <div class="image">
          <% if news.images != [] && news.images[0].url != "" %>
-            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150" onerror="javascript:this.src='http://c3connections.files.wordpress.com/2010/08/newspaper_bw.jpg'">
+            <img src="<%=news.images[0].url.to_s%>" alt="image" width="150" onerror="javascript:this.src='http://heygotimes.heroku.com/images/newspaper_bw.jpg'">
          <% end %>
       </div>
 

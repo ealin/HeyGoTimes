@@ -235,6 +235,10 @@
           <% next %>
      <% end %>
 
+     <% if detect_apple_browser() && tag.name == 'Motion' %>
+          <% next %>  <!-- don't support motion-news in iphone -->
+     <% end %>
+
      <% if session[:filter_tags].include?(tag.name) %>
           <!--
             <option  id="<%= tag.name %>" selected="yes" onclick="check_tags(id)" ><%= t(tag.name.to_sym)  %></option>

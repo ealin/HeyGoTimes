@@ -74,11 +74,51 @@
     FB.XFBML.parse(document.getElementById('comments'));
   }
 
+
+  function clear_older_spams()
+  {
+      data = ""
+
+      // send to server
+       $.ajax(
+       {
+           type: "GET",
+           url:"/review/clear_older_spams",
+           data: data,
+           success: function(html)
+           {
+                alert(html);
+           }
+       });
+
+  }
+
+  function clear_older_news()
+  {
+      data = ""
+
+      // send to server
+       $.ajax(
+       {
+           type: "GET",
+           url:"/review/clear_older_news",
+           data: data,
+           success: function(html)
+           {
+               alert(html);
+           }
+       });
+
+
+  }
+
+
 </script>
 
 
 
 <h1>處理 被檢舉的新聞</h1>
+<h2>  待審查新聞數目： <%= @count  %></h2>
 
 <br><br>
 <% for i in (1..(20)) %>
@@ -171,3 +211,12 @@
 
 
 <% end %>
+
+<hr>
+<br><br>
+<h1> !!! 系統功能，請謹慎使用 !!!</h1>
+<br>
+<button style="font-size:24px;color:red;" onclick="clear_older_spams();">刪除較舊的垃圾新聞</button>
+<br><br>
+<button style="font-size:24px;color:red;" onclick="clear_older_news();">刪除較舊的新聞</button>
+

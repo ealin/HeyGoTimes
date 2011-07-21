@@ -52,14 +52,18 @@ nownews_rss_tag = [
               link =  temp_str[0..temp_str.length-3]
               #p link
 
-              m.synchronize{
-                puts '[NOW-NEWS TW]News Link :' + link
-                open(command + link) {|f|
-                   f.each_line {|line| p line}
-                 }
-
-                puts "\n"
-              }
+              begin
+                m.synchronize{
+                  puts '[NOW-NEWS TW]News Link :' + link
+                    open(command + link) {|f|
+                       f.each_line {|line| p line}
+                     }
+                  puts "\n"
+                }
+              rescue OpenURI::HTTPError => the_error
+                  the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
+                  next
+              end
               sleep(sleep_period)
 
             end

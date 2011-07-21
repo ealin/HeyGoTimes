@@ -138,6 +138,74 @@ class ReviewController < NewsController
 
   end
 
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, clear older spams ~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  #
+  def clear_older_spams
+
+    # 確實清除N天前的SPAM
+    @day = 5
+
+    response_str = @day.to_s + "天前的垃圾新聞已自資料庫中刪除"
+
+    areas = ["Taiwan"] ;
+    tags = ["Closed_spam"] ;
+
+
+    dead_line = DateTime.now - @day
+    counter = 0
+
+    @news_for_review = News.get_all_special(areas,tags,:none,nil)
+    @news_for_review.each do |news|
+      if news.updated_at < dead_line
+        pool_news = News.find(news.id)
+        pool_news.delete
+        counter += 1
+      end
+    end
+
+    response_str += (",共" + counter.to_s + "筆。")
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+
+  end
+
+
+
+  #~~~~~~~~~~~~~~~~~~~~~called by AJAX, clear older news ~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  #
+  def clear_older_news
+
+    # 確實清除N天前的NEWS
+    @day = 7
+    dead_line = DateTime.now - @day
+
+    response_str = @day.to_s + "天前的新聞已自資料庫中刪除"
+
+    @pool_news = News.where("updated_at < ? AND special_flag=?", dead_line,false)
+    count = @pool_news.count
+
+    @pool_news.each do |news|
+
+      news.delete
+    end
+
+    response_str += (",共" + count.to_s + "筆。")
+
+    respond_to do |format|
+      format.html { render  :inline => response_str }
+    end
+
+
+
+  end
+
+
+
   #~~~~~~~~~~~~~~~~~~~~~called by AJAX, delete news-image and publish it ~~~~~~~~~~~~~~~~~~~~~~~
   #
   #

@@ -23,6 +23,7 @@ class ApiController < ApplicationController
           return
       end
 
+
       # Parse data
 
         # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
@@ -71,6 +72,26 @@ class ApiController < ApplicationController
         @data[:title]=title
         @data[:image]=image_url
         @data[:text]=text
+
+        if(title != nil && title != "")
+          news_temp = News.find_by_title(title)
+          if (news_temp != nil)
+            response_str = 'title-duplicate!!'
+            respond_to do |format|
+              format.html { render  :inline => response_str }
+            end
+
+            return
+          end
+        else
+          response_str = 'no title!!'
+          respond_to do |format|
+            format.html { render  :inline => response_str }
+          end
+
+          return
+
+        end
 
           #
           # create a new news record and save to db  (reference to news_contrller/create
