@@ -9,10 +9,8 @@
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  function - set_each_filter
      //
-     function set_each_filter(json)
+     function set_each_filter(/*json*/)
      {
-             // console.log( $('option')[1].parentNode.id) ;
-             //console.log(json.filter_area)
 
              // set all areas filter
              //
@@ -20,14 +18,12 @@
              {
                 if( $('option')[i].parentNode.id != "area_filter")
                      continue ;
-                // console.log( $('option')[i].parentNode.id) ;
-                // console.log( $('option')[i].id) ;
-                // console.log( $('option')[i].selected) ;
 
-                if((json.filter_area).match($('option')[i].id) )
-                    $('option')[i].selected = true
+                //if((json.filter_area).match($('option')[i].id) )
+                if(("<%= session[:filter_area] %>").match($('option')[i].id) )
+                    $('option')[i].selected = "yes"
                 else
-                    $('option')[i].selected = false
+                    $('option')[i].selected = ""
                 //console.log( $('option')[i].selected) ;
              }
 
@@ -39,38 +35,45 @@
                  if( $('input')[i].name != "each_tag")
                      continue ;
 
-                 if((json.filter_tags).match($('input')[i].id) )
+                 //if((json.filter_tags).match($('input')[i].id) )
+                 if((("<%= session[:filter_tags] %>")).match($('input')[i].id) )
                      $('input')[i].checked = true ;
                  else
                      $('input')[i].checked = false ;
              }
 
              // set friend filter
-             if((json.filter_friend).match("all"))
+             //if((json.filter_friend).match("all"))
+             if((("<%= session[:filter_friend] %>")).match("all"))
              {
                 $('#my_news_only')[0].checked = false ;
                 $('#my_friends_news_only')[0].checked = false ;
              }
              else
              {
-                 if((json.filter_friend).match("mine"))
+                 //if((json.filter_friend).match("mine"))
+                 if(("<%= session[:filter_friend] %>").match("mine"))
                      $('#my_news_only')[0].checked = true ;
                  else
                      $('#my_news_only')[0].checked = false ;
 
-                 if((json.filter_friend).match("friend"))
+                 //if((json.filter_friend).match("friend"))
+                 if(("<%= session[:filter_friend] %>").match("friend"))
                      $('#my_friends_news_only')[0].checked = true ;
                  else
                      $('#my_friends_news_only')[0].checked = false ;
               }
 
              // set date filter
-             if(json.filter_date_option.match("no_limited"))
+             //if(json.filter_date_option.match("no_limited"))
+             if("<%= session[:filter_date_option] %>".match("no_limited"))
                 $('#no_filter')[0].checked = true ;
-             else if(json.filter_date_option.match("today"))
+             //else if(json.filter_date_option.match("today"))
+             else if("<%= session[:filter_date_option] %>".match("today"))
                  $('#today')[0].checked = true ;
              else //if(json.filter_date_option.match("yesterday"))
                  $('#yesterday')[0].checked = true ;
+
 
      }
      //
@@ -82,11 +85,15 @@
 
       // load session to initialize all selection item
       //
+      /*
         $.getJSON("/paper/get_filter_session.json",'cmd=get_all_tag', function(json)
         {
+
             set_each_filter(json) ;
 
         }  );
+      */
+       set_each_filter() ;
 
 
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -329,16 +336,15 @@
         <% @areas.each do |area| %>
            <% if session[:filter_area]!=nil && session[:filter_area].include?(area.name) %>
               <% if area.parent_area != nil %>
-                  <option  id="<%= area.name %>" selected="yes" style='color:blue;font-size:14px;'>
-                      <%= "        " + t(area.name.to_sym)  %></option>
+                  <option  id="<%= area.name %>" selected="selected" style='font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
               <% else %>
-                  <option  id="<%= area.name %>" selected="yes" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                  <option  id="<%= area.name %>" selected="selected" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
            <% else %>
               <% if area.parent_area != nil %>
-                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= "        " + t(area.name.to_sym)  %></option>
+                 <option  id="<%= area.name %>" style='font-size:14px;'>&nbsp;&nbsp;<%=t(area.name.to_sym)  %></option>
               <% else %>
-                 <option  id="<%= area.name %>" style='font-size:14px;'><%= t(area.name.to_sym)  %></option>
+                 <option  id="<%= area.name %>" style='color:blue;font-size:14px;'><%= t(area.name.to_sym)  %></option>
               <% end %>
            <% end %>
         <% end %>

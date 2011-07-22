@@ -452,6 +452,7 @@ class PaperController < NewsController
   #  - seed back all session to filter-dialog
   #-------------------------------------------------------------------------------------
   #
+=begin
   def get_filter_session
 
     # friend filter could not work if the user is not logged in.
@@ -465,5 +466,7 @@ class PaperController < NewsController
     end
 
   end
+=end
 
 end
+
