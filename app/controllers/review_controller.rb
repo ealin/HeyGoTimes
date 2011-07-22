@@ -158,8 +158,7 @@ class ReviewController < NewsController
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
     @news_for_review.each do |news|
       if news.updated_at < dead_line
-        pool_news = News.find(news.id)
-        pool_news.delete
+        News.destroy(news.id)
         counter += 1
       end
     end
@@ -191,7 +190,7 @@ class ReviewController < NewsController
 
     @pool_news.each do |news|
 
-      news.delete
+      News.destroy(news.id)
     end
 
     response_str += (",共" + count.to_s + "筆。")
