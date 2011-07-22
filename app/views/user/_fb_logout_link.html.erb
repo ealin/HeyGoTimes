@@ -1,4 +1,7 @@
-<% if session[:logged_in] == true %>
-  <%= fb_connect_async_js%>
-  <%= fb_logout_link("Logout", root_url) %>
-<% end %>
+        <% if session[:logged_in] == true %>
+        <span id="fb_logout_btn">
+          <%= fb_connect_async_js%>
+          <%= fb_logout_link(t(:logout), root_url) %>
+        </span>
+    <% end %>
+
