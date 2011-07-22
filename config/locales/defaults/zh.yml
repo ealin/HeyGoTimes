@@ -37,6 +37,12 @@ zh:
   share_hint: "分享至Facebook"
   report_this_news: "发布此则新闻"
   news_already_exist: "此新闻已经存在"
+
+  #news info
+  info_1: "由"
+  info_2: "于"
+  info_3: "发布"
+  info_tags: "分类"
   
   #----------------------------------------
   # for mobile site

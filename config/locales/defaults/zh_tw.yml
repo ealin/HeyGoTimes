@@ -37,6 +37,12 @@ zh_tw:
   share_hint: "分享至Facebook"
   report_this_news: "發佈此則新聞"
   news_already_exist: "此新聞已經存在"
+
+  #news info
+  info_1: "由"
+  info_2: "於"
+  info_3: "發佈"
+  info_tags: "分類"
   
   #----------------------------------------
   # for mobile site

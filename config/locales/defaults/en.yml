@@ -29,8 +29,8 @@ en:
   ok: "OK"
   cancel: "Cncel"
 
-  popular_news: "Popular news"
-  latest_news: "Latest news"
+  popular_news: "Popular"
+  latest_news: "Latest"
 
   get_news: "Get news"
   more_news: "More News"
@@ -42,6 +42,12 @@ en:
   share_hint: "Share to Facebook"
   report_this_news: "Report this news"
   news_already_exist: "News already exist!"
+
+  #news info
+  info_1: "By"
+  info_2: ","
+  info_3: ""
+  info_tags: "Tags"
 
   #----------------------------------------
   # for mobile site

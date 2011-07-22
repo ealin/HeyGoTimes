@@ -2,7 +2,7 @@ def get_news_from_tw_google_focus (m,sleep_period)
 
 
 google_focus_rss_url = [
-  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=m&output=rss"
+  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&output=rss"
 ] ;
 
 
