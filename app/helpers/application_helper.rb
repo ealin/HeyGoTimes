@@ -60,27 +60,6 @@ module ApplicationHelper
   #-----------------------------------------------------------------------------------
   # 
   def show_page_head (option = {:faq_flag => false, :setup_flag => false, :login_flag => false} )
-=begin
-    if option[:realtime_news_flag] == true
-      @realtime_news_flag = true
-    else
-      @realtime_news_flag = false
-    end
-    
-    # only "main_page"/"paper"/"faq"/"terms"/"privacy" pages may have "login"/"signup" link, others page should have "logout" link only.
-    # (i.e. non-member could read "main_page"/"paper"/"faq"/"terms"/"privacy" pages only)
-    if option[:faq_flag] == true
-      @faq_flag = true
-    else
-      @faq_flag = false
-    end   
-     
-    if option[:setup_flag] == true
-      @setup_flag = true
-    else
-      @setup_flag = false
-    end   
-=end
 
     # 在某些不需要LOGIN就可以使用的頁面, 必須視狀況, 顯示LOGIN的ICON
     #

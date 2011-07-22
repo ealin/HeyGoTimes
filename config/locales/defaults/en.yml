@@ -29,8 +29,8 @@ en:
   ok: "OK"
   cancel: "Cncel"
 
-  popular_news: "Popular news"
-  latest_news: "Latest news"
+  popular_news: "Popular"
+  latest_news: "Latest"
 
   get_news: "Get news"
   more_news: "More News"
