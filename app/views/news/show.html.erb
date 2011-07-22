@@ -7,6 +7,13 @@
   <% end %>
 
   <script type="text/javascript">
+    <%# TODO: how to prevent iframe redirect %>
+    <% if (@news.url.include?("nownews")) %>
+    window.onbeforeunload = function(){
+      window.onbeforeunload = '';
+      return "是否要離開此頁面";
+    };
+    <% end %>
     function getSrc(obj)
     {
       document.getElementById('news_url').value = obj.src;
@@ -32,6 +39,7 @@
   </script>
 </head>  <%# end tag for <head> in application.html.erb %>
 <% news_id = @news.id %>
+<% comment_url = 'http://heygotimes.heroku.com/news/'+@news.id.to_s+'/'+@news.title %>
 <body>
 <% if detect_Mobile_browser(:show) == true %>
     <%= redirect_to(root_url + 'mobile/show_news?redirect_from_web=1&id=' + @news.id.to_s) %>
@@ -106,7 +114,7 @@
               document.getElementById('fb-root').appendChild(e);
             }());
           </script>
-          <fb:comments href='http://heygotimes.heroku.com/news/<%= news_id %>' num_posts='5' width='900'></fb:comments>
+          <fb:comments href='<%= comment_url %>' num_posts='5' width='900'></fb:comments>
           <div style="clear: both;"></div>
         </div> <!-- fb_comment -->
       </div> <!-- comments -->

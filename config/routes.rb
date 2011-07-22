@@ -98,6 +98,8 @@ HeyGoTimes::Application.routes.draw do
     get 'show_news', :on => :collection
   end
 
+  match 'news/:id/:title' => 'news#show'
+
   #get "main_page/index"
   #get "main_page/to_main_page"
   #get "main_page/to_mobile_site"
