@@ -2,25 +2,25 @@ class News < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :comments
-  has_many :images
+  has_many :comments, :dependent => :destroy
+  has_many :images, :dependent => :destroy
 
-  has_many :news_tags
+  has_many :news_tags, :dependent => :destroy
   has_many :tags, :through => :news_tags
 
-  has_many :news_areas
+  has_many :news_areas, :dependent => :destroy
   has_many :areas, :through => :news_areas
 
-  has_many :user_likes
+  has_many :user_likes, :dependent => :destroy
   has_many :likes, :through => :user_likes, :uniq => true, :class_name => "User", :source => :user
 
-  has_many :user_unlikes
+  has_many :user_unlikes, :dependent => :destroy
   has_many :unlikes, :through => :user_unlikes, :uniq => true, :class_name => "User", :source => :user
 
-  has_many :user_watches
+  has_many :user_watches, :dependent => :destroy
   has_many :watches, :through => :user_watches, :uniq => true, :class_name => "User", :source => :user
 
-  has_many :user_news_ranks
+  has_many :user_news_ranks, :dependent => :destroy
 
   def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
 
