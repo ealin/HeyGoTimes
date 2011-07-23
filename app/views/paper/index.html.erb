@@ -42,9 +42,9 @@
       });
     }
 
-    function share(id, title)
+    function share(id, title_uri, title)
     {
-      var url = 'http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/'+id+'&t='+title;
+      var url = 'http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/'+id+'/'+title_uri+'&t='+title;
       $.ajax({
         type: "POST",
         url: "/news/share",
