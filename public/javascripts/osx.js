@@ -120,7 +120,7 @@ jQuery(function ($) {
 
                                 // Ealin:  dropdownchecklist would help to make multiple-option as dropdown-checkbox-list
                                 //
-                                $("#area_filter").dropdownchecklist( { emptyText: "press here to select area：", width: 240,maxDropHeight: 160 });
+                                $("#area_filter").dropdownchecklist( { forceMultiple: true, emptyText: "選擇區域(可複選)：", width: 240,maxDropHeight: 160 });
 							}
 
 						);

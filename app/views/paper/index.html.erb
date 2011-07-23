@@ -4,6 +4,22 @@
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
 
+  <style type="text/css">
+    .menu-item em {
+    font-weight: normal;
+    background: url(images/hover.png) no-repeat;
+    width: 180px;
+    height: 45px;
+    position: absolute;
+    top: -85px;
+    left: -15px;
+    text-align: center;
+    padding: 20px 12px 10px;
+    font-style: normal;
+    z-index: 2;
+    display: none;
+  }
+  </style>
   <script type="text/javascript">
     function like(user, news, like)
     {
@@ -89,6 +105,10 @@
       var currPage = 1;
       var currType = 'rank';
       var subType = '';
+
+      $(".menu-item a").append("<em></em>");
+      $(".menu-item a").hover(function() {	  $(this).find("em").animate({opacity: "show", top: "-75"}, "slow");	  var hoverText = $(this).attr("title");	  $(this).find("em").text(hoverText);	}, function() {	  $(this).find("em").animate({opacity: "hide", top: "-85"}, "fast");	});
+
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage);
