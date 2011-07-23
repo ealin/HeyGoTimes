@@ -36,7 +36,7 @@
     <div class="comments">
       <% graph = Koala::Facebook::GraphAPI.new() %>
       <% news_title = (news.special_flag==false)? URI.encode(news.title): "" %>
-      <% comment_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+news_title %>
+      <% comment_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+"/"+news_title %>
       <% comment_obj = graph.get_object(comment_url) %>
       <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>
       <% shared = (comment_obj['shares'] == nil)? 0: comment_obj['shares'] %>
