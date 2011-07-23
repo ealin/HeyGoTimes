@@ -35,7 +35,9 @@
 
     <div class="comments">
       <% graph = Koala::Facebook::GraphAPI.new() %>
-      <% comment_obj = graph.get_object("http://heygotimes.heroku.com/news/"+news.id.to_s) %>
+      <% news_title = (news.special_flag==false)? URI.encode(news.title): "" %>
+      <% comment_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+news_title %>
+      <% comment_obj = graph.get_object(comment_url) %>
       <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>
       <% shared = (comment_obj['shares'] == nil)? 0: comment_obj['shares'] %>
 
@@ -50,7 +52,7 @@
           <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.likes.count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
         </div>
       <% end %>
-      <% news_title = (news.special_flag == false)? news.title: ''%>
+
       <div class="comment_title" id="comment_title_<%= news.id %>" onclick="expand_comment(<%= news.id %>, '<%= news_title %>');"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + comments.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
 
       <div class="fb_comment" id="fb_comment<%= news.id %>">
