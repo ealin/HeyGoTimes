@@ -41,7 +41,7 @@
 <% news_id = @news.id %>
 <% comment_url = 'http://heygotimes.heroku.com/news/'+@news.id.to_s %>
 <% if (@news.special_flag == false)%>
-    <% comment_url += '/'+@news.title %>
+    <% comment_url += '/'+URI.encode(@news.title) %>
 <% end %>
 <body>
 <% if detect_Mobile_browser(:show) == true %>
