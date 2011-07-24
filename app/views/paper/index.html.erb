@@ -171,6 +171,9 @@
         // ask server to set session[:default_locale] then reload the main-page
         data = "locale=" + new_locale
 
+        window.location = "/paper/set_default_locale?" + data ;
+
+        /*
         // send to server
          $.ajax(
          {
@@ -183,6 +186,7 @@
                   window.location.replace("/");
              }
          });
+         */
     }
 
     function report_the_spam(spam_new_id, spam_news_title)

@@ -180,7 +180,9 @@
          var data = collect_all_selection() ;
          data += "&save=yes" ;
 
+         window.location = "/paper/set_filter_setting?" + data ;
 
+         /*
          // send to server
          $.ajax(
          {
@@ -193,6 +195,7 @@
                   window.location.replace("/mobile/index/");
              }
          });
+         */
 
          return false ;
 
