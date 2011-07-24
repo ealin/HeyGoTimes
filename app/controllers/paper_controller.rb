@@ -348,7 +348,7 @@ class PaperController < NewsController
   #-------------------------------------------------------------------------------------
   #
   def set_filter_setting
-    session[:filter_tags] = params[:tag_filter]
+    session[:filter_tags] = String.new(params[:tag_filter])
     session[:filter_area] = params[:area_filter]
 
     if(params[:friend_filter] == "")
