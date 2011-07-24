@@ -226,6 +226,8 @@
          var data = collect_all_selection() ;
          data += "&save=yes" ;
 
+         window.location = '/paper/set_filter_setting?' + data;
+ /*
          // send to server
          $.ajax(
          {
@@ -236,11 +238,16 @@
              {
                  // redirect to main
                  // page in order to redraw the news by new filter!
-                  window.location= "/" ;
-                  //replace("/paper");
+
+
+                 window.location = '/';
+                 //console.log("<%= session[:filter_tags]%>")
+
+                   //window.location.reload() ;
+                           //replace("/paper");
              }
          });
-
+   */
          return false ;
 
      }  );
