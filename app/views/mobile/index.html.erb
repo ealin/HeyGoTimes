@@ -133,7 +133,10 @@
         // ask server to set session[:default_locale] then reload the main-page
         data = "locale=" + new_locale
 
+        window.location = "/paper/set_default_locale?" + data ;
+
         // send to server
+        /*
          $.ajax(
          {
              type: "GET",
@@ -145,7 +148,7 @@
                   window.location.replace("/mobile/index");
              }
          });
-
+         */
 
     }
 
