@@ -36,7 +36,7 @@
         type: "POST",
         url: "/news/share",
         data: "news_id="+id,
-        success: function(){
+        complete: function(){
           location.href=url;
         }
       });
