@@ -1,13 +1,5 @@
 class News < ActiveRecord::Base
 
-  after_create{|news| save_news_url(news)}
-
-  def save_news_url(news)
-    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
-    news.save
-  end
-
-
   belongs_to :user
 
   has_many :comments, :dependent => :destroy
@@ -154,6 +146,13 @@ class News < ActiveRecord::Base
     else
       joins(:areas, :tags).where(:news=>{:special_flag => true}, :areas => {:name => areas}, :tags => {:name => tags}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
     end
+  end
+  
+  after_create{|news| save_news_url(news)}
+
+  def save_news_url(news)
+    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
+    news.save
   end
 
 end
