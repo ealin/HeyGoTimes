@@ -5,7 +5,7 @@
     <div class="news">
       <div class="news_title">
         <% if (news.special_flag==false) %>
-          <% url=news_index_path+'/'+news.id.to_s+'/'+news.title %>
+          <% url=news_index_path+'/'+news.fb_obj_url %>
         <% else %>
           <% url=news_index_path+'/'+news.id.to_s %>
         <% end %>

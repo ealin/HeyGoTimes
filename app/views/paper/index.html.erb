@@ -35,9 +35,11 @@
       $.ajax({
         type: "POST",
         url: "/news/share",
-        data: "news_id="+id
+        data: "news_id="+id,
+        complete: function(){
+          location.href=url;
+        }
       });
-      location.href=url;
     }
 
     function expand_comment(news_id,comment_url)
