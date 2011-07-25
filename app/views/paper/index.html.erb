@@ -33,8 +33,10 @@
 
     function comment(resp)
     {
-      var id_pos = resp.href.indexOf('/news/');
-      var id = resp.href.substring(id_pos+6);
+      var pos = resp.href.indexOf('/news/');
+      var id = resp.href.substring(pos+6);
+      pos=id.indexOf('/');
+      id=id.substring(0, pos)
       $.ajax({
         type: "POST",
         url: "/news/comment",
