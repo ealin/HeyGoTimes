@@ -35,14 +35,11 @@
 
     <div class="comments">
       <% graph = Koala::Facebook::GraphAPI.new() %>
-        <% title_uri = (news.special_flag==false)? URI.encode(news.title): "" %>
-        <% comment_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+"/"+title_uri %>
-        <% comment_obj = graph.get_object(comment_url) %>
-        <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>
-        <% title_uri = (news.special_flag==false)? news.title: "" %>
-        <% obj_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+"/"+title_uri %>
-        <% fb_obj = graph.get_object(obj_url) %>
-        <% shared = (fb_obj['shares'] == nil)? 0: fb_obj['shares'] %>
+      <% title_uri = (news.special_flag==false)? URI.encode(news.title): "" %>
+      <% comment_url = "http://heygotimes.heroku.com/news/"+news.id.to_s+"/"+title_uri %>
+      <% comment_obj = graph.get_object(comment_url) %>
+      <% comments = (comment_obj['comments'] == nil)? 0: comment_obj['comments'] %>
+      <% shared = (comment_obj['shares'] == nil)? 0: comment_obj['shares'] %>
 
       <% if news_sub_type != "feedback" %>
         <div class="button_group">
