@@ -19,6 +19,11 @@
     display: none;
   }
   </style>
+
+
+</div>
+
+
   <script type="text/javascript">
     function like(user, news, like)
     {
@@ -62,6 +67,7 @@
       $('#comment_title_'+news_id).attr('onclick', '').unbind('click');
       $('#expand_comment'+news_id).html("");
       $('#fb_comment'+news_id).append(comment_str);
+
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
@@ -161,9 +167,17 @@
 
       loading_animate(false);
 
-      FB.Event.subscribe('comment.create',function(resp){
-        comment(resp);
-      });
+      // todo: FB would be not defined sometims
+      //if (typeof(FB) == 'undefined' || FB == null )
+      //    alert("222") ;
+      //else
+      //{
+          FB.Event.subscribe('comment.create',function(resp){
+            comment(resp);
+          });
+      //}
+
+
     });
 
     function set_default_locale(new_locale)
@@ -318,6 +332,9 @@
   <a href='https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681'
        onclick="alert('<%= t(:feedback_message) %>') ;"><img src="/images/feedback.png"/></a>
 </div>
+
+
+
 
 
 </body>
