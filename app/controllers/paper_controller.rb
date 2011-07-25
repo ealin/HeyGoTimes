@@ -429,14 +429,15 @@ class PaperController < NewsController
        end
     end
 
+    redirect_to root_url
+
     #logger.debug "[logging]Filter setting saved in session!"
 
     # IMPORTANT: it must response something to browser, or the session would not be saved to local cookie!!!
     #
-    respond_to do |format|
-      format.html { render  :inline => response_str }
-      #format.html { render  :partial => "paper/ack" }
-    end
+    #respond_to do |format|
+    #  format.html { render  :inline => response_str }
+    #end
 
 
     # redraw the paper page  <=== caller (JS code in _show_news_filter.html.erb would do this job!)

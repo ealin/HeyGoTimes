@@ -80,5 +80,14 @@ module ApplicationHelper
     submit_tag button_text, options
   end
 
+  def get_fb_obj_url(news)
+    if (news.fb_obj_url==nil)
+      url = "http://heygotimes.heroku.com/news/"+news.id.to_s
+    else
+      url = "http://heygotimes.heroku.com/news/"+news.fb_obj_url
+    end
+    return url
+  end
+
   
 end

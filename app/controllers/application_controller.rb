@@ -152,9 +152,11 @@ class ApplicationController < ActionController::Base
 
     session[:default_locale] = params[:locale]
 
-    respond_to do |format|
-      format.html { render  :inline => "OK" }
-    end
+    redirect_to root_url
+
+    #respond_to do |format|
+    #  format.html { render  :inline => "OK" }
+    #end
 
 
   end

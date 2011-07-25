@@ -19,8 +19,9 @@
     {
       var pos = resp.href.indexOf('/news/');
       var id = resp.href.substring(pos+6);
-      pos=id.indexOf('/');
-      id=id.substring(0, pos)
+      pos=id.indexOf('-');
+      id=id.substring(0, pos);
+
       $.ajax({
         type: "POST",
         url: "/news/comment",
@@ -28,9 +29,9 @@
       });
     }
 
-    function share(id, title_uri, title)
+    function share(id, url, title)
     {
-      var url = 'http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/'+id+'/'+title_uri+'&t='+title;
+      var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
       $.ajax({
         type: "POST",
         url: "/news/share",
@@ -39,9 +40,9 @@
       location.href=url;
     }
 
-    function expand_comment(news_id,news_title)
+    function expand_comment(news_id,comment_url)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"/"+news_title+"'"+"num_posts='2' width='650'></fb:comments>";
+      var comment_str = "<fb:comments href='"+comment_url+"'"+"num_posts='2' width='650'></fb:comments>";
 
       $('#comment_title_'+news_id).attr('onclick', '').unbind('click');
       $('#expand_comment'+news_id).html("");
@@ -81,8 +82,6 @@
       $("#paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);
         $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
-
-
       });
     }
 
@@ -151,6 +150,9 @@
         // ask server to set session[:default_locale] then reload the main-page
         data = "locale=" + new_locale
 
+        window.location = "/paper/set_default_locale?" + data ;
+
+        /*
         // send to server
          $.ajax(
          {
@@ -163,6 +165,7 @@
                   window.location.replace("/");
              }
          });
+         */
     }
 
     function report_the_spam(spam_new_id, spam_news_title)

@@ -50,7 +50,7 @@
         document.getElementById('fb-root').appendChild(e);
       }());
     </script>
-    <fb:comments href="<%= "http://heygotimes.heroku.com/news/"+@news.id.to_s+'/'+@news.title %>" num_posts="5" width="320"></fb:comments>
+    <fb:comments href="<%= get_fb_obj_url(@news) %>" num_posts="5" width="320"></fb:comments>
     <div style="clear: both;"></div>
   </div> <!-- fb_comment -->
 </div> <!-- comments -->
