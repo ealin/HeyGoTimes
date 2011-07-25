@@ -11,7 +11,7 @@
     <% if (@news.url.include?("nownews")) %>
     window.onbeforeunload = function(){
       window.onbeforeunload = '';
-      return "是否要離開此頁面";
+      return "是否停留在此頁面？";
     };
     <% end %>
     function getSrc(obj)
@@ -39,10 +39,8 @@
   </script>
 </head>  <%# end tag for <head> in application.html.erb %>
 <% news_id = @news.id %>
-<% comment_url = 'http://heygotimes.heroku.com/news/'+@news.id.to_s %>
-<% if (@news.special_flag == false)%>
-    <% comment_url += '/'+URI.encode(@news.title) %>
-<% end %>
+<% comment_url = get_fb_obj_url(@news) %>
+
 <body>
 <% if detect_Mobile_browser(:show) == true %>
     <%= redirect_to(root_url + 'mobile/show_news?redirect_from_web=1&id=' + @news.id.to_s) %>
@@ -132,7 +130,7 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 橫幅廣告 -->
+        <%= render :partial => 'paper/show_ad_list'  %>
       </div>
     </div>
 

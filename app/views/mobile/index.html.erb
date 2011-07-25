@@ -30,9 +30,36 @@
       });
     }
 
-    function expand_comment(news_id,news_title)
+    function comment(resp)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"/"+news_title+"'"+"num_posts='2' width='650'></fb:comments>";
+      var pos = resp.href.indexOf('/news/');
+      var id = resp.href.substring(pos+6);
+      pos=id.indexOf('-');
+      id=id.substring(0, pos);
+
+      $.ajax({
+        type: "POST",
+        url: "/news/comment",
+        data: "news_id="+id
+      });
+    }
+
+    function share(id, url, title)
+    {
+      var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id="+id,
+        complete: function(){
+          location.href=url;
+        }
+      });
+    }
+
+    function expand_comment(news_id,comment_url)
+    {
+      var comment_str = "<fb:comments href='"+comment_url+"'"+"num_posts='2' width='320'></fb:comments>";
 
       $('#m_comment_title_'+news_id).attr('onclick', '').unbind('click');
       $('#expand_comment'+news_id).html("");
@@ -107,6 +134,10 @@
       });
 
       loading_animate(false);
+
+      FB.Event.subscribe('comment.create',function(resp){
+        comment(resp);
+      });
     });
 
 
@@ -135,23 +166,8 @@
 
         window.location = "/paper/set_default_locale?" + data ;
 
-        // send to server
-        /*
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_default_locale",
-             data: data,
-             success: function(html)
-             {
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/mobile/index");
-             }
-         });
-         */
 
     }
-
 
 
   </script>
@@ -267,74 +283,158 @@ type="button"
   <%= render :partial => 'mobile/m_set_filter'%>
 
   <div align ="center" >
-     <br> <br><hr>
+     <hr>
      <%= render :partial => "m_show_ad" %>
    </div>
 </div>
 
 
+<!-- area filter selection PAGE-->
+<div id="select_area" title="<%= t(:m_filter_by_area) %>" class="panel">
 
-<!-- friend filter selection PAGE-->
-<div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
-  <% if session[:logged_in] == false %>
-
-    <h1> <%= t(:login_for_set_friend_filter) %> </h1>
-
-  <% else %>
-
-    <h1> <%= t(:filter_by_friend) %></h1>
-    <br>
-    <div style="font-size:14px">
-      <% if session[:filter_friend].include?("mine")  %>
-        <input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
+  <fieldset>
+    <% @areas.each do |area| %>
+      <% if session[:filter_area].include?(area.name) %>
+           <% if area.parent_area != nil %>
+                <div class="row">
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true"> &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
+               </div>
+           <% else %>
+                <div class="row" style="color:blue;">
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true"> <%= t(area.name.to_sym)%>  </input>
+               </div>
+           <% end %>
       <% else %>
-        <input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+           <% if area.parent_area != nil %>
+                 <div class="row">
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" > &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
+               </div>
+           <% else %>
+                <div class="row" style="color:blue;">
+                  &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" > <%= t(area.name.to_sym)%>  </input>
+                </div>
+            <% end %>
       <% end %>
-      <br>
-
-      <% if session[:filter_friend].include?("friend")  %>
-         <input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
-      <% else %>
-         <input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
-      <% end %>
-    </div>
-
-      <div align ="center" >
-         <br> <br> <br><hr>
-         <%= render :partial => "m_show_ad" %>
-      </div>
-  <% end %>
+    <% end %>
+  </fieldset>
 </div>
 
 
 
+<!-- tag filter selection PAGE-->
+<div id="select_tag" title="<%= t(:m_filter_by_tag) %>" class="panel">
+
+  <fieldset>
+    <% @tags.each do |tag| %>
+      <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
+           <% next %>
+      <% end %>
+
+      <% if detect_apple_browser() && tag.name == 'Motion' %>
+           <% next %>  <%# don't support motion-news in iphone %>
+      <% end %>
+
+      <% if session[:filter_tags].include?(tag.name) %>
+             <div class="row">
+              &nbsp;<input type="checkbox" id="<%= tag.name %>" name="each_tag" checked="true" >
+                <%= t(tag.name.to_sym)%>  </input>
+            </div>
+      <% else %>
+            <div class="row">
+              &nbsp;<input type="checkbox" id="<%= tag.name %>" name="each_tag" > <%= t(tag.name.to_sym)%>  </input>
+            </div>
+       <% end %>
+    <% end %>
+
+  </fieldset>
+
+
+</div>
+
+
+<!-- friend filter selection PAGE-->
+<div id="select_friend" title="<%= t(:filter_by_friend) %>" class="panel">
+
+  <% if session[:logged_in] == false %>
+    <h1> <%= t(:login_for_set_friend_filter) %> </h1>
+  <% else %>
+    <h1> <%= t(:filter_by_friend) %></h1>
+  <% end %>
+  <br>
+
+  <fieldset>
+
+  <% if session[:logged_in] != false %>
+
+      <% if session[:filter_friend].include?("mine")  %>
+        <div class="row">
+          &nbsp;<input type="checkbox" id="my_news_only" name="friend_filter"  checked="true"> <%= t(:my_news_only)%>  </input>
+        </div>
+
+
+      <% else %>
+          <div class="row">
+            &nbsp;<input type="checkbox" id="my_news_only" name="friend_filter"> <%= t(:my_news_only)%>  </input>
+          </div>
+      <% end %>
+
+      <% if session[:filter_friend].include?("friend")  %>
+            <div class="row">
+              &nbsp;<input type="checkbox" id="my_friends_news_only" name="friend_filter" checked="true"> <%= t(:my_friends_news_only)%>  </input>
+            </div>
+      <% else %>
+            <div class="row">
+              &nbsp;<input type="checkbox" id="my_friends_news_only" name="friend_filter"> <%= t(:my_friends_news_only)%>  </input>
+            </div>
+      <% end %>
+
+
+  <% end %>
+
+
+  </fieldset>
+
+</div>
+
+
 <!-- date filter selection PAGE-->
 <div id="select_date" title="<%= t(:filter_by_date) %>" class="panel">
-  <h1>Select Date:</h1>
-  <% if session[:filter_date_option].include?("no_limited") %>
-     <input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
-  <% else %>
-      <input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
-  <% end %>
+  <h1><%= t(:filter_by_date) %></h1>
   <br>
+
+  <fieldset>
+
+  <% if session[:filter_date_option].include?("no_limited") %>
+      <div class="row">
+         &nbsp;<input type="radio" name = "date" id="no_filter" value = "no_filter" checked="true"> <%= t(:no_date_filter)   %>
+      </div>
+  <% else %>
+       <div class="row">
+          &nbsp;<input type="radio" name = "date" id="no_filter" value = "no_filter"> <%= t(:no_date_filter)   %>
+       </div>
+  <% end %>
 
   <% if session[:filter_date_option].include?("yesterday") %>
-     <input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
+      <div class="row">
+         &nbsp;<input type="radio" name = "date" id="yesterday" value = "yesterday" checked="true"> <%= t(:yesterday)   %>
+      </div>
   <% else %>
-      <input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+      <div class="row">
+         &nbsp;<input type="radio" name = "date" id="yesterday" value = "yesterday"> <%= t(:yesterday)   %>
+      </div>
   <% end %>
-  <br>
 
   <% if session[:filter_date_option].include?("today") %>
-     <input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
+      <div class="row">
+         &nbsp;<input type="radio" name = "date" id="today" value = "today" checked="true"> <%= t(:today)%>
+      </div>
   <% else %>
-      <input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+       <div class="row">
+         &nbsp;<input type="radio" name = "date" id="today" value = "today"> <%= t(:today)%>
+       </div>
   <% end %>
 
-  <div align ="center" >
-     <br> <br> <br><hr>
-     <%= render :partial => "m_show_ad" %>
-  </div>
+  </fieldset>
 
 </div>
 

@@ -148,4 +148,10 @@ class News < ActiveRecord::Base
     end
   end
 
+  after_create{|news| save_news_url(news)}
+
+  def save_news_url(news)
+    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
+    news.save
+  end
 end

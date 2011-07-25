@@ -4,6 +4,7 @@
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
 
+
   <style type="text/css">
     .menu-item em {
     font-weight: normal;
@@ -19,6 +20,9 @@
     display: none;
   }
   </style>
+
+
+
   <script type="text/javascript">
     function like(user, news, like)
     {
@@ -34,7 +38,7 @@
     {
       var pos = resp.href.indexOf('/news/');
       var id = resp.href.substring(pos+6);
-      pos=id.indexOf('/');
+      pos=id.indexOf('-');
       id=id.substring(0, pos);
 
       $.ajax({
@@ -44,24 +48,27 @@
       });
     }
 
-    function share(id, title_uri, title)
+    function share(id, url, title)
     {
-      var url = 'http://www.facebook.com/sharer.php?u=http://heygotimes.heroku.com/news/'+id+'/'+title_uri+'&t='+title;
+      var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
       $.ajax({
         type: "POST",
         url: "/news/share",
-        data: "news_id="+id
+        data: "news_id="+id,
+        complete: function(){
+          location.href=url;
+        }
       });
-      location.href=url;
     }
 
-    function expand_comment(news_id,news_title)
+    function expand_comment(news_id,comment_url)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"/"+news_title+"'"+"num_posts='2' width='650'></fb:comments>";
+      var comment_str = "<fb:comments href='"+comment_url+"'"+"num_posts='2' width='650'></fb:comments>";
 
       $('#comment_title_'+news_id).attr('onclick', '').unbind('click');
       $('#expand_comment'+news_id).html("");
       $('#fb_comment'+news_id).append(comment_str);
+
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
@@ -97,8 +104,6 @@
       $("#paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);
         $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
-
-
       });
     }
 
@@ -107,10 +112,6 @@
       var currPage = 1;
       var currType = 'rank';
       var subType = '';
-
-      $(".menu-item a").append("<em></em>");
-      $(".menu-item a").hover(function() {	  $(this).find("em").animate({opacity: "show", top: "-75"}, "slow");	  var hoverText = $(this).attr("title");	  $(this).find("em").text(hoverText);	}, function() {	  $(this).find("em").animate({opacity: "hide", top: "-85"}, "fast");	});
-
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage);
@@ -161,9 +162,17 @@
 
       loading_animate(false);
 
-      FB.Event.subscribe('comment.create',function(resp){
-        comment(resp);
-      });
+      // todo: FB would be not defined sometims
+      //if (typeof(FB) == 'undefined' || FB == null )
+      //    alert("222") ;
+      //else
+      //{
+          FB.Event.subscribe('comment.create',function(resp){
+            comment(resp);
+          });
+      //}
+
+
     });
 
     function set_default_locale(new_locale)
@@ -318,6 +327,9 @@
   <a href='https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681'
        onclick="alert('<%= t(:feedback_message) %>') ;"><img src="/images/feedback.png"/></a>
 </div>
+
+
+
 
 
 </body>
