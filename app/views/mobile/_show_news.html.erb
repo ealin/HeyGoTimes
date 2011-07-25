@@ -31,11 +31,6 @@
 <div style="clear: both;"></div>
 
 <div id="m_news_comments">
-  <% news_id = @news.id %>
-  <% comment_url = 'http://heygotimes.heroku.com/news/'+@news.id.to_s %>
-  <% if (@news.special_flag == false)%>
-      <% comment_url += '/'+URI.encode(@news.title) %>
-  <% end %>
   <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><% if !redirect_from_web %><button style="font-size:14px" onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});"><img src="/images/arrow_left.png" alt="" height="14px"/><%= t(:m_prev) %></button><% end %></span></div>
   <div class="m_button_group"></div>
   <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
@@ -56,7 +51,7 @@
         document.getElementById('fb-root').appendChild(e);
       }());
     </script>
-    <fb:comments href="<%= comment_url %>" num_posts="5" width="320"></fb:comments>
+    <fb:comments href="<%= get_fb_obj_url(@news) %>" num_posts="5" width="320"></fb:comments>
     <div style="clear: both;"></div>
   </div> <!-- fb_comment -->
 </div> <!-- comments -->
