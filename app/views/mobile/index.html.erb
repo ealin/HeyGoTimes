@@ -30,9 +30,34 @@
       });
     }
 
-    function expand_comment(news_id,news_title)
+    function comment(resp)
     {
-      var comment_str = "<fb:comments href='http://heygotimes.heroku.com/news/"+news_id+"/"+news_title+"'"+"num_posts='2' width='650'></fb:comments>";
+      var pos = resp.href.indexOf('/news/');
+      var id = resp.href.substring(pos+6);
+      pos=id.indexOf('-');
+      id=id.substring(0, pos);
+
+      $.ajax({
+        type: "POST",
+        url: "/news/comment",
+        data: "news_id="+id
+      });
+    }
+
+    function share(id, url, title)
+    {
+      var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id="+id
+      });
+      location.href=url;
+    }
+
+    function expand_comment(news_id,comment_url)
+    {
+      var comment_str = "<fb:comments href='"+comment_url+"'"+"num_posts='2' width='320'></fb:comments>";
 
       $('#m_comment_title_'+news_id).attr('onclick', '').unbind('click');
       $('#expand_comment'+news_id).html("");
@@ -107,6 +132,10 @@
       });
 
       loading_animate(false);
+
+      FB.Event.subscribe('comment.create',function(resp){
+        comment(resp);
+      });
     });
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715032923) do
+ActiveRecord::Schema.define(:version => 20110629040839) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110715032923) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "rank",         :default => 0
-    t.text     "hard_copy"
+    t.string   "fb_obj_url"
     t.boolean  "special_flag", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"

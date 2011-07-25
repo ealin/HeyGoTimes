@@ -39,7 +39,7 @@ $(document).ready(function () {
     }
 
 
-    var preview = $('#loading_animate').html('<img src="images/fb_loading_large.gif" height="16" width="16" />');
+    var preview = $('#news_loading_animate').html('<img src="images/fb_loading_large.gif" height="16" width="16" />');
 
     if (t.value == '') {
       preview.html('');
@@ -106,7 +106,7 @@ $(document).ready(function () {
     <input type="text" name="news[url]" value="" id="news_url" size="30"/>
 
     <button id = "get_news"> <%= t(:get_news) %> </button>
-    <span id="loading_animate"></span>
+    <span id="news_loading_animate"></span>
   </div>
 
   <hr>

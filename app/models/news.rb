@@ -1,5 +1,13 @@
 class News < ActiveRecord::Base
 
+  after_create{|news| save_news_url(news)}
+
+  def save_news_url(news)
+    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
+    news.save
+  end
+
+
   belongs_to :user
 
   has_many :comments, :dependent => :destroy
