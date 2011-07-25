@@ -3,7 +3,7 @@
   <% news.each do |news| %>
     <div class="m_news" id="m_news<%= news.id %>">
       <div class="m_news_title">
-          <a href="#m_news_page" onclick="showNews(<%= news.id %>)"><%= get_fb_obj_url(news) %></a>
+          <a href="#m_news_page" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
       </div>
 
       <div class="m_image">

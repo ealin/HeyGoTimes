@@ -227,28 +227,8 @@
          data += "&save=yes" ;
 
          window.location = '/paper/set_filter_setting?' + data;
- /*
-         // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_filter_setting",
-             data: data,
-             success: function(html)
-             {
-                 // redirect to main
-                 // page in order to redraw the news by new filter!
 
-
-                 window.location = '/';
-                 //console.log("<%= session[:filter_tags]%>")
-
-                   //window.location.reload() ;
-                           //replace("/paper");
-             }
-         });
-   */
-         return false ;
+          return false ;
 
      }  );
        //

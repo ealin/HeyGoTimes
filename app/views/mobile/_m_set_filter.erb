@@ -33,47 +33,59 @@
          // collection all filter setting, and make it as format like:  "aa=123&bb=test"
          var data = "tag_filter=" ;
          var selected_tag_counter = 0 ;
+         var selected_area_counter = 0 ;
          var date_data = "&date_filter_option=" ;
          var area_data = "&area_filter="
 
          // get selected area-filter
-         for(i=0;i<($('option').length);i++)
-         {
-
-            if( $('option')[i].parentNode.id != "area_filter")
+          for(i=0;i<($('input').length);i++)
+          {
+              if( $('input')[i].name != "each_area")
                   continue ;
 
-            if($('option')[i].selected == true)
-            {
-                area_data += ($('option')[i].id + "/")
-                if($('option')[i].id == "All_area" )
-                    break ;
-            }
-         }
+              if($('input')[i].id == "All_area" && $('input')[i].checked == true)
+              {
+                  selected_area_counter = 1 ;
+                  area_data +='All_area' ;  // 既然選擇了All, 後面的tag就不用check了
+                  break ;
+              }
+
+              if($('input')[i].checked == true)
+              {
+                 area_data += ($('input')[i].id + "/") ;
+                 selected_area_counter++ ;
+              }
+          }
+          if(selected_area_counter == 0 )
+             area_data +='All_area' ;
+
+
 
          // get selected tag-filter
-         for(i=0;i<($('option').length);i++)
-         {
-
-            if( $('option')[i].parentNode.id != "tag_filter")
+         for(i=0;i<($('input').length);i++)
+          {
+              if( $('input')[i].name != "each_tag")
+              {
                   continue ;
+              }
 
-             if($('option')[i].id == "All" && $('option')[i].selected == true)
-             {
-                 selected_tag_counter = 1 ;
-                 data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
-                 break ;
-             }
+              if($('input')[i].id == "All" && $('input')[i].checked == true)
+              {
+                  selected_tag_counter = 1 ;
+                  data +='All' ;  // 既然選擇了All, 後面的tag就不用check了
+                  break ;
+              }
 
-             if($('option')[i].selected == true)
-             {
-                data += ($('option')[i].id + "/") ;
-                selected_tag_counter++ ;
+              if($('input')[i].checked == true)
+              {
+                 data += ($('input')[i].id + "/") ;
+                 selected_tag_counter++ ;
 
-             }
-         }
-         if(selected_tag_counter == 0 )
-            data +='All' ;
+              }
+          }
+          if(selected_tag_counter == 0 )
+             data +='All' ;
+
 
          // get friend-filter
          //
@@ -182,21 +194,6 @@
 
          window.location = "/paper/set_filter_setting?" + data ;
 
-         /*
-         // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_filter_setting",
-             data: data,
-             success: function(html)
-             {
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/mobile/index/");
-             }
-         });
-         */
-
          return false ;
 
      }
@@ -207,67 +204,15 @@
 </script>
 
 
-
-<!-- select Area-->
-<h2> <%= t(:filter_by_area) %> </h2>
-<select id="area_filter" name="area_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
-   <% @areas.each do |area| %>
-     <% if session[:filter_area].include?(area.name) %>
-          <% if area.parent_area != nil %>
-              <option  id="<%= area.name %>" selected="yes" ><%= "-" + t(area.name.to_sym)  %></option>
-          <% else %>
-             <option  id="<%= area.name %>" selected="yes" ><%= t(area.name.to_sym)  %></option>
-          <% end %>
-     <% else %>
-          <% if area.parent_area != nil %>
-              <option  id="<%= area.name %>" ><%= "-" + t(area.name.to_sym)  %></option>
-          <% else %>
-              <option  id="<%= area.name %>" ><%= t(area.name.to_sym)  %></option>
-          <% end %>
-     <% end %>
-   <% end %>
-</select>
-<br>
-<hr>
-
-<!-- select tag-->
-<h2><%= t(:filter_by_tag) %></h2>
-<select id="tag_filter" name="tag_filter" multiple="multiple" size="1" style="width:100%; font-size:16px;">
-   <% @tags.each do |tag| %>
-     <% if tag.id == 2 || tag.id == 3 || tag.name == 'FAQ' || tag.name == "Closed_spam" || tag.name == "Closed_spam_report" %>
-          <% next %>
-     <% end %>
-
-     <% if detect_apple_browser() && tag.name == 'Motion' %>
-          <% next %>  <!-- don't support motion-news in iphone -->
-     <% end %>
-
-     <% if session[:filter_tags].include?(tag.name) %>
-          <!--
-            <option  id="<%= tag.name %>" selected="yes" onclick="check_tags(id)" ><%= t(tag.name.to_sym)  %></option>
-            -->
-          <option  id="<%= tag.name %>" selected="yes" ><%= t(tag.name.to_sym)  %></option>
-     <% else %>
-          <!--
-           <option  id="<%= tag.name %>"  onclick="check_tags(id)"><%= t(tag.name.to_sym)  %></option>
-           -->
-          <option  id="<%= tag.name %>" ><%= t(tag.name.to_sym)  %></option>
-
-     <% end %>
-   <% end %>
-</select>
-<br>
-<hr>
-
-
-
-<h2> <%= t(:m_setting_list) %> </h2>
 <ul>
+  <li><a href="#select_area" onclick=" window.scroll(0,0) ; "> <%= t(:m_filter_by_area) %> </a></li>
+  <li><a href="#select_tag" onclick=" window.scroll(0,0) ; "> <%= t(:m_filter_by_tag) %> </a></li>
+
   <li><a href="#select_friend" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_friend) %> </a></li>
 
   <li><a href="#select_date" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_date) %> </a></li>
 
-<hr>
+  <br>
 
   <div align="center">
     <button id="save_filter" class="redButton" style='width:96%; font-size:14px;'

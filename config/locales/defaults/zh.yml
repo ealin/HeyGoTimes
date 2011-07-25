@@ -84,6 +84,10 @@ zh:
   
   filter_by_tag: "选择您感兴趣的新闻分类："
   filter_by_area: "选择区域(可复选)："
+  
+  m_filter_by_tag: "选择新闻分类："
+  m_filter_by_area: "选择区域："  
+  
   filter_by_friend: "好友选项："
   filter_by_date: "选择日期："
   

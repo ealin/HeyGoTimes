@@ -92,6 +92,10 @@ en:
 
   filter_by_tag: "Filter by news tag:"
   filter_by_area: "Filter by area："
+  
+  m_filter_by_tag: "Filter by tag:"
+  m_filter_by_area: "Filter by area："
+  
   filter_by_friend: "Friends Filter:"
   filter_by_date: "Date Filter:"
 
