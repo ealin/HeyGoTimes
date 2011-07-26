@@ -101,17 +101,14 @@ a img {
 
 /* Page head */
 #page_head {
-  padding-right: 10px;
-  float: right;
-  height: 85px;
-  width: 100px;
-}
-
-#page_head2 {
-  padding-right: 10px;
   float: right;
   height: 85px;
   width: 150px;
+}
+
+#page_head2 {
+  margin:10px;
+  float: right;
 }
 
 /* Menu */

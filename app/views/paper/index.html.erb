@@ -238,11 +238,12 @@
     </span>
 
     <div id="page_head" >
-      <%= show_page_head(:login_flag => true)  %>
+      <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
+      <a href="#" onclick="set_default_locale('zh')">简体中文</a>
+      <a href="#" onclick="set_default_locale('en')">English</a>
+
       <div id="page_head2" >
-         <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
-         <a href="#" onclick="set_default_locale('zh')">简体中文</a>
-         <a href="#" onclick="set_default_locale('en')">English</a>
+        <%= show_page_head(:login_flag => true)  %>
       </div><!-- #page_head -->
     </div><!-- #page_head -->
 
@@ -265,6 +266,7 @@
             <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
         <% end %>
         <li id="menu-item-notice" class="menu-item fun-btn"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+        <li id="menu-item-logout" class="menu-item fun-btn"><%= show_logout_link if !(@login_flag && session[:logged_in] == false) %></li>
         </div>
       </ul>
     </div>
