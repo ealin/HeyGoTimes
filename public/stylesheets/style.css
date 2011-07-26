@@ -29,11 +29,12 @@ p, ol, ul {
 }
 
 a {
+  text-decoration: none;
 	color: #3b5998;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: underline;
 	color: #6d84b4;
 }
 
@@ -90,11 +91,7 @@ a img {
   position:relative;
   top: 20px;
   font-size: 14px;
-
 }
-
-
-
 
 /* Logo */
 #logo {
@@ -116,6 +113,7 @@ a img {
   height: 85px;
   width: 150px;
 }
+
 /* Menu */
 #menu {
 	float: left;
@@ -156,6 +154,11 @@ a img {
 .news .info {
   font-style: italic;
   width: 100%;
+}
+
+.news .info a {
+  text-decoration: underline;
+  color: black;
 }
 
 .news .image {
@@ -286,7 +289,7 @@ div.menu li {
 }
 
 #access ul ul li {
-	min-width: 180px;
+	min-width: 150px;
 }
 #access ul ul ul {
 	left: 100%;
@@ -301,17 +304,7 @@ div.menu li {
 #access ul li:hover > ul {
 	display: block;
 }
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
-#access ul li.current-menu-parent > a {
-	color: #fff;
-}
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
-* html #access ul li a:hover {
+#access ul li.current-menu-item > a {
 	color: #fff;
 }
 
