@@ -262,9 +262,7 @@
             for(i=0;i<($('input').length);i++)
              {
                  if( $('input')[i].name != "each_tag")
-                 {
-                     continue ;
-                 }
+                      continue ;
 
                  if($('input')[i].id == "All" && $('input')[i].checked == true)
                  {
@@ -367,14 +365,14 @@
           <% end %>
 
           <div id="tag_grp1">
-          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" onclick="check_tags(this)">
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>" onclick="check_tags(this);">
              <%= t(tag.name.to_sym) %>
           </input>
             &nbsp;&nbsp;&nbsp;
           </div>
     <% else %>
           <div id="tag_grp2">
-          <input type="checkbox" name ="each_tag" id="<%= tag.name %>"  onclick="check_tags(this)">
+          <input type="checkbox" name ="each_tag" id="<%= tag.name %>"  onclick="check_tags(this);">
              <%= t(tag.name.to_sym) %>
           </input>
           &nbsp;&nbsp;&nbsp;
