@@ -11,7 +11,7 @@
     <% if (@news.url.include?("nownews")) %>
     window.onbeforeunload = function(){
       window.onbeforeunload = '';
-      return "是否要離開此頁面";
+      return "<%= t(:page_exit_hint) %>";
     };
     <% end %>
     function getSrc(obj)
