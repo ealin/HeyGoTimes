@@ -86,6 +86,10 @@ zh_tw:
   
   filter_by_tag: "選擇您感興趣的新聞分類："
   filter_by_area: "選擇區域(可複選)："
+  
+  m_filter_by_tag: "選擇新聞分類："
+  m_filter_by_area: "選擇區域："
+  
   filter_by_friend: "好友選項："
   filter_by_date: "選擇日期："
   
