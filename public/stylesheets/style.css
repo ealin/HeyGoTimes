@@ -248,7 +248,7 @@ a img {
 }
 #access .menu-header,
 div.menu {
-	font-size: 13px;
+	font-size: 15px;
 	margin-left: 12px;
 	width: 100%;
 }
@@ -264,7 +264,7 @@ div.menu li {
   list-style: none;
 }
 #access a {
-	color: #aaa;
+	color: #fff;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
@@ -303,15 +303,16 @@ div.menu li {
 }
 #access ul li.current_page_item > a,
 #access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
+#access ul li.current-menu-item > a {color: #000} ,
 #access ul li.current-menu-parent > a {
-	color: #fff;
+	color: #000;
 }
+
 * html #access ul li.current_page_item a,
 * html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
+* html #access ul li.current-menu-item a {color: #000},
+* html #access ul li.current-menu-parent a ,
 * html #access ul li a:hover {
-	color: #fff;
+	color: #000;
 }
 

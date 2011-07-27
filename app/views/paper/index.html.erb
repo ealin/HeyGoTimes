@@ -267,7 +267,7 @@
         <div id="menu-type-btn">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
-         <li id="menu-item-notice" class="menu-item <%= 'current-menu-item' %>"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+         <li id="menu-item-notice" class="menu-item fun-btn"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
 
         <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
         </div>
