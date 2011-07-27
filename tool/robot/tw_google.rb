@@ -57,7 +57,7 @@ google_rss_tag = [
 
                     link = URI.encode(item.link)
 
-                    puts '[GOOGLE TW]News Link :' + link
+                    puts '[GOOGLE TW]  News Link :' + link
 
                     open(command + link) {|f|
                        f.each_line {|line| p line}

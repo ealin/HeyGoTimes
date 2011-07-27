@@ -113,7 +113,7 @@ def get_news_from_tw_yahoo_beta (m,sleep_period)
 
                       link = URI.encode(item.link)
 
-                      puts '[YAHOO TW BETA]News Link :' + link
+                      puts '[YAHOO TW BETA]  News Link :' + link
 
                       open(command + link) {|f|
                          f.each_line {|line| p line}

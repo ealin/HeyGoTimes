@@ -64,7 +64,7 @@ def get_news_from_tw_yahoo (m,sleep_period)
                       index = (item.link).index("*")
                       link = (item.link)[(index+1)..(item.link).length]
 
-                      puts '[YAHOO TW]News Link :' + link
+                      puts '[YAHOO TW]  News Link :' + link
 
                       open(command + link) {|f|
                          f.each_line {|line| p line}

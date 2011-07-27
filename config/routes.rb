@@ -2,6 +2,7 @@ HeyGoTimes::Application.routes.draw do
 
 
   get "review/tw"
+  get "review/us"
   get "review/spam"
   get "review/delete_news"
   get "review/delete_img_and_publish"

@@ -54,7 +54,7 @@ nownews_rss_tag = [
 
               begin
                 m.synchronize{
-                  puts '[NOW-NEWS TW]News Link :' + link
+                  puts '[NOW-NEWS TW]  News Link :' + link
                     open(command + link) {|f|
                        f.each_line {|line| p line}
                      }

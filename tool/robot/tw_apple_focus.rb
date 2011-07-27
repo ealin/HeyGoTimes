@@ -48,7 +48,7 @@ def get_news_from_tw_apple_focus (m,sleep_period)
 
                       link = URI.encode(item.link)
 
-                      puts '[APPLE TW FOCUS]News Link :' + link
+                      puts '[APPLE TW FOCUS]  News Link :' + link
 
                       open(command + link) {|f|
                          f.each_line {|line| p line}

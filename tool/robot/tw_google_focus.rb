@@ -2,12 +2,14 @@ def get_news_from_tw_google_focus (m,sleep_period)
 
 
 google_focus_rss_url = [
-  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&output=rss"
+  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&output=rss"   ,
+  "http://tech.qq.com/web/front/rss.xml"
 ] ;
 
 
 google_focus_rss_tag = [
-    "Focus"
+    "Focus",
+    "Internet"
  ] ;
 
 
@@ -22,7 +24,12 @@ google_focus_rss_tag = [
 
         feed_url = google_focus_rss_url[i]
 
-        command = @host+ 'api/new_news?publish=no&&focus_flag=yes&area=Taiwan/&tags='
+        if command == 0
+          command = @host+ 'api/new_news?publish=no&focus_flag=yes&area=Taiwan/&tags='
+        else
+          command = @host+ 'api/new_news?publish=yes&focus_flag=yes&area=Taiwan/&tags='
+        end
+
 
         command = command + google_focus_rss_tag[i] + "&url="
 
@@ -33,7 +40,12 @@ google_focus_rss_tag = [
 
                     link = URI.encode(item.link)
 
-                    puts '[GOOGLE TW FOCUS]News Link :' + link
+                    if i == 0
+                      puts '[GOOGLE TW FOCUS]  News Link :' + link
+                    else
+                      puts '[QQ IT]  News Link :' + link
+                    end
+
 
                     open(command + link) {|f|
                        f.each_line {|line| p line}
