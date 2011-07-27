@@ -4,25 +4,6 @@
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
 
-
-  <style type="text/css">
-    .menu-item em {
-    font-weight: normal;
-    width: 180px;
-    height: 45px;
-    position: absolute;
-    top: -85px;
-    left: -15px;
-    text-align: center;
-    padding: 20px 12px 10px;
-    font-style: normal;
-    z-index: 2;
-    display: none;
-  }
-  </style>
-
-
-
   <script type="text/javascript">
     function like(user, news, like)
     {
@@ -105,6 +86,12 @@
         loading_animate(false);
         $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
       });
+    }
+
+    function set_tag(tag)
+    {
+      var data = "/paper/set_filter_setting?save=no&tag_filter=" + tag;
+      window.location = data;
     }
 
     $(document).ready(function()
@@ -251,11 +238,12 @@
     </span>
 
     <div id="page_head" >
-      <%= show_page_head(:login_flag => true)  %>
+      <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
+      <a href="#" onclick="set_default_locale('zh')">简体中文</a>
+      <a href="#" onclick="set_default_locale('en')">English</a>
+
       <div id="page_head2" >
-         <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
-         <a href="#" onclick="set_default_locale('zh')">简体中文</a>
-         <a href="#" onclick="set_default_locale('en')">English</a>
+        <%= show_page_head(:login_flag => true)  %>
       </div><!-- #page_head -->
     </div><!-- #page_head -->
 
@@ -267,7 +255,9 @@
         <div id="menu-type-btn">
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
+
          <li id="menu-item-notice" class="menu-item fun-btn"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+
 
         <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
         </div>
@@ -277,8 +267,8 @@
         <% else %>
             <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
         <% end %>
-
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
+        <li id="menu-item-notice" class="menu-item fun-btn"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+        <li id="menu-item-logout" class="menu-item fun-btn"><%= show_logout_link if !(@login_flag && session[:logged_in] == false) %></li>
         </div>
       </ul>
     </div>

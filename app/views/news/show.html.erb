@@ -11,7 +11,7 @@
     <% if (@news.url.include?("nownews")) %>
     window.onbeforeunload = function(){
       window.onbeforeunload = '';
-      return "是否停留在此頁面？";
+      return "<%= t(:page_exit_hint) %>";
     };
     <% end %>
     function getSrc(obj)
@@ -130,7 +130,7 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list'  %>
+        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 橫�?�?? -->
       </div>
     </div>
 

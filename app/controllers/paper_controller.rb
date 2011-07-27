@@ -349,7 +349,7 @@ class PaperController < NewsController
   #
   def set_filter_setting
     session[:filter_tags] = params[:tag_filter]
-    session[:filter_area] = params[:area_filter]
+    session[:filter_area] = params[:area_filter] if (params[:area_filter] != nil)
 
     if(params[:friend_filter] == "")
       session[:filter_friend] = "all"
@@ -357,8 +357,8 @@ class PaperController < NewsController
       session[:filter_friend] = params[:friend_filter]
     end
 
-    session[:filter_date] = params[:date_filter]
-    session[:filter_date_option] = params[:date_filter_option]
+    session[:filter_date] = params[:date_filter] if (params[:date_filter] != nil)
+    session[:filter_date_option] = params[:date_filter_option] if (params[:date_filter_option] != nil)
 
     response_str = t(:filter_setting_saved)
 

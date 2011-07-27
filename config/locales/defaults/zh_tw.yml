@@ -37,6 +37,7 @@ zh_tw:
   share_hint: "分享至Facebook"
   report_this_news: "發佈此則新聞"
   news_already_exist: "此新聞已經存在"
+  page_exit_hint: "是否要離開此頁面"
 
   #news info
   info_1: "由"

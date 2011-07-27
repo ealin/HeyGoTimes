@@ -1,7 +1,7 @@
 
 
 <% if news != nil %>
-  <% news.each_with_index do |news, index| %>
+  <% news.each do |news| %>
     <div class="news">
       <div class="news_title">
         <% if (news.special_flag==false) %>
@@ -14,6 +14,7 @@
 
       <div class="info">
         <!-- todo: 時區需要判斷  -->
+
         <%= t(:info_1) %> <%= news.user.first_name %> <%= t(:info_2) %> <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d %H:%M") %> <%= t(:info_3) %> <%= t(:info_tags) %>:
         <% news.tags.each do |tag| %>
             <%= t(tag.name.to_sym) + " " %>
