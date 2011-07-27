@@ -42,10 +42,11 @@ en:
   share_hint: "Share to Facebook"
   report_this_news: "Report this news"
   news_already_exist: "News already exist!"
+  page_exit_hint: "Exit this page?"
 
   #news info
   info_1: "By"
-  info_2: ","
+  info_2: ""
   info_3: ""
   info_tags: "Tags"
 

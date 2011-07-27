@@ -4,8 +4,8 @@ require 'net/http'
 require 'thread'
 
 
-#@host = "http://localhost:3000/"
-@host = "http://heygotimes.heroku.com/"
+@host = "http://localhost:3000/"
+#@host = "http://heygotimes.heroku.com/"
 
 
 @sleep_period = 50

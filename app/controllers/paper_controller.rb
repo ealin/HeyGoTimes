@@ -11,6 +11,7 @@ class PaperController < NewsController
     end
 
     @news = get_news(session[:news_type], params[:page])
+    session[:news_load_time] = Time.now
 
     @tags = Tag.all
     @areas = Area.all
@@ -90,17 +91,27 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        news = News.get_all(type, friend_type, user_id)
+        @news = News.get_all(type, friend_type, user_id)
       else
-        news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      if(news.count > 0)
-        news = news.paginate :page => page, :per_page => 8
+      if (page != 1 && session[:news_load_time] != nil)
+        @news.each do |news|
+          if (news.created_at > session[:news_load_time])
+            @news.delete(news)
+          else
+            break;
+          end
+        end
+      end
+
+      if(@news.count > 0)
+        @news = @news.paginate :page => page, :per_page => 8
       end
     end
 
-    return news
+    return @news
 
   end
 
@@ -349,7 +360,7 @@ class PaperController < NewsController
   #
   def set_filter_setting
     session[:filter_tags] = params[:tag_filter]
-    session[:filter_area] = params[:area_filter]
+    session[:filter_area] = params[:area_filter] if (params[:area_filter] != nil)
 
     if(params[:friend_filter] == "")
       session[:filter_friend] = "all"
@@ -357,8 +368,8 @@ class PaperController < NewsController
       session[:filter_friend] = params[:friend_filter]
     end
 
-    session[:filter_date] = params[:date_filter]
-    session[:filter_date_option] = params[:date_filter_option]
+    session[:filter_date] = params[:date_filter] if (params[:date_filter] != nil)
+    session[:filter_date_option] = params[:date_filter_option] if (params[:date_filter_option] != nil)
 
     response_str = t(:filter_setting_saved)
 

@@ -29,11 +29,12 @@ p, ol, ul {
 }
 
 a {
+  text-decoration: none;
 	color: #3b5998;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: underline;
 	color: #6d84b4;
 }
 
@@ -90,11 +91,7 @@ a img {
   position:relative;
   top: 20px;
   font-size: 14px;
-
 }
-
-
-
 
 /* Logo */
 #logo {
@@ -104,18 +101,16 @@ a img {
 
 /* Page head */
 #page_head {
-  padding-right: 10px;
-  float: right;
-  height: 85px;
-  width: 100px;
-}
-
-#page_head2 {
-  padding-right: 10px;
   float: right;
   height: 85px;
   width: 150px;
 }
+
+#page_head2 {
+  margin:10px;
+  float: right;
+}
+
 /* Menu */
 #menu {
 	float: left;
@@ -156,6 +151,11 @@ a img {
 .news .info {
   font-style: italic;
   width: 100%;
+}
+
+.news .info a {
+  text-decoration: underline;
+  color: black;
 }
 
 .news .image {
@@ -248,7 +248,7 @@ a img {
 }
 #access .menu-header,
 div.menu {
-	font-size: 13px;
+	font-size: 15px;
 	margin-left: 12px;
 	width: 100%;
 }
@@ -264,7 +264,7 @@ div.menu li {
   list-style: none;
 }
 #access a {
-	color: #aaa;
+	color: gray;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
@@ -272,21 +272,21 @@ div.menu li {
 }
 
 #access #menu-type-btn {
-  width: 80%;
+  width: 75%;
   float: left;
 }
 
 #access #menu-fun-btn {
-  width: 20%;
+  width: 25%;
   float: right;
 }
 
 #access .fun-btn a {
-  color: #fff;
+  color: black;
 }
 
 #access ul ul li {
-	min-width: 180px;
+	min-width: 150px;
 }
 #access ul ul ul {
 	left: 100%;
@@ -301,17 +301,9 @@ div.menu li {
 #access ul li:hover > ul {
 	display: block;
 }
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a,
-#access ul li.current-menu-parent > a {
+#access ul li.current-menu-item > a {
+  text-decoration: underline;
 	color: #fff;
-}
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a,
-* html #access ul li.current-menu-parent a,
-* html #access ul li a:hover {
-	color: #fff;
+
 }
 
