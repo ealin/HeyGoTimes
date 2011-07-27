@@ -264,7 +264,7 @@ div.menu li {
   list-style: none;
 }
 #access a {
-	color: #fff;
+	color: gray;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
@@ -301,20 +301,9 @@ div.menu li {
 #access ul li:hover > ul {
 	display: block;
 }
-
-#access ul li.current_page_item > a,
-#access ul li.current-menu-ancestor > a,
-#access ul li.current-menu-item > a {color: #000} ,
-#access ul li.current-menu-parent > a {
-	color: #000;
-}
-
-* html #access ul li.current_page_item a,
-* html #access ul li.current-menu-ancestor a,
-* html #access ul li.current-menu-item a {color: #000},
-* html #access ul li.current-menu-parent a ,
-* html #access ul li a:hover {
-	color: #000;
+#access ul li.current-menu-item > a {
+  text-decoration: underline;
+	color: #fff;
 
 }
 
