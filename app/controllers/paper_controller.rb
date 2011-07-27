@@ -11,6 +11,7 @@ class PaperController < NewsController
     end
 
     @news = get_news(session[:news_type], params[:page])
+    session[:news_load_time] = Time.now
 
     @tags = Tag.all
     @areas = Area.all
@@ -90,17 +91,27 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        news = News.get_all(type, friend_type, user_id)
+        @news = News.get_all(type, friend_type, user_id)
       else
-        news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      if(news.count > 0)
-        news = news.paginate :page => page, :per_page => 8
+      if (page != 1 && session[:news_load_time] != nil)
+        @news.each do |news|
+          if (news.created_at > session[:news_load_time])
+            @news.delete(news)
+          else
+            break;
+          end
+        end
+      end
+
+      if(@news.count > 0)
+        @news = @news.paginate :page => page, :per_page => 8
       end
     end
 
-    return news
+    return @news
 
   end
 
