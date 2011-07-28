@@ -171,12 +171,16 @@ class ApplicationController < ActionController::Base
   #
 
   def mapping_locale_to_area
+
     if I18n.locale == :en
       session[:default_area] = "USA"
+      session[:default_locale] = 'en'
     elsif I18n.locale == :zh
       session[:default_area] = "China"
+      session[:default_locale] = 'zh'
     else
       session[:default_area] = "Taiwan"
+      session[:default_locale] = 'zh_tw'
     end
 
   end
