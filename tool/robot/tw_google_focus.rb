@@ -24,7 +24,7 @@ google_focus_rss_tag = [
 
         feed_url = google_focus_rss_url[i]
 
-        if command == 0
+        if i == 0
           command = @host+ 'api/new_news?publish=no&focus_flag=yes&area=Taiwan/&tags='
         else
           command = @host+ 'api/new_news?publish=yes&focus_flag=yes&area=Taiwan/&tags='
@@ -53,7 +53,6 @@ google_focus_rss_tag = [
 
                     puts "\n"
                   }
-                  sleep(sleep_period)
                 end
 
 
@@ -66,6 +65,7 @@ google_focus_rss_tag = [
         #}
 
     end
+    sleep(sleep_period)
 
 
   end

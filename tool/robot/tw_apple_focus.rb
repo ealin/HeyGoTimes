@@ -56,7 +56,6 @@ def get_news_from_tw_apple_focus (m,sleep_period)
 
                       puts "\n"
                     }
-                    sleep(@sleep_period)
                   end
 
 
@@ -69,6 +68,7 @@ def get_news_from_tw_apple_focus (m,sleep_period)
           #}
 
       end
+      sleep(@sleep_period)
 
 
     end

@@ -65,7 +65,6 @@ google_rss_tag = [
 
                     puts "\n"
                   }
-                  sleep(sleep_period)
                 end
 
 
@@ -78,6 +77,7 @@ google_rss_tag = [
         #}
 
     end
+    sleep(sleep_period)
 
 
   end

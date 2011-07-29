@@ -41,7 +41,6 @@ nownews_focus_rss_tag = [
 
                 puts "\n"
               }
-              sleep(sleep_period)
 
             end
           }
@@ -50,6 +49,7 @@ nownews_focus_rss_tag = [
 
 
     end
+    sleep(sleep_period)
 
 
   end

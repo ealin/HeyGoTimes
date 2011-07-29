@@ -8,7 +8,7 @@ require 'thread'
 @host = "http://heygotimes.heroku.com/"
 
 
-@sleep_period = 50
+@sleep_period = 100
 
 m = Mutex.new
 
