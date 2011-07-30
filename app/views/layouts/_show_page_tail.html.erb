@@ -1,64 +1,3 @@
-<script>
-
-
-/*
-  function to_report_dialog( news_id, news_title )
-  {
-
-      // both "feedback" and "report spam" will callback this function
-      // if news_id == 0, means the function is issued by "feedback".
-
-      if(news_id == 0)
-        alert("<%= t(:feedback_hint)%>") ;
-      else
-      {
-          alert("<%= t(:report_spam_hint)%>" + "\n\n" + news_title) ;
-      }
-
-      for(i=0;i<($('input').length);i++)
-      {
-          //console.log($('input')[i]) ;
-          if( $('input')[i].type == "checkbox")
-          {
-               $('input')[i].disabled = true ;
-               $('input')[i].checked = false ;
-
-               // make all tag disappear
-               //$('input')[i].style.display= "none" ;
-          }
-      }
-
-      $('#FeedbackTag_box')[0].disabled = false ;
-      $('#FeedbackTag_box')[0].checked = true ;
-      $('#FeedbackTag_box')[0].style.display= "" ;
-      $('#FeedbackTag_lab')[0].style.display= "" ;
-
-      $('#filter_dlg_t2')[0].style.display = "none" ;
-      $('#filter_dlg_t6')[0].style.display = "none" ;
-      $('#url_input')[0].style.display = "none" ;
-      $('#image_url')[0].style.display = "none" ;
-
-
-      if(news_id == 0)
-      {
-          $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:feedback) %>" ;
-          $('#news_submit')[0].value = "<%= t(:feedback) %>" ;
-          document.forms[0].elements[4].value = "" ;
-      }
-      else
-      {
-          $('#filter_dlg_t0')[0].firstChild.data = "<%= t(:report_spam) %>" ;
-          $('#news_submit')[0].value = "<%= t(:report_spam) %>" ;
-          document.forms[0].elements[4].value = "[SPAM REPORT]ID=" + news_id;
-          document.forms[0].elements[5].value = "<%= t(:I_want_to_report_spam) %>" + news_title + "<%= t(:reason_is) %>"
-          $('#sel_area_and_tag')[0].style.display = "none" ;
-
-      }
-
-  }
-  */
-</script>
-
 
 
 <div  class="footer" align = "center">
@@ -76,6 +15,9 @@
 HeyGo © 2012 &nbsp;&nbsp;&nbsp;&nbsp;
 
 
+<%= link_to t(:Home),{:controller => 'paper'} %>
+
+
 <%# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ %>
 <% # FAQ功能就是一個新聞頁面 (it's a tag - "FAQ") %>
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
@@ -83,10 +25,10 @@ HeyGo © 2012 &nbsp;&nbsp;&nbsp;&nbsp;
 <a id='show_faq' href='#'><%= t(:FAQ) %></a>
 &nbsp;
 
-<%= link_to t(:privacy),{:controller => 'privacy'},{:title => 'Show Privacy'}%>  &nbsp;
+<%= link_to t(:privacy),{:controller => 'privacy'} %>  &nbsp;
 <%= link_to t(:terms),{:controller => 'terms_of_service'}%>   &nbsp;
 
- &nbsp;
+
 
    <!-- todo:  find a suitable FEEDBACK-Management-System !!!!! ....  using facebook-fans-group first -->
    <!--
@@ -100,16 +42,16 @@ HeyGo © 2012 &nbsp;&nbsp;&nbsp;&nbsp;
  <a id='show_feedback' href='#'><%= t(:response) %></a>
 
 
-
+<!--
 &nbsp;
 <%# 將session[:filter_tags]設為"HGTimesNotice", 並顯示新聞畫面 %>
 <a id='show_notice' href='#'><%= t(:notice) %></a>
-
+-->
 
 
 <%# 進入手機瀏覽模式  %>
 <div style="float:right;">
-<%= link_to t(:mobileSite),{:controller => 'mobile'},{:title => '手機瀏覽模式'}%>  &nbsp;
+<%= link_to t(:mobileSite),{:controller => 'mobile'} %>  &nbsp;
 </div>
 
 </div>

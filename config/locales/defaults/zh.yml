@@ -3,6 +3,8 @@ zh:
   HeyGoTimes: "黑狗日报"
   slogan: "您的专属新闻 - "
 
+  Home: "首页"
+  
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------
@@ -59,15 +61,17 @@ zh:
   m_function: "功能选单:"
   m_setting_list: "朋友与日期选项:"
 
-  m_to_comment: "到读者回应"
-  m_prev: "回前页"
+  m_to_comment: "评论此则新闻"
+  m_prev: "回首页"
   
 
   #----------------------------------------
   # News Filter
   #----------------------------------------
   report_a_news: "发表新新闻"
-  tip_for_filter:   "您可透过右方过滤器按钮，设定您专属的新闻选项。"
+  #tip_for_filter:   "您可透过右方过滤器按钮，设定您专属的新闻选项。"
+  to_heygotimes_main_page: "想要掌握更多即时新闻吗？请进入-"
+  comment_this_news: "评论此则新闻"  
   
   news_filter_head: "打造您专属的个人新闻！"
   load_my_filter: "载入我的设定"

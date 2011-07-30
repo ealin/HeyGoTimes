@@ -97,9 +97,9 @@ class PaperController < NewsController
       end
 
       if (page != 1 && session[:news_load_time] != nil)
-        @news.each do |news|
+        @news.each_with_index do |news, index|
           if (news.created_at > session[:news_load_time])
-            @news.delete(news)
+            @news.delete_at(index)
           else
             break;
           end

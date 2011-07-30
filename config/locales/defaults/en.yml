@@ -5,6 +5,7 @@ en:
   HeyGoTimes: "HeyGo!Times"
   slogan: "Your News - "
   
+  Home: "Home"
 
   #----------------------------------------
   # name of each page(controller/view)
@@ -22,7 +23,7 @@ en:
   response: "Spam-Report"
   notice: "Notice"
   mobileSite: "Mobile Site"
-  terms: "Terms of service"
+  terms: "Terms"
 
   
   #filter_news: "Filter News"
@@ -65,15 +66,17 @@ en:
   m_function: "Function List:"
   m_setting_list: "Setting about Friends & Date:"
 
-  m_to_comment: "Go to comment"
-  m_prev: "Previous Page"
+  m_to_comment: "Comment this news"
+  m_prev: "Back to Main Page"
 
 
   #----------------------------------------
   # News Filter
   #----------------------------------------
-  tip_for_filter:   "You could setup your own news filter by button on page rightside."  
+  #tip_for_filter:   "You could setup your own news filter by button on page rightside."  
   report_a_news: "Report a new news"
+  to_heygotimes_main_page:  "To read more real time news, please enter-"
+  comment_this_news: "Comment this news"  
   
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
