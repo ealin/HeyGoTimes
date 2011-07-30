@@ -135,52 +135,6 @@
 
 
 
-
-    function check_tags(the_box)
-    {
-
-        if(the_box != "All")
-        {
-            for(i=0;i<($('option').length);i++)
-            {
-
-               if( $('option')[i].parentNode.id != "tag_filter")
-                     continue ;
-
-                if($('option')[i].id == "All" && $('option')[i].selected == true)
-                {
-                    $('option')[i].selected = false ;
-                    break ;
-                }
-
-            }
-
-        }
-        else
-        {
-
-            for(i=0;i<($('option').length);i++)
-            {
-
-               if( $('option')[i].parentNode.id != "tag_filter")
-                     continue ;
-
-                if($('option')[i].id == "All")
-                    continue ;
-
-                $('option')[i].selected = false ;
-
-            }
-
-        }
-
-
-
-
-    }
-
-
-
      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      //  btn - save_filter
      //
