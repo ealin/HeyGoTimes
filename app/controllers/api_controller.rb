@@ -110,10 +110,13 @@ class ApiController < ApplicationController
             @news.special_flag= true
           end
 
-          @image = Image.create(@data[:image])
-          @image.news = @news
-          @image.url = @data[:image]
-          @image.save
+          if params[:no_photo] == nil ||  params[:no_photo] != 'yes'
+            @image = Image.create(@data[:image])
+            @image.news = @news
+            @image.url = @data[:image]
+            @image.save
+
+          end
 
           @news.tags = []
           tags = Tag.all

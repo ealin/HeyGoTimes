@@ -6,8 +6,8 @@ class PaperController < NewsController
       session[:news_type] = params[:type]
     end
 
-    if (session[:news_type] == nil)
-      session[:news_type] = 'latest'
+    if (session[:news_type] == 'undefined')
+      session[:news_type] = 'rank'
     end
 
     @news = get_news(session[:news_type], params[:page])
@@ -28,10 +28,18 @@ class PaperController < NewsController
 
   end
 
+
+
   def _show_paper_content
     # params:
     # :type => latest / rank / special
     # :page => page num to fetch
+    # :news_num => load ? news
+    @loading_news_num = params[:news_num] ;
+
+    if @loading_news_num == nil
+      @loading_news_num = 10
+    end
 
     if (params[:type] == 'special')
       @news = get_special_news(params[:sub_type], params[:page])
@@ -46,7 +54,12 @@ class PaperController < NewsController
     end
   end
 
+
+
   def get_news(type, page)
+    if @loading_news_num == nil
+      @loading_news_num = 10
+    end
 
     user_areas = []
     if (session[:filter_area] != nil && session[:filter_area] != "")
@@ -107,7 +120,7 @@ class PaperController < NewsController
       end
 
       if(@news.count > 0)
-        @news = @news.paginate :page => page, :per_page => 8
+        @news = @news.paginate :page => page, :per_page => @loading_news_num
       end
     end
 
@@ -115,7 +128,14 @@ class PaperController < NewsController
 
   end
 
+
+
   def get_special_news(type, page)
+    if @loading_news_num == nil
+      @loading_news_num = 10
+    end
+
+
     if (type == 'notice')
       tags = ["HGTimesNotice"]
       areas = ["Taiwan"]
@@ -136,7 +156,7 @@ class PaperController < NewsController
     news = News.get_all_special(areas, tags, friend_type, user_id)
 
     if(news.count > 0)
-      news = news.paginate :page => page, :per_page => 8
+      news = news.paginate :page => page, :per_page => @loading_news_num
     end
 
     return news

@@ -65,7 +65,11 @@ zh_tw:
   m_to_comment: "評論此則新聞"
   m_prev: "回首頁"
   
-
+  m_number_of_tags_selected: "選取了 "
+  m_number_of_tags_selected2: " 個新聞屬性。"
+  
+  m_number_of_areas_selected: "選取了 "
+  m_number_of_areas_selected2: " 個區域。"
   #----------------------------------------
   # News Filter
   #----------------------------------------

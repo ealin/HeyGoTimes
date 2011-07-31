@@ -85,7 +85,11 @@
             <% # TODO: use @paper_width %>
               <% if (@news.url.include?'youtu') %>
                 <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
+
+                <span style="font-size:24px"> <%= @news.title %> <br></span>
                 <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+
+
               <% else %>
                 <iframe id="news_frame" width='100%' height="900" src="<%= @news.url %>">
                   Your browser can't display IFRAMEs
