@@ -60,10 +60,10 @@
         $('#loading_animate').html('');
     }
 
-    function loadMore(type, subType, pageNo)
+    function loadMore(type, subType, pageNo,news_num)
     {
       var t = $("#paperContent");
-      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo;
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num;
       var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
 
       $.get(url, function(response) {
@@ -104,17 +104,17 @@
         currType = 'rank';
 
       $('#more_news').unbind('click').click(function() {
-        loadMore(currType, subType, ++currPage);
+        loadMore(currType, subType, ++currPage,10);
       });
 
         $('#more_15news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage);
+          loadMore(currType, subType, ++currPage,15);
         });
         $('#more_20news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage);
+          loadMore(currType, subType, ++currPage,20);
         });
         $('#more_25news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage);
+          loadMore(currType, subType, ++currPage,25);
         });
 
 
