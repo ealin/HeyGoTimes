@@ -104,6 +104,17 @@
         loadMore(currType, subType, ++currPage);
       });
 
+        $('#more_15news').unbind('click').click(function() {
+          loadMore(currType, subType, ++currPage);
+        });
+        $('#more_20news').unbind('click').click(function() {
+          loadMore(currType, subType, ++currPage);
+        });
+        $('#more_25news').unbind('click').click(function() {
+          loadMore(currType, subType, ++currPage);
+        });
+
+
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("current-menu-item");
         $(this).addClass("current-menu-item");
@@ -281,7 +292,9 @@
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news, :news_sub_type => ""} %>
       </div>
 
-      <div id="more_news"><a><%= t(:m_more) %></a><span id="loading_more_news"></span></div>
+        <div id="more_news">
+            <a><%= t(:m_more) %></a> <span id="loading_more_news"></span>
+        </div>
 
     </div>
 
@@ -301,18 +314,31 @@
   </div><!-- #main -->
 
 
+
+
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
     <div id="footer">
       <%= show_page_tail %>
     </div>
+
+
+<div id="add_moremore_news">
+  <a id="more_15news"> +15 </a>
+  &nbsp;
+  <a id="more_20news"> +20 </a>
+  &nbsp;
+  <a id="more_25news"> +25 </a>
+</div>
+
+
 </div> <!-- /page -->
   <!-- news/_show_page_tail.html.erb  -->
 
 
 
+
 <div id="toolbar-box">
     <!-- 浮動視窗內的程式碼…  -->
-
 
   <a href='https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681'
        onclick="alert('<%= t(:feedback_message) %>') ;"><img src="/images/feedback.png"/></a>
