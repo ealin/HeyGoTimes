@@ -97,8 +97,11 @@
     $(document).ready(function()
     {
       var currPage = 1;
-      var currType = 'rank';
+      var currType = '<%= session[:news_type] %>';
       var subType = '';
+
+      if (currType == undefined)
+        currType = 'rank';
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage);
@@ -256,12 +259,10 @@
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
 
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
-
-
         <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
         </div>
         <div id="menu-fun-btn">
+        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
         <% if session[:logged_in] == true %>
            <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" ><%=t(:m_report)%></a></li>
         <% else %>

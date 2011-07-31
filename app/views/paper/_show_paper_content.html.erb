@@ -58,22 +58,7 @@
 
       <div class="fb_comment" id="fb_comment<%= news.id %>">
         <div id="fb-root"></div>
-        <script>
-          window.fbAsyncInit = function() {
 
-            FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-                     xfbml: true});
-          };
-          (function() {
-            var e = document.createElement('script'); e.async = true;
-
-            // Todo: we need to check the locale!!!!!!!!!!!!
-            //
-            e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
-
-            document.getElementById('fb-root').appendChild(e);
-          }());
-        </script>
       </div> <!-- fb_comment -->
       <div style="clear: both;"></div>
     </div> <!-- comments -->
