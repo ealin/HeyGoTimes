@@ -50,24 +50,46 @@
   <div id="news_header">
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
-      <span title ="<%= t(:tip_for_filter)%>"><%= @newspaper_title.to_s %></span>
     </div>
+    <span id="filter_hint">
+      <%= t(:to_heygotimes_main_page) %>
+      <%= link_to(t(:HeyGoTimes), {:controller =>'paper'}, {:title => 'to home page'}) %>
+    </span>
+
+
 
     <div id="page_head" >
       <%= show_page_head(:login_flag => true)  %>
     </div><!-- #links -->
   </div><!-- #header -->
 
+
   <div id="main">
     <div id="content">
       <div class="news">
+
+        <span id="to_comment_area">
+         <input
+            type="button"
+            name="groovybtn1"
+            class="groovybutton_W"
+            value="<%= t(:comment_this_news) %>"
+            title="<%= t(:comment_this_news) %>"
+            style="float: left"
+            onclick="window.scrollTo(0,1000) ;">
+         </span>
+
         <% if @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
           <div>
             <% # TODO: use @paper_width %>
               <% if (@news.url.include?'youtu') %>
                 <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
+
+                <span style="font-size:24px"> <%= @news.title %> <br></span>
                 <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
+
+
               <% else %>
                 <iframe id="news_frame" width='100%' height="900" src="<%= @news.url %>">
                   Your browser can't display IFRAMEs
@@ -130,7 +152,7 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = æ©«å?å»?? -->
+        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = æ©«ï¿½?ï¿½?? -->
       </div>
     </div>
 

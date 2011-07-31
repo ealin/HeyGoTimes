@@ -222,6 +222,10 @@ class NewsController < ApplicationController
       when :watch
         return 1
       when :report
+        if admin_logged_in?
+          return 2
+        end
+
         return 5
       when :focus   # 焦點新聞
         return 3

@@ -4,23 +4,13 @@ require 'net/http'
 require 'thread'
 
 
-@host = "http://localhost:3000/"
-#@host = "http://heygotimes.heroku.com/"
+#@host = "http://localhost:3000/"
+@host = "http://heygotimes.heroku.com/"
 
 
-@sleep_period = 50
+@sleep_period = 100
 
 m = Mutex.new
-
-
-=begin
-    ############  TW-Google   ############
-require './tw_google.rb'
-
-Thread.start{
- get_news_from_tw_google(m,@sleep_period)
-}
-=end
 
 
 
@@ -84,10 +74,32 @@ Thread.start{
     ############  TW-Google-Focus   ############
 require './tw_google_focus.rb'
 
-#Thread.start{
+Thread.start{
  get_news_from_tw_google_focus(m,@sleep_period)
-#}
+}
 
+
+
+#!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+    ############  TUS-Google   ############
+require './us_google.rb'
+
+Thread.start{
+ get_news_from_us_google(m,@sleep_period)
+}
+
+
+
+
+      ############  US-Yahoo   ############
+require './us_yahoo.rb'
+
+#Thread.start{
+ get_news_from_us_yahoo(m,@sleep_period)
+#}
 
 
 
