@@ -64,7 +64,13 @@ zh:
   m_to_comment: "评论此则新闻"
   m_prev: "回首页"
   
+  m_number_of_tags_selected: "选取了 "
+  m_number_of_tags_selected2: " 个新闻属性。"
+  
+  m_number_of_areas_selected: "选取了 "
+  m_number_of_areas_selected2: " 个区域。"
 
+   
   #----------------------------------------
   # News Filter
   #----------------------------------------

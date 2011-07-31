@@ -122,9 +122,22 @@
                 counter++ ;
 
          }
-         $('#current_tag_setting')[0].textContent +=  (counter + ' tags are selected!') ;
+        $('#current_tag_setting')[0].textContent += ('<%= t(:m_number_of_tags_selected) %>' + counter + '<%= t(:m_number_of_tags_selected2) %>') ;
 
 
+        $('#current_area_setting')[0].textContent = '' ;
+        counter=0 ;
+
+        for(i=0;i<($('input').length);i++)
+        {
+             if( $('input')[i].name != 'each_area')
+                 continue ;
+
+             if($('input')[i].checked == true)
+                counter++ ;
+
+        }
+        $('#current_area_setting')[0].textContent += ('<%= t(:m_number_of_areas_selected) %>' + counter + '<%= t(:m_number_of_areas_selected2) %>') ;
 
 
        $('#more_news').unbind('click').click(function() {
@@ -358,27 +371,92 @@ type="button"
 
 <!-- area filter selection PAGE-->
 <div id="select_area" title="<%= t(:m_filter_by_area) %>" class="panel">
+  <p id="current_area_setting" style="font-size:16px">xxx</p>
 
   <fieldset>
     <% @areas.each do |area| %>
       <% if session[:filter_area].include?(area.name) %>
            <% if area.parent_area != nil %>
                 <div class="row">
-                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true"> &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true" onclick="
+                    $('#current_area_setting')[0].textContent = '' ;
+                     counter=0 ;
+
+                     for(i=0;i<($('input').length);i++)
+                     {
+                         if( $('input')[i].name != 'each_area')
+                             continue ;
+
+                         if($('input')[i].checked == true)
+                            counter++ ;
+
+                     }
+                     $('#current_area_setting')[0].textContent += ('<%= t(:m_number_of_areas_selected) %>' + counter + '<%= t(:m_number_of_areas_selected2) %>') ;
+                ">
+
+                  &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
                </div>
            <% else %>
                 <div class="row" style="color:blue;">
-                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true"> <%= t(area.name.to_sym)%>  </input>
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area"  checked="true" onclick="
+                    $('#current_area_setting')[0].textContent = '' ;
+                     counter=0 ;
+
+                     for(i=0;i<($('input').length);i++)
+                     {
+                         if( $('input')[i].name != 'each_area')
+                             continue ;
+
+                         if($('input')[i].checked == true)
+                            counter++ ;
+
+                     }
+                     $('#current_area_setting')[0].textContent += ('<%= t(:m_number_of_areas_selected) %>' + counter + '<%= t(:m_number_of_areas_selected2) %>') ;
+                ">
+
+                  <%= t(area.name.to_sym)%>  </input>
                </div>
            <% end %>
       <% else %>
            <% if area.parent_area != nil %>
                  <div class="row">
-                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" > &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
+                 &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" onclick="
+                    $('#current_area_setting')[0].textContent = '' ;
+                     counter=0 ;
+
+                     for(i=0;i<($('input').length);i++)
+                     {
+                         if( $('input')[i].name != 'each_area')
+                             continue ;
+
+                         if($('input')[i].checked == true)
+                            counter++ ;
+
+                     }
+                     $('#current_area_setting')[0].textContent += ('<%= t(:m_number_of_areas_selected) %>' + counter + '<%= t(:m_number_of_areas_selected2) %>') ;
+                ">
+
+                   &nbsp;&nbsp;<%= t(area.name.to_sym)%>  </input>
                </div>
            <% else %>
                 <div class="row" style="color:blue;">
-                  &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" > <%= t(area.name.to_sym)%>  </input>
+                  &nbsp;<input type="checkbox" id="<%= area.name %>" name="each_area" onclick="
+                    $('#current_area_setting')[0].textContent = '' ;
+                     counter=0 ;
+
+                     for(i=0;i<($('input').length);i++)
+                     {
+                         if( $('input')[i].name != 'each_area')
+                             continue ;
+
+                         if($('input')[i].checked == true)
+                            counter++ ;
+
+                     }
+                     $('#current_area_setting')[0].textContent += ('<%= t(:m_number_of_areas_selected) %>' + counter + '<%= t(:m_number_of_areas_selected2) %>') ;
+                ">
+
+                  <%= t(area.name.to_sym)%>  </input>
                 </div>
             <% end %>
       <% end %>
@@ -448,7 +526,7 @@ type="button"
                             counter++ ;
 
                      }
-                     $('#current_tag_setting')[0].textContent +=  (counter + ' tags are selected!') ;
+                     $('#current_tag_setting')[0].textContent += ('<%= t(:m_number_of_tags_selected) %>' + counter + '<%= t(:m_number_of_tags_selected2) %>') ;
 
 
              ">
@@ -503,7 +581,7 @@ type="button"
                              counter++ ;
 
                       }
-                      $('#current_tag_setting')[0].textContent +=  (counter + ' tags are selected!') ;
+                     $('#current_tag_setting')[0].textContent += ('<%= t(:m_number_of_tags_selected) %>' + counter + '<%= t(:m_number_of_tags_selected2) %>') ;
 
             ">
 

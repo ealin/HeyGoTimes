@@ -69,7 +69,13 @@ en:
   m_to_comment: "Comment this news"
   m_prev: "Back to Main Page"
 
-
+  m_number_of_tags_selected: "There are "
+  m_number_of_tags_selected2: " tags are selected."
+  
+  m_number_of_areas_selected: "There are "
+  m_number_of_areas_selected2: " areas are selected."
+  
+  
   #----------------------------------------
   # News Filter
   #----------------------------------------
