@@ -165,6 +165,12 @@
       });
 
       loading_animate(false);
+      <% if detect_apple_browser()%>
+      window.onscroll = function() {
+        document.getElementById('go_back').style.top =
+           (window.pageYOffset + 80) + 'px';
+      };
+      <% end %>
 
       FB.Event.subscribe('comment.create',function(resp){
         comment(resp);
@@ -335,20 +341,17 @@
     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
     <a href="#" onclick="set_default_locale('en')">English</a>
 
-
-<input
-type="button"
-   name="groovybtn1"
-   class="groovybutton"
-   value="<%= t(:to_top) %>"
-   title=""
-   style="float: right"
-    onclick="window.scrollTo(0,0) ;">
-
-
+    <input
+    type="button"
+       name="groovybtn1"
+       class="groovybutton"
+       value="<%= t(:to_top) %>"
+       title=""
+       style="float: right"
+        onclick="window.scrollTo(0,0) ;">
 
   </div>
-</div>
+</div><!-- #paper -->
 
 <div id="m_news_page">
   <div id="m_news_main">

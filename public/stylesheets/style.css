@@ -302,25 +302,26 @@ div.menu li {
   list-style: none;
 }
 #access a {
-	color: gray;
+	color: black;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #access #menu-type-btn {
-  width: 75%;
+  width: 65%;
   float: left;
 }
 
 #access #menu-fun-btn {
-  width: 25%;
+  width: 35%;
   float: right;
 }
 
 #access .fun-btn a {
   color: black;
+  text-decoration: none;
 }
 
 #access ul ul li {
@@ -340,8 +341,7 @@ div.menu li {
 	display: block;
 }
 #access ul li.current-menu-item > a {
-  text-decoration: underline;
 	color: #fff;
-
+  text-decoration: none;
 }
 
