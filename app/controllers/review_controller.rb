@@ -203,7 +203,7 @@ class ReviewController < NewsController
   def clear_older_news
 
     # 確實清除N天前的NEWS
-    @day = 7
+    @day = 3
     dead_line = DateTime.now - @day
 
     response_str = @day.to_s + "天前的新聞已自資料庫中刪除"
