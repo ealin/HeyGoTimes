@@ -25,12 +25,17 @@ class NewsController < ApplicationController
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
 
+    # increse watch count
+    @news.watch_count += 1
+
     if (current_facebook_user != nil && session[:id] != nil)
       user = User.find(session[:id])
       if (!user.watches.include?(@news))
         @news.watches.push(user)
         news_rank_action(user, @news, :watch)
       end
+    else
+      news_rank_action(nil, @news, :watch)
     end
 
     respond_to do |format|
