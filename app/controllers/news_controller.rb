@@ -25,18 +25,13 @@ class NewsController < ApplicationController
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
 
-    # increse watch count
-    if (@news.watch_count == nil)
-        @news.watch_count = 1;
-    else
-        @news.watch_count += 1
-    end
-
     if (current_facebook_user != nil && session[:id] != nil)
       user = User.find(session[:id])
       if (!user.watches.include?(@news))
         @news.watches.push(user)
         news_rank_action(user, @news, :watch)
+      else
+        news_rank_action(nil, @news, :watch)
       end
     else
       news_rank_action(nil, @news, :watch)
@@ -203,6 +198,11 @@ class NewsController < ApplicationController
   # news => News object
   # type => :like/:unlike/:watch/:report
   def news_rank_action(user, news, type)
+
+    if (type == :watch)
+      news.watch_count += 1
+    end
+
     rank = calculate_rank(type)
 
     # update news rank
