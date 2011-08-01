@@ -8,13 +8,12 @@ require 'thread'
 #@host = "http://heygotimes.heroku.com/"
 
 
-@sleep_period = 100
+@sleep_period = 2
 
 m = Mutex.new
 
 
-
-
+=begin
       ############  TW-Yahoo   ############
 require './tw_yahoo.rb'
 
@@ -94,10 +93,19 @@ Thread.start{
       ############  US-Yahoo   ############
 require './us_yahoo.rb'
 
-#Thread.start{
+Thread.start{
  get_news_from_us_yahoo(m,@sleep_period)
+}
+
+
+=end
+
+
+      ############  US-Yahoo   ############
+require './tw_udn.rb'
+
+#Thread.start{
+ get_news_from_tw_udn(m,@sleep_period)
 #}
-
-
 
 

@@ -45,12 +45,10 @@ nownews_focus_rss_tag = [
             end
           }
         }
-
+        sleep(sleep_period)
 
 
     end
-    sleep(sleep_period)
-
 
   end
 end
