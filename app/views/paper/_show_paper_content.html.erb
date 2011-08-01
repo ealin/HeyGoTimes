@@ -2,6 +2,11 @@
 
 <% if news != nil %>
   <% news.each do |news| %>
+    <%# TODO: remove this after all news watch count filled %>
+    <% if (news.watch_count == nil) %>
+      <% news.watch_count = 0 %>
+      <% news.save %>
+    <% end %>
     <div class="news" id="news_<%= news.id %>">
       <script type="text/javascript">
       jQuery('#news_<%= news.id %>').hover(function() {
@@ -31,7 +36,7 @@
         <% else %>
             <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d %H:%M") %>
         <% end %>
-        <%= t(:info_3) %>, <%= t(:watched) %>: <%= news.watches.count %>, <%= t(:info_tags) %>:
+        <%= t(:info_3) %>, <%= t(:watched) %>: <%= news.watch_count %>, <%= t(:info_tags) %>:
 
         <% news.tags.each_with_index do |tag, index| %>
           <%= "/" if (index != 0) %>

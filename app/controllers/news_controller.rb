@@ -30,7 +30,11 @@ class NewsController < ApplicationController
       if (!user.watches.include?(@news))
         @news.watches.push(user)
         news_rank_action(user, @news, :watch)
+      else
+        news_rank_action(nil, @news, :watch)
       end
+    else
+      news_rank_action(nil, @news, :watch)
     end
 
     respond_to do |format|
@@ -194,6 +198,11 @@ class NewsController < ApplicationController
   # news => News object
   # type => :like/:unlike/:watch/:report
   def news_rank_action(user, news, type)
+
+    if (type == :watch)
+      news.watch_count += 1
+    end
+
     rank = calculate_rank(type)
 
     # update news rank
