@@ -26,7 +26,11 @@ class NewsController < ApplicationController
     check_logged_in(false)
 
     # increse watch count
-    @news.watch_count += 1
+    if (@news.watch_count == nil)
+        @news.watch_count = 1;
+    else
+        @news.watch_count += 1
+    end
 
     if (current_facebook_user != nil && session[:id] != nil)
       user = User.find(session[:id])
