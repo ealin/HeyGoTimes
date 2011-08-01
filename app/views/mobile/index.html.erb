@@ -67,9 +67,9 @@
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
-    function loadMore(type, pageNo) {
+    function loadMore(type, pageNo,news_num) {
       var t = $("#m_paperContent");
-      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo+ '&news_num='+ news_num;
       var preview = $("#loading_more_news").html("<img src='/images/fb_loading_large.gif' width='20' height='20' />");
 
       $.get(url, function(response) {
@@ -80,7 +80,7 @@
       });
       t.timeout = setTimeout(function () {
         preview.html('');
-      }, 3000);
+      }, 10000);
     }
 
     function changePaperType(type) {
@@ -141,8 +141,20 @@
 
 
        $('#more_news').unbind('click').click(function() {
-        loadMore(currType, ++currPage);
+        loadMore(currType, ++currPage,10);
       });
+
+        $('#more_15news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,15);
+       });
+
+        $('#more_20news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,20);
+       });
+
+        $('#more_25news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,25);
+       });
 
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("current-menu-item")
@@ -332,9 +344,20 @@
   <div class="m_ad">
     <%= render :partial => "m_show_ad" %>
   </div>
-  <div align="center">
-    <button id="more_news" style="height: 30px; width:100%;font-size:1.0em;"><%= t(:m_more) %><span id="loading_more_news"></span></button>
+
+  <div align="left">
+    <button id="more_news" style="height: 30px; width:68%;font-size:14px;">
+      <%= t(:m_more) %> <span id="loading_more_news"></span></button>
   </div>
+
+  <div id="m_add_moremore_news">
+    <span id="more_15news"> +15 </span>
+    &nbsp;
+    <span id="more_20news"> +20 </span>
+    &nbsp;
+    <span id="more_25news"> +25 </span>
+  </div>
+
 
   <div class="menu-item" align="center">
     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;

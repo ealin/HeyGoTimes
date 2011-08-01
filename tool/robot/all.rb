@@ -13,7 +13,7 @@ require 'thread'
 m = Mutex.new
 
 
-=begin
+
       ############  TW-Yahoo   ############
 require './tw_yahoo.rb'
 
@@ -97,8 +97,6 @@ Thread.start{
  get_news_from_us_yahoo(m,@sleep_period)
 }
 
-
-=end
 
 
       ############  US-Yahoo   ############
