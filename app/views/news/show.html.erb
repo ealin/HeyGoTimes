@@ -7,13 +7,6 @@
   <% end %>
 
   <script type="text/javascript">
-    <%# TODO: how to prevent iframe redirect %>
-    <% if (@news.url.include?("nownews")) %>
-    window.onbeforeunload = function(){
-      window.onbeforeunload = '';
-      return "<%= t(:page_exit_hint) %>";
-    };
-    <% end %>
     function getSrc(obj)
     {
       document.getElementById('news_url').value = obj.src;
