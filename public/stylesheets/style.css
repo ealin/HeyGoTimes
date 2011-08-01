@@ -243,6 +243,23 @@ a img {
   font-size: 1.4em;
 }
 
+#add_moremore_news
+{
+    clear: both;
+
+    position:relative;
+    left:73%;
+    bottom:102px;
+    background: #edeff4;
+    border-width :1px;
+    border-color: #bdc7d8;
+    border-style:dashed;
+    font-size:20px;
+    height: 30px;
+    width:20%;
+
+}
+
 #more_news{
   clear: both;
   margin: auto;
@@ -255,6 +272,7 @@ a img {
   border-style:dashed;
   cursor:pointer;
 }
+
 
 #more_news a{
   height: 30px;
