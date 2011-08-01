@@ -2,7 +2,7 @@
 
 <% if news != nil %>
   <% news.each do |news| %>
-  	<%# TODO: remove this after all news watch count filled %>
+    <%# TODO: remove this after all news watch count filled %>
     <% if (news.watch_count == nil) %>
       <% news.watch_count = 0 %>
       <% news.save %>
@@ -59,21 +59,16 @@
     </div> <!-- news -->
 
     <div class="comments">
-      <% graph = Koala::Facebook::GraphAPI.new() %>
       <% fb_obj_url = get_fb_obj_url(news) %>
-      <% fb_obj = graph.get_object(fb_obj_url) %>
-      <% comments = (fb_obj['comments'] == nil)? 0: fb_obj['comments'] %>
-      <% shared = (fb_obj['shares'] == nil)? 0: fb_obj['shares'] %>
-
       <% if news_sub_type != "feedback" %>
         <div class="button_group">
-          <span class='share_count count_span' id='share_count<%= news.id %>'><%= shared %></span><a style="float: right;" href="javascript:void(null)" onclick="share('<%= news.id %>', '<%= fb_obj_url %>', '<%= news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
-          <span class='unlike_count count_span' id='unlike_count<%= news.id %>'><%= news.unlikes.count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
-          <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.likes.count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
+          <span class='share_count count_span' id='share_count<%= news.id %>'><%= news.share_count %></span><a style="float: right;" href="javascript:void(null)" onclick="share('<%= news.id %>', '<%= fb_obj_url %>', '<%= news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
+          <span class='unlike_count count_span' id='unlike_count<%= news.id %>'><%= news.unlike_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
+          <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.like_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
         </div>
       <% end %>
 
-      <div class="comment_title" id="comment_title_<%= news.id %>" onclick="expand_comment(<%= news.id %>, '<%= fb_obj_url %>');"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + comments.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
+      <div class="comment_title" id="comment_title_<%= news.id %>" onclick="expand_comment(<%= news.id %>, '<%= fb_obj_url %>');"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + news.comment_count.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
 
       <div class="fb_comment" id="fb_comment<%= news.id %>">
         <div id="fb-root"></div>
