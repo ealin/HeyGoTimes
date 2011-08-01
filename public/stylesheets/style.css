@@ -98,9 +98,8 @@ a img {
 #news_header a {
 	text-decoration: none;
 	color: #FFFFFF;
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 
 #header a {
 	text-decoration: none;
@@ -163,14 +162,26 @@ a img {
   margin-bottom: 20px;
 }
 
+.news:hover > a {
+  color:black;
+}
+
 .news .news_title {
-  width: 100%;
+  float: left;
+  width: 95%;
   font-size: 200%;
+}
+
+.news .spam_report {
+  float: right;
+  width:5%;
+  display:none; color:gray; font-weight:bold;
 }
 
 .news .info {
   font-style: italic;
   width: 100%;
+  clear:both;
 }
 
 .news .info a {
@@ -187,7 +198,7 @@ a img {
   /* text-indent: 30pt;  */
   font-size: 150%;
   padding-top: 10px;
-  padding-right: 40px;
+  padding-right: 30px;
   float: right;
   width: 70%;
 }
