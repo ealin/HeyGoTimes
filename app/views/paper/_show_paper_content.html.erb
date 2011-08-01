@@ -3,8 +3,12 @@
 <% if news != nil %>
   <% news.each do |news| %>
     <%# TODO: remove this after all news watch count filled %>
-    <% if (news.watch_count == nil) %>
+    <% if (news.like_count == nil) %>
       <% news.watch_count = 0 %>
+      <% news.like_count = 0 %>
+      <% news.unlike_count = 0 %>
+      <% news.share_count = 0 %>
+      <% news.comment_count = 0 %>
       <% news.save %>
     <% end %>
     <div class="news" id="news_<%= news.id %>">
