@@ -12,7 +12,6 @@ udn_rss_url = [
   "http://udn.com/udnrss/financeworld.xml",
   "http://mag.udn.com/udnrss/newsstand_tm_rss.xml",
   "http://mag.udn.com/udnrss/newsstand_lc_rss.xml",
-
   "http://udn.com/udnrss/financesfocus.xml",
   "http://udn.com/udnrss/stock.xml",
   "http://mag.udn.com/udnrss/report_rss.xml",
@@ -23,32 +22,26 @@ udn_rss_url = [
   "http://mag.udn.com/udnrss/wealth_rss.xml",
   "http://mag.udn.com/udnrss/fund_rss.xml",
   "http://mag.udn.com/udnrss/m_forum_rss.xml",
-
   "http://udn.com/udnrss/baseball.xml",
   "http://mag.udn.com/udnrss/sports_rss.xml",
   "http://mag.udn.com/udnrss/newsstand_st_rss.xml",
   "http://udn.com/udnrss/basketball.xml",
   "http://udn.com/udnrss/sportsfocus.xml",
-
   "http://udn.com/udnrss/starsfocus.xml",
   "http://udn.com/udnrss/starswestern.xml",
   "http://udn.com/udnrss/movie.xml",
   "http://udn.com/udnrss/tv.xml",
   "http://udn.com/udnrss/starsjk.xml",
   "http://udn.com/udnrss/music.xml",
-
   "http://mag.udn.com/udnrss/digital_rss.xml",
-
   "http://mag.udn.com/udnrss/happylife_rss.xml",
   "http://udn.com/udnrss/food.xml",
   "http://udn.com/udnrss/shopping.xml",
   "http://mag.udn.com/udnrss/car_rss.xml",
-
   "http://udn.com/udnrss/health.xml",
   "http://travel.udn.com/udnrss/travel_rss.xml",
   "http://mag.udn.com/udnrss/life_rss.xml",
   "http://mag.udn.com/udnrss/newsstand_lh_rss.xml",
-
   "http://udn.com/udnrss/local_taipei.xml",
   "http://udn.com/udnrss/local_tcchnt.xml",
   "http://udn.com/udnrss/local_ksptisland.xml",
@@ -66,6 +59,7 @@ udn_rss_url = [
   "http://udn.com/udnrss/unpopular.xml",
   "http://udn.com/udnrss/mostpopular.xml",
   "http://udn.com/udnrss/endpopular.xml",
+  "http://video.udn.com/rss/video_rss.xml"
 
 ] ;
 
@@ -81,7 +75,6 @@ udn_focus_rss_tag = [
     "World/Business&area=Taiwan/",
     "Sci_Tech&area=Taiwan/",
     "Local&area=Taiwan/",
-
     "Business&area=Taiwan/",
     "Business&area=Taiwan/",
     "Business&area=Taiwan/",
@@ -92,31 +85,26 @@ udn_focus_rss_tag = [
     "Business&area=Taiwan/",
     "Business&area=Taiwan/",
     "Business&area=Taiwan/",
-
     "Sport&area=Taiwan/",
     "Sport&area=Taiwan/",
     "Sport&area=Taiwan/",
     "Sport&area=Taiwan/",
     "Sport&area=Taiwan/",
-
     "Entertainment&area=Taiwan/",
     "Entertainment&area=Taiwan/",
     "Entertainment&area=Taiwan/",
     "Entertainment&area=Taiwan/",
     "Entertainment&area=Taiwan/",
     "Entertainment&area=Taiwan/",
-
     "Sci_Tech/Business&area=Taiwan/",
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
-
     "Health/Life&area=Taiwan/",
     "Travel/Life&area=Taiwan/",
     "Health/Life&area=Taiwan/",
     "Health/Life&area=Taiwan/",
-
     "Local&area=Taiwan/North_TW/",
     "Local&area=Taiwan/Middle_TW/",
     "Local&area=Taiwan/South_TW/",
@@ -129,6 +117,7 @@ udn_focus_rss_tag = [
     "Focus/Politics&area=Taiwan/",
     "Focus/World&area=Taiwan/TW_CN",
     "Focus/Business&area=Taiwan/",
+    "Focus&area=Taiwan/",
     "Focus&area=Taiwan/",
     "Focus&area=Taiwan/",
     "Focus&area=Taiwan/",
