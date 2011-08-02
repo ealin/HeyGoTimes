@@ -104,9 +104,9 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        @news = News.get_all(type, friend_type, user_id)
+        @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
       else
-        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
       end
 
       if (page != 1 && session[:news_load_time] != nil)
@@ -114,20 +114,16 @@ class PaperController < NewsController
           if (news.created_at > session[:news_load_time])
             @news.delete_at(index)
           else
-            break;
+            break
           end
         end
       end
 
-      if(@news.count > 0)
-        @news = @news.paginate :page => page, :per_page => @loading_news_num
-      end
     end
 
     return @news
 
   end
-
 
 
   def get_special_news(type, page)
