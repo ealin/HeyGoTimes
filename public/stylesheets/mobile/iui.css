@@ -69,8 +69,8 @@ body > .toolbar {
     overflow: hidden;
     left: 50%;
     margin: 1px 0 0 -75px;
-    padding-top: 10px;
-    height: 45px;
+    padding-top: 2px;
+    height: 40px;
     font-size: 20px;
     width: 150px;
     font-weight: bold;
