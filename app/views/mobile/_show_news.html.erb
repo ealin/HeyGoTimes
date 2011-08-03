@@ -58,7 +58,7 @@
   </div> <!-- fb_comment -->
 </div> <!-- comments -->
 
-<div id="go_back" onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});" style="position:fixed;top:80px;left:0px;"><% if !redirect_from_web %>
+<div id="go_back" onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});" style="position:fixed;top:320px;left:0px;"><% if !redirect_from_web %>
         <button style="font-size:14px" ><img src="/images/arrow_left.png" alt="" height="14px"/><%= t(:m_prev) %></button><% end %></div>
 
 <% if redirect_from_web %>
