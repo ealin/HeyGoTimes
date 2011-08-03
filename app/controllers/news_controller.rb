@@ -30,7 +30,11 @@ class NewsController < ApplicationController
       if (!user.watches.include?(@news))
         @news.watches.push(user)
         news_rank_action(user, @news, :watch)
+      else
+        news_rank_action(nil, @news, :watch)
       end
+    else
+      news_rank_action(nil, @news, :watch)
     end
 
     respond_to do |format|
@@ -194,7 +198,8 @@ class NewsController < ApplicationController
   # news => News object
   # type => :like/:unlike/:watch/:report
   def news_rank_action(user, news, type)
-    rank = calculate_rank(type)
+
+    rank = calculate_rank(type, news)
 
     # update news rank
     news.rank += rank
@@ -208,30 +213,32 @@ class NewsController < ApplicationController
         update_user_news_rank(friend, news, rank)
       end
     end
-
   end
 
-  # Description: calculate rank by type
-  # type => :like/:unlike/:watch/:report
-  def calculate_rank(type)
+  # Description: calculate rank by type and update news counts
+  def calculate_rank(type, news)
     case type
       when :like
+        news.like_count += 1
         return 2
       when :unlike
+        news.unlike_count += 1
         return -1
       when :watch
+        news.watch_count += 1
         return 1
+      when :share
+        news.share_count += 1
+        return 4
+      when :comment
+        news.comment_count += 1
+        return 3
       when :report
         if admin_logged_in?
           return 2
         end
-
         return 5
       when :focus   # 焦點新聞
-        return 3
-      when :share
-        return 4
-      when :comment
         return 3
     end
   end
