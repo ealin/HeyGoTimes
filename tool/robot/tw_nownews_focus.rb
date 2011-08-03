@@ -34,14 +34,13 @@ nownews_focus_rss_tag = [
               #p link
 
               m.synchronize{
-                puts '[NOW-NEWS TW FOCUS]News Link :' + link
+                puts '[NOW-NEWS TW FOCUS]  News Link :' + link
                 open(command + link) {|f|
                    f.each_line {|line| p line}
                  }
 
                 puts "\n"
               }
-              sleep(sleep_period)
 
             end
           }
@@ -50,6 +49,7 @@ nownews_focus_rss_tag = [
 
 
     end
+    sleep(sleep_period)
 
 
   end

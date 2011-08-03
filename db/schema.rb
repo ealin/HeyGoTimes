@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629040839) do
+ActiveRecord::Schema.define(:version => 20110801042554) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -66,11 +66,16 @@ ActiveRecord::Schema.define(:version => 20110629040839) do
     t.string   "area_string"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "rank",         :default => 0
+    t.integer  "rank",          :default => 0
     t.string   "fb_obj_url"
-    t.boolean  "special_flag", :default => false
+    t.boolean  "special_flag",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "watch_count",   :default => 0
+    t.integer  "like_count",    :default => 0
+    t.integer  "unlike_count",  :default => 0
+    t.integer  "share_count",   :default => 0
+    t.integer  "comment_count", :default => 0
   end
 
   create_table "news_areas", :force => true do |t|

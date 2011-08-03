@@ -97,43 +97,44 @@ def get_news_from_tw_yahoo_beta (m,sleep_period)
       command = ""
 
 
-      for i in (0..(yahoo_beta_rss_tag.length - 1))
+        for i in (0..(yahoo_beta_rss_tag.length - 1))
 
 
-          feed_url = yahoo_beta_rss_url[i]
+            feed_url = yahoo_beta_rss_url[i]
 
-          command = @host+ 'api/new_news?publish=yes&tags='
+            command = @host+ 'api/new_news?publish=yes&tags='
 
-          command = command + yahoo_beta_rss_tag[i] + '&area=' + yahoo_beta_rss_area[i] + "&url="
+            command = command + yahoo_beta_rss_tag[i] + '&area=' + yahoo_beta_rss_area[i] + "&url="
 
-            begin
-                open(feed_url) do |feed|
-                  RSS::Parser.parse(feed.read , false).items.each do |item|
-                    m.synchronize{
+              begin
+                  open(feed_url) do |feed|
+                    RSS::Parser.parse(feed.read , false).items.each do |item|
+                      m.synchronize{
 
-                      link = URI.encode(item.link)
+                        link = URI.encode(item.link)
 
-                      puts '[YAHOO TW BETA]News Link :' + link
+                        puts '[YAHOO TW BETA]  News Link :' + link
 
-                      open(command + link) {|f|
-                         f.each_line {|line| p line}
-                       }
+                        open(command + link) {|f|
+                           f.each_line {|line| p line}
+                         }
 
-                      puts "\n"
-                    }
-                    sleep(@sleep_period)
+                        puts "\n"
+                      }
+
+                    end
+
+
                   end
 
+              rescue OpenURI::HTTPError => the_error
+                  the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
+                  next
+              end
+            #}
 
-                end
-
-            rescue OpenURI::HTTPError => the_error
-                the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
-                next
-            end
-          #}
-
-      end
+        end
+        sleep(@sleep_period)
 
       end
 

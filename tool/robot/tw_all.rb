@@ -23,6 +23,8 @@ Thread.start{
 =end
 
 
+
+
       ############  TW-Yahoo   ############
 require './tw_yahoo.rb'
 
@@ -51,17 +53,6 @@ Thread.start{
 
 
 
-
-    ############  TW-Google-Focus   ############
-require './tw_google_focus.rb'
-
-Thread.start{
- get_news_from_tw_google_focus(m,@sleep_period)
-}
-
-
-
-
   ############  TW-Yahoo-beta   ############
 require './tw_yahoo_beta.rb'
 
@@ -84,12 +75,18 @@ Thread.start{
     ############  NOW-NEWS-Focus   ############
 require './tw_nownews.rb'
 
-#Thread.start{
+Thread.start{
  get_news_from_tw_nownews(m,@sleep_period)
+}
+
+
+
+    ############  TW-Google-Focus   ############
+require './tw_google_focus.rb'
+
+#Thread.start{
+ get_news_from_tw_google_focus(m,@sleep_period)
 #}
-
-
-
 
 
 
