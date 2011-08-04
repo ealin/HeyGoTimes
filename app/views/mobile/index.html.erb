@@ -320,13 +320,18 @@
 
 
 <!-- !!!!!!!!! Page - NewsPaper  -->
-<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true">
   <div id="m_cmd_bar">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
-        <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
+
+        <li id="menu-item-filter" class="menu-item fun-btn" >
+            <a style="disabled:true;" title="<%= t(:m_filter_setting) %>" href="#filter" > <%=t(:m_filter)%>
+            </a>
+        </li>
+
         <% if session[:logged_in] == true %>
           <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
         <% else %>
