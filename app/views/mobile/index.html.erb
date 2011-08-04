@@ -15,6 +15,8 @@
 
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+   <script type='text/javascript' src='/javascripts/jquery.lazyload.mini.js'></script>
+
 
    <script type="text/javascript">
 
@@ -180,13 +182,16 @@
       <% if detect_apple_browser()%>
       window.onscroll = function() {
         document.getElementById('go_back').style.top =
-           (window.pageYOffset + 80) + 'px';
+           (window.pageYOffset + 320) + 'px';
       };
       <% end %>
 
       FB.Event.subscribe('comment.create',function(resp){
         comment(resp);
       });
+
+
+      $("img").lazyload();
     });
 
 
@@ -310,22 +315,23 @@
 <div class="toolbar">
   <h1 id="pageTitle"></h1>
   <a id="backButton" class="button" ></a>
-  <div align="right" style="padding:2px 0px;    ">
-  <img src="/images/mobile/dog_48x40.png" width="32" height="32"/>
-  </div>
-
 </div>
 
 
 
 <!-- !!!!!!!!! Page - NewsPaper  -->
-<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true">
   <div id="m_cmd_bar">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
-        <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
+
+        <li id="menu-item-filter" class="menu-item fun-btn" >
+            <a style="disabled:true;" title="<%= t(:m_filter_setting) %>" href="#filter" > <%=t(:m_filter)%>
+            </a>
+        </li>
+
         <% if session[:logged_in] == true %>
           <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
         <% else %>
