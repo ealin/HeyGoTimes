@@ -14,7 +14,9 @@
 
     <div class="m_news" id="m_news<%= news.id %>">
       <div class="m_news_title">
-          <a href="#m_news_page" onclick="showNews(<%= news.id %>)"><%= news.title %></a>
+          <a href="#m_news_page" onclick="
+              $('.news_iframe').remove();   // clear iframe
+              showNews(<%= news.id %>)"><%= news.title %></a>
       </div>
 
       <div class="info">
