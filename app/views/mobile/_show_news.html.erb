@@ -31,7 +31,7 @@
 <% end %>
 <div style="clear: both;"></div>
 
-<div id="m_news_comments">
+<div id="m_news_comments" class="m_news_fb_comments">
   <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><% if !redirect_from_web %>
         <button style="font-size:14px"
                 onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});">
