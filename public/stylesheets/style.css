@@ -2,9 +2,9 @@
 body {
 	margin: 0px;
 	padding: 0px;
+  color:#333;
 	background: #fcf5f5, transparent;
-	font: 13px Arial, Verdana, PMingLiu, Helvetica, sans-serif;
-	color: #3b5998;
+	font: 12px/22px Arial, Verdana, sans-serif, MingLiU, PMingLiu, Helvetica;
 }
 
 h1, h2, h3 {
@@ -64,12 +64,17 @@ a img {
   background-color: #6d84b4;
 }
 
-#news_page {
-  width: 100%;
-	margin: 0px auto;
-	padding: 0px 0px;
-  background: #fff;
-	margin-top: 20px;
+#header a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#header #filter_hint {
+  font-weight: bold;
+  position:relative;
+  top: 20px;
+  left: 20px;
+  font-size: 1.3em;
 }
 
 #news_header {
@@ -81,7 +86,6 @@ a img {
   margin-bottom: 0px;
   background-color: #6d84b4;
 }
-
 
 #news_header #filter_hint {
   position:relative;
@@ -101,15 +105,12 @@ a img {
   text-decoration: underline;
 }
 
-#header a {
-	text-decoration: none;
-	color: #FFFFFF;
-}
-
-#header #filter_hint {
-  position:relative;
-  top: 20px;
-  font-size: 14px;
+#news_page {
+  width: 100%;
+	margin: 0px auto;
+	padding: 0px 0px;
+  background: #fff;
+	margin-top: 20px;
 }
 
 /* Logo */
@@ -167,9 +168,10 @@ a img {
 }
 
 .news .news_title {
+  font-weight:bold;
   float: left;
   width: 95%;
-  font-size: 200%;
+  font-size: 2em;
 }
 
 .news .spam_report {
@@ -179,7 +181,6 @@ a img {
 }
 
 .news .info {
-  font-style: italic;
   width: 100%;
   clear:both;
 }
@@ -289,6 +290,7 @@ a img {
 -------------------------------------------------------------- */
 
 #access {
+  font-weight:bold;
 	background: #3b5998;
 	display: block;
 	float: left;
@@ -313,11 +315,10 @@ div.menu li {
   list-style: none;
 }
 #access a {
-	color: black;
+	color: white;
 	display: block;
 	line-height: 38px;
 	padding: 0 10px;
-	text-decoration: underline;
 }
 
 #access #menu-type-btn {
@@ -331,7 +332,6 @@ div.menu li {
 }
 
 #access .fun-btn a {
-  color: black;
   text-decoration: none;
 }
 
@@ -352,7 +352,7 @@ div.menu li {
 	display: block;
 }
 #access ul li.current-menu-item > a {
-	color: #fff;
-  text-decoration: none;
+	color: black;
+  text-decoration: underline;
 }
 
