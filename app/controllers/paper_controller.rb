@@ -6,7 +6,7 @@ class PaperController < NewsController
       session[:news_type] = params[:type]
     end
 
-    if (session[:news_type] == 'undefined')
+    if (session[:news_type] == nil)
       session[:news_type] = 'rank'
     end
 
