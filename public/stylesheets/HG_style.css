@@ -49,30 +49,19 @@
 	color: #FFFFFF;
 }
 
-
-
 /* Footer */
-
 #footer {
 	clear: both;
 	width: 880px;
 	height: 30px;
 	margin: 0px auto 30px auto;
 	background: #3b5998 left top;
-	color: #FFFFFF;
-    font-size: 14px
-}
-
-#footer p {
-	margin: 0px;
-	padding: 19px 0px 0px 0px;
-	text-align: left;
-	line-height: normal;
-	font-size: smaller;
+  font-size: 1.2em;
 }
 
 #footer a {
-	color: #FFFFFF;
+  color: #333;
+  text-decoration: none;
 }
 
 #news_footer {
@@ -81,23 +70,13 @@
 	height: 30px;
 	margin: 0px auto 30px auto;
 	background: #3b5998 left top;
-	color: #FFFFFF;
-    font-size: 14px
-}
-
-#news_footer p {
-	margin: 0px;
-	padding: 19px 0px 0px 0px;
-	text-align: left;
-	line-height: normal;
-	font-size: smaller;
+  font-size: 14px
 }
 
 #news_footer a {
 	color: #FFFFFF;
   text-decoration: none;
 }
-
 
 #toolbar-box {
 _display:none;
@@ -109,7 +88,6 @@ height:110px;
 z-index:1000000;
 background-color: transparent;
 }
-
 
 input.groovybutton
 {
