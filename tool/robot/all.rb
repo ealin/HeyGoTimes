@@ -13,7 +13,6 @@ require 'thread'
 m = Mutex.new
 
 
-
       ############  TW-Yahoo   ############
 require './tw_yahoo.rb'
 
@@ -60,12 +59,6 @@ Thread.start{
 
 
 
-    ############  TW-Google-Focus   ############
-require './tw_google_focus.rb'
-
-Thread.start{
- get_news_from_tw_google_focus(m,@sleep_period)
-}
 
 
     ############  NOW-NEWS-Focus   ############
@@ -80,7 +73,7 @@ Thread.start{
 
 
 
-    ############  TUS-Google   ############
+    ############  US-Google   ############
 require './us_google.rb'
 
 Thread.start{
@@ -102,8 +95,17 @@ Thread.start{
       ############  US-Yahoo   ############
 require './tw_udn.rb'
 
-#Thread.start{
+Thread.start{
  get_news_from_tw_udn(m,@sleep_period)
+}
+
+
+############  TW-Google-Focus   ############
+require './tw_google_focus.rb'
+
+#Thread.start{
+    get_news_from_tw_google_focus(m,@sleep_period)
 #}
+
 
 
