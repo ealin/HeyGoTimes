@@ -276,6 +276,23 @@ a img {
 
 }
 
+#m_add_moremore_news
+{
+    clear: both;
+
+    position:relative;
+    left:69%;
+    bottom:30px;
+    background: #edeff4;
+    border-width :1px;
+    border-color: #bdc7d8;
+    border-style:dashed;
+    font-size:14px;
+    height: 28px;
+    width:30%;
+
+}
+
 #more_news{
   clear: both;
   margin: auto;
