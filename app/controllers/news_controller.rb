@@ -17,7 +17,7 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.xml
   def show
-    @news = News.find(params[:id])
+    @news = News.find_by_fb_obj_url(params[:id])
     @tags = Tag.all
     @areas = Area.all
 
