@@ -15,6 +15,8 @@
 
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
+   <script type='text/javascript' src='/javascripts/jquery.lazyload.mini.js'></script>
+
 
    <script type="text/javascript">
 
@@ -67,9 +69,9 @@
       FB.XFBML.parse(document.getElementById('comments'));
     }
 
-    function loadMore(type, pageNo) {
+    function loadMore(type, pageNo,news_num) {
       var t = $("#m_paperContent");
-      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo;
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo+ '&news_num='+ news_num;
       var preview = $("#loading_more_news").html("<img src='/images/fb_loading_large.gif' width='20' height='20' />");
 
       $.get(url, function(response) {
@@ -80,7 +82,7 @@
       });
       t.timeout = setTimeout(function () {
         preview.html('');
-      }, 3000);
+      }, 10000);
     }
 
     function changePaperType(type) {
@@ -141,8 +143,20 @@
 
 
        $('#more_news').unbind('click').click(function() {
-        loadMore(currType, ++currPage);
+        loadMore(currType, ++currPage,10);
       });
+
+        $('#more_15news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,15);
+       });
+
+        $('#more_20news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,20);
+       });
+
+        $('#more_25news').unbind('click').click(function() {
+         loadMore(currType, ++currPage,25);
+       });
 
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("current-menu-item")
@@ -168,13 +182,16 @@
       <% if detect_apple_browser()%>
       window.onscroll = function() {
         document.getElementById('go_back').style.top =
-           (window.pageYOffset + 80) + 'px';
+           (window.pageYOffset + 320) + 'px';
       };
       <% end %>
 
       FB.Event.subscribe('comment.create',function(resp){
         comment(resp);
       });
+
+
+      $("img").lazyload();
     });
 
 
@@ -298,22 +315,23 @@
 <div class="toolbar">
   <h1 id="pageTitle"></h1>
   <a id="backButton" class="button" ></a>
-  <div align="right" style="padding:2px 0px;    ">
-  <img src="/images/mobile/dog_48x40.png" width="32" height="32"/>
-  </div>
-
 </div>
 
 
 
 <!-- !!!!!!!!! Page - NewsPaper  -->
-<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true" >
+<div id="paper" title="<%= t(:HeyGoTimes) %>"  selected= "true">
   <div id="m_cmd_bar">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
         <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
-        <li id="menu-item-filter" class="menu-item fun-btn"><a title="<%= t(:m_filter_setting) %>" href="#filter"><%=t(:m_filter)%></a></li>
+
+        <li id="menu-item-filter" class="menu-item fun-btn" >
+            <a style="disabled:true;" title="<%= t(:m_filter_setting) %>" href="#filter" > <%=t(:m_filter)%>
+            </a>
+        </li>
+
         <% if session[:logged_in] == true %>
           <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
         <% else %>
@@ -322,6 +340,13 @@
       </ul>
     </div>
   </div><!-- #m_cmd_bar -->
+
+  <div class="menu-item" align="center">
+     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
+     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
+     <a href="#" onclick="set_default_locale('en')">English</a>
+  </div>
+
 
   <hr style="clear:both;">
   <div id="loading_animate" style="position:fixed;top:80px;left:50%;margin-left:-16px;"><img src="/images/fb_loading_large.gif" alt=""/></div>
@@ -332,9 +357,20 @@
   <div class="m_ad">
     <%= render :partial => "m_show_ad" %>
   </div>
-  <div align="center">
-    <button id="more_news" style="height: 30px; width:100%;font-size:1.0em;"><%= t(:m_more) %><span id="loading_more_news"></span></button>
+
+  <div align="left">
+    <button id="more_news" style="height: 30px; width:68%;font-size:14px;">
+      <%= t(:m_more) %> <span id="loading_more_news"></span></button>
   </div>
+
+  <div id="m_add_moremore_news">
+    <span id="more_15news"> +15 </span>
+    &nbsp;
+    <span id="more_20news"> +20 </span>
+    &nbsp;
+    <span id="more_25news"> +25 </span>
+  </div>
+
 
   <div class="menu-item" align="center">
     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;

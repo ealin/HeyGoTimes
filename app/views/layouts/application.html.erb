@@ -11,27 +11,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>HeyGoTimes</title>
 
+    <% m_flag =  detect_Mobile_browser(:list) ; %>
+
 
     <%= stylesheet_link_tag "style","HG_style" %>
     <!-- Page styles -->
     <link type='text/css' href='/stylesheets/popup.css' rel='stylesheet' media='screen' />
 
-    <!-- OSX Style CSS files -->
-    <link type='text/css' href='/stylesheets/osx.css' rel='stylesheet' media='screen' />
-
-      <%#= javascript_include_tag :defaults %>
+    <% if m_flag != true %>
+      <!-- OSX Style CSS files -->
+      <link type='text/css' href='/stylesheets/osx.css' rel='stylesheet' media='screen' />
+    <% end %>
 
       <script type='text/javascript' src='/javascripts/jquery-1.4.2.min.js'></script>
       <script type='text/javascript' src='/javascripts/jquery-ui-1.8.4.custom.min.js'></script>
-      <script type='text/javascript' src='/javascripts/ui.dropdownchecklist.js'></script>
 
-      <script type='text/javascript' src='/javascripts/float_box.js'></script>
+      <% if m_flag != true %>
+        <script type='text/javascript' src='/javascripts/ui.dropdownchecklist.js'></script>
+        <script type='text/javascript' src='/javascripts/float_box.js'></script>
+      <% end %>
+
 
       <%= stylesheet_link_tag "jquery-ui-1.8.4.custom"%>
-      <%= stylesheet_link_tag "ui.dropdownchecklist.themeroller"%>
 
-      <script type='text/javascript' src='/javascripts/osx.js'></script>
-      <script type='text/javascript' src='/javascripts/jquery.simplemodal-min.js'></script>
+      <% if m_flag != true %>
+        <%= stylesheet_link_tag "ui.dropdownchecklist.themeroller"%>
+        <script type='text/javascript' src='/javascripts/osx.js'></script>
+        <script type='text/javascript' src='/javascripts/jquery.simplemodal-min.js'></script>
+      <% end %>
 
 
     <%= csrf_meta_tag %>

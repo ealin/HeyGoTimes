@@ -6,7 +6,7 @@ class PaperController < NewsController
       session[:news_type] = params[:type]
     end
 
-    if (session[:news_type] == 'undefined')
+    if (session[:news_type] == nil)
       session[:news_type] = 'rank'
     end
 
@@ -103,18 +103,18 @@ class PaperController < NewsController
     end
 
     if (News.count > 0)
-        if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-            @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
-            else
-            @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
-        end
+      if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
+        @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
+      else
+        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
+      end
 
       if (page != 1 && session[:news_load_time] != nil)
         @news.each_with_index do |news, index|
           if (news.created_at > session[:news_load_time])
             @news.delete_at(index)
           else
-            break;
+            break
           end
         end
       end
@@ -124,7 +124,6 @@ class PaperController < NewsController
     return @news
 
   end
-
 
 
   def get_special_news(type, page)

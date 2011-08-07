@@ -144,7 +144,13 @@
 
          // send filter-setting to server, then server would save them in session(session only, not db)
          var data = collect_all_selection() ;
+         var preview = $("#loading_gif").html("<img src='/images/fb_loading_large.gif' width='20' height='20' />");
+
          data += "&save=yes" ;
+
+         setTimeout(function () {
+            preview.html('');
+          }, 100000);
 
          window.location = "/paper/set_filter_setting?" + data ;
 
@@ -166,9 +172,10 @@
 
   <li><a href="#select_date" onclick=" window.scroll(0,0) ; "> <%= t(:filter_by_date) %> </a></li>
 
-  <br>
 
   <div align="center">
+    <span id="loading_gif"></span>
+    <br>
     <button id="save_filter" class="redButton" style='width:96%; font-size:14px;'
             onclick="fn_save_filter() ;"><%= t(:filter_ok) %> </button>
   </div>
