@@ -149,6 +149,21 @@
       </div>
     </div>
 
+    <div id="suggest" style="clear: both;">
+      <hr>
+      <div class="suggest_title" style='font-size: 1.6em;'><%= t(:suggests) %></div>
+      <ul class="link" style='font-size: 1.6em;list-style-type:square;'>
+        <% @suggest_news.each do |news| %>
+          <% if (news.special_flag==false) %>
+            <% url=news_index_path+'/'+news.fb_obj_url %>
+          <% else %>
+            <% url=news_index_path+'/'+news.id.to_s %>
+          <% end %>
+          <li><a href="<%= url %>"><%= news.title %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
     <div id="news_footer">
       <%= show_page_tail %>
