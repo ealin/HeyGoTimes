@@ -75,7 +75,7 @@
 
       t.timeout = setTimeout(function () {
         preview.html('');
-      }, 3000);
+      }, 10000);
     }
 
     function changePaperType(type, subType)
@@ -102,6 +102,7 @@
 
       if (currType == undefined)
         currType = 'rank';
+
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,10);

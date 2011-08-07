@@ -69,6 +69,7 @@ google_rss_tag = [
 
 
               end
+              sleep(sleep_period)
 
           rescue OpenURI::HTTPError => the_error
               the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
@@ -77,7 +78,6 @@ google_rss_tag = [
         #}
 
     end
-    sleep(sleep_period)
 
 
   end

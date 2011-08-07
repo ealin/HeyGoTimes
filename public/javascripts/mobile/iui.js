@@ -35,6 +35,7 @@ window.iui =
 
 	showPage: function(page, backwards)
 	{
+
 		if (page)
 		{
 //			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
@@ -76,6 +77,7 @@ window.iui =
 					
 			}
 		}
+
 	},
 
 	showPageById: function(pageId)
@@ -108,6 +110,7 @@ window.iui =
 
 	showPageByHref: function(href, args, method, replace, cb)
 	{
+
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
 	  function spbhCB(xhr) 
 	  {
@@ -255,7 +258,7 @@ window.iui =
 };
 
 // *************************************************************************************************
-
+var Loading_status = false ;
 addEventListener("load", function(event)
 {
 	var page = iui.getSelectedPage();
@@ -276,6 +279,9 @@ addEventListener("load", function(event)
 	}
 	setTimeout(checkOrientAndLocation, 0);
 	checkTimer = setInterval(checkOrientAndLocation, 300);
+
+    Loading_status = true ;
+
 }, false);
 
 addEventListener("unload", function(event)
@@ -285,6 +291,10 @@ addEventListener("unload", function(event)
 	
 addEventListener("click", function(event)
 {
+    if(Loading_status != true)
+        return ;
+
+
 	var link = findParent(event.target, "a");
 	if (link)
 	{
@@ -292,7 +302,9 @@ addEventListener("click", function(event)
 		
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
-			link.setAttribute("selected", "true");
+			// Ealin:like "filter"
+
+            link.setAttribute("selected", "true");
 			iui.showPage($(link.hash.substr(1)));
 			setTimeout(unselect, 500);
 		}
@@ -329,6 +341,8 @@ addEventListener("click", function(event)
 		}
 		else if (!link.target)
 		{
+            //Ealin: like "login/out"
+
 			link.setAttribute("selected", "progress");
 			iui.showPageByHref(link.href, null, "GET", null, unselect);
 		}

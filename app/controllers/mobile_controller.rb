@@ -4,6 +4,11 @@ class MobileController < PaperController
     # params:
     # :type => latest / rank
     # :page => page num to fetch
+    @loading_news_num = params[:news_num] ;
+
+    if @loading_news_num == nil
+      @loading_news_num = 10
+    end
 
     session[:news_type] = params[:type]
     @news = get_news(params[:type], params[:page])

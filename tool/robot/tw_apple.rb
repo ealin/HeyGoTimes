@@ -100,6 +100,7 @@ def get_news_from_tw_apple (m,sleep_period)
 
 
                 end
+                sleep(@sleep_period)
 
             rescue OpenURI::HTTPError => the_error
                 the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
@@ -108,7 +109,6 @@ def get_news_from_tw_apple (m,sleep_period)
           #}
 
       end
-      sleep(@sleep_period)
 
 
     end
