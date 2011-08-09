@@ -10,6 +10,9 @@ class PaperController < NewsController
       session[:news_type] = 'rank'
     end
 
+    session[:friend_ranking_mode] = false
+
+
     @news = get_news(session[:news_type], params[:page])
     session[:news_load_time] = Time.now
 
@@ -37,6 +40,7 @@ class PaperController < NewsController
     # :news_num => load ? news
     temp_str = params[:news_num]
     @loading_news_num = 0
+    session[:friend_ranking_mode] = false
 
     if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
       @loading_news_num = 10
@@ -48,6 +52,11 @@ class PaperController < NewsController
       @news = get_special_news(params[:sub_type], params[:page])
     else
       session[:news_type] = params[:type]
+
+      if(params[:sub_type] != nil && params[:sub_type] == 'friend')
+        session[:friend_ranking_mode] = true
+      end
+
       @news = get_news(params[:type], params[:page])
     end
 
@@ -58,7 +67,8 @@ class PaperController < NewsController
   end
 
 
-
+  #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)
+  #
   def get_news(type, page)
     if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
       @loading_news_num = 10
@@ -103,6 +113,13 @@ class PaperController < NewsController
     else
       user_id = nil
       friend_type = :none
+    end
+
+    if session[:friend_ranking_mode] == true
+      user_tags[0] = 'All'
+      if user_id != nil
+         friend_type = :friend
+      end
     end
 
     if (News.count > 0)
@@ -277,14 +294,14 @@ class PaperController < NewsController
     @newspaper_title = t(:slogan)
     @areas.each do |area|
       if session[:filter_area].include?(area.name)
-        @newspaper_title += (t(area.name.to_sym) + " ")
+        @newspaper_title += (" " + t(area.name.to_sym) + "/")
       end
     end
 
 
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
-        @newspaper_title += (t(tag.name.to_sym) + " ")
+        @newspaper_title += (t(tag.name.to_sym) + "/")
         counter += 1
         if counter >= 5
           @newspaper_title += "..."

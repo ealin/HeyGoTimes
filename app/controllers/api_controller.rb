@@ -192,6 +192,10 @@ class ApiController < ApplicationController
     @news.save
   end
 
+  if (News.count > @@max_news)
+    #News.destroy(News.first)
+  end
+
   response_str = "OK!"
   respond_to do |format|
     format.html { render  :inline => response_str }
