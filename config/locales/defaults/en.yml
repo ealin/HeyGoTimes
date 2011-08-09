@@ -28,7 +28,7 @@ en:
   
   #filter_news: "Filter News"
   ok: "OK"
-  cancel: "Cncel"
+  cancel: "Cancel"
 
   popular_news: "Popular"
   latest_news: "Latest"
@@ -39,6 +39,7 @@ en:
   like_hint: "I like it"
   unlike_hint: "I don't like it"
   comments: "Comments"
+  suggests: "Suggest news"
   watched: "Watched"
   share: "Share"
   share_hint: "Share to Facebook"

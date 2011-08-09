@@ -21,6 +21,19 @@ class NewsController < ApplicationController
     @tags = Tag.all
     @areas = Area.all
 
+    if @news.area_string != nil
+      news_areas = @news.area_string.split("/")
+    else
+      news_areas[0] = 'All_area'
+    end
+
+    news_tags = Array.new
+    @news.tags.each_with_index do |tag, index|
+      news_tags[index] = tag.name
+    end
+
+    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags).paginate :page => 1, :per_page => @loading_news_num
+
     # check login status,
     # prevent direct link to news page => cause exception: current_facebook_user is nil
     check_logged_in(false)
