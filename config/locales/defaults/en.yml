@@ -6,10 +6,14 @@ en:
   slogan: "Curent News Filter:"
   
   Home: "Home"
-  Friends_slogan: "You must don't want to miss any news which your friends concern most! Press the Link:"
-  Friends_ranking: "Ranking by Friends' News"
-  Friends_ranking_title: "Curent News Filter: Ranking by Friends' News."
+  Friends_slogan: "Not want to miss any news which your friends concern? Press the Link:"
+  Friends_ranking: "News of your friends"
+  Friends_ranking_title: "Curent News Filter: News of your friends."
 
+  fb_login_icon_hint: "You can use your facebook account to login and no need to fill anything. Besides, HeyGo! Times would not collect any of your data."
+  Friends_ranking_hint: "HeyGo! Times would keep all news which your friends concerned, and sort all of these news by our unique algorithm. So that you will not miss any important news."
+  slogan_title_hint: "You could use [Filter] function to filter all news (there are 4 filter options - Area、Tags or Attributes、Date and Friends.)"
+  
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------

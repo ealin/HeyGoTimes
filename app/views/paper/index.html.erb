@@ -105,9 +105,9 @@
       if (currType == undefined)
         currType = 'rank';
 
-      $('#fb_login_icon').bt('fb_login_icon_hint',{positions: 'right',width:100}) ;
-
-
+      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120}) ;
+      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200}) ;
+      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240}) ;
 
 
 

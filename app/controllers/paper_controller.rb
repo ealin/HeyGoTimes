@@ -294,14 +294,14 @@ class PaperController < NewsController
     @newspaper_title = t(:slogan)
     @areas.each do |area|
       if session[:filter_area].include?(area.name)
-        @newspaper_title += (t(area.name.to_sym) + " ")
+        @newspaper_title += (" " + t(area.name.to_sym) + "/")
       end
     end
 
 
     @tags.each do |tag|
       if session[:filter_tags].include?(tag.name)
-        @newspaper_title += (t(tag.name.to_sym) + " ")
+        @newspaper_title += (t(tag.name.to_sym) + "/")
         counter += 1
         if counter >= 5
           @newspaper_title += "..."

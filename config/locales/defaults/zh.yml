@@ -7,6 +7,10 @@ zh:
   Friends_slogan: "不想错过任何一则好友们关注的新闻吗？请按下此连结："
   Friends_ranking: "好友关注的新闻排行榜"
   Friends_ranking_title: "您的新闻筛选属性： 好友关注的新闻排行榜"
+  
+  fb_login_icon_hint: "您可直接使用facebook的帐号登入，无需填写任何资料，HeyGo! Times并不会蒐集您的任何个人资料。"
+  Friends_ranking_hint: "HeyGo! Times会记录您所有好友阅读过、评论过、分享过..的新闻，透过独创的排序演算法，让您绝不错过任何一则朋友们关注的新闻！（此为快捷按钮，您亦可在下方的 [筛选新闻] 裡完成相同功能。）"  
+  slogan_title_hint: "您可使用右下方的 [筛选新闻] 对新闻进行筛选，可设定的筛选条件除了包含：地区、新闻属性、日期 之外，亦可只列出您个人或所有好友们所关注的新闻。"
 
   #----------------------------------------
   # name of each page(controller/view)
