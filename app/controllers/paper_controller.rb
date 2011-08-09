@@ -10,6 +10,9 @@ class PaperController < NewsController
       session[:news_type] = 'rank'
     end
 
+    session[:friend_ranking_mode] = false
+
+
     @news = get_news(session[:news_type], params[:page])
     session[:news_load_time] = Time.now
 
@@ -35,16 +38,25 @@ class PaperController < NewsController
     # :type => latest / rank / special
     # :page => page num to fetch
     # :news_num => load ? news
-    @loading_news_num = params[:news_num] ;
+    temp_str = params[:news_num]
+    @loading_news_num = 0
+    session[:friend_ranking_mode] = false
 
-    if @loading_news_num == nil
+    if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
       @loading_news_num = 10
+    else
+      @loading_news_num = Integer(temp_str)
     end
 
     if (params[:type] == 'special')
       @news = get_special_news(params[:sub_type], params[:page])
     else
       session[:news_type] = params[:type]
+
+      if(params[:sub_type] != nil && params[:sub_type] == 'friend')
+        session[:friend_ranking_mode] = true
+      end
+
       @news = get_news(params[:type], params[:page])
     end
 
@@ -55,9 +67,10 @@ class PaperController < NewsController
   end
 
 
-
+  #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)
+  #
   def get_news(type, page)
-    if @loading_news_num == nil
+    if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
       @loading_news_num = 10
     end
 
@@ -102,6 +115,13 @@ class PaperController < NewsController
       friend_type = :none
     end
 
+    if session[:friend_ranking_mode] == true
+      user_tags[0] = 'All'
+      if user_id != nil
+         friend_type = :friend
+      end
+    end
+
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
         @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
@@ -127,7 +147,7 @@ class PaperController < NewsController
 
 
   def get_special_news(type, page)
-    if @loading_news_num == nil
+    if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
       @loading_news_num = 10
     end
 

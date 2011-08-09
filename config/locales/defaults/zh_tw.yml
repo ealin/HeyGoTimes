@@ -1,9 +1,15 @@
 zh_tw:
 
   HeyGoTimes: "黑狗日報"
-  slogan: "您的專屬新聞 - "
+  slogan: "您的新聞篩選屬性： "
 
   Home: "首頁"
+  Friends_slogan: "不想錯過任何一則好友們關注的新聞嗎？請按下此連結："
+  Friends_ranking: "好友關注的新聞排行榜"
+  Friends_ranking_title: "您的新聞篩選屬性： 好友關注的新聞排行榜"
+
+  fb_login_icon_hint: ""
+  Friends_ranking_hint: ""
 
   #----------------------------------------
   # name of each page(controller/view)

@@ -3,9 +3,12 @@
 
 en:
   HeyGoTimes: "HeyGo!Times"
-  slogan: "Your News - "
+  slogan: "Curent News Filter:"
   
   Home: "Home"
+  Friends_slogan: "You must don't want to miss any news which your friends concern most! Press the Link:"
+  Friends_ranking: "Ranking by Friends' News"
+  Friends_ranking_title: "Curent News Filter: Ranking by Friends' News."
 
   #----------------------------------------
   # name of each page(controller/view)
