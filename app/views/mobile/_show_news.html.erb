@@ -1,4 +1,7 @@
+<!--
 <button style="font-size:14px"><a <% if !redirect_from_web %> target="_webapp" <% end %>href="#m_news_comments" style="text-decoration: none;"><img src="/images/arrow_down.png" alt="" height="14px"/><%= t(:m_to_comment) %></a></button>
+ -->
+
 
 <% if @news.url != "" %>
   <div class="news_frame" style="width: 100%;">
@@ -33,9 +36,11 @@
 
 <div id="m_news_comments" class="m_news_fb_comments">
   <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><% if !redirect_from_web %>
+        <!--
         <button style="font-size:14px"
                 onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});">
                 <img src="/images/arrow_left.png" alt="" height="14px"/><%= t(:m_prev) %></button><% end %></span></div>
+         -->
   <div class="m_button_group"></div>
   <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
     <div id="fb-root"></div>
@@ -61,8 +66,17 @@
 </div> <!-- comments -->
 
 <div id="go_back" onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});"
-      style="position:fixed;top:320px;left:0px;"><% if !redirect_from_web %>
-        <button style="font-size:14px" ><img src="/images/arrow_left.png" alt="" height="14px"/><%= t(:m_prev) %></button><% end %></div>
+      style="position:fixed;top:340px;left:0px;"><% if !redirect_from_web %>
+        <button style="font-size:16px;color:RED;" ><img src="/images/arrow_left.png" alt="" width="20px"/><%= t(:m_prev) %></button><% end %>
+</div>
+
+<div id="go_to_comment" style="position:fixed;top:340px;left:180px;">
+  <% if !redirect_from_web %>
+        <button style="font-size:16px;" ><a <% if !redirect_from_web %> target="_webapp" <% end %> href="#m_news_comments" style="text-decoration: none;color:red"><img src="/images/arrow_down.png" alt="" height="20px"/><%= t(:m_to_comment) %></a>
+        </button>
+  <% end %>
+</div>
+
 
 <% if redirect_from_web %>
   <div class="m_ad">

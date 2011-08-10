@@ -12,7 +12,7 @@ en:
 
   fb_login_icon_hint: "You can use your facebook account to login and no need to fill anything. Besides, HeyGo! Times would not collect any of your data."
   Friends_ranking_hint: "HeyGo! Times would keep all news which your friends concerned, and sort all of these news by our unique algorithm. So that you will not miss any important news."
-  slogan_title_hint: "You could use [Filter] function to filter all news (there are 4 filter options - Area、Tags or Attributes、Date and Friends.)"
+  slogan_title_hint: "You could use [Filter] function to filter all news (there are 4 filter options - Area,Tags or Attributes、Date and Friends.)"
   
   #----------------------------------------
   # name of each page(controller/view)
@@ -76,7 +76,7 @@ en:
   m_setting_list: "Setting about Friends & Date:"
 
   m_to_comment: "Comment this news"
-  m_prev: "Back to Main Page"
+  m_prev: "Back"
 
   m_number_of_tags_selected: "There are "
   m_number_of_tags_selected2: " tags are selected."
