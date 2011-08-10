@@ -197,11 +197,8 @@ class ApiController < ApplicationController
     News.destroy(outdated_news)
   end
 
-  response_data = Hash.new
   response_str = "OK!"
-  response_data['status']='OK'
   respond_to do |format|
     format.html { render :inline => response_str }
-    format.html { render :json => response_data.to_json}
   end
 end
