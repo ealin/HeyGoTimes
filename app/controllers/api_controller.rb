@@ -198,7 +198,9 @@ class ApiController < ApplicationController
   end
 
   response_str = "OK!"
+  response_data['status']='OK'
   respond_to do |format|
-    format.html { render  :inline => response_str }
+    format.html { render :inline => response_str }
+    format.html { render :json => response_data.to_json}
   end
 end
