@@ -134,7 +134,7 @@ class ApiController < ApplicationController
   end
 
   def add_news
-    response_data = Hash.new
+    response_data = {}
     # Check URL existence
     @news = News.find_by_url(params[:url])
     if (@news != nil)
