@@ -51,6 +51,7 @@
       $('#fb_comment'+news_id).append(comment_str);
 
       FB.XFBML.parse(document.getElementById('comments'));
+      FB.Event.subscribe('comment.create',function(resp){comment(resp);});
     }
 
     function loading_animate(on){
@@ -189,20 +190,7 @@
            changePaperType(currType, subType);
       });
 
-
-
       loading_animate(false);
-
-      // todo: FB would be not defined sometims
-      //if (typeof(FB) == 'undefined' || FB == null )
-      //    alert("222") ;
-      //else
-      //{
-          FB.Event.subscribe('comment.create',function(resp){
-            comment(resp);
-          });
-      //}
-
 
     });
 

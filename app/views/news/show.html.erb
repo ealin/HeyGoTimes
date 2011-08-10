@@ -29,6 +29,19 @@
           }
       });
     }
+    function comment(resp)
+    {
+      var pos = resp.href.indexOf('/news/');
+      var id = resp.href.substring(pos+6);
+      pos=id.indexOf('-');
+      id=id.substring(0, pos);
+
+      $.ajax({
+        type: "POST",
+        url: "/news/comment",
+        data: "news_id="+id
+      });
+    }
   </script>
 </head>  <%# end tag for <head> in application.html.erb %>
 <% news_id = @news.id %>
@@ -119,6 +132,9 @@
             window.fbAsyncInit = function() {
               FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
                        xfbml: true});
+              FB.Event.subscribe('comment.create',function(resp){
+                comment(resp);
+              });
             };
             (function() {
               var e = document.createElement('script'); e.async = true;
