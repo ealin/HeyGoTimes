@@ -134,13 +134,12 @@ class ApiController < ApplicationController
   end
 
   def add_news
-    response_data = {}
+
     # Check URL existence
     @news = News.find_by_url(params[:url])
     if (@news != nil)
-      response_data['status'] = 'duplicate!!'
       respond_to do |format|
-        format.json { render :json => response_data.to_json }
+        format.json { render :json => @news }
       end
 
       return
