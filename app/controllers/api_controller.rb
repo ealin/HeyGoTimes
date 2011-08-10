@@ -128,7 +128,7 @@ class ApiController < ApplicationController
     response = Net::HTTP.new(@@host, @@port).start {|http| http.request(req) }
 
     respond_to do |format|
-      format.html { render  :inline => response_str }
+      format.html { render :inline => response_str }
     end
 
   end
@@ -138,9 +138,8 @@ class ApiController < ApplicationController
     # Check URL existence
     @news = News.find_by_url(params[:url])
     if (@news != nil)
-        response_str = 'duplicate!!'
         respond_to do |format|
-          format.html { render  :inline => response_str }
+          format.json { render :json => @news }
         end
 
         return
@@ -193,11 +192,11 @@ class ApiController < ApplicationController
   end
 
   if (News.count > @@max_news)
-    #News.destroy(News.first)
+    outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+    News.destroy(outdated_news)
   end
 
-  response_str = "OK!"
   respond_to do |format|
-    format.html { render  :inline => response_str }
+    format.json { render :json => @news }
   end
 end
