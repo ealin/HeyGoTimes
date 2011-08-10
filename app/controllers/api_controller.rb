@@ -192,8 +192,8 @@ class ApiController < ApplicationController
     @news.save
   end
 
-  response_data['status'] = 'ok!'
+
   respond_to do |format|
-    format.json { render :json => response_data.to_json }
+    format.json { render :json => 'ok' }
   end
 end
