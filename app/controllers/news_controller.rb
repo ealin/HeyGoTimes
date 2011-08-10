@@ -17,7 +17,7 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.xml
   def show
-    @news = News.find_by_fb_obj_url(params[:id])
+    @news = News.find(params[:id])
     @tags = Tag.all
     @areas = Area.all
 
@@ -32,7 +32,7 @@ class NewsController < ApplicationController
       news_tags[index] = tag.name
     end
 
-    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags).paginate :page => 1, :per_page => 8
+    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags).paginate :page => 1, :per_page => 10
 
     # check login status,
     # prevent direct link to news page => cause exception: current_facebook_user is nil

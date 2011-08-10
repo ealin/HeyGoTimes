@@ -2,7 +2,9 @@
 <span>
     <%#= link_to t(:main_page),{:controller => 'paper'},{:title => 'to main page'}%>
     <% if @login_flag && session[:logged_in] == false %>
+      <span id="fb_login_icon">
       <%= show_logging_link %>
+      </span>
     <% else %>
       <% # setup-dialog would be shown only when user is logged in. %>
       <% #= link_to t(:setting),{:controller => 'setup'},{:title => '設定'}%>

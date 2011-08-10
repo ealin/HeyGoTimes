@@ -100,8 +100,15 @@
       var currType = '<%= session[:news_type] %>';
       var subType = '';
 
+      var newspaper_title =  '<%= @newspaper_title %>' ;
+
       if (currType == undefined)
         currType = 'rank';
+
+      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120}) ;
+      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200}) ;
+      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240}) ;
+
 
 
       $('#more_news').unbind('click').click(function() {
@@ -125,6 +132,7 @@
         currPage = 1;
         currType = 'rank';
         changePaperType(currType, '');
+        $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
       });
 
       $('#menu-item-latest').unbind('click').click(function(){
@@ -133,6 +141,7 @@
         currPage = 1;
         currType = 'latest';
         changePaperType(currType, '');
+        $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
       });
 
       $('#show_faq').unbind('click').click(function() {
@@ -140,6 +149,7 @@
         currType = 'special';
         subType = 'faq';
         changePaperType(currType, subType);
+        $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:FAQ) %>' ;
       });
 
       $('#show_feedback').unbind('click').click(function() {
@@ -153,6 +163,7 @@
         currType = 'special';
         subType = 'feedback';
         changePaperType(currType, subType);
+        $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:feedback) %>' ;
       });
 
       $('#show_notice').unbind('click').click(function() {
@@ -160,7 +171,25 @@
         currType = 'special';
         subType = 'notice';
         changePaperType(currType, subType);
+        $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:notice) %>' ;
       });
+
+
+      $('#show_friends_news').unbind('click').click(function() {
+           if(<%= session[:logged_in]%> == false)
+           {
+               alert("<%= t(:login_for_set_friend_filter) %>") ;
+               return ;
+           }
+
+           $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:Friends_ranking_title) %>' ;
+           currPage = 1;
+           currType = 'rank';
+           subType = 'friend';
+           changePaperType(currType, subType);
+      });
+
+
 
       loading_animate(false);
 
@@ -184,21 +213,7 @@
 
         window.location = "/paper/set_default_locale?" + data ;
 
-        /*
-        // send to server
-         $.ajax(
-         {
-             type: "GET",
-             url:"/paper/set_default_locale",
-             data: data,
-             success: function(html)
-             {
-                 // redirect to main page in order to redraw the news by new filter!
-                  window.location.replace("/");
-             }
-         });
-         */
-    }
+     }
 
     function report_the_spam(spam_new_id, spam_news_title)
     {
@@ -232,6 +247,7 @@
          });
     }
 
+
   </script>
 
 </head> <%# end tag for <head> in application.html.erb %>
@@ -242,6 +258,24 @@
 <% if detect_Mobile_browser(:list) == true %>
     <%= redirect_to  :controller => 'mobile', :action => 'index' %>
 <% end %>
+
+
+<div align="center">
+    <img width="72px" src="/images/icon_blue_new.png"/>
+    <span style="font-size:16px;color:red;"><%= t(:Friends_slogan) %>
+      <input
+         id = "show_friends_news"
+         type="button"
+         name="groovybtn1"
+         class="groovybutton_red"
+         value="<%= t(:Friends_ranking) %>"
+         title=""
+         onclick="">
+
+    </span>
+
+</div>
+
 
 <div id="page">
   <div id="header">
@@ -268,24 +302,29 @@
     <div class="menu-header">
       <ul id="menu-area" class="menu">
         <div id="menu-type-btn">
+
         <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
         <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
 
         <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
         </div>
+
         <div id="menu-fun-btn">
         <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
+
         <% if session[:logged_in] == true %>
            <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" ><%=t(:m_report)%></a></li>
         <% else %>
             <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
         <% end %>
-        <li id="menu-item-notice" class="menu-item fun-btn"><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+
+        <li id="menu-item-notice" class="menu-item fun-btn" title='12345'><a id='show_notice' href='#'><%= t(:notice) %></a></li>
         <li id="menu-item-logout" class="menu-item fun-btn"><%= show_logout_link if !(@login_flag && session[:logged_in] == false) %></li>
         </div>
       </ul>
     </div>
   </div><!-- #access -->
+
 
   <div id="main">
     <div id="content">
