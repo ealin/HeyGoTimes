@@ -197,6 +197,7 @@ class ApiController < ApplicationController
     News.destroy(outdated_news)
   end
 
+  response_data = Hash.new
   response_str = "OK!"
   response_data['status']='OK'
   respond_to do |format|
