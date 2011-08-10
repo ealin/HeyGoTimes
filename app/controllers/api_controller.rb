@@ -191,6 +191,10 @@ class ApiController < ApplicationController
     @news.save
   end
 
+  if (News.count > @@max_news)
+    outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+    News.destroy(outdated_news)
+  end
 
   respond_to do |format|
     format.json { render :json => @news }
