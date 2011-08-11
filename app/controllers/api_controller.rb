@@ -128,7 +128,7 @@ class ApiController < ApplicationController
     response = Net::HTTP.new(@@host, @@port).start {|http| http.request(req) }
 
     respond_to do |format|
-      format.html { render  :inline => response_str }
+      format.html { render :inline => response_str }
     end
 
   end
@@ -138,11 +138,11 @@ class ApiController < ApplicationController
     # Check URL existence
     @news = News.find_by_url(params[:url])
     if (@news != nil)
-      respond_to do |format|
-        format.json { render :json => @news }
-      end
+        respond_to do |format|
+          format.json { render :json => @news }
+        end
 
-      return
+        return
     end
 
     @news = News.new(params[:news])
@@ -189,14 +189,15 @@ class ApiController < ApplicationController
      end
 
     @news.save
-  end
 
-  if (News.count > @@max_news)
-    outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
-    News.destroy(outdated_news.id)
-  end
+    if (News.count > @@max_news)
+      outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+      News.destroy(outdated_news.id)
+      puts 'removed news: '+outdated_news.id.to_s
+    end
 
-  respond_to do |format|
-    format.json { render :json => @news }
+    respond_to do |format|
+      format.json { render :json => @news }
+    end
   end
 end

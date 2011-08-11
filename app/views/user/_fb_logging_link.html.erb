@@ -15,9 +15,7 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
-
-    FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-             xfbml: true});
+    FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true, xfbml: true});
   };
   (function() {
     var e = document.createElement('script'); e.async = true;

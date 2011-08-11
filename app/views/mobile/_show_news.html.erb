@@ -4,7 +4,7 @@
 
 
 <% if @news.url != "" %>
-  <div class="news_frame" style="width: 100%;">
+  <div id="m_top" class="news_frame" style="width: 100%;">
     <% # TODO: use @paper_width %>
       <% if (@news.url.include?'youtu') %>
         <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
@@ -36,11 +36,10 @@
 
 <div id="m_news_comments" class="m_news_fb_comments">
   <div class="m_comment_title" style="font-size: 1.4em;">  <%= t(:comments)%><span><% if !redirect_from_web %>
-        <!--
-        <button style="font-size:14px"
-                onclick="iui.goBack(function(){document.getElementById('m_news<%= @news.id %>').scrollIntoView()});">
-                <img src="/images/arrow_left.png" alt="" height="14px"/><%= t(:m_prev) %></button><% end %></span></div>
-         -->
+        <button style="font-size:16px;" ><a <% if !redirect_from_web %> target="_webapp" <% end %> href="#m_top" style="text-decoration: none;color:red"><img src="/images/arrow_up.png" alt="" height="20px"/><%= t(:to_top) %></a>
+        </button>
+  <% end %></span></div>
+
   <div class="m_button_group"></div>
   <div class="m_fb_comment" id="fb_comment<%= @news.id %>">
     <div id="fb-root"></div>

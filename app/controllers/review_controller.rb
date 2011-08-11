@@ -146,12 +146,7 @@ class ReviewController < NewsController
     news = News.find(news_id)
 
     if(news != nil)
-      news.special_flag= true
-
-      tag = Tag.find_by_name("Closed_spam") ;
-      news.tags =[]
-      news.tags << tag
-      news.save
+      News.destroy(news.id)
 
       response_str = "OK"
     end

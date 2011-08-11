@@ -51,6 +51,7 @@
       $('#fb_comment'+news_id).append(comment_str);
 
       FB.XFBML.parse(document.getElementById('comments'));
+      FB.Event.subscribe('comment.create',function(resp){comment(resp);});
     }
 
     function loading_animate(on){
@@ -189,20 +190,7 @@
            changePaperType(currType, subType);
       });
 
-
-
       loading_animate(false);
-
-      // todo: FB would be not defined sometims
-      //if (typeof(FB) == 'undefined' || FB == null )
-      //    alert("222") ;
-      //else
-      //{
-          FB.Event.subscribe('comment.create',function(resp){
-            comment(resp);
-          });
-      //}
-
 
     });
 
@@ -349,6 +337,8 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
+        <br><br>
         <%= render :partial => 'paper/show_ad_list' %>
       </div>
     </div>
