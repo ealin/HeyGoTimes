@@ -199,6 +199,5 @@ class ApiController < ApplicationController
     respond_to do |format|
       format.json { render :json => @news }
     end
-
   end
 end

@@ -106,9 +106,13 @@
       if (currType == undefined)
         currType = 'rank';
 
-      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120}) ;
-      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200}) ;
-      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240}) ;
+      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
+      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
+
+      $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+      $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
+
 
 
 
@@ -249,7 +253,7 @@
 
 
 <div align="center">
-    <img width="72px" src="/images/icon_blue_new.png"/>
+    <img width="72px" src="/images/icon_red_new.png"/>
     <span style="font-size:16px;color:red;"><%= t(:Friends_slogan) %>
       <input
          id = "show_friends_news"
@@ -291,8 +295,8 @@
       <ul id="menu-area" class="menu">
         <div id="menu-type-btn">
 
-        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="javascript:void(null)"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="javascript:void(null)"><%=t(:latest_news)%></a></li>
+        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a href="javascript:void(null)"><%=t(:popular_news)%></a></li>
+        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a href="javascript:void(null)"><%=t(:latest_news)%></a></li>
 
         <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
         </div>
@@ -306,7 +310,7 @@
             <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
         <% end %>
 
-        <li id="menu-item-notice" class="menu-item fun-btn" title='12345'><a id='show_notice' href='#'><%= t(:notice) %></a></li>
+        <li id="menu-item-notice" class="menu-item fun-btn" ><a id='show_notice' href='#'><%= t(:notice) %></a></li>
         <li id="menu-item-logout" class="menu-item fun-btn"><%= show_logout_link if !(@login_flag && session[:logged_in] == false) %></li>
         </div>
       </ul>
