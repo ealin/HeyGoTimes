@@ -18,6 +18,10 @@ class NewsController < ApplicationController
   # GET /news/1.xml
   def show
     @news = News.find_by_fb_obj_url(params[:id])
+    if @news == nil
+      # ealin: prevent Notice, FAQ, feedback-record not showing
+      @news = News.find(params[:id])
+    end
     @tags = Tag.all
     @areas = Area.all
 
