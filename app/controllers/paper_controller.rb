@@ -36,7 +36,6 @@ class PaperController < NewsController
 
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
-      @notations = News.get_notation(user)
     end
   end
 
