@@ -302,7 +302,9 @@
         <div><ul>
           <% if @notations != nil %>
             <% @notations.each do |news|%>
-              <li><a href="#"><span><%= news.title %></span></a></li>
+              <% color=(DateTime.parse(news.event_time) > @notification_time)? 'red': 'white' %>
+              <% url = news_index_path+'/'+news.fb_obj_url %>
+              <li><a href="<%= url %>" onclick="window.open('<%= url %>'); return false;"><span style="color:<%= color %>;"><%= news.title %></span></a></li>
             <% end %>
           <% end %>
         </ul></div>
@@ -312,7 +314,7 @@
       <div id="menu_fun_btn">
       <li><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>"><span><%=t(:m_filter)%></span></a></li>
       <li><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>"><span><%=t(:m_report)%></span></a></li>
-      <li><a id='show_notice'><span><%= t(:notice) %></span></a></li>
+      <li><a id='show_notice'><span style="color:red;"><%= t(:notice) %></span></a></li>
       </div>
     </ul>
   </div>

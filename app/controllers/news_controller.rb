@@ -17,13 +17,15 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.xml
   def show
-    @news = News.find_by_fb_obj_url(params[:id])
+    id = (params[:id]==nil)? params: params[:id]
+    @news = News.find_by_fb_obj_url(id)
     @tags = Tag.all
     @areas = Area.all
 
     if @news.area_string != nil
       news_areas = @news.area_string.split("/")
     else
+      news_areas = Array.new
       news_areas[0] = 'All_area'
     end
 

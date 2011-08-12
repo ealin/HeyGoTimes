@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801042554) do
+ActiveRecord::Schema.define(:version => 20110812081615) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -133,12 +133,14 @@ ActiveRecord::Schema.define(:version => 20110801042554) do
     t.string   "locale"
     t.datetime "birthday"
     t.string   "host_account"
-    t.integer  "host_id",             :limit => 8
+    t.integer  "host_id",                 :limit => 8
     t.integer  "host_site"
-    t.boolean  "admin",                            :default => false
+    t.boolean  "admin",                                :default => false
     t.date     "last_update_friends"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_event_notification"
+    t.datetime "last_sys_notification"
   end
 
 end

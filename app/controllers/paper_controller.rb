@@ -31,6 +31,10 @@ class PaperController < NewsController
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
       @notations = News.get_notation(user)
+      @notification_time = user.last_event_notification
+
+      user.last_event_notification = Time.now
+      user.save
     end
   end
 
