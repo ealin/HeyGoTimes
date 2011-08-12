@@ -1,9 +1,13 @@
 class ApiController < ApplicationController
   @@max_news = 30000
-  #@@host = "localhost"
-  #@@port = 3000
-  @@host = "heygotimes.heroku.com"
-  @@port = 80
+
+  if ENV['RAILS_ENV'] != 'development'
+    @@host = "heygotimes.heroku.com"
+    @@port = 80
+  else
+    @@host = "localhost"
+    @@port = 3000
+  end
 
   def new_news
     # parameter: # area, tags,  url
@@ -113,11 +117,13 @@ class ApiController < ApplicationController
       #
       # create a new news record and save to db  (reference to news_contrller/create
       #
-      @news = News.new(params[:news])
-      @news.url = params[:url]
-      @news.title = title
+      if ENV['RAILS_ENV'] != 'development'
+        @news = News.new(params[:news])
+        @news.url = params[:url]
+        @news.title = title
 
-      @news.save
+        @news.save
+      end
     end
 
 
