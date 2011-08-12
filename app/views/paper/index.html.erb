@@ -3,6 +3,8 @@
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
+  <link type='text/css' href='/stylesheets/menu.css' rel='stylesheet' media='screen' />
+  <script type='text/javascript' src='/javascripts/menu.js'></script>
 
   <script type="text/javascript">
     function like(user, news, like)
@@ -58,7 +60,7 @@
       if (on)
         $('#loading_animate').html("<img src='/images/fb_loading_large.gif'/>");
       else
-        $('#loading_animate').html('');
+        $('#loading_animate').html('<a></a>');
     }
 
     function loadMore(type, subType, pageNo,news_num)
@@ -106,6 +108,7 @@
       if (currType == undefined)
         currType = 'rank';
 
+<<<<<<< HEAD
       $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
       $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
@@ -113,27 +116,35 @@
       $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
 
+=======
+      <% if (session[:news_type] == 'rank') %>
+        $('#menu-item-latest').removeClass("active");
+      <% else %>
+        $('#menu-item-rank').removeClass("active");
+      <% end %>
 
-
+      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120}) ;
+      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200}) ;
+      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240}) ;
+>>>>>>> origin/master
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,10);
       });
 
-        $('#more_15news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage,15);
-        });
-        $('#more_20news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage,20);
-        });
-        $('#more_25news').unbind('click').click(function() {
-          loadMore(currType, subType, ++currPage,25);
-        });
-
+      $('#more_15news').unbind('click').click(function() {
+        loadMore(currType, subType, ++currPage,15);
+      });
+      $('#more_20news').unbind('click').click(function() {
+        loadMore(currType, subType, ++currPage,20);
+      });
+      $('#more_25news').unbind('click').click(function() {
+        loadMore(currType, subType, ++currPage,25);
+      });
 
       $('#menu-item-rank').unbind('click').click(function(){
-        $('#menu-item-latest').removeClass("current-menu-item");
-        $(this).addClass("current-menu-item");
+        $('#menu-item-latest').removeClass("active");
+        $(this).addClass("active");
         currPage = 1;
         currType = 'rank';
         changePaperType(currType, '');
@@ -141,8 +152,8 @@
       });
 
       $('#menu-item-latest').unbind('click').click(function(){
-        $('#menu-item-rank').removeClass("current-menu-item");
-        $(this).addClass("current-menu-item");
+        $('#menu-item-rank').removeClass("active");
+        $(this).addClass("active");
         currPage = 1;
         currType = 'latest';
         changePaperType(currType, '');
@@ -178,7 +189,6 @@
         changePaperType(currType, subType);
         $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:notice) %>' ;
       });
-
 
       $('#show_friends_news').unbind('click').click(function() {
            if(<%= session[:logged_in]%> == false)
@@ -285,38 +295,38 @@
 
       <div id="page_head2" >
         <%= show_page_head(:login_flag => true)  %>
+        <% if !(@login_flag && session[:logged_in] == false) %>
+          <%= show_logout_link %>
+        <% end %>
       </div><!-- #page_head -->
     </div><!-- #page_head -->
 
   </div><!-- #header -->
 
-  <div id="access">
-    <div class="menu-header">
-      <ul id="menu-area" class="menu">
-        <div id="menu-type-btn">
 
-        <li id="menu-item-rank" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a href="javascript:void(null)"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a href="javascript:void(null)"><%=t(:latest_news)%></a></li>
-
-        <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
-        </div>
-
-        <div id="menu-fun-btn">
-        <li id="menu-item-filter" class="menu-item fun-btn"><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>" href="javascript:void(null)" ><%=t(:m_filter)%></a></li>
-
-        <% if session[:logged_in] == true %>
-           <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)" ><%=t(:m_report)%></a></li>
-        <% else %>
-            <li id="menu-item-report" class="menu-item fun-btn"><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>" href="javascript:void(null)"><%=t(:m_report)%></a></li>
-        <% end %>
-
-        <li id="menu-item-notice" class="menu-item fun-btn" ><a id='show_notice' href='#'><%= t(:notice) %></a></li>
-        <li id="menu-item-logout" class="menu-item fun-btn"><%= show_logout_link if !(@login_flag && session[:logged_in] == false) %></li>
-        </div>
-      </ul>
-    </div>
-  </div><!-- #access -->
-
+  <div id="menu">
+    <ul class="menu">
+      <div id="menu_type_btn">
+      <li id="menu-item-rank" class="active"><a class="parent"><span><%=t(:popular_news)%></span></a></li>
+      <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
+      <li><a class="parent"><span>Notation</span></a>
+        <div><ul>
+          <% if @notations != nil %>
+            <% @notations.each do |news|%>
+              <li><a href="#"><span><%= news.title %></span></a></li>
+            <% end %>
+          <% end %>
+        </ul></div>
+      </li>
+      <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
+      </div>
+      <div id="menu_fun_btn">
+      <li><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>"><span><%=t(:m_filter)%></span></a></li>
+      <li><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>"><span><%=t(:m_report)%></span></a></li>
+      <li><a id='show_notice'><span><%= t(:notice) %></span></a></li>
+      </div>
+    </ul>
+  </div>
 
   <div id="main">
     <div id="content">
@@ -324,20 +334,15 @@
         <% # TODO: use @paper_width %>
         <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news, :news_sub_type => ""} %>
       </div>
-
-        <div id="more_news">
-            <a><%= t(:m_more) %></a> <span id="loading_more_news"></span>
-        </div>
-
+      <div id="more_news">
+          <a><%= t(:m_more) %></a> <span id="loading_more_news"></span>
+      </div>
     </div>
-
     <div id="sub">
-
       <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
       <div id="functionalButton">
         <%= render :partial => 'paper/show_fun_buttons' %>
       </div>
-
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
@@ -348,29 +353,20 @@
     </div>
   </div><!-- #main -->
 
+  <div id="footer">
+    <%= show_page_tail %>
+  </div>
 
-
-
-  <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->
-    <div id="footer">
-      <%= show_page_tail %>
-    </div>
-
-
-<div id="add_moremore_news">
-  <a id="more_15news"> +15 </a>
-  &nbsp;
-  <a id="more_20news"> +20 </a>
-  &nbsp;
-  <a id="more_25news"> +25 </a>
-</div>
-
+  <div id="add_moremore_news">
+    <a id="more_15news"> +15 </a>
+    &nbsp;
+    <a id="more_20news"> +20 </a>
+    &nbsp;
+    <a id="more_25news"> +25 </a>
+  </div>
 
 </div> <!-- /page -->
   <!-- news/_show_page_tail.html.erb  -->
-
-
-
 
 <div id="toolbar-box">
     <!-- 浮動視窗內的程式碼…  -->
@@ -378,9 +374,5 @@
   <a href='https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681'
        onclick="alert('<%= t(:feedback_message) %>') ;"><img src="/images/feedback.png"/></a>
 </div>
-
-
-
-
 
 </body>
