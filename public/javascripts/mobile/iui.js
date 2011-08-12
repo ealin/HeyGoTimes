@@ -27,7 +27,7 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
-	animOn: false,	// Slide animation with CSS transition is now enabled by default where supported
+	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
 
 	httpHeaders: {
 	    "X-Requested-With" : "XMLHttpRequest"

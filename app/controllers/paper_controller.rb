@@ -2,6 +2,12 @@ class PaperController < NewsController
 
   def index
 
+    @m_reload_flag = false
+    if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
+      @m_reload_flag = true
+    end
+
+
     if (params[:type] != nil)
       session[:news_type] = params[:type]
     end
