@@ -85,11 +85,11 @@
             onclick="window.scrollTo(0,1000) ;">
          </span>
 
-        <% if @news.url != "" %>
+        <% if @news.url != nil && @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
           <div>
             <% # TODO: use @paper_width %>
-              <% if (@news.url.include?'youtu') %>
+              <% if  (@news.url.include?'youtu') %>
                 <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
 
                 <span style="font-size:24px"> <%= @news.title %> <br></span>
@@ -106,7 +106,7 @@
           <%# if @news.images[0].url != "" %>
             <div class="image">
 
-               <% if @news.images[0].url != "" && @news.images[0] != nil%>
+               <% if @news.images[0] != nil && @news.images[0].url != "" %>
                   <img src="<%=@news.images[0].url%>" alt="image" width="140px">
                <% end %>
 

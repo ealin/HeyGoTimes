@@ -17,8 +17,12 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.xml
   def show
-    id = (params[:id]==nil)? params: params[:id]
-    @news = News.find_by_fb_obj_url(id)
+    @news = News.find_by_fb_obj_url(params[:id])
+
+    if @news == nil
+      # ealin: prevent Notice, FAQ, feedback-record not showing
+      @news = News.find(params[:id])
+    end
     @tags = Tag.all
     @areas = Area.all
 
@@ -258,7 +262,7 @@ class NewsController < ApplicationController
           return 2
         end
         return 5
-      when :focus   # ç„¦é»žæ–°èž
+      when :focus   # ?¦é??°è?
         return 3
     end
   end
