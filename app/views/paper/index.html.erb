@@ -108,7 +108,12 @@
       if (currType == undefined)
         currType = 'rank';
 
-<<<<<<< HEAD
+      <% if (session[:news_type] == 'rank') %>
+        $('#menu-item-latest').removeClass("active");
+      <% else %>
+        $('#menu-item-rank').removeClass("active");
+      <% end %>
+
       $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
       $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
@@ -116,17 +121,6 @@
       $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
 
-=======
-      <% if (session[:news_type] == 'rank') %>
-        $('#menu-item-latest').removeClass("active");
-      <% else %>
-        $('#menu-item-rank').removeClass("active");
-      <% end %>
-
-      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120}) ;
-      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200}) ;
-      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240}) ;
->>>>>>> origin/master
 
       $('#more_news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,10);
