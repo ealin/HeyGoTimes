@@ -29,6 +29,7 @@ class NewsController < ApplicationController
     if @news.area_string != nil
       news_areas = @news.area_string.split("/")
     else
+      news_areas = Array.new
       news_areas[0] = 'All_area'
     end
 
@@ -261,7 +262,7 @@ class NewsController < ApplicationController
           return 2
         end
         return 5
-      when :focus   # ç„¦é»žæ–°èž
+      when :focus   # ?¦é??°è?
         return 3
     end
   end
