@@ -202,7 +202,7 @@
     {
       /* On Facebook Login */
       var my_client_id  = "<%= Facebooker2.app_id %>";
-      var my_redirect_uri   = "<%= root_url+'mobile/index/' %>";
+      var my_redirect_uri   = "<%= root_url+'mobile/index/?m_login_flag=yes' %>";
       my_type           = "user_agent";
       my_display        = "touch" ;
 
@@ -279,39 +279,38 @@
 </head>
 
 
+ <% if @m_reload_flag == true %>
+   <div id="fb-root"></div>
+   <script src="http://connect.facebook.net/zh_TW/all.js"></script>
 
-<div id="fb-root"></div>
-<script src="http://connect.facebook.net/zh_TW/all.js"></script>
-
-<script>
-  FB.init({
-      appId  : "<%= Facebooker2.app_id %>",
-      status : true, // check login status
-      cookie : true, // enable cookies to allow the server to access the session
-      xfbml  : true  // parse XFBML
-  });
-
-
-  FB.getLoginStatus(function(response)
-  {
-    // must reload the page when login-status is different between facebook and "facebooker2"
-    //
-    logging_status_in_server = "<%= session[:logged_in] %>"
+   <script>
+     FB.init({
+         appId  : "<%= Facebooker2.app_id %>",
+         status : true, // check login status
+         cookie : true, // enable cookies to allow the server to access the session
+         xfbml  : true  // parse XFBML
+     });
 
 
-    if (response.session)
-    {
-      // logged in and connected user, someone you know
-        if(logging_status_in_server == "false")
-           window.location.replace("<%= root_url+'mobile/index/' %>") ;
-    }
-    //else {
-      // no user session available, someone you dont know
-    //}
-  });
+     FB.getLoginStatus(function(response)
+     {
+       // must reload the page when login-status is different between facebook and "facebooker2"
+       //
+       logging_status_in_server = "<%= session[:logged_in] %>"
 
 
-</script>
+       if (response.session)
+       {
+         // logged in and connected user, someone you know
+           if(logging_status_in_server == "false")
+              window.location.replace("<%= root_url+'mobile/index/' %>") ;
+       }
+      });
+
+
+   </script>
+
+<% end %>
 
 
 
@@ -336,7 +335,7 @@
         </li>
 
         <% if session[:logged_in] == true %>
-          <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), root_url+"mobile/index") %></li>
+            <li id="menu-item-fb" class="menu-item fun-btn"><%= fb_logout_link(t(:m_logout), "") %></li>
         <% else %>
           <li id="menu-item-fb" class="menu-item fun-btn"><a onclick="onLoginBtn()"><img src="/images/mobile/login_with_facebook.jpeg" title="facebook login" /><%= t(:login) %></a></li>
         <% end %>
@@ -361,6 +360,7 @@
     <%= render :partial => "m_show_ad" %>
   </div>
 
+  <br>
   <div align="left">
     <button id="more_news" style="height: 30px; width:68%;font-size:14px;">
       <%= t(:m_more) %> <span id="loading_more_news"></span></button>
@@ -722,13 +722,4 @@
 
 </div>
 
-
-
-   <!-- MOBILE VER.先不提供 REPORT的功能-->
-   <!-- !!!!!!!!! Page - Report  -->
-   <!--
-   <ul id="report" title="report_page"  class="panel">
-     <%#= render :partial => 'mobile/m_report'%>
-   </ul>
-   -->
 

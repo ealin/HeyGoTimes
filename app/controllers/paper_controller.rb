@@ -2,6 +2,12 @@ class PaperController < NewsController
 
   def index
 
+    @m_reload_flag = false
+    if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
+      @m_reload_flag = true
+    end
+
+
     if (params[:type] != nil)
       session[:news_type] = params[:type]
     end
@@ -11,7 +17,6 @@ class PaperController < NewsController
     end
 
     session[:friend_ranking_mode] = false
-
 
     @news = get_news(session[:news_type], params[:page])
     session[:news_load_time] = Time.now
@@ -29,8 +34,11 @@ class PaperController < NewsController
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
 
+    if (session[:logged_in] == true && session[:id] != nil)
+      user = User.find(session[:id])
+      @notations = News.get_notation(user)
+    end
   end
-
 
 
   def _show_paper_content
