@@ -42,6 +42,7 @@ class PaperController < NewsController
       user.last_event_notification = Time.now
       user.save
     end
+
   end
 
 
