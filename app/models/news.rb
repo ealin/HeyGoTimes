@@ -22,7 +22,14 @@ class News < ActiveRecord::Base
 
   has_many :user_news_ranks, :dependent => :destroy
 
-  def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+  after_create{|news| save_news_url(news)} # save news url after create
+
+  def save_news_url(news)
+    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
+    news.save
+  end
+
+  def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags, date)
 
     case friend_type
       when :none
@@ -34,7 +41,7 @@ class News < ActiveRecord::Base
           end
         elsif (user_tags[0] == 'All')
           if (type == 'latest')
-            joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+            joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').where( [ "News.created_at <= ?", date]).order('news.created_at DESC')
           else
             joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
           end
@@ -70,7 +77,6 @@ class News < ActiveRecord::Base
         end
 
       when :both
-
         if (user_areas[0] == 'All_area')
           if (type == 'latest')
             joins(:user_news_ranks, :tags).select('DISTINCT (news.id), news.*').where(:news=>{:special_flag => false}, :user_news_ranks=>{:user_id => user_id}, :tags => {:name => user_tags}).order('news.created_at DESC')
@@ -91,9 +97,9 @@ class News < ActiveRecord::Base
           end
         end
 
-    end
+    end # case friend_type
 
-  end
+  end # find_by_tags
 
 # @param type [String=>latest/rank]
 # @param friend_type [Symbol=>none/both/mine/friend]
@@ -138,6 +144,10 @@ class News < ActiveRecord::Base
 
   end
 
+  def self.get_notation(user)
+    user.friend_news.select('news.*, user_news_ranks.updated_at AS event_time').where(:news=>{:special_flag => false}).order('user_news_ranks.updated_at DESC')
+  end
+
   def self.get_all_special(areas, tags, friend_type, user_id)
 
     if (friend_type == :mine)
@@ -148,10 +158,4 @@ class News < ActiveRecord::Base
     end
   end
 
-  after_create{|news| save_news_url(news)}
-
-  def save_news_url(news)
-    news.fb_obj_url = news.id.to_s+"-"+news.created_at.strftime("%Y-%m-%d-%H-%M")
-    news.save
-  end
 end
