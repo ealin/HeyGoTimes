@@ -134,7 +134,7 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        temp_array = News.get_all(type, friend_type, user_id)
+        temp_array = News.get_all(type, friend_type, user_id,session[:news_load_time])
       else
         temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags,session[:news_load_time])
       end
