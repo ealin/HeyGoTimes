@@ -139,7 +139,7 @@ class PaperController < NewsController
         temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      @news = temp_array.where( [ "News.created_at <= ?", session[:news_load_time] ]).paginate :page => page, :per_page => @loading_news_num
+      @news = temp_array.paginate :page => page, :per_page => @loading_news_num
 
     end
 
