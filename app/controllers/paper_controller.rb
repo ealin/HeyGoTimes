@@ -18,13 +18,13 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
+    session[:news_load_time] = Time.now
     if params[:page] != nil
       @news = get_news(session[:news_type], params[:page])
     else
       @news = get_news(session[:news_type], '1')
     end
 
-    session[:news_load_time] = Time.now
 
     @tags = Tag.all
     @areas = Area.all
