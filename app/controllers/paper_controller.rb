@@ -18,13 +18,15 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
+
+    session[:news_load_time] = Time.now
+
     if params[:page] != nil
       @news = get_news(session[:news_type], params[:page])
     else
       @news = get_news(session[:news_type], '1')
     end
 
-    session[:news_load_time] = Time.now
 
     @tags = Tag.all
     @areas = Area.all
@@ -142,7 +144,7 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        temp_array = News.get_all(type, friend_type, user_id)
+        temp_array = News.get_all(type, friend_type, user_id,session[:news_load_time])
       else
         temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags,session[:news_load_time])
       end
