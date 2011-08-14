@@ -139,17 +139,7 @@ class PaperController < NewsController
         temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
       end
 
-      if (page != '1' && session[:news_load_time] != nil)
-        temp_array.each_with_index do |news, index|
-          if (news.created_at > session[:news_load_time])
-            temp_array.delete_at(index)
-          else
-            break
-          end
-        end
-      end
-
-      @news = temp_array.paginate :page => page, :per_page => @loading_news_num
+      @news = temp_array.where( [ "News.created_at <= ?", session[:news_load_time] ]).paginate :page => page, :per_page => @loading_news_num
 
     end
 
