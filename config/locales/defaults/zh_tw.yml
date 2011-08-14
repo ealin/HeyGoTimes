@@ -1,12 +1,12 @@
 zh_tw:
 
   HeyGoTimes: "黑狗日報"
-  slogan: "您的新聞篩選屬性： "
+  slogan: "您的新聞篩選條件： "
 
   Home: "首頁"
   Friends_slogan: "不想錯過任何一則好友們關注的新聞嗎？請按下此連結："
   Friends_ranking: "好友關注的新聞排行榜"
-  Friends_ranking_title: "您的新聞篩選屬性： 好友關注的新聞排行榜"
+  Friends_ranking_title: "您的新聞篩選條件： 好友關注的新聞排行榜"
 
   fb_login_icon_hint: "您可直接使用facebook的帳號登入，無需填寫任何資料，HeyGo! Times並不會蒐集您的任何個人資料。"
   Friends_ranking_hint: "HeyGo! Times會記錄您所有好友閱讀過、評論過、分享過..的新聞，透過獨創的排序演算法，讓您絕不錯過任何一則朋友們關注的新聞！（此為快捷按鈕，您亦可在下方的 [篩選新聞] 裡完成相同功能。）"  

@@ -315,7 +315,7 @@ class PaperController < NewsController
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + "/")
         counter += 1
-        if counter >= 5
+        if counter >= 4
           @newspaper_title += "..."
           break
         end
