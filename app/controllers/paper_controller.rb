@@ -18,7 +18,12 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
-    @news = get_news(session[:news_type], params[:page])
+    if params[:page] != nil
+      @news = get_news(session[:news_type], params[:page])
+    else
+      @news = get_news(session[:news_type], '1')
+    end
+
     session[:news_load_time] = Time.now
 
     @tags = Tag.all
@@ -33,10 +38,16 @@ class PaperController < NewsController
 
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
-
+=begin
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
+      @notations = News.get_notation(user)
+      @notification_time = user.last_event_notification
+
+      user.last_event_notification = Time.now
+      user.save
     end
+=end
   end
 
 
@@ -136,12 +147,12 @@ class PaperController < NewsController
         @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
       end
 
-      if (page != 1 && session[:news_load_time] != nil)
+      if (page != '1' && session[:news_load_time] != nil)
         @news.each_with_index do |news, index|
           if (news.created_at > session[:news_load_time])
             @news.delete_at(index)
-          else
-            break
+          #else
+          #  break
           end
         end
       end
