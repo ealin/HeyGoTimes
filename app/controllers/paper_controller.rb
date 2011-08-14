@@ -134,9 +134,9 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        temp_array = (News.get_all(type, friend_type, user_id)).where( [ "News.created_at <= ?", session[:news_load_time] ])
+        temp_array = (News.get_all(type, friend_type, user_id))
       else
-        temp_array = ( News.find_by_tags(type, friend_type, user_id, user_areas, user_tags)).where( [ "News.created_at <= ?", session[:news_load_time] ])
+        temp_array = ( News.find_by_tags(type, friend_type, user_id, user_areas, user_tags))
       end
 
       @news = temp_array.paginate :page => page, :per_page => @loading_news_num
