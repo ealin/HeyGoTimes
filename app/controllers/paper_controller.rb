@@ -18,7 +18,12 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
-    @news = get_news(session[:news_type], params[:page])
+    if params[:page] != nil
+      @news = get_news(session[:news_type], params[:page])
+    else
+      @news = get_news(session[:news_type], '1')
+    end
+
     session[:news_load_time] = Time.now
 
     @tags = Tag.all
@@ -137,20 +142,12 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
+        temp_array = News.get_all(type, friend_type, user_id)
       else
-        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
+        temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags,session[:news_load_time])
       end
 
-      if (page != 1 && session[:news_load_time] != nil)
-        @news.each_with_index do |news, index|
-          if (news.created_at > session[:news_load_time])
-            @news.delete_at(index)
-          else
-            break
-          end
-        end
-      end
+      @news = temp_array.paginate :page => page, :per_page => @loading_news_num
 
     end
 

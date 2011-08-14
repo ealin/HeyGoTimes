@@ -29,7 +29,7 @@ class News < ActiveRecord::Base
     news.save
   end
 
-  def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags)
+  def self.find_by_tags(type, friend_type, user_id, user_areas, user_tags, date)
 
     case friend_type
       when :none
@@ -41,7 +41,7 @@ class News < ActiveRecord::Base
           end
         elsif (user_tags[0] == 'All')
           if (type == 'latest')
-            joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.created_at DESC')
+            joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').where( [ "News.created_at <= ?", date]).order('news.created_at DESC')
           else
             joins(:areas).where(:news=>{:special_flag => false}, :areas => {:name => user_areas}).select('DISTINCT (news.id), news.*').order('news.rank DESC, news.created_at DESC')
           end
