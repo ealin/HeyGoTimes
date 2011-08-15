@@ -304,15 +304,17 @@
       <li id="menu-item-rank" class="active"><a class="parent"><span><%=t(:popular_news)%></span></a></li>
       <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
       <% count = 0 %>
-      <% @notations.each do |news|%>
-        <% if DateTime.parse(news.event_time) > @notification_time %>
-          <% count+=1 %>
-        <% else %>
-          <% break %>
+      <% if @notations != nil %>
+        <% @notations.each do |news|%>
+          <% if DateTime.parse(news.event_time) > @notification_time %>
+            <% count+=1 %>
+          <% else %>
+            <% break %>
+          <% end %>
         <% end %>
       <% end %>
       <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
-        <% if @notations.count != 0 %>
+        <% if @notations != nil %>
         <div><ul>
           <% @notations.each_with_index do |news,index|%>
             <% color = (index < count)? 'red': 'white' %>
@@ -327,7 +329,7 @@
       <div id="menu_fun_btn">
       <li><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>"><span><%=t(:m_filter)%></span></a></li>
       <li><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>"><span><%=t(:m_report)%></span></a></li>
-      <li><a id='show_notice'><span style="color:red;"><%= t(:notice) %></span></a></li>
+      <li><a id='show_notice'><span <% if @new_sys_notation %>style="color:red;"<% end %>><%= t(:notice) %></span></a></li>
       </div>
     </ul>
   </div>

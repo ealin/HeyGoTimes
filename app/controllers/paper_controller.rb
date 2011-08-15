@@ -1,4 +1,5 @@
 class PaperController < NewsController
+  @@last_sys_notice_time = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   def index
 
@@ -6,7 +7,6 @@ class PaperController < NewsController
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
       @m_reload_flag = true
     end
-
 
     if (params[:type] != nil)
       session[:news_type] = params[:type]
@@ -36,6 +36,16 @@ class PaperController < NewsController
 
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
+
+      # check site system notice
+      if user.last_sys_notification == nil || user.last_sys_notification < @@last_sys_notice_time
+        @new_sys_notation = true
+        user.last_sys_notification = Time.now
+      else
+        @new_sys_notation = false
+      end
+
+      # get event notification
       @notations = News.get_notation(user)
       @notification_time = user.last_event_notification
 
@@ -163,17 +173,16 @@ class PaperController < NewsController
       @loading_news_num = 10
     end
 
+    user_id = nil
 
     if (type == 'notice')
       tags = ["HGTimesNotice"]
       areas = ["Taiwan"]
       friend_type = :none
-      user_id = nil
     elsif (type == 'faq')
       tags = ["FAQ"]
       areas = ["Taiwan"]
       friend_type = :none
-      user_id = nil
     elsif (type == 'feedback')
       tags = ["FeedbackTag","Closed_spam_report"]
       areas = ["Taiwan","All_area"]
@@ -181,16 +190,10 @@ class PaperController < NewsController
       user_id = session[:id]
     end
 
-    news = News.get_all_special(areas, tags, friend_type, user_id)
-
-    if(news.count > 0)
-      news = news.paginate :page => page, :per_page => @loading_news_num
-    end
+    news = News.get_all_special(areas, tags, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
 
     return news
   end
-
-
 
   #-----------------------------------------------------------------------------------
   # method: set_tag_filter_by_locale      (Ealin: 20110607)
