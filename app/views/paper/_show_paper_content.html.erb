@@ -1,7 +1,7 @@
 
 
 <% if news != nil %>
-  <% news.each do |news| %>
+  <% news.each_with_index do |news,news_index| %>
     <%# TODO: remove this after all news watch count filled %>
     <% if (news.like_count == nil) %>
       <% news.watch_count = 0 %>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="spam_report" id="spam_report_<%= news.id %>">
-        <a title="<%= t(:report_spam) %>" href="javascript:void(null)" onclick="report_the_spam( <%= news.id %>,'<%= news.title %>')">x</a>
+        <a id='report_spam<%= news_index %>'  title="<%= t(:report_spam) %>" href="javascript:void(null)" onclick="report_the_spam( <%= news.id %>,'<%= news.title %>')">x</a>
       </div>
 
       <div class="info">
@@ -66,9 +66,9 @@
       <% fb_obj_url = get_fb_obj_url(news) %>
       <% if news_sub_type != "feedback" %>
         <div class="button_group">
-          <span class='share_count count_span' id='share_count<%= news.id %>'><%= news.share_count %></span><a style="float: right;" href="javascript:void(null)" onclick="share('<%= news.id %>', '<%= fb_obj_url %>', '<%= news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /></a>
-          <span class='unlike_count count_span' id='unlike_count<%= news.id %>'><%= news.unlike_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" src="/images/unlike_button.png" alt="" /></a>
-          <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.like_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" src="/images/like_button.png" alt="" /></a>
+          <span class='share_count count_span' id='share_count<%= news.id %>'><%= news.share_count %></span><a style="float: right;" href="javascript:void(null)" onclick="share('<%= news.id %>', '<%= fb_obj_url %>', '<%= news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share"  id='share_icon<%= news_index %>' src="/images/facebook_icon.png" alt="" /></a>
+          <span class='unlike_count count_span' id='unlike_count<%= news.id %>'><%= news.unlike_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 0);"><img class="button-icon-unlike" id='unlike_icon<%= news_index %>' src="/images/unlike_button.png" alt="" /></a>
+          <span class='like_count count_span' id='like_count<%= news.id %>'><%= news.like_count %></span><a style="float: right;" href="javascript:void(null)" onclick="like(<%= session[:id] %>, <%= news.id %>, 1);"><img class="button-icon-like" id='like_icon<%= news_index %>' src="/images/like_button.png" alt="" /></a>
         </div>
       <% end %>
 

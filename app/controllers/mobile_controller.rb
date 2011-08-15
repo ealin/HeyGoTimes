@@ -12,6 +12,11 @@ class MobileController < PaperController
     else
       @loading_news_num = Integer(temp_str)
     end
+
+    if params[:time_base] != nil && params[:time_base] == 'now'
+      session[:news_load_time] = Time.now
+    end
+
     session[:news_type] = params[:type]
     @news = get_news(params[:type], params[:page])
 
