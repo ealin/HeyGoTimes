@@ -38,7 +38,7 @@ class NewsController < ApplicationController
       news_tags[index] = tag.name
     end
 
-    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags).paginate :page => 1, :per_page => 8
+    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags,Time.now).paginate :page => 1, :per_page => 8
 
     # check login status,
     # prevent direct link to news page => cause exception: current_facebook_user is nil

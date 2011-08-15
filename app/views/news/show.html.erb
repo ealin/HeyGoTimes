@@ -7,6 +7,17 @@
   <% end %>
 
   <script type="text/javascript">
+
+      $(document).ready(function()
+      {
+          $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+          $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'right',width:220, fill:'#bdc7d8'}) ;
+          $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+          $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
+
+      }) ;
+
+
     function getSrc(obj)
     {
       document.getElementById('news_url').value = obj.src;
@@ -124,7 +135,7 @@
         <%= render :partial => 'paper/show_fun_buttons' %>
       </div>
       <div class="comments">
-        <div class="comment_title"><%= t(:comments)%></div>
+        <div class="comment_title" id="fb_comment_title"><%= t(:comments)%></div>
         <div class="button_group"></div>
         <div class="fb_comment" id="fb_comment<%= news_id %>">
           <div id="fb-root"></div>

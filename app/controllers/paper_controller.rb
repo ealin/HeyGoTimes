@@ -17,8 +17,15 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
-    @news = get_news(session[:news_type], params[:page])
+
     session[:news_load_time] = Time.now
+
+    if params[:page] != nil
+      @news = get_news(session[:news_type], params[:page])
+    else
+      @news = get_news(session[:news_type], '1')
+    end
+
 
     @tags = Tag.all
     @areas = Area.all
@@ -51,6 +58,7 @@ class PaperController < NewsController
       user.last_event_notification = Time.now
       user.save
     end
+
   end
 
 
@@ -62,6 +70,10 @@ class PaperController < NewsController
     temp_str = params[:news_num]
     @loading_news_num = 0
     session[:friend_ranking_mode] = false
+
+    if params[:time_base] != nil && params[:time_base] == 'now'
+      session[:news_load_time] = Time.now
+    end
 
     if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
       @loading_news_num = 10
@@ -145,20 +157,12 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
+        temp_array = News.get_all(type, friend_type, user_id,session[:news_load_time])
       else
-        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
+        temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags,session[:news_load_time])
       end
 
-      if (page != 1 && session[:news_load_time] != nil)
-        @news.each_with_index do |news, index|
-          if (news.created_at > session[:news_load_time])
-            @news.delete_at(index)
-          else
-            break
-          end
-        end
-      end
+      @news = temp_array.paginate :page => page, :per_page => @loading_news_num
 
     end
 
@@ -317,7 +321,7 @@ class PaperController < NewsController
       if session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + "/")
         counter += 1
-        if counter >= 5
+        if counter >= 4
           @newspaper_title += "..."
           break
         end

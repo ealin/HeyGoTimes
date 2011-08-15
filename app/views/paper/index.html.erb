@@ -66,7 +66,7 @@
     function loadMore(type, subType, pageNo,news_num)
     {
       var t = $("#paperContent");
-      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num;
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num + '&time_base=before';
       var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
 
       $.get(url, function(response) {
@@ -83,7 +83,7 @@
 
     function changePaperType(type, subType)
     {
-      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1' + '&time_base=now';
       loading_animate(true);
       $("#paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);
@@ -120,6 +120,12 @@
 
       $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
+      $('#share_icon0').bt('<%= t(:share_icon_hint) %>',{positions: 'bottom',width:120, fill:'#bdc7d8'}) ;
+      $('#like_icon0').bt('<%= t(:like_icon_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
+      $('#unlike_icon0').bt('<%= t(:unlike_icon_hint) %>',{positions: 'bottom',width:300, fill:'#bdc7d8'}) ;
+      $('#report_spam0').bt('<%= t(:report_spam_icon_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+
+
 
 
       $('#more_news').unbind('click').click(function() {
@@ -278,7 +284,7 @@
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
     </div>
-    <span id="filter_hint">
+    <span id="filter_hint" style="font-size:14px;">
         <%= @newspaper_title.to_s %>
     </span>
 
@@ -304,6 +310,7 @@
       <li id="menu-item-rank" class="active"><a class="parent"><span><%=t(:popular_news)%></span></a></li>
       <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
       <% count = 0 %>
+
       <% if @notations != nil && @notations.count > 0 %>
         <% @notations.each do |event|%>
           <% if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time %>
@@ -313,8 +320,9 @@
           <% end %>
         <% end %>
       <% end %>
+
       <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
-        <% if @notations != nil && @notations.count > 0 %>
+        <% if @notations != nil  %>
         <div><ul>
           <% @notations.each_with_index do |news,index|%>
             <% color = (index < count)? 'red': 'white' %>
