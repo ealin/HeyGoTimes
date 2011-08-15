@@ -62,6 +62,10 @@ class PaperController < NewsController
     @loading_news_num = 0
     session[:friend_ranking_mode] = false
 
+    if params[:time_base] != nil && params[:time_base] == 'now'
+      session[:news_load_time] = Time.now
+    end
+
     if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
       @loading_news_num = 10
     else
