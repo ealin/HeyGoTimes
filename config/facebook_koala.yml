@@ -15,7 +15,7 @@ test:
 production:
  app_id: 102018533222077
  secret_key: 4ada4e1e25a7850e8b416c08ec63baa1
- callback_url: http://heygotimes.heroku.com/
+ callback_url: http://www.heygotimes.com/
 
 # Bench
 #
