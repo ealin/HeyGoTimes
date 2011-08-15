@@ -305,8 +305,8 @@
       <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
       <% count = 0 %>
       <% if @notations != nil && @notations.count > 0 %>
-        <% @notations.each do |news|%>
-          <% if DateTime.parse(news.event_time) > @notification_time %>
+        <% @notations.each do |event|%>
+          <% if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time %>
             <% count+=1 %>
           <% else %>
             <% break %>
