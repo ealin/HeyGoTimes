@@ -314,7 +314,7 @@
         <% end %>
       <% end %>
       <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
-        <% if @notations != nil %>
+        <% if @notations != nil && @notations.count > 0 %>
         <div><ul>
           <% @notations.each_with_index do |news,index|%>
             <% color = (index < count)? 'red': 'white' %>

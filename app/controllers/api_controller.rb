@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   @@max_news = 30000
 
   if ENV['RAILS_ENV'] != 'development'
-    @@host = "heygotimes.heroku.com"
+    @@host = "www.heygotimes.com"
     @@port = 80
   else
     @@host = "localhost"

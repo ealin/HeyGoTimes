@@ -82,9 +82,9 @@ module ApplicationHelper
 
   def get_fb_obj_url(news)
     if (news.fb_obj_url==nil)
-      url = "http://heygotimes.heroku.com/news/"+news.id.to_s
+      url = "http://www.heygotimes.com/news/"+news.id.to_s
     else
-      url = "http://heygotimes.heroku.com/news/"+news.fb_obj_url
+      url = "http://www.heygotimes.com/news/"+news.fb_obj_url
     end
     return url
   end
