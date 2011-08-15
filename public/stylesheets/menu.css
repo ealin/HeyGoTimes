@@ -1,0 +1,281 @@
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 25.01.2010
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <div><ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <div><ul><li><a href="#"><span>level 3</span></a></li></ul></div>
+ *                  </li>
+ *              </ul></div>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+/** Selectors **/
+
+/* Reset */
+#menu * {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  text-decoration: none;
+}
+div#menu {
+position:relative;}
+#menu ul.menu {
+  white-space: nowrap;
+}
+
+/* Geometrical arrangement */
+#menu ul.menu li {
+  display: inline-block;
+  height: 57px;
+  position: relative;
+}
+
+#menu ul.menu li div {
+  position: absolute;
+  top: 55px;
+  left: 0px;
+}
+
+#menu ul.menu li div div {
+  position: absolute;
+  top: -6px;
+  left: 176px;
+}
+
+/* Escaping style for lower levels */
+#menu ul.menu li div ul li {
+  display: block;
+  float: none;
+  width: auto;
+  height: auto;
+}
+
+/** Graphics **/
+
+/* Horizontal sliding doors */
+#menu ul.menu li a {
+  padding-left: 15px;
+  background-image: url("images/menu/menu_level1_item.png");
+  background-repeat: no-repeat;
+  background-position: left -1000px;
+  display: inline-block;
+  margin: 6px 2px;
+}
+
+#menu ul.menu li a span {
+  padding-right: 15px;
+  padding-left: 0px;
+  background-image: url("images/menu/menu_level1_item.png");
+  background-repeat: no-repeat;
+  background-position: right -1000px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+#menu ul.menu li:hover a {
+  background-position: left -90px;
+}
+
+#menu ul.menu li:hover a span {
+  background-position: right -135px;
+}
+
+#menu ul.menu li.active a {
+  background-position: left 0px;
+}
+
+#menu ul.menu li.active a span {
+  background-position: right -45px;
+}
+
+/* Escape Horizontal doors */
+#menu ul.menu li div ul li a {
+  display: block;
+  padding: 0px;
+  margin: 0px;
+  background: none;
+}
+
+#menu ul.menu li div ul li a span {
+  display: block;
+  padding: 0px;
+  background: none;
+  height: auto;
+  line-height: 25px;
+  padding: 10px 0 10px 12px;
+  white-space: normal;  
+}
+
+/* Vertical sliding doors */
+#menu ul.menu li div { 
+  width: 194px;
+  padding-top: 6px;
+  background-image: url("images/menu/submenu-top.png");
+  background-repeat: no-repeat;
+  background-position: 0px top;
+}
+
+#menu ul.menu li div ul {
+  padding: 9px;
+  padding-top: 0;
+  background-image: url("images/menu/submenu-bottom.png");
+  background-repeat: no-repeat;
+  background-position: 0px bottom;
+}
+
+/* Hover Effect on Submenus */
+#menu ul.menu ul li:hover
+{
+  background-repeat: repeat-x;
+  background-position: 0% 100%;
+  background-image: url(images/menu/menu_level2_item_hover.png);
+}
+
+#menu ul.menu ul li:hover>a
+{
+  background-repeat: repeat-x;
+  background-position: 0% 0%;
+  background-color: transparent;
+  background-image: url(images/menu/menu_level2_item_hover.png);
+}
+
+
+/* Main header line */
+#menu {
+  height: 57px;
+  padding-left: 14px;
+  background:transparent url(images/menu/page_header_b.png) repeat-x;
+}
+
+/* Text shadow */
+#menu span
+{
+  color: #edf0f1;
+  text-shadow:0 -1px 1px #000000;
+}
+
+#menu li:hover>a>span 
+{
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000000, 0 2px 10px #969696;
+}
+
+/* Fonts */
+#menu ul.menu li a span
+{ 
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#menu ul.menu li div ul li a span
+{
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* Lines between li */
+#menu ul.menu li div ul
+{
+  padding-bottom: 8px;
+}
+
+#menu ul.menu li div ul li:first-child
+{
+  border-top-width: 0px;
+}
+
+
+/* Menu logic */
+#menu li>div { visibility: hidden; }
+#menu li:hover>div { visibility: visible; }
+/* */
+
+/* Hover Effect on Submenus */
+#menu ul.menu ul li:hover
+{
+  background-color: #233b50;
+}
+
+/* Lines between li */
+#menu ul.menu li div ul li
+{
+  border-bottom: 1px solid #607182;
+  border-top: 1px solid #243340;
+}
+
+/* ie7 */
+#menu ul.menu li {
+  *zoom: 1;
+  *display: inline;
+}
+
+#menu ul.menu li a {
+  *zoom: 1;
+  *display: inline;
+}
+
+#menu ul.menu li a span {
+  *zoom: 1;
+  *display: inline;
+}
+
+#menu ul.menu li div ul li a {
+  *display: inline;
+}
+
+/* Discarding semi-transparency */
+#menu ul.menu ul li:hover
+{
+  *background-image: none;
+}
+
+#menu ul.menu ul li:hover>a
+{
+  *background-image: none;
+}
+
+/* IE6 */
+#menu ul.menu li a {
+  _background-image: url("images/menu/menu_level1_item.gif");
+}
+
+#menu ul.menu li a span {
+  _background-image: url("images/menu/menu_level1_item.gif");
+}
+
+#menu ul.menu li div { 
+  _background-image: url("images/menu/submenu-top.gif");
+}
+
+#menu ul.menu li div ul { 
+  _background-image: url("images/menu/submenu-bottom.gif");
+}
+
+#menu ul.menu li a:hover {
+  _background-position: left -90px;
+}
+
+#menu ul.menu li a:hover span {
+  _background-position: right -135px;
+}
+
+/* Menu logic for IE6 */
+#menu div { _display: none; }
+#menu div li:hover div { _display: block; }
+#menu div li:hover li:hover div { _display: block; }
+#menu div li:hover li:hover li:hover div { _display: block; }
+/* */

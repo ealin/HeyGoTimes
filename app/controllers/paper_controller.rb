@@ -7,7 +7,6 @@ class PaperController < NewsController
       @m_reload_flag = true
     end
 
-
     if (params[:type] != nil)
       session[:news_type] = params[:type]
     end
@@ -18,13 +17,8 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
+    @news = get_news(session[:news_type], params[:page])
     session[:news_load_time] = Time.now
-    if params[:page] != nil
-      @news = get_news(session[:news_type], params[:page])
-    else
-      @news = get_news(session[:news_type], '1')
-    end
-
 
     @tags = Tag.all
     @areas = Area.all
@@ -39,7 +33,24 @@ class PaperController < NewsController
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
 
+    if (session[:logged_in] == true && session[:id] != nil)
+      user = User.find(session[:id])
 
+      # check site system notice
+      if user.last_sys_notification == nil || user.last_sys_notification < @@last_sys_notice_time
+        @new_sys_notation = true
+        user.last_sys_notification = Time.now
+      else
+        @new_sys_notation = false
+      end
+
+      # get event notification
+      @notations = News.get_notation(user)
+      @notification_time = user.last_event_notification
+
+      user.last_event_notification = Time.now
+      user.save
+    end
   end
 
 
@@ -56,10 +67,6 @@ class PaperController < NewsController
       @loading_news_num = 10
     else
       @loading_news_num = Integer(temp_str)
-    end
-
-    if params[:time_base] != nil && params[:time_base] == 'now'
-      session[:news_load_time] = Time.now
     end
 
     if (params[:type] == 'special')
@@ -138,12 +145,20 @@ class PaperController < NewsController
 
     if (News.count > 0)
       if (user_tags[0] == 'All') && (user_areas[0] == 'All_area')
-        temp_array = News.get_all(type, friend_type, user_id,session[:news_load_time])
+        @news = News.get_all(type, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
       else
-        temp_array = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags,session[:news_load_time])
+        @news = News.find_by_tags(type, friend_type, user_id, user_areas, user_tags).paginate :page => page, :per_page => @loading_news_num
       end
 
-      @news = temp_array.paginate :page => page, :per_page => @loading_news_num
+      if (page != 1 && session[:news_load_time] != nil)
+        @news.each_with_index do |news, index|
+          if (news.created_at > session[:news_load_time])
+            @news.delete_at(index)
+          else
+            break
+          end
+        end
+      end
 
     end
 
@@ -157,17 +172,16 @@ class PaperController < NewsController
       @loading_news_num = 10
     end
 
+    user_id = nil
 
     if (type == 'notice')
       tags = ["HGTimesNotice"]
       areas = ["Taiwan"]
       friend_type = :none
-      user_id = nil
     elsif (type == 'faq')
       tags = ["FAQ"]
       areas = ["Taiwan"]
       friend_type = :none
-      user_id = nil
     elsif (type == 'feedback')
       tags = ["FeedbackTag","Closed_spam_report"]
       areas = ["Taiwan","All_area"]
@@ -175,16 +189,10 @@ class PaperController < NewsController
       user_id = session[:id]
     end
 
-    news = News.get_all_special(areas, tags, friend_type, user_id)
-
-    if(news.count > 0)
-      news = news.paginate :page => page, :per_page => @loading_news_num
-    end
+    news = News.get_all_special(areas, tags, friend_type, user_id).paginate :page => page, :per_page => @loading_news_num
 
     return news
   end
-
-
 
   #-----------------------------------------------------------------------------------
   # method: set_tag_filter_by_locale      (Ealin: 20110607)

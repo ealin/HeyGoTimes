@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
-  # Use tiny_mce editor
-  #uses_tiny_mce
+
+  @@last_sys_notice_time = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   # GET /news
   # GET /news.xml
@@ -29,6 +29,7 @@ class NewsController < ApplicationController
     if @news.area_string != nil
       news_areas = @news.area_string.split("/")
     else
+      news_areas = Array.new
       news_areas[0] = 'All_area'
     end
 
@@ -37,7 +38,7 @@ class NewsController < ApplicationController
       news_tags[index] = tag.name
     end
 
-    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags,Time.now).paginate :page => 1, :per_page => 8
+    @suggest_news = News.find_by_tags('rank', :none, nil, news_areas, news_tags).paginate :page => 1, :per_page => 8
 
     # check login status,
     # prevent direct link to news page => cause exception: current_facebook_user is nil
@@ -261,7 +262,7 @@ class NewsController < ApplicationController
           return 2
         end
         return 5
-      when :focus   # 焦點新聞
+      when :focus   # ?��??��?
         return 3
     end
   end
@@ -349,6 +350,8 @@ class NewsController < ApplicationController
           @news.special_flag= true
           if (tag.name.downcase == "feedbacktag")
             feedback = true;
+          else # update last notice time
+            @@last_sys_notice_time = Time.now
           end
         end
       end
