@@ -1,5 +1,4 @@
 class PaperController < NewsController
-  @@last_sys_notice_time = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   def index
 

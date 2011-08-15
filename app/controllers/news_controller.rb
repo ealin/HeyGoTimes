@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
-  # Use tiny_mce editor
-  #uses_tiny_mce
+
+  @@last_sys_notice_time = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   # GET /news
   # GET /news.xml
@@ -262,7 +262,7 @@ class NewsController < ApplicationController
           return 2
         end
         return 5
-      when :focus   # ?¦é??°è?
+      when :focus   # ?ï¿½ï¿½??ï¿½ï¿½?
         return 3
     end
   end
@@ -350,6 +350,8 @@ class NewsController < ApplicationController
           @news.special_flag= true
           if (tag.name.downcase == "feedbacktag")
             feedback = true;
+          else # update last notice time
+            @@last_sys_notice_time = Time.now
           end
         end
       end
