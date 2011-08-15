@@ -145,7 +145,7 @@ class News < ActiveRecord::Base
   end
 
   def self.get_notation(user)
-    user.friend_news.select('news.*, user_news_ranks.updated_at AS event_time').where(:news=>{:special_flag => false}).order('user_news_ranks.updated_at DESC')
+    user.friend_news.select('news.*, user_news_ranks.updated_at AS event_time').where(:news=>{:special_flag => false}).order('user_news_ranks.updated_at DESC').limit(8)
   end
 
   def self.get_all_special(areas, tags, friend_type, user_id)
