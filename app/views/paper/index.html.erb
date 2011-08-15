@@ -11,7 +11,7 @@
       $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
       {
         $('#like_count'+news).html(json.like_count);
-        $('#unlike_count'+news).html(json.unlike_count);
+        $('#unlike_count'+news).html(json.unlike_count); 
       });
     }
 
@@ -64,7 +64,7 @@
     function loadMore(type, subType, pageNo,news_num)
     {
       var t = $("#paperContent");
-      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num;
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num + '&time_base=before';
       var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
 
       $.get(url, function(response) {
@@ -81,7 +81,7 @@
 
     function changePaperType(type, subType)
     {
-      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1';
+      var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1' + '&time_base=now';
       loading_animate(true);
       $("#paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);

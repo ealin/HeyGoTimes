@@ -58,6 +58,10 @@ class PaperController < NewsController
       @loading_news_num = Integer(temp_str)
     end
 
+    if params[:time_base] != nil && params[:time_base] == 'now'
+      session[:news_load_time] = Time.now
+    end
+
     if (params[:type] == 'special')
       @news = get_special_news(params[:sub_type], params[:page])
     else

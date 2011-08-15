@@ -71,7 +71,7 @@
 
     function loadMore(type, pageNo,news_num) {
       var t = $("#m_paperContent");
-      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo+ '&news_num='+ news_num;
+      var url = '/mobile/_show_paper_content?type='+type+'&page='+pageNo+ '&news_num='+ news_num  + '&time_base=before';
       var preview = $("#loading_more_news").html("<img src='/images/fb_loading_large.gif' width='20' height='20' />");
 
       $.get(url, function(response) {
@@ -86,7 +86,7 @@
     }
 
     function changePaperType(type) {
-      var url = '/mobile/_show_paper_content?type='+type+'&page=1';
+      var url = '/mobile/_show_paper_content?type='+type+'&page=1' + '&time_base=now';
       loading_animate(true);
       $("#m_paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);
