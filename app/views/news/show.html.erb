@@ -1,4 +1,4 @@
-
+  <title><%= t(:HeyGoTimes)%> - <%= @news.title %></title>
   <meta property="og:title" content="<%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
@@ -8,15 +8,14 @@
 
   <script type="text/javascript">
 
-      $(document).ready(function()
-      {
-          $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
-          $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'right',width:220, fill:'#bdc7d8'}) ;
-          $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
-          $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
+    $(document).ready(function()
+    {
+      $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+      $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'right',width:220, fill:'#bdc7d8'}) ;
+      $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+      $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
 
-      }) ;
-
+    }) ;
 
     function getSrc(obj)
     {
@@ -53,6 +52,18 @@
         data: "news_id="+id
       });
     }
+    function share(id, url, title)
+    {
+      var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id="+id,
+        complete: function(){
+          location.href=url;
+        }
+      });
+    }
   </script>
 </head>  <%# end tag for <head> in application.html.erb %>
 <% news_id = @news.id %>
@@ -76,7 +87,7 @@
 
 
     <div id="page_head" >
-      <%= show_page_head(:login_flag => true)  %>
+      <%#= show_page_head(:login_flag => true)  %>
     </div><!-- #links -->
   </div><!-- #header -->
 
@@ -86,16 +97,19 @@
       <div class="news">
 
         <span id="to_comment_area">
-         <input
-            type="button"
-            name="groovybtn1"
-            class="groovybutton_W"
-            value="<%= t(:comment_this_news) %>"
-            title="<%= t(:comment_this_news) %>"
-            style="float: left"
-            onclick="window.scrollTo(0,1000) ;">
-         </span>
-
+        <input
+          type="button"
+          name="groovybtn1"
+          class="groovybutton_W"
+          value="<%= t(:comment_this_news) %>"
+          title="<%= t(:comment_this_news) %>"
+          style="float: left"
+          onclick="window.scrollTo(0,1000) ;">
+        </span>
+        <span>
+          <% fb_obj_url = get_fb_obj_url(@news) %>
+          <a style="text-decoration: none;font-size: 1.6em;padding-left: 20px;" href="#" onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /><%= t(:share) %></a>
+        </span>
         <% if @news.url != nil && @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
           <div>

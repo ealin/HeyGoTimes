@@ -1,4 +1,4 @@
-
+  <title><%= t(:HeyGoTimes)%> - <%= t(:Home)%></title>
   <meta property="og:title" content="HeyGoTimes"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= root_url %>"/>
@@ -307,8 +307,8 @@
   <div id="menu">
     <ul class="menu">
       <div id="menu_type_btn">
-      <li id="menu-item-rank" class="active"><a class="parent"><span><%=t(:popular_news)%></span></a></li>
-      <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
+      <li id="menu-item-rank" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:popular_news)%></span></a></li>
+      <li id="menu-item-latest" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:latest_news)%></span></a></li>
       <% count = 0 %>
 
       <% if @notations != nil && @notations.count > 0 %>
