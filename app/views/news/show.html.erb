@@ -11,7 +11,7 @@
       $(document).ready(function()
       {
           $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
-          $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'right',width:220, fill:'#bdc7d8'}) ;
+          $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'top',width:220, fill:'#bdc7d8'}) ;
           $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
           $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
 
@@ -85,9 +85,9 @@
     <div id="content">
       <div class="news">
 
-        <span id="to_comment_area">
+        <span >
          <input
-            type="button"
+            type="button"  id="to_comment_area"
             name="groovybtn1"
             class="groovybutton_W"
             value="<%= t(:comment_this_news) %>"
@@ -95,6 +95,8 @@
             style="float: left"
             onclick="window.scrollTo(0,1000) ;">
          </span>
+
+
 
         <% if @news.url != nil && @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
