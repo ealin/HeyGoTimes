@@ -9,7 +9,6 @@
 
 	<head profile="http://gmpg.org/xfn/11">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>HeyGoTimes</title>
 
     <% m_flag =  detect_Mobile_browser(:list) ; %>
 
@@ -60,9 +59,8 @@
       })();
 
     </script>
-    <meta property="og:site_name" content="HeyGoTimes"/>
-    <meta property="og:description"
-          content="A real time news with facebook friend connect."/>
+    <meta property="og:site_name" content="<%= t(:HeyGoTimes)%>"/>
+    <meta property="og:description" content="A real time news with facebook friend connect."/>
 
 
 <%= yield %>
