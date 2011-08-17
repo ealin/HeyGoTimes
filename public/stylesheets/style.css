@@ -318,4 +318,11 @@ a img {
   float: right;
 }
 
-
+#sthoverbuttons {
+  cursor: pointer;
+  position: fixed;
+  top: 35%;
+  right:0px;
+  width: 50px;
+  z-index: 980000 !important;
+}

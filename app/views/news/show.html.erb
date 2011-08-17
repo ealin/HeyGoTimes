@@ -1,3 +1,6 @@
+<% news_id = @news.id %>
+<% fb_obj_url = get_fb_obj_url(@news) %>
+
   <title><%= t(:HeyGoTimes)%> - <%= @news.title %></title>
   <meta property="og:title" content="<%= @news.title %>"/>
   <meta property="og:type" content="news"/>
@@ -64,10 +67,17 @@
         }
       });
     }
+    function share_group()
+    {
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id=<%= news_id %>"
+      });
+    }
   </script>
+  <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'24387ba6-8c08-4755-b993-eecc254891d5', st_url: '<%= fb_obj_url %>', embeds:true});stLight.subscribe("click",share_group);</script>
 </head>  <%# end tag for <head> in application.html.erb %>
-<% news_id = @news.id %>
-<% comment_url = get_fb_obj_url(@news) %>
 
 <body>
 <% if detect_Mobile_browser(:show) == true %>
@@ -84,13 +94,18 @@
       <%= link_to(t(:HeyGoTimes), {:controller =>'paper'}, {:title => 'to home page'}) %>
     </span>
 
-
-
     <div id="page_head" >
       <%#= show_page_head(:login_flag => true)  %>
     </div><!-- #links -->
   </div><!-- #header -->
 
+  <div id="sthoverbuttons">
+    <div class="sthoverbuttons-chicklets">
+      <span class="st_gbuzz_large">
+      <span class="st_twitter_large">
+      <span class="st_facebook_large">
+    </div>
+  </div>
 
   <div id="main">
     <div id="content">
@@ -107,7 +122,6 @@
           onclick="window.scrollTo(0,1000) ;">
         </span>
         <span>
-          <% fb_obj_url = get_fb_obj_url(@news) %>
           <a style="text-decoration: none;font-size: 1.6em;padding-left: 20px;" href="#" onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /><%= t(:share) %></a>
         </span>
         <% if @news.url != nil && @news.url != "" %>
@@ -171,7 +185,7 @@
               document.getElementById('fb-root').appendChild(e);
             }());
           </script>
-          <fb:comments href='<%= comment_url %>' num_posts='5' width='900'></fb:comments>
+          <fb:comments href='<%= fb_obj_url %>' num_posts='5' width='900'></fb:comments>
           <div style="clear: both;"></div>
         </div> <!-- fb_comment -->
       </div> <!-- comments -->
