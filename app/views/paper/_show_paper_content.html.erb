@@ -75,7 +75,7 @@
       <div class="comment_title" id="comment_title_<%= news.id %>" onclick="expand_comment(<%= news.id %>, '<%= fb_obj_url %>');"><a href="javascript:void(null)"><%= t(:comments)%></a><span id='expand_comment<%= news.id %>'><a href="javascript:void(null)"><%= '(' + news.comment_count.to_s + ')' %><img class="button-icon-expand" src="/images/expand.png" alt=""/></a></span></div>
 
       <div class="fb_comment" id="fb_comment<%= news.id %>">
-        <div id="fb-root"></div>
+        <!--<div id="fb-root"></div>-->
 
       </div> <!-- fb_comment -->
       <div style="clear: both;"></div>
