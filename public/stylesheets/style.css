@@ -281,7 +281,7 @@ a img {
   margin: auto;
   text-align:center;
   height: 30px;
-  width:70%;
+  width:100%;
   background: #edeff4;
   border-width :1px;
   border-color: #bdc7d8;
@@ -318,4 +318,11 @@ a img {
   float: right;
 }
 
-
+#sthoverbuttons {
+  cursor: pointer;
+  position: fixed;
+  top: 35%;
+  right:0px;
+  width: 50px;
+  z-index: 980000 !important;
+}
