@@ -76,7 +76,7 @@ class PaperController < NewsController
     end
 
     if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
-      @loading_news_num = 10
+      @loading_news_num = 15
     else
       @loading_news_num = Integer(temp_str)
     end
@@ -104,7 +104,7 @@ class PaperController < NewsController
   #
   def get_news(type, page)
     if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
-      @loading_news_num = 10
+      @loading_news_num = 15
     end
 
     user_areas = []
@@ -173,7 +173,7 @@ class PaperController < NewsController
 
   def get_special_news(type, page)
     if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
-      @loading_news_num = 10
+      @loading_news_num = 15
     end
 
     user_id = nil

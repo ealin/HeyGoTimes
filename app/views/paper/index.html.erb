@@ -129,9 +129,10 @@
 
 
       $('#more_news').unbind('click').click(function() {
-        loadMore(currType, subType, ++currPage,10);
+        loadMore(currType, subType, ++currPage,15);
       });
 
+      /*
       $('#more_15news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,15);
       });
@@ -141,6 +142,7 @@
       $('#more_25news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,25);
       });
+      */
 
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("active");
@@ -371,6 +373,7 @@
     <%= show_page_tail %>
   </div>
 
+  <!--
   <div id="add_moremore_news">
     <a id="more_15news"> +15 </a>
     &nbsp;
@@ -378,6 +381,7 @@
     &nbsp;
     <a id="more_25news"> +25 </a>
   </div>
+  -->
 
 </div> <!-- /page -->
   <!-- news/_show_page_tail.html.erb  -->
