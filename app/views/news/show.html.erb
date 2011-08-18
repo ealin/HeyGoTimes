@@ -191,17 +191,6 @@
       </div>
       <div class="comments">
         <div class="comment_title" id="fb_comment_title"><%= t(:comments)%></div>
-        <span id="to_top" style="float:right;">
-        <input
-          type="button"
-          name="groovybtn1"
-          class="groovybutton_W"
-          value="<%= t(:m_to_top) %> ↑"
-          style="float: left"
-          onclick="window.scrollTo(0,0) ;">
-        </span>
-
-
 
         <div class="button_group"></div>
         <div class="fb_comment" id="fb_comment<%= news_id %>">
@@ -226,6 +215,18 @@
           </script>
           <fb:comments href='<%= fb_obj_url %>' num_posts='5' width='900'></fb:comments>
           <div style="clear: both;"></div>
+
+          <span id="to_top" style="float:left;">
+           <input
+             type="button"
+             name="groovybtn1"
+             class="groovybutton_W"
+             value="<%= t(:m_to_top) %> ↑"
+             style="float: left"
+             onclick="window.scrollTo(0,0) ;">
+           </span>
+
+
         </div> <!-- fb_comment -->
       </div> <!-- comments -->
     </div>
