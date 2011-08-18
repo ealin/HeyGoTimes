@@ -22,6 +22,7 @@ zh_tw:
   to_comment_area_hint: "按下此按鈕可跳到本頁最底端，您可瀏覽其他網友對此篇新聞的意見，或直接對此篇新聞發表評論。"
   fb_comment_title_hint: "您可在此發表對此則新聞的意見，亦可選擇是否要將您的評論內容、與此篇新聞的連結發送到您facebook的塗鴉牆上。"
   news_frame_hint: "為尊重新聞來源的版權，我們不對原始新聞網頁的內容作任何篩選、整理與加工。在您讀完此篇新聞的主要內容之後，可捲動到本頁的最底端，繼續閱讀其他網友對此則新聞的評論。"
+  share_group_hint: "您可將此則新聞分享給其他網站的朋友，目前支援facebook、twitter、Google buzz，持續擴充當中。"
 
   #----------------------------------------
   # name of each page(controller/view)
@@ -99,6 +100,7 @@ zh_tw:
   
   to_heygotimes_main_page:  "想要掌握更多即時新聞嗎？請進入-"
   comment_this_news: "評論此則新聞"
+  share_this_news: "分享此則新聞"
   
   news_filter_head: "打造您專屬的個人新聞！"
   load_my_filter: "載入我的設定"
