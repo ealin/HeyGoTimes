@@ -16,22 +16,16 @@
       {
           $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
           $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'top',width:220, fill:'#bdc7d8'}) ;
-          $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+          $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
           $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
           $('#share_to_facebook').bt('<%= t(:share_icon_hint) %>',{positions: 'top',width:200, fill:'#bdc7d8'}) ;
           $('#share_to_facebook2').bt('<%= t(:share_icon_hint) %>',{positions: 'top',width:200, fill:'#bdc7d8'}) ;
 
-          $('#share_to_facebook2').bt('<%= t(:share_icon_hint) %>',{positions: 'top',width:200, fill:'#bdc7d8'}) ;
           $('#sthoverbuttons').bt('<%= t(:share_group_hint) %>',{positions: 'left',width:200, fill:'#bdc7d8'}) ;
+          $('#to_top').bt('<%= t(:to_top_hint) %>',{positions: 'top',width:140, fill:'#bdc7d8'}) ;
 
 
        }) ;
-
-
-window.onload=function() {
-         // move to top of page
-           window.scrollTo(0,0) ;
-};
 
 
     function getSrc(obj)
@@ -136,23 +130,21 @@ window.onload=function() {
           type="button"
           name="groovybtn1"
           class="groovybutton_W"
-          value="<%= t(:comment_this_news) %>"
-          title="<%= t(:comment_this_news) %>"
+          value="<%= t(:comment_this_news) %> ↓"
           style="float: left"
           onclick="window.scrollTo(0,1000) ;">
         </span>
 
-        <span >
+        <span>
          <a href="#">
          <input  id="share_to_facebook"
             type="button"
             name="groovybtn2"
             class="groovybutton_W"
             value="<%= t(:share_this_news) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            title="<%= t(:share_this_news) %>"
             style="float: left"
             onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');">
-          <img id = "share_to_facebook2" style="position:absolute;left:226px;top:137px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
+          <img id = "share_to_facebook2" style="position:absolute;left:244px;top:137px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
           </a>
         </span>
 
@@ -199,6 +191,18 @@ window.onload=function() {
       </div>
       <div class="comments">
         <div class="comment_title" id="fb_comment_title"><%= t(:comments)%></div>
+        <span id="to_top" style="float:right;">
+        <input
+          type="button"
+          name="groovybtn1"
+          class="groovybutton_W"
+          value="<%= t(:m_to_top) %> ↑"
+          style="float: left"
+          onclick="window.scrollTo(0,0) ;">
+        </span>
+
+
+
         <div class="button_group"></div>
         <div class="fb_comment" id="fb_comment<%= news_id %>">
           <div id="fb-root"></div>

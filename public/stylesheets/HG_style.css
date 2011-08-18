@@ -104,11 +104,12 @@ input.groovybutton_W
 {
  font-size:16px;
    font-family:Trebuchet MS,sans-serif;
-   font-weight:bold;
+   /*font-weight:bold;*/
    color:#FFFFFF;
    height:32px;
    background-color:#0077BB;
    border-style:none;
+   padding-left:10px;
 }
 
 

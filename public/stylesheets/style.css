@@ -216,7 +216,7 @@ a img {
 .comments .comment_title {
   margin-bottom: 10px;
   font-size: 1.8em;
-  width: 40%;
+  /*width: 20%;*/
   float: left;
 }
 .comments .comment_title a {
