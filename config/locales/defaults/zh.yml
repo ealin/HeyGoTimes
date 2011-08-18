@@ -23,6 +23,8 @@ zh:
   fb_comment_title_hint: "您可在此发表对此则新闻的意见，亦可选择是否要将您的评论内容、与此篇新闻的连结发送到您facebook的涂鸦牆上。"
   news_frame_hint: "为尊重新闻来源的版权，我们不对原始新闻网页的内容作任何筛选、整理与加工。在您读完此篇新闻的主要内容之后，可捲动到本页的最底端，继续阅读其他网友对此则新闻的评论。"
   share_group_hint: "您可将此则新闻分享给其他网站的朋友，目前支援facebook、twitter、Google buzz，持续扩充当中。"
+
+  to_top_hint: "将本页捲动到本篇新闻内容的最顶端。"
   
   #----------------------------------------
   # name of each page(controller/view)
@@ -164,7 +166,7 @@ zh:
   spam_reason: "检举理由："
   
   to_top: "回頁首"
-  
+  m_to_top: "从头阅读新闻"  
 
   #--------------------------------------------------------------------------
   # name of Area (name of each symbol should be similar with in seed.rb)
