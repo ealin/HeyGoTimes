@@ -535,3 +535,32 @@ div.menu li {
 * html #access ul li a:hover {
 	color: #fff;
 }
+
+.size { position:relative }
+.size .field {
+        width:80px; background:#6d84b4; color:#fff; padding:5px; border:none; cursor:pointer;
+        font-family:'lucida sans unicode',sans-serif; font-size:1em;
+        border:solid 1px #6d84b4;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+}
+.size .field:hover {
+        border:solid 1px #fff;
+        -moz-box-shadow:0 0 5px #999; -webkit-box-shadow:0 0 5px #999; box-shadow:0 0 5px #999
+}
+.size>ul.list { display:none;
+        position:absolute; left:0px; top:-35px; z-index:9999;
+        width:80px;
+        margin:0; padding:10px; list-style:none;
+        background:#fff; color:#333;
+        -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
+        -moz-box-shadow:0 0 5px #999; -webkit-box-shadow:0 0 5px #999; box-shadow:0 0 5px #999
+}
+.size>ul.list li {
+        padding:10px;
+        border-bottom: solid 1px #ccc;
+}
+.size>ul.list li:hover {
+        background:#6d84b4; color:#fff;
+}
+.size>ul.list li:last-child { border:none }

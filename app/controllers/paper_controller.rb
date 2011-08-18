@@ -52,7 +52,7 @@ class PaperController < NewsController
       end
 
       # get event notification
-      @notations = News.get_notation(user)
+      @notations = get_notation_news(user, 1)
       @notification_time = user.last_event_notification
 
       user.last_event_notification = Time.now
@@ -99,6 +99,9 @@ class PaperController < NewsController
     end
   end
 
+  def get_notation_news(user, page)
+    return News.get_notation(user).paginate :page => page, :per_page => @loading_news_num
+  end
 
   #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)
   #

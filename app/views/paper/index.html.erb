@@ -309,17 +309,19 @@
       <div id="menu_type_btn">
       <li id="menu-item-rank" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:popular_news)%></span></a></li>
       <li id="menu-item-latest" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:latest_news)%></span></a></li>
-      <% count = 0 %>
-
-      <% if @notations != nil && @notations.count > 0 %>
-        <% @notations.each do |event|%>
-          <% if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time %>
-            <% count+=1 %>
-          <% else %>
-            <% break %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%
+        # calculate notation count
+        count = 0
+        if @notations != nil && @notations.count > 0
+          @notations.each do |event|
+            if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time
+              count+=1
+            else
+              break
+            end
+          end
+        end
+      %>
 
       <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
         <% if @notations != nil  %>

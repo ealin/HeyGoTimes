@@ -1,5 +1,5 @@
 
-   <title>Page Title</title>
+   <title><%= t(:HeyGoTimes)%></title>
    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 
    <link rel="icon" type="image/png" href="/images/logo_57x57.png">
@@ -85,8 +85,15 @@
       }, 10000);
     }
 
-    function changePaperType(type) {
+    function menu_change_type(html) {
+      obj.find('.field').html(html+' ▽');
+      obj.find('.list').fadeOut(400);
+    }
+
+    function changePaperType(type, html) {
       var url = '/mobile/_show_paper_content?type='+type+'&page=1'+ '&time_base=now';
+
+      menu_change_type(html);
       loading_animate(true);
       $("#m_paperContent").load(url, function(response, status, xhr) {
         loading_animate(false);
@@ -106,6 +113,37 @@
       else
         $('#loading_animate').html('');
     }
+
+    (function($){
+			$.fn.styleddropdown = function(){
+				return this.each(function(){
+					obj = $(this)
+					obj.find('.field').click(function() { //onclick event, 'list' fadein
+					obj.find('.list').fadeIn(400);
+
+					$(document).keyup(function(event) { //keypress event, fadeout on 'escape'
+						if(event.keyCode == 27) {
+						obj.find('.list').fadeOut(400);
+						}
+					});
+
+					obj.find('.list').hover(function(){ },
+						function(){
+							$(this).fadeOut(400);
+						});
+					});
+
+					obj.find('.list li').click(function() { //onclick event, change field value with selected 'list' item and fadeout 'list'
+            obj.find('.field').val($(this).html())
+            obj.find('.list').fadeOut(400);
+					});
+				});
+			};
+		})(jQuery);
+
+		$(function(){
+			$('.size').styleddropdown();
+		});
 
     $(document).ready(function() {
       var currPage = 1;
@@ -160,19 +198,27 @@
        });
 
       $('#menu-item-rank').unbind('click').click(function(){
-        $('#menu-item-latest').removeClass("current-menu-item")
-        $(this).addClass("current-menu-item")
         currPage = 1;
         currType = 'rank';
-        changePaperType(currType);
+        changePaperType(currType, $(this).html());
       });
 
       $('#menu-item-latest').unbind('click').click(function(){
-        $('#menu-item-rank').removeClass("current-menu-item")
-        $(this).addClass("current-menu-item")
         currPage = 1;
         currType = 'latest';
-        changePaperType(currType);
+        changePaperType(currType, $(this).html());
+      });
+
+      $('#menu-item-friend').unbind('click').click(function(){
+        currPage = 1;
+        currType = 'friend';
+        changePaperType(currType, $(this).html());
+      });
+
+      $('#menu-item-notation').unbind('click').click(function(){
+        currPage = 1;
+        currType = 'notation';
+        changePaperType(currType, $(this).html());
       });
 
       $('#backButton').unbind('click').click(function(){
@@ -212,7 +258,6 @@
       authorize_url += "&display="+my_display;
       authorize_url += "&scope=publish_stream"
 
-
       window.location.replace(authorize_url);
     }
 
@@ -223,38 +268,27 @@
 
         window.location = "/paper/set_default_locale?" + data ;
 
-
     }
-
-
-
 
     function check_tags(the_box)
     {
-
         if(the_box != "All")
         {
             for(i=0;i<($('option').length);i++)
             {
-
                if( $('option')[i].parentNode.id != "tag_filter")
                      continue ;
-
                 if($('option')[i].id == "All" && $('option')[i].selected == true)
                 {
                     $('option')[i].selected = false ;
                     break ;
                 }
-
             }
-
         }
         else
         {
-
             for(i=0;i<($('option').length);i++)
             {
-
                if( $('option')[i].parentNode.id != "tag_filter")
                      continue ;
 
@@ -264,15 +298,8 @@
                 $('option')[i].selected = false ;
 
             }
-
         }
-
-
-
-
     }
-
-
 
   </script>
 
@@ -326,9 +353,40 @@
   <div id="m_cmd_bar">
     <div class="menu-header">
       <ul id="menu-area" class="menu">
-        <li id="menu-item-rank" class="menu-item type-btn <%= 'current-menu-item' if (session[:news_type] == 'rank') %>"><a title="Rank" href="#_paper"><%=t(:popular_news)%></a></li>
-        <li id="menu-item-latest" class="menu-item <%= 'current-menu-item' if (session[:news_type] == 'latest') %>"><a title="Latest" href="#_paper"><%=t(:latest_news)%></a></li>
+        <div class="size">
+          <%
+            # calculate notation count
+            count = 0
+            if @notations != nil && @notations.count > 0
+              @notations.each do |event|
+                if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time
+                  count+=1
+                else
+                  break
+                end
+              end
+            end
 
+            # get type string
+            case session[:news_type]
+              when 'rank'
+                type = t(:popular_news)
+              when 'latest'
+                type = t(:latest_news)
+              when 'friend'
+                type = t(:m_friend_ranking)
+              when 'notation'
+                type = t(:event_notation)+'('+count.to_s+')'
+            end
+          %>
+          <li class="field"><%= type+' ▽' %></li>
+          <ul class="list">
+            <li id="menu-item-rank"><%= t(:popular_news) %></li>
+            <li id="menu-item-latest"><%= t(:latest_news) %></li>
+            <li id="menu-item-friend"><%= t(:m_friend_ranking) %></li>
+            <li id="menu-item-notation"><%= t(:event_notation) %>(<%= count %>)</li>
+          </ul>
+        </div>
         <li id="menu-item-filter" class="menu-item fun-btn" >
             <a style="disabled:true;" title="<%= t(:m_filter_setting) %>" href="#filter" > <%=t(:m_filter)%>
             </a>
