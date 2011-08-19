@@ -16,7 +16,8 @@
    <script type="application/x-javascript" src="/javascripts/mobile/iui_ext.js"></script>
    <script type="application/x-javascript" src="/javascripts/mobile/iui.js"></script>
    <script type='text/javascript' src='/javascripts/jquery.lazyload.mini.js'></script>
-
+   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+   <script type="text/javascript">stLight.options({publisher:'24387ba6-8c08-4755-b993-eecc254891d5', embeds:true});</script>
 
    <script type="text/javascript">
 
@@ -67,6 +68,7 @@
       $('#expand_comment'+news_id).html("");
       $('#fb_comment'+news_id).append(comment_str);
       FB.XFBML.parse(document.getElementById('comments'));
+      FB.Event.subscribe('comment.create',function(resp){comment(resp);});
     }
 
     function loadMore(type, pageNo,news_num) {
@@ -235,11 +237,6 @@
       };
       <% end %>
 
-      FB.Event.subscribe('comment.create',function(resp){
-        comment(resp);
-      });
-
-
       $("img").lazyload();
     });
 
@@ -300,9 +297,7 @@
             }
         }
     }
-
   </script>
-
 </head>
 
 
