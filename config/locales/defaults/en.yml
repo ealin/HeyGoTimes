@@ -80,6 +80,7 @@ en:
   #----------------------------------------
   m_report: "Report"
   m_filter: "Filter"
+  m_friend_ranking: "Friends' news"
   m_filter_setting: "Filter Setting"
   m_report_news: "Repor News"
   m_login: "Login"

@@ -76,6 +76,7 @@ zh_tw:
   #----------------------------------------
   m_report: "發佈新聞"
   m_filter: "篩選新聞"
+  m_friend_ranking: "好友新聞"
   m_filter_setting: "篩選條件設定"
   m_report_news: "發佈新聞"
   m_login: "登入"
