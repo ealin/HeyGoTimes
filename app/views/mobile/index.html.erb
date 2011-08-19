@@ -88,7 +88,7 @@
     }
 
     function menu_change_type(html) {
-      obj.find('.field').html(html+' ??);
+      obj.find('.field').html(html+' ▽');
       obj.find('.list').fadeOut(400);
     }
 
@@ -375,7 +375,7 @@
                 type = t(:event_notation)+'('+count.to_s+')'
             end
           %>
-          <li class="field"><%= type+' ?? %></li>
+          <li class="field"><%= type+' ▽' %></li>
           <ul class="list">
             <li id="menu-item-rank"><%= t(:popular_news) %></li>
             <li id="menu-item-latest"><%= t(:latest_news) %></li>
@@ -398,8 +398,8 @@
   </div><!-- #m_cmd_bar -->
 
   <div class="menu-item" align="center">
-     <a href="#" onclick="set_default_locale('zh_tw')">�??中�?</a> &nbsp;
-     <a href="#" onclick="set_default_locale('zh')">�??中�?</a>  &nbsp;
+     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
+     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
      <a href="#" onclick="set_default_locale('en')">English</a>
   </div>
 
@@ -431,8 +431,8 @@
    -->
 
   <div class="menu-item" align="center">
-    <a href="#" onclick="set_default_locale('zh_tw')">�??中�?</a> &nbsp;
-    <a href="#" onclick="set_default_locale('zh')">�??中�?</a>  &nbsp;
+    <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
+    <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
     <a href="#" onclick="set_default_locale('en')">English</a>
 
     <input
