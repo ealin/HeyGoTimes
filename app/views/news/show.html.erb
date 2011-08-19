@@ -11,14 +11,22 @@
 
   <script type="text/javascript">
 
-    $(document).ready(function()
-    {
-      $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
-      $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'right',width:220, fill:'#bdc7d8'}) ;
-      $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
-      $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
 
-    }) ;
+      $(document).ready(function()
+      {
+          $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'right',width:240, fill:'#bdc7d8'}) ;
+          $('#to_comment_area').bt('<%= t(:to_comment_area_hint) %>',{positions: 'top',width:220, fill:'#bdc7d8'}) ;
+          $('#fb_comment_title').bt('<%= t(:fb_comment_title_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
+          $('#news_frame').bt('<%= t(:news_frame_hint) %>',{positions: 'top',width:240, fill:'#bdc7d8'}) ;
+          $('#share_to_facebook').bt('<%= t(:share_icon_hint) %>',{positions: 'top',width:200, fill:'#bdc7d8'}) ;
+          $('#share_to_facebook2').bt('<%= t(:share_icon_hint) %>',{positions: 'top',width:200, fill:'#bdc7d8'}) ;
+
+          $('#sthoverbuttons').bt('<%= t(:share_group_hint) %>',{positions: 'left',width:200, fill:'#bdc7d8'}) ;
+          $('#to_top').bt('<%= t(:to_top_hint) %>',{positions: 'right',width:140, fill:'#bdc7d8'}) ;
+
+
+       }) ;
+
 
     function getSrc(obj)
     {
@@ -55,6 +63,7 @@
         data: "news_id="+id
       });
     }
+
     function share(id, url, title)
     {
       var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
@@ -67,6 +76,7 @@
         }
       });
     }
+
     function share_group()
     {
       $.ajax({
@@ -103,10 +113,10 @@
     <div class="sthoverbuttons-chicklets">
       <span class="st_facebook_large"> </span>
       <span class="st_twitter_large"> </span>
-      <span class="st_gbuzz_large">  </span>
       <span class="st_tumblr_large">  </span>
       <span class="st_sina_large">  </span>
       <span class="st_linkedin_large">  </span>
+      <span class="st_gbuzz_large">  </span>
     </div>
   </div>
 
@@ -119,14 +129,27 @@
           type="button"
           name="groovybtn1"
           class="groovybutton_W"
-          value="<%= t(:comment_this_news) %>"
-          title="<%= t(:comment_this_news) %>"
+          value="<%= t(:comment_this_news) %>↓"
           style="float: left"
           onclick="window.scrollTo(0,1000) ;">
         </span>
+
         <span>
-          <a style="text-decoration: none;font-size: 1.6em;padding-left: 20px;" href="#" onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" title="<%= t(:share_hint) %>"><img class="button-icon-share" src="/images/facebook_icon.png" alt="" /><%= t(:share) %></a>
+         <a href="#">
+         <input  id="share_to_facebook"
+            type="button"
+            name="groovybtn2"
+            class="groovybutton_W"
+            value="<%= t(:share_this_news) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            style="float: left"
+            onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');">
+          <img id = "share_to_facebook2" style="position:absolute;left:244px;top:137px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
+          </a>
         </span>
+
+
+
+
         <% if @news.url != nil && @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
           <div>
@@ -167,6 +190,7 @@
       </div>
       <div class="comments">
         <div class="comment_title" id="fb_comment_title"><%= t(:comments)%></div>
+
         <div class="button_group"></div>
         <div class="fb_comment" id="fb_comment<%= news_id %>">
           <div id="fb-root"></div>
@@ -190,6 +214,18 @@
           </script>
           <fb:comments href='<%= fb_obj_url %>' num_posts='5' width='900'></fb:comments>
           <div style="clear: both;"></div>
+
+          <span id="to_top" style="float:left;">
+           <input
+             type="button"
+             name="groovybtn1"
+             class="groovybutton_W"
+             value="<%= t(:m_to_top) %>↑"
+             style="float: left"
+             onclick="window.scrollTo(0,0) ;">
+           </span>
+
+
         </div> <!-- fb_comment -->
       </div> <!-- comments -->
     </div>
@@ -206,7 +242,7 @@
         <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
         <br><br>
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 橫�?�?? -->
+        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 璈恬蕭?嚙�? -->
       </div>
     </div>
 
