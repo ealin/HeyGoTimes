@@ -24,7 +24,9 @@ en:
   to_comment_area_hint: "按下此按鈕可跳到本頁最底端，您可瀏覽其他網友對此篇新聞的意見，或直接對此篇新聞發表評論。"
   fb_comment_title_hint: "您可在此發表對此則新聞的意見，亦可選擇是否要將您的評論內容、與此篇新聞的連結發送到您facebook的塗鴉牆上。"
   news_frame_hint: "為尊重新聞來源的版權，我們不對原始新聞網頁的內容作任何篩選、整理與加工。在您讀完此篇新聞的主要內容之後，可捲動到本頁的最底端，繼續閱讀其他網友對此則新聞的評論。"
+  share_group_hint: "您可將此則新聞分享給其他網站的朋友，目前支援facebook、twitter、Google buzz，持續擴充當中。"
 
+  to_top_hint: "將本頁捲動到本篇新聞內容的最頂端。"
   
   #----------------------------------------
   # name of each page(controller/view)
@@ -89,7 +91,7 @@ en:
   m_function: "Function List:"
   m_setting_list: "Setting about Friends & Date:"
 
-  m_to_comment: "Comment this news"
+  m_to_comment: "Comment"
   m_prev: "Back"
 
   m_number_of_tags_selected: "There are "
@@ -106,6 +108,7 @@ en:
   report_a_news: "Report a new news"
   to_heygotimes_main_page:  "To read more real time news, please enter-"
   comment_this_news: "Comment this news"  
+  share_this_news: "Share this news"
   
   news_filter_head: "News Filter - create your own news site!"
   load_my_filter: "Load my setting"
@@ -228,6 +231,8 @@ en:
   spam_reason: "My reason is："
 
   to_top: "Top"
+  m_to_top: "News from begining"
+  
   
   #----------------------------------------
   # name of the Link

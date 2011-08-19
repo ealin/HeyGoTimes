@@ -30,24 +30,8 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 
 
 
-  <% if current_facebook_user != nil && session[:logged_in] != false%>
-
-    <% # fetch is called in check_logged_in() /  application_controller.rb  %>
-    <% #current_facebook_user.fetch %>
-    <br>
-    <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name} (#{current_facebook_user.email})" %>
-    <br>
-    <%= fb_logout_link("Logout", request.url) %>
-    <% session[:logged_in] = true  %>
-
-  <% else
-    # you must explicitly request permissions for facebook user fields.
-    # here we instruct facebook to ask the user for permission for our website
-    # to access the user's facebook email and birthday
-    %>
-
     <%= fb_login_and_redirect(root_url, :perms => 'email,user_birthday') %>
 
     <% session[:logged_in] = false %>
-  <% end %>
+
 

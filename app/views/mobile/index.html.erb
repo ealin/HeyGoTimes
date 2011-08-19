@@ -1,6 +1,6 @@
 
-   <title><%= t(:HeyGoTimes)%></title>
-   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+   <title>Page Title</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
    <link rel="icon" type="image/png" href="/images/logo_57x57.png">
    <link rel="apple-touch-icon" href="/images/logo_57x57.png" />
@@ -88,7 +88,7 @@
     }
 
     function menu_change_type(html) {
-      obj.find('.field').html(html+' ▽');
+      obj.find('.field').html(html+' ??);
       obj.find('.list').fadeOut(400);
     }
 
@@ -184,9 +184,10 @@
 
 
        $('#more_news').unbind('click').click(function() {
-        loadMore(currType, ++currPage,10);
+        loadMore(currType, ++currPage,15);
       });
 
+        /*
         $('#more_15news').unbind('click').click(function() {
          loadMore(currType, ++currPage,15);
        });
@@ -197,7 +198,7 @@
 
         $('#more_25news').unbind('click').click(function() {
          loadMore(currType, ++currPage,25);
-       });
+       });*/
 
       $('#menu-item-rank').unbind('click').click(function(){
         currPage = 1;
@@ -374,7 +375,7 @@
                 type = t(:event_notation)+'('+count.to_s+')'
             end
           %>
-          <li class="field"><%= type+' ▽' %></li>
+          <li class="field"><%= type+' ?? %></li>
           <ul class="list">
             <li id="menu-item-rank"><%= t(:popular_news) %></li>
             <li id="menu-item-latest"><%= t(:latest_news) %></li>
@@ -397,8 +398,8 @@
   </div><!-- #m_cmd_bar -->
 
   <div class="menu-item" align="center">
-     <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
-     <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
+     <a href="#" onclick="set_default_locale('zh_tw')">�??中�?</a> &nbsp;
+     <a href="#" onclick="set_default_locale('zh')">�??中�?</a>  &nbsp;
      <a href="#" onclick="set_default_locale('en')">English</a>
   </div>
 
@@ -415,10 +416,11 @@
 
   <br>
   <div align="left">
-    <button id="more_news" style="height: 30px; width:68%;font-size:14px;">
+    <button id="more_news" style="height: 30px; width:99%;font-size:14px;">
       <%= t(:m_more) %> <span id="loading_more_news"></span></button>
   </div>
 
+  <!--
   <div id="m_add_moremore_news">
     <span id="more_15news"> +15 </span>
     &nbsp;
@@ -426,11 +428,11 @@
     &nbsp;
     <span id="more_25news"> +25 </span>
   </div>
-
+   -->
 
   <div class="menu-item" align="center">
-    <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a> &nbsp;
-    <a href="#" onclick="set_default_locale('zh')">简体中文</a>  &nbsp;
+    <a href="#" onclick="set_default_locale('zh_tw')">�??中�?</a> &nbsp;
+    <a href="#" onclick="set_default_locale('zh')">�??中�?</a>  &nbsp;
     <a href="#" onclick="set_default_locale('en')">English</a>
 
     <input
@@ -448,16 +450,19 @@
 <div id="m_news_page">
   <div id="m_news_main">
   </div> <!-- m_news_main -->
-  <div class="m_ad">
-    <%= render :partial => "m_show_ad" %>
-  </div>
+
+  <div id = "m_ad" align ="center" >
+     <hr>
+     <%= render :partial => "m_show_ad" %>
+   </div>
+
 </div>
 
 <!-- !!!!!!!!! Page - Filter  -->
 <div id="filter" title="<%= t(:m_filter_setting) %>" class="panel">
   <%= render :partial => 'mobile/m_set_filter'%>
 
-  <div align ="center" >
+  <div id = "m_ad2" align ="center" >
      <hr>
      <%= render :partial => "m_show_ad" %>
    </div>

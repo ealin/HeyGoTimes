@@ -216,7 +216,7 @@ a img {
 .comments .comment_title {
   margin-bottom: 10px;
   font-size: 1.8em;
-  width: 40%;
+  /*width: 20%;*/
   float: left;
 }
 .comments .comment_title a {
@@ -281,7 +281,7 @@ a img {
   margin: auto;
   text-align:center;
   height: 30px;
-  width:70%;
+  width:100%;
   background: #edeff4;
   border-width :1px;
   border-color: #bdc7d8;
