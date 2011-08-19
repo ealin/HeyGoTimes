@@ -20,7 +20,7 @@
           <iframe id="news_frame" class="news_iframe" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
         <% end %>
       <% else %>
-        <% url = 'http://www.google.com/gwt/x?u='+@news.url %>
+        <% url = 'http://www.google.com/gwt/n?client=ig&u='+@news.url %>
         <iframe id="news_frame"  class="news_iframe" width="100%" src="<%= url %>">
           Your browser can't display IFRAMEs
         </iframe>
@@ -88,11 +88,7 @@
 <% end %>
 
 
-<% if redirect_from_web %>
-  <div class="m_ad3">
-    <%#= render :partial => "m_show_ad" %>
-  </div>
-<% end %>
+
 
 
 
