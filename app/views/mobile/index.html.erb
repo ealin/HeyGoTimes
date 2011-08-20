@@ -350,7 +350,10 @@
      <a href="#" onclick="set_default_locale('en')">English</a>
   </div>
 
- <%= request.env['HTTP_HOST'] %>
+ <% if request.env['HTTP_HOST'] == 'heygotimes.heroku.com' %>
+   <% request.env['HTTP_HOST'] = 'www.heygotimes.com' %> 
+   <%= request.env['HTTP_HOST']  %> 
+ <% end %>
 
   <hr style="clear:both;">
   <div id="loading_animate" style="position:fixed;top:80px;left:50%;margin-left:-16px;"><img src="/images/fb_loading_large.gif" alt=""/></div>
