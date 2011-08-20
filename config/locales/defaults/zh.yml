@@ -76,6 +76,7 @@ zh:
   #----------------------------------------
   m_report: "发布新闻"
   m_filter: "筛选新闻"
+  m_friend_ranking: "好友新闻"
   m_filter_setting: "筛选条件设定"
   m_report_news: "发布新闻"
   m_login: "登入"
