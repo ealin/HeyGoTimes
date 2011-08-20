@@ -25,6 +25,11 @@
     <span class="st_gbuzz_large"/>
     <span class="st_twitter_large"/>
     <span class="st_facebook_large"/>
+
+    <span class="st_tumblr_large"/>
+    <span class="st_sina_large"/>
+    <span class="st_linkedin_large"/>
+
   </div>
   <div id="m_top" class="news_frame" style="width: 100%;">
     <% # TODO: use @paper_width %>
@@ -32,7 +37,7 @@
         <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
         <% if detect_apple_browser() %>
           <% link = 'http://m.youtube.com/#/watch?v='+@news.url[-11..-1] %>
-          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影�?" width="320" style="border:0;" /></a>
+          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影�?" width="320" style="border:0;" /></a>
         <% else %>
           <iframe id="news_frame" class="news_iframe" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
         <% end %>
