@@ -2,10 +2,10 @@ class PaperController < NewsController
 
   def index
 
-#    if request.url == 'http://heygotimes.heroku.com/mobile/index' 
- #     redirect_to 'www.heygotimes.com' 
-  #    return
-   # end 
+    if request.url == 'http://heygotimes.heroku.com/mobile/index' 
+      redirect_to 'www.heygotimes.com/mobile/index' 
+      return
+    end 
 
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
