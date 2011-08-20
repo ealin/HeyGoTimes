@@ -3,10 +3,22 @@ class PaperController < NewsController
   def index
 
     # patch for iPhone APP version 1.0
-    if request.url == 'http://heygotimes.heroku.com/mobile/index' 
-      redirect_to 'www.heygotimes.com/mobile/index' 
+    if request.url == 'http://heygotimes.heroku.com/mobile/index'
+      redirect_to 'www.heygotimes.com/mobile/index'
       return
-    end 
+    end
+
+    if (request.url).include?('mobile/index')
+      render :partial => "m_loading"
+    else
+      index_prepare_data
+    end
+
+
+  end
+
+
+  def index_prepare_data
 
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
@@ -58,7 +70,7 @@ class PaperController < NewsController
       end
 
       # get event notification
-      @notations = News.get_notation(user)
+      @notations = get_notation_news(user, 1)
       @notification_time = user.last_event_notification
 
       user.last_event_notification = Time.now
@@ -82,7 +94,7 @@ class PaperController < NewsController
     end
 
     if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
-      @loading_news_num = 10
+      @loading_news_num = 15
     else
       @loading_news_num = Integer(temp_str)
     end
@@ -105,12 +117,15 @@ class PaperController < NewsController
     end
   end
 
+  def get_notation_news(user, page)
+    return News.get_notation(user).paginate :page => page, :per_page => @loading_news_num
+  end
 
   #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)
   #
   def get_news(type, page)
     if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
-      @loading_news_num = 10
+      @loading_news_num = 15
     end
 
     user_areas = []
@@ -179,7 +194,7 @@ class PaperController < NewsController
 
   def get_special_news(type, page)
     if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
-      @loading_news_num = 10
+      @loading_news_num = 15
     end
 
     user_id = nil
