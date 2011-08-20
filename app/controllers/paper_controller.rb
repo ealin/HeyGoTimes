@@ -2,6 +2,10 @@ class PaperController < NewsController
 
   def index
 
+    if request.env['HTTP_HOST'] == 'heygotimes.heroku.com' 
+      redirect_to 'www.heygotimes.com' 
+    end 
+
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
       @m_reload_flag = true
