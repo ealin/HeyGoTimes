@@ -9,13 +9,30 @@
 <% end %>
 
 <% if @news.url != "" %>
+  <% fb_obj_url = get_fb_obj_url(@news) %>
+  <script type="text/javascript">
+    function share_group()
+    {
+      $.ajax({
+        type: "POST",
+        url: "/news/share",
+        data: "news_id=<%= @news.id %>"
+      });
+    }
+  </script>
+  <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'24387ba6-8c08-4755-b993-eecc254891d5', st_url: '<%= fb_obj_url %>', embeds:true});stLight.subscribe("click",share_group);</script>
+  <div class="sthoverbuttons-chicklets">
+    <span class="st_gbuzz_large"/>
+    <span class="st_twitter_large"/>
+    <span class="st_facebook_large"/>
+  </div>
   <div id="m_top" class="news_frame" style="width: 100%;">
     <% # TODO: use @paper_width %>
       <% if (@news.url.include?'youtu') %>
         <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
         <% if detect_apple_browser() %>
           <% link = 'http://m.youtube.com/#/watch?v='+@news.url[-11..-1] %>
-          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影片" width="320" style="border:0;" /></a>
+          <a target="_webapp" href="<%= link %>"><img src="http://i.ytimg.com/vi/<%= @news.url[-11..-1] %>/default.jpg?w=320" alt="影�?" width="320" style="border:0;" /></a>
         <% else %>
           <iframe id="news_frame" class="news_iframe" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
         <% end %>
