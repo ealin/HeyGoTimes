@@ -8,6 +8,18 @@ class PaperController < NewsController
       return
     end
 
+    if (request.url).include?('mobile/index')
+      render :partial => "m_loading"
+    else
+      index_prepare_data
+    end
+
+
+  end
+
+
+  def index_prepare_data
+
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
       @m_reload_flag = true
