@@ -17,11 +17,39 @@ class MobileController < PaperController
       session[:news_load_time] = Time.now
     end
 
-    session[:news_type] = params[:type]
-    @news = get_news(params[:type], params[:page])
+    user_logged_in = (session[:logged_in] == true && session[:id] != nil)? true: false
+
+    response_need_login = false
+    if params[:type] == 'friend' && user_logged_in == true
+      session[:news_type] = 'rank'
+      session[:filter_friend] = 'friend'
+    else
+      if (params[:type] == 'friend' || params[:type] == 'notation') && (user_logged_in == false)
+        response_need_login = true
+      else
+        session[:news_type] = params[:type]
+      end
+    end
+
+    if response_need_login == true
+      @news = nil
+    elsif session[:news_type] == 'notation'
+      # get event notification
+      user = User.find(session[:id])
+      @news = get_notation_news(user, params[:page])
+      user.last_event_notification = Time.now
+      user.save
+    else
+      @news = get_news(session[:news_type], params[:page])
+    end
 
     respond_to do |format|
-      format.html {render :partial => 'mobile/show_paper_content', :locals => {:news => @news}}
+      if @news == nil
+        response_str = "<div style='color:red;'>"+t(:login_for_set_friend_filter)+"</div><hr>"
+        format.html {render :inline => response_str}
+      else
+        format.html {render :partial => 'mobile/show_paper_content', :locals => {:news => @news}}
+      end
     end
   end
 

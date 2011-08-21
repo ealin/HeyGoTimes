@@ -210,7 +210,6 @@ class NewsController < ApplicationController
       end
     end
 
-
     respond_to do |format|
       format.json { render :json => (datas.to_json) }
     end

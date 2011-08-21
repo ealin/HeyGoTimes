@@ -1,4 +1,4 @@
-
+  <title><%= t(:HeyGoTimes)%> - <%= t(:Home)%></title>
   <meta property="og:title" content="HeyGoTimes"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= root_url %>"/>
@@ -114,24 +114,25 @@
         $('#menu-item-rank').removeClass("active");
       <% end %>
 
-      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
-      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
-      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
+        $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
+        $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+        $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
 
-      $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
-      $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
-      $('#share_icon0').bt('<%= t(:share_icon_hint) %>',{positions: 'bottom',width:120, fill:'#bdc7d8'}) ;
-      $('#like_icon0').bt('<%= t(:like_icon_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
-      $('#unlike_icon0').bt('<%= t(:unlike_icon_hint) %>',{positions: 'bottom',width:300, fill:'#bdc7d8'}) ;
-      $('#report_spam0').bt('<%= t(:report_spam_icon_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+        $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+        $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
+        $('#share_icon0').bt('<%= t(:share_icon_hint) %>',{positions: 'bottom',width:120, fill:'#bdc7d8'}) ;
+        $('#like_icon0').bt('<%= t(:like_icon_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
+        $('#unlike_icon0').bt('<%= t(:unlike_icon_hint) %>',{positions: 'bottom',width:300, fill:'#bdc7d8'}) ;
+        $('#report_spam0').bt('<%= t(:report_spam_icon_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
 
 
 
 
       $('#more_news').unbind('click').click(function() {
-        loadMore(currType, subType, ++currPage,10);
+        loadMore(currType, subType, ++currPage,15);
       });
 
+      /*
       $('#more_15news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,15);
       });
@@ -141,6 +142,7 @@
       $('#more_25news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,25);
       });
+      */
 
       $('#menu-item-rank').unbind('click').click(function(){
         $('#menu-item-latest').removeClass("active");
@@ -261,7 +263,6 @@
     <%= redirect_to  :controller => 'mobile', :action => 'index' %>
 <% end %>
 
-
 <div align="center">
     <img width="72px" src="/images/icon_red_new.png"/>
     <span style="font-size:16px;color:red;"><%= t(:Friends_slogan) %>
@@ -307,19 +308,21 @@
   <div id="menu">
     <ul class="menu">
       <div id="menu_type_btn">
-      <li id="menu-item-rank" class="active"><a class="parent"><span><%=t(:popular_news)%></span></a></li>
-      <li id="menu-item-latest" class="active"><a class="parent"><span><%=t(:latest_news)%></span></a></li>
-      <% count = 0 %>
-
-      <% if @notations != nil && @notations.count > 0 %>
-        <% @notations.each do |event|%>
-          <% if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time %>
-            <% count+=1 %>
-          <% else %>
-            <% break %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <li id="menu-item-rank" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:popular_news)%></span></a></li>
+      <li id="menu-item-latest" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:latest_news)%></span></a></li>
+      <%
+        # calculate notation count
+        count = 0
+        if @notations != nil && @notations.count > 0
+          @notations.each do |event|
+            if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time
+              count+=1
+            else
+              break
+            end
+          end
+        end
+      %>
 
       <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
         <% if @notations != nil  %>
@@ -371,6 +374,7 @@
     <%= show_page_tail %>
   </div>
 
+  <!--
   <div id="add_moremore_news">
     <a id="more_15news"> +15 </a>
     &nbsp;
@@ -378,6 +382,7 @@
     &nbsp;
     <a id="more_25news"> +25 </a>
   </div>
+  -->
 
 </div> <!-- /page -->
   <!-- news/_show_page_tail.html.erb  -->
