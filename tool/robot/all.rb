@@ -42,11 +42,11 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-require './tw_yahoo_beta.rb'
+#require './tw_yahoo_beta.rb'
 
-Thread.start{
-  get_news_from_tw_yahoo_beta(m,@sleep_period)
-}
+#Thread.start{
+#  get_news_from_tw_yahoo_beta(m,@sleep_period)
+#}
 
 
 
