@@ -1,6 +1,5 @@
 class ApiController < ApplicationController
   @@max_news = 30000
-  @@last_news_reduction = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   if ENV['RAILS_ENV'] != 'development'
     @@host = "www.heygotimes.com"
@@ -216,24 +215,28 @@ class ApiController < ApplicationController
 
 
     def news_rank_reduction
-        if Time.now - @@last_news_reduction > 43200
+      sysdata = get_system_data
+      if Time.now - sysdata.last_news_rank_reduction > 43200
 
-            # hot_news = News.all.order('rank DESC').take(10)
-            hot_news = News.get_all('rank', :none, nil, nil).take(100)
+        # hot_news = News.all.order('rank DESC').take(10)
+        hot_news = News.get_all('rank', :none, nil, nil).take(100)
 
-            @@last_news_reduction = Time.now
-            hot_news.each do |news|
-                if (@@last_news_reduction - news.created_at > 43200)
-                    if news.rank > 10
-                        news.rank -= 10
-                    else
-                        news.rank = 0
-                    end
-
-                    news.save
-                end
+        curr_time = Time.now
+        hot_news.each do |news|
+          if (curr_time - news.created_at > 43200)
+            if news.rank > 10
+              news.rank -= 10
+            else
+              news.rank = 0
             end
+
+            news.save
+          end
         end
+
+        sysdata.last_news_rank_reduction = curr_time
+        sysdata.save
+      end
     end
 
 end

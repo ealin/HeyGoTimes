@@ -58,11 +58,12 @@ class PaperController < NewsController
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
 
+    sysdata = get_system_data()
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
 
       # check site system notice
-      if user.last_sys_notification == nil || user.last_sys_notification < @@last_sys_notice_time
+      if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
         @new_sys_notation = true
         user.last_sys_notification = Time.now
       else
@@ -77,23 +78,28 @@ class PaperController < NewsController
       user.save
     end
 
-    if Time.now - @@last_news_reduction > 43200
+    # test
+    sysdata = get_system_data
+    if Time.now - sysdata.last_news_rank_reduction > 43200
 
-        # hot_news = News.all.order('rank DESC').take(10)
-        hot_news = News.get_all('rank', :none, nil, nil).take(100)
+      # hot_news = News.all.order('rank DESC').take(10)
+      hot_news = News.get_all('rank', :none, nil, nil).take(100)
 
-        @@last_news_reduction = Time.now
-        hot_news.each do |news|
-            if (@@last_news_reduction - news.created_at > 43200)
-                if news.rank > 10
-                    news.rank -= 10
-                else
-                    news.rank = 0
-                end
+      curr_time = Time.now
+      hot_news.each do |news|
+        if (curr_time - news.created_at > 43200)
+          if news.rank > 10
+            news.rank -= 10
+          else
+            news.rank = 0
+          end
 
-                news.save
-            end
+          news.save
         end
+      end
+
+      sysdata.last_news_rank_reduction = curr_time
+      sysdata.save
     end
 
   end

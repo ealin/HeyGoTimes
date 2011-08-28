@@ -283,8 +283,8 @@ class ApplicationController < ActionController::Base
   end
   #-----------------------------------------------------------------------------------------
    
-  
-  
-
+  def get_system_data
+    SystemData.find(1)
+  end
    
 end

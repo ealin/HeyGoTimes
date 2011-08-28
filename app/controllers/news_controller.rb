@@ -348,7 +348,9 @@ class NewsController < ApplicationController
           if (tag.name.downcase == "feedbacktag")
             feedback = true
           else # update last notice time
-            @@last_sys_notice_time = Time.now
+            sysdata = get_system_data()
+            sysdata.last_system_notice = Time.now
+            sysdata.save
           end
         end
       end
