@@ -2,6 +2,24 @@ class PaperController < NewsController
   @@last_news_reduction = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
   def index
 
+    # patch for iPhone APP version 1.0
+    if request.url == 'http://heygotimes.heroku.com/mobile/index'
+      redirect_to 'www.heygotimes.com/mobile/index'
+      return
+    end
+
+    if (request.url).include?('mobile/index')
+      render :partial => "m_loading"
+    else
+      index_prepare_data
+    end
+
+
+  end
+
+
+  def index_prepare_data
+
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
       @m_reload_flag = true

@@ -57,7 +57,7 @@ class MobileController < PaperController
     @news = News.find(params[:id])
     check_logged_in(false)
 
-    if (current_facebook_user != nil)
+    if (current_facebook_user != nil && session[:id] != nil)
       user = User.find(session[:id])
       if (!user.watches.include?(@news))
         @news.watches.push(user)
