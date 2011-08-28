@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   @@max_news = 30000
+  @@last_news_reduction = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
 
   if ENV['RAILS_ENV'] != 'development'
     @@host = "www.heygotimes.com"
@@ -124,6 +125,12 @@ class ApiController < ApplicationController
 
         @news.save
       end
+
+        if (News.count > @@max_news)
+            outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+            News.destroy(outdated_news.id)
+            puts 'removed news: '+outdated_news.id.to_s
+        end
     end
 
 
@@ -206,4 +213,27 @@ class ApiController < ApplicationController
       format.json { render :json => @news }
     end
   end
+
+
+    def news_rank_reduction
+        if Time.now - @@last_news_reduction > 43200
+
+            # hot_news = News.all.order('rank DESC').take(10)
+            hot_news = News.get_all('rank', :none, nil, nil).take(100)
+
+            @@last_news_reduction = Time.now
+            hot_news.each do |news|
+                if (@@last_news_reduction - news.created_at > 43200)
+                    if news.rank > 10
+                        news.rank -= 10
+                    else
+                        news.rank = 0
+                    end
+
+                    news.save
+                end
+            end
+        end
+    end
+
 end

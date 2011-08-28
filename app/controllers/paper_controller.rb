@@ -1,5 +1,5 @@
 class PaperController < NewsController
-
+  @@last_news_reduction = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
   def index
 
     @m_reload_flag = false
@@ -57,6 +57,25 @@ class PaperController < NewsController
 
       user.last_event_notification = Time.now
       user.save
+    end
+
+    if Time.now - @@last_news_reduction > 43200
+
+        # hot_news = News.all.order('rank DESC').take(10)
+        hot_news = News.get_all('rank', :none, nil, nil).take(100)
+
+        @@last_news_reduction = Time.now
+        hot_news.each do |news|
+            if (@@last_news_reduction - news.created_at > 43200)
+                if news.rank > 10
+                    news.rank -= 10
+                else
+                    news.rank = 0
+                end
+
+                news.save
+            end
+        end
     end
 
   end

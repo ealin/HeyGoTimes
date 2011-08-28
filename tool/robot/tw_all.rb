@@ -9,6 +9,7 @@ require 'thread'
 
 
 @sleep_period = 50
+@rank_reduction_period = 43200 # 12 hours
 
 m = Mutex.new
 
@@ -79,6 +80,13 @@ Thread.start{
  get_news_from_tw_nownews(m,@sleep_period)
 }
 
+
+############  automatic news rank reduction   ############
+require './rank_reduction.rb'
+
+Thread.start{
+ hot_news_rank_reduction(m,@rank_reduction_period)
+}
 
 
     ############  TW-Google-Focus   ############
