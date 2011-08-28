@@ -78,30 +78,6 @@ class PaperController < NewsController
       user.save
     end
 
-    # test
-    sysdata = get_system_data
-    if Time.now - sysdata.last_news_rank_reduction > 43200
-
-      # hot_news = News.all.order('rank DESC').take(10)
-      hot_news = News.get_all('rank', :none, nil, nil).take(100)
-
-      curr_time = Time.now
-      hot_news.each do |news|
-        if (curr_time - news.created_at > 43200)
-          if news.rank > 10
-            news.rank -= 10
-          else
-            news.rank = 0
-          end
-
-          news.save
-        end
-      end
-
-      sysdata.last_news_rank_reduction = curr_time
-      sysdata.save
-    end
-
   end
 
 
