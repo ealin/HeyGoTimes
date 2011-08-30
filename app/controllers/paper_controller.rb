@@ -58,17 +58,17 @@ class PaperController < NewsController
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
 
-    sysdata = get_system_data()
+    #sysdata = get_system_data()
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
 
       # check site system notice
-      if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
-        @new_sys_notation = true
-        user.last_sys_notification = Time.now
-      else
-        @new_sys_notation = false
-      end
+      #if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
+      #  @new_sys_notation = true
+      #  user.last_sys_notification = Time.now
+      #else
+      #  @new_sys_notation = false
+      #end
 
       # get event notification
       @notations = get_notation_news(user, 1)
