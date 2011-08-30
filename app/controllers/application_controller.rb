@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
   #  (reference: config/init.../admin_controller.rb)
   #
   def admin_logged_in?
-    if session[:logged_in] == true && (session[:host_id] == 670999089 || session[:host_id] == 753452019  || session[:host_id] == 100000182246137)
-      #if session[:logged_in] == true && User.find(session[:id]).admin == true
+    #if session[:logged_in] == true && (session[:host_id] == 670999089 || session[:host_id] == 753452019  || session[:host_id] == 100000182246137)
+    if session[:logged_in] == true && User.find(session[:id]).admin == true
       true
     else
       false
