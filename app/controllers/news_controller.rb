@@ -1,7 +1,5 @@
 class NewsController < ApplicationController
 
-  @@last_sys_notice_time = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
-
   # GET /news
   # GET /news.xml
   def index
@@ -348,9 +346,11 @@ class NewsController < ApplicationController
         if(tag.name.downcase == "feedbacktag" || tag.name.downcase == "hgtimesnotice")
           @news.special_flag= true
           if (tag.name.downcase == "feedbacktag")
-            feedback = true;
+            feedback = true
           else # update last notice time
-            @@last_sys_notice_time = Time.now
+            sysdata = get_system_data()
+            sysdata.last_system_notice = Time.now
+            sysdata.save
           end
         end
       end
