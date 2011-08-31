@@ -92,10 +92,13 @@
           <% break %>
       <% end %>
 
-      <span style="color: blue;">
-      <% if @news_for_review[@count-i] != nil %>
-      #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
+      <% if @news_for_review[@count-i] == nil %>
+      	<%next%>
       <%end%>
+
+      <span style="color: blue;">
+
+      #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
       <br>
       [ 新聞屬性： <%= t(@news_for_review[@count-i].tags[0].name.to_sym) %>  ]
       </span>
