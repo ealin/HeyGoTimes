@@ -25,8 +25,9 @@ en:
   fb_comment_title_hint: "您可在此發表對此則新聞的意見，亦可選擇是否要將您的評論內容、與此篇新聞的連結發送到您facebook的塗鴉牆上。"
   news_frame_hint: "為尊重新聞來源的版權，我們不對原始新聞網頁的內容作任何篩選、整理與加工。在您讀完此篇新聞的主要內容之後，可捲動到本頁的最底端，繼續閱讀其他網友對此則新聞的評論。"
   share_group_hint: "您可將此則新聞分享給其他網站的朋友，目前支援facebook、twitter、Google buzz，持續擴充當中。"
-
   to_top_hint: "將本頁捲動到本篇新聞內容的最頂端。"
+  fb_fans: "HeyGo!Times Facebook"
+  fb_fans_hint: "Keep track on hot news! "
   
   #----------------------------------------
   # name of each page(controller/view)

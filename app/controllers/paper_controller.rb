@@ -119,7 +119,7 @@ class PaperController < NewsController
   end
 
   def get_notation_news(user, page)
-    return News.get_notation(user).paginate :page => page, :per_page => @loading_news_num
+    return News.get_notation(user).paginate :page => page, :per_page => 8
   end
 
   #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)

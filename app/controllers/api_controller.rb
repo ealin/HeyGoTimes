@@ -125,11 +125,11 @@ class ApiController < ApplicationController
         @news.save
       end
 
-        if (News.count > @@max_news)
-            outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
-            News.destroy(outdated_news.id)
-            puts 'removed news: '+outdated_news.id.to_s
-        end
+      if (News.count > @@max_news)
+          outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+          News.destroy(outdated_news.id)
+          puts 'removed news: '+outdated_news.id.to_s
+      end
     end
 
 
@@ -197,8 +197,8 @@ class ApiController < ApplicationController
     end
 
     if(params[:focus_flag] == 'yes')
-        @news.rank = 3
-     end
+      @news.rank = 3
+    end
 
     @news.save
 
