@@ -9,6 +9,7 @@ require 'thread'
 
 
 @sleep_period = 2
+@rank_reduction_period = 43200 # 12 hours
 
 m = Mutex.new
 
@@ -42,11 +43,11 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-require './tw_yahoo_beta.rb'
+#require './tw_yahoo_beta.rb'
 
-Thread.start{
-  get_news_from_tw_yahoo_beta(m,@sleep_period)
-}
+#Thread.start{
+#  get_news_from_tw_yahoo_beta(m,@sleep_period)
+#}
 
 
 
@@ -97,6 +98,15 @@ require './tw_udn.rb'
 
 Thread.start{
  get_news_from_tw_udn(m,@sleep_period)
+}
+
+
+
+      ############  automatic news rank reduction   ############
+require './rank_reduction.rb'
+
+Thread.start{
+ hot_news_rank_reduction(m,@rank_reduction_period)
 }
 
 

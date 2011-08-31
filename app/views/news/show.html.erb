@@ -24,7 +24,7 @@
           $('#sthoverbuttons').bt('<%= t(:share_group_hint) %>',{positions: 'left',width:200, fill:'#bdc7d8'}) ;
           $('#to_top').bt('<%= t(:to_top_hint) %>',{positions: 'right',width:140, fill:'#bdc7d8'}) ;
 
-
+          $('#fans_like_btn').bt('<%= t(:fb_fans_hint) %>',{positions: 'top',width:170, fill:'#bdc7d8'}) ;
        }) ;
 
 
@@ -99,6 +99,7 @@
     <div id="logo">
       <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
     </div>
+
     <span id="filter_hint">
       <%= t(:to_heygotimes_main_page) %>
       <%= link_to(t(:HeyGoTimes), {:controller =>'paper'}, {:title => 'to home page'}) %>
@@ -117,14 +118,13 @@
       <span class="st_sina_large">  </span>
       <span class="st_linkedin_large">  </span>
       <span class="st_gbuzz_large">  </span>
+
     </div>
   </div>
 
   <div id="main">
-    <div id="content">
-      <div class="news">
-
-        <span id="to_comment_area">
+    <div style="margin-top: 5px;">
+      <span id="to_comment_area">
         <input
           type="button"
           name="groovybtn1"
@@ -132,23 +132,27 @@
           value="<%= t(:comment_this_news) %>↓"
           style="float: left"
           onclick="window.scrollTo(0,1000) ;">
-        </span>
+      </span>
 
-        <span>
-         <a href="#">
-         <input  id="share_to_facebook"
-            type="button"
-            name="groovybtn2"
-            class="groovybutton_W"
-            value="<%= t(:share_this_news) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-            style="float: left"
-            onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');">
-          <img id = "share_to_facebook2" style="position:absolute;left:244px;top:137px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
-          </a>
-        </span>
+      <span>
+       <a href="#">
+       <input  id="share_to_facebook"
+          type="button"
+          name="groovybtn2"
+          class="groovybutton_W"
+          value="<%= t(:share_this_news) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+          style="float: left"
+          onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');">
+        <img id = "share_to_facebook2" style="position:absolute;left:244px;top:121px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
+        </a>
+      </span>
+      <span id="fans_like_btn" style="background-color:#0077BB;position:absolute;right:15%;height:27px;padding-top: 5px;">
+        <a style="font-size: 1.4em;color: white;" href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" ><%= t(:fb_fans) %></a> <fb:like href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" send="false" layout="button_count" width="50" show_faces="false" font=""></fb:like>
+      </span>
+    </div>
 
-
-
+    <div id="content">
+      <div class="news">
 
         <% if @news.url != nil && @news.url != "" %>
           <!--a name='btn1' class='osx btn1' onclick="getSrc(document.getElementById('news_frame'))" title="<%= t(:report_this_news) %>" href="#"><%=t(:report_this_news)%></a-->
@@ -160,9 +164,8 @@
                 <span style="font-size:24px"> <%= @news.title %> <br></span>
                 <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
 
-
               <% else %>
-                <iframe id="news_frame" width='100%' height="900" src="<%= @news.url %>">
+                <iframe id="news_frame" width='100%' height="800" src="<%= @news.url %>">
                   Your browser can't display IFRAMEs
                 </iframe>
               <% end %>
@@ -196,19 +199,14 @@
           <div id="fb-root"></div>
           <script>
             window.fbAsyncInit = function() {
-              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true,
-                       xfbml: true});
-              FB.Event.subscribe('comment.create',function(resp){
-                comment(resp);
-              });
+              FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true, xfbml: true});
+              FB.Event.subscribe('comment.create',function(resp){comment(resp);});
             };
             (function() {
               var e = document.createElement('script'); e.async = true;
-
               // Todo: we need to check the locale!!!!!!!!!!!!
               //
               e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
-
               document.getElementById('fb-root').appendChild(e);
             }());
           </script>
@@ -249,16 +247,21 @@
     <div id="suggest" style="clear: both;">
       <hr>
       <div class="suggest_title" style='font-size: 1.6em;'><%= t(:suggests) %></div>
-      <ul class="link" style='font-size: 1.6em;list-style-type:square;'>
-        <% @suggest_news.each do |news| %>
-          <% if (news.special_flag==false) %>
-            <% url=news_index_path+'/'+news.fb_obj_url %>
-          <% else %>
-            <% url=news_index_path+'/'+news.id.to_s %>
+      <div style="float: left; width: 50%;">
+        <ul class="link" style='font-size: 1.6em;list-style-type:square;'>
+          <% @suggest_news.each do |news| %>
+            <% if (news.special_flag==false) %>
+              <% url=news_index_path+'/'+news.fb_obj_url %>
+            <% else %>
+              <% url=news_index_path+'/'+news.id.to_s %>
+            <% end %>
+            <li><a href="<%= url %>"><%= news.title %></a></li>
           <% end %>
-          <li><a href="<%= url %>"><%= news.title %></a></li>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
+      <div style="float: right; width: 50%;">
+        <fb:like-box href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" width="550" show_faces="false" border_color="white" stream="true" header="false"></fb:like-box>
+      </div>
     </div>
 
   <!-- method 'show_page_tail' would be used by all controller, so it's implemented in application_helper.rb -->

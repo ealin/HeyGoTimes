@@ -1,5 +1,5 @@
 class PaperController < NewsController
-
+  @@last_news_reduction = DateTime.new(2011, 01, 01, 0, 0, 0, 0)
   def index
 
     # patch for iPhone APP version 1.0
@@ -58,11 +58,12 @@ class PaperController < NewsController
     # this function would use data in session, so it must be called after init_filter_setting()
     get_paper_title_info()
 
+    sysdata = get_system_data()
     if (session[:logged_in] == true && session[:id] != nil)
       user = User.find(session[:id])
 
       # check site system notice
-      if user.last_sys_notification == nil || user.last_sys_notification < @@last_sys_notice_time
+      if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
         @new_sys_notation = true
         user.last_sys_notification = Time.now
       else
@@ -118,7 +119,7 @@ class PaperController < NewsController
   end
 
   def get_notation_news(user, page)
-    return News.get_notation(user).paginate :page => page, :per_page => @loading_news_num
+    return News.get_notation(user).paginate :page => page, :per_page => 8
   end
 
   #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)

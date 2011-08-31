@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812081615) do
+ActiveRecord::Schema.define(:version => 20110820031607) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -86,6 +86,11 @@ ActiveRecord::Schema.define(:version => 20110812081615) do
   create_table "news_tags", :force => true do |t|
     t.integer "news_id"
     t.integer "tag_id"
+  end
+
+  create_table "system_datas", :force => true do |t|
+    t.datetime "last_system_notice",       :default => '2011-08-28 04:22:21'
+    t.datetime "last_news_rank_reduction", :default => '2011-08-28 04:22:21'
   end
 
   create_table "tag_filters", :force => true do |t|

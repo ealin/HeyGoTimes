@@ -124,6 +124,12 @@ class ApiController < ApplicationController
 
         @news.save
       end
+
+      if (News.count > @@max_news)
+          outdated_news = News.where(:news=>{:special_flag => false}).order('news.created_at').first
+          News.destroy(outdated_news.id)
+          puts 'removed news: '+outdated_news.id.to_s
+      end
     end
 
 
@@ -191,8 +197,8 @@ class ApiController < ApplicationController
     end
 
     if(params[:focus_flag] == 'yes')
-        @news.rank = 3
-     end
+      @news.rank = 3
+    end
 
     @news.save
 
@@ -206,4 +212,31 @@ class ApiController < ApplicationController
       format.json { render :json => @news }
     end
   end
+
+
+    def news_rank_reduction
+      sysdata = get_system_data
+      if Time.now - sysdata.last_news_rank_reduction > 43200
+
+        # hot_news = News.all.order('rank DESC').take(10)
+        hot_news = News.get_all('rank', :none, nil, nil).take(100)
+
+        curr_time = Time.now
+        hot_news.each do |news|
+          if (curr_time - news.created_at > 43200)
+            if news.rank > 10
+              news.rank -= 10
+            else
+              news.rank = 0
+            end
+
+            news.save
+          end
+        end
+
+        sysdata.last_news_rank_reduction = curr_time
+        sysdata.save
+      end
+    end
+
 end
