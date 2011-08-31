@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(:version => 20110820031607) do
   end
 
   create_table "system_datas", :force => true do |t|
-    t.datetime "last_system_notice",       :default => '2011-08-28 04:22:21'
-    t.datetime "last_news_rank_reduction", :default => '2011-08-28 04:22:21'
+    t.datetime "last_system_notice",       :default => '2011-08-31 06:43:31'
+    t.datetime "last_news_rank_reduction", :default => '2011-08-31 06:43:31'
   end
 
   create_table "tag_filters", :force => true do |t|

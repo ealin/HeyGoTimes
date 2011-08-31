@@ -43,11 +43,11 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-#require './tw_yahoo_beta.rb'
+require './tw_yahoo_beta.rb'
 
-#Thread.start{
-#  get_news_from_tw_yahoo_beta(m,@sleep_period)
-#}
+Thread.start{
+  get_news_from_tw_yahoo_beta(m,@sleep_period)
+}
 
 
 
@@ -70,6 +70,17 @@ Thread.start{
 }
 
 
+
+      ############  TW-UDN   ############
+require './tw_udn.rb'
+
+Thread.start{
+ get_news_from_tw_udn(m,@sleep_period)
+}
+
+
+
+
 #!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -89,15 +100,6 @@ require './us_yahoo.rb'
 
 Thread.start{
  get_news_from_us_yahoo(m,@sleep_period)
-}
-
-
-
-      ############  US-Yahoo   ############
-require './tw_udn.rb'
-
-Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
 }
 
 

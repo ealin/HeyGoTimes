@@ -8,7 +8,7 @@ google_focus_rss_url = [
 
 
 google_focus_rss_tag = [
-    "Focus",
+    "Focus/Special",
     "Internet"
  ] ;
 
@@ -35,7 +35,7 @@ google_focus_rss_tag = [
 
           begin
               open(feed_url) do |feed|
-                RSS::Parser.parse(feed.read , false).items.each do |item|
+                RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
                   m.synchronize{
 
                     link = URI.encode(item.link)
