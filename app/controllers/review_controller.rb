@@ -21,7 +21,7 @@ class ReviewController < NewsController
 
 
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
-    @count = @news_for_review.count
+    @count = (@news_for_review.count)/2
 
   end
 
