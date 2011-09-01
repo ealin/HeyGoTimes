@@ -21,7 +21,7 @@ class ReviewController < NewsController
 
 
     @news_for_review = News.get_all_special(areas,tags,:none,nil)
-    @count = (@news_for_review.count)/2
+    @count = (@news_for_review.count)/2  # Ealin: Todo - I don't know why it should div by 2 ?????
 
   end
 
