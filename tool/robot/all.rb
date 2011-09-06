@@ -81,6 +81,7 @@ Thread.start{
 
 
 
+
 #!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -103,7 +104,6 @@ Thread.start{
 }
 
 
-
       ############  automatic news rank reduction   ############
 require './rank_reduction.rb'
 
@@ -112,11 +112,21 @@ Thread.start{
 }
 
 
+
+
 ############  TW-Google-Focus   ############
-require './tw_google_focus.rb'
+require './tw_others.rb'
 
 #Thread.start{
-    get_news_from_tw_google_focus(m,@sleep_period)
+    get_tw_other_news(m,@sleep_period)
+#}
+
+
+############  TW-Google-Focus   ############
+#require './cn_baidu.rb'
+
+#Thread.start{
+#    get_news_from_cn_Baidu(m,@sleep_period)
 #}
 
 

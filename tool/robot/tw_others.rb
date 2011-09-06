@@ -1,15 +1,33 @@
-def get_news_from_tw_google_focus (m,sleep_period)
+def get_tw_other_news (m,sleep_period)
 
 
 google_focus_rss_url = [
-  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&output=rss"   ,
-  "http://tech.qq.com/web/front/rss.xml"
+  #"http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&output=rss"   ,
+
+  "http://tech.qq.com/web/front/rss.xml",
+
+  "http://tw.money.yahoo.com/rss/edbf/d_e_MN2/",
+  #"http://tw.money.yahoo.com/rss/edbf/d_e_MN4/",
+  "http://tw.money.yahoo.com/rss/edbf/d_e_MN5/",
+  "http://tw.money.yahoo.com/rss/edbf/d_e_MR4/",
+  "http://tw.money.yahoo.com/rss/edbf/d_e_MN1"
+
+
 ] ;
 
 
 google_focus_rss_tag = [
-    "Focus/Special",
-    "Internet"
+    #"Focus/Special",
+
+    "Internet",
+
+    "Business",
+    #"Business",
+    "Business/World",
+    "Business/World",
+    "Business"
+
+
  ] ;
 
 
@@ -24,11 +42,11 @@ google_focus_rss_tag = [
 
         feed_url = google_focus_rss_url[i]
 
-        if i == 0
-          command = @host+ 'api/new_news?publish=no&focus_flag=yes&area=Taiwan/&tags='
-        else
+        #if i == 0
           command = @host+ 'api/new_news?publish=yes&focus_flag=yes&area=Taiwan/&tags='
-        end
+        #else
+        #  command = @host+ 'api/new_news?publish=no&focus_flag=yes&area=Taiwan/&tags='
+        #end
 
 
         command = command + google_focus_rss_tag[i] + "&url="
@@ -41,9 +59,9 @@ google_focus_rss_tag = [
                     link = URI.encode(item.link)
 
                     if i == 0
-                      puts '[GOOGLE TW FOCUS]  News Link :' + link
-                    else
                       puts '[QQ IT]  News Link :' + link
+                    else
+                      puts '[YAHOO BUSINESS]  News Link :' + link
                     end
 
 
