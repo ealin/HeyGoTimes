@@ -43,11 +43,11 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-#require './tw_yahoo_beta.rb'
+require './tw_yahoo_beta.rb'
 
-#Thread.start{
-#  get_news_from_tw_yahoo_beta(m,@sleep_period)
-#}
+Thread.start{
+  get_news_from_tw_yahoo_beta(m,@sleep_period)
+}
 
 
 
@@ -68,6 +68,18 @@ require './tw_nownews_focus.rb'
 Thread.start{
  get_news_from_tw_nownews_focus(m,@sleep_period)
 }
+
+
+
+      ############  TW-UDN   ############
+require './tw_udn.rb'
+
+Thread.start{
+ get_news_from_tw_udn(m,@sleep_period)
+}
+
+
+
 
 
 #!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -92,16 +104,6 @@ Thread.start{
 }
 
 
-
-      ############  US-Yahoo   ############
-require './tw_udn.rb'
-
-Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
-}
-
-
-
       ############  automatic news rank reduction   ############
 require './rank_reduction.rb'
 
@@ -110,11 +112,21 @@ Thread.start{
 }
 
 
+
+
 ############  TW-Google-Focus   ############
-require './tw_google_focus.rb'
+require './tw_others.rb'
 
 #Thread.start{
-    get_news_from_tw_google_focus(m,@sleep_period)
+    get_tw_other_news(m,@sleep_period)
+#}
+
+
+############  TW-Google-Focus   ############
+#require './cn_baidu.rb'
+
+#Thread.start{
+#    get_news_from_cn_Baidu(m,@sleep_period)
 #}
 
 

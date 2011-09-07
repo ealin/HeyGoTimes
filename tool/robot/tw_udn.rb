@@ -101,10 +101,17 @@ udn_focus_rss_tag = [
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
-    "Travel/Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
+
+    #"Health/Life&area=Taiwan/",
+    #"Travel/Life&area=Taiwan/",
+    #"Health/Life&area=Taiwan/",
+    #"Health/Life&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+
+
     "Local&area=Taiwan/North_TW/",
     "Local&area=Taiwan/Middle_TW/",
     "Local&area=Taiwan/South_TW/",
@@ -142,7 +149,7 @@ udn_focus_rss_tag = [
 
         begin
              open(feed_url) do |feed|
-               RSS::Parser.parse(feed.read , false).items.each do |item|
+               RSS::Parser.parse(feed.read , false).reverse.items.each do |item|
                  m.synchronize{
 
                    link = URI.encode(item.link)

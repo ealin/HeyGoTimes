@@ -92,6 +92,10 @@
           <% break %>
       <% end %>
 
+      <% if @news_for_review[@count-i] == nil %>
+      	<%next%>
+      <%end%>
+
       <span style="color: blue;">
       #<%= @news_for_review[@count-i].id %>: <%= @news_for_review[@count-i].title %>
       <br>
