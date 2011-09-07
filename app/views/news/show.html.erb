@@ -123,7 +123,7 @@
   </div>
 
   <div id="main">
-    <div style="margin-top: 5px;">
+    <div style="width:90%;margin-top: 5px;margin-left: 93px;">
       <span id="to_comment_area">
         <input
           type="button"
@@ -143,15 +143,15 @@
           value="<%= t(:share_this_news) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
           style="float: left"
           onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');">
-        <img id = "share_to_facebook2" style="position:absolute;left:244px;top:121px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
+        <img id = "share_to_facebook2" style="position:absolute;left:334px;top:121px;" src='/images/facebook_icon.png' onclick="share('<%= @news.id %>', '<%= fb_obj_url %>', '<%= @news.title %>');" />
         </a>
       </span>
-      <span id="fans_like_btn" style="background-color:#0077BB;position:absolute;right:15%;height:27px;padding-top: 5px;">
+      <span id="fans_like_btn" style="background-color:#0077BB;position:absolute;right:8%;height:27px;padding-top: 5px;">
         <a style="font-size: 1.4em;color: white;" href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" ><%= t(:fb_fans) %></a> <fb:like href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" send="false" layout="button_count" width="50" show_faces="false" font=""></fb:like>
       </span>
     </div>
 
-    <div id="content">
+    <div id="content_no_ad" style="width:85%;margin: 0 auto;">
       <div class="news">
 
         <% if @news.url != nil && @news.url != "" %>
@@ -160,8 +160,7 @@
             <% # TODO: use @paper_width %>
               <% if  (@news.url.include?'youtu') %>
                 <% url = 'http://www.youtube.com/embed/'+@news.url[-11..-1] %>
-
-                <span style="font-size:24px"> <%= @news.title %> <br></span>
+                <div style="clear: both;font-size:24px;margin: 10px;"> <%= @news.title %> <br></div>
                 <iframe id="news_frame" width="700" height="550" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
 
               <% else %>
@@ -233,16 +232,15 @@
     </div><!-- #main -->
 
 
-    <div id="sub">
-      <!-- show AD list-->
+    <!--div id="sub">
       <div id="ad">
         <br><br>
         <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
         <br><br>
-        <% # TODO: use @ad_width, @ad_height, @ad_no %>
-        <%= render :partial => 'paper/show_ad_list'  %>  <!-- AD type = 璈恬蕭?嚙�? -->
+        <%# TODO: use @ad_width, @ad_height, @ad_no %>
+        <%#= render :partial => 'paper/show_ad_list' %>
       </div>
-    </div>
+    </div-->
 
     <div id="suggest" style="clear: both;">
       <hr>
