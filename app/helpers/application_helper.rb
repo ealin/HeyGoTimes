@@ -89,5 +89,13 @@ module ApplicationHelper
     return url
   end
 
-  
+   def get_fb_obj_url_mobile(news)
+     if (news.fb_obj_url==nil)
+       url = "http://www.heygotimes.com/news/"+news.id.to_s
+     else
+       url = "http://www.heygotimes.com/news/"+news.fb_obj_url
+     end
+     return url
+   end
+
 end
