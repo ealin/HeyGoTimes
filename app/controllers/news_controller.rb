@@ -414,4 +414,15 @@ class NewsController < ApplicationController
     end
   end
 
+  def set_news_today(news_id)
+    news = News.find(news_id)
+    news.daily_news = true
+    news.save
+  end
+
+  def get_news_today(start_date, end_date)
+    news = News.where(:daily_news => true, :created_at => (start_date)..(end_date))
+    return news
+  end
+
 end
