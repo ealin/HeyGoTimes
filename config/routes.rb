@@ -64,7 +64,7 @@ HeyGoTimes::Application.routes.draw do
   get "faq/show_answer"
 
   get "daily/index"
-
+  get "daily/select"
 
   post "news/like"
   post "news/report"

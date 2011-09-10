@@ -81,20 +81,9 @@
     }, 10000);
   }
 
-  function changePaperType(type, subType)
-  {
-    var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page=1' + '&time_base=now';
-    loading_animate(true);
-    $("#paperContent").load(url, function(response, status, xhr) {
-      loading_animate(false);
-      $("#more_news").html('<a><%= t(:m_more) %></a><span id="loading_more_news"></span>');
-    });
-  }
-
   function set_tag(tag)
   {
-    var data = "/paper/set_filter_setting?save=no&tag_filter=" + tag;
-    window.location = data;
+    // NOT WORK IN THIS DAILY NEWS
   }
 
   $(document).ready(function()
@@ -115,52 +104,19 @@
     <% end %>
 
       $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
-      $('#show_friends_news').bt('<%= t(:Friends_ranking_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
-      $('#filter_hint').bt('<%= t(:slogan_title_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
 
       $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
       $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
       $('#share_icon0').bt('<%= t(:share_icon_hint) %>',{positions: 'bottom',width:120, fill:'#bdc7d8'}) ;
       $('#like_icon0').bt('<%= t(:like_icon_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
       $('#unlike_icon0').bt('<%= t(:unlike_icon_hint) %>',{positions: 'bottom',width:300, fill:'#bdc7d8'}) ;
-      $('#report_spam0').bt('<%= t(:report_spam_icon_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
-
-
 
 
     $('#more_news').unbind('click').click(function() {
       loadMore(currType, subType, ++currPage,15);
     });
 
-    /*
-    $('#more_15news').unbind('click').click(function() {
-      loadMore(currType, subType, ++currPage,15);
-    });
-    $('#more_20news').unbind('click').click(function() {
-      loadMore(currType, subType, ++currPage,20);
-    });
-    $('#more_25news').unbind('click').click(function() {
-      loadMore(currType, subType, ++currPage,25);
-    });
-    */
 
-    $('#menu-item-rank').unbind('click').click(function(){
-      $('#menu-item-latest').removeClass("active");
-      $(this).addClass("active");
-      currPage = 1;
-      currType = 'rank';
-      changePaperType(currType, '');
-      $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
-    });
-
-    $('#menu-item-latest').unbind('click').click(function(){
-      $('#menu-item-rank').removeClass("active");
-      $(this).addClass("active");
-      currPage = 1;
-      currType = 'latest';
-      changePaperType(currType, '');
-      $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
-    });
 
     $('#show_faq').unbind('click').click(function() {
       currPage = 1;
@@ -192,63 +148,15 @@
       $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:notice) %>' ;
     });
 
-    $('#show_friends_news').unbind('click').click(function() {
-         if(<%= session[:logged_in]%> == false)
-         {
-             alert("<%= t(:login_for_set_friend_filter) %>") ;
-             return ;
-         }
-
-         $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:Friends_ranking_title) %>' ;
-         currPage = 1;
-         currType = 'rank';
-         subType = 'friend';
-         changePaperType(currType, subType);
-    });
 
     loading_animate(false);
 
   });
 
-  function set_default_locale(new_locale)
-  {
-      // ask server to set session[:default_locale] then reload the main-page
-      data = "locale=" + new_locale
-
-      window.location = "/paper/set_default_locale?" + data ;
-
-   }
 
   function report_the_spam(spam_new_id, spam_news_title)
   {
-
-      if(<%= session[:logged_in]%> == false)
-      {
-          alert('<%= t(:please_log_in)  %>') ;
-          return ;
-      }
-
-      message = '<%= t(:I_want_to_report_spam) %>' + ': [ ' + spam_news_title  + ' ]';
-      result_msg = prompt(message, '<%= t(:spam_reason)%>') ;
-
-      if(!(result_msg))
-        return ;
-
-      data = "news_id=" + spam_new_id + '&' + 'content=' + encodeURIComponent(result_msg)
-
-      // send to server
-       $.ajax(
-       {
-           type: "GET",
-           url:"/review/report_spam",
-           data: data,
-           success: function(html)
-           {
-               // redirect to main page in order to redraw the news by new filter!
-               // window.location.replace("/review/spam");
-               alert(html) ;
-           }
-       });
+    // NOT WORK IN THIS DAILY NEWS
   }
 
 
@@ -303,10 +211,7 @@
     </div>
   </div>
   <div id="sub">
-    <!-- Show functional buttons : 1.Report_a_news/2.Edit_realtimes_news/3.my_AD  -->
-    <div id="functionalButton">
-      <%= render :partial => 'paper/show_fun_buttons' %>
-    </div>
+
     <!-- show AD list-->
     <div id="ad">
       <% # TODO: use @ad_width, @ad_height, @ad_no %>
@@ -321,15 +226,7 @@
   <%= show_page_tail %>
 </div>
 
-<!--
-<div id="add_moremore_news">
-  <a id="more_15news"> +15 </a>
-  &nbsp;
-  <a id="more_20news"> +20 </a>
-  &nbsp;
-  <a id="more_25news"> +25 </a>
-</div>
--->
+
 
   </div> <!-- /page -->
 <!-- news/_show_page_tail.html.erb  -->
