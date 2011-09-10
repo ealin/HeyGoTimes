@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110820031607) do
+ActiveRecord::Schema.define(:version => 20110908082511) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(:version => 20110820031607) do
     t.string   "option"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "follows", :force => true do |t|
+    t.integer "user_id"
+    t.integer "river_id"
+    t.integer "position"
   end
 
   create_table "friend_filters", :force => true do |t|
@@ -76,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20110820031607) do
     t.integer  "unlike_count",  :default => 0
     t.integer  "share_count",   :default => 0
     t.integer  "comment_count", :default => 0
+    t.boolean  "river_event",   :default => false
+    t.boolean  "daily_news",    :default => false
   end
 
   create_table "news_areas", :force => true do |t|
@@ -88,9 +96,33 @@ ActiveRecord::Schema.define(:version => 20110820031607) do
     t.integer "tag_id"
   end
 
+  create_table "notes", :force => true do |t|
+    t.integer  "river_id"
+    t.text     "content"
+    t.datetime "note_dt"
+    t.string   "comment_url"
+  end
+
+  create_table "river_events", :force => true do |t|
+    t.integer  "news_id"
+    t.integer  "river_id"
+    t.datetime "event_dt"
+  end
+
+  create_table "rivers", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "location"
+    t.string   "url"
+    t.integer  "position"
+    t.integer  "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "system_datas", :force => true do |t|
-    t.datetime "last_system_notice",       :default => '2011-08-31 06:43:31'
-    t.datetime "last_news_rank_reduction", :default => '2011-08-31 06:43:31'
+    t.datetime "last_system_notice",       :default => '2011-08-28 04:22:21'
+    t.datetime "last_news_rank_reduction", :default => '2011-08-28 04:22:21'
   end
 
   create_table "tag_filters", :force => true do |t|

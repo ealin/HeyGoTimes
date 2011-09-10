@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :user_watches
   has_many :watches, :through => :user_watches, :uniq => true, :class_name => "News", :source => :news
 
+  has_many :rivers
+
   # friendship
   has_many :friendships
   has_many :friends, :through => :friendships, :uniq => true
