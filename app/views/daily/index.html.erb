@@ -67,7 +67,7 @@
   {
     var t = $("#paperContent");
     var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num + '&time_base=before';
-    var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
+    var preview = $('#loading_more_news').html('<img src="/images/fb_loading_large.gif" height="20" width="20" />');
 
     $.get(url, function(response) {
         if (jQuery.trim(response) == '')
@@ -259,24 +259,17 @@
   <body>
 
 
-  <% if detect_Mobile_browser(:list) == true %>
-  <%= redirect_to  :controller => 'mobile', :action => 'index' %>
-  <% end %>
+  <%# if detect_Mobile_browser(:list) == true %>
+  <%#= redirect_to  :controller => 'mobile', :action => 'index' %>
+  <%# end %>
 
 
   <div id="page">
-<div id="header">
+  <div id="header">
   <div id="logo">
     <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
   </div>
-  <span id="filter_hint" style="font-size:14px;">
-      <%= @newspaper_title.to_s %>
-  </span>
-
   <div id="page_head" >
-    <a href="#" onclick="set_default_locale('zh_tw')">繁體中文</a>
-    <a href="#" onclick="set_default_locale('zh')">简体中文</a>
-    <a href="#" onclick="set_default_locale('en')">English</a>
 
     <div id="page_head2" >
       <!-- show fb login icon or user's photo-->
@@ -298,46 +291,6 @@
 
 </div><!-- #header -->
 
-
-<div id="menu">
-  <ul class="menu">
-    <div id="menu_type_btn">
-    <li id="menu-item-rank" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:popular_news)%></span></a></li>
-    <li id="menu-item-latest" class="active"><a href="javascript:void(null)" class="parent"><span><%=t(:latest_news)%></span></a></li>
-    <%
-      # calculate notation count
-      count = 0
-      if @notations != nil && @notations.count > 0
-        @notations.each do |event|
-          if event.event_time != nil && DateTime.parse(event.event_time) > @notification_time
-            count+=1
-          else
-            break
-          end
-        end
-      end
-    %>
-
-    <li><a class="parent"><span><%= t(:event_notation) %>(<%= count %>)</span></a>
-      <% if @notations != nil  %>
-      <div><ul>
-        <% @notations.each_with_index do |news,index|%>
-          <% color = (index < count)? 'red': 'white' %>
-          <% url = news_index_path+'/'+news.fb_obj_url %>
-          <li><a href="<%= url %>" onclick="window.open('<%= url %>'); return false;"><span style="color:<%= color %>;"><%= news.title %></span></a></li>
-        <% end %>
-      </ul></div>
-      <% end %>
-    </li>
-    <li id="loading_animate"><img src="/images/fb_loading_large.gif" alt=""/></li>
-    </div>
-    <div id="menu_fun_btn">
-    <li><a name='btn2' class='osx btn2' title="<%= t(:m_filter_setting) %>"><span><%=t(:m_filter)%></span></a></li>
-    <li><a name='btn1' class='osx btn1' title="<%= t(:m_report_news) %>"><span><%=t(:m_report)%></span></a></li>
-    <li><a id='show_notice'><span <% if @new_sys_notation %>style="color:red;"<% end %>><%= t(:notice) %></span></a></li>
-    </div>
-  </ul>
-</div>
 
 <div id="main">
   <div id="content">

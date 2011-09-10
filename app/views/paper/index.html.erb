@@ -67,7 +67,7 @@
     {
       var t = $("#paperContent");
       var url = '/paper/_show_paper_content?type='+type+'&sub_type='+subType+'&page='+pageNo + '&news_num='+ news_num + '&time_base=before';
-      var preview = $('#loading_more_news').html('<img src="images/fb_loading_large.gif" height="20" width="20" />');
+      var preview = $('#loading_more_news').html('<img src="/images/fb_loading_large.gif" height="20" width="20" />');
 
       $.get(url, function(response) {
           if (jQuery.trim(response) == '')
