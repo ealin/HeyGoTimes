@@ -1,0 +1,2 @@
+class DailyController < PaperController
+end

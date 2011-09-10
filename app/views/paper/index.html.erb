@@ -263,6 +263,7 @@
     <%= redirect_to  :controller => 'mobile', :action => 'index' %>
 <% end %>
 
+<!--
 <div align="center">
     <img width="72px" src="/images/icon_red_new.png"/>
     <span style="font-size:16px;color:red;"><%= t(:Friends_slogan) %>
@@ -278,7 +279,7 @@
     </span>
 
 </div>
-
+-->
 
 <div id="page">
   <div id="header">
@@ -295,9 +296,19 @@
       <a href="#" onclick="set_default_locale('en')">English</a>
 
       <div id="page_head2" >
-        <%= show_page_head(:login_flag => true)  %>
-        <% if !(@login_flag && session[:logged_in] == false) %>
-          <%= show_logout_link %>
+        <!-- show fb login icon or user's photo-->
+        <span>
+            <% if session[:logged_in] == false %>
+              <span id="fb_login_icon">
+              <%= show_logging_link root_url %>
+              </span>
+            <% else %>
+              <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %>
+            <% end %>
+        </span>
+
+        <% if !(session[:logged_in] == false) %>
+          <%= show_logout_link root_url %>
         <% end %>
       </div><!-- #page_head -->
     </div><!-- #page_head -->
