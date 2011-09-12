@@ -158,4 +158,9 @@ class News < ActiveRecord::Base
     end
   end
 
+
+  def self.get_all_news_today
+    find(:all, :conditions => {:daily_news => true}, :order => 'created_at DESC')
+  end
+
 end

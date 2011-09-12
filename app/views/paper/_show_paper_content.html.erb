@@ -1,4 +1,7 @@
-
+<% app_mode = :native %>
+<% if  (request.url).include?('daily')  %>
+<%    app_mode = :daily_news %>
+<% end %>
 
 <% if news != nil %>
   <% news.each_with_index do |news,news_index| %>
@@ -26,6 +29,19 @@
         <% else %>
           <% url=news_index_path+'/'+news.id.to_s %>
         <% end %>
+
+        <!-- highlight the date -->
+        <span style = "color: red; ">
+        <% if app_mode == :daily_news %>
+            <% if session[:default_locale] == "en" %>
+                <%= news.created_at.in_time_zone("Central Time (US & Canada)").strftime("%Y/%m/%d") %>
+            <% else %>
+                <%= news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d") %>
+            <% end %>
+        <% end %>
+        </span>
+        <br>
+
         <a title="<%= news.title %>" href="<%= url %>" onclick="window.open('<%= url %>'); return false;"><%= news.title %></a>
       </div>
 

@@ -30,7 +30,7 @@ define_properties  :first_name, :last_name, :link, :about, :birthday, :gender,
 
 
 
-    <%= fb_login_and_redirect(root_url, :perms => 'email,user_birthday') %>
+    <%= fb_login_and_redirect(url, :perms => 'email,user_birthday') %>
 
     <% session[:logged_in] = false %>
 

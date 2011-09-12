@@ -20,6 +20,11 @@ class PaperController < NewsController
 
   def index_prepare_data
 
+    app_mode = nil
+    if (request.url).include?('daily')
+      app_mode = :daily_news
+    end
+
     @m_reload_flag = false
     if(params[:m_login_flag]!=nil && params[:m_login_flag] == 'yes')
       @m_reload_flag = true
@@ -35,15 +40,22 @@ class PaperController < NewsController
 
     session[:friend_ranking_mode] = false
 
-
     session[:news_load_time] = Time.now
 
-    if params[:page] != nil
-      @news = get_news(session[:news_type], params[:page])
+    if app_mode != nil && app_mode == :daily_news
+       # daily news
+       page = '1'
+       if params[:page] != nil
+         page = params[:page]
+       end
+       @news = get_daily_news(page)
     else
-      @news = get_news(session[:news_type], '1')
+       if params[:page] != nil
+          @news = get_news(session[:news_type], params[:page])
+        else
+          @news = get_news(session[:news_type], '1')
+        end
     end
-
 
     @tags = Tag.all
     @areas = Area.all
@@ -52,32 +64,34 @@ class PaperController < NewsController
     #    check_logged_in() in application_controller.rb
     check_logged_in(true)
 
-    init_filter_setting()
+
+    if app_mode == nil
+      init_filter_setting()
+
+      # this function would use data in session, so it must be called after init_filter_setting()
+      get_paper_title_info()
+
+      sysdata = get_system_data()
+      if (session[:logged_in] == true && session[:id] != nil)
+         user = User.find(session[:id])
 
 
-    # this function would use data in session, so it must be called after init_filter_setting()
-    get_paper_title_info()
+         # check site system notice
+         if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
+            @new_sys_notation = true
+            user.last_sys_notification = Time.now
+         else
+            @new_sys_notation = false
+         end
 
-    sysdata = get_system_data()
-    if (session[:logged_in] == true && session[:id] != nil)
-      user = User.find(session[:id])
+          # get event notification
+          @notations = get_notation_news(user, 1)
+          @notification_time = user.last_event_notification
 
-      # check site system notice
-      if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
-        @new_sys_notation = true
-        user.last_sys_notification = Time.now
-      else
-        @new_sys_notation = false
+          user.last_event_notification = Time.now
+          user.save
       end
-
-      # get event notification
-      @notations = get_notation_news(user, 1)
-      @notification_time = user.last_event_notification
-
-      user.last_event_notification = Time.now
-      user.save
     end
-
   end
 
 
@@ -86,30 +100,44 @@ class PaperController < NewsController
     # :type => latest / rank / special
     # :page => page num to fetch
     # :news_num => load ? news
-    temp_str = params[:news_num]
-    @loading_news_num = 0
-    session[:friend_ranking_mode] = false
 
-    if params[:time_base] != nil && params[:time_base] == 'now'
-      session[:news_load_time] = Time.now
-    end
+    if params[:app_mode] != nil
 
-    if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
-      @loading_news_num = 15
+      if params[:app_mode] ==  'daily_news'
+        begin
+          @news = get_daily_news page
+        rescue
+          @news = nil
+        end
+
+      end
     else
-      @loading_news_num = Integer(temp_str)
-    end
 
-    if (params[:type] == 'special')
-      @news = get_special_news(params[:sub_type], params[:page])
-    else
-      session[:news_type] = params[:type]
+      temp_str = params[:news_num]
+      @loading_news_num = 0
+      session[:friend_ranking_mode] = false
 
-      if(params[:sub_type] != nil && params[:sub_type] == 'friend')
-        session[:friend_ranking_mode] = true
+      if params[:time_base] != nil && params[:time_base] == 'now'
+        session[:news_load_time] = Time.now
       end
 
-      @news = get_news(params[:type], params[:page])
+      if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
+        @loading_news_num = 15
+      else
+        @loading_news_num = Integer(temp_str)
+      end
+
+      if (params[:type] == 'special')
+        @news = get_special_news(params[:sub_type], params[:page])
+      else
+        session[:news_type] = params[:type]
+
+        if(params[:sub_type] != nil && params[:sub_type] == 'friend')
+          session[:friend_ranking_mode] = true
+        end
+
+        @news = get_news(params[:type], params[:page])
+      end
     end
 
     respond_to do |format|
@@ -118,16 +146,19 @@ class PaperController < NewsController
     end
   end
 
+
+
   def get_notation_news(user, page)
     return News.get_notation(user).paginate :page => page, :per_page => 8
   end
 
+
   #   session[:friend_ranking_mode] = true ==> 好友關注的新聞排行榜 (rank, friend's news, tag-all)
   #
   def get_news(type, page)
-    if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
+    #if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
       @loading_news_num = 15
-    end
+    #end
 
     user_areas = []
     if (session[:filter_area] != nil && session[:filter_area] != "")
@@ -193,10 +224,16 @@ class PaperController < NewsController
   end
 
 
+  def get_daily_news(page)
+    @loading_news_num = 15
+    (News.get_all_news_today).paginate :page => page, :per_page => @loading_news_num
+  end
+
+
   def get_special_news(type, page)
-    if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
+    #if @loading_news_num == nil || (@loading_news_num != 10 && @loading_news_num != 15 && @loading_news_num != 20 && @loading_news_num != 25)
       @loading_news_num = 15
-    end
+    #end
 
     user_id = nil
 

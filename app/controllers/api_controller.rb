@@ -145,7 +145,14 @@ class ApiController < ApplicationController
 
   end
 
+
+
+
   def add_news
+
+    if (params[:title]).include?("http://")
+      return
+    end
 
     # Check URL existence
     @news = News.find_by_url(params[:url])

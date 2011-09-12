@@ -1,0 +1,243 @@
+<title><%= t(:HeyGoTimes)%> - <%= t(:Home)%></title>
+<meta property="og:title" content="HeyGoTimes"/>
+<meta property="og:type" content="news"/>
+<meta property="og:url" content="<%= root_url %>"/>
+<meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
+<link type='text/css' href='/stylesheets/menu.css' rel='stylesheet' media='screen' />
+<script type='text/javascript' src='/javascripts/menu.js'></script>
+
+<script type="text/javascript">
+  function like(user, news, like)
+  {
+    // ask session data from server
+    $.getJSON("/news/like.json", {user: user, news: news, like: like}, function(json)
+    {
+      $('#like_count'+news).html(json.like_count);
+      $('#unlike_count'+news).html(json.unlike_count);
+    });
+  }
+
+  function comment(resp)
+  {
+    var pos = resp.href.indexOf('/news/');
+    var id = resp.href.substring(pos+6);
+    pos=id.indexOf('-');
+    id=id.substring(0, pos);
+
+    $.ajax({
+      type: "POST",
+      url: "/news/comment",
+      data: "news_id="+id
+    });
+  }
+
+  function share(id, url, title)
+  {
+    var url = 'http://www.facebook.com/sharer.php?u='+url+'&t='+title;
+    $.ajax({
+      type: "POST",
+      url: "/news/share",
+      data: "news_id="+id,
+      complete: function(){
+        location.href=url;
+      }
+    });
+  }
+
+  function expand_comment(news_id,comment_url)
+  {
+    var comment_str = "<fb:comments href='"+comment_url+"'"+"num_posts='2' width='650'></fb:comments>";
+
+    $('#comment_title_'+news_id).attr('onclick', '').unbind('click');
+    $('#expand_comment'+news_id).html("");
+    $('#fb_comment'+news_id).append(comment_str);
+
+    FB.XFBML.parse(document.getElementById('comments'));
+    FB.Event.subscribe('comment.create',function(resp){comment(resp);});
+  }
+
+  function loading_animate(on){
+    if (on)
+      $('#loading_animate').html("<img src='/images/fb_loading_large.gif'/>");
+    else
+      $('#loading_animate').html('<a></a>');
+  }
+
+  function loadMore(type, subType, pageNo,news_num)
+  {
+    var t = $("#paperContent");
+    var url = '/paper/_show_paper_content?page='+pageNo + '&app_mode=daily_news' ;
+    var preview = $('#loading_more_news').html('<img src="/images/fb_loading_large.gif" height="20" width="20" />');
+
+    $.get(url, function(response) {
+        if (jQuery.trim(response) == '')
+          $("#more_news").html('<a><%= t(:m_no_more) %></a>');
+        else
+          $("#paperContent").append(response);
+      });
+
+    t.timeout = setTimeout(function () {
+      preview.html('');
+    }, 10000);
+  }
+
+  function set_tag(tag)
+  {
+    // NOT WORK IN THIS DAILY NEWS
+  }
+
+  $(document).ready(function()
+  {
+    var currPage = 1;
+    var currType = '<%= session[:news_type] %>';
+    var subType = '';
+
+    var newspaper_title =  '<%= @newspaper_title %>' ;
+
+    if (currType == undefined)
+      currType = 'rank';
+
+    <% if (session[:news_type] == 'rank') %>
+      $('#menu-item-latest').removeClass("active");
+    <% else %>
+      $('#menu-item-rank').removeClass("active");
+    <% end %>
+
+      $('#fb_login_icon').bt('<%= t(:fb_login_icon_hint) %>',{positions: 'right',width:120, fill:'#bdc7d8'}) ;
+
+      $('#toolbar-box').bt('<%= t(:feedback_bar_hint) %>',{positions: 'right',width:200, fill:'#bdc7d8'}) ;
+      $('#logo').bt('<%= t(:logo_hint) %>',{positions: 'left',width:120, fill:'#bdc7d8'}) ;
+      $('#share_icon0').bt('<%= t(:share_icon_hint) %>',{positions: 'bottom',width:120, fill:'#bdc7d8'}) ;
+      $('#like_icon0').bt('<%= t(:like_icon_hint) %>',{positions: 'bottom',width:240, fill:'#bdc7d8'}) ;
+      $('#unlike_icon0').bt('<%= t(:unlike_icon_hint) %>',{positions: 'bottom',width:300, fill:'#bdc7d8'}) ;
+
+
+    $('#more_news').unbind('click').click(function() {
+      loadMore(currType, subType, ++currPage,15);
+    });
+
+
+
+    $('#show_faq').unbind('click').click(function() {
+      currPage = 1;
+      currType = 'special';
+      subType = 'faq';
+      changePaperType(currType, subType);
+      $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:FAQ) %>' ;
+    });
+
+    $('#show_feedback').unbind('click').click(function() {
+      if(<%= session[:logged_in]%> == false)
+      {
+          alert("<%= t(:login_for_set_friend_filter) %>") ;
+          return ;
+      }
+
+      currPage = 1;
+      currType = 'special';
+      subType = 'feedback';
+      changePaperType(currType, subType);
+      $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:feedback) %>' ;
+    });
+
+    $('#show_notice').unbind('click').click(function() {
+      currPage = 1;
+      currType = 'special';
+      subType = 'notice';
+      changePaperType(currType, subType);
+      $('#filter_hint')[0].childNodes[0].textContent = '<%= t(:slogan) %>' + '<%= t(:notice) %>' ;
+    });
+
+
+    loading_animate(false);
+
+  });
+
+
+  function report_the_spam(spam_new_id, spam_news_title)
+  {
+    // NOT WORK IN THIS DAILY NEWS
+  }
+
+
+</script>
+
+  </head> <%# end tag for <head> in application.html.erb %>
+
+  <body>
+
+
+  <%# if detect_Mobile_browser(:list) == true %>
+  <%#= redirect_to  :controller => 'mobile', :action => 'index' %>
+  <%# end %>
+
+
+  <div id="page">
+  <div id="header">
+  <div id="logo">
+    <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+  </div>
+  <div id="page_head" >
+
+    <div id="page_head2" >
+      <!-- show fb login icon or user's photo-->
+      <span>
+          <% if session[:logged_in] == false %>
+            <span id="fb_login_icon">
+            <%= show_logging_link root_url+'daily/index' %>
+            </span>
+          <% else %>
+            <%= image_tag "http://graph.facebook.com/#{current_facebook_user.id}/picture" %>
+          <% end %>
+      </span>
+
+      <% if !(session[:logged_in] == false) %>
+        <%= show_logout_link root_url+'daily/index'%>
+      <% end %>
+    </div><!-- #page_head -->
+  </div><!-- #page_head -->
+
+</div><!-- #header -->
+
+
+<div id="main">
+  <div id="content">
+    <div id="paperContent">
+      <% # TODO: use @paper_width %>
+      <%= render :partial => 'paper/show_paper_content', :locals => {:news => @news, :news_sub_type => ""} %>
+    </div>
+    <div id="more_news">
+        <a><%= t(:m_more) %></a> <span id="loading_more_news"></span>
+    </div>
+  </div>
+  <div id="sub">
+
+    <!-- show AD list-->
+    <div id="ad">
+      <% # TODO: use @ad_width, @ad_height, @ad_no %>
+      <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
+      <br><br>
+      <%= render :partial => 'paper/show_ad_list' %>
+    </div>
+  </div>
+</div><!-- #main -->
+
+<div id="footer">
+  <%= show_page_tail %>
+</div>
+
+
+
+  </div> <!-- /page -->
+<!-- news/_show_page_tail.html.erb  -->
+
+  <div id="toolbar-box">
+  <!-- 浮動視窗內的程式碼…  -->
+
+<a href='https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681'
+     onclick="alert('<%= t(:feedback_message) %>') ;"><img src="/images/feedback.png"/></a>
+  </div>
+
+
+
+  </body>

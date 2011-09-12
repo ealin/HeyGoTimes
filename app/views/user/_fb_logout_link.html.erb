@@ -3,7 +3,7 @@
       <%= fb_connect_async_js%>
 
       <!--a onclick="FB.logout(function() {window.location.href = '<%= root_url %>';}); return false;" href="#" style="background-position: left -990px;"><span><%= t(:m_logout) %></span></a-->
-      <%= fb_logout_link(t(:m_logout), root_url) %>
+      <%= fb_logout_link(t(:m_logout), url) %>
 
     <% end %>
 

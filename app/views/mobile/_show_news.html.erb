@@ -44,8 +44,8 @@
           <iframe id="news_frame" class="news_iframe" width="320" height="256" src="<%= url %>" frameborder="0" allowfullscreen></iframe>
         <% end %>
       <% else %>
-        <%# url = 'http://www.google.com/gwt/n?client=ig&u='+@news.url %>
-        <% url = 'http://www.google.com/gwt/x?u='+@news.url + "&output=embed" %>
+        <% url = 'http://www.google.com/gwt/n?client=ig&u='+@news.url %>
+        <%# url = 'http://www.google.com/gwt/x?u='+@news.url + "&output=embed" %>
         <iframe id="news_frame"  class="news_iframe" width="100%" src="<%= url %>">
           Your browser can't display IFRAMEs
         </iframe>

@@ -63,7 +63,9 @@ HeyGoTimes::Application.routes.draw do
   get "faq/show_question_list"  
   get "faq/show_answer"
 
-  get "news/like"
+  get "daily/index"
+  get "daily/select"
+
   post "news/like"
   post "news/report"
   post "news/comment"
@@ -91,6 +93,7 @@ HeyGoTimes::Application.routes.draw do
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
     get '_show_paper_content', :on => :collection
+
     get 'set_default_locale', :on => :collection
 
 
@@ -101,6 +104,8 @@ HeyGoTimes::Application.routes.draw do
     get '_show_paper_content', :on => :collection
     get 'show_news', :on => :collection
   end
+
+
 
   match 'news/:fb_obj_url' => 'news#show'
 
