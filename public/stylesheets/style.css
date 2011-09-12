@@ -70,7 +70,7 @@ a img {
 }
 
 #header #filter_hint {
-  font-weight: bold;
+  /*font-weight: bold;*/
   position:relative;
   top: 32px;
   left: 20px;

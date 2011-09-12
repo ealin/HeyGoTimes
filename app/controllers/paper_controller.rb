@@ -105,7 +105,7 @@ class PaperController < NewsController
 
       if params[:app_mode] ==  'daily_news'
         begin
-          @news = get_daily_news page
+          @news = get_daily_news params[:page]
         rescue
           @news = nil
         end
