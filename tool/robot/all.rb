@@ -51,16 +51,6 @@ Thread.start{
 
 
 
-    ############  NOW-NEWS-Focus   ############
-require './tw_nownews.rb'
-
-Thread.start{
- get_news_from_tw_nownews(m,@sleep_period)
-}
-
-
-
-
 
     ############  NOW-NEWS-Focus   ############
 require './tw_nownews_focus.rb'
@@ -71,15 +61,23 @@ Thread.start{
 
 
 
-      ############  TW-UDN   ############
-require './tw_udn.rb'
+    ############  NOW-NEWS   ############
+require './tw_nownews.rb'
 
 Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
+ get_news_from_tw_nownews(m,@sleep_period)
 }
 
 
 
+
+
+############  TW-Google-Focus   ############
+require './tw_others.rb'
+
+Thread.start{
+    get_tw_other_news(m,@sleep_period)
+}
 
 
 #!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -113,21 +111,16 @@ Thread.start{
 
 
 
-
-############  TW-Google-Focus   ############
-require './tw_others.rb'
+      ############  TW-UDN   ############
+require './tw_udn.rb'
 
 #Thread.start{
-    get_tw_other_news(m,@sleep_period)
+ get_news_from_tw_udn(m,@sleep_period)
 #}
 
 
-############  TW-Google-Focus   ############
-#require './cn_baidu.rb'
 
-#Thread.start{
-#    get_news_from_cn_Baidu(m,@sleep_period)
-#}
+
 
 
 

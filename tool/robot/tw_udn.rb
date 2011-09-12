@@ -149,7 +149,8 @@ udn_focus_rss_tag = [
 
         begin
              open(feed_url) do |feed|
-               RSS::Parser.parse(feed.read , false).reverse.items.each do |item|
+               RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+
                  m.synchronize{
 
                    link = URI.encode(item.link)

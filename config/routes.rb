@@ -93,6 +93,7 @@ HeyGoTimes::Application.routes.draw do
     get 'get_filter_session', :on => :collection
     get 'load_filter_setting', :on => :collection
     get '_show_paper_content', :on => :collection
+
     get 'set_default_locale', :on => :collection
 
 
