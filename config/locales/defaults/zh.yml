@@ -27,6 +27,9 @@ zh:
   to_top_hint: "将本页捲动到本篇新闻内容的最顶端。"
   fb_fans: "《黑狗日报》粉丝团"
   fb_fans_hint: "赞一个！随时掌握热门新闻！"
+
+  search_hint: "请输入关键字："
+  search_button: "开始搜寻"
   
   #----------------------------------------
   # name of each page(controller/view)
