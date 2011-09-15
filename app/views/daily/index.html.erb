@@ -1,4 +1,5 @@
-<title><%= t(:HeyGoTimes)%> - <%= t(:Home)%></title>
+<title><%= t(:HeyGoTimes)%> - <%= t(:DailyNews)%></title>
+
 <meta property="og:title" content="HeyGoTimes"/>
 <meta property="og:type" content="news"/>
 <meta property="og:url" content="<%= root_url %>"/>
@@ -175,8 +176,13 @@
   <div id="page">
   <div id="header">
   <div id="logo">
-    <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+    <%= link_to( image_tag("/images/HeyGoTimes-logo-app.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
   </div>
+
+    <span id="filter_hint" style="left:40px;font-size:24px;color:white;">
+         每日一聞 / Daily Hottest News
+     </span>
+
   <div id="page_head" >
 
     <div id="page_head2" >

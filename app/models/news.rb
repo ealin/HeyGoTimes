@@ -163,4 +163,9 @@ class News < ActiveRecord::Base
     find(:all, :conditions => {:daily_news => true}, :order => 'created_at DESC')
   end
 
+
+  def self.do_search(key)
+     find(:all, :conditions => ['title LIKE ? OR content LIKE ?', "%#{key}%","%#{key}%"], :order => 'created_at DESC')
+  end
+
 end

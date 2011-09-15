@@ -70,9 +70,9 @@ a img {
 }
 
 #header #filter_hint {
-  font-weight: bold;
+  /*font-weight: bold;*/
   position:relative;
-  top: 20px;
+  top: 32px;
   left: 20px;
   font-size: 1.3em;
 }
@@ -89,7 +89,8 @@ a img {
 
 #news_header #filter_hint {
   position:relative;
-  top: 20px;
+  top: 32px;
+  margin-left: 30px;
   font-size: 16px;
 }
 

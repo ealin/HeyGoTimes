@@ -3,6 +3,7 @@ zh_tw:
   HeyGoTimes: "黑狗日報"
   slogan: "您的新聞篩選條件： "
 
+  DailyNews: "每日一篇"
   Home: "首頁"
   Friends_slogan: "不想錯過任何一則好友們關注的新聞嗎？請按下此連結："
   Friends_ranking: "好友關注的新聞排行榜"
@@ -26,7 +27,9 @@ zh_tw:
   to_top_hint: "將本頁捲動到本篇新聞內容的最頂端。"
   fb_fans: "《黑狗日報》粉絲團"
   fb_fans_hint: "讚一個！隨時掌握熱門新聞！"
-
+  
+  search_hint: "請輸入關鍵字："
+  search_button: "開始搜尋"
 
   #----------------------------------------
   # name of each page(controller/view)
