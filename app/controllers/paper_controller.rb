@@ -97,7 +97,8 @@ class PaperController < NewsController
 
   def _show_paper_content
     # params:
-    # :type => latest / rank / special
+    # :type => latest / rank / special / search
+    # :sub_type
     # :page => page num to fetch
     # :news_num => load ? news
 
@@ -113,32 +114,39 @@ class PaperController < NewsController
       end
     else
 
-      temp_str = params[:news_num]
-      @loading_news_num = 0
-      session[:friend_ranking_mode] = false
-
-      if params[:time_base] != nil && params[:time_base] == 'now'
-        session[:news_load_time] = Time.now
-      end
-
-      if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
-        @loading_news_num = 15
+      if params[:type] == 'search'
+          search_key = params[:sub_type]
+          @news = (News.do_search(search_key)).paginate :page => params[:page], :per_page => 15
       else
-        @loading_news_num = Integer(temp_str)
-      end
 
-      if (params[:type] == 'special')
-        @news = get_special_news(params[:sub_type], params[:page])
-      else
-        session[:news_type] = params[:type]
+          temp_str = params[:news_num]
+          @loading_news_num = 0
+          session[:friend_ranking_mode] = false
 
-        if(params[:sub_type] != nil && params[:sub_type] == 'friend')
-          session[:friend_ranking_mode] = true
-        end
+          if params[:time_base] != nil && params[:time_base] == 'now'
+            session[:news_load_time] = Time.now
+          end
 
-        @news = get_news(params[:type], params[:page])
-      end
-    end
+          if temp_str == nil || (temp_str != '10'&& temp_str != '15' && temp_str != '20' && temp_str != '25')
+            @loading_news_num = 15
+          else
+            @loading_news_num = Integer(temp_str)
+          end
+
+          if (params[:type] == 'special')
+            @news = get_special_news(params[:sub_type], params[:page])
+          else
+            session[:news_type] = params[:type]
+
+            if(params[:sub_type] != nil && params[:sub_type] == 'friend')
+              session[:friend_ranking_mode] = true
+            end
+
+            @news = get_news(params[:type], params[:page])
+          end
+
+      end  # end of  if params[:type] == 'search'
+    end    # end of if params[:app_mode] != nil
 
     respond_to do |format|
       format.html {render :partial => 'paper/show_paper_content',

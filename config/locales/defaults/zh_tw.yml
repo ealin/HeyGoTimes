@@ -27,7 +27,9 @@ zh_tw:
   to_top_hint: "將本頁捲動到本篇新聞內容的最頂端。"
   fb_fans: "《黑狗日報》粉絲團"
   fb_fans_hint: "讚一個！隨時掌握熱門新聞！"
-
+  
+  search_hint: "請輸入關鍵字："
+  search_button: "開始搜尋"
 
   #----------------------------------------
   # name of each page(controller/view)

@@ -132,6 +132,26 @@
         loadMore(currType, subType, ++currPage,15);
       });
 
+
+        $('#submit_search').unbind('click').click(function() {
+            // start searching
+            var search_key = $('#search_key')[0].value ;
+
+            if(search_key == "")
+            {
+                alert("<%= t(:search_hint)%>") ;
+                return ;
+
+            }
+            currPage = 1;
+            currType = 'search';
+            subType =  search_key ;
+            changePaperType(currType, subType);
+
+        });
+
+
+
       /*
       $('#more_15news').unbind('click').click(function() {
         loadMore(currType, subType, ++currPage,15);
@@ -149,6 +169,7 @@
         $(this).addClass("active");
         currPage = 1;
         currType = 'rank';
+        subType = "" ;
         changePaperType(currType, '');
         $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
       });
@@ -158,6 +179,7 @@
         $(this).addClass("active");
         currPage = 1;
         currType = 'latest';
+        subType = "" ;
         changePaperType(currType, '');
         $('#filter_hint')[0].childNodes[0].textContent = newspaper_title ;
       });
@@ -354,6 +376,12 @@
       <li><a id='show_notice'><span <% if @new_sys_notation %>style="color:red;"<% end %>><%= t(:notice) %></span></a></li>
       </div>
     </ul>
+  </div>
+
+  <div id="search_bar" align="center" style="font-size:14px">
+   <%= t(:search_hint) %>
+   <input type="text" id="search_key" />
+   <input type="button" id="submit_search" value="<%= t(:search_button) %>"/>
   </div>
 
   <div id="main">
