@@ -151,6 +151,16 @@
         });
 
 
+         $('#search_key').unbind('keypress').keypress(function(e) {
+            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13))
+            {
+                $('#submit_search').click();
+                return false;
+            }
+            else
+                return true;
+         });
+
 
       /*
       $('#more_15news').unbind('click').click(function() {
