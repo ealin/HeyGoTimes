@@ -354,6 +354,8 @@
   </div><!-- #header -->
 
 
+
+
   <div id="menu">
     <ul class="menu">
       <div id="menu_type_btn">
@@ -418,8 +420,12 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <!--
         <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
         <br><br>
+        -->
+        <%= render :partial => 'paper/show_ad_list' %>
+        <br>
         <%= render :partial => 'paper/show_ad_list' %>
       </div>
     </div>
