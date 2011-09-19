@@ -28,7 +28,7 @@ zh_tw:
   fb_fans: "《黑狗日報》粉絲團"
   fb_fans_hint: "讚一個！隨時掌握熱門新聞！"
   
-  search_hint: "請輸入關鍵字："
+  search_hint: "快速篩選："
   search_button: "開始搜尋"
 
   #----------------------------------------
@@ -233,6 +233,17 @@ zh_tw:
   
   FAQ: "常見問題"
   
+  Focus_s: "焦點"
+  Motion_s: "動畫"
+  World_s: "國際"
+  Society_s: "社會"
+  Local_s: "在地"
+  Business_s: "財經"
+  Sci_Tech_s: "科技"
+  Sport_s: "體育"
+  Life_s: "生活"
+  Entertainment_s: "影劇"
+  Politics_s: "政治"
   
 
   #----------------------------------------
