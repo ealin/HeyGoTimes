@@ -402,6 +402,7 @@
     <% if (session[:default_locale] == 'zh' || session[:default_locale] == 'zh_tw') %>
         <a href="javascript:void(null)" onclick="set_tag('All')" ><%= t('All'.to_sym) %></a>
         &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Focus')" ><%= t('Focus_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Motion')" ><%= t('Motion_s'.to_sym) %></a>
         &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('World')" ><%= t('World_s'.to_sym) %></a>
         &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Politics')" ><%= t('Politics_s'.to_sym) %></a>
         &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Society')" ><%= t('Society_s'.to_sym) %></a>
@@ -412,7 +413,7 @@
     <% end %>
 
     &nbsp;&nbsp;
-   <input type="text" id="search_key" />
+   <input type="text" size="12" id="search_key" />
    <input type="button" id="submit_search" value="<%= t(:search_button) %>"/>
   </div>
 
