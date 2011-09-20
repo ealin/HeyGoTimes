@@ -183,7 +183,8 @@ class PaperController < NewsController
     else
       # session may be empty (e.g. first time using)
       #
-      user_tags[0] = 'All'
+      #user_tags[0] = 'All'
+      user_tags[0] = 'Focus'    # Ealin: default is Focus
     end
 
     if (session[:id] != nil)
@@ -210,7 +211,8 @@ class PaperController < NewsController
     end
 
     if session[:friend_ranking_mode] == true
-      user_tags[0] = 'All'
+      #user_tags[0] = 'All'
+      user_tags[0] = 'Focus'
       if user_id != nil
          friend_type = :friend
       end
@@ -281,7 +283,8 @@ class PaperController < NewsController
           end
         end
 
-        session[:filter_tags] = "All"
+        #session[:filter_tags] = "All"
+        session[:filter_tags] = "Focus"
         session[:filter_date] = "1971-11-12"
         session[:filter_date_option] = "no_limited"
         session[:filter_friend] = "all"

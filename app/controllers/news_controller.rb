@@ -122,7 +122,7 @@ class NewsController < ApplicationController
 
     news = News.find(params[:news_id])
     if user != nil && user.admin == true
-      # set this news as Foucs-News if shared by administrator
+      # set this news as Focus-News if shared by administrator
       tag = Tag.find_by_name('Focus')
       news.tags << tag
       news.save
