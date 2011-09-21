@@ -183,7 +183,7 @@ class NewsController < ApplicationController
           if fetched == false
             if data.content.include? 'og:title'
               start_pos = data.content.index('content')
-              title = data.content[start_pos+9..-4]
+              title = data.content[start_pos+9..-5]
               fetched = true
               elsif data.content.include? 'og:description'
               start_pos = data.content.index('content')
