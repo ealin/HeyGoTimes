@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class NewsController < ApplicationController
 
   # GET /news
@@ -181,7 +183,7 @@ class NewsController < ApplicationController
           if fetched == false
             if data.content.include? 'og:title'
               start_pos = data.content.index('content')
-              title = data.content[start_pos+9..-4]
+              title = data.content[start_pos+9..-5]
               fetched = true
             elsif data.content.include? 'og:description'
               start_pos = data.content.index('content')
@@ -192,12 +194,12 @@ class NewsController < ApplicationController
               image_url = data.content[start_pos..-1]
               fetched = true
             elsif data.content.include? 'title'
-              end_pos = data.content.index('擷取自')
-              title = data.content[0..end_pos-1]
+              end_pos = data.content.index('extracted')
+              title = data.content[0..end_pos-3]
               fetched = true
             elsif data.content.include? 'description'
-              end_pos = data.content.index('擷取自')
-              text = data.content[2..end_pos-3]
+              end_pos = data.content.index('...')
+              text = data.content[2..end_pos+2]
               fetched = true
             end
           end
