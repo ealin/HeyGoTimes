@@ -66,11 +66,13 @@ HeyGoTimes::Application.routes.draw do
   get "daily/index"
   get "daily/select"
 
+  get "news/like"
   post "news/like"
   post "news/report"
   post "news/comment"
   post "news/share"
   resources :news
+  resources :river
 
   #resources :search do
   #  get 'index', :on => :collection

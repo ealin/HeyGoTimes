@@ -231,8 +231,8 @@ class ApiController < ApplicationController
         curr_time = Time.now
         hot_news.each do |news|
           if (curr_time - news.created_at > 43200)
-            if news.rank > 10
-              news.rank -= 10
+            if news.rank > 15
+              news.rank -= 15
             else
               news.rank = 0
             end
