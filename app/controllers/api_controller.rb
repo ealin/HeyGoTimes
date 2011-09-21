@@ -47,9 +47,10 @@ class ApiController < ApplicationController
 
       # Parse data
 
-      # @url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
-      # @url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-      url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+      # url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
+      # url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
+      url = 'https://developers.facebook.com/tools/debug/og/object?q=' + params[:url]
+
       next_element = ''
       title = ''
       image_url = ''
@@ -64,31 +65,40 @@ class ApiController < ApplicationController
 
       doc = Nokogiri::HTML(stream, nil, 'utf-8')
 
-      doc.search('h2 > div.pam', 'td').each do |data|
-        # puts data.content
+      fetched = true
+        doc.search('td', 'b').each do |data|
+          # puts data.content
 
-        if (data.content == 'Description')
-          next_element = :content
-          next
-        elsif (data.content == 'Title')
-          next_element = :title
-          next
-        elsif (data.content == 'Image')
-          next_element = :image
-          next
+          if (data.content == 'Data Source')
+            fetched = false
+            next
+          end
+
+          if fetched == false
+            if data.content.include? 'og:title'
+              start_pos = data.content.index('content')
+              title = data.content[start_pos+9..-4]
+              fetched = true
+            elsif data.content.include? 'og:description'
+              start_pos = data.content.index('content')
+              text = data.content[start_pos+9..-4]
+              fetched = true
+            elsif data.content.include? 'og:image'
+              start_pos = data.content.index('http')
+              image_url = data.content[start_pos..-1]
+              fetched = true
+            elsif data.content.include? 'title'
+              end_pos = data.content.index('擷取自')
+              title = data.content[0..end_pos-1]
+              fetched = true
+            elsif data.content.include? 'description'
+              end_pos = data.content.index('擷取自')
+              text = data.content[2..end_pos-3]
+              fetched = true
+            end
+          end
+
         end
-
-        if (next_element == :content)
-          text = data.content
-        elsif (next_element == :image)
-          image_url = data.search('a').first['href']
-        elsif (next_element == :title)
-          title = data.content
-          break
-        end
-
-        next_element = :normal
-      end
 
       @payload['title'] = title
       @payload['image'] = image_url
