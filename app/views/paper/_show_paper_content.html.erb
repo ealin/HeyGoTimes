@@ -22,8 +22,9 @@
         <% end %>
 
         <!-- highlight the date -->
-        <span style = "color: red; ">
+        <span style = "color: blue;">
         <% if app_mode == :daily_news %>
+            <img src="/images/calendar.png" height="30px" />
             <% if session[:default_locale] == "en" %>
                 <%= news.created_at.in_time_zone("Central Time (US & Canada)").strftime("%Y/%m/%d") %>
             <% else %>
