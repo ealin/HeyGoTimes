@@ -396,9 +396,24 @@
     </ul>
   </div>
 
-  <div id="search_bar" align="center" style="font-size:14px">
-   <%= t(:search_hint) %>
-   <input type="text" id="search_key" />
+  <div id="search_bar"  style="font-size:14px">
+    <%= t(:search_hint) %>
+
+    <% if (session[:default_locale] == 'zh' || session[:default_locale] == 'zh_tw') %>
+        <a href="javascript:void(null)" onclick="set_tag('All')" ><%= t('All'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Focus')" ><%= t('Focus_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Motion')" ><%= t('Motion_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('World')" ><%= t('World_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Politics')" ><%= t('Politics_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Society')" ><%= t('Society_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Sport')" ><%= t('Sport_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Business')" ><%= t('Business_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Life')" ><%= t('Life_s'.to_sym) %></a>
+        &nbsp;&nbsp;<a href="javascript:void(null)" onclick="set_tag('Entertainment')" ><%= t('Entertainment_s'.to_sym) %></a>
+    <% end %>
+
+    &nbsp;&nbsp;
+   <input type="text" size="12" id="search_key" />
    <input type="button" id="submit_search" value="<%= t(:search_button) %>"/>
   </div>
 
@@ -420,8 +435,12 @@
       <!-- show AD list-->
       <div id="ad">
         <% # TODO: use @ad_width, @ad_height, @ad_no %>
+        <!--
         <a href="http://itunes.apple.com/us/app/heygo!-times/id455478303?ls=1&mt=8"><img width="120px" src="/images/appStoreBadge.png"/></a>
         <br><br>
+        -->
+        <%= render :partial => 'paper/show_ad_list' %>
+        <br>
         <%= render :partial => 'paper/show_ad_list' %>
       </div>
     </div>

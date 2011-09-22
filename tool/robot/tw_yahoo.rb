@@ -33,19 +33,11 @@ def get_news_from_tw_yahoo (m,sleep_period)
           "Business",
           "Sci_Tech",
           "Sport",
-
-          #"Health",
-          #"Education",
-          #"Art",
-          "Life/Special",
-          "Life/Special",
-          "Life/Special",
-
+          "Health",
+          "Education",
+          "Art",
           "Entertainment",
-
-          #"Travel",
-          "Life/Special",
-
+          "Travel",
           "Life",
           "Special", "Special","Special","Special","Special","Special","Special","Special"] ;
 
@@ -67,7 +59,7 @@ def get_news_from_tw_yahoo (m,sleep_period)
 
             begin
                 open(feed_url) do |feed|
-                  RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+                  RSS::Parser.parse(feed.read , false).items.each do |item|
                     m.synchronize{
                       index = (item.link).index("*")
                       link = (item.link)[(index+1)..(item.link).length]

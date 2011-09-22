@@ -28,7 +28,7 @@ zh:
   fb_fans: "《黑狗日报》粉丝团"
   fb_fans_hint: "赞一个！随时掌握热门新闻！"
 
-  search_hint: "请输入关键字："
+  search_hint: "快速筛选："
   search_button: "开始搜寻"
   
   #----------------------------------------
@@ -232,6 +232,17 @@ zh:
   
   FAQ: "常见问题"
   
+  Focus_s: "焦点"
+  Motion_s: "动画"
+  World_s: "国际"
+  Society_s: "社会"
+  Local_s: "在地"
+  Business_s: "财经"
+  Sci_Tech_s: "科技"
+  Sport_s: "体育"
+  Life_s: "生活"
+  Entertainment_s: "影剧"
+  Politics_s: "政治"
   
 
   #----------------------------------------

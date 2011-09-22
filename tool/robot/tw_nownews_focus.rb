@@ -2,14 +2,12 @@ def get_news_from_tw_nownews_focus (m,sleep_period)
 
 
 nownews_focus_rss_url = [
-  #"http://feeds.feedburner.com/nownews/realtime",
-  "http://feeds.feedburner.com/inside-blog-taiwan"
+  "http://feeds.feedburner.com/nownews/realtime"
 ] ;
 
 
 nownews_focus_rss_tag = [
-    #"Focus/Special",
-    "Internet"
+    "Focus"
  ] ;
 
 
@@ -36,13 +34,7 @@ nownews_focus_rss_tag = [
               #p link
 
               m.synchronize{
-                if i==0
-                  puts '[NOW-NEWS TW FOCUS]  News Link :' + link
-                else
-                  puts '[Inside Blog]  News Link :' + link
-                end
-
-
+                puts '[NOW-NEWS TW FOCUS]  News Link :' + link
                 open(command + link) {|f|
                    f.each_line {|line| p line}
                  }

@@ -64,22 +64,12 @@ def get_news_from_tw_yahoo_beta (m,sleep_period)
           "Society",
           "World","World","World","World","World",
           "Business","Business","Business","Business","Business","Business",
-          "Life/Special","Life","Life",
-
-          #"Travel",
-          "Life/Special",
-
-          #"Education",
-          "Life/Special",
-
-          #"Art",
-          "Life/Special",
-
+          "Life","Life","Life",
+          "Travel",
+          "Education",
+          "Art",
           "Life",
-
-          #"Health","Health","Health",
-          "Life/Special","Life/Special","Life/Special",
-
+          "Health","Health","Health",
           "Sci_Tech","Sci_Tech","Sci_Tech"] ;
 
 
@@ -118,7 +108,7 @@ def get_news_from_tw_yahoo_beta (m,sleep_period)
 
               begin
                   open(feed_url) do |feed|
-                    RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+                    RSS::Parser.parse(feed.read , false).items.each do |item|
                       m.synchronize{
 
                         link = URI.encode(item.link)
