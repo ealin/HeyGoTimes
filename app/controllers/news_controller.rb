@@ -206,7 +206,13 @@ class NewsController < ApplicationController
               fetched = true
               elsif data.content.include? 'description'
               end_pos = data.content.index('..')
-              text = data.content[2..end_pos+1]
+              if end_pos == nil
+                end_pos = data.content.index('extracted')
+                text = data.content[2..end_pos-1]
+                else
+                text = data.content[2..end_pos+1]
+              end
+              
               fetched = true
             end
           end
