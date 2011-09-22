@@ -212,9 +212,9 @@ class NewsController < ApplicationController
               end_pos = data.content.index('..')
               if end_pos == nil
                 end_pos = data.content.index('extracted')
-                text = data.content[2..end_pos-1]
+                text = data.content[1..end_pos-1]
                 else
-                text = data.content[2..end_pos+1]
+                text = data.content[1..end_pos+1]
               end
               
               fetched = true
