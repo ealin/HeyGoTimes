@@ -192,7 +192,7 @@ class ApiController < ApplicationController
 
       if params[:no_photo] == nil ||  params[:no_photo] != 'yes'
           
-          if  params[:image] != nil &&  params[:image] != ' '
+          if  params[:image] != nil &&  params[:image] != '' &&  params[:image] != ' '
               @image = Image.create(params[:image])
               @image.news = @news
               @image.url = params[:image]
