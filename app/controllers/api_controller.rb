@@ -90,12 +90,12 @@ class ApiController < ApplicationController
               image_url = data.content[start_pos..-1]
               fetched = true
             elsif data.content.include? 'title'
-              end_pos = data.content.index('擷取自')
-              title = data.content[0..end_pos-1]
+              end_pos = data.content.index('extracted')
+              title = data.content[0..end_pos-3]
               fetched = true
             elsif data.content.include? 'description'
-              end_pos = data.content.index('擷取自')
-              text = data.content[2..end_pos-3]
+              end_pos = data.content.index('...')
+              text = data.content[2..end_pos+2]
               fetched = true
             end
           end
@@ -190,16 +190,16 @@ class ApiController < ApplicationController
       @news.special_flag= true
     end
 
-      if params[:no_photo] == nil ||  params[:no_photo] != 'yes'
-          
-          if  params[:image] != nil &&  params[:image] != ' '
-              @image = Image.create(params[:image])
-              @image.news = @news
-              @image.url = params[:image]
-              @image.save
-          end
-          
-      end
+    if params[:no_photo] == nil ||  params[:no_photo] != 'yes'
+
+        if  params[:image] != nil &&  params[:image] != '' && params[:image] != ' '
+            @image = Image.create(params[:image])
+            @image.news = @news
+            @image.url = params[:image]
+            @image.save
+        end
+
+    end
 
     @news.tags = []
     tags = Tag.all
@@ -237,7 +237,8 @@ class ApiController < ApplicationController
   end
 
 
-    def news_rank_reduction
+
+  def news_rank_reduction
       sysdata = get_system_data
       if Time.now - sysdata.last_news_rank_reduction > 43200
 
