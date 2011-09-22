@@ -90,10 +90,10 @@ Thread.start{
 
 
     ############  TW-Google-Focus   ############
-require './tw_others.rb'
+require './tw_google_focus.rb'
 
 #Thread.start{
- get_tw_other_news(m,@sleep_period)
+ get_news_from_tw_google_focus(m,@sleep_period)
 #}
 
 

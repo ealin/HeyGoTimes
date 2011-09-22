@@ -97,15 +97,13 @@ def get_news_from_us_yahoo (m,sleep_period)
           "Special/Local",
 
           "Business","Business/Local","Business","Business","Business/Life","Business","Business/Life","Business",
-          "World","World","World","World" ,"World","World","World","World",
+          "World","World","World","World","World","World","World","World",
           "Entertainment", "Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Entertainment","Art/Entertainment",
           "Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport","Sport",
           "Sci_Tech", "Sci_Tech/Internet","Sci_Tech","Sci_Tech","Sci_Tech/Internet","Sci_Tech","Sci_Tech","Sci_Tech/Life",
           "Sci_Tech","Sci_Tech/Life","Sci_Tech","Sci_Tech/Life","Sci_Tech","Sci_Tech","Sci_Tech","Sci_Tech",
           "Politics","Politics","Politics","Politics","Politics","Politics","Politics","Politics",
-
-          #"Health","Health/Life","Health","Health","Health","Health","Health",
-          "Life/Special","Life/Special","Life/Special","Life/Special","Life/Special","Life/Special","Life/Special",
+          "Health","Health/Life","Health","Health","Health","Health","Health",
       ] ;
 
 
@@ -128,7 +126,7 @@ def get_news_from_us_yahoo (m,sleep_period)
 
             begin
                 open(feed_url) do |feed|
-                  RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+                  RSS::Parser.parse(feed.read , false).items.each do |item|
                     m.synchronize{
                       link = URI.encode(item.link)
 

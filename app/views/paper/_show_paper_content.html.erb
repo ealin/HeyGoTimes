@@ -5,6 +5,15 @@
 
 <% if news != nil %>
   <% news.each_with_index do |news,news_index| %>
+    <%# TODO: remove this after all news watch count filled %>
+    <% if (news.like_count == nil) %>
+      <% news.watch_count = 0 %>
+      <% news.like_count = 0 %>
+      <% news.unlike_count = 0 %>
+      <% news.share_count = 0 %>
+      <% news.comment_count = 0 %>
+      <% news.save %>
+    <% end %>
     <% style_str=(news_index==0 && session[:news_type] == 'rank')?"style='padding:5px; border-color: #bdc7d8;border-style:dashed;background: #edeff4;'":"" %>
     <div class="news" id="news_<%= news.id %>" <%= style_str %>>
       <script type="text/javascript">

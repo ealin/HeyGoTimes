@@ -1,8 +1,6 @@
 class RiverController < ApplicationController
 
   def index
-    @news = News.get_all_news_today
-
   end
 
   # load next followed river

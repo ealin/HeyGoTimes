@@ -43,7 +43,7 @@ def get_news_from_tw_apple_focus (m,sleep_period)
 
             begin
                 open(feed_url) do |feed|
-                  RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+                  RSS::Parser.parse(feed.read , false).items.each do |item|
                     m.synchronize{
 
                       link = URI.encode(item.link)
