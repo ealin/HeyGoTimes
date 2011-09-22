@@ -5,8 +5,9 @@
   <meta property="og:title" content="<%= @news.title %>"/>
   <meta property="og:type" content="news"/>
   <meta property="og:url" content="<%= news_url %>"/>
+  <meta content=”<%= @news.content %>”>
   <% if (@news.images[0] != nil) %>
-  <meta property="og:image" content="<%= @news.images[0].url %> "/>
+    <meta property="og:image" content="<%= @news.images[0].url %> "/>
   <% end %>
 
   <script type="text/javascript">
