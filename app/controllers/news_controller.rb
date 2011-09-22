@@ -121,8 +121,15 @@ class NewsController < ApplicationController
     if (session[:id])
       user = User.find(session[:id])
     end
-    
+
     news = News.find(params[:news_id])
+    if user != nil && user.admin == true
+      # set this news as Focus-News if shared by administrator
+      tag = Tag.find_by_name('Focus')
+      news.tags << tag
+      news.save
+    end
+
     news_rank_action(user, news, :share)
   end
   
