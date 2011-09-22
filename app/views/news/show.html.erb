@@ -3,13 +3,16 @@
 
   <title><%= t(:HeyGoTimes)%> - <%= @news.title %></title>
 
+<head>
+
   <meta property="og:title" content="<%= @news.title %>">
   <meta property="og:type" content="news">
   <meta property="og:url" content="<%= news_url %>">
   <meta property=”og:description” content=”<%= @news.content %>” >
   <% if (@news.images[0] != nil) %>
-    <meta property="og:image" content="<%= @news.images[0].url %> ">
+    <meta property="og:image" content="<%= @news.images[0].url %>">
   <% end %>
+</head>
 
   <script type="text/javascript">
 
