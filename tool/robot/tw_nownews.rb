@@ -2,6 +2,7 @@ def get_news_from_tw_nownews (m,sleep_period)
 
 
 nownews_rss_url = [
+  "http://feeds.feedburner.com/nownews/rumor",
   "http://feeds.feedburner.com/nownews/politic",
   "http://feeds.feedburner.com/nownews/finance",
   "http://feeds.feedburner.com/nownews/social",
@@ -17,11 +18,15 @@ nownews_rss_url = [
 
 
 nownews_rss_tag = [
+    "Life/Special",
     "Politics",
     "Business",
     "Society",
     "Life",
-    "Travel",
+
+    #"Travel",
+    "Life/Special",
+
     "Sci_Tech",
     "Special",
     "Special",
@@ -42,6 +47,10 @@ nownews_rss_tag = [
         feed_url = nownews_rss_url[i]
 
         command = @host+ 'api/new_news?publish=yes&focus_flag=no&area=Taiwan/&tags='
+        if i == 0
+          command = command + "&focus_flag=yes"
+        end
+        
         command = command + nownews_rss_tag[i] + "&url="
 
 

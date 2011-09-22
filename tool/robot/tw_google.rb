@@ -11,13 +11,13 @@ google_rss_url = [
   "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=e&output=rss" ,
   "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=y&output=rss" ,
   "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=m&output=rss" ,
-  "http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=po&output=rss"
+  #"http://news.google.com.tw/news?pz=1&cf=all&ned=tw&hl=zh-TW&topic=po&output=rss"
 
 ] ;
 
 
 google_rss_tag = [
-    "Local" ,     # todo: area += TW_CH
+    "Local" ,
     "World",
     "Local" ,
     "Business" ,
@@ -26,7 +26,7 @@ google_rss_tag = [
     "Entertainment" ,
     "Society" ,
     "Health" ,
-    "Special"
+    #Special"
 
     ] ;
 
