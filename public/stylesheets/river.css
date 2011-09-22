@@ -9,26 +9,26 @@
   /*outline: 2px solid gold;*/
 }
 
-.tl-events {
+.tr-events {
     width: 11800px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.tl-events li {
+.tr-events li {
     float: left;
     width: 300px;
     margin-right: 10px;
 }
 
-.tl-events ul {
+.tr-events ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.tl-events ul li a {
+.tr-events ul li a {
     text-decoration: none;
     color: #000;
     background: #D9E4FF;
@@ -39,8 +39,8 @@
     padding: 2px;
 }
 
-.tl-events ul li a:hover,
-.tl-events ul li a:focus {
+.tr-events ul li a:hover,
+.tr-events ul li a:focus {
     outline: 0;
     background: #C2CCE4;
     border: 1px solid #B0BACF;
