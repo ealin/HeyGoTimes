@@ -1,4 +1,4 @@
-def fb_debugger(url)
+def parse_fb_debugger(url)
 
   # url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
   url = 'https://developers.facebook.com/tools/debug/og/object?q=' + url

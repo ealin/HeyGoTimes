@@ -136,7 +136,6 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
-    require 'parser/parser_main.rb'
 
     if (params[:url] != nil)
       
@@ -149,8 +148,8 @@ class NewsController < ApplicationController
       #end
       
       # Parse data
-      #require './app/controllers/parser/parser_main.rb'
-      news_parser('http://tw.news.yahoo.com/article/url/d/a/110922/5/2z6u4.html')
+      require 'parser/parser_main.rb'
+      news_parser(params[:url])
     end
     
     if(@parser_data[:title] != nil && @parser_data[:title] != "")
