@@ -137,19 +137,22 @@ class NewsController < ApplicationController
   # GET /report/new.xml
   def report
 
+    @ret_data = Hash.new
+
     if (params[:url] != nil)
 
       # Check URL existence
-      #if (params[:url] != nil)
       @news = News.find_by_url(params[:url].to_s)
-      if (@news != nil)
-        @parser_data[:ret] = 'url exist'
-      end
-      #end
 
-      # Parse data
-      require 'parser/parser_main.rb'
-      news_parser(params[:url])
+      if (@news != nil)
+        @parser_data = Hash.new
+        @parser_data[:ret] = 'url exist'
+      else
+        # Parse data
+        require 'parser/parser_main.rb'
+        news_parser(params[:url])
+      end
+
     end
     
     if(@parser_data[:title] != nil && @parser_data[:title] != "")
