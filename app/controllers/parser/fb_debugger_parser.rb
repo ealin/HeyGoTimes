@@ -25,51 +25,30 @@ def parse_fb_debugger(url)
 
   # @body = @doc.at_css('body').text
   fetched = true
-  doc.search('td', 'b').each do |data|
+  doc.search('td').each do |data|
     # puts data.content
 
-    if (data.content == 'Data Source')
-      fetched = false
+    if (data.content == 'og:description')
+      next_element = :content
+      next
+    elsif (data.content == 'og:title')
+      next_element = :title
+      next
+    elsif (data.content == 'og:image')
+      next_element = :image
       next
     end
 
-    if fetched == false
-      if data.content.include? 'og:title'
-        start_pos = data.content.index('content')
-        title = data.content[start_pos+9..-5]
-        fetched = true
-        elsif data.content.include? 'og:description'
-        start_pos = data.content.index('content')
-        text = data.content[start_pos+9..-4]
-        fetched = true
-        elsif data.content.include? 'og:image'
-        start_pos = data.content.index('http')
-        image_url = data.content[start_pos..-1]
-        fetched = true
-        elsif data.content.include? 'title'
-        end_pos = data.content.index('extracted')
-        if end_pos == nil
-          title = data.content[1..-2]
-        else
-          title = data.content[1..end_pos-3]
-        end
+    if (next_element == :content)
+      text = data.content
+    elsif (next_element == :image)
+      image_url = data.search('a').first['href']
 
-        fetched = true
-      elsif data.content.include? 'description'
-        end_pos = data.content.index('..')
-        if end_pos == nil
-          end_pos = data.content.index('extracted')
-          if end_pos == nil
-            end_pos = 0
-          end
-          text = data.content[1..end_pos-1]
-        else
-          text = data.content[1..end_pos+1]
-        end
-
-        fetched = true
-      end
+    elsif (next_element == :title)
+      title = data.content
     end
+
+    next_element = :normal
 
   end
 

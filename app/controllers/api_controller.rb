@@ -17,7 +17,6 @@ class ApiController < ApplicationController
     # this method is referenced from news_controller/report
     #
     require 'open-uri'
-    require 'nokogiri'
     require 'net/http'
     require 'json'
 
@@ -48,66 +47,15 @@ class ApiController < ApplicationController
 
 
       # Parse data
+      require 'parser/parser_main.rb'
+      news_parser(params[:url])
 
-      # url = 'http://www.facebook.com/sharer.php?u=' + params[:url]
-      # url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-      url = 'https://developers.facebook.com/tools/debug/og/object?q=' + params[:url]
+      @payload['title'] = @parser_data[:title]
+      @payload['image'] = @parser_data[:image]
+      @payload['text'] = @parser_data[:text]
 
-      next_element = ''
-      title = ''
-      image_url = ''
-      text = ''
-
-      begin
-        stream = open(url)
-      rescue
-        # try again
-        stream = open(url)
-      end
-
-      doc = Nokogiri::HTML(stream, nil, 'utf-8')
-
-      fetched = true
-        doc.search('td', 'b').each do |data|
-          # puts data.content
-
-          if (data.content == 'Data Source')
-            fetched = false
-            next
-          end
-
-          if fetched == false
-            if data.content.include? 'og:title'
-              start_pos = data.content.index('content')
-              title = data.content[start_pos+9..-4]
-              fetched = true
-            elsif data.content.include? 'og:description'
-              start_pos = data.content.index('content')
-              text = data.content[start_pos+9..-4]
-              fetched = true
-            elsif data.content.include? 'og:image'
-              start_pos = data.content.index('http')
-              image_url = data.content[start_pos..-1]
-              fetched = true
-            elsif data.content.include? 'title'
-              end_pos = data.content.index('extracted')
-              title = data.content[0..end_pos-3]
-              fetched = true
-            elsif data.content.include? 'description'
-              end_pos = data.content.index('...')
-              text = data.content[2..end_pos+2]
-              fetched = true
-            end
-          end
-
-        end
-
-      @payload['title'] = title
-      @payload['image'] = image_url
-      @payload['text'] = text
-
-      if(title != nil && title != "")
-        news_temp = News.find_by_title(title)
+      if(@parser_data[:title] != nil && @parser_data[:title] != "")
+        news_temp = News.find_by_title(@parser_data[:title])
         if (news_temp != nil)
           response_str = 'title-duplicate!!'
           respond_to do |format|
@@ -132,7 +80,7 @@ class ApiController < ApplicationController
       if ENV['RAILS_ENV'] != 'development'
         @news = News.new(params[:news])
         @news.url = params[:url]
-        @news.title = title
+        @news.title = @parser_data[:title]
 
         @news.save
       end
@@ -156,8 +104,6 @@ class ApiController < ApplicationController
     end
 
   end
-
-
 
 
   def add_news

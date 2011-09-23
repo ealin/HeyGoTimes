@@ -13,6 +13,6 @@ def parse_tw_yahoo(url)
   node_set = doc.search('tr > td > label > a > img')
   @parser_data[:image] = node_set[0]['src']
 
-  node_set = doc.search('div.ynwsartcontent p')
+  node_set = doc.search('p')
   @parser_data[:text] = node_set[0].content
 end
