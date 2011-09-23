@@ -136,112 +136,31 @@ class NewsController < ApplicationController
   # GET /report/new
   # GET /report/new.xml
   def report
-    require 'open-uri'
-    require 'nokogiri'
-
-    datas = Hash.new
 
     if (params[:url] != nil)
 
       # Check URL existence
       #if (params[:url] != nil)
-        @news = News.find_by_url(params[:url].to_s)
-        if (@news != nil)
-          datas[:ret] = 'url exist'
-        end
+      @news = News.find_by_url(params[:url].to_s)
+      if (@news != nil)
+        @parser_data[:ret] = 'url exist'
+      end
       #end
 
       # Parse data
-      if (datas[:ret] != 'url exist')
-
-        # url = 'http://developers.facebook.com/tools/lint/?url=' + URI.encode(params[:url])
-        url = 'https://developers.facebook.com/tools/debug/og/object?q=' + params[:url]
-        # url = 'https://www.facebook.com/sharer/sharer.php?u=' + params[:url]
-        next_element = ''
-        title = ''
-        image_url = ''
-        text = ''
-
-        begin
-          stream = open(url)
-        rescue
-          # try again
-          stream = open(url)
-        end
-
-        doc = Nokogiri::HTML(stream, nil, 'utf-8')
-
-
-        #@error = @doc.search('lint > lint_error')
-        #if (@error != nil)
-        #  @data['ret'] = 'bad url'
-        #end
-
-        # @body = @doc.at_css('body').text
-        fetched = true
-        doc.search('td', 'b').each do |data|
-          # puts data.content
-
-          if (data.content == 'Data Source')
-            fetched = false
-            next
-          end
-
-          if fetched == false
-            if data.content.include? 'og:title'
-              start_pos = data.content.index('content')
-              title = data.content[start_pos+9..-5]
-              fetched = true
-            elsif data.content.include? 'og:description'
-              start_pos = data.content.index('content')
-              text = data.content[start_pos+9..-4]
-              fetched = true
-            elsif data.content.include? 'og:image'
-              start_pos = data.content.index('http')
-              image_url = data.content[start_pos..-1]
-              fetched = true
-            elsif data.content.include? 'title'
-              end_pos = data.content.index('extracted')
-              if end_pos == nil
-                title = data.content[1..-2]
-              else
-                title = data.content[1..end_pos-3]
-              end
-
-              fetched = true
-            elsif data.content.include? 'description'
-              end_pos = data.content.index('..')
-              if end_pos == nil
-                end_pos = data.content.index('extracted')
-                if end_pos == nil
-                  end_pos = 0
-                end
-                text = data.content[1..end_pos-1]
-              else
-                text = data.content[1..end_pos+1]
-              end
-
-              fetched = true
-            end
-          end
-
-        end
-
-        datas[:title]=title
-        datas[:image]=image_url
-        datas[:text]=text
-      end
+      require 'parser/parser_main.rb'
+      news_parser(params[:url])
     end
-
-    if(title != nil && title != "")
-      @news = News.find_by_title(title)
+    
+    if(@parser_data[:title] != nil && @parser_data[:title] != "")
+      @news = News.find_by_title(@parser_data[:title])
       if (@news != nil)
-        datas[:ret] = 'url exist'
+        @parser_data[:ret] = 'url exist'
       end
     end
 
     respond_to do |format|
-      format.json { render :json => (datas.to_json) }
+      format.json { render :json => (@parser_data.to_json) }
     end
 
   end
