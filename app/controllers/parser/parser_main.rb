@@ -8,7 +8,9 @@ def news_parser(url)
 
   @parser_data = Hash.new
 
-  if url.include? 'tw.news.yahoo'
+  if url.include? 'beta.tw.news.yahoo.com'
+    parse_fb_debugger(url)
+  elsif url.include? 'tw.news.yahoo'
     parse_tw_yahoo(url)
   elsif url.include? 'udn.com'
     parse_tw_udn(url)
