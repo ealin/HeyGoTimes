@@ -101,10 +101,17 @@ udn_focus_rss_tag = [
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
     "Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
-    "Travel/Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
-    "Health/Life&area=Taiwan/",
+
+    #"Health/Life&area=Taiwan/",
+    #"Travel/Life&area=Taiwan/",
+    #"Health/Life&area=Taiwan/",
+    #"Health/Life&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+    "Life/Special&area=Taiwan/",
+
+
     "Local&area=Taiwan/North_TW/",
     "Local&area=Taiwan/Middle_TW/",
     "Local&area=Taiwan/South_TW/",
@@ -113,16 +120,16 @@ udn_focus_rss_tag = [
     "Local&area=Taiwan/East_TW/",
     "Local&area=Taiwan/",
     "Local&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus/Politics&area=Taiwan/",
-    "Focus/World&area=Taiwan/TW_CN",
-    "Focus/Business&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus&area=Taiwan/",
-    "Focus/Motion&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Politics&area=Taiwan/",
+    "World&area=Taiwan/TW_CN",
+    "Business&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Special&area=Taiwan/",
+    "Motion&area=Taiwan/",
  ] ;
 
 
@@ -142,7 +149,8 @@ udn_focus_rss_tag = [
 
         begin
              open(feed_url) do |feed|
-               RSS::Parser.parse(feed.read , false).items.each do |item|
+               RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
+
                  m.synchronize{
 
                    link = URI.encode(item.link)

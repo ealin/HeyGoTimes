@@ -34,7 +34,7 @@ def get_news_from_tw_apple (m,sleep_period)
 
       apple_rss_tag = [
           "Local&area=Taiwan/TW_CN",
-          "Focus&area=Taiwan",
+          "Special&area=Taiwan",
           "Politics&area=Taiwan",
           "Life&area=Taiwan",
           "Local&area=Taiwan",
@@ -58,8 +58,11 @@ def get_news_from_tw_apple (m,sleep_period)
           "Sport&area=Taiwan",
           "Life&area=Taiwan",
           "Sci_Tech&area=Taiwan",
-          "Health&area=Taiwan",
-          "Travel&area=Taiwan"
+
+          #"Health&area=Taiwan",
+          #"Travel&area=Taiwan"
+          "Life/Special&area=Taiwan",
+          "Life/Special&area=Taiwan"
             ] ;
 
 
@@ -83,7 +86,7 @@ def get_news_from_tw_apple (m,sleep_period)
 
             begin
                 open(feed_url) do |feed|
-                  RSS::Parser.parse(feed.read , false).items.each do |item|
+                  RSS::Parser.parse(feed.read , false).items.reverse.each do |item|
                     m.synchronize{
 
                       link = URI.encode(item.link)
