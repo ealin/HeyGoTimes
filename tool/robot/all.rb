@@ -43,21 +43,11 @@ Thread.start{
 
 
   ############  TW-Yahoo-beta   ############
-#require './tw_yahoo_beta.rb'
-
-#Thread.start{
-#  get_news_from_tw_yahoo_beta(m,@sleep_period)
-#}
-
-
-
-    ############  NOW-NEWS-Focus   ############
-require './tw_nownews.rb'
+require './tw_yahoo_beta.rb'
 
 Thread.start{
- get_news_from_tw_nownews(m,@sleep_period)
+  get_news_from_tw_yahoo_beta(m,@sleep_period)
 }
-
 
 
 
@@ -70,9 +60,39 @@ Thread.start{
 }
 
 
+
+    ############  NOW-NEWS   ############
+require './tw_nownews.rb'
+
+Thread.start{
+ get_news_from_tw_nownews(m,@sleep_period)
+}
+
+
+
+
+
+############  TW-Google-Focus  (Others feed) ############
+require './tw_others.rb'
+
+Thread.start{
+    get_tw_other_news(m,@sleep_period)
+}
+
+
+      ############  TW-UDN   ############
+require './tw_udn.rb'
+
+Thread.start{
+ get_news_from_tw_udn(m,@sleep_period)
+}
+
+
+
+
 #!!!!!!!!!!!!!!!!!!!!! US NEWS START HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
+=begin
 
     ############  US-Google   ############
 require './us_google.rb'
@@ -90,17 +110,7 @@ require './us_yahoo.rb'
 Thread.start{
  get_news_from_us_yahoo(m,@sleep_period)
 }
-
-
-
-      ############  US-Yahoo   ############
-require './tw_udn.rb'
-
-Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
-}
-
-
+=end
 
       ############  automatic news rank reduction   ############
 require './rank_reduction.rb'
@@ -110,12 +120,14 @@ Thread.start{
 }
 
 
-############  TW-Google-Focus   ############
-require './tw_google_focus.rb'
+
+
+
+
+      ############  TW-FREE   ############
+require './tw_free.rb'
 
 #Thread.start{
-    get_news_from_tw_google_focus(m,@sleep_period)
+ get_news_from_tw_free(m,@sleep_period)
 #}
-
-
 
