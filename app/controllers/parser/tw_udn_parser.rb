@@ -24,6 +24,6 @@ def parse_tw_udn(url)
     node_set = doc.search('p')
     @parser_data[:text] = node_set[0].content
   rescue
-
+    # a little complicate
   end
 end
