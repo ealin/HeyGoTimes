@@ -52,9 +52,9 @@ udn_focus_rss_tag = [
         feed_url = udn_rss_url[i]
 
         if i == 0
-          command = @host+ 'api/new_news?publish=yes&no_photo=yes&focus_flag=yes&tags='
+          command = @host+ 'api/new_news?publish=yes&no_photo=no&focus_flag=yes&tags='
         else
-          command = @host+ 'api/new_news?publish=yes&no_photo=yes&focus_flag=no&tags='
+          command = @host+ 'api/new_news?publish=yes&no_photo=no&focus_flag=no&tags='
         end
 
         command = command + udn_focus_rss_tag[i] + "&url="
