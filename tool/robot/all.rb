@@ -72,7 +72,6 @@ Thread.start{
 
 
 
-############  TW-Google-Focus  (Others feed) ############
 #require './tw_others.rb'
 #
 #Thread.start{

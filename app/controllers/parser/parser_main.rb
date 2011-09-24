@@ -6,6 +6,7 @@ def news_parser(url)
   require 'parser/tw_apple_parser.rb'
   require 'parser/tw_udn_parser.rb'
   require 'parser/tw_free_parser.rb'
+
   require 'parser/fb_debugger_parser.rb'
 
   @parser_data = Hash.new
@@ -21,6 +22,5 @@ def news_parser(url)
   else
     parse_fb_debugger(url)
   end
-
 
 end

@@ -18,7 +18,8 @@ def parse_tw_udn(url)
   end
 
   doc.search('div.story')
-  node_set = doc.search('P')
+  node_set = doc.search('p')
+
   @parser_data[:text] = node_set[1].content
 
 end
