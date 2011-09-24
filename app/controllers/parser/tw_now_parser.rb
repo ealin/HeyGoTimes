@@ -10,7 +10,7 @@ def parse_tw_now(url)
 
   # get title
   #
-  doc = Nokogiri::HTML(stream, nil, 'utf-8')
+  doc = Nokogiri::HTML(stream, nil, 'big5')
   node_set = doc.search('title')
   @parser_data[:title] = node_set[0].content
 
@@ -20,70 +20,26 @@ def parse_tw_now(url)
     str = data.to_s
     if str.include? 'og:image'
       url = data.get_attribute('content')
-      if url != nil
+      if url != nil && url != 'http://static.nownews.com/newspic/0/s'
         @parser_data[:image] = url
       end
       break
     end
   end
 
-  if @parser_data[:image] == nil
-    doc.search('a').each do |data|
-      str = data.to_s
-      if str.include? 'pic_frame thickbox'
-        url = data.get_attribute('href')
-        if url != nil
-          @parser_data[:image] = url
-        end
-        break
-      end
-    end
-
-  end
-
-  if @parser_data[:image] == nil
-    doc.search('img').each do |data|
-      str = data.to_s
-      if str.include? 'pic_frame'
-        url = data.get_attribute('src')
-        if url != nil
-          @parser_data[:image] = url
-        end
-        break
-      end
-    end
-
-  end
 
   # get content
   #
-  doc.search('p').each do |data|
-    str = data.to_s
-    if str.include? 'summary'
-      content = data.content
 
-      if content.length > 420
-        content = content.slice(0,417)
-        content += '...'
-
-      end
-
-      @parser_data[:text] = content
-
-      break
-    end
-  end
-
-  if(@parser_data[:text] == nil)
     doc.search('meta').each do |data|
        str = data.to_s
        if str.include? "description"
          intro_content = data.get_attribute('content')
          if intro_content != nil
            @parser_data[:text] = intro_content
+           break
          end
        end
      end
-  end
 
 end
