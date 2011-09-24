@@ -6,6 +6,8 @@ def parse_tw_apple(url)
     stream = open(url)
   end
 
+
+
   # get title
   #
   doc = Nokogiri::HTML(stream, nil, 'utf-8')

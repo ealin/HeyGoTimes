@@ -6,38 +6,42 @@ def parse_tw_free(url)
     stream = open(url)
   end
 
+
   # get title
   #
   doc = Nokogiri::HTML(stream, nil, 'big5')
   node_set = doc.search('title')
   @parser_data[:title] = node_set[0].content
 
-  doc.search('a').each do |data|
-    str = data.to_s
-    if str.include? ''
-      url = data.get_attribute('content')
-      if url != nil
-        @parser_data[:image] = url
-      end
-      break
+  # get content
+  #
+  begin
+    node_set = doc.search('.//span[@id="newcontent"]//p')
+    intro_str = node_set[0].content
+    if intro_str != nil
+      @parser_data[:text] = intro_str
     end
+  rescue
+
   end
 
 
+  # get photo
+  #
+  begin
+    node_set = doc.search('.//span[@id="newcontent"]//a')
+    url = node_set[0].get_attribute('href')
 
+    if url != nil
+      index = url.index("pic=http://www.")
+      url2 = url[index+4..url.length]
+      url3 = url2.gsub("/images/bigPic/","/images/")
+      @parser_data[:image] = url3
+    end
+  rescue
 
-
-  node_set = doc.search('span.newcontent')
-  #node_set = doc.search('a')
-  url = node_set[0].get_attribute('href')
-  if url != nil
-    @parser_data[:image] = node_set[0].content
   end
 
-
-
-#  node_set = doc.search('p')
-  node_set = doc.search('p')
-  @parser_data[:text] = node_set[0].content
+return
 
 end
