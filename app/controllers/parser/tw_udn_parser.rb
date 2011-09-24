@@ -12,18 +12,25 @@ def parse_tw_udn(url)
     if meta['property'] == 'og:title'
       @parser_data[:title] = meta['content']
     elsif meta['property'] == 'og:image'
-      @parser_data[:image] = meta['content']
+
+      temp_str = meta['content'].to_s
+      if !( temp_str.include? 'func_udn.gif')
+        @parser_data[:image] = meta['content']
+      end
       break
     end
   end
 
+
   begin
-    #raise exception in case of: http://udn.com/NEWS/DOMESTIC/DOM3/6609505.shtml
 
     doc.search('div.story')
     node_set = doc.search('p')
+
     @parser_data[:text] = node_set[0].content
   rescue
-    # a little complicate
+    #raise exception in case of: http://udn.com/NEWS/DOMESTIC/DOM3/6609505.shtml  (with pic)
+    #raise exception in case of: http://udn.com/NEWS/BREAKINGNEWS/BREAKINGNEWS2/6610232.shtml (1 paragraph only)
+
   end
 end

@@ -143,7 +143,7 @@ udn_focus_rss_tag = [
 
         feed_url = udn_rss_url[i]
 
-        command = @host+ 'api/new_news?publish=yes&no_photo=yes&focus_flag=yes&tags='
+        command = @host+ 'api/new_news?publish=yes&no_photo=no&focus_flag=yes&tags='
         command = command + udn_focus_rss_tag[i] + "&url="
 
 
