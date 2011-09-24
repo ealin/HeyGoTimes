@@ -39,6 +39,19 @@ def parse_tw_apple(url)
 
   end
 
+  if @parser_data[:image] == nil
+    doc.search('img').each do |data|
+      str = data.to_s
+      if str.include? 'pic_frame'
+        url = data.get_attribute('src')
+        if url != nil
+          @parser_data[:image] = url
+        end
+        break
+      end
+    end
+
+  end
 
   # get content
   #

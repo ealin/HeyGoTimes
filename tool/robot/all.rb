@@ -73,11 +73,11 @@ Thread.start{
 
 
 ############  TW-Google-Focus  (Others feed) ############
-require './tw_others.rb'
-
-Thread.start{
-    get_tw_other_news(m,@sleep_period)
-}
+#require './tw_others.rb'
+#
+#Thread.start{
+#    get_tw_other_news(m,@sleep_period)
+#}
 
 
       ############  TW-UDN   ############
