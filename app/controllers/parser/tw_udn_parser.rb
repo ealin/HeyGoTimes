@@ -17,9 +17,13 @@ def parse_tw_udn(url)
     end
   end
 
-  doc.search('div.story')
-  node_set = doc.search('p')
+  begin
+    #raise exception in case of: http://udn.com/NEWS/DOMESTIC/DOM3/6609505.shtml
 
-  @parser_data[:text] = node_set[1].content
+    doc.search('div.story')
+    node_set = doc.search('p')
+    @parser_data[:text] = node_set[0].content
+  rescue
 
+  end
 end
