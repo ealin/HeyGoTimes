@@ -23,6 +23,9 @@ HeyGoTimes::Application.routes.draw do
   get "mobile/index"
   get "mobile/index_prepare_data"
 
+  get "ext/b2/index"
+
+
   #get "real_time_news/report"
   #get "real_time_news/to_main_page"
   #resources :real_time_news

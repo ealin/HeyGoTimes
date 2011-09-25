@@ -1,0 +1,71 @@
+<head>
+  <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">stLight.options({publisher:'24387ba6-8c08-4755-b993-eecc254891d5', st_url: 'www.heygotimes.com', embeds:true});stLight.subscribe("click",share_group);</script>
+</head>
+
+<body>
+
+    <div id="news_header">
+      <div id="logo">
+        <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'/paper'}, {:title => 'to home page'} ) %>
+      </div>
+
+      <span id="filter_hint">
+        <%= t(:to_heygotimes_main_page) %>
+        <%= link_to(t(:HeyGoTimes), {:controller =>'/paper'}, {:title => 'to home page'}) %>
+      </span>
+
+
+      <div id="sthoverbuttons">
+        <div class="sthoverbuttons-chicklets">
+          <span class="st_facebook_large"> </span>
+          <span class="st_twitter_large"> </span>
+          <span class="st_tumblr_large">  </span>
+          <span class="st_sina_large">  </span>
+          <span class="st_linkedin_large">  </span>
+          <span class="st_gbuzz_large">  </span>
+
+        </div>
+      </div>
+
+    </div><!-- #header -->
+
+
+    <div style="width:90%;margin-top: 5px;margin-left: 93px;">
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({appId: <%= Facebooker2.app_id %>, status: true, cookie: true, xfbml: true});
+          FB.Event.subscribe('comment.create',function(resp){comment(resp);});
+        };
+        (function() {
+          var e = document.createElement('script'); e.async = true;
+          // Todo: we need to check the locale!!!!!!!!!!!!
+          //
+          e.src = document.location.protocol + '//connect.facebook.net/zh_TW/all.js';
+          document.getElementById('fb-root').appendChild(e);
+        }());
+      </script>
+
+      <span id="fans_like_btn" style="background-color:#0077BB;position:absolute;right:8%;height:27px;padding-top: 5px;">
+        <a style="font-size: 1.4em;color: white;" href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" ><%= t(:fb_fans) %></a>
+        <fb:like href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" send="false" layout="button_count" width="50" show_faces="false" font="">
+        </fb:like>
+      </span>
+    </div>
+
+
+
+
+    <div style = "width:80%;padding-left:20px;">
+      <br><br>
+      <%= render :file => '/ext/b2/CH00_03.htm', :content_type => 'text/html' %>
+    </div>
+
+
+    <br><br>
+    <div align="center">
+           <%= render :partial => 'paper/show_ad_list2' %>
+    </div>
+
+</body>
