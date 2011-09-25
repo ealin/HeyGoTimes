@@ -13,7 +13,6 @@ require 'thread'
 
 m = Mutex.new
 
-
       ############  TW-Yahoo   ############
 require './tw_yahoo.rb'
 
@@ -42,12 +41,6 @@ Thread.start{
 
 
 
-  ############  TW-Yahoo-beta   ############
-require './tw_yahoo_beta.rb'
-
-Thread.start{
-  get_news_from_tw_yahoo_beta(m,@sleep_period)
-}
 
 
 
@@ -69,6 +62,13 @@ Thread.start{
 }
 
 
+
+      ############  TW-FREE   ############
+require './tw_free.rb'
+
+Thread.start{
+ get_news_from_tw_free(m,@sleep_period)
+}
 
 
 
@@ -123,10 +123,9 @@ Thread.start{
 
 
 
-      ############  TW-FREE   ############
-require './tw_free.rb'
+  ############  TW-Yahoo-beta   ############
+require './tw_yahoo_beta.rb'
 
 #Thread.start{
- get_news_from_tw_free(m,@sleep_period)
+  get_news_from_tw_yahoo_beta(m,@sleep_period)
 #}
-

@@ -22,7 +22,7 @@ udn_rss_url = [
 
 
 udn_focus_rss_tag = [
-    "Focus/Special&area=Taiwan/",
+    "Special&area=Taiwan/",
     "Politics&area=Taiwan/",
     "Life&area=Taiwan/",
     "World&area=Taiwan/",

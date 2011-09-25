@@ -12,7 +12,7 @@ def news_parser(url)
 
   @parser_data = Hash.new
 
-  if url.include? 'tw.news.yahoo'
+  if (url.include? 'tw.news.yahoo') && !(url.include? 'beta')
     parse_tw_yahoo(url)
   elsif url.include? 'udn.com'
     parse_tw_udn(url)
