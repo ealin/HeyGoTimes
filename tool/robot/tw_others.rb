@@ -6,11 +6,10 @@ google_focus_rss_url = [
 
   "http://tech.qq.com/web/front/rss.xml",
 
-  "http://tw.money.yahoo.com/rss/edbf/d_e_MN2/",
-  #"http://tw.money.yahoo.com/rss/edbf/d_e_MN4/",
-  "http://tw.money.yahoo.com/rss/edbf/d_e_MN5/",
-  "http://tw.money.yahoo.com/rss/edbf/d_e_MR4/",
-  "http://tw.money.yahoo.com/rss/edbf/d_e_MN1"
+#  "http://tw.money.yahoo.com/rss/edbf/d_e_MN2/",
+#   "http://tw.money.yahoo.com/rss/edbf/d_e_MN5/",
+#  "http://tw.money.yahoo.com/rss/edbf/d_e_MR4/",
+#  "http://tw.money.yahoo.com/rss/edbf/d_e_MN1"
 
 
 ] ;
@@ -21,11 +20,10 @@ google_focus_rss_tag = [
 
     "Internet",
 
-    "Business",
-    #"Business",
-    "Business/World",
-    "Business/World",
-    "Business"
+#    "Business",
+#    "Business/World",
+#    "Business/World",
+#    "Business"
 
 
  ] ;
