@@ -1,4 +1,14 @@
 <head>
+  <title>大黑狗之現代嵌入式系統開發專案實務 - <%= @title %> </title>
+
+
+  <meta property="og:title" content="<%= @title %>">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.heygotimes.com/ext/b2/index?ch=<%= @chapter %>">
+  <meta property=”og:description” content=”<%= @title %>” >
+
+
+
   <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
   <script type="text/javascript">stLight.options({publisher:'24387ba6-8c08-4755-b993-eecc254891d5', st_url: 'www.heygotimes.com', embeds:true});stLight.subscribe("click",share_group);</script>
 </head>
@@ -10,22 +20,22 @@
         <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'/paper'}, {:title => 'to home page'} ) %>
       </div>
 
-      <span id="filter_hint">
-        <%= t(:to_heygotimes_main_page) %>
-        <%= link_to(t(:HeyGoTimes), {:controller =>'/paper'}, {:title => 'to home page'}) %>
+      <span id="filter_hint" align="right" style="color:white;font-size:20px">
+        &nbsp;&nbsp;&nbsp;大黑狗之現代嵌入式系統開發專案實務 - 無料WEB版
+
       </span>
 
 
-      <div id="sthoverbuttons">
-        <div class="sthoverbuttons-chicklets">
-          <span class="st_facebook_large"> </span>
-          <span class="st_twitter_large"> </span>
-          <span class="st_tumblr_large">  </span>
-          <span class="st_sina_large">  </span>
-          <span class="st_linkedin_large">  </span>
-          <span class="st_gbuzz_large">  </span>
+          <div id="sthoverbuttons">
+            <div class="sthoverbuttons-chicklets">
+              <span class="st_facebook_large"> </span>
+              <span class="st_twitter_large"> </span>
+              <span class="st_tumblr_large">  </span>
+              <span class="st_sina_large">  </span>
+              <span class="st_linkedin_large">  </span>
+              <span class="st_gbuzz_large">  </span>
 
-        </div>
+           </div>
       </div>
 
     </div><!-- #header -->
@@ -47,8 +57,19 @@
         }());
       </script>
 
+      <span id="to_comment_area">
+         <input
+           type="button"
+           name="groovybtn1"
+           class="groovybutton_W"
+           value=" 前往：大黑狗之嵌入式系統開發實務 - 章節列表"
+           style="float: left;"
+           onclick="window.location.replace('index?ch=list') ;">
+       </span>
+
+
       <span id="fans_like_btn" style="background-color:#0077BB;position:absolute;right:8%;height:27px;padding-top: 5px;">
-        <a style="font-size: 1.4em;color: white;" href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" ><%= t(:fb_fans) %></a>
+        <a style="font-size: 1.4em;color: white;" href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" >支持大黑狗，請按下"讚"加入黑狗日報粉絲團</a>
         <fb:like href="https://www.facebook.com/pages/HeyGo-Times-%E5%8F%B0%E7%81%A3/131802886903681" send="false" layout="button_count" width="50" show_faces="false" font="">
         </fb:like>
       </span>
@@ -56,10 +77,19 @@
 
 
 
+    <div align="center">
+      <br><br><br>
+           <%= render :partial => 'paper/show_ad_list2' %>
+    </div>
+
 
     <div style = "width:80%;padding-left:20px;">
       <br><br>
-      <%= render :file => '/ext/b2/CH00_03.htm', :content_type => 'text/html' %>
+      <% if @chapter == 'main' %>
+        <img src="/b2/b2_frontpage.jpg" style='padding-left:20%' />
+      <% else %>
+        <%= render :file => '/ext/b2/'+@chapter+'.htm', :content_type => 'text/html' %>
+      <% end %>
     </div>
 
 
