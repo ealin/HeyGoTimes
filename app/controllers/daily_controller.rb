@@ -17,7 +17,15 @@ class DailyController < PaperController
       begin
         news = News.find(Integer(params[:id]))
         news.daily_news=true
+        news.river_event = true
         news.save
+
+        river = River.find(1)
+        event = RiverEvent.new
+        event.news = news
+        event.event_dt = news.created_at
+        event.river = river
+        event.save
 
         @ret_msg2 = "Daily News selected - Date = " + news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d")
       rescue Exception => e
