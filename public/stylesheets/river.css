@@ -1,5 +1,11 @@
+img {
+  max-height:120px;
+  width:auto;
+  height:expression(this.height > 120 ? "120px" : this.height);
+}
+
 #time_river {
-  width: 500px;
+  width: 900px;
   height: 1000px;
   margin: 50px auto;
   padding: 20px;

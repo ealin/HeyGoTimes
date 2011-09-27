@@ -1,6 +1,9 @@
 class RiverController < ApplicationController
 
   def index
+    @river_count = 2
+    @river = River.find(1)
+    #@news = News.get_all_news_today
   end
 
   # load next followed river
@@ -25,6 +28,19 @@ class RiverController < ApplicationController
 
   # get my news for event news substitution
   def user_news_by_date
+  end
+
+  # prepare river data
+  def prepare_river_data
+    river = River.find(1)
+    daily_news = News.get_all_news_today
+    daily_news.each do |news|
+      event = RiverEvent.new
+      event.news = news
+      event.event_dt = news.created_at
+      event.river = river
+      event.save
+    end
   end
 
 end # end of RiverController

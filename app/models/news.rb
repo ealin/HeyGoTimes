@@ -22,6 +22,8 @@ class News < ActiveRecord::Base
 
   has_many :user_news_ranks, :dependent => :destroy
 
+  has_many :river_event, :dependent => :destroy
+
   after_create{|news| save_news_url(news)} # save news url after create
 
   def save_news_url(news)
