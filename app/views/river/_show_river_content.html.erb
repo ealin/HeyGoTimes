@@ -1,0 +1,54 @@
+
+<% if river != nil %>
+  <% events = river.river_events %>
+  <ul class="tr-events">
+  <li class="welcome">
+    <h2><%= river.name %></h2>
+    <p>Travel through time by dragging the timeline or the slider below. Click on any event to see more information.</p>
+  </li>
+
+
+  <% events.each do |event| %>
+    <li class="first last">
+    <h3>
+      <% if session[:default_locale] == "en" %>
+          <%= event.news.created_at.in_time_zone("Central Time (US & Canada)").strftime("%Y/%m/%d") %>
+      <% else %>
+          <%= event.news.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d") %>
+      <% end %>
+    </h3>
+    <ul >
+
+    <div class="event" id="event_<%= event.news.id %>" style="width:300px;height:250px;border-color: #bdc7d8;border-style:dashed;">
+      <div class="news_title">
+        <% if (event.news.special_flag==false) %>
+          <% url=news_index_path+'/'+event.news.fb_obj_url %>
+        <% else %>
+          <% url=news_index_path+'/'+event.news.id.to_s %>
+        <% end %>
+
+        <br>
+
+        <a title="<%= event.news.title %>" href="<%= url %>" onclick="window.open('<%= url %>'); return false;"><%= event.news.title %></a>
+      </div>
+
+      <div class="image" style="float: left; margin: 5px;">
+         <% if event.news.images != [] && event.news.images[0].url != "" %>
+            <img src="<%=event.news.images[0].url.to_s%>" alt="image" width="150" onerror="javascript:this.src='http://www.heygotimes.com/images/newspaper_bw.jpg'">
+         <% end %>
+      </div>
+
+      <div class="news_content">
+        <%= event.news.content.html_safe %>
+      </div>
+
+    </div> <!-- event -->
+    </ul>
+    </li>
+
+  <% end %>
+
+  </ul> <!-- tr-events -->
+<% end %>
+
+

@@ -1,0 +1,76 @@
+<title><%= t(:HeyGoTimes)%> - <%= t(:Home)%></title>
+<link type='text/css' href='/stylesheets/river.css' rel='stylesheet' media='screen' />
+<script type='text/javascript' src='/javascripts/river/mousewheel.js'></script>
+<script type='text/javascript' src='/javascripts/river/hScrollBtns-1.1.js'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+  jQuery(document).ready( function($){
+    $('#time_river').height(<%= @river_count * 300 %>)
+    $('#time_river').hScrollBtns({step:4, speed:6, safeHeight:300});
+    $('#time_river').mousedown(function (event) {
+            $(this)
+                .data('down', true)
+                .data('x', event.clientX)
+                .data('scrollLeft', this.scrollLeft);
+
+            return false;
+        }).mouseup(function (event) {
+            $(this).data('down', false);
+        }).mousemove(function (event) {
+            if ($(this).data('down') == true) {
+                this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+            }
+        }).mousewheel(function (event, delta) {
+            this.scrollLeft -= (delta * 30);
+              return false;
+        }).css({
+            'overflow' : 'hidden',
+            'cursor' : '-moz-grab'
+        });
+  });
+
+  $(window).mouseout(function (event) {
+      if ($('#timeline').data('down')) {
+          try {
+              if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+                  $('#timeline').data('down', false);
+              }
+          } catch (e) {}
+      }
+  });
+  //]]>
+</script>
+</head>
+<body>
+
+
+<div id="news_page">
+
+  <div id="news_header">
+    <div id="logo">
+      <%= link_to( image_tag("/images/HeyGoTimes_logo.png"), {:controller =>'paper'}, {:title => 'to home page'} ) %>
+    </div>
+
+    <span id="filter_hint">
+      <%= t(:to_heygotimes_main_page) %>
+      <%= link_to(t(:HeyGoTimes), {:controller =>'paper'}, {:title => 'to home page'}) %>
+    </span>
+  </div><!-- #header -->
+
+  <div id="time_river">
+    <div class="river">
+    <%= render :partial => 'river/show_river_content', :locals => {:river => @river} %>
+    </div>
+    <hr>
+    <div class="river">
+    <%= render :partial => 'river/show_river_content', :locals => {:river => @river} %>
+    </div>
+  </div>  <!-- #time_river -->
+
+  <div id="news_footer">
+    <%= show_page_tail %>
+  </div>
+
+</div>
+
+</body>
