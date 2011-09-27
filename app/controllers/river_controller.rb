@@ -40,6 +40,8 @@ class RiverController < ApplicationController
       event.event_dt = news.created_at
       event.river = river
       event.save
+      news.river_event = true
+      news.save
     end
   end
 
