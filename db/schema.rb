@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908082511) do
+ActiveRecord::Schema.define(:version => 20110928062259) do
 
   create_table "area_filters", :force => true do |t|
     t.integer  "user_id"
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20110908082511) do
     t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "img"
   end
 
   create_table "system_datas", :force => true do |t|

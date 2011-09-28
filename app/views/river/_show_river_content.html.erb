@@ -1,10 +1,10 @@
 
 <% if river != nil %>
-  <% events = river.river_events %>
+  <% events = river.river_events.order('id') %>
   <ul class="tr-events">
   <li class="welcome">
     <h2><%= river.name %></h2>
-    <p>Travel through time by dragging the timeline or the slider below. Click on any event to see more information.</p>
+    <p><%= river.description %></p>
   </li>
 
 
