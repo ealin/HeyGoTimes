@@ -1,0 +1,1379 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="/b2/CH07_07.files/filelist.xml">
+<link rel=Edit-Time-Data href="/b2/CH07_07.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>7.7. 驅動程式除錯</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>cebm</o:Author>
+  <o:LastAuthor>Win7User</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>14242</o:TotalTime>
+  <o:LastPrinted>2007-04-13T10:03:00Z</o:LastPrinted>
+  <o:Created>2011-09-28T15:27:00Z</o:Created>
+  <o:LastSaved>2011-09-28T15:27:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>766</o:Words>
+  <o:Characters>4367</o:Characters>
+  <o:Company>xxx</o:Company>
+  <o:Lines>36</o:Lines>
+  <o:Paragraphs>10</o:Paragraphs>
+  <o:CharactersWithSpaces>5123</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>544x376</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="/b2/CH07_07.files/themedata.thmx">
+<link rel=colorSchemeMapping href="/b2/CH07_07.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HideSpellingErrors/>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-TW</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="99" Name="Hyperlink"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-alt:PMingLiU;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@微軟正黑體";
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:9.0pt;
+	margin-right:0cm;
+	margin-bottom:9.0pt;
+	margin-left:0cm;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:26.0pt;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:24.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-indent:-10.0pt;
+	mso-char-indent-count:-2.0;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	vertical-align:super;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p.a, li.a, div.a
+	{mso-style-name:圖表;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:27.0pt;
+	mso-char-indent-count:2.25;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.Name, li.Name, div.Name
+	{mso-style-name:Name;
+	mso-style-update:auto;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:51.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-24.0pt;
+	mso-line-height-alt:0pt;
+	mso-pagination:none;
+	mso-outline-level:3;
+	mso-list:l4 level1 lfo20;
+	tab-stops:list 51.0pt;
+	font-size:12.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:新細明體;
+	text-shadow:auto;
+	mso-fareast-language:ZH-CN;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:新細明體;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("/b2/CH07_07.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("/b2/CH07_07.files/header.htm") fcs;
+	mso-endnote-separator:url("/b2/CH07_07.files/header.htm") es;
+	mso-endnote-continuation-separator:url("/b2/CH07_07.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 42.55pt 42.55pt 42.55pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:235210468;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-90003636 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:251547240;
+	mso-list-template-ids:67698719;}
+@list l1:level1
+	{mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l1:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l1:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l1:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l1:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l1:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l1:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l1:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l1:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l2
+	{mso-list-id:548734902;
+	mso-list-type:hybrid;
+	mso-list-template-ids:495385402 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:601499885;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1876530220 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:643316197;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1826779488 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:837383294;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-462257420 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l5:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l6
+	{mso-list-id:1008366758;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1489231242 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:1269704467;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2022839602 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l7:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l8
+	{mso-list-id:1281456551;
+	mso-list-template-ids:1081655274;}
+@list l8:level1
+	{mso-level-start-at:7;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l8:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l8:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l8:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l8:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l8:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l8:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l8:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l8:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l9
+	{mso-list-id:1283879435;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1184491218 -1 169142506 -1 -1 -1 -1 -1 -1 -1;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l9:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:75.0pt;
+	mso-level-number-position:left;
+	margin-left:75.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l10
+	{mso-list-id:1287153250;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-657672434 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l11
+	{mso-list-id:1365671462;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1547904832 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l11:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:75.0pt;
+	mso-level-number-position:left;
+	margin-left:75.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:1368523856;
+	mso-list-template-ids:-716804922;}
+@list l12:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l12:level2
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%2、;
+	mso-level-tab-stop:75.0pt;
+	mso-level-number-position:left;
+	margin-left:75.0pt;
+	text-indent:-24.0pt;}
+@list l12:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:99.0pt;
+	mso-level-number-position:right;
+	margin-left:99.0pt;
+	text-indent:-24.0pt;}
+@list l12:level4
+	{mso-level-tab-stop:123.0pt;
+	mso-level-number-position:left;
+	margin-left:123.0pt;
+	text-indent:-24.0pt;}
+@list l12:level5
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%5、;
+	mso-level-tab-stop:147.0pt;
+	mso-level-number-position:left;
+	margin-left:147.0pt;
+	text-indent:-24.0pt;}
+@list l12:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:171.0pt;
+	mso-level-number-position:right;
+	margin-left:171.0pt;
+	text-indent:-24.0pt;}
+@list l12:level7
+	{mso-level-tab-stop:195.0pt;
+	mso-level-number-position:left;
+	margin-left:195.0pt;
+	text-indent:-24.0pt;}
+@list l12:level8
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%8、;
+	mso-level-tab-stop:219.0pt;
+	mso-level-number-position:left;
+	margin-left:219.0pt;
+	text-indent:-24.0pt;}
+@list l12:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:243.0pt;
+	mso-level-number-position:right;
+	margin-left:243.0pt;
+	text-indent:-24.0pt;}
+@list l13
+	{mso-list-id:1373768410;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-149665248 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l14
+	{mso-list-id:1456564875;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-252261734 1060678366 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l14:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:68.25pt;
+	mso-level-number-position:left;
+	margin-left:68.25pt;
+	text-indent:-41.25pt;}
+@list l15
+	{mso-list-id:1613855234;
+	mso-list-template-ids:781474402;}
+@list l15:level1
+	{mso-level-start-at:7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.5pt;
+	text-indent:-40.5pt;}
+@list l15:level2
+	{mso-level-start-at:7;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:54.0pt;
+	text-indent:-54.0pt;}
+@list l15:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-72.0pt;}
+@list l15:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:90.0pt;
+	text-indent:-90.0pt;}
+@list l15:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:108.0pt;
+	text-indent:-108.0pt;}
+@list l15:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:144.0pt;
+	text-indent:-144.0pt;}
+@list l15:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:162.0pt;
+	text-indent:-162.0pt;}
+@list l15:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:180.0pt;
+	text-indent:-180.0pt;}
+@list l15:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:198.0pt;
+	text-indent:-198.0pt;}
+@list l16
+	{mso-list-id:1659117565;
+	mso-list-type:hybrid;
+	mso-list-template-ids:760500210;}
+@list l16:level1
+	{mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;}
+@list l17
+	{mso-list-id:1719159766;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1166296824 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l18
+	{mso-list-id:1903952677;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-908149608 864731454 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l19
+	{mso-list-id:2008088917;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1711622266 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l20
+	{mso-list-id:2083792817;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-123683830;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+table.MsoTableGrid
+	{mso-style-name:网格型;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-TW link=blue vlink=purple style='tab-interval:24.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc149018060"><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></a></p>
+
+<p class=MsoToc2 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:60.0pt right dotted 509.7pt'><span style='mso-bookmark:_Toc149018060'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018060'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'></span><a href="#_Toc304922330"><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>7.7.</span></span><span style='mso-bookmark:_Toc149018060'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";color:windowtext;mso-no-proof:yes;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1'>      </span></span></span><span
+style='mso-bookmark:_Toc149018060'><span style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>驅動程式除錯</span></span><span style='mso-bookmark:_Toc149018060'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018060'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304922330 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320032003300330030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018060'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'></span></a><span style='mso-bookmark:_Toc149018060'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc2 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:60.0pt right dotted 509.7pt'><span style='mso-bookmark:_Toc149018060'></span><a
+href="#_Toc304922331"><span style='mso-bookmark:_Toc149018060'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>7.8.</span></span><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='mso-bidi-font-size:
+11.0pt;font-family:"Calibri","sans-serif";mso-bidi-font-family:"Times New Roman";
+color:windowtext;mso-no-proof:yes;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1'>      </span></span></span><span style='mso-bookmark:
+_Toc149018060'><span style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>結論</span></span><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018060'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304922331 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320032003300330031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018060'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'></span></a><span style='mso-bookmark:_Toc149018060'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018060'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018060'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018060'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<span style='mso-bookmark:_Toc149018060'></span>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:54.0pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l15 level2 lfo21'><a name="_Toc304922330"><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>7.7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>驅動程式除錯</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『最後說到驅動程式的<span
+lang=EN-US>debug</span>，一般程式的<span lang=EN-US>debug</span>手法，像設中斷點、單步執行、觀察變數及記憶體內容，檢查程式的執行流程<span
+lang=EN-US>…</span>等，應該不用我再來教你了吧？雖然程式是執行於機器上，我們還是可以透過<span lang=EN-US>ICE</span>連接來除錯，也許開發環境不像<span
+lang=EN-US>Visual Studio</span>那麼功能齊全，但基本的除錯功能應該都能使用；但驅動程式有時候必須遵守嚴格的<span
+lang=EN-US>timing</span>規定，此時設定中斷點或一行一行地<span lang=EN-US>trace</span>程式都幫不上忙。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>還是用我們之前提過的例子來解釋<span
+lang=EN-US>(</span>請參考<span lang=EN-US>7-3</span>節<span lang=EN-US> - NOP</span>與實作精確的時間區段<span
+lang=EN-US>)</span>，程式的邏輯相當簡單，先將<span lang=EN-US>CS PIN</span>設為<span
+lang=EN-US>Low</span>，然後等待<span lang=EN-US>T1</span>的時間，從<span lang=EN-US>P#1
+PIN</span>取得值之後，再把<span lang=EN-US>CS PIN</span>設回<span lang=EN-US>High</span>。如果這麼簡單的程式在機器上卻無法正確運作，你會用什麼方法來<span
+lang=EN-US>debug</span>？<span style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:355.5pt;
+ height:237.75pt'>
+ <v:imagedata src="/b2/CH07_07.files/image001.jpg" o:title="07-17-時序圖範例"/>
+</v:shape><![endif]--><![if !vml]><img width=474 height=317
+src="/b2/CH07_07.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;text-indent:0cm;mso-char-indent-count:
+0;line-height:18.0pt;mso-line-height-rule:exactly'><a name="_Toc165115567"><span
+style='font-family:"微軟正黑體","sans-serif"'>圖<span lang=EN-US>7-18</span>：時序圖範例</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『如果程式邏輯無誤的話，我想應該就是<span
+lang=EN-US>timing</span>的問題吧；我現在似乎可以理解你剛剛說的道理，設定中斷點讓程式停下來後整個<span lang=EN-US>timing</span>都不對了，這個狀況確實無法用<span
+lang=EN-US>trace code</span>的方式來檢查。面對這個問題，我想我應該會先把計時的<span lang=EN-US>function</span>再仔細檢查一下。<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『如果程式是你自己寫的，有時候就算有錯也看不出來，因為可能你認為對的作法其實是錯的；所以請其他同仁幫忙，或者請主管召開<span
+lang=EN-US>code review</span>會議都是比較好的作法。如果一堆人還是看不出來怎麼辦？別忘記了，韌體工程師面對的可能是不穩定的硬體，搞不好你的程式沒問題，是硬體接線錯誤，程式控制了半天，結果命令沒傳到<span
+lang=EN-US>IC</span>去，當然的不到正確的回應。<span style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『所以你的意思是說等程式都查不出來的時候，就要請硬體同仁幫忙檢查一下硬體迴路設計嗎？<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『不對，我認為韌體工程師應該更積極地主動出擊，在這個例子中，你要怎麼證明你的驅動程式運作是正確的？還記得這個驅動程式的依據是什麼嗎？應該是<span
+lang=EN-US>IC data sheet</span>內的時序圖和我們的硬體線路圖吧，要證明驅動程式正常運作最直覺的方法就是能在正確的<span
+lang=EN-US>PIN</span>腳上量到和時序圖一樣的訊號。在這個例子上，量訊號可以得到很多有用訊息，假設程式執行過後，<span
+lang=EN-US>IC</span>端卻沒有量到訊號，那表示要不是程式控制錯腳位，就是硬體的接線有問題；此外用示波器可以量測到很精準的時間，在這個例子中，使用示波器可以清楚地量測到程式是否正確地依循<span
+lang=EN-US>IC</span>對時間的規定，這比一行一行<span lang=EN-US>trace</span>程式，或找一堆軟體工程師來看程式快且有效的多了。所以對韌體工程師而言，示波器是不可或缺的工具，基礎的示波器的操作更是和寫程式一樣重要的職業技能。<span
+style='display:none;mso-hide:all'>是的波器工具　內到的作序圖嗎<span lang=EN-US>a8</span>的依據ˊˊ用台　</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'><!--[if gte vml 1]><v:shape id="_x0000_i1026" type="#_x0000_t75"
+ style='width:408.75pt;height:306.75pt'>
+ <v:imagedata src="/b2/CH07_07.files/image003.jpg" o:title="07-18-訊號量測"/>
+</v:shape><![endif]--><![if !vml]><img width=545 height=409
+src="/b2/CH07_07.files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;text-indent:0cm;mso-char-indent-count:
+0;line-height:18.0pt;mso-line-height-rule:exactly'><a name="_Toc165115568"><span
+style='font-family:"微軟正黑體","sans-serif"'>圖<span lang=EN-US>7-19</span>：使用示波器量測某<span
+lang=EN-US>PIN</span>腳的訊號</span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『職業技能？會不會有點誇張？我想現今資訊本科的畢業生會使用示波器的比例恐怕不超過<span
+lang=EN-US>10%</span>吧。<span style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『<span lang=EN-US>10%</span>？你可能太樂觀了！雖然驅動程式是每一個電子產品不可或缺的基礎建設，在電子業掛帥的台灣業界，為了加值硬體價值，對優秀的驅動程式開發人才更是需之孔急，但韌體工程師從來就不是資訊本科畢業生工作的的首選。根據我面試這麼多應屆畢業生的經驗，每個應徵者聽到示波器、線路圖<span
+lang=EN-US>…</span>等等無不眼神閃爍，面露驚慌神色，還記得你來應徵時不也是這樣嗎？我早已接受這樣的狀況，其實韌體工程師必須具備的硬體知識與技能也不太複雜，等新進人員進來後再花些時間訓練就是了。你進來那麼久了，你還會覺得示波器很困難學習？線路圖怎麼也看不懂嗎？<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我之前請硬體工程師教了我一些示波器的基本功能，確實也沒這麼難，因為我們開發驅動程式時也不會用到太複雜的功能。我覺得人會對不同領域的事物心生恐懼是很自然的，然而韌體工程師是軟體領域最接近硬體的人，如你所說，韌體工程師除了開發驅動程式之外，還肩負幫忙硬體除錯的責任，所以整個開發團隊中最不該推拖什麼是軟體問題、什麼是硬體問題的人就是韌體工程師，他必須協調軟硬體間的矛盾，讓整個系統能夠有個穩定的平台。<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『沒錯，開發應用程式的同仁可以抱怨系統不穩定，開發系統程式的同仁可以抱怨平台不穩定，但韌體工程師不能只是抱怨硬體怎麼那麼爛，反而要盡力協助硬體同仁找出問題所在。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>話說回來，有關驅動程式的<span
+lang=EN-US>debug</span>，如果操作得當，示波器應該可以幫忙找出大部分的問題，除了時序與訊號的正確性外，例如電源是否正確、是否有雜訊、訊號的頻率等都可以量得出來；好一點的示波器有多個<span
+lang=EN-US>channel</span>，可以同時量測多個<span lang=EN-US>PIN</span>腳的訊號。<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我看我們實驗室裡的示波器好像只有四個<span
+lang=EN-US>channel</span>而已，如果要量測超過四個以上<span lang=EN-US>PIN</span>腳的訊號時該怎麼辦？例如我想量測<span
+lang=EN-US>data bus</span>或<span lang=EN-US>address bus</span>這種同時<span
+lang=EN-US>8</span>條、<span lang=EN-US>16</span>條或<span lang=EN-US>32</span>條線一起動作的訊號，總不可能分開量吧。<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『我們之前就碰過一個例子，系統運作起來就是不穩定，我們懷疑是<span
+lang=EN-US>SRAM</span>不穩定所導致，我們想要觀察某一段時間內<span lang=EN-US>SRAM</span>的<span
+lang=EN-US>data bus</span>以及<span lang=EN-US>address bus</span>的訊號有沒有問題，示波器當然沒法達成這個任務；此時就只好請出最後神兵
+<span lang=EN-US>– </span>“邏輯分析儀”，簡稱<span lang=EN-US>LA</span>，這是一台比示波器貴的多的儀器，自然功能強大的多，它能把一段時間中多個<span
+lang=EN-US>PIN</span>腳的訊號都記錄下來，研發人員可以事後慢慢分析。<span style='display:none;
+mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:354.75pt;height:306.75pt'>
+ <v:imagedata src="/b2/CH07_07.files/image005.jpg" o:title="07-19-邏輯分析儀"/>
+</v:shape><![endif]--><![if !vml]><img width=473 height=409
+src="/b2/CH07_07.files/image006.jpg" v:shapes="_x0000_i1027"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;text-indent:0cm;mso-char-indent-count:
+0;line-height:18.0pt;mso-line-height-rule:exactly'><a name="_Toc165115569"><span
+style='font-family:"微軟正黑體","sans-serif"'>圖<span lang=EN-US>7-20</span>：邏輯分析儀</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1028" type="#_x0000_t75" style='width:509.25pt;height:383.25pt'>
+ <v:imagedata src="/b2/CH07_07.files/image007.jpg" o:title="07-20-邏輯分析儀的量測結果"/>
+</v:shape><![endif]--><![if !vml]><img width=679 height=511
+src="/b2/CH07_07.files/image008.jpg" v:shapes="_x0000_i1028"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;text-indent:0cm;mso-char-indent-count:
+0;line-height:18.0pt;mso-line-height-rule:exactly'><a name="_Toc165115570"><span
+style='font-family:"微軟正黑體","sans-serif"'>圖<span lang=EN-US>7-21</span>：邏輯分析儀的量測結果</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『<span lang=EN-US>LA</span>雖然功能強大，但一般的狀況確實沒有示波器方便，要用到<span
+lang=EN-US>LA</span>除錯的問題都是大問題，所以我們並不常把<span lang=EN-US>LA</span>搬出來用，對韌體工程師更是如此，基本上會用示波器就可以了。<span
+style='display:none;mso-hide:all'>ˊˊ用台　</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>示波器或邏輯分析儀的操作並不在本書的範疇之內，讀者在此只需要有一個觀念，這些儀器的操作並不困難，相當容易學習；只要可以掌握驅動程式控制某<span
+lang=EN-US>IC</span>的流程，應該就可以知道該要量測哪些<span lang=EN-US>PIN</span>腳，應該得到什麼樣的訊號才是正確的。一個好的韌體工程師，絕對不要害怕向硬體工程師請教，並且要提醒自己時時充實硬體知識。此外，研發團隊的高層也應該清楚明白的宣示硬體與韌體工程師必須緊密的合作，在平台開發的這件任務上，不應該有軟硬相爭的現象，把平台弄穩定是硬體工程師與軟體工程師共同的責任。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:54.0pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l15 level2 lfo21'><a name="_Toc304922331"><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>7.8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>結論</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>其實驅動程式的寫作並不困難，重要的是必須對計算機系統的運作原理要有完整而清晰的概念，特別是<span
+lang=EN-US>CPU</span>與週邊設備的溝通方式，像是<span lang=EN-US>bus</span>、<span lang=EN-US>chip
+select</span>、<span lang=EN-US>interrupt</span>、<span lang=EN-US>DMA</span>等。韌體工程師在職業生涯中要碰到的<span
+lang=EN-US>CPU</span>與<span lang=EN-US>IC</span>不知凡幾，這些<span lang=EN-US>IC</span>當然各有特色，控制方式自然也大不相同；但無論這個<span
+lang=EN-US>IC</span>的功能如何複雜，重點是它內部運作方式都不是我們該知道的，只要仔細分析過，一定可以用基本的計算機系統運作原理來說明如何控制這顆<span
+lang=EN-US>IC</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>舉例來說，即便複雜如無線網路控制器，驅動程式還不就是透過控制<span
+lang=EN-US>I/O port</span>、中斷、<span lang=EN-US>DMA…</span>這些基本的操作與它溝通，至於溝通方式則必然清清楚楚的寫在它的<span
+lang=EN-US>data sheet</span>裡，這是規定，不是學問，工程師照著做就是了。無線網路系統真正複雜的是驅動程式以上的通訊協定與應用層，如果非要說驅動程式有什麼比較麻煩的地方，應該就是驅動程式穩定度的要求較高、除錯與測試比較困難等，驅動程式本身並不複雜。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>此外，驅動程式是最靠近硬體的軟體，所以韌體工程師應該是軟體團隊中“最硬”的人；驅動程式與硬體設計的除錯有時可以看作是同一件事，和硬體工程師共同解決問題是韌體工程師最大的樂趣與挑戰之一。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,3345 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="CH05_03.files/filelist.xml">
+<link rel=Edit-Time-Data href="CH05_03.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>5.3. Link Script</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="chmetcnv"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>cebm</o:Author>
+  <o:LastAuthor>Win7User</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>10520</o:TotalTime>
+  <o:LastPrinted>2007-04-20T03:44:00Z</o:LastPrinted>
+  <o:Created>2011-09-28T15:04:00Z</o:Created>
+  <o:LastSaved>2011-09-28T15:04:00Z</o:LastSaved>
+  <o:Pages>13</o:Pages>
+  <o:Words>1829</o:Words>
+  <o:Characters>10426</o:Characters>
+  <o:Company>Home</o:Company>
+  <o:Lines>86</o:Lines>
+  <o:Paragraphs>24</o:Paragraphs>
+  <o:CharactersWithSpaces>12231</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>544x376</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="/b2/CH05_03.files/themedata.thmx">
+<link rel=colorSchemeMapping href="/b2/CH05_03.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-TW</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="99" Name="Hyperlink"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-alt:PMingLiU;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@微軟正黑體";
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:9.0pt;
+	margin-right:0cm;
+	margin-bottom:9.0pt;
+	margin-left:0cm;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:26.0pt;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:24.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	line-height:18.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:none;
+	tab-stops:right dotted 509.7pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-indent:-10.0pt;
+	mso-char-indent-count:-2.0;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	vertical-align:super;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+span.a
+	{mso-style-name:a;
+	mso-style-unhide:no;}
+p.a0, li.a0, div.a0
+	{mso-style-name:圖表;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:27.0pt;
+	mso-char-indent-count:2.25;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:新細明體;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("/b2/CH05_03.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("/b2/CH05_03.files/header.htm") fcs;
+	mso-endnote-separator:url("/b2/CH05_03.files/header.htm") es;
+	mso-endnote-continuation-separator:url("/b2/CH05_03.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 42.55pt 42.55pt 42.55pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-574196942;}
+@list l0:level1
+	{mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:518055090;}
+@list l1:level1
+	{mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:179331648;}
+@list l2:level1
+	{mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:882526590;}
+@list l3:level1
+	{mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:2092598824;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:1503408774;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:-518985800;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:-466040282;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:553965234;}
+@list l8:level1
+	{mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:901810416;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l10
+	{mso-list-id:37509652;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-658843458 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l11
+	{mso-list-id:276984243;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1108026120 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:342586084;
+	mso-list-type:hybrid;
+	mso-list-template-ids:594605056 592073002 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l12:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l13
+	{mso-list-id:502285017;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1701304942 67698703 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l13:level1
+	{mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;}
+@list l14
+	{mso-list-id:508449726;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1345151606 617266676 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l14:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l15
+	{mso-list-id:558706031;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1467007410 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l16
+	{mso-list-id:752555208;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-644815600 -232075426 674552734 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l16:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l16:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:60.0pt;
+	mso-level-number-position:left;
+	margin-left:60.0pt;
+	text-indent:-18.0pt;}
+@list l17
+	{mso-list-id:921639598;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1412445068 592073002 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l17:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l18
+	{mso-list-id:1032651595;
+	mso-list-type:hybrid;
+	mso-list-template-ids:618419668 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.75pt;
+	mso-level-number-position:left;
+	margin-left:48.75pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l19
+	{mso-list-id:1102988609;
+	mso-list-template-ids:-1078181900;}
+@list l19:level1
+	{mso-level-start-at:5;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.5pt;
+	text-indent:-40.5pt;}
+@list l19:level2
+	{mso-level-start-at:3;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:82.35pt;
+	text-indent:-54.0pt;}
+@list l19:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:128.7pt;
+	text-indent:-72.0pt;}
+@list l19:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:175.05pt;
+	text-indent:-90.0pt;}
+@list l19:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:221.4pt;
+	text-indent:-108.0pt;}
+@list l19:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.75pt;
+	text-indent:-144.0pt;}
+@list l19:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:332.1pt;
+	text-indent:-162.0pt;}
+@list l19:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:378.45pt;
+	text-indent:-180.0pt;}
+@list l19:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:424.8pt;
+	text-indent:-198.0pt;}
+@list l20
+	{mso-list-id:1255360030;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1147948792 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l21
+	{mso-list-id:1281456551;
+	mso-list-template-ids:1338901292;}
+@list l21:level1
+	{mso-level-start-at:5;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l21:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l21:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l21:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l21:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l21:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l21:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l21:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l21:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l22
+	{mso-list-id:1437675423;
+	mso-list-type:hybrid;
+	mso-list-template-ids:735991050 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l22:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l23
+	{mso-list-id:1442606941;
+	mso-list-type:hybrid;
+	mso-list-template-ids:686867304 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l24
+	{mso-list-id:1445148733;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1980267266 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l25
+	{mso-list-id:1447386843;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1610715544 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l25:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l26
+	{mso-list-id:1589541026;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1896238638 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l27
+	{mso-list-id:1656758058;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1389479518 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l27:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l28
+	{mso-list-id:1664430407;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1996767876 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l28:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l29
+	{mso-list-id:1872258960;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1071093562 -292751808 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l29:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:68.25pt;
+	mso-level-number-position:left;
+	margin-left:68.25pt;
+	text-indent:-41.25pt;}
+@list l30
+	{mso-list-id:1895240805;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1512972104 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l30:level1
+	{mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;}
+@list l31
+	{mso-list-id:1991321550;
+	mso-list-template-ids:67698719;}
+@list l31:level1
+	{mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l31:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l31:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l31:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l31:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l31:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l31:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l31:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l31:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l32
+	{mso-list-id:2023429590;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-956240242 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l32:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-TW link=blue vlink=purple style='tab-interval:24.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoToc2 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:60.0pt right dotted 509.7pt'><a name="_Toc149018041"></a><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span><a href="#_Toc304920229"><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>5.3.</span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";color:windowtext;mso-no-proof:yes;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1'>      </span></span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>Link Script</span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920229 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003200320039000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920230"><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>程式段與資料段</span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920230 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003200330030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920231"><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>Link
+Script</span></span><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>的內容</span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920231 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>4<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003200330031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920232"><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>定義在<span lang=EN-US>link
+script</span>中的常數</span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920232 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>9<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003200330032000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920233"><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>Map File</span></span><span
+style='mso-bookmark:_Toc149018041'><span style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>或<span lang=EN-US>Symbol Table</span></span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920233 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>10<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003200330033000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018041'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<span style='mso-bookmark:_Toc149018041'></span>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:82.35pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l19 level2 lfo33'><a name="_Toc304920229"></a><a
+name="_Toc149018049"><span style='mso-bookmark:_Toc304920229'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>5.3.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Link Script</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『製作可執行檔的流程中，要先把所有程式檔都編譯成目的檔，接下來就是連結<span
+lang=EN-US>(link)</span>的動作，透過<span lang=EN-US>linker</span>可以將所有的目的檔與函式庫連結為執行檔。無論是否開發嵌入式系統的程式，只要是<span
+lang=EN-US>C</span>或<span lang=EN-US>C++</span>寫的程式，執行檔的製作都必須經過這些步驟。我不了解的是為什麼在我們的開發環境中，執行<span
+lang=EN-US>linker</span>的時候要傳入一個副檔名為<span lang=EN-US>.ld</span>文字檔<a
+style='mso-footnote-id:ftn1' href="#_ftn1" name="_ftnref1" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></span></a>，這個檔案比<span
+lang=EN-US>makefile</span>更像天書，內容包含了程式的名稱與一些數字；不就是把所有會用到的目的檔連結在一起就可以了嗎？為什麼還要寫這麼複雜的描述檔？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『這個文字檔叫做<span
+lang=EN-US>link script</span>，裡面的內容是用來描述專案中的各個程式檔，分別要被定址到哪個位址；<span lang=EN-US>link
+script</span>不像<span lang=EN-US>makefile</span>，不同的編譯工具會有不同的語法，想看懂<span
+lang=EN-US>link script</span>恐怕只能詳讀編譯工具的使用者手冊了<span lang=EN-US>(</span>雖然不同<span
+lang=EN-US>cross-tools</span>間<span lang=EN-US>link script</span>的格式差異極大，但原理大同小異<span
+lang=EN-US>)</span>。實務上我們不會花太多時間研究每套工具的<span lang=EN-US>link script</span>語法，通常都只是先拿<span
+lang=EN-US>sample code</span>來修改，碰到特殊需求時再去翻書就好了。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>現在先不要管<span lang=EN-US>link
+script</span>的語法，你可否先說說看<span lang=EN-US>Windows</span>上的應用程式<span lang=EN-US>(XXX.EXE)</span>是怎麼執行起來的？<span
+style='display:none;mso-hide:all'>和址哪　式</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『細節我是不清楚啦，不過在學校修組合語言時老師好像有講過：<span
+lang=EN-US>X86</span>系列的<span lang=EN-US>CPU</span>有虛擬記憶體的功能，所以每一個<span
+lang=EN-US>Windows</span>的應用程式有自己的位址空間<a style='mso-footnote-id:ftn2'
+href="#_ftn2" name="_ftnref2" title=""><span class=MsoFootnoteReference><span
+lang=EN-US><span style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[2]</span></span><![endif]></span></span></span></a>，程式在作<span
+lang=EN-US>linking</span>時應該都會被定址到某個預設的位址，我們稱這個位址為程式的<span lang=EN-US>entry
+point(</span>進入點<span lang=EN-US>)</span>，一般程式設計師根本不用管這個細節。這些細節都被諸如<span
+lang=EN-US>Visual Studio</span>的整合開發環境包裝起來，程式設計師只要告訴<span lang=EN-US>IDE</span>專案中有哪些程式檔，<span
+lang=EN-US>IDE</span>就可以把執行檔做出來，至於<span lang=EN-US>linking</span>時下了什麼參數知道的人恐怕不多吧。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>當使用者要執行某個<span
+lang=EN-US>.EXE</span>檔時，系統<span lang=EN-US>(</span>此指<span lang=EN-US>Windows)</span>會去檢查該執行檔的檔頭，以判斷此檔案是否為合法的執行檔，並取得其相關資訊；然後系統會建立一個新的位址空間，從硬碟中將該執行檔的程式部份載到記憶體中，然後把<span
+lang=EN-US>CPU</span>的執行權跳到該應用程式的<span lang=EN-US>entry point</span>，這個程式就可以執行起來了。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『這個年頭能把這個流程說的頭頭是道的年輕人已經不多了，連結<span
+lang=EN-US>(linking)</span>與執行的觀念就是如此；我把嵌入式系統和<span lang=EN-US>Windows</span>應用程式的不同處列舉如下，你再思考一下我們該如何來處理嵌入式系統<span
+lang=EN-US>linking</span>時的工作：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>系統和所有應用程式通常在同一個位址空間。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>嵌入式系統通常沒有硬碟裝置。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>程式通常直接在<span
+lang=EN-US>ROM</span>或<span lang=EN-US>Flash</span>中執行，而<span lang=EN-US>ROM</span>是唯讀的。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>d.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>程式中的資料段必須儲存在<span
+lang=EN-US>ROM</span>中，因為<span lang=EN-US>ROM</span>是唯讀的，所以執行時期必須被載入<span
+lang=EN-US>RAM</span>中。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>e.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>有時為了執行效率，某些程式段必須在效能比較好的記憶體中執行，亦即不是將所有程式都連結在一起就好了。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l16 level2 lfo3;tab-stops:list 60.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>f.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>最重要的一點，<span
+lang=EN-US>PC</span>上有<span lang=EN-US>Windows</span>幫程式設計師處理載入的動作，但在嵌入式系統中，從<span
+lang=EN-US>Reset</span>起的每一行程式都必須自己寫，當然還包含讓應用程式可以順利執行的所有動作。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";display:none;mso-hide:
+all'>和址哪　式</span><span style='font-family:"微軟正黑體","sans-serif"'>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我大概有點概念了；最大的不同點是<span
+lang=EN-US>PC</span>程式完全都在<span lang=EN-US>RAM</span>裡面執行，再加上每一個應用程式都有自己的位址空間，而且沒有唯讀的問題，所以所有的程式只要從同一個起始位址連結在一起即可。而嵌入式系統就不同了，程式段可以在唯讀記憶體中執行，但資料段則只能被定址在<span
+lang=EN-US>RAM</span>所在的位址，所以在連結時勢必要告訴<span lang=EN-US>linker</span>：程式段要被定址到哪裡<span
+lang=EN-US>(</span>或說<span lang=EN-US>ROM</span>的起始位址在哪裡<span lang=EN-US>)</span>，資料段要被定址到哪裡<span
+lang=EN-US>(RAM</span>的起始位址在哪裡<span lang=EN-US>)</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>但老實說，即便我已經知道系統中<span
+lang=EN-US>ROM</span>與<span lang=EN-US>RAM</span>的位址，我還是完全不知道該怎麼描述“程式該如何連結”這件事情。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『你已經抓到一個重點，就是在執行時期，程式中的某些區段會被從<span
+lang=EN-US>ROM</span>中搬到<span lang=EN-US>RAM</span>，而這些動作不能奢望有個<span
+lang=EN-US>Windows</span>幫你做，只能由我們的系統自行負責。要弄清楚這些概念對初學者的確不容易，因為你必須先知道所謂“程式”的架構。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920230"><span style='font-family:"微軟正黑體","sans-serif"'>程式段與資料段</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'> <o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『細節我就不多說了，資訊本科應該要修“系統程式”吧；一般人只知道程式會分為程式段和資料段，實際上應該再細分為<span
+style='display:none;mso-hide:all'>不多說了易執行好了、：</span>：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>text</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>段：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>就是所謂的程式部分，基本上執行時期時<span lang=EN-US>text</span>段的內容不會改變，除非有特別的需求<span
+lang=EN-US>(</span>例如為了加速<span lang=EN-US>)</span>，否則<span lang=EN-US>text</span>段可以直接在<span
+lang=EN-US>ROM</span>裡執行，無須載入到<span lang=EN-US>RAM</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Read-only-data(rodata)</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>段</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>：程式中定義為“<span lang=EN-US>const</span>”的變數，以及諸如“<span
+lang=EN-US>Hello World</span>”這樣的字串，都會被歸類到<span lang=EN-US>rodata</span>段<span
+lang=EN-US>(</span>請見以下例子<span lang=EN-US>)</span>；程式段還有載到<span lang=EN-US>RAM</span>裡執行的可能，但<span
+lang=EN-US>rodata</span>段沒有加速或改變內容的需求，所以應該“待”在<span lang=EN-US>ROM</span>裡即可。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>以下三個變數屬於<span lang=EN-US>rodata</span>段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>const int A = 5 ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>const char B[] = &quot;This
+is a book&quot; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>const int A[10] =
+{11,22,33,44,55,66,77,88,99,0} ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void fun(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>“<span
+lang=EN-US>rodata String</span>”會被存在<span lang=EN-US>rodata</span>段<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>char string[] = &quot;rodata String&quot; ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>“<span
+lang=EN-US>rodata also!</span>”也會被存在<span lang=EN-US>rodata</span>段中<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>printf(&quot;rodata also!&quot;) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}</span><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Data</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>段：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>有初值的<span lang=EN-US>global</span>變數都屬於這個區段，請見以下的程式。在連結時期，這些初值必須加入執行檔中；在執行時期，因為這些變數的值是可以被改變的，所以它們不能被定址在<span
+lang=EN-US>ROM</span>的位址，亦即系統在開始使用這些變數之前，必須將其初值載入<span lang=EN-US>RAM</span>。所以在連結時，資料段的處理是比較特殊的，一方面它必須被加入執行檔，這樣才可以與執行檔一起被燒入<span
+lang=EN-US>ROM</span>中，但這些變數不能被定址到<span lang=EN-US>ROM</span>，它們真正被操作的地方是<span
+lang=EN-US>RAM</span>；總的來說，必須告知<span lang=EN-US>linker</span>。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US>data</span>段會被加入<span
+lang=EN-US>ROM</span>，但卻要定址到<span lang=EN-US>RAM</span>的位址</b>。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>有初值的<span lang=EN-US>global</span>變數屬於<span
+lang=EN-US>data</span>段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>在連結時期<span lang=EN-US>, </span>這些變數的初值會被加入執行檔<span
+lang=EN-US>, </span>但定址到<span lang=EN-US>RAM</span>的位址<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>在執行時期<span lang=EN-US>, </span>這些變數被儲存在<span
+lang=EN-US>ROM</span>中<span lang=EN-US>, <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>但必須被載入<span lang=EN-US>RAM</span>才可以使用<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>int a = 10 ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>int b[10] =
+{11,22,33,44,55,66,77,88,99,0} ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>bss(Block
+Started by Symbol)</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif"'>段</span></b><span style='font-family:
+"微軟正黑體","sans-serif"'>：沒有初值的全域變數，請見以下程式。因為沒有初值，所以無需加入程式之中，只要在連結時將其定址到<span
+lang=EN-US>RAM</span>即可；執行時期也沒有載入的問題，但機器<span lang=EN-US>RESET</span>後，不能保證<span
+lang=EN-US>RAM</span>的內容都會是<span lang=EN-US>0</span>，所以通常要由系統主動將整個<span
+lang=EN-US>bss</span>段清為<span lang=EN-US>0</span>。有些工程師寫程式時會自己預設<span
+lang=EN-US>bss</span>變數的初始值應該是<span lang=EN-US>0</span>，在未設值的狀況下就直接拿來用，所以每次開機後該變數的初始值可能都不一樣；這個問題呈現出來的狀態就是某功能有時正確，有時錯誤，而錯誤的情形也都不相同，雖然這只是工程師的小小疏忽，但會讓其他人覺得系統很不穩定。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>沒有初值的<span lang=EN-US>global</span>變數屬於<span
+lang=EN-US>bss</span>段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>int a ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>char b[10] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>int buffer[100*1024] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>在嵌入式系統中，上述之程式四種區段的處理方式都不相同，連結時期要藉由<span
+lang=EN-US>link script</span>告知<span lang=EN-US>linker</span>如何處理這些區段；在執行時期的系統初始化階段，就要針對各個區段作不同的處置<a
+style='mso-footnote-id:ftn3' href="#_ftn3" name="_ftnref3" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[3]</span></span><![endif]></span></span></span></a>。根據以上的解釋，我們接下來探討<span
+lang=EN-US>link script</span>到底包含了什麼。在此之前，我先考你一個問題：“執行檔”內包含了哪些段的內容？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這個考不倒我，根據你剛剛的定義，因為<span
+lang=EN-US>bss</span>段是沒有初值的全域變數，所以只要知道它的位址與大小即可，放一堆<span lang=EN-US>0</span>在執行檔裡是沒有意義的；而其他的<span
+lang=EN-US>text</span>、<span lang=EN-US>data</span>、<span lang=EN-US>rodata</span>段都對應到工程師寫下的程式碼，當然必須加到執行檔中。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920231"><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Link
+Script</span></a><span style='mso-bookmark:_Toc304920231'><span
+style='font-family:"微軟正黑體","sans-serif"'>的內容</span></span><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'> <o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『在寫<span
+lang=EN-US>links script</span>之前，我們要先設計<b style='mso-bidi-font-weight:normal'>執行時期</b>的記憶體使用狀況，下圖是嵌入式系統最基本的記憶體配置：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:27.0pt;
+mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:338.25pt;
+ height:294.75pt'>
+ <v:imagedata src="/b2/CH05_03.files/image001.jpg" o:title="05-07-(a)-執行時期的記憶體的使用狀況"/>
+</v:shape><![endif]--><![if !vml]><img width=451 height=393
+src="/b2/CH05_03.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=a0 align=center style='margin-left:72.0pt;text-align:center;
+line-height:18.0pt;mso-line-height-rule:exactly'><a name="_Toc164833996"><span
+style='font-family:"微軟正黑體","sans-serif"'>圖<span lang=EN-US>5-7(a)</span>：執行時期的記憶體使用狀況</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>首先我們來看一個簡單的例子，你先不要管它的語法，先看註解裡的說明，只要知道這個<span
+lang=EN-US>link script</span>內包含什麼即可：』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>/************************************************************<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span>Link Script sample<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>記憶體位址配置<span
+lang=EN-US>:<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>ROM</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>的起始位址<span lang=EN-US> -
+0xC00000<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>RAM</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>的起始位址<span lang=EN-US> - 0<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>基本名詞定義：<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>LMA(Load
+memory address)</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>：某程式區段被“放置”的位址<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;mso-para-margin-left:3.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>VMA(Virtual
+memory address)</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>：程式區段在執行時期的位址<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>************************************************************/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:1'>        </span>/* </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義輸出的格式，本例為：輸出<span lang=EN-US>ARM9</span>的機器碼，執行檔格式為<span
+lang=EN-US>ELF32<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-spacerun:yes'> </span><span style='mso-tab-count:
+1'>      </span>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>OUTPUT_FORMAT(&quot;elf32-arm9&quot;)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>OUTPUT_ARCH(arm9)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>SEARCH_DIR(.);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>SECTIONS<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>/* <b style='mso-bidi-font-weight:normal'>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義<span lang=EN-US>section - </span>程式段<span lang=EN-US>,<span
+style='mso-spacerun:yes'>  </span></span>起始位址<span lang=EN-US>(VMA)</span>從<span
+lang=EN-US>0xC0000</span>開始，<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>沒有指定<span lang=EN-US>LMA</span>，表示<span lang=EN-US>LMA</span>的起始位址同<span
+lang=EN-US>VMA</span>，也是<span lang=EN-US>0xC00000<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>.text 0x<st1:chmetcnv TCSC="0" NumberType="1" Negative="False"
+HasSpace="False" SourceValue="0" UnitName="C" w:st="on">00c</st1:chmetcnv>00000
+: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>{ <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span>/* <span style='mso-tab-count:
+1'>   </span></span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義可在程式中使用的變數 <span
+lang=EN-US>– </span>“<span lang=EN-US>__START_text</span>” ，<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>句號 “<span lang=EN-US>.</span>”表示目前的<span lang=EN-US>VMA</span>，也就是<span
+lang=EN-US>0xC00000<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__START_text = . ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>/*<span style='mso-spacerun:yes'>  </span><b
+style='mso-bidi-font-weight:normal'>*(.text)</b></span><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>表示將目前目錄中所有檔案的<span
+lang=EN-US>.text</span>段加入這個<span lang=EN-US>section</span></span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>*(.text) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:5.25gd;
+text-indent:-9.0pt;mso-char-indent-count:-.75;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>/* </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義可在程式中使用的變數</span></b><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'> <span lang=EN-US>– </span><b style='mso-bidi-font-weight:normal'>“<span
+lang=EN-US>__END_text</span>” </b>，<b style='mso-bidi-font-weight:normal'>目前<span
+lang=EN-US>VMA</span>應該是：<span lang=EN-US>0xC00000</span>加上所有程式<span
+lang=EN-US>.text</span>段的<span lang=EN-US>size</span>總和<span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__END_text = . ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<b
+style='mso-bidi-font-weight:normal'><span style='mso-tab-count:1'>     </span><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>定義<span
+lang=EN-US>section - rodata</span>段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>起始位址<span lang=EN-US>(VMA)</span>從“<span lang=EN-US>__END_text</span>”開始，亦即緊跟在<span
+lang=EN-US>text</span>段之後，<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>沒有指定<span lang=EN-US>LMA</span>，表示<span lang=EN-US>LMA</span>的起始位址同<span
+lang=EN-US>VMA<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>.rodata __END_text : <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__START_ rodata = . ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>/*<span style='mso-spacerun:yes'>  </span><b
+style='mso-bidi-font-weight:normal'>*(.rodata)</b></span><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>表示將目前目錄中所有檔案的<span
+lang=EN-US>.rodata</span>段加入這個<span lang=EN-US>section</span></span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>*(. rodata) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>   </span>__END_rodata = . ; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<b
+style='mso-bidi-font-weight:normal'><span style='mso-tab-count:1'>     </span><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>定義<span
+lang=EN-US>section - bss</span>段， 起始位址<span lang=EN-US>(VMA)</span>從<span
+lang=EN-US>0</span>開始 <span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>沒有指定<span lang=EN-US>LMA</span>，表示<span lang=EN-US>LMA</span>的起始位址同<span
+lang=EN-US>VMA<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>.bss 0x0000000 : <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>{ <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__START_bss = .;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>*(.bss) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__END_bss = .;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>/*</span><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義可在程式中使用的變數</span></b><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'> <span lang=EN-US>–<b style='mso-bidi-font-weight:normal'> </b></span><b
+style='mso-bidi-font-weight:normal'>“<span lang=EN-US>__SIZE_BSS</span>”，表示<span
+lang=EN-US>bss</span>段的<span lang=EN-US>size</span></b><span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>    </span>__SIZE_BSS = __END_bss - __START_bss ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>    </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<b
+style='mso-bidi-font-weight:normal'><span style='mso-tab-count:1'>     </span><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>定義<span
+lang=EN-US>section - data</span>段，<span lang=EN-US> <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span>Data</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>段的<span lang=EN-US>VMA</span>應該在<span lang=EN-US>RAM</span>，而<span
+lang=EN-US>LMA</span>則在<span lang=EN-US>ROM<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>所以<span
+lang=EN-US>VMA</span>跟在<span lang=EN-US>bss</span>段之後，而<span lang=EN-US>LMA</span>則跟在<span
+lang=EN-US>rodata</span>段之後<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>意義為：<span lang=EN-US> data</span>段的內容會被加入執行檔內，位置在<span lang=EN-US>rodata</span>之後<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:2'>                </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>但執行時期<span
+lang=EN-US>data</span>段會被複製到<span lang=EN-US>RAM</span>中，位置則在<span lang=EN-US>bss</span>段之後<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>.data __END_bss : AT( __END_rodata ) <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>{ <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__START_data = .;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>*(.data) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+2'>                </span>__END_data = .;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span><span style='mso-spacerun:yes'>  </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>/* <span style='mso-tab-count:
+1'>   </span></span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義可在程式中使用的變數</span></b><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'> <span lang=EN-US>–<b
+style='mso-bidi-font-weight:normal'> </b></span><b style='mso-bidi-font-weight:
+normal'>“<span lang=EN-US>__START_data_LMA</span>”，<span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>表示<span lang=EN-US>data</span>段的起始位址<span
+lang=EN-US>(LMA)</span></span></b><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>__START_data_LMA
+= LOADADDR( .data );<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>/*<span
+style='mso-spacerun:yes'>   </span></span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義可在程式中使用的變數</span></b><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'> <span lang=EN-US>–<b
+style='mso-bidi-font-weight:normal'> </b></span><b style='mso-bidi-font-weight:
+normal'>“<span lang=EN-US>__SIZE_DATA</span>”，<span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>表示<span lang=EN-US>data</span>段的<span lang=EN-US>size</span></span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.0pt;mso-para-margin-left:4.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>__SIZE_DATA = __END_data - __START_data ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833997"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-8</span>：<span lang=EN-US>Link-Script</span>實例</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『在解釋這個例子之前，你必須先了解<span
+lang=EN-US>LMA</span>與<span lang=EN-US>VMA</span>的意義：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>LMA(Load memory address)</span><span
+style='font-family:"微軟正黑體","sans-serif"'>：某程式區段被“放置”的位址<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>VMA(Virtual memory address)</span><span
+style='font-family:"微軟正黑體","sans-serif"'>：程式區段在執行時期的位址<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>例如資料段會被放置在<span
+lang=EN-US>ROM</span>，但執行時必需載入到<span lang=EN-US>RAM</span>，則在<span lang=EN-US>ROM</span>中的位址就稱為<span
+lang=EN-US>LMA</span>，而在<span lang=EN-US>RAM</span>中的位址就是<span lang=EN-US>VMA</span>。<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>一個程式區段要指定兩種位址<span
+lang=EN-US>(LMA</span>與<span lang=EN-US>VMA)</span>，確實是不太容易懂；但是我們之前已經講解過嵌入式系統連結時期的概念，你就試著描述一下上面那段<span
+lang=EN-US>link scrip</span>到底想表達些什麼。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我再仔細看了一下這個檔案，配合剛剛說的觀念，似乎也沒有那麼複雜。這個<span
+lang=EN-US>link script</span>檔要傳達的概念為：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:68.25pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-41.25pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l29 level1 lfo25;tab-stops:list 68.25pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>我們的系統中有一塊<span
+lang=EN-US>ROM</span>，它的起始位址是<span lang=EN-US>0xC00000</span>，另外有一塊<span
+lang=EN-US>RAM</span>，起始位址為<span lang=EN-US>0<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:68.25pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-41.25pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l29 level1 lfo25;tab-stops:list 68.25pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>執行檔中必需包含<span
+lang=EN-US>text</span>、<span lang=EN-US>rodata</span>與<span lang=EN-US>data</span>段，其中<span
+lang=EN-US>text</span>段和<span lang=EN-US>rodata</span>當然在<span lang=EN-US>ROM</span>裡執行即可，所以被定址到<span
+lang=EN-US>0xC0000</span>，而<span lang=EN-US>rodata</span>段跟在<span lang=EN-US>text</span>段後面。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:68.25pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-41.25pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l29 level1 lfo25;tab-stops:list 68.25pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>bss</span><span
+style='font-family:"微軟正黑體","sans-serif"'>段因為沒有初值，所以不會佔據執行檔或<span lang=EN-US>ROM</span>的空間；它會被定址到<span
+lang=EN-US>RAM</span>的起始位址，在本例中<span lang=EN-US>RAM</span>的起始位址為<span
+lang=EN-US>0</span>。<span style='display:none;mso-hide:all'>式的系統中麼複雜<span
+lang=EN-US>fu6fu6fu6</span></span><span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:68.25pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-41.25pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l29 level1 lfo25;tab-stops:list 68.25pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>d.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>data</span><span
+style='font-family:"微軟正黑體","sans-serif"'>段比較複雜，它的內容也必須包含在執行檔內，但執行時期它必須被載入到<span
+lang=EN-US>RAM</span>裡。所以<span lang=EN-US>data</span>段的<span lang=EN-US>VMA</span>在<span
+lang=EN-US>RAM</span>中，跟在<span lang=EN-US>bss</span>段之後；而<span lang=EN-US>LMA</span>則跟在<span
+lang=EN-US>rodata</span>段之後，當然是在<span lang=EN-US>ROM</span>裡面。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『我補充一下有關<span
+lang=EN-US>data</span>段的細節， <span lang=EN-US>data</span>段會和程式段一起被燒到<span
+lang=EN-US>ROM</span>裡，它的位址<span lang=EN-US>(LMA)</span>應該是<span lang=EN-US>0xC0000</span>多；但程式中操作這些有初值的全域變數時卻是用另一個位址，也就是所謂的<span
+lang=EN-US>VMA</span>，應該是位址<span lang=EN-US>0</span>之上。初學者很容易忽略這個事情，如果在啟動階段沒有將<span
+lang=EN-US>data</span>段載入到<span lang=EN-US>VMA</span>的位址，執行時期就會發現這些全域變數的初值都不對，當然會影響執行結果。你再看看下面這張圖應該就更清楚了：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:510pt;height:204pt'>
+ <v:imagedata src="/b2/CH05_03.files/image003.jpg" o:title="05-07_VMA and LMA"/>
+</v:shape><![endif]--><![if !vml]><img width=680 height=272
+src="/b2/CH05_03.files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833998"><span style='font-family:
+"微軟正黑體","sans-serif"'>圖<span lang=EN-US>5-7(b)</span>：執行時期的<span lang=EN-US>memory
+mapping</span></span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『我再考你一個問題：假設我們有某一個模組<span
+lang=EN-US>(</span>姑且稱之<span lang=EN-US>speed_up</span>模組<span lang=EN-US>)</span>的效能需要改善，一個可行的方法是讓其在速度較快的<span
+lang=EN-US>RAM</span>中執行，問題來了，請問<span lang=EN-US>link script</span>要如何來描述這件事情？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『基本的作法應該和<span
+lang=EN-US>data</span>段一樣，這個模組裡的程式<span lang=EN-US>LMA</span>在<span lang=EN-US>ROM</span>裡，<span
+lang=EN-US>VMA</span>則定址到<span lang=EN-US>RAM</span>中，執行時期在使用這個模組之前，必須先將其從<span
+lang=EN-US>ROM</span>載入到<span lang=EN-US>RAM</span>裡；但我不知道詳細的語法怎麼寫。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『寫法如下<span
+lang=EN-US>(</span>下面的程式段接在程式<span lang=EN-US>5-8</span>的最後面<span lang=EN-US>)</span>，你要知道其實語法不重要，屆時翻使用手冊即可，重要的是觀念；在嵌入式系統中這樣的應用很常見，通常都是為了改善效能，程式在不同的記憶體中執行有不同的速度，有興趣你可以請教開發韌體的同仁。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:1'>        </span>/*<span
+style='mso-spacerun:yes'>  </span><span style='mso-tab-count:1'> </span>speed_up</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:11.0pt;font-family:
+"微軟正黑體","sans-serif";color:blue'>模組的<span lang=EN-US>VMA</span>和<span
+lang=EN-US>LMA</span>都是跟在<span lang=EN-US>data</span>段之後<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'>speed_up</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:11.0pt;font-family:
+"微軟正黑體","sans-serif";color:blue'>模組會被加到執行檔中，但執行時期要載到<span lang=EN-US>RAM</span>才能執行<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:11.0pt;
+font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>   </span>.text_speed_up __END_data : AT(__START_data_LMA
++ SIZEOF( .data ) )<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>      </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>       </span>__START_text_speed_up = . ; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>       </span>Speed_up_main.o(.text) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>       </span>Speed_up_main.o(.rodata) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>       </span>Speed_up_main.o(.data) ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>       </span>__END_text_speed_up = . ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'>/*
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-size:11.0pt;
+font-family:"微軟正黑體","sans-serif";color:blue'>為容易說明起見，假設這個模組沒有<span lang=EN-US>bss</span>段<span
+lang=EN-US>*/ <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>      </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>    </span>__START_text_speed_up_lma = LOADADDR( .
+text_speed_up );<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif";
+color:blue'>__SIZE_TEXT_SPEED_UP = __END_text_speed_up - __START_text_speed_up
+;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920232"><span style='font-family:"微軟正黑體","sans-serif"'>定義在<span
+lang=EN-US>link script</span>中的常數</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我還有一個實作上的問題，剛剛我們說要把<span
+lang=EN-US>data</span>段從<span lang=EN-US>ROM</span>搬到<span lang=EN-US>RAM</span>，用說的很簡單，但是我們程式中怎麼知道<span
+lang=EN-US>data</span>段在<span lang=EN-US>ROM</span>的位址和<span lang=EN-US>size</span>？怎麼知道要搬到哪個位址？難道是要用寫死的嗎？而且在上面的那個例子中，<span
+lang=EN-US>data</span>段在<span lang=EN-US>RAM</span>中的位址跟在<span lang=EN-US>bss</span>段後，所以每次<span
+lang=EN-US>bss</span>段大小更動，<span lang=EN-US>data</span>段的起始位址<span lang=EN-US>(VMA)</span>也會變動，而且<span
+lang=EN-US>data</span>段的大小也可能變化，那豈不是每次都要去改動程式？會不會太麻煩了？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『以前的編譯工具功能比較陽春，確實有可能要如你所說把位址寫死在程式中，是很麻煩沒錯。但現代<span
+lang=EN-US>linker</span>的功能比較強，除了提供某些預設的變數名稱<span lang=EN-US> (</span>如“<span
+lang=EN-US>__start_text</span>”表示程式段的起始位址<span lang=EN-US>(VMA)</span>等<span
+lang=EN-US>)</span>，工程師可以在程式中直接使用外；一般<span lang=EN-US>linker</span>都可以讓工程師在<span
+lang=EN-US>link script</span>中定義代表各區段起始位址<span lang=EN-US>(LMA or VMA)</span>以及<span
+lang=EN-US>size</span>的變數，所以我們可以在程式中利用這些變數，達到搬移區段的功能。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『你說得很清楚，我聽得很模糊，可否說得具體點？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『在剛剛的例子中<a
+style='mso-footnote-id:ftn4' href="#_ftn4" name="_ftnref4" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[4]</span></span><![endif]></span></span></span></a>，我們可以在程式中使用的變數有：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:48.75pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l18 level1 lfo26;tab-stops:list 48.75pt'><![if !supportLists]><span
+lang=EN-US style='font-size:11.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>__START_text_speed_up</span><span
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>：<span lang=EN-US>speed_up</span>模組程式段<span
+lang=EN-US>VMA</span>的起始位址<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:48.75pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l18 level1 lfo26;tab-stops:list 48.75pt'><![if !supportLists]><span
+lang=EN-US style='font-size:11.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>__END_text_speed_up</span><span
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>：<span lang=EN-US>speed_up</span>模組程式段<span
+lang=EN-US>VMA</span>的結束位址<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:48.75pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l18 level1 lfo26;tab-stops:list 48.75pt'><![if !supportLists]><span
+lang=EN-US style='font-size:11.0pt;font-family:Wingdings;mso-fareast-font-family:
+Wingdings;mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>__START_text_speed_up_lma</span><span
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>：<span lang=EN-US>
+speed_up</span>模組程式段<span lang=EN-US>LMA</span>的起始位址<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:48.75pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l18 level1 lfo26;tab-stops:list 48.75pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>__SIZE_TEXT_SPEED_UP</span><span
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>：<span lang=EN-US>speed_up</span>模組程式段的<span
+lang=EN-US>size</span></span><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>所以你在程式中該做的事情就是：從位址“</span><span
+lang=EN-US style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>__START_text_speed_up_lma</span><span
+style='font-size:11.0pt;font-family:"微軟正黑體","sans-serif"'>”開始<span lang=EN-US>(ROM)</span>，複製<span
+lang=EN-US>size</span>為“<span lang=EN-US>__SIZE_TEXT_SPEED_UP</span>”<span
+lang=EN-US>bytes</span>的記憶體內容，到起始位址為“<span lang=EN-US>__START_text_speed_up</span>”的記憶體<span
+lang=EN-US>(RAM)</span>中。至於程式的寫法為：</span><span style='font-family:"微軟正黑體","sans-serif"'>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>定義在<span lang=EN-US>link script</span>中的變數<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+(</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>說是常數也並無不可<span lang=EN-US>,</span>因為改變這些變數的值是沒有意義的<span
+lang=EN-US>)<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>extern unsigned char *
+__START_text_speed_up ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>extern unsigned char *
+__START_text_speed_up_lma ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>extern int
+__SIZE_TEXT_SPEED_UP ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void
+copy_data_section(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>一個<span
+lang=EN-US>byte</span>一個<span lang=EN-US>byte</span>搬<span lang=EN-US>: </span>這是最簡單<span
+lang=EN-US>, </span>但效能最差的作法<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>int i ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>unsigned char * dest = __START_text_speed_up ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>unsigned char * src =
+__START_text_speed_up_lma ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>for(i=0;i&lt;__SIZE_TEXT_SPEED_UP;i++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>dest[i] = src[i] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833999"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-9</span>：將某個程式模組搬移到速度較快的記憶體上執行</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『真神奇，想都沒想過居然可以在程式之外定義變數。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『給你一個作業，想想看如何在程式中把整個<span
+lang=EN-US>bss</span>段的內容設為<span lang=EN-US>0</span>。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>清除<span lang=EN-US>bss</span>段比搬移程式區段簡單的多，請參考以下程式：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>//
+</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>請參考本節中完整的<span lang=EN-US>link script<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>//<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>extern unsigned char *
+__START_bss ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>extern int __SIZE_BSS ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void
+clear_bss_section(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>int i ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>unsigned char * dest = __START_bss ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>for(i=0;i&lt;__SIZE_BSS;i++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>dest[i] = 0 ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920233"><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Map
+File</span></a><span style='mso-bookmark:_Toc304920233'><span style='font-family:
+"微軟正黑體","sans-serif"'>或<span lang=EN-US>Symbol Table</span></span></span><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『連結後除了產生執行檔外，通常還可要求<span
+lang=EN-US>linker</span>產生<span lang=EN-US>map</span>檔<span lang=EN-US>(</span>例如<span
+lang=EN-US>GNU linker </span>“<span lang=EN-US>ld</span>”的<span lang=EN-US>-m</span>參數<span
+lang=EN-US>)</span>；雖然每套編譯工具產生的<span lang=EN-US>map</span>檔格式可能都不一樣，但它的基本用途就是紀錄專案中每一個<span
+lang=EN-US>symbol<a style='mso-footnote-id:ftn5' href="#_ftn5" name="_ftnref5"
+title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[5]</span></span><![endif]></span></span></a></span>之<span
+lang=EN-US>LMA</span>與<span lang=EN-US>VMA</span>的對應關係。這個<span lang=EN-US>map</span>檔很有用，我們可以從<span
+lang=EN-US>map</span>檔中得知下列訊息：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l27 level1 lfo24;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>程式各區段的定址是否正確<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l27 level1 lfo24;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>程式各區段的<span lang=EN-US>size</span>，亦即目前記憶體<span
+lang=EN-US>(ROM</span>與<span lang=EN-US>RAM)</span>的使用量<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l27 level1 lfo24;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>程式中各個<span lang=EN-US>symbol</span>的位址<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l27 level1 lfo24;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>各個<span lang=EN-US>symbol</span>在記憶體中的順序關係<span
+lang=EN-US>(</span>這在除錯時很有用<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l27 level1 lfo24;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>各個程式檔的記憶體用量<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>節錄一段<span lang=EN-US>map</span>檔的內容來看看你就會明白了：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>因為<span
+lang=EN-US>map</span>檔不是程式，所以實際上不會有註解在裡面；以下範例中用<span lang=EN-US>/**/</span>包起來的文字，是筆者自行加入的解釋。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/*<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>text</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>段資訊：<span lang=EN-US> VMA =
+0xC00000</span>、在執行檔中的起始位址<span lang=EN-US>=0</span>、<span lang=EN-US>LMA =
+0xC00000<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:3'>                        </span></span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>程式段的<span lang=EN-US>VMA</span>和<span lang=EN-US>LMA</span>是一樣的<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.text<span
+style='mso-tab-count:2'>                </span>0xC00000<span style='mso-tab-count:
+2'>              </span>0x0<span style='mso-tab-count:2'>          </span>load
+address 0xC00000<span style='mso-spacerun:yes'>   </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/* </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>“<span lang=EN-US>__START_text</span>”是在<span
+lang=EN-US>link script</span>中定義的變數<span lang=EN-US> */<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>0xC00000<span style='mso-tab-count:4'>                              </span>__START_text=.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/*<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>程式<span lang=EN-US>Module.o</span>的<span lang=EN-US>text</span>段資訊：
+起始位址為<span lang=EN-US>0xC00000</span>，<span lang=EN-US>text</span>段占<span
+lang=EN-US>0x300</span>個<span lang=EN-US>bytes<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>*/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>Module1.o(.text)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>.text<span style='mso-tab-count:3'>                      </span>0x<st1:chmetcnv
+TCSC="0" NumberType="1" Negative="False" HasSpace="False" SourceValue="0"
+UnitName="C" w:st="on">0C</st1:chmetcnv>00000<span
+style='mso-spacerun:yes'>      </span>0x300<span style='mso-tab-count:2'>             </span>Module1.o<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/* Module.o</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>中的函數有三個，分別列出其起始位址<span
+lang=EN-US> */<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>0x<st1:chmetcnv TCSC="0" NumberType="1" Negative="False"
+HasSpace="False" SourceValue="0" UnitName="C" w:st="on">0C</st1:chmetcnv>00000<span
+style='mso-spacerun:yes'>      </span><span style='mso-tab-count:2'>                </span><span
+style='mso-tab-count:2'>                </span>fun1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>00200<span style='mso-spacerun:yes'>      </span><span
+style='mso-tab-count:4'>                                </span>fun2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>00280<span style='mso-spacerun:yes'>      </span><span
+style='mso-tab-count:4'>                                </span>fun3<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>Module2.o(.text)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>.text<span style='mso-tab-count:3'>                      </span>0x<st1:chmetcnv
+TCSC="0" NumberType="1" Negative="False" HasSpace="False" SourceValue="0"
+UnitName="C" w:st="on">0C</st1:chmetcnv>00300<span style='mso-tab-count:2'>            </span>0x100<span
+style='mso-tab-count:2'>             </span>Module2.o<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>00300<span style='mso-tab-count:5'>                                    </span>fun3<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>00380<span style='mso-tab-count:5'>                                    </span>fun4<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>/* <o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>若有使用到函式庫內的函數，則該函數所在的程式檔也會被連結到執行檔中<span lang=EN-US> <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.text<span
+style='mso-tab-count:3'>                        </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>01000 <span style='mso-tab-count:2'>          </span>0x100<span
+style='mso-tab-count:2'>             </span>..\..\lib\os.a(mem.o)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>01000 <span style='mso-tab-count:5'>                                  </span>localMalloc<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>01080<span style='mso-tab-count:5'>                                    </span>localFree<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="0" UnitName="C"
+w:st="on">0C</st1:chmetcnv>02000 <span style='mso-tab-count:5'>                                  </span>__END_text=.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/* RAM</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>起始位址為<span lang=EN-US>0</span>，假設<span
+lang=EN-US>bss</span>段<span lang=EN-US>size = 0x100, rodata size = 0x1000 */<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>資料段的資訊：<span lang=EN-US>VMA = 0x100</span>、在執行檔中的位置<span
+lang=EN-US> = 0x3000</span>、<span lang=EN-US> LMA = 0xC03000<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>由此可以看出<span lang=EN-US>VMA</span>和<span lang=EN-US>LMA</span>的位址不一樣，<span
+lang=EN-US>VMA</span>指到的位址是<span lang=EN-US>RAM</span>，<span lang=EN-US>data</span>段跟在<span
+lang=EN-US>bss</span>段之後；<span lang=EN-US>LMA</span>指到的位址是<span lang=EN-US>RAM</span>，<span
+lang=EN-US>data</span>段跟在<span lang=EN-US>rodata</span>段之後<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.data<span
+style='mso-tab-count:3'>                       </span>0x000100<span
+style='mso-spacerun:yes'>    </span>0x3000<span style='mso-tab-count:2'>         </span>load
+address 0x<st1:chmetcnv TCSC="0" NumberType="1" Negative="False"
+HasSpace="False" SourceValue="0" UnitName="C" w:st="on">0C</st1:chmetcnv>03000<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>0x000100<span style='mso-spacerun:yes'>    </span><span
+style='mso-tab-count:3'>                      </span>__START_data=.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.data<span
+style='mso-tab-count:3'>                       </span>0x000100<span
+style='mso-spacerun:yes'>    </span>0x2 <span style='mso-tab-count:2'>              </span>Module1.o<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x000100<span
+style='mso-spacerun:yes'>    </span><span style='mso-tab-count:3'>                      </span>global_short<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>/*<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>Midule2.o</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>中<span lang=EN-US>data</span>段的資訊，可以看出<span
+lang=EN-US>data</span>段的起始位址<span lang=EN-US>(VMA)</span>為<span lang=EN-US>0x102</span>；其中有兩個有初值的全域變數，共佔<span
+lang=EN-US>8</span>個<span lang=EN-US>byte</span>。<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>*/<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.data<span
+style='mso-tab-count:3'>                       </span>0x000102<span
+style='mso-tab-count:1'>      </span>0x8<span style='mso-tab-count:3'>                  </span>Midule2.o<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x000102 <span
+style='mso-tab-count:4'>                            </span>global_int_1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>                </span>0x000106 <span
+style='mso-tab-count:4'>                            </span>global_int_2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'>               </span>0x000200<span style='mso-tab-count:
+2'>                </span>__END_data=.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這個檔案裡面全是數字，看得人眼睛都花了；我怎麼有辦法從裡面找到我要的資訊？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『作出執行檔之後的下個步驟就是設法將其下載到機器上，作出執行檔是一回事，你怎麼知道你的程式段或資料段會不會太大，會不會超過<span
+lang=EN-US>ROM</span>或<span lang=EN-US>RAM</span>的<span lang=EN-US>size</span>？你怎麼知道你的<span
+lang=EN-US>link script</span>有沒有寫錯，每一個程式區段都確實定址到符合機器的記憶體設定？當然你可以說在機器執行一下不就知道了嗎，可是我認為負責整合的工程師一定要檢查一下<span
+lang=EN-US>map</span>檔，有些問題只會造成系統的不穩定，而不會馬上當機，這種問題最麻煩了。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>例如資料段超過<span
+lang=EN-US>RAM</span>的<span lang=EN-US>size</span>，在測試時可能不會馬上出問題，只有在用到高位址的資料時才可能會壓到其他變數；即便破壞了其他變數，只要系統不會馬上用到這個被破壞變數，那當下也不會感覺程式有問題；當發現系統出問題時，極有可能已經在不相關的功能上了，這對除錯會造成很大的困擾，一定要盡量預防。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>至於檢查的方法很簡單，只要搜尋各個區段的起始和結束位址，以及你自己在<span
+lang=EN-US>link script</span>定義的變數，確認其<span lang=EN-US>LMA</span>、<span
+lang=EN-US>VMA</span>和<span lang=EN-US>size</span>都沒有問題就可以了。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<div style='mso-element:footnote-list'><![if !supportFootnotes]><br clear=all>
+
+<hr align=left size=1 width="33%">
+
+<![endif]>
+
+<div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn1' href="#_ftnref1"
+name="_ftn1" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>不同</span><span
+lang=EN-US>cross-tools</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>裡的</span><span
+lang=EN-US>linker</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>可接受之</span><span
+lang=EN-US>link-script</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的格式可能不同，本書是以</span><span
+lang=EN-US>GNU</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的</span><span
+lang=EN-US>linker – ld</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>為例，其他</span><span
+lang=EN-US>linker</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的</span><span
+lang=EN-US>link script</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>格式基本上與此大同小異。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn2>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn2' href="#_ftnref2"
+name="_ftn2" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[2]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>位址空間</span><span
+lang=EN-US>(Address Space) – </span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>較高檔的</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>都會提供虛擬記憶體的功能，有了這個功能，系統可以實現讓各個應用程式宛如有自己的記憶體空間</span><span
+lang=EN-US>(</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>稱為位址空間</span><span
+lang=EN-US>)</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，就算在自己的記憶體空間中亂搞，最多就是自己當掉，不會影響到系統以及其他正在運行中的程式。虛擬記憶體的功能可用來實現多工、多使用者系統，但複雜度相對來說比較高。而一般電子產品並未有此需求，所以大部分用於功能較單純之嵌入式系統開發的</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>都不會有此功能，亦即系統與所有應用程式會共用一個位址空間。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn3>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn3' href="#_ftnref3"
+name="_ftn3" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[3]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>本節旨在說明連結時期的概念，有關執行時期對各個區段的特別處理，請參考第</span><span
+lang=EN-US>6.3</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>節。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn4>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn4' href="#_ftnref4"
+name="_ftn4" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[4]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>每個</span><span
+lang=EN-US>linker</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的語法都不一樣，讀者只需要在此學到觀念即可；實務應用時還是要以實際使用的</span><span
+lang=EN-US>linker</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>使用手冊為準。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn5>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn5' href="#_ftnref5"
+name="_ftn5" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[5]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> Symbol</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>表示程式中所有出現過的函數、函式庫、</span><span
+lang=EN-US>global</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>變數名稱，以及</span><span
+lang=EN-US>linker</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>自動產生之代表各個區段</span><span
+lang=EN-US>(text</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>、</span><span
+lang=EN-US>rodata</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>、</span><span
+lang=EN-US>data</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>、</span><span
+lang=EN-US>bss)</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>起始結束位址的變數。</span></p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

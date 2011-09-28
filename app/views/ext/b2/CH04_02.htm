@@ -1,0 +1,3537 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="/b2/CH04_02.files/filelist.xml">
+<link rel=Edit-Time-Data href="/b2/CH04_02.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>4.2. 系統架構設計</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>cebm</o:Author>
+  <o:LastAuthor>Win7User</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>8730</o:TotalTime>
+  <o:LastPrinted>2007-04-09T05:53:00Z</o:LastPrinted>
+  <o:Created>2011-09-28T14:53:00Z</o:Created>
+  <o:LastSaved>2011-09-28T14:53:00Z</o:LastSaved>
+  <o:Pages>14</o:Pages>
+  <o:Words>2177</o:Words>
+  <o:Characters>12414</o:Characters>
+  <o:Company>xxx</o:Company>
+  <o:Lines>103</o:Lines>
+  <o:Paragraphs>29</o:Paragraphs>
+  <o:CharactersWithSpaces>14562</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>544x376</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="/b2/CH04_02.files/themedata.thmx">
+<link rel=colorSchemeMapping href="/b2/CH04_02.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:ActiveWritingStyle Lang="EN-US" VendorID="64" DLLVersion="131078"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:ActiveWritingStyle Lang="ZH-TW" VendorID="64" DLLVersion="131077"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-TW</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="99" Name="Hyperlink"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-alt:PMingLiU;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@微軟正黑體";
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:9.0pt;
+	margin-right:0cm;
+	margin-bottom:9.0pt;
+	margin-left:0cm;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:26.0pt;
+	font-weight:bold;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:24.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:bold;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:bold;}
+h4
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:normal;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-indent:-10.0pt;
+	mso-char-indent-count:-2.0;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	vertical-align:super;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:61.2pt;
+	mso-margin-bottom-alt:auto;
+	margin-left:75.0pt;
+	line-height:16.8pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"新細明體","serif";
+	mso-bidi-font-family:新細明體;}
+p.a, li.a, div.a
+	{mso-style-name:圖表;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:normal;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:新細明體;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("/b2/CH04_02.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("/b2/CH04_02.files/header.htm") fcs;
+	mso-endnote-separator:url("/b2/CH04_02.files/header.htm") es;
+	mso-endnote-continuation-separator:url("/b2/CH04_02.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 42.55pt 42.55pt 42.55pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-682967938;}
+@list l0:level1
+	{mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:-358722232;}
+@list l1:level1
+	{mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:-1963026624;}
+@list l2:level1
+	{mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:-925181200;}
+@list l3:level1
+	{mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:-900569394;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:322628684;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:-1241864720;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:-386385440;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:-676945456;}
+@list l8:level1
+	{mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:-1650950106;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l10
+	{mso-list-id:35590352;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1801496196 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l10:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:75.0pt;
+	mso-level-number-position:left;
+	margin-left:75.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l11
+	{mso-list-id:523902465;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1626287312 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l11:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:564993313;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1524521402 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l13
+	{mso-list-id:608314078;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-804061624 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l14
+	{mso-list-id:791246262;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1423234490 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l15
+	{mso-list-id:798180764;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1789260652 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l15:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l15:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l15:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:96.0pt;
+	mso-level-number-position:left;
+	margin-left:96.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l16
+	{mso-list-id:993222529;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1503172784 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l17
+	{mso-list-id:997920930;
+	mso-list-template-ids:893784396;}
+@list l17:level1
+	{mso-level-start-at:4;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.5pt;
+	text-indent:-40.5pt;}
+@list l17:level2
+	{mso-level-start-at:2;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:82.35pt;
+	text-indent:-54.0pt;}
+@list l17:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:128.7pt;
+	text-indent:-72.0pt;}
+@list l17:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:175.05pt;
+	text-indent:-90.0pt;}
+@list l17:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:221.4pt;
+	text-indent:-108.0pt;}
+@list l17:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.75pt;
+	text-indent:-144.0pt;}
+@list l17:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:332.1pt;
+	text-indent:-162.0pt;}
+@list l17:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:378.45pt;
+	text-indent:-180.0pt;}
+@list l17:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:424.8pt;
+	text-indent:-198.0pt;}
+@list l18
+	{mso-list-id:1082800440;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1781863434 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l19
+	{mso-list-id:1117603996;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1391949420 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l20
+	{mso-list-id:1241325695;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-496180952 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l21
+	{mso-list-id:1281456551;
+	mso-list-template-ids:-1736774548;}
+@list l21:level1
+	{mso-level-start-at:4;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l21:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l21:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l21:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l21:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l21:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l21:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l21:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l21:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l22
+	{mso-list-id:1405373685;
+	mso-list-template-ids:67698719;}
+@list l22:level1
+	{mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l22:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l22:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l22:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l22:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l22:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l22:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l22:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l22:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l23
+	{mso-list-id:1518497491;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-504344052 67698703 155739640 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l23:level1
+	{mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;}
+@list l23:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:66.0pt;
+	mso-level-number-position:left;
+	margin-left:66.0pt;
+	text-indent:-18.0pt;}
+@list l24
+	{mso-list-id:1530146152;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1194359490 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l25
+	{mso-list-id:1634365602;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2028690380 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l25:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l26
+	{mso-list-id:1752237056;
+	mso-list-type:hybrid;
+	mso-list-template-ids:715551384 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l27
+	{mso-list-id:1756047354;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-965426094 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l27:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l28
+	{mso-list-id:1769348484;
+	mso-list-type:hybrid;
+	mso-list-template-ids:839830224 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l28:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l28:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l28:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:96.0pt;
+	mso-level-number-position:left;
+	margin-left:96.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l29
+	{mso-list-id:1854758202;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2078741298 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l29:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l30
+	{mso-list-id:2053722815;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1360405742 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l30:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l31
+	{mso-list-id:2075661624;
+	mso-list-template-ids:1380905234;}
+@list l31:level1
+	{mso-level-start-at:4;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l31:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l31:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l31:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l31:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l31:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l31:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l31:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l31:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+table.MsoTableGrid
+	{mso-style-name:网格型;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-TW link=blue vlink=purple style='tab-interval:24.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoToc2 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:60.0pt right dotted 509.7pt'><a name="_Toc149018021"></a><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span><a href="#_Toc305013196"><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>4.2.</span></span><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";color:windowtext;mso-no-proof:yes;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1'>      </span></span></span><span
+style='mso-bookmark:_Toc149018021'><span style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>系統架構設計</span></span><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013196 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003100390036000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:right dotted 509.7pt'><span style='mso-bookmark:_Toc149018021'></span><a
+href="#_Toc305013197"><span style='mso-bookmark:_Toc149018021'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>產品規格<span lang=EN-US>Review</span></span></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>.. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013197 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003100390037000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:right dotted 509.7pt'><span style='mso-bookmark:_Toc149018021'></span><a
+href="#_Toc305013198"><span style='mso-bookmark:_Toc149018021'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>系統架構<span lang=EN-US>-</span>從粗略到逐漸精細的方塊圖</span></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013198 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003100390038000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:right dotted 509.7pt'><span style='mso-bookmark:_Toc149018021'></span><a
+href="#_Toc305013199"><span style='mso-bookmark:_Toc149018021'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>資料流</span></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013199 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>7<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003100390039000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:right dotted 509.7pt'><span style='mso-bookmark:_Toc149018021'></span><a
+href="#_Toc305013200"><span style='mso-bookmark:_Toc149018021'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>硬體相關與硬體無關<span
+lang=EN-US> – </span>可重用性<span lang=EN-US>&amp;</span>可移植性</span></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013200 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>9<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003200300030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:right dotted 509.7pt'><span style='mso-bookmark:_Toc149018021'></span><a
+href="#_Toc305013201"><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>System
+Configuration – </span></span><span style='mso-bookmark:_Toc149018021'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>可擴充性<span lang=EN-US>&amp;</span>可調整性</span></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc305013201 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>10<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300035003000310033003200300031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'></span></a><span style='mso-bookmark:_Toc149018021'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018021'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018021'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018021'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<span style='mso-bookmark:_Toc149018021'></span>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:82.35pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l17 level2 lfo32'><a name="_Toc305013196"><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>4.2.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>系統架構設計</span></a><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我本來是盡量不來煩你，但現階段大家都忙著開發沒空理我；系統平台相關的設計文件這麼多，我實在不知道該從哪一本看起，還是你就指派個模組讓我開發好了，不然大家都以為我很閒。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『可憐的孩子，我知道你沒在鬼混就可以了。現在是開發階段初期，很多架構都還在建立，所以不是人多就可以加快進度的；我對你在組織中的定位是預備隊，當某部份出現缺口時，你必須能很快的幫上忙。所以對本專案開發工作的細節，你應該要和我一樣熟悉。我不是讓你先<span
+lang=EN-US>K</span>一下系統平台的設計文件嗎？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『你也說過系統平台涵蓋的工作項目很多，我到底該從<span
+lang=EN-US>API</span>、<span lang=EN-US>OS</span>、<span lang=EN-US>boot-loader</span>、還是開發環境的文件開始看起？我大概都翻了一下，可是還是沒辦法有個整體的概念。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『嗯，我應該要交代清楚，畢竟你還沒有嵌入式系統軟體開發的相關經驗。這樣吧，我花半天的時間帶著你看一下文件；首先你看一下這張圖<span
+lang=EN-US>(</span>圖<span lang=EN-US>4-2)</span>，你認為系統平台包含哪幾個部份？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:510pt;
+ height:219.75pt'>
+ <v:imagedata src="/b2/CH04_02.files/image001.jpg" o:title="04-02-系統平台架構圖"/>
+</v:shape><![endif]--><![if !vml]><img width=680 height=293
+src="/b2/CH04_02.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446721"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-2</span>：系統平台架構圖</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『按照你的定義，應該除了<span
+lang=EN-US>Sub-System(</span>子系統<span lang=EN-US>)</span>與<span lang=EN-US>AP(</span>應用程式<span
+lang=EN-US>)</span>之外都算是系統平台。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『沒錯！現在我們把範圍縮小，先看看系統架構和<span
+lang=EN-US>API</span>的觀念就好。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統平台的其他部分請參考其他章節：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l27 level1 lfo7;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>第五章 <span lang=EN-US>– </span>開發環境<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l27 level1 lfo7;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>第六章 <span lang=EN-US>– boot-loader<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l27 level1 lfo7;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>第七章 <span lang=EN-US>– </span>驅動程式<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l27 level1 lfo7;tab-stops:list 72.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>第九章 <span lang=EN-US>– </span>模擬器<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc305013197"><span style='font-family:"微軟正黑體","sans-serif"'>產品規格<span
+lang=EN-US>Review</span></span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『在開始系統平台的設計之前，我會要求所有參與設計的同仁都必須清楚我們所要開發產品的性質、可調用的資源以及硬體規格所造成的限制；過度設計或考慮不周都不是好事。基本上系統設計<a
+style='mso-footnote-id:ftn1' href="#_ftn1" name="_ftnref1" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></span></a>的工作必須依照以下流程的觀念來進行：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:27.0pt;
+mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:423pt;height:215.25pt'>
+ <v:imagedata src="/b2/CH04_02.files/image003.jpg" o:title="04-03-system arch design"/>
+</v:shape><![endif]--><![if !vml]><img width=564 height=287
+src="/b2/CH04_02.files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446722"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-3</span>：系統設計流程</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『不管系統複雜度如何都應該要照著這個流程的精神做，並且在各個階段之間都應該要做好控制審查；如上圖所表示的，設計工作的前兩個步驟是確認核心需求與分析系統行為模式，根據你對嵌入式系統的了解，你說說看在設計系統架構前要注意的事情有哪些？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『經過這幾個月的學習，以我現在對嵌入式系統的了解，我覺得該注意的事項有：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level1 lfo8;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>硬體規格<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:75.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level2 lfo8;tab-stops:list 75.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>n<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>CPU</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>速度</span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'> - </span><span
+style='font-family:"微軟正黑體","sans-serif"'>如果<span lang=EN-US>CPU</span>速度不夠快的話，避免用太複雜的演算法<span
+lang=EN-US>(</span>或者應該研究是否有更具效率的演算法<span lang=EN-US>)</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:75.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level2 lfo8;tab-stops:list 75.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>n<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>記憶體容量
+</span></b><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>– </span><span
+style='font-family:"微軟正黑體","sans-serif"'>因為實體記憶體<span lang=EN-US>size</span>有限，設計系統架構時必須注意到程式大小、靜態空間<span
+lang=EN-US>(</span>全域變數<span lang=EN-US>)</span>、動態空間<span lang=EN-US>(buffer)</span>的<span
+lang=EN-US>size</span>同樣是有限制的。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:75.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level2 lfo8;tab-stops:list 75.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>n<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>周邊裝置的效能
+</span></b><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>– </span><span
+style='font-family:"微軟正黑體","sans-serif"'>周邊設備速度有快有慢<span lang=EN-US>(</span>例如<span
+lang=EN-US>RAM</span>速度會比<span lang=EN-US>ROM</span>快的多<span lang=EN-US>)</span>，必須事先注意整個系統的瓶頸可能在哪裡。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level1 lfo8;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>產品規格
+</span></b><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>– </span><span
+style='font-family:"微軟正黑體","sans-serif"'>系統需要實現哪些功能？<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level1 lfo8;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>產品特性</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'> <span lang=EN-US>–</span>產品使用環境、販售地區、目標使用者族群以及應用範圍都可能影響系統架構的設計，例如煞車系統對正確性以及快速反應時間的要求就比洗衣機高；又例如手機或<span
+lang=EN-US>PDA</span>的功能很多，而且可以讓使用者恣意操作，所以在設計使用者介面時，就要比只允許受過訓練的專人所使用的電子設備要嚴謹的多<span
+lang=EN-US>(</span>例如掛在候鳥或鯨魚身上的訊號發射器<span lang=EN-US>)</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level1 lfo8;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>驅動程式、系統、子系統與應用程式各層之間的溝通介面。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l10 level1 lfo8;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>是否使用物件導向觀念設計系統。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『如果從專案管理的角度來看，系統設計還必須注意到：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l30 level1 lfo9;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>人力與時程</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'> <span lang=EN-US>– </span>設計結果必須合理，沒有足夠的時間或人力來執行的設計就是失敗的設計。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l30 level1 lfo9;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>品質要求</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'> <span lang=EN-US>– </span>系統架構的設計確實有嚴謹與否之分，並可能直接影響最終產品的品質等級。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>如果再從系統的角度來看，要考慮的事情還有：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l12 level1 lfo10;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>即時</span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'> (Real Time)</span><span
+style='font-family:"微軟正黑體","sans-serif"'>的需求<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l12 level1 lfo10;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>多功</span></b><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>(multi-tasking </span><span
+style='font-family:"微軟正黑體","sans-serif"'>或<span lang=EN-US> multi-threading)</span>的需求<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l12 level1 lfo10;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>電源管理</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>的重要性<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l12 level1 lfo10;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>可擴充性</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>的重要性<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l12 level1 lfo10;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>可移植性</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>的重要性<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『說穿了就是要弄清楚產品規格才能開始進行系統設計；告訴你一個業界曾經發生過的實例：某軟體公司前後接了兩個不同客戶的產品開發案，因為應用程式幾乎一模一樣，所以老闆和<span
+lang=EN-US>sales</span>二話不說就接了下來；研發團隊也以為這個案子是個大補丸，認為只要用之前的系統改一改即可交差。結果是第二家客戶要求的產品造價較低，所以只能選用效能較差的<span
+lang=EN-US>CPU</span>與較少的記憶體，之前的系統架構與演算法幾乎完全不能用；最後的下場就是必須用更多的時間和人力來做完這個案子，不但時程<span
+lang=EN-US>delay</span>、開發費超出預算、而且還賠了公司商譽。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這麼嚴重啊？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『這就是我們專案管理中說的：<b
+style='mso-bidi-font-weight:normal'>範圍管理<span lang=EN-US>(Scope Management)</span></b>；在你還沒有弄清楚專案的範圍之前，你怎麼可能知道要如何設計系統架構？用茅屋的架構蓋大廈，或用鋼骨結構蓋平房都不對吧。上面那個例子就是想把<span
+lang=EN-US>F1</span>跑車的引擎裝到<span lang=EN-US>mini</span>裡，跑起來不散掉才有問題。電子產品的系統架構就如同房子的結構、車子的引擎，設計者不可不慎！』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc305013198"></a><a name="_Toc149018026"><span style='mso-bookmark:
+_Toc305013198'><span style='font-family:"微軟正黑體","sans-serif"'>系統架構<span
+lang=EN-US>-</span>從粗略到逐漸精細的方塊圖</span></span></a><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『因為你之前幫忙撰寫過產品規格，假設你對我們要做什麼樣的產品已經很清楚了，現在讓我們來看看系統架構到底長成什麼樣子；我相信軟體工程或者物件導向設計有很多方法論可以來描述一個系統，但實務上我個人覺得用方塊圖來描述系統架構是最好的選擇，這張圖是我們最粗略的系統架構圖：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:414pt;height:336pt'>
+ <v:imagedata src="/b2/CH04_02.files/image005.jpg" o:title="04-04-系統架構圖範例"/>
+</v:shape><![endif]--><![if !vml]><img width=552 height=448
+src="/b2/CH04_02.files/image006.jpg" v:shapes="_x0000_i1027"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446723"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-4</span>：系統架構圖範例</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『有了這樣的圖，是不是對我們的系統架構更加一目了然？我很喜歡這樣的圖示，因為一個方塊就對應了一個工作包裹<span
+lang=EN-US>(work package)</span>，不但便於管理，每一個方塊都可以再細分為較小的方塊圖，如此一直細分下去，就可以產生工作列表。當然你要用<span
+lang=EN-US>UML</span>或一些<span lang=EN-US>CASE<a style='mso-footnote-id:ftn2'
+href="#_ftn2" name="_ftnref2" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[2]</span></span><![endif]></span></span></a></span>工具來描述這樣的架構也可以，但合用的<span
+lang=EN-US>UML</span>或<span lang=EN-US>CASE</span>工具都很貴，而且通常學習曲線非常陡峭；以<span
+lang=EN-US>UML</span>為例，它用來描述一個系統的圖就有以下列表這麼多種，所以工程師要不就是看不懂，不然就是陽奉陰違，總之不怎麼愛用；所以實務上我喜歡上面那種一目了然的圖。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=139 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+  mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+  style='font-family:"微軟正黑體","sans-serif"'>觀點<span lang=EN-US><o:p></o:p></span></span></b></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+  mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:normal'><span
+  style='font-family:"微軟正黑體","sans-serif"'>圖形<span lang=EN-US><o:p></o:p></span></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=139 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+  style='mso-spacerun:yes'> </span></span><span style='font-family:"微軟正黑體","sans-serif"'>使用者模型觀點<span
+  lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>使用案例圖<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>(User Case Diagram)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=139 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>結構模型觀點<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>類別圖<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>(Class Diagram)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:12.0pt'>
+  <td width=139 rowspan=3 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>行為模型觀點<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>循序圖<span lang=EN-US> (Sequence
+  Diagram) </span>與 合作圖<span lang=EN-US> (Collaboration Diagram)<o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:12.0pt'>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>狀態圖<span lang=EN-US> (State Diagram)<o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:12.0pt'>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:12.0pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>活動圖<span lang=EN-US> (Activity
+  Diagram)<o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=139 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>實作模型觀點<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>元件圖<span lang=EN-US> (Component
+  Diagram)<o:p></o:p></span></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes'>
+  <td width=139 valign=top style='width:104.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>環境模型觀點<span lang=EN-US><o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=336 valign=top style='width:252.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  style='font-family:"微軟正黑體","sans-serif"'>佈署圖<span lang=EN-US> (Deployment Diagram)<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+  lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446724"><span style='font-family:"微軟正黑體","sans-serif"'>表<span
+lang=EN-US>4-1</span>：<span lang=EN-US>UML</span>描述系統所需要的圖</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『是啊，我以前在學校修物件導向軟體設計的時候，其實觀念都已經了解了，但考試時這些<span
+lang=EN-US>UML</span>的圖總是會搞混；老師總是說實務上只要使用好的商業軟體就沒問題了，沒想到真正的“實務”是這個樣子，難道其他軟體公司也都不用<span
+lang=EN-US>UML</span>或<span lang=EN-US>CASE</span>工具的嗎？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『就我看到的軟體開發團隊領導人都和我一樣：心有餘而力不足；這就和品質系統一樣，我很想照著專家學者研究出來的方法論去做，但確實是有實際上的困難；與其最後變成四不像，不如就遵照這些方法論的精神，因地制宜，制定可施行的方法。我一直夢想著有一天，如果我能接到一個人力、成本或時程沒有限制的案子，我一定要好好地按部就班的施行品質系統和軟體工程方法論；但夢想終究是夢想<span
+lang=EN-US>…<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>不好意思，離題了；接下來我分別對這些方塊做一個簡單的介紹，你可以對系統架構有進一步的了解。我們看到系統架構分為多個層次，由底層往上依序是：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l19 level1 lfo11;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>硬體層：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>這一層有兩個方塊，一個是<span lang=EN-US>Real
+Target(</span>就是真正的硬體<span lang=EN-US>)</span>，另一個是運行於<span lang=EN-US>PC</span>上的模擬器<span
+lang=EN-US>(Simulator)</span>。前者比較容易理解，在此不再贅述；所謂的模擬器，簡單的說就是要實現一個<span
+lang=EN-US>PC</span>程式，而這個程式必須和我們產品的硬體具有相同行為模式。<b style='mso-bidi-font-weight:
+normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:39.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='font-family:"微軟正黑體","sans-serif"'>舉例來說，我們的硬體有<span lang=EN-US>8x8</span>的鍵盤以及<span
+lang=EN-US>160x160</span>的<span lang=EN-US>LCD</span>，這個<span lang=EN-US>PC</span>程式就應該會用<span
+lang=EN-US>64</span>個<span lang=EN-US>button</span>模擬鍵盤，以及長<span lang=EN-US>160</span>點，寬<span
+lang=EN-US>160</span>點的視窗來模擬<span lang=EN-US>LCD</span>。<span lang=EN-US>(</span>模擬器相關細節請參考第<span
+lang=EN-US>4-5</span>節與第九章<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>把模擬器和真實硬體畫在同一層的意義是：希望運行於真實硬體與模擬器上的程式<span
+lang=EN-US>(</span>包含系統與應用程式<span lang=EN-US>)</span>就是同一套</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>，亦即系統工程師或應用程式工程師可以先在<span lang=EN-US>PC</span>上用模擬器開發，同一套程式經過<span
+lang=EN-US>cross compiler</span>編譯後就可以在真實硬體上執行，而且執行結果必須一致。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l19 level1 lfo11;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>驅動程式層：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>這一層和硬體完全相關，除了要實現驅動周邊設備的功能外，還必須設計可讓其他程式模組呼叫的<span
+lang=EN-US>API</span>。必須注意的是，模擬器必須實現具有相同行為模式的同一組<span lang=EN-US>API</span>，則應用程式才能同時在真實硬體與模擬器上開發與執行。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='font-family:"微軟正黑體","sans-serif"'>在此有必要解釋一下<span lang=EN-US>HAL(Hardware
+abstraction Level</span>硬體抽象層<span lang=EN-US>)</span>這個名詞；驅動程式有一個重要的任務，就是必須設法隱藏所有的硬體特性，使系統中其他的程式只要呼叫驅動程式層所提供的<span
+lang=EN-US>API</span>就可以操作硬體，所以有時我們會把驅動程式稱為<span lang=EN-US>HAL</span>。設計<span
+lang=EN-US>HAL</span>最大的好處是即便更換硬體，只要驅動程式包裝出相同的介面，之前專案的程式幾乎都可重複使用在新的專案中。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l19 level1 lfo11;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>作業系統層<span
+lang=EN-US>(I) – </span>和硬體相關的部份：</span></b><span style='font-family:"微軟正黑體","sans-serif"'>稍具複雜度的嵌入式系統還是需要一個作業系統<span
+lang=EN-US>(OS)</span>，一般稱用於嵌入式系統的<span lang=EN-US>OS </span>為<span lang=EN-US>RTOS(Real
+time OS</span>，請參考第<span lang=EN-US>4-4</span>節<span lang=EN-US>)</span>，基本上功能都相當簡單，當然無法和<span
+lang=EN-US>Windows</span>或<span lang=EN-US>Linux</span>等相提並論，但用於開發一般電子產品卻已綽綽有餘。世面上可選用的<span
+lang=EN-US>RTOS</span>很多，通常<span lang=EN-US>CPU</span>廠商為了加速客戶開發產品的速度，都會先行把某個作業系統移植到該<span
+lang=EN-US>CPU</span>上，例如幾乎現在所有販售<span lang=EN-US>ARM 9</span>系列<span
+lang=EN-US>CPU</span>評估板的廠商，都會用<span lang=EN-US>Linux</span>當評估板的展示程式。而本章範例圖中的<span
+lang=EN-US>RTOS – ITron</span>，實際應該稱為μ<span lang=EN-US>ITron(MicroITron)</span>，是日本國家制定的嵌入式作業系統標準，基本上日系<span
+lang=EN-US>CPU</span>販售時都會提供一個符合μ<span lang=EN-US>ITron</span>標準的<span
+lang=EN-US>RTOS</span>。<span lang=EN-US style='display:none;mso-hide:all'>S</span><span
+style='display:none;mso-hide:all'>樣的的很多卻已經</span><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='font-family:"微軟正黑體","sans-serif"'>我們把作業系統依是否與硬體相關分為兩個部份，這樣分的目的是因為模擬器必須另外模擬和硬體相關的功能，而與硬體無關的功能則只需要一套程式即可。與硬體相關的功能包含：多工功能<span
+lang=EN-US>(Task</span>或<span lang=EN-US>Thread</span>切換時必須保留目前所有<span
+lang=EN-US>CPU</span>的狀態<span lang=EN-US>)</span>、中斷控制、<span lang=EN-US>RTC(Real-Tim
+clock)</span>、以及<span lang=EN-US>Timer</span>功能等等。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>(</span><span style='font-family:"微軟正黑體","sans-serif"'>以上描述的驅動程式層與作業系統層<span
+lang=EN-US>(I)</span>是硬體相關的系統部分<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l16 level1 lfo12;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>作業系統層<span
+lang=EN-US>(II) – </span>與硬體無關的部份：</span></b><span style='font-family:"微軟正黑體","sans-serif"'>與硬體無關的功能包含：<span
+lang=EN-US>task</span>或<span lang=EN-US>thread</span>間通訊或同步的機制<span lang=EN-US>(</span>如<span
+lang=EN-US>message box</span>、<span lang=EN-US>message queue</span>、<span
+lang=EN-US>event</span>、<span lang=EN-US>semaphore</span>、<span lang=EN-US>Mutex
+</span>等<span lang=EN-US>)</span>以及動態記憶體管理功能等<a style='mso-footnote-id:ftn3'
+href="#_ftn3" name="_ftnref3" title=""><span class=MsoFootnoteReference><span
+lang=EN-US><span style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[3]</span></span><![endif]></span></span></span></a>。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l16 level1 lfo12;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>圖形函式庫<span
+lang=EN-US>(Graphics Library)</span>以及圖形使用者介面<span lang=EN-US>(GUI)</span><span
+style='display:none;mso-hide:all'>介面面次幫忙撰寫過產品規格，我與宇以及</span>：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>如果產品有任何形式的螢幕時，系統必須包含基本的圖形函式庫<span
+lang=EN-US>(</span>如畫點、線、矩形、圓形等等<span lang=EN-US>)</span>，以及簡單的圖型使用者介面<span
+lang=EN-US>(GUI – Graphics User Interface)</span>子系統，讀者可將其想像成一個簡單的視窗系統。後者乃基於前者來實現，但較為複雜；<span
+lang=EN-US>GUI</span>子系統除了提供基本圖形介面操作元件外<span lang=EN-US>(</span>稱為<span
+lang=EN-US>control</span>或<span lang=EN-US>widget</span>，例如<span lang=EN-US>Button</span>、<span
+lang=EN-US>List-Box</span>、<span lang=EN-US>Edit-Box</span>、<span lang=EN-US>Pop-Up
+Message Box</span>、<span lang=EN-US> Menu</span>以及<span lang=EN-US>Combo and
+Ratio box…</span>等等<span lang=EN-US>)</span>，還必須處理字型顯示，並規定圖形化應用程式的寫作風格等等。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='font-family:"微軟正黑體","sans-serif"'>要注意的是，這裡提到的<span lang=EN-US>Graphics
+Library</span>以及<span lang=EN-US>GUI</span>僅包含較通用的功能，所以在設計上必須考慮到擴充的可能性；這有點類似物件導向中繼承的概念，如果某款產品有比較特殊的<span
+lang=EN-US>UI</span>風格要求，應用程式工程師可以自行逕行擴充，不用更改系統層次的設計。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l16 level1 lfo12;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>其他子系統：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>例如網路通訊協定、解壓縮函式庫、檔案系統<span lang=EN-US>…</span>等獨立的功能模組。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>(</span><span style='font-family:"微軟正黑體","sans-serif"'>以上三層都算是系統功能，除了與硬體無關外，其所提供的功能都是屬於比較通用的；我們希望<b
+style='mso-bidi-font-weight:normal'>同樣的系統模組可以用來開發幾個不同的產品</b>，亦即產品特有的功能應該在應用程式層之中實現才合理。<span
+lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l18 level1 lfo13;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>基於產品特色的專屬功能函式庫：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>一個電子產品可能包含不只一個應用程式<span lang=EN-US>(</span>想想<span
+lang=EN-US>PDA</span>、手機或電子辭典的例子，即便是洗衣機也有多種洗衣模式、以及脫水、烘乾的功能吧<span lang=EN-US>)</span>，將許多會共用的模組抽取出來成為函式庫是比較好的選擇。一個設計得好的函式庫就像一個物件一樣，必須有自己的屬性、私用函數<span
+lang=EN-US>(private method)</span>與公用<span lang=EN-US>API(public method)</span>，原本歸類於應用程式的模組，若可獨立於其他應用程式運作，經嚴格測試後，亦可將其視為系統模組一員。<span
+style='display:none;mso-hide:all'>視可獨立於其他應用程式運作，經嚴格測試後，也可將將其格測試後庫<span
+lang=EN-US>t</span></span><b style='mso-bidi-font-weight:normal'><span
+lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:63.0pt;mso-para-margin-left:3.25gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:-24.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l18 level1 lfo13;tab-stops:list 63.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif"'>應用程式層：</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>應用程式就是利用上述各層提供的<span lang=EN-US>API</span>，實現產品功能的程式。<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US><o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;text-indent:27.0pt;mso-char-indent-count:
+2.25;line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>(</span><span style='font-family:"微軟正黑體","sans-serif"'>以上兩層只與某一產品的特有功能有關，都算是應用程式，不能算是系統程式。<span
+lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『應用程式是電子產品的主角，其功能需求通常比較複雜；而<b
+style='mso-bidi-font-weight:normal'>底層的模組往往要求更高的穩定度或具有特殊的性能需求<span lang=EN-US>(</span>如省電<span
+lang=EN-US>)</span></b>，所以在設計系統架構時，必須注意以下幾點：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l13 level1 lfo14;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>API</span><span
+style='font-family:"微軟正黑體","sans-serif"'>必須簡單明瞭<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l13 level1 lfo14;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>程式模組間的相關性越低愈好<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l13 level1 lfo14;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>設計範圍應該包含各模組的單元測試與壓力測試<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l13 level1 lfo14;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>利用<span lang=EN-US>callback</span>的觀念，讓應用程式工程師可以嵌入程式到系統中<a
+style='mso-footnote-id:ftn4' href="#_ftn4" name="_ftnref4" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[4]</span></span><![endif]></span></span></span></a><span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我知道系統程式通常會比應用程式早完成，所以在開始整合之前可以有比較充裕的時間做測試並確保系統穩定。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『沒錯，但這並不代表應用程式的穩定度就不重要。主要是因為系統程式穩定度的影響範圍通常是全域的，例如記憶體的<span
+lang=EN-US>timing</span>設定有誤，則系統在任何時間點都可能會當掉；如果在系統還不穩定的狀況下進行應用程式測試，當測試人員做了很多操作後當機，那麼實在很難釐清到底是系統的問題還是應用程式的問題。而且同一組系統程式可能會用在不同的產品開發案上，所以其穩定度更顯重要。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc305013199"><span style='font-family:"微軟正黑體","sans-serif"'>資料流</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這樣的系統架構圖的確是簡單明瞭，但只能顯示各功能區塊間的上下關係，並無法描述資訊與事件是怎麼傳遞的。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『沒錯，這種系統架構圖的用途類似<span
+lang=EN-US>UML</span>的元件圖；對於資料流，我們同樣有張簡單明瞭的資料流架構圖：』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1028" type="#_x0000_t75" style='width:405pt;height:388.5pt'>
+ <v:imagedata src="/b2/CH04_02.files/image007.jpg" o:title="04-05-資料流架構圖"/>
+</v:shape><![endif]--><![if !vml]><img width=540 height=518
+src="/b2/CH04_02.files/image008.jpg" v:shapes="_x0000_i1028"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446725"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-5</span>：資料流架構圖</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『計算機系統的原理不外乎處理輸入事件，產生結果並輸出，嵌入式系統也不例外；讓我們從周邊裝置狀態發生變化開始講起：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:66.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l23 level2 lfo4;tab-stops:list 66.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>通常輸入的來源有二，一種是由監督程式<span
+lang=EN-US>(monitor)</span>持續主動地監督某個周邊裝置的狀態是否改變<span lang=EN-US>(</span>我們稱這種方法為<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US>polling</span>或<span
+lang=EN-US>busy waiting</span></b><span lang=EN-US>)</span>，另一種則是由周邊裝置主動產生<b
+style='mso-bidi-font-weight:normal'>中斷</b>；不管是<span lang=EN-US>polling</span>或中斷，基本上都是因為周邊裝置的狀態產生變化，例如使用者點觸了觸控式螢幕、或溫度偵測器發現異常溫度等等。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:66.0pt;text-indent:-18.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l23 level2 lfo4;tab-stops:list 66.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>當某裝置狀態發生變化，相應的驅動程式會被執行<span
+lang=EN-US> - </span>如果是<span lang=EN-US>polling</span>方式，則驅動程式是由監督程式所引發；若是中斷的方式，則相應的中斷處理程式<span
+lang=EN-US>(ISR)</span>會被執行。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:66.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l23 level2 lfo4;tab-stops:list 66.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>ISR(</span><span
+style='font-family:"微軟正黑體","sans-serif"'>以下就用中斷方式來說明<span lang=EN-US>)</span>只會馬上判斷硬體狀態發生了什麼變化<a
+style='mso-footnote-id:ftn5' href="#_ftn5" name="_ftnref5" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[5]</span></span><![endif]></span></span></span></a>，並且把新的狀態往上層送<span
+lang=EN-US>(</span>例如哪個<span lang=EN-US>key</span>被按下<span lang=EN-US>)</span>。所謂的傳送方式有很多，最簡單的方式是設定某個全域變數，上層程式只要讀取這個變數就知道某個硬體事件發生了；如果硬體事件發生的很頻繁，例如網路的封包，只用一個全域變數傳遞資訊勢必會遺失很多的硬體事件，此時就要用其他較複雜<span
+style='display:none;mso-hide:all'>富　咱包　定可能是：</span>的方式，如<span lang=EN-US>message
+queue</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:66.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l23 level2 lfo4;tab-stops:list 66.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>d.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>系統層會有一個無限迴圈，迴圈內的工作就是持續檢查有沒有新的硬體事件到達，若有則處理之，若無則系統可暫時進入<span
+lang=EN-US>idle mode</span>，<span lang=EN-US>pseudo code</span>如下：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>while(1)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>os_MSG new_message ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>if(os_get_message(&amp;new_message))<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>在<span lang=EN-US>message queue</span>中有新的<span lang=EN-US>message<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>//
+--&gt; </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>處理新的<span lang=EN-US>message<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>os_process_message(&amp;new_message)
+;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>else<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>沒有新的<span lang=EN-US>message, </span>此時系統可以進入待機模式<span lang=EN-US>(idle
+mode)<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>當有新的硬體事件發生時<span lang=EN-US>, </span>系統會自動離開<span lang=EN-US>idle
+mode<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>繼續執行<span lang=EN-US>while(1)</span>迴圈中開頭檢查<span lang=EN-US>message
+queue</span>的動作<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><span style='mso-tab-count:1'>      </span>drv_enter_idle_mode()
+;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}<o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446726"><span style='font-family:"微軟正黑體","sans-serif"'>程式<span
+lang=EN-US>4-1</span>：系統中的<span lang=EN-US>message loop</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:66.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-18.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l23 level2 lfo4;tab-stops:list 66.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>e.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"微軟正黑體","sans-serif"'>當硬體事件被系統處理完之後，系統會決定是否將其送給應用程式；同樣的，系統程式與應用程式間有許多不同的溝通方式，例如應用程式可以對其欲處理的硬體事件註冊<span
+lang=EN-US>callback function</span>，則當該事件發生時，系統自然會執行應用程式的事件處理函式<span
+style='display:none;mso-hide:all'>的去用程式</span>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『在設計階段，資料流架構圖是不是也要逐次細分下去？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『當然！根據研究，圖形表示是最容易讓人的大腦理解並留下記憶的方式；實務上也是如此，好的圖示勝過千言萬語，尤其作軟體設計的人，一定要學會用圖形表達系統架構與資料流。當架構圖畫完後，負責文件寫作的同仁只要按圖說故事就可以了。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc305013200"></a><a name="_Toc149018029"><span style='mso-bookmark:
+_Toc305013200'><span style='font-family:"微軟正黑體","sans-serif"'>硬體相關與硬體無關</span></span></a><span
+style='mso-bookmark:_Toc305013200'><span style='font-family:"微軟正黑體","sans-serif"'>
+<span lang=EN-US>– </span>可重用性<span lang=EN-US>&amp;</span>可移植性</span></span><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『在設計用於電子產品的系統時還有一點必須注意：<b
+style='mso-bidi-font-weight:normal'>要確實把硬體相關與硬體無關的模組分開</b>。原因是<span lang=EN-US>
+- </span>雖然每一個嵌入式系統或電子產品各有其特性，但<b style='mso-bidi-font-weight:normal'>可移植到其他平台</b>並<b
+style='mso-bidi-font-weight:normal'>重複使用</b>的程式模組對軟體團隊而言是最重要的資產。一般軟體方法論都只提到軟體模組必須可以重複使用<span
+lang=EN-US>(Reusable)</span>，但在嵌入式系統的領域中，硬體平台會隨開發專案不同而改變，所以可移植性<span
+lang=EN-US>(Portability)</span>也是不可忽略的設計重點。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>和硬體相關的程式模組可移植性與可重用性都很低，除非硬體平台完全相同，否則該程式模組幾乎不具可移植性。舉例來說，如果某個程式模組中包含<span
+lang=EN-US>ARM 9</span>的組合語言，要不經修改就將其移植到另一個<span lang=EN-US>CPU(</span>如<span
+lang=EN-US>PowerPC)</span>上是不可能的事情。所以我們在設計驅動程式時通常還會將其分成兩層，以下圖為例：其中只有<span
+lang=EN-US>hw_key_api_1()</span>所在的模組是與硬體相關的，其上層的兩個模組都具可移植性與可重用性。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:477pt;height:294.75pt'>
+ <v:imagedata src="/b2/CH04_02.files/image009.jpg" o:title="04-06-驅動程式的兩個層次 - 硬體相關與硬體無關"/>
+</v:shape><![endif]--><![if !vml]><img width=636 height=393
+src="/b2/CH04_02.files/image010.jpg" v:shapes="_x0000_i1029"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446727"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-6</span>：驅動程式的兩個層次<span lang=EN-US> - </span>硬體相關與硬體無關</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這個道理我懂，但我們的系統不是幾乎都是用<span
+lang=EN-US>C</span>寫的嗎？既然是用<span lang=EN-US>C</span>寫的，移植應該很容易啊，把硬體相關的部份改一改就好了不是嗎？為什麼還要分那麼多層？似乎有點疊床架屋的感覺！』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『我以前也是這麼認為，把程式看懂，然後再改一改不就可以重新使用了嗎？我就不相信有程式是我看不懂的。但當我要管理整個專案，負責控管軟體系統的品質時，我就不是這麼想了。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『為什麼？這樣的想法有錯嗎？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『對工程師來說沒有錯，因為工程師總是樂於接受挑戰；但我的經驗是：第一，世界上真的有看不懂也改不動的程式，要花很長時間才能看得懂、改得動，超出了專案允許的時間，則相當於看不懂、改不動，第二，以我身為管理者的角度來看，所謂可重複使用的軟體模組應該是經過測試與品質管制的，只要經過任何形式的修改，即便是由天才工程師經手，這個模組的品質就無法被信任，亦即仍必須經過測試與品質管理流程。當然透過修改既有的程式模組，達到重複使用的目的，通常也能夠縮短新專案的開發時間，但這樣的模組會帶來變數，不能算是軟體研發團隊的資產。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>在嵌入式系統的領域裡，最簡單的原則是：<b
+style='mso-bidi-font-weight:normal'>在設計階段就把硬體相關與硬體無關的模組明確地區分開</b>，<b
+style='mso-bidi-font-weight:normal'>而且各模組之間只能使用公開的<span lang=EN-US>API</span>來溝通</b>，你可以從我們的系統架構圖中清楚地感受到這種觀念的落實。管理階層必須嚴格要求所有工程師，在和硬體無關的模組中絕對不能寫入和硬體相關的程式。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>但是當專案進行到後期時，工程師在時間緊迫的狀況下，改<span
+lang=EN-US>bug</span>時為了圖方便就會忘了<span lang=EN-US>(</span>或故意忽略<span lang=EN-US>)</span>所有的原則，例如全域變數亂用、應用程式中插入組合語言等等；而管理階層在那個時候也沒有時間作<span
+lang=EN-US>code review</span>，只能默許這種不對的狀況發生。當專案結束後再回頭看程式碼，只能用千瘡百孔來形容 <span
+lang=EN-US>– </span>雖然所有的程式都是經過驗證的，但可重複使用的部分卻少之又少。等到下個專案，即便產品性質類似，但可能換了另一批工程師，因為改不動既有的某些程式模組，結果只有重做一途；這種浪費對軟體團隊或公司來說都是很大的傷害。<span
+style='display:none;mso-hide:all'>會有許的時間模組通常也是可以縮短新專案的開發時間，但這和的開發辭就經過</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『如果照你說的，即便設計階段把各個模組做好分類，也無法避免工程師不按照規定寫程式囉？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『不是沒有辦法，只是難免有漏網之魚；當設計工作完成，工程師開始寫程式後，我們會安排密集的<span
+lang=EN-US>code review</span>，所以可以在開發中期保證工程師都會按照設計結果來寫程式。在開發後期，工程師忙著除錯時，小主管們此時可能沒那麼多緊急的事情要忙，我會要求他們有空就去<span
+lang=EN-US>server</span>看看修改過的程式有沒有問題，我有空時我也會去看，若發現問題會先記下來，然後在相關工程師不那麼忙的時候要求其改善；這麼做或多或少可以維護程式的寫作品質、可重用性與可移植性。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc305013201"></a><a name="_Toc149018027"><span style='mso-bookmark:
+_Toc305013201'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>System
+Configuration</span></span></a><span style='mso-bookmark:_Toc305013201'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'> – </span></span><span
+style='mso-bookmark:_Toc305013201'><span style='font-family:"微軟正黑體","sans-serif"'>可擴充性<span
+lang=EN-US>&amp;</span>可調整性</span></span><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『有件事情我覺得很奇怪，在設計文件中有居然包含了一個程式檔，叫做<span
+lang=EN-US>sys_config.h</span>，裡面定義了一堆巨集常數<span lang=EN-US>(MACRO)</span>；其他設計文件則解釋說：這個<span
+lang=EN-US>.h</span>檔中定義了系統裡所有可調整的組態，在編譯系統之前可以透過修改這個<span lang=EN-US>.h</span>檔來設定系統的功能與特性。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>我的問題是，嵌入式系統不是都是專用系統嗎？為什麼還要做到可以調整組態？而且一個<span
+lang=EN-US>.h</span>檔如何能實現系統組態設定？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『在設計嵌入式系統的系統架構時，還必須考慮到兩個特性，一個是可擴充性<span
+lang=EN-US>(Scalability)</span>，另一個是可調整性<span lang=EN-US>(Reconfiguration)</span>，基本上這兩種特性是表示差不多的概念
+<span lang=EN-US>– </span>即<b style='mso-bidi-font-weight:normal'>系統必須高度的模組化</b>，<b
+style='mso-bidi-font-weight:normal'>在不同的應用時可選用不同的模組來組成系統</b>。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>舉例來說，假設系統中實現了三種不同演算法的動態記憶體管理機制，產品<span
+lang=EN-US>A</span>的應用較簡單，根本用不到動態記憶體管理功能；產品<span lang=EN-US>B</span>的功能也不複雜，只要用到較簡單的演算法；而產品<span
+lang=EN-US>C</span>因為要實現<span lang=EN-US>Java</span>虛擬機，必須要有可靠性較高的動態記憶體管理機制。假設這三種產品其它功能完全相同，我們當然希望不要設計三套系統，如果能透過某種方式就可以很容易地抽換系統的某個功能，那麼只要用一套系統程式，就可以做出這三種產品的系統程式，並分別滿足各個產品特性的需求。因為功能是可抽換的，所以實際運行於機器中的系統並沒有多餘的功能，自然就不會浪費程式空間<a
+style='mso-footnote-id:ftn6' href="#_ftn6" name="_ftnref6" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:12.0pt;font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:
+"Times New Roman";mso-font-kerning:1.0pt;mso-ansi-language:EN-US;mso-fareast-language:
+ZH-TW;mso-bidi-language:AR-SA'>[6]</span></span><![endif]></span></span></span></a>，當然也不違背嵌入式系統或電子產品必須採用專用系統的特色。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>這就有點像編譯<span
+lang=EN-US>Linux</span>核心時要先執行“<span lang=EN-US>make config</span>”一樣，你可以選擇要把哪些功能加到新的核心程式裡，例如某某網路卡、顯示卡的驅動程式，甚至是否支援<span
+lang=EN-US>TCP/IP</span>網路功能等等；<span lang=EN-US>Linux</span>核心的選項之多，往往讓初學者不知所措，但換個角度看，這表示<span
+lang=EN-US>Linux</span>核心的可擴充性和可調整性很高。下圖是嵌入式<span lang=EN-US>Linux – </span>μ<span
+lang=EN-US>Clinux</span>編譯核心可選擇的組態：<span style='display:none;mso-hide:all'>品個產品方式能玩　的東西者驅動程式</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1030" type="#_x0000_t75" style='width:510pt;height:605.25pt'>
+ <v:imagedata src="/b2/CH04_02.files/image011.jpg" o:title="04-07-uclinux_xconfig"/>
+</v:shape><![endif]--><![if !vml]><img width=680 height=807
+src="/b2/CH04_02.files/image012.jpg" v:shapes="_x0000_i1030"><![endif]><o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446728"><span style='font-family:"微軟正黑體","sans-serif"'>圖<span
+lang=EN-US>4-7</span>：設定μ<span lang=EN-US>Clinux</span>核心的組態</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我還是不懂，為什麼這樣勾選之後，就會影響到有哪些模組會被加入新核心？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『我們系統可供調整的組態<span
+lang=EN-US>(configuration)</span>當然沒有<span lang=EN-US>Linux</span>那麼多，也沒有像上圖那麼好用的工具，但用到的程式原理是一樣的；首先讓我們回頭來看我們系統中的<span
+lang=EN-US>sys_config.h</span>：<span style='display:none;mso-hide:all'>域變數統中況的多吧</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>/********************************************************************<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:1'>        </span>File Name :
+sys_config.h<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>********************************************************************/<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>常數定義<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+_HW_CONFIG_FALSE <span style='mso-tab-count:1'>        </span>0<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+_HW_CONFIG_TRUE <span style='mso-tab-count:1'> </span>1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+KME_MODEL_A<span style='mso-tab-count:2'>            </span>1<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+KME_MODEL_B<span style='mso-tab-count:2'>            </span>2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+KME_MODEL_C<span style='mso-tab-count:2'>            </span>3<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義產品名稱<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+PRODUCT_NAME <span style='mso-tab-count:4'>                              </span>KME_MODEL_B<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義系統是否支援某些硬體的驅動程式<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+HW_MUSIC_MP3_SUPPORT<span style='mso-tab-count:3'>                     </span><span
+style='mso-tab-count:2'>                </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+HW_MR_SENSOR_SUPPORT<span style='mso-tab-count:3'>                    </span><span
+style='mso-tab-count:1'>        </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+HW_REMOTE_CONTROLLER_SUPPORT<span style='mso-tab-count:2'>                </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+HW_SD_CARD_SUPPORT<span style='mso-tab-count:4'>                          </span><span
+style='mso-tab-count:1'>        </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義<span lang=EN-US>LCD</span>相關屬性<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#if
+(PRODUCT_NAME == KME_MODEL_A)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:1'>        </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>產品<span lang=EN-US>2</span>的<span lang=EN-US>LCD</span>解析度為<span
+lang=EN-US>160x160<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'><span style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>#define LCD_RESOLUTION_WIDTH <span
+style='mso-tab-count:3'>                     </span>160<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>#define LCD_RESOLUTION_HEIGHT <span
+style='mso-tab-count:3'>                    </span>160<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#else<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>#define LCD_RESOLUTION_WIDTH <span
+style='mso-tab-count:3'>                     </span>160<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>#define LCD_RESOLUTION_HEIGHT <span
+style='mso-tab-count:3'>                    </span>240<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#endif<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+LCD_LCD_COLOR_LEVEL <span style='mso-tab-count:3'>                  </span>8<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+WITH_TOUCH_PANEL<span style='mso-tab-count:3'>                        </span>_HW_CONFIG_TRUE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>定義系統是否支援某些子系統<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define
+SYS_TCPIP_SUPPORT<span style='mso-tab-count:3'>                 </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#define SYS_FAT32_SUPPORT<span
+style='mso-tab-count:3'>                 </span>_HW_CONFIG_FALSE<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446729"><span style='font-family:"微軟正黑體","sans-serif"'>程式<span
+lang=EN-US>4-2</span>：<span lang=EN-US>System Configuration (sys_config.h)</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『<span lang=EN-US>Linux</span>雖然提供了一個圖形化的介面，可以讓使用者方便地設定核心的組態，但最終還是會產生一堆<span
+lang=EN-US>header file<a style='mso-footnote-id:ftn7' href="#_ftn7"
+name="_ftnref7" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[7]</span></span><![endif]></span></span></a></span>，其原理和我們系統中的<span
+lang=EN-US>sys_config.h</span>一樣，只是<span lang=EN-US>Linux</span>的選項比較多，而我們沒空去做一個圖形介面的組態工具罷了。用到的程式技巧只有一個：就是<b
+style='mso-bidi-font-weight:normal'><span lang=EN-US>C</span>語言的條件式編譯</b>，在<span
+lang=EN-US>sys_config.h</span>中定義了許多巨集常數，當賦予這些常數不同的值，<span lang=EN-US>C
+Preprocessor(C</span>前處理器<span lang=EN-US>)<a style='mso-footnote-id:ftn8'
+href="#_ftn8" name="_ftnref8" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[8]</span></span><![endif]></span></span></a></span>會依據程式中定義的巨集常數去含括或排除部份的程式，其產生的中間檔才會交給<span
+lang=EN-US>C</span>編譯器去產生真正的<span lang=EN-US>code</span>。好像說的有點複雜，我們來看一個範例就清楚了：<span
+style='display:none;mso-hide:all'>域變數統中況的多吧</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#include
+&lt;sys_config.h&gt;<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void my_function(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#ifdef (PRODUCT_NAME == KME_MODEL_B)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>和產品<span
+lang=EN-US>B</span>有關的程式區段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>product_B() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#else<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>這段程式給產品<span
+lang=EN-US>B</span>之外的產品使用<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>not_product_B() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#endif<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#if (HW_MUSIC_MP3_SUPPORT == _HW_CONFIG_TRUE)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>和播放<span
+lang=EN-US>MP3</span>有關的程式<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>play_mp3() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#else<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>系統不支援<span
+lang=EN-US>MP3</span>時採用這段<span lang=EN-US>code<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>do_nothing() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-spacerun:yes'> </span>#endif<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>}<o:p></o:p></span></p>
+
+<p class=a align=center style='text-align:center;line-height:18.0pt;mso-line-height-rule:
+exactly'><a name="_Toc164446730"><span style='font-family:"微軟正黑體","sans-serif"'>程式<span
+lang=EN-US>4-3</span>：條件式編譯的範例</span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『就以我們剛剛看過之<span
+lang=EN-US>sys_config.h</span>的內容為準，上面這個程式經<span lang=EN-US>C Preprocessor</span>後會產生什麼<span
+lang=EN-US>code</span>？<span style='display:none;mso-hide:all'>域變數統中況的多吧</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這個簡單，因為<span
+lang=EN-US>PRODUCT_NAME</span>被定義成<span lang=EN-US>KME_MODEL_B</span>，而<span
+lang=EN-US>HW_MUSIC_MP3_SUPPORT</span>則被定義成<span lang=EN-US>HW_CONFIG_FALSE</span>，所以第一個判對式為真<span
+lang=EN-US>(true)</span>，第二個判斷式為偽<span lang=EN-US>(false)</span>；那麼真正被編譯的程式應該是：<span
+style='display:none;mso-hide:all'>域變數統中況的多吧</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void my_function(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>和產品<span
+lang=EN-US>B</span>有關的程式區段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>product_B() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>系統不支援<span
+lang=EN-US>MP3</span>時採用這段<span lang=EN-US>code<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>do_nothing() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這樣我懂了，如果我們產品<span
+lang=EN-US>B</span>的下一代要新增播放<span lang=EN-US>MP3</span>的功能，其他的功能都不變；那麼我只要到<span
+lang=EN-US>sys_config.h</span>中把<span lang=EN-US>HW_MUSIC_MP3_SUPPORT</span>定義為<span
+lang=EN-US>HW_CONFIG_TRUE</span>，其他的應用程式<span lang=EN-US>(</span>如<span
+lang=EN-US>my_function())</span>都不需要修改，而這次真正被編譯的程式如下：<span style='display:none;
+mso-hide:all'>域變數統中況的多吧</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>void my_function(void)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>和產品<span
+lang=EN-US>B</span>有關的程式區段<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>product_B() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>和播放<span
+lang=EN-US>MP3</span>有關的程式<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>play_mp3() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>} <o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>專案經理：『是的，原理就是這樣簡單；重點是：<b
+style='mso-bidi-font-weight:normal'>這些可調整的系統組態應該盡量在設計階段的初期就要訂定好</b>，而且必須統一管理，並明確定義各個組態的意義；此來負責系統架構設計的同仁才有遵循的依據，基本上每一個組態都應該是一個很獨立的模組，所以當其不加入系統時，也不會對其他程式模組造成影響；這也是為什麼<span
+lang=EN-US>sys_config.h</span>會出現在系統設計文件裡的原因。<span style='display:none;
+mso-hide:all'>域變數統中況的多吧</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<div style='mso-element:footnote-list'><![if !supportFootnotes]><br clear=all>
+
+<hr align=left size=1 width="33%">
+
+<![endif]>
+
+<div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn1' href="#_ftnref1"
+name="_ftn1" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>這個流程稱為</span><span
+lang=EN-US>-Booch</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>物件導向開發程序，其實不管是否使用物件導向的觀念來進行系統架構設計，基本觀念都是一樣的。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn2>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn2' href="#_ftnref2"
+name="_ftn2" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[2]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> CASE – </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>電腦輔助軟體工程，市面上的</span><span
+lang=EN-US>CASE</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>軟體通常都是天價，一般軟體研發團隊實在是用不起。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn3>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn3' href="#_ftnref3"
+name="_ftn3" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[3]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>這些功能不是本書的重點，在作業系統的教科書中都有提到這些功能，讀者可自行參考之。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn4>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn4' href="#_ftnref4"
+name="_ftn4" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[4]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> Callback function</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>是在系統軟體中廣泛使用的小技巧，嵌入式系統工程師請務必學會；請參閱附錄</span><span
+lang=EN-US>B</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>，透過其中的實例，應該很容易了解何謂</span><span
+lang=EN-US>callback function</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn5>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn5' href="#_ftnref5"
+name="_ftn5" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[5]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>因為中斷可能會發生在任何的時刻，當時</span><span
+lang=EN-US>CPU</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>可能正在執行任何的程式，所以</span><span
+lang=EN-US>ISR</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>會有很多</span><span
+lang=EN-US>API</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>不能使用，否則會有重複進入</span><span
+lang=EN-US>(reentry)</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的麻煩；詳細情形可參閱第</span><span
+lang=EN-US>7-8</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>節</span> <span
+lang=EN-US>– ISR</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>寫作注意事項。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn6>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn6' href="#_ftnref6"
+name="_ftn6" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[6]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>在嵌入式系統中記憶體空間是必須嚴格管制的，所以產品用不到的程式就不該被連結到最終產品的程式中。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn7>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn7' href="#_ftnref7"
+name="_ftn7" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[7]</span></span><![endif]></span></span></span></a><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>實際上是諸如名為</span><span lang=EN-US>config.in</span><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>的設定檔，這個設定檔會被</span><span lang=EN-US>make</span><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>程式使用；讀者可以不理會</span><span lang=EN-US>Linux</span><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>的細節，就想像其組態設定工具會產生一個全域的</span><span
+lang=EN-US>header file</span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>即可。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn8>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn8' href="#_ftnref8"
+name="_ftn8" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[8]</span></span><![endif]></span></span></span></a><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>又稱巨集處理器，</span><span lang=EN-US>C compiler</span><span
+style='font-family:"新細明體","serif";mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>在開始編譯之前會自動令其執行，它的功能有：表頭檔的含括、巨集的擴展、條件式編譯等。</span></p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

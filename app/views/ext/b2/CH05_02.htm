@@ -1,0 +1,3313 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="CH05_02.files/filelist.xml">
+<link rel=Edit-Time-Data href="CH05_02.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>5.2. Makefile &amp; 批次檔(.BAT)</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="State"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="chmetcnv"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>cebm</o:Author>
+  <o:LastAuthor>Win7User</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>10520</o:TotalTime>
+  <o:LastPrinted>2007-04-20T03:44:00Z</o:LastPrinted>
+  <o:Created>2011-09-28T15:03:00Z</o:Created>
+  <o:LastSaved>2011-09-28T15:03:00Z</o:LastSaved>
+  <o:Pages>13</o:Pages>
+  <o:Words>1905</o:Words>
+  <o:Characters>10862</o:Characters>
+  <o:Company>Home</o:Company>
+  <o:Lines>90</o:Lines>
+  <o:Paragraphs>25</o:Paragraphs>
+  <o:CharactersWithSpaces>12742</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>544x376</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="/b2/CH05_02.files/themedata.thmx">
+<link rel=colorSchemeMapping href="/b2/CH05_02.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-TW</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="99" Name="Hyperlink"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-alt:PMingLiU;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@微軟正黑體";
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:9.0pt;
+	margin-right:0cm;
+	margin-bottom:9.0pt;
+	margin-left:0cm;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:26.0pt;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:24.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	line-height:18.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:none;
+	tab-stops:right dotted 509.7pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-indent:-10.0pt;
+	mso-char-indent-count:-2.0;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	vertical-align:super;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+span.a
+	{mso-style-name:a;
+	mso-style-unhide:no;}
+p.a0, li.a0, div.a0
+	{mso-style-name:圖表;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:27.0pt;
+	mso-char-indent-count:2.25;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:新細明體;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("/b2/CH05_02.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("/b2/CH05_02.files/header.htm") fcs;
+	mso-endnote-separator:url("/b2/CH05_02.files/header.htm") es;
+	mso-endnote-continuation-separator:url("/b2/CH05_02.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 42.55pt 42.55pt 42.55pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-574196942;}
+@list l0:level1
+	{mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:518055090;}
+@list l1:level1
+	{mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:179331648;}
+@list l2:level1
+	{mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:882526590;}
+@list l3:level1
+	{mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:2092598824;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:114.05pt;
+	mso-level-number-position:left;
+	margin-left:114.05pt;
+	mso-para-margin-left:10.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:1503408774;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:90.05pt;
+	mso-level-number-position:left;
+	margin-left:90.05pt;
+	mso-para-margin-left:8.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:-518985800;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:66.05pt;
+	mso-level-number-position:left;
+	margin-left:66.05pt;
+	mso-para-margin-left:6.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:-466040282;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:42.05pt;
+	mso-level-number-position:left;
+	margin-left:42.05pt;
+	mso-para-margin-left:4.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:553965234;}
+@list l8:level1
+	{mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:901810416;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:18.05pt;
+	mso-level-number-position:left;
+	margin-left:18.05pt;
+	mso-para-margin-left:2.0gd;
+	text-indent:-18.0pt;
+	mso-char-indent-count:-2.0;
+	font-family:Wingdings;}
+@list l10
+	{mso-list-id:37509652;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-658843458 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l11
+	{mso-list-id:276984243;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1108026120 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:342586084;
+	mso-list-type:hybrid;
+	mso-list-template-ids:594605056 592073002 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l12:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l13
+	{mso-list-id:502285017;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1701304942 67698703 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l13:level1
+	{mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;}
+@list l14
+	{mso-list-id:508449726;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1345151606 617266676 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l14:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l15
+	{mso-list-id:558706031;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1467007410 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l16
+	{mso-list-id:752555208;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-644815600 -232075426 674552734 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l16:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l16:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:60.0pt;
+	mso-level-number-position:left;
+	margin-left:60.0pt;
+	text-indent:-18.0pt;}
+@list l17
+	{mso-list-id:876820018;
+	mso-list-template-ids:-939498674;}
+@list l17:level1
+	{mso-level-start-at:5;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.5pt;
+	text-indent:-40.5pt;}
+@list l17:level2
+	{mso-level-start-at:2;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:82.35pt;
+	text-indent:-54.0pt;}
+@list l17:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:128.7pt;
+	text-indent:-72.0pt;}
+@list l17:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:175.05pt;
+	text-indent:-90.0pt;}
+@list l17:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:221.4pt;
+	text-indent:-108.0pt;}
+@list l17:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.75pt;
+	text-indent:-144.0pt;}
+@list l17:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:332.1pt;
+	text-indent:-162.0pt;}
+@list l17:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:378.45pt;
+	text-indent:-180.0pt;}
+@list l17:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:424.8pt;
+	text-indent:-198.0pt;}
+@list l18
+	{mso-list-id:921639598;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1412445068 592073002 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l18:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l19
+	{mso-list-id:1032651595;
+	mso-list-type:hybrid;
+	mso-list-template-ids:618419668 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.75pt;
+	mso-level-number-position:left;
+	margin-left:48.75pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l20
+	{mso-list-id:1255360030;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1147948792 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l21
+	{mso-list-id:1281456551;
+	mso-list-template-ids:1338901292;}
+@list l21:level1
+	{mso-level-start-at:5;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l21:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l21:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l21:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l21:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l21:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l21:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l21:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l21:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l22
+	{mso-list-id:1437675423;
+	mso-list-type:hybrid;
+	mso-list-template-ids:735991050 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l22:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l23
+	{mso-list-id:1442606941;
+	mso-list-type:hybrid;
+	mso-list-template-ids:686867304 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l24
+	{mso-list-id:1445148733;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1980267266 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l25
+	{mso-list-id:1447386843;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1610715544 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l25:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l26
+	{mso-list-id:1589541026;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1896238638 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l27
+	{mso-list-id:1656758058;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1389479518 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l27:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l28
+	{mso-list-id:1664430407;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1996767876 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l28:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l29
+	{mso-list-id:1872258960;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1071093562 -292751808 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l29:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:68.25pt;
+	mso-level-number-position:left;
+	margin-left:68.25pt;
+	text-indent:-41.25pt;}
+@list l30
+	{mso-list-id:1895240805;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1512972104 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l30:level1
+	{mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;}
+@list l31
+	{mso-list-id:1991321550;
+	mso-list-template-ids:67698719;}
+@list l31:level1
+	{mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l31:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l31:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l31:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l31:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l31:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l31:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l31:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l31:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l32
+	{mso-list-id:2023429590;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-956240242 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l32:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-TW link=blue vlink=purple style='tab-interval:24.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoToc2 style='line-height:18.0pt;mso-line-height-rule:exactly;
+tab-stops:60.0pt right dotted 509.7pt'><a name="_Toc149018041"></a><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span><a href="#_Toc304920109"><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>5.2.</span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";color:windowtext;mso-no-proof:yes;
+text-decoration:none;text-underline:none'><span style='mso-tab-count:1'>      </span></span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>Makefile &amp; </span></span><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>批次檔<span lang=EN-US>(.BAT)</span></span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'> </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920109 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>1<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003100300039000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920110"><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>Makefile</span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920110 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>3<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003100310030000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920111"><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>非檔案名稱的<span
+lang=EN-US>Target</span></span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920111 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>8<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003100310031000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920112"><span style='mso-bookmark:_Toc149018041'><span
+style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>人工撰寫<span lang=EN-US>
+v.s. Automake tools</span></span></span><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='color:windowtext;display:none;mso-hide:screen;mso-no-proof:
+yes;text-decoration:none;text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920112 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>10<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003100310032000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoToc3><span style='mso-bookmark:_Toc149018041'></span><a
+href="#_Toc304920113"><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-no-proof:yes'>Debug</span></span><span
+style='mso-bookmark:_Toc149018041'><span style='font-family:"微軟正黑體","sans-serif";
+mso-no-proof:yes'>版與<span lang=EN-US>Release</span>版</span></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'><span style='mso-tab-count:1 dotted'>... </span></span></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-begin'></span><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'> PAGEREF _Toc304920113 \h <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='color:windowtext;
+display:none;mso-hide:screen;mso-no-proof:yes;text-decoration:none;text-underline:
+none'>11<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900320030003100310033000000</w:data>
+</xml><![endif]--></span></span><!--[if supportFields]><span style='mso-bookmark:
+_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'></span></a><span style='mso-bookmark:_Toc149018041'><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018041'></span><!--[if supportFields]><span
+style='mso-bookmark:_Toc149018041'></span><span style='mso-element:field-end'></span><![endif]--><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+style='mso-bookmark:_Toc149018041'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></span></p>
+
+<span style='mso-bookmark:_Toc149018041'></span>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:82.35pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l17 level2 lfo33'><a name="_Toc304920109"></a><a
+name="_Toc149018047"><span style='mso-bookmark:_Toc304920109'><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>5.2.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Makefile</span></span></a><span
+style='mso-bookmark:_Toc304920109'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>
+&amp; </span></span><span style='mso-bookmark:_Toc304920109'><span
+style='font-family:"微軟正黑體","sans-serif"'>批次檔<span lang=EN-US>(.BAT)</span></span></span><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『我先問你一個問題，<span
+lang=EN-US> Windows</span>的批次檔<span lang=EN-US>(.bat)</span>或<span lang=EN-US>UNIX</span>環境中的<span
+lang=EN-US>shell script file</span>都可以達到批量執行命令的需求，你覺得它們和<span lang=EN-US>makefile</span>有什麼不一樣？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『批次檔和<span
+lang=EN-US>DOS</span>活躍的時代我沒趕上，但是<span lang=EN-US>Linux</span>下的<span
+lang=EN-US>shell script</span>倒是寫了不少，我想他們是差不多的東西，只是<span lang=EN-US>shell
+script</span>的語法和功能似乎比批次檔複雜且強大一點；基本上它們也是一種程式語言，只是它們大部分的功能都是透過執行其他執行檔來達成。以開發環境的例子來說，假設我們有兩個檔案要編譯並連結，我可以透過<span
+lang=EN-US>Windows</span>的批次檔<span lang=EN-US>(sample.bat)</span>來做：』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+~~~~~~~~~~~~(REM</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>之後的文字代表是註解<span lang=EN-US>)~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+<span style='mso-tab-count:1'> </span>sample.bat<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<span
+style='mso-tab-count:2'>           </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>以下<span
+lang=EN-US>gcc</span>表示<span lang=EN-US>C</span>編譯器，<span lang=EN-US>ld</span>是<span
+lang=EN-US>linker</span>，兩者都是<span lang=EN-US>PC</span>上的執行檔<span lang=EN-US> <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>命令<span lang=EN-US>1</span>：編譯<span lang=EN-US>main.c, </span>產生目的檔<span
+lang=EN-US>main.obj<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>gcc
+-C main.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>命令<span lang=EN-US>2</span>：編譯<span lang=EN-US>fun.c, </span>產生目的檔<span
+lang=EN-US>fun.obj<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>gcc
+-C fun.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>命令<span lang=EN-US>3</span>：連結<span lang=EN-US>main.obj</span>與<span
+lang=EN-US>fun.obj, </span>產生執行檔<span lang=EN-US>main.exe<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+text-align:justify;text-justify:inter-ideograph;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>ld
+-o main.exe main.obj fun.obj<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833987"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-1</span>：批次檔範例 <span lang=EN-US>–
+sample.bat</span></span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『此後我只要在<span
+lang=EN-US>Windows</span>上開個<span lang=EN-US>DOS</span>視窗<span lang=EN-US>(</span>命令列<span
+lang=EN-US>)</span>，執行<span lang=EN-US>sample.bat</span>就會依序執行批次檔中的三個命令，一切無誤的話，就可以把執行檔做出來。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『假設你的系統總共有兩百個程式檔，如果使用批次檔來做，豈不是每次都要從頭到尾把所有程式檔都編譯一次才能產生執行檔，即便我只修改了一個檔案？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這樣的確很不方便。以前我還搞不太懂<span
+lang=EN-US>makefile</span>和批次檔的分別，它們都可以批次執行命令，現在我已經隱約知道它們的分別：<span lang=EN-US>make</span>是專門用於管理龐大軟體專案的工具，可以讓製作專案“最終結果”<span
+lang=EN-US>(</span>可能是執行檔或其他資料、文件檔<span lang=EN-US>)</span>的所有作業自動化，降低錯誤編譯的可能性。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『沒錯，<span
+lang=EN-US>make</span>就是專用於軟體專案管理的工具；除了語法以及許多功能細節不同外，<span lang=EN-US>makefile</span>和批次檔最大的不同就是<span
+lang=EN-US>make</span>會比較檔案之間的依存關係與日期以決定某個檔案是否為新版。舉例來說，<span lang=EN-US>make</span>可以比較程式檔<span
+lang=EN-US>(test.c)</span>和目的檔<span lang=EN-US>(test.obj)</span>的日期，如果<span
+lang=EN-US>test.c</span>的日期比<span lang=EN-US>test.obj</span>的日期新，那就表示有較新版本的程式；當有新版本的程式，則這次執行<span
+lang=EN-US>make</span>時，<span lang=EN-US>test.c</span>就應該被重新編譯。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>再進一步說下去，重新編譯後產生新的<span
+lang=EN-US>test.obj</span>，此時<span lang=EN-US>make</span>又可以比較此新編譯出來的<span
+lang=EN-US>test.obj</span>與執行檔<span lang=EN-US>(test.exe)</span>的日期，發現<span
+lang=EN-US>test.obj</span>比<span lang=EN-US>test.exe</span>新，亦即<span
+lang=EN-US>test.obj</span>是新版，所以此次執行<span lang=EN-US>make</span>就應該要重新連結，以產生新的執行檔。如果一開始<span
+lang=EN-US>test.c</span>就沒修改過，也就是說<span lang=EN-US>test.obj</span>比<span
+lang=EN-US>test.c</span>的日期新，則上述動作都不會被執行。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>Make</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif"'>就是依據這種簡單的邏輯在運作</span></b><span
+style='font-family:"微軟正黑體","sans-serif"'>，雖然還有些其他的小功能，但我們只要知道這個邏輯，幾乎就可以做到我們需要的功能。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>有些比較複雜的軟體專案，程式數量可能多達數百個，如果每次都要把所有程式檔編譯一次，那每次編譯時工程師只好喝杯咖啡、散散步再回來看結果，萬一編譯到後期才發現錯誤，那真的令人為之氣結。較複雜的軟體開發必定會採用團隊合作的方式，<span
+lang=EN-US>make</span>能夠在眾多的程式檔以及專案相關的資料中，持續追蹤各個組成元件間的相依關係；所以建構開發環境時一定是以<span
+lang=EN-US>makefile</span>為主，而不是批次檔！』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>筆者在此推薦兩本書給對<span
+lang=EN-US>make</span>較高深技巧有興趣的讀者，都有中文版：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-indent:3.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l26 level1 lfo23;tab-stops:list 24.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Programming
+with GNU Software/GNU</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif"'>程式設計</span></b><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>/O’REILLY</span><span
+style='font-family:"微軟正黑體","sans-serif"'>出版<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=right style='text-align:right;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;text-indent:3.0pt;line-height:
+18.0pt;mso-line-height-rule:exactly;mso-list:l26 level1 lfo23;tab-stops:list 24.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Managing
+Project with make/make</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif"'>專案開發工具</span></b><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'>/O’REILLY</span><span
+style='font-family:"微軟正黑體","sans-serif"'>出版<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=right style='margin-left:12.0pt;mso-para-margin-left:
+1.0gd;text-align:right;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920110"><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Makefile</span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『道理我大概懂了，如果要把上述的批次檔改成<span
+lang=EN-US>makefile</span>形式，應該怎麼做呢？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『即便<span
+lang=EN-US>Windows</span>上可以用的<span lang=EN-US>make</span>工具很多，如<span
+lang=EN-US>Visual Studio(namek.exe)</span>、<span lang=EN-US>C++
+builder(make.exe)</span>或<span lang=EN-US>GNU tool-chain</span>的<span
+lang=EN-US>Windows</span>版本 <span lang=EN-US>– Cygwin(</span>也叫<span
+lang=EN-US>make.exe)</span>，只要不用到比較艱澀的語法，<span lang=EN-US>makefile</span>的寫法都差不多。在看<span
+lang=EN-US>makefile</span>的實例之前，我先說明<span lang=EN-US>makefile</span>裡兩個重要的基本名詞：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Target(</span><span
+style='font-family:"微軟正黑體","sans-serif"'>目標<span lang=EN-US>) – </span>顧名思義，目標就是你希望<span
+lang=EN-US>make</span>幫你完成的事情，<span lang=EN-US>make</span>會到<span lang=EN-US>makefile</span>中尋找這個目標的定義。通常目標就是工程師想要產生的檔案名稱；例如“目標<span
+lang=EN-US>test.obj</span>”必須透過處理<span lang=EN-US>test.c</span>而來，而“目標<span
+lang=EN-US>test.exe</span>”則必須透過處理“<span lang=EN-US>test.obj</span>”而來。要注意的是，目標可以是也可以不是檔案名稱，等下我們可以舉一個常見的例子來加以說明。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Dependency(</span><span
+style='font-family:"微軟正黑體","sans-serif"'>依存關係<span lang=EN-US>) – makefile</span>中可以定義兩個目標之間是否有依存關係。還是用上面的例子來說明：我們必須定義<span
+lang=EN-US>test.c</span>與<span lang=EN-US>test.obj</span>有依存關係，所以當<span
+lang=EN-US>make</span>發現<span lang=EN-US>test.c</span>變動了，它才會去執行目標<span
+lang=EN-US>test.obj</span>；同理，<span lang=EN-US>test.obj</span>必然也與<span
+lang=EN-US>test.exe</span>有依存關係。此外有人把這種依存關係的定義簡化為：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-bidi-font-family:新細明體;mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-justify:
+inter-ideograph;line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+mso-bidi-font-family:新細明體;mso-font-kerning:0pt'>Prerequisite ( </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+mso-bidi-font-family:新細明體;mso-font-kerning:0pt'>必備檔案 ，<span lang=EN-US>e.g.
+test.c) - </span>一些能建立<span lang=EN-US> target(e.g. test.obj) </span>的程式檔案，一個<span
+lang=EN-US> target </span>通常由數個檔案建立</span></b><span style='font-family:"微軟正黑體","sans-serif";
+mso-bidi-font-family:新細明體;mso-font-kerning:0pt'>。 </span><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:51.0pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-24.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-list:l32 level1 lfo22;tab-stops:list 51.0pt'><![if !supportLists]><span
+lang=EN-US style='font-family:Wingdings;mso-fareast-font-family:Wingdings;
+mso-bidi-font-family:Wingdings'><span style='mso-list:Ignore'>l<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>新版<span lang=EN-US>(up to date)</span>的定義
+<span lang=EN-US>– </span>如果某個檔案<span lang=EN-US>(e.g. test.c)</span>比它所依存的檔案<span
+lang=EN-US>(e.g. test.obj)</span>還要新，則表示這個檔案有了新版本；同樣的，因為要有<span lang=EN-US>test.c</span>才可能產生<span
+lang=EN-US>test.obj</span>，如果<span lang=EN-US>test.c</span>的時間比<span
+lang=EN-US>test.obj</span>還要新，表示<span lang=EN-US>test.c</span>被修改過，亦即<span
+lang=EN-US>test.c</span>在上次編譯後有新的版本。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>這些定義可能有點繞口，但你只要想想<span
+lang=EN-US>test.c</span>、<span lang=EN-US>test.obj</span>與<span lang=EN-US>test.exe</span>的關係，應該就可以明瞭。如果沒有問題的話，讓我們來把你剛剛的批次檔改寫為<span
+lang=EN-US>makefile</span>：』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+~~~~~~~~~~~~~~~~</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>井字號後面代表是註解<span lang=EN-US>~~~~~~~~~~~~~~~<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span>sample.mak<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-spacerun:yes'>  </span>makefile</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>的基本語法是<span
+lang=EN-US>:<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># <span
+style='mso-tab-count:2'>                </span>Target:<span
+style='mso-spacerun:yes'>  </span>Dependency list<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span><span style='mso-tab-count:3'>                        </span>command1<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span><span style='mso-tab-count:3'>                        </span>command2...<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>預設<span lang=EN-US> - </span>如果沒有特別指定<span lang=EN-US>, make</span>會把<span
+lang=EN-US>makefile</span>中的第一個<span lang=EN-US>Target</span>當作目標<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Target: main.exe<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Dependency: main.obj fun.obj<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>如果<span lang=EN-US>main.obj</span>或<span lang=EN-US>fun.obj</span>有新版<span
+lang=EN-US>, </span>就必須執行“<span lang=EN-US>ld...</span>”以產生<span lang=EN-US>main.exe<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>在這個<span lang=EN-US>makefile</span>中<span lang=EN-US>, </span>因為<span
+lang=EN-US>main.obj</span>與<span lang=EN-US>fun.obj</span>也是目標名稱<span
+lang=EN-US>,<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>所以<span lang=EN-US>make</span>會先檢查是否要執行<span lang=EN-US>main.obj</span>與<span
+lang=EN-US>fun.obj<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>簡單的說 <span lang=EN-US>– </span><u>要完成<span lang=EN-US>main.exe</span>，必須先完成<span
+lang=EN-US>main.obj</span>與<span lang=EN-US>fun.obj</span></u><span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>main.exe:<span
+style='mso-tab-count:1'>  </span>main.obj fun.obj<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>ld -o main.exe main.obj fun.obj<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Target: main.o<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Dependency: main.c<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>如果<span lang=EN-US>main.c</span>有新版<span lang=EN-US>, </span>就必須就必須執行“<span
+lang=EN-US>gcc...</span>”以產生<span lang=EN-US>main.obj<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>main.obj:<span
+style='mso-tab-count:1'>   </span>main.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>gcc -C test.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Target: fun.o<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Dependency: fun.c<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>如果<span lang=EN-US>fun.c</span>有新版<span lang=EN-US>, </span>就必須就必須執行“<span
+lang=EN-US>gcc...</span>”以產生<span lang=EN-US>fun.obj<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>fun.obj:<span
+style='mso-tab-count:1'>      </span>fun.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>gcc -C fun.c<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833988"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-2</span>：<span lang=EN-US>makefile</span>範例
+<span lang=EN-US>– sample.mak</span></span></a><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『要執行這個<span
+lang=EN-US>makefile</span>的命令是：“<span lang=EN-US>make –f sample.mak</span>”，如果沒有用<span
+lang=EN-US>-f</span>指定<span lang=EN-US>makefile</span>的檔名的話，<span lang=EN-US>make</span>會在目前目錄，找名為“<span
+lang=EN-US>makefile</span>”或“<span lang=EN-US>Makefile</span>”的檔案。此外，如果沒有特別指定<span
+lang=EN-US>target</span>的話，<span lang=EN-US>make</span>就會以<span lang=EN-US>makefile</span>中的第一個<span
+lang=EN-US>target</span>當作目標，在這個例子中就是“<span lang=EN-US>make.exe</span>”。如果你只要編譯<span
+lang=EN-US>main.c</span>的話，命令應該是：“<span lang=EN-US>make –f sample.mak main.obj</span>”。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『這個例子相當簡單，也頗為實用，但是我以前看到的<span
+lang=EN-US>makefile</span>遠比這個例子複雜的多，還有些像“<span lang=EN-US>%</span>”、“<span
+lang=EN-US>$*</span>”或“<span lang=EN-US>$@</span>”等等怪符號<a style='mso-footnote-id:
+ftn1' href="#_ftn1" name="_ftnref1" title=""><span class=MsoFootnoteReference><span
+lang=EN-US><span style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[1]</span></span><![endif]></span></span></span></a>，這些東西真的讓<span
+lang=EN-US>makefile</span>看起來很不直覺，不那麼容易看得懂；所以我想知道，實務上我們到底會用到<span lang=EN-US>makefile</span>的哪些語法？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『這個問題見仁見智，如果你對<span
+lang=EN-US>makefile</span>的高深語法有興趣，可以到網路找到很多相關資料，恐怕我現在也無法教你，因為我也要翻資料才看得懂那些怪符號。一直以來我就覺得<span
+lang=EN-US>make</span>最主要的功能是：<b style='mso-bidi-font-weight:normal'>定義程式間的相關性，使只有新版的程式會被編譯，並做出執行檔來</b>；如果只是為了達到這個目的，我不覺得我需要用到多麼複雜的語法，基本上就是前面的那個例子再加上一些功能，對大部分的專案就應該游刃有餘。我們再來看一組比較複雜的<span
+lang=EN-US>makefile</span>：』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span>File Name :</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>　<span
+lang=EN-US>DEFINE.MAK<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義其他<span lang=EN-US>makefile</span>中會用到的巨集，觀念和<span lang=EN-US>C</span>語言的<span
+lang=EN-US>#define</span>一樣<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>下面兩句的意義如同<span lang=EN-US>C</span>語言的：<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span>#ifndef <span style='mso-tab-count:1'>        </span>_DEFINE_MAK<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span>#define<span style='mso-spacerun:yes'> 
+</span>_DEFINE_MAK<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>必免重複<span lang=EN-US>include (</span>觀念和我們寫<span lang=EN-US>C</span>語言的<span
+lang=EN-US>.h</span>檔一模一樣<span lang=EN-US>)<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!IFNDEF _DEFINE_MAK<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>_DEFINE_MAK = DEFINED<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義專案相關檔案所在的磁碟機編號<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>PRJ_DRIVER<span
+style='mso-spacerun:yes'>            </span>=<span style='mso-spacerun:yes'>  
+</span>Y:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義專案會用的工具所在的目錄<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+$(PRJ_DRIVER) </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>表示使用巨集<span lang=EN-US>PRJ_DRIVER<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>這一行等同於<span lang=EN-US>:<span style='mso-spacerun:yes'>  </span></span>“<span
+lang=EN-US>PRJ_TOOLS_ROOT<span style='mso-spacerun:yes'>  </span>=<span
+style='mso-spacerun:yes'>   </span>Y:\Tools</span>”<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>PRJ_TOOLS_ROOT<span
+style='mso-spacerun:yes'>        </span>=<span style='mso-spacerun:yes'>  
+</span>$(PRJ_DRIVER)\Tools<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義編譯器所在的目錄<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_ROOT<span
+style='mso-spacerun:yes'>              </span>=<span
+style='mso-spacerun:yes'>   </span>$(PRJ_TOOLS_ROOT)\GNU33V3<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_INCLUDE<span
+style='mso-spacerun:yes'>           </span>=<span style='mso-spacerun:yes'>  
+</span>$(GNU_ROOT)\Include<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_LIB<span
+style='mso-spacerun:yes'>               </span>=<span
+style='mso-spacerun:yes'>   </span>$(GNU_ROOT)\Lib<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義編譯器的完整路徑與執行檔名稱<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>分別是<span lang=EN-US>C compiler</span>、<span lang=EN-US>linker</span>以及函式庫管理工具<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_CC<span
+style='mso-spacerun:yes'>       </span>=<span style='mso-spacerun:yes'>  
+</span>$(GNU33_ROOT)\kcc33<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_LK<span
+style='mso-spacerun:yes'>        </span>=<span style='mso-spacerun:yes'>  
+</span>$(GNU33_ROOT)\ld<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>GNU_AR<span
+style='mso-spacerun:yes'>       </span>=<span style='mso-spacerun:yes'>  
+</span>$(GNU33_ROOT)\ar<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義專案程式所在的目錄<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>SRC_ROOT<span
+style='mso-spacerun:yes'>     </span>=<span style='mso-spacerun:yes'>  
+</span>$(PRJ_DRIVER)\Project2007<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>SRC_INC<span
+style='mso-spacerun:yes'>      </span>=<span style='mso-spacerun:yes'>  
+</span>$(SRC_ROOT)\include<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>當編譯時傳入 <span lang=EN-US>–DXXX </span>參數<span lang=EN-US>, </span>其效果如同在程式中寫了：<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:2'>          </span>#define XXX<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>PRJ_CONFIG <span
+style='mso-tab-count:1'>  </span>=<span style='mso-tab-count:1'>     </span>-DPRJ_2007
+–DCPU_ARM9 _DLCD_160X160<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義執行<span lang=EN-US>C compiler</span>時的參數<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>CFLAGS= -c -gstabs
+-mlong-calls -fno-builtin -mgda=0 -mdp=1 -O3 <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:84.0pt;mso-para-margin-left:7.0gd;
+text-indent:12.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>-I$( GNU_INCLUDE)
+\<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>-I$( SRC_INC) \<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;mso-para-margin-left:6.0gd;
+text-indent:24.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>$( PRJ_CONFIG)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義執行<span lang=EN-US>linker</span>時的參數<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>LDFLAGS=</span><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'> <span style='color:blue'>-T
+main.lds -Map $(TARGET).map -N<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'># …<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'># …<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:12.0pt;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>!ENDIF<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833989"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-3</span>：較複雜的<span lang=EN-US>makefile</span>範例
+<span lang=EN-US>– define.mak</span></span></a><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+Makefile</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>也可以去<span lang=EN-US>include</span>其他的<span
+lang=EN-US>makefile<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>意義同<span lang=EN-US>C</span>語言中的<span lang=EN-US>#include<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!IF
+&quot;$(_DEFINE_MAK)&quot; == &quot;&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!INCLUDE DEFINE.MAK<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!ENDIF<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義各個模組包含的<span lang=EN-US>object file<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>其中每一個<span lang=EN-US>object file</span>都是一個<span lang=EN-US>target<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>MODEL1_OBJS = m1_001.obj
+m1_002.obj m1_003.obj<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>MODEL2_OBJS = m2_001.obj
+m2_002.obj <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>專案中所有需要的<span lang=EN-US>object file<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>OBJS = $(MODEL1_OBJS)
+$(MODEL2_OBJS)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義會用到的函式庫<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>“<span lang=EN-US>GNU_LIB</span>”定義在<span lang=EN-US>define.mak</span>中<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>LIBS= <span
+style='mso-tab-count:1'>       </span><span
+style='mso-spacerun:yes'>  </span>$(GNU_LIB)\libgcc.a<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>第一個<span lang=EN-US>target - </span>產生最終執行檔<span lang=EN-US>
+main.elf, <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>和<span lang=EN-US>main.elf</span>有依存關係的<span lang=EN-US>target</span>有<span
+lang=EN-US>: <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>所有的<span lang=EN-US>object files, main.mak</span>本身以及<span
+lang=EN-US>link script<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>“<span lang=EN-US>$@</span>”就是表示<span lang=EN-US>target</span>本身<span
+lang=EN-US>, </span>也就是<span lang=EN-US>main.elf<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>main.elf : $(OBJS) main.mak
+main.lds<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>$(GNU_LK) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>因為所有<span lang=EN-US>object file</span>和<span lang=EN-US>main.elf</span>有依存關係<span
+lang=EN-US>, </span>所以當在<span lang=EN-US>make main.elf</span>時<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>以所有<span lang=EN-US>object file</span>為名的<span lang=EN-US>target</span>也會被<span
+lang=EN-US>make<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>和<span lang=EN-US>object file</span>有依存關係的通常是<span lang=EN-US>.c</span>檔和<span
+lang=EN-US>.h</span>檔<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>“<span lang=EN-US>$*</span>”表示<span lang=EN-US>target</span>名稱去掉副檔名<span
+lang=EN-US>, </span>在此例中就是“<span lang=EN-US>m1_<st1:chmetcnv TCSC="0"
+NumberType="1" Negative="False" HasSpace="False" SourceValue="1" UnitName="”"
+w:st="on">001<span lang=EN-US><span lang=EN-US>”</span></span></st1:chmetcnv><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>“<span lang=EN-US>$@</span>”就是表示<span lang=EN-US>target</span>本身<span
+lang=EN-US>, </span>也就是</span></b><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>m1_001.obj<b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>m1_001.obj :
+$(SRC_ROOT)\m1\m1_001.c $(SRC_INC)\m1.h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>$(GNU_CC) <b style='mso-bidi-font-weight:normal'>$@ </b>$(CFLAGS)
+$*.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>m1_002.obj :
+$(SRC_ROOT)\m1\m1_002.c $(SRC_INC)\m1.h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span>$(GNU_CC)<b style='mso-bidi-font-weight:normal'> $@ </b>$(CFLAGS)
+$*.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+...</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>編譯其他的<span lang=EN-US>object file<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833990"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-4</span>：較複雜的<span lang=EN-US>makefile</span>範例
+<span lang=EN-US>– main.mak</span></span></a><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『寫了註解的<span
+lang=EN-US>makefile</span>確實較容易了解，原來只要熟悉幾種簡單的語法，就可以寫出很實用的<span lang=EN-US>makefile</span>。當專案中新增了程式檔、想要更改編譯或連結的選項，只要對<span
+lang=EN-US>makefile</span>做局部的更改即可；只要有<span lang=EN-US>make</span>工具的正確觀念，我相信大部分工程師都可以很容易看懂並修改這些<span
+lang=EN-US>makefile</span>。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『<span lang=EN-US>makefile</span>還有其他較複雜的語法，例如“預設編譯規則”這個功能也蠻好用的；在上面的例子中，專案中有幾個<span
+lang=EN-US>.c</span>檔，就要寫幾個<span lang=EN-US>.obj</span>的<span lang=EN-US>target</span>，雖然只要<span
+lang=EN-US>copy-paste</span>就可以了，但整個<span lang=EN-US>makefile</span>難免顯得冗長，“預設編譯規則”就可以規定用同樣的規則來處理副檔名為<span
+lang=EN-US>.obj</span>的<span lang=EN-US>target</span>。舉例來說，下面的語法就表示規定一個編譯規則，以作為在<span
+lang=EN-US>make</span>需要建立<span lang=EN-US>.obj</span>檔時之預設規則：<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.c.obj:
+; $(GNU_CC) <b style='mso-bidi-font-weight:normal'>$@ </b>$(CFLAGS) $&lt;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>此後所有<span lang=EN-US>.obj</span>的目標只要寫成以下的形式就可以了，也就是說只要寫<span
+lang=EN-US>target</span>和<span lang=EN-US>dependency</span>，<span lang=EN-US>make</span>碰到副檔名為<span
+lang=EN-US>.obj</span>的<span lang=EN-US>target</span>時，會自動參考上述的預設編譯規則：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>m1_001.obj
+: $(SRC_ROOT)\m1\m1_001.c $(SRC_INC)\m1.h<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我就是一直看不懂<span
+lang=EN-US>.</span>“<span lang=EN-US>.c.obj</span>”還有“<span lang=EN-US>$&lt;</span>”這些東西，天書似的！』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『是啊，我自己也是，有時候翻書把它看懂了，過了不久再來看又看不懂了；終究<span
+lang=EN-US>makefile</span>不像程式要常常更改，我個人的作法是盡量不要用太複雜的語法，而且我們通常會用某些工具自動產生<span
+lang=EN-US>makefile</span>，所以我覺得工程師只要知道<span lang=EN-US>make</span>能達到的功能即可。至於剛剛那個例子的語法我也記不得，你去查一查再來告訴我。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『怎麼這樣！你不知道的東西居然還拿來問我<span
+lang=EN-US>…</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>============================================================<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>無論如何還是必需幫讀者解釋上述命令的語法，在此之前，希望讀者都能了解，撰寫<span
+lang=EN-US>makefile</span>的重點不在於使用了多艱澀的語法，而是<span lang=EN-US>make</span>工具處理<span
+lang=EN-US>target</span>間依存關係的能力，這才是用來管理軟體編譯、製作執行檔的主要功能。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>預設編譯規則語法說明<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>“<span lang=EN-US>.c.obj: ;</span>” <span lang=EN-US>– <o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-spacerun:yes'>   </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>此行命令用來規範<span
+lang=EN-US>target</span>為<span lang=EN-US>.obj</span>檔，<span lang=EN-US>dependency</span>為<span
+lang=EN-US>.c</span>檔的預設編譯規則<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>  </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>在設定預設編譯規則時依然可以使用巨集，如<span
+lang=EN-US>$(GNU_CC)</span>、<span lang=EN-US>$(CFLAGS)<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>同樣的，“<span lang=EN-US>$@</span>”表示<span lang=EN-US>target</span>的全名<span
+lang=EN-US>(</span>如<span lang=EN-US>xxx.obj)</span>，而“<span lang=EN-US>$&lt;</span>”表示<span
+lang=EN-US>xxx.c<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:12.0pt;line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>.c.obj: ; $(GNU_CC)
+<b style='mso-bidi-font-weight:normal'>$@ </b>$(CFLAGS) $&lt;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920111"><span style='font-family:"微軟正黑體","sans-serif"'>非檔案名稱的<span
+lang=EN-US>Target</span></span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『我已經試用過我們的開發環境，最終的目的是產生<span
+lang=EN-US>binary</span>檔；現在我知道它是怎麼從一個一個<span lang=EN-US>C</span>的程式檔，先編譯成<span
+lang=EN-US>object</span>檔，再連結所有的<span lang=EN-US>object</span>檔與函式庫，最終生成執行檔，然後再把它轉成可以下載到機器的<span
+lang=EN-US>binary</span>檔；每次<span lang=EN-US>make</span>時只會處理有新版本的檔案，不會把所有的動作都做過一次，這就是<span
+lang=EN-US>make</span>工具帶來的好處。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>我看了你寫的使用說明，我們除了<span
+lang=EN-US>make</span>最終的<span lang=EN-US>binary</span>檔之外，還可以<span lang=EN-US>make</span>一些不是檔案名稱的<span
+lang=EN-US>target</span>；我也記得以前在編譯<span lang=EN-US>Linux</span>核心時，也要先執行“<span
+lang=EN-US>make config</span>”、“<span lang=EN-US>make dep</span>”之後，最後才能“<span
+lang=EN-US>make kernel</span>”。最特別的是“<span lang=EN-US>make config</span>”時簡直不像在編譯程式，它會跑出很多選項，感覺就像是在執行一個程式；還有另一個方式叫“<span
+lang=EN-US>make xconfig</span>”，它會跑出一個視窗讓你勾選<span lang=EN-US>Linux Kernel</span>的選項。所以<span
+lang=EN-US>make</span>工具似乎可以做到編譯、製作執行檔之外的功能。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:448.5pt;
+ height:572.25pt'>
+ <v:imagedata src="/b2/CH05_02.files/image001.jpg" o:title="05-05-make_xconfig"/>
+</v:shape><![endif]--><![if !vml]><img width=598 height=763
+src="/b2/CH05_02.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833991"><span style='font-family:
+"微軟正黑體","sans-serif"'>圖<span lang=EN-US>5-5</span>：<span lang=EN-US>make
+xconfig</span>的畫面</span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『沒錯，<span
+lang=EN-US>make</span>工具的功能其實還蠻強大的，所以我們在設計開發環境的<span lang=EN-US>makefile</span>時不只用它來執行編譯、連結等動作而已，我們會有一些不是檔案名稱的<span
+lang=EN-US>target</span>，最常見的例子就是“<span lang=EN-US>clean</span>”這個<span
+lang=EN-US>target</span>，幾乎每個<span lang=EN-US>makefile</span>都會有類似的<span
+lang=EN-US>target</span>；你能根據你對<span lang=EN-US>make</span>運作邏輯的了解，說明下面這個<span
+lang=EN-US>target</span>的意義嗎？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'># </span><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>不是檔案名稱的<span lang=EN-US>target</span>，刪除所有的<span
+lang=EN-US>object files</span>與執行檔<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>clean:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span><st1:place w:st="on"><st1:State w:st="on">del</st1:State></st1:place>
+/F $(OBJS)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:12.0pt;mso-para-margin-left:1.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>    </span><st1:place w:st="on"><st1:State w:st="on">del</st1:State></st1:place>
+/F main.elf<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span><st1:place w:st="on"><st1:State w:st="on">del</st1:State></st1:place>
+main.bin<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『執行“<span
+lang=EN-US>make clean</span>”時，因為<span lang=EN-US>clean</span>這個<span
+lang=EN-US>target</span>沒有<span lang=EN-US>dependency</span>，所以一定會去執行命令，也就是說強迫把所有<span
+lang=EN-US>objects</span>檔移除。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『沒錯，那你說說“<span
+lang=EN-US>make clean</span>”的意義為何？亦即移除所有<span lang=EN-US>object</span>檔對整個製作執行檔的過程有什麼影響？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『製作執行檔時，因為所有<span
+lang=EN-US>object</span>檔都已經被移除，和這些以<span lang=EN-US>obj</span>為副檔名的<span
+lang=EN-US>target</span>有依存關係的<span lang=EN-US>.C</span>檔會被視為新版，所以所有的<span
+lang=EN-US>.C</span>檔會被重新編譯以產生<span lang=EN-US>object</span>檔；既然<span
+lang=EN-US>object</span>檔也產生了新版，所以執行檔、<span lang=EN-US>binary</span>檔都會被重新製作。<span
+lang=EN-US>Makefile</span>中“<span lang=EN-US>clean</span>”這個<span lang=EN-US>target</span>恰如其名，等下次要製作可執行檔時，不管程式檔是什麼版本，所有的程式檔都會被重新編譯，可以保證。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『<span lang=EN-US>make</span>工具是以檔案的最後修改時間來判斷其新舊，專案運行時難免會有人的電腦日期比較不準，或者與外國廠商合作開發時，常常會發生因為檔案日期的原因，導致新版的程式不被編譯，此時“<span
+lang=EN-US>make clean</span>”就可以解決這個問題。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>雖然“<span lang=EN-US>clean</span>”這個<span
+lang=EN-US>target</span>不是檔案名稱，但當它被<span lang=EN-US>make</span>時可以執行一系列的命令，它的效果有點像<span
+lang=EN-US>batch</span>檔或<span lang=EN-US>script</span>；像這種非檔名的<span
+lang=EN-US>target</span>也可以被當作其他<span lang=EN-US>target</span>的<span
+lang=EN-US>dependency</span>，所以可以做到當要<span lang=EN-US>make</span>某個<span
+lang=EN-US>target</span>時，先去執行一系列指令的效果，舉例來說：』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'># clean</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>是非檔案名稱的<span lang=EN-US>target<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'># </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>下面例子中，要<span lang=EN-US>make
+“build_all”</span>這個<span lang=EN-US>target</span>，一定要會先去<span lang=EN-US>make “clean”<o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>build_all: clean<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>        </span>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span style='mso-tab-count:
+1'>        </span>…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920112"><span style='font-family:"微軟正黑體","sans-serif"'>人工撰寫<span
+lang=EN-US> v.s. Automake tools</span></span></a><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『當弄懂了<span
+lang=EN-US>make</span>的基本原則和語法後，會發現其實<span lang=EN-US>makefile</span>並不是那麼難懂難寫。我還有一個問題，從專案開始，隨著時間推移，程式才會慢慢的加入專案；如果每加入一個程式檔就要麻煩負責維護開發環境的同仁修改<span
+lang=EN-US>makefile</span>，那你豈不是有段時間會煩不勝煩？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『當<span
+lang=EN-US>makefile</span>的基本架構寫好之後，新增檔案不會是件多麻煩的事情，不過就是<span lang=EN-US>copy-paste</span>罷了，不會花費太多時間。而且我們管理層希望檔案加入專案時能被統一控管，例如是否放到正確的目錄，加入後是否會影響目前可正常運作的模組；如果我更積極一點，我可能還可以順便看一下程式風格，我已獲得老闆的授權，如果有不依照規範寫作的程式，可以要求工程師修改後才可加入。我個人覺得手動修改<span
+lang=EN-US>makefile</span>並沒有什麼太大的缺點或麻煩。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>如果你覺得這樣不夠專業的話，有一種稱為“<span
+lang=EN-US>automake</span>”的工具<a style='mso-footnote-id:ftn2' href="#_ftn2"
+name="_ftnref2" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[2]</span></span><![endif]></span></span></span></a>可以掃描指定的目錄，根據你提供的<span
+lang=EN-US>makefile</span>模板<span lang=EN-US>(template)</span>，把指定目錄中所有的程式檔加入<span
+lang=EN-US>makefile</span>中。這個工具的好處是負責開發環境的人只要把<span lang=EN-US>makefile</span>的模板寫好，此後任何人都可以自行產生新的<span
+lang=EN-US>makefile</span>，工作目錄中的所有程式檔會無一遺漏的被加入<span lang=EN-US>makefile</span>。採用<span
+lang=EN-US>automake</span>工具當然可以減少人為的失誤，但很難避免沒必要的測試程式被加入<span lang=EN-US>makefile</span>以及最後的執行檔，而且又要學另一種工具的規定，基本上<span
+lang=EN-US>makefile</span>的模板比<span lang=EN-US>makefile</span>還複雜一點。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:510pt;height:300.75pt'>
+ <v:imagedata src="/b2/CH05_02.files/image003.jpg" o:title="05-06-automake流程"/>
+</v:shape><![endif]--><![if !vml]><img width=680 height=401
+src="/b2/CH05_02.files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833992"><span style='font-family:
+"微軟正黑體","sans-serif"'>圖<span lang=EN-US>5-6</span>：<span lang=EN-US>automake</span>的步驟與流程相當複雜<span
+lang=EN-US>(*</span>表示該檔案為執行檔<span lang=EN-US>)</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『那我們目前的專案是用手工還是自動的？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『你覺得哪一種比較好？思考一下。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『以我工程師的想法，當然覺得用自動產生<span
+lang=EN-US>makefile</span>的比較好；手動修改好像蠻<span lang=EN-US>low-end</span>的。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『從你開始參與嵌入式系統開發至今，難道你不覺得很多事情都蠻<span
+lang=EN-US>low-end</span>的嗎？<span lang=EN-US>CPU</span>很慢、很難直接使用物件導向設計工具、產品也沒什麼令人眼睛為之一亮的功能<span
+lang=EN-US>…</span>這就是電子產品市場的生態<span lang=EN-US> - </span>能賣出去的產品就是好產品。所以囉，很多工程師都有這樣的盲點；其實<span
+lang=EN-US>low-end</span>並不代表不好，<span lang=EN-US>high-technology</span>也不代表就能做出好產品。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>本專案的做法很簡單，任何檔案要加入專案都要讓我知道，由我控管程式品質的第一關，並統一發佈新版的<span
+lang=EN-US>makefile</span>；至於我的<span lang=EN-US>makefile</span>怎麼做出來的，嘿嘿，你應該猜得到吧。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『原來如此<span
+lang=EN-US>(</span>果然就是用<span lang=EN-US>automake…)</span>。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h3 style='line-height:18.0pt;mso-line-height-rule:exactly'><a
+name="_Toc304920113"><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>Debug</span></a><span
+style='mso-bookmark:_Toc304920113'><span style='font-family:"微軟正黑體","sans-serif"'>版與<span
+lang=EN-US>Release</span>版</span></span><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『有關<span
+lang=EN-US>makefile</span>設計還有一件重要的事情，就是可以讓工程師選擇製作除錯版或正式版，譬如說我可能提供兩個批次檔，“<span
+lang=EN-US>make_release.bat</span>”表示要製作正式版，而“<span lang=EN-US>make_debug.bat</span>”則表示要做<span
+lang=EN-US>debug</span>版<a style='mso-footnote-id:ftn3' href="#_ftn3"
+name="_ftnref3" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[3]</span></span><![endif]></span></span></span></a>。同一套程式和開發環境可以做出多個版本並不是嵌入式系統的專利，開發期間難免會有許多用於除錯或測試的程式碼，在正式發行的版本中，這些程式應該不能被編譯，特別是記憶體大小受限制的系統，對最終程式的大小更是錙銖必較。此外，你能想像你買到一台手機或<span
+lang=EN-US>PDA</span>，用到一半螢幕突然出現一行除錯訊息“<span lang=EN-US>[Debug message]: file xxx.xxx
+access error, please call Kevin!</span>”嗎？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『應該是用<span
+lang=EN-US>C</span>語言的條件式編譯來達到此一目的吧，之前<span lang=EN-US>PM</span>老大在教我系統設計時有討論過這個問題，用於<span
+lang=EN-US>debug</span>版的程式段寫法如下；如果要作<span lang=EN-US>debug</span>版，工程師只要在定義系統組態的<span
+lang=EN-US>sys_config.h</span>檔<a style='mso-footnote-id:ftn4' href="#_ftn4"
+name="_ftnref4" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:12.0pt;font-family:
+"微軟正黑體","sans-serif";mso-bidi-font-family:"Times New Roman";mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:
+AR-SA'>[4]</span></span><![endif]></span></span></span></a>中定義“<span
+lang=EN-US>__DEBUG_VERSION</span>”；反之，若取消“<span lang=EN-US>__DEBUG_VERSION</span>”的定義，則被包在“<span
+lang=EN-US>#ifdef __DEBUG_VERSION</span>”與“<span lang=EN-US>#endif</span>”之間的程式就不會被編譯。也就是說，工程師只要去修改系統組態，然後重新<span
+lang=EN-US>build</span>就可以製作出不同的版本，相當的方便簡單。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#ifdef
+__DEBUG_VERSION<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>       </span>//<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>       </span>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>用於<span lang=EN-US>debug</span>或僅供測試用途的程式段，<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>       </span>// </span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:blue'>只有當系統有定義“<span lang=EN-US>__DEBUG_VERSION</span>”時才會被編譯<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>       </span>//<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>       </span>this_is_debug_function() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><span
+style='mso-tab-count:1'>       </span>this_is_test_function() ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#endif<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『你的作法當然是可行的，但是我們一向不希望任何一個工程師都可以隨意修改系統組態，因為不是每一個工程師都了解每一個組態的意義，如果改錯了，絕對會讓整個辦公室一整天雞飛狗跳。你可能沒聽清楚我的需求，我希望只要去執行不同的批次檔，就能夠達到改變系統組態的目的，還記得<span
+lang=EN-US>C compile</span>的<span lang=EN-US>-D</span>參數嗎？它可以在編譯時期才定義巨集變數。你先看一下以下的三個檔案，執行<span
+lang=EN-US>make_debug.bat</span>會有什麼樣的效果？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<span
+style='mso-tab-count:1'>       </span>Make_debug.bat<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+<span style='mso-tab-count:1'>     </span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>設定<span
+lang=EN-US>Windows/DOS</span>的系統環境變數<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>set BUILD_MODE = Debug<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+<span style='mso-tab-count:1'>     </span>make</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:blue'>我們的程式<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>make target<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833993"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-5</span>：<span lang=EN-US>make_debug.bat</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM<span
+style='mso-tab-count:1'>       </span>Make_release.bat<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>REM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>set BUILD_MODE = Release<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>make target<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833994"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-6</span>：<span lang=EN-US>make_release.bat</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<span
+style='mso-tab-count:1'>      </span>Makefile<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>在<span lang=EN-US>makefile</span>中，可以使用<span lang=EN-US>Windows/Dos</span>的系統環境變數<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!IF
+&quot;$(BUILD_MODE)&quot;==&quot;Debug&quot;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>如果<span lang=EN-US>BUILD_MODE</span>等於“<span lang=EN-US>Debug</span>”，則設定編譯時期的參數<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>定義巨集變數 <span lang=EN-US>– </span>“<span lang=EN-US>__DEBUG_VERSION</span>”<span
+lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>反之，若<span lang=EN-US>BUILD_MODE</span>等於“<span lang=EN-US>Release</span>”，則<span
+lang=EN-US>CFLAGS_DEBUG</span>為空<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>CFLAGS_DEBUG =
+-D__DEBUG_VERSION <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>!ENDIF<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>target:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><span style='mso-tab-count:
+1'>        </span>gcc CFLAGS_DEBUG xxx.c<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'># CFLAGS_DEBUG</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:blue'>會隨系統環境變數“<span lang=EN-US>BUILD_MODE</span>”的值而改變<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'>#
+-D</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
+"微軟正黑體","sans-serif";color:blue'>參數用來在編譯時期設定巨集變數<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-left:24.0pt;mso-para-margin-left:2.0gd;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:blue'>#<o:p></o:p></span></p>
+
+<p class=a0 align=center style='text-align:center;line-height:18.0pt;
+mso-line-height-rule:exactly'><a name="_Toc164833995"><span style='font-family:
+"微軟正黑體","sans-serif"'>程式<span lang=EN-US>5-7</span>：<span lang=EN-US>makefile</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:blue'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>菜鳥：『沒想到<span
+lang=EN-US>makefile</span>中居然可以使用<span lang=EN-US>Windows/Dos</span>的系統環境變數；執行<span
+lang=EN-US>make_debug.bat</span>會將<span lang=EN-US>Windows/Dos</span>環境變數“<span
+lang=EN-US>BUILD_MODE</span>”設定為“<span lang=EN-US>Debug</span>”，然後就去<span
+lang=EN-US>make</span>我們的系統。當然<span lang=EN-US>make</span>會去參考我們的<span
+lang=EN-US>makefile</span>，一開始有個判斷式，若“<span lang=EN-US>BUILD_MODE</span>”的值為“<span
+lang=EN-US>Debug</span>”，則會利用<span lang=EN-US>C compiler</span>的<span
+lang=EN-US>-D</span>參數設定巨集變數“<span lang=EN-US>__DEBUG_VERSION</span>”，所以程式中所有的除錯與測試程式都會被編譯，做出來的執行檔就是所謂的除錯版。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>同理，執行<span lang=EN-US>make_release.bat</span>時，<span
+lang=EN-US>makefile</span>裡的判斷式為<span lang=EN-US>false</span>，所以給<span
+lang=EN-US>C compiler</span>的參數為空，亦即“<span lang=EN-US>__DEBUG_VERSION</span>”不會被定義，所以程式中除錯與測試程式都不會被編譯，就可以做出<span
+lang=EN-US>Release</span>版了。』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>系統老鳥：『有很多方法可以達到使用同一套程式和開發環境，在不更改任何程式的前提下可以做出不同的版本，上面這個例子是最簡單的方法；雖然<span
+lang=EN-US>makefile</span>和批次檔有許多很好用的語法，但我始終認為複雜不一定好，只要能達到目的，採用最簡單的方法與每個人都可以看懂得語法才是最好了。就像愛因斯坦說的：<span
+lang=EN-US>Simple is good</span>！』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<div style='mso-element:footnote-list'><![if !supportFootnotes]><br clear=all>
+
+<hr align=left size=1 width="33%">
+
+<![endif]>
+
+<div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn1' href="#_ftnref1"
+name="_ftn1" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>在</span><span
+lang=EN-US>makefile</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>中，</span><span
+lang=EN-US>”$@”</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>表示</span><span
+lang=EN-US>target</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的全名，</span><span
+lang=EN-US>”$*”</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>表示</span><span
+lang=EN-US>target</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>全名去掉副檔名，百分比符號</span><span
+lang=EN-US>”%”</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>則代表萬用字元</span><span
+lang=EN-US>…makefile</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>語法的規則還蠻繁瑣的，此非本書重點，讀者如果有興趣可以參考上一節提供的參考書或自行上網找資料。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn2>
+
+<p class=MsoFootnoteText style='text-align:justify;text-justify:inter-ideograph'><a
+style='mso-footnote-id:ftn2' href="#_ftnref2" name="_ftn2" title=""><span
+class=MsoFootnoteReference><span lang=EN-US><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+lang=EN-US style='font-size:10.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;mso-ansi-language:EN-US;
+mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[2]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> Automake</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>工具並非本書的重點，讀者可自行上網查詢；或者參考：</span><span
+lang=EN-US style='font-size:12.0pt'>http://sources.redhat.com/automake/<o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn3>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn3' href="#_ftnref3"
+name="_ftn3" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[3]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>善用批次檔與</span><span
+lang=EN-US>makefile</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>的技巧，有很多方法可以達成同一套程式製作多個版本的目的；本節的方法應該是最簡單的方式，讀者可依不同需求自行更改之。</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn4>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn4' href="#_ftnref4"
+name="_ftn4" title=""><span class=MsoFootnoteReference><span lang=EN-US><span
+style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span lang=EN-US style='font-size:10.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:新細明體;mso-font-kerning:1.0pt;
+mso-ansi-language:EN-US;mso-fareast-language:ZH-TW;mso-bidi-language:AR-SA'>[4]</span></span><![endif]></span></span></span></a><span
+lang=EN-US> </span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>請參考第</span><span
+lang=EN-US>4-2</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>節中的“</span><span
+lang=EN-US> System Configuration – </span><span style='font-family:"新細明體","serif";
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>可擴充性</span><span
+lang=EN-US>&amp;</span><span style='font-family:"新細明體","serif";mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman"'>可調整性”。</span></p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

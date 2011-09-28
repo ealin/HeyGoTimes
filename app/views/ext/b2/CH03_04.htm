@@ -1,0 +1,1835 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="/b2/CH03_04.files/filelist.xml">
+<title>3.4.標準C Library可以用嗎?</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>cebm</o:Author>
+  <o:LastAuthor>Win7User</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>4358</o:TotalTime>
+  <o:LastPrinted>2007-04-13T08:58:00Z</o:LastPrinted>
+  <o:Created>2011-09-28T14:38:00Z</o:Created>
+  <o:LastSaved>2011-09-28T14:38:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>932</o:Words>
+  <o:Characters>5318</o:Characters>
+  <o:Company>xxx</o:Company>
+  <o:Lines>44</o:Lines>
+  <o:Paragraphs>12</o:Paragraphs>
+  <o:CharactersWithSpaces>6238</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:TargetScreenSize>544x376</o:TargetScreenSize>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="/b2/CH03_04.files/themedata.thmx">
+<link rel=colorSchemeMapping href="/b2/CH03_04.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-TW</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:DontUseIndentAsNumberingTabStop/>
+   <w:FELineBreak11/>
+   <w:WW11IndentRules/>
+   <w:DontAutofitConstrainedTables/>
+   <w:AutofitLikeWW11/>
+   <w:HangulWidthLikeWW11/>
+   <w:UseNormalStyleForList/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="99" Name="Hyperlink"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:新細明體;
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-alt:PMingLiU;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:微軟正黑體;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@微軟正黑體";
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:136;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:135 680476672 22 0 1048585 0;}
+@font-face
+	{font-family:"\@新細明體";
+	panose-1:2 2 5 0 0 0 0 0 0 0;
+	mso-font-charset:136;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611969 684719354 22 0 1048577 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin-top:9.0pt;
+	margin-right:0cm;
+	margin-bottom:9.0pt;
+	margin-left:0cm;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:26.0pt;
+	font-weight:bold;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:24.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:bold;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:300%;
+	mso-pagination:none;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:18.0pt;
+	font-family:"Arial","sans-serif";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:2.0gd;
+	mso-para-margin-bottom:.0001pt;
+	line-height:18.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:none;
+	tab-stops:60.0pt right dotted 509.7pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:正文;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:0cm;
+	mso-para-margin-left:4.0gd;
+	mso-para-margin-bottom:.0001pt;
+	text-indent:-10.0pt;
+	mso-char-indent-count:-2.0;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-unhide:no;
+	vertical-align:super;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"新細明體","serif";
+	mso-bidi-font-family:新細明體;}
+p.a, li.a, div.a
+	{mso-style-name:圖表;
+	mso-style-unhide:no;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;
+	mso-font-kerning:1.0pt;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-fareast-font-family:新細明體;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;
+	mso-footnote-separator:url("/b2/CH03_04.files/header.htm") fs;
+	mso-footnote-continuation-separator:url("/b2/CH03_04.files/header.htm") fcs;
+	mso-endnote-separator:url("/b2/CH03_04.files/header.htm") es;
+	mso-endnote-continuation-separator:url("/b2/CH03_04.files/header.htm") ecs;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:42.55pt 42.55pt 42.55pt 42.55pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:158546755;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1535307478 -111892554 1430544888 1199068724 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-text:"Q%1\.";
+	mso-level-tab-stop:87.0pt;
+	mso-level-number-position:left;
+	margin-left:87.0pt;
+	text-indent:-42.0pt;}
+@list l0:level2
+	{mso-level-tab-stop:42.0pt;
+	mso-level-number-position:left;
+	margin-left:42.0pt;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-start-at:2;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:66.0pt;
+	mso-level-number-position:left;
+	margin-left:66.0pt;
+	text-indent:-18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:新細明體;}
+@list l1
+	{mso-list-id:389571474;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2099304850 -1400722426 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l2
+	{mso-list-id:454955576;
+	mso-list-type:hybrid;
+	mso-list-template-ids:658046964 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;}
+@list l3
+	{mso-list-id:581111840;
+	mso-list-template-ids:149728920;}
+@list l3:level1
+	{mso-level-start-at:3;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:40.5pt;
+	text-indent:-40.5pt;}
+@list l3:level2
+	{mso-level-start-at:4;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:82.35pt;
+	text-indent:-54.0pt;}
+@list l3:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:128.7pt;
+	text-indent:-72.0pt;}
+@list l3:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:175.05pt;
+	text-indent:-90.0pt;}
+@list l3:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:221.4pt;
+	text-indent:-108.0pt;}
+@list l3:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:285.75pt;
+	text-indent:-144.0pt;}
+@list l3:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:332.1pt;
+	text-indent:-162.0pt;}
+@list l3:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:378.45pt;
+	text-indent:-180.0pt;}
+@list l3:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:424.8pt;
+	text-indent:-198.0pt;}
+@list l4
+	{mso-list-id:583034711;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1914149648 301602432 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-42.0pt;}
+@list l5
+	{mso-list-id:605582915;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1313533408 -912989748 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+	{mso-level-text:"A%1\.";
+	mso-level-tab-stop:87.0pt;
+	mso-level-number-position:left;
+	margin-left:87.0pt;
+	text-indent:-42.0pt;}
+@list l6
+	{mso-list-id:746538026;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1868190730 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:845905672;
+	mso-list-template-ids:1931387534;}
+@list l7:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-24.0pt;}
+@list l7:level2
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%2、;
+	mso-level-tab-stop:93.0pt;
+	mso-level-number-position:left;
+	margin-left:93.0pt;
+	text-indent:-24.0pt;}
+@list l7:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:117.0pt;
+	mso-level-number-position:right;
+	margin-left:117.0pt;
+	text-indent:-24.0pt;}
+@list l7:level4
+	{mso-level-tab-stop:141.0pt;
+	mso-level-number-position:left;
+	margin-left:141.0pt;
+	text-indent:-24.0pt;}
+@list l7:level5
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%5、;
+	mso-level-tab-stop:165.0pt;
+	mso-level-number-position:left;
+	margin-left:165.0pt;
+	text-indent:-24.0pt;}
+@list l7:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:189.0pt;
+	mso-level-number-position:right;
+	margin-left:189.0pt;
+	text-indent:-24.0pt;}
+@list l7:level7
+	{mso-level-tab-stop:213.0pt;
+	mso-level-number-position:left;
+	margin-left:213.0pt;
+	text-indent:-24.0pt;}
+@list l7:level8
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%8、;
+	mso-level-tab-stop:237.0pt;
+	mso-level-number-position:left;
+	margin-left:237.0pt;
+	text-indent:-24.0pt;}
+@list l7:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:261.0pt;
+	mso-level-number-position:right;
+	margin-left:261.0pt;
+	text-indent:-24.0pt;}
+@list l8
+	{mso-list-id:961569032;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1860646940 1131072196 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l8:level1
+	{mso-level-number-format:alpha-upper;
+	mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-24.0pt;}
+@list l9
+	{mso-list-id:966929372;
+	mso-list-template-ids:891555112;}
+@list l9:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-24.0pt;}
+@list l9:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:110.25pt;
+	mso-level-number-position:left;
+	margin-left:110.25pt;
+	text-indent:-41.25pt;}
+@list l9:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:117.0pt;
+	mso-level-number-position:right;
+	margin-left:117.0pt;
+	text-indent:-24.0pt;}
+@list l9:level4
+	{mso-level-tab-stop:141.0pt;
+	mso-level-number-position:left;
+	margin-left:141.0pt;
+	text-indent:-24.0pt;}
+@list l9:level5
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%5、;
+	mso-level-tab-stop:165.0pt;
+	mso-level-number-position:left;
+	margin-left:165.0pt;
+	text-indent:-24.0pt;}
+@list l9:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:189.0pt;
+	mso-level-number-position:right;
+	margin-left:189.0pt;
+	text-indent:-24.0pt;}
+@list l9:level7
+	{mso-level-tab-stop:213.0pt;
+	mso-level-number-position:left;
+	margin-left:213.0pt;
+	text-indent:-24.0pt;}
+@list l9:level8
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%8、;
+	mso-level-tab-stop:237.0pt;
+	mso-level-number-position:left;
+	margin-left:237.0pt;
+	text-indent:-24.0pt;}
+@list l9:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:261.0pt;
+	mso-level-number-position:right;
+	margin-left:261.0pt;
+	text-indent:-24.0pt;}
+@list l10
+	{mso-list-id:973482343;
+	mso-list-template-ids:-1914149648;}
+@list l10:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-42.0pt;}
+@list l10:level2
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%2、;
+	mso-level-tab-stop:75.0pt;
+	mso-level-number-position:left;
+	margin-left:75.0pt;
+	text-indent:-24.0pt;}
+@list l10:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:99.0pt;
+	mso-level-number-position:right;
+	margin-left:99.0pt;
+	text-indent:-24.0pt;}
+@list l10:level4
+	{mso-level-tab-stop:123.0pt;
+	mso-level-number-position:left;
+	margin-left:123.0pt;
+	text-indent:-24.0pt;}
+@list l10:level5
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%5、;
+	mso-level-tab-stop:147.0pt;
+	mso-level-number-position:left;
+	margin-left:147.0pt;
+	text-indent:-24.0pt;}
+@list l10:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:171.0pt;
+	mso-level-number-position:right;
+	margin-left:171.0pt;
+	text-indent:-24.0pt;}
+@list l10:level7
+	{mso-level-tab-stop:195.0pt;
+	mso-level-number-position:left;
+	margin-left:195.0pt;
+	text-indent:-24.0pt;}
+@list l10:level8
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%8、;
+	mso-level-tab-stop:219.0pt;
+	mso-level-number-position:left;
+	margin-left:219.0pt;
+	text-indent:-24.0pt;}
+@list l10:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:243.0pt;
+	mso-level-number-position:right;
+	margin-left:243.0pt;
+	text-indent:-24.0pt;}
+@list l11
+	{mso-list-id:1038120222;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1807608100 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:24.0pt;
+	mso-level-number-position:left;
+	margin-left:24.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:1098252455;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1946130362 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l12:level1
+	{mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;}
+@list l13
+	{mso-list-id:1154029160;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1931387534 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l13:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-24.0pt;}
+@list l14
+	{mso-list-id:1281456551;
+	mso-list-template-ids:-792574932;}
+@list l14:level1
+	{mso-level-start-at:3;
+	mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l14:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l14:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l14:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l14:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l14:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l14:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l14:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l14:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l15
+	{mso-list-id:1325624981;
+	mso-list-type:hybrid;
+	mso-list-template-ids:125205286 -1400722426 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l15:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l15:level2
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%2、;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;}
+@list l16
+	{mso-list-id:1423646903;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1741765924 -1400722426 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l16:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l17
+	{mso-list-id:1450782055;
+	mso-list-template-ids:67698719;}
+@list l17:level1
+	{mso-level-tab-stop:21.25pt;
+	mso-level-number-position:left;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;}
+@list l17:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:1.0cm;
+	mso-level-number-position:left;
+	margin-left:1.0cm;
+	text-indent:-1.0cm;}
+@list l17:level3
+	{mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:35.45pt;
+	mso-level-number-position:left;
+	margin-left:35.45pt;
+	text-indent:-35.45pt;}
+@list l17:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:42.55pt;
+	mso-level-number-position:left;
+	margin-left:42.55pt;
+	text-indent:-42.55pt;}
+@list l17:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:49.6pt;
+	mso-level-number-position:left;
+	margin-left:49.6pt;
+	text-indent:-49.6pt;}
+@list l17:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.0cm;
+	mso-level-number-position:left;
+	margin-left:2.0cm;
+	text-indent:-2.0cm;}
+@list l17:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:63.8pt;
+	mso-level-number-position:left;
+	margin-left:63.8pt;
+	text-indent:-63.8pt;}
+@list l17:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:70.9pt;
+	mso-level-number-position:left;
+	margin-left:70.9pt;
+	text-indent:-70.9pt;}
+@list l17:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:77.95pt;
+	mso-level-number-position:left;
+	margin-left:77.95pt;
+	text-indent:-77.95pt;}
+@list l18
+	{mso-list-id:1626229939;
+	mso-list-type:hybrid;
+	mso-list-template-ids:891555112 67698703 258796532 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l18:level1
+	{mso-level-tab-stop:69.0pt;
+	mso-level-number-position:left;
+	margin-left:69.0pt;
+	text-indent:-24.0pt;}
+@list l18:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:110.25pt;
+	mso-level-number-position:left;
+	margin-left:110.25pt;
+	text-indent:-41.25pt;}
+@list l19
+	{mso-list-id:1655330813;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1936876642 -828056156 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l19:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;}
+@list l20
+	{mso-list-id:1792819970;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1418307488 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:51.0pt;
+	mso-level-number-position:left;
+	margin-left:51.0pt;
+	text-indent:-24.0pt;
+	font-family:Wingdings;}
+@list l21
+	{mso-list-id:1843740495;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1877976898 -1400351426 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l21:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:45.0pt;
+	mso-level-number-position:left;
+	margin-left:45.0pt;
+	text-indent:-18.0pt;}
+@list l22
+	{mso-list-id:1956405305;
+	mso-list-template-ids:-1743857760;}
+@list l22:level1
+	{mso-level-text:"Q%1\.";
+	mso-level-tab-stop:87.0pt;
+	mso-level-number-position:left;
+	margin-left:87.0pt;
+	text-indent:-42.0pt;}
+@list l22:level2
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%2、;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-24.0pt;}
+@list l22:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:right;
+	margin-left:72.0pt;
+	text-indent:-24.0pt;}
+@list l22:level4
+	{mso-level-tab-stop:96.0pt;
+	mso-level-number-position:left;
+	margin-left:96.0pt;
+	text-indent:-24.0pt;}
+@list l22:level5
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%5、;
+	mso-level-tab-stop:120.0pt;
+	mso-level-number-position:left;
+	margin-left:120.0pt;
+	text-indent:-24.0pt;}
+@list l22:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:right;
+	margin-left:144.0pt;
+	text-indent:-24.0pt;}
+@list l22:level7
+	{mso-level-tab-stop:168.0pt;
+	mso-level-number-position:left;
+	margin-left:168.0pt;
+	text-indent:-24.0pt;}
+@list l22:level8
+	{mso-level-number-format:ideograph-traditional;
+	mso-level-text:%8、;
+	mso-level-tab-stop:192.0pt;
+	mso-level-number-position:left;
+	margin-left:192.0pt;
+	text-indent:-24.0pt;}
+@list l22:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:right;
+	margin-left:216.0pt;
+	text-indent:-24.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+table.MsoTableGrid
+	{mso-style-name:网格型;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-TW link=blue vlink=purple style='tab-interval:24.0pt;text-justify-trim:
+punctuation'>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoToc2><!--[if supportFields]><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>TOC \o &quot;1-3&quot; \h \z \u <span
+style='mso-element:field-separator'></span></span><![endif]--><span
+class=MsoHyperlink><span lang=EN-US style='mso-no-proof:yes'><a
+href="#_Toc304919881"><span style='font-family:"微軟正黑體","sans-serif"'>3.4.</span><span
+style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";mso-bidi-font-family:
+"Times New Roman";color:windowtext;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><span lang=EN-US>標準C Library</span></span><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span lang=EN-US>可以用嗎?</span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc304919881 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>1</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900310039003800380031000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoToc2><span class=MsoHyperlink><span lang=EN-US style='mso-no-proof:
+yes'><a href="#_Toc304919882"><span style='font-family:"微軟正黑體","sans-serif"'>3.5.</span><span
+style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";mso-bidi-font-family:
+"Times New Roman";color:windowtext;text-decoration:none;text-underline:none'><span
+style='mso-tab-count:1'>      </span></span><span lang=EN-US style='font-family:
+"微軟正黑體","sans-serif"'><span lang=EN-US>總結：嵌入式Hello World</span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-tab-count:1 dotted'>.. </span></span><!--[if supportFields]><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc304919882 \h </span><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><span
+style='color:windowtext;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'>5</span><span style='color:windowtext;display:none;
+mso-hide:screen;text-decoration:none;text-underline:none'><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003300300034003900310039003800380032000000</w:data>
+</xml><![endif]--></span><!--[if supportFields]><span style='color:windowtext;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></a></span></span><span
+lang=EN-US style='mso-bidi-font-size:11.0pt;font-family:"Calibri","sans-serif";
+mso-bidi-font-family:"Times New Roman";mso-no-proof:yes'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><!--[if supportFields]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><span style='mso-element:
+field-end'></span></span><![endif]--><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:82.35pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l3 level2 lfo23'><a name="_Toc304919881"><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>3.4.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>標準<span lang=EN-US>C Library</span>可以用嗎<span
+lang=EN-US>?</span></span></a><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『我們的硬體平台有<span lang=EN-US>LCD</span>，我想要印一些字在<span
+lang=EN-US>LCD</span>上，如果<span lang=EN-US>LCD</span>上有個數字一直在累加，這樣應該也可以證明我的程式正在執行；不知道我們的平台有沒有<span
+lang=EN-US>printf()</span>可以用？<span style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『我換個方向來回答你這個問題，<span
+lang=EN-US>compiler</span>的廠商為了吸引更多開發單位使用他們的產品，當然希望能提供標準<span lang=EN-US>C</span>的函式庫給程式設計師使用；如果你是<span
+lang=EN-US>compiler</span>的廠商，你想要怎麼實現<span lang=EN-US>printf</span>這個函數？<span
+lang=EN-US>printf()</span>有不定個數參數的問題，比較複雜，你想想如何幫助你的客戶實現<span lang=EN-US>print_character()</span>這個函數？只要印出一個字元即可。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『印一個字元還不簡單，先為每一個字元建立一個<span lang=EN-US>bitmap</span>，然後只要根據這個<span
+lang=EN-US>bitmap</span>一點一點畫在螢幕就可以<span lang=EN-US>show</span>出一個字元了。<span
+style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『你的答案有兩個問題：第一，要在“螢幕”上畫點，需要“螢幕”的驅動程式吧，你怎麼知道客戶用的是哪一種“螢幕”？第二，你有沒有想過，客戶的硬體平台是否可能根本沒有你所謂的“螢幕”？』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『這<span lang=EN-US>…</span>怎麼會這樣，我完全沒想過這樣的事情<span
+lang=EN-US>…</span><span style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『所以你還是沒捉到嵌入式系統<b
+style='mso-bidi-font-weight:normal'>多樣性</b>的精隨所在，我們可以使用同樣的<span lang=EN-US>CPU</span>，同樣的<span
+lang=EN-US>compiler</span>，來開發完全不同性質的產品，例如：<span lang=EN-US>PDA</span>和<span
+lang=EN-US>Router</span>這兩種不同性質的產品，就可能使用同一種<span lang=EN-US>CPU</span>，用同樣的開發環境開發出來的。對<span
+lang=EN-US>router</span>這樣的網路設備而言，你認為印字要印到哪裡去？』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『印到檔案裡嗎？<span style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『印到檔案是一個選擇，透過網路傳給某一台裝有特定接收程式的<span
+lang=EN-US>PC</span>，也是一種<span lang=EN-US>print out</span>的方式；但問題是，<span
+lang=EN-US>compiler</span>廠商怎麼知道你的硬體平台或應用是什麼！還有一個很容易明白的例子，<span lang=EN-US>compiler</span>廠商要如何實作動態記憶體配置函數
+<span lang=EN-US>– malloc()/free()</span>？他們根本不知道客戶的硬體版子中記憶體的狀況，包含起始位址、大小<span
+lang=EN-US>…</span>等等。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>所以針對這些和硬體相關的標準<span
+lang=EN-US>C</span>函數，<span lang=EN-US>compiler</span>廠商就各出奇招，以<span
+lang=EN-US>malloc/free</span>為例，通常會提供幾個非標準的函數，讓程式設計師設定記憶體區塊的資訊後才可正常使用<span
+lang=EN-US>malloc/free</span>；但每家<span lang=EN-US>compiler</span>廠商的作法可能都不一樣。為了避免不確定性，通常我們都會自己實現<span
+lang=EN-US>print out</span>以及記憶體配置等功能；一來容易維護，二來比較容易根據我們產品的需求做調整，特別在做效能調整時，這些底層的函數常常是瓶頸所在。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>此外標準<span lang=EN-US>C</span>中還包含了一系列檔案操作的函數<span
+lang=EN-US>(fopen</span>、<span lang=EN-US>fread</span>、<span lang=EN-US>fwrite</span>、<span
+lang=EN-US>fclose…)</span>，檔案系統的複雜度比列印或記憶體管理高的多，所以不管<span lang=EN-US>compiler</span>廠商支援到什麼程度，我們還傾向用自己的檔案系統比較有把握。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『所以像字串操作<span lang=EN-US>(strcpy</span>、<span
+lang=EN-US>strcat…)</span>這些和硬體無關的標準<span lang=EN-US>C</span>函數就可以直接用囉。<span
+style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif"'>韌體老鳥：『是的，只要你觀念清楚，什麼可以用，什麼不能用應該很容易想得出來；不過你不用擔心，<span
+lang=EN-US>compiler</span>使用手冊裡都會清楚標明使用函式庫時的注意事項。這和<span lang=EN-US>PC</span>程式開發有很大的不同，嵌入式系統初學者一定要把這個觀念弄清楚。』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>菜鳥：『我想我搞清楚狀況了，如果我要實現像<span lang=EN-US>printf()</span>這樣的函數，我至少要有我們平台的<span
+lang=EN-US>LCD</span>驅動程式，也許團隊中或<span lang=EN-US>CPU</span>廠商已經有人做好了，我可以拿來直接用；如果沒有人做過，那我就只能自己來，<span
+lang=EN-US>compiler</span>提供的函式庫是幫不上忙的。<span style='display:none;mso-hide:all'>道如何這台機器才能更新</span>』<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'>=============================================================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>本節提到了標準<span lang=EN-US>C-Library</span>，筆者想花點篇幅繼續深入探討；以下以<span
+lang=EN-US>memset() or memcpy()</span>為例，說明嵌入式系統標準函式庫的效能考量。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>現代程式開發工具的便利性與上個世紀相比簡直不可同日而語，在嵌入式系統開發領域亦是如此；尤其在<span lang=EN-US>compiler</span>與<span
+lang=EN-US>library</span>的領域，因為<span lang=EN-US>GNU C/C++</span>即其附屬函式庫品質日趨成熟，加上其開放原始碼與容易移植的特性<i
+style='mso-bidi-font-style:normal'><span lang=EN-US>(</span>移植<span lang=EN-US>compiler</span>到新的<span
+lang=EN-US>CPU</span>還是有相當程度的困難與複雜度，但<span lang=EN-US>GNU C/C++ compiler</span>已成功移植到許多平台，相關技術文件與可參考的實例相當豐富<span
+lang=EN-US>)</span></i>，所以現在幾乎所有新的<span lang=EN-US>CPU</span>幾乎都會以<span
+lang=EN-US>GNU C/C++</span>套件<span lang=EN-US>(tool-chain)</span>當作其開發工具的基礎，輔以<span
+lang=EN-US>GDB</span>當作遠端除錯工具，再以免費或相當便宜的價格提供給開發商。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>這對工程師而言算是一個好消息，一來使用不同<span
+lang=EN-US>CPU</span>開發產品時對開發工具的學習曲線減緩，而且<span lang=EN-US>GNU C/C++ tool-chain</span>附屬的標準函式庫使得程式更容易移植到不同的平台上<i
+style='mso-bidi-font-style:normal'><span lang=EN-US>(</span>其實這點帶來的好處比想像多，試想網路上有多少<span
+lang=EN-US>open source</span>的<span lang=EN-US>project</span>是基於這些標準函式庫的？這意味著這些共同技術資產都可能無痛地移植到您的專案上<span
+lang=EN-US>)</span></i>；再加上這些函式庫都是<span lang=EN-US>open source</span>的，開發者可以根據產品需求以及平台的特性自行修改之。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>但使用諸如<span
+lang=EN-US>ANSI C</span>、<span lang=EN-US>POSIX…</span>等函式庫還是得小心，舉例來說，在<span
+lang=EN-US>PC</span>上<span lang=EN-US>printf()</span>自然是輸出到螢幕上，但在嵌入式系統上可就不一定了，有的平台連“較明顯”的輸出設備<span
+lang=EN-US>(</span>如<span lang=EN-US>LCD)</span>都沒有；再例如<span lang=EN-US>malloc()/free()</span>，函式庫的開發者可麼可能會知道每一個產品的記憶體起始位置與大小？也就是說不是所有標準函式庫都可以直接用在每個平台上。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>另一個應該注意的事項是效能問題；每個平台或<span
+lang=EN-US>CPU</span>都有其特性，在許多應用上，要開發出在所有平台皆具有優良效能的演算法是不切實際的；再加上這些函式庫最開始還是以<span
+lang=EN-US>PC</span>當作平台，正確性最重要，演算法的效能並非最重要考量，<span lang=EN-US>PC</span>上的<span
+lang=EN-US>CPU</span>自然可以將其執行得飛快。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>以下舉一個實務上常常碰到的問題
+<span lang=EN-US>– memcpy(memory copy) and memset(memory setting)</span>：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>相信讀者對這兩個函數都不陌生，有的應用需要大量的記憶體搬移，此時<span
+lang=EN-US>memcpy()</span>的效能就很重要；舉例來說，一般要在<span lang=EN-US>LCD</span>上顯示字元或圖畫都是採用<span
+lang=EN-US>frame buffer</span>，亦即在記憶體中配置一塊<span lang=EN-US>video RAM</span>，<span
+lang=EN-US>LCD</span>上每一點都會對應到特定的記憶體空間，而且連續的點<span lang=EN-US>(X</span>軸<span
+lang=EN-US>)</span>在<span lang=EN-US>video RAM</span>中的記憶體位置也是連續的；每一個點所佔據的記憶體空間則依目前設定之最大色階而定，如果是黑白系統，則一個<span
+lang=EN-US>bit</span>代表一個點，<span lang=EN-US>16</span>色灰階，則<span lang=EN-US>4</span>個<span
+lang=EN-US>bit</span>代表一個點，依此類推。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>所以只要設定<span
+lang=EN-US>video RAM</span>中某一點所代表的記憶體位置，<span lang=EN-US>LCD controller</span>在下次<span
+lang=EN-US>refresh</span>時就會將這個改變反應到<span lang=EN-US>LCD</span>之上，從而達到在<span
+lang=EN-US>LCD</span>“畫圖”的效果。在這種架構中，要完成一個圖形必須一點一點逐一修改<span lang=EN-US>video RAM</span>內容，如果要畫的圖比較複雜，或者必須邊解壓縮邊畫，則會讓<span
+lang=EN-US>user</span>感覺到圖畫好像一點一點或一行一行慢慢<span lang=EN-US>show</span>出來，這種感覺相當不好；<span
+lang=EN-US>user</span>寧願等待一小段時間，然後畫面一瞬間全部刷新。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>所以實務上我們都會採用<span
+lang=EN-US>double-buffer</span>的做法，顧名思義就是兩塊<span lang=EN-US>video RAM</span>，一個代表前景<i
+style='mso-bidi-font-style:normal'><span lang=EN-US>(LCD controller</span>在<span
+lang=EN-US>refresh</span>時會將代表前景之<span lang=EN-US>video RAM</span>的內容反應到<span
+lang=EN-US>LCD panel</span>上<span lang=EN-US>)</span></i>，另一個則是背景； 繪圖函式庫會將圖畫在背景<span
+lang=EN-US>(</span>改變背景<span lang=EN-US>video RAM</span>的內容<span lang=EN-US>)</span>，等到所有的繪圖工作告一段落後，再一股腦的將整個背景<span
+lang=EN-US>video RAM(</span>或者只包含此次改變的區域<span lang=EN-US>)</span>的內容複製到前景的<span
+lang=EN-US>video RAM</span>中，等下次<span lang=EN-US>refresh</span>時，<span
+lang=EN-US>user</span>就會發現<span lang=EN-US>LCD panel</span>的內容改變了。<span
+lang=EN-US>(</span>有的<span lang=EN-US>LCD controller</span>提供隨時改變<span
+lang=EN-US>video RAM</span>位址的功能，在上述應用中就無須做記憶體搬移<span lang=EN-US>)<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>現在問題來了，在搬移整個<span
+lang=EN-US>video RAM</span>的過程中，如果效能不彰，對<span lang=EN-US>user</span>而言也會感覺整個螢幕是由上至下、一行一行的改變，此來使用背景<span
+lang=EN-US>video RAM</span>等於沒有效果；我們可以試算一下，一個<span lang=EN-US>320x240x16bit</span>、<span
+lang=EN-US>70Hz(</span>每秒刷新<span lang=EN-US>70</span>次<span lang=EN-US>)</span>的<span
+lang=EN-US>panel</span>，其<span lang=EN-US>video RAM</span>的<span lang=EN-US>size</span>為：<span
+lang=EN-US>320x240x2 = 153600Byte</span>，約<span lang=EN-US>150KB</span>的資料量要在小於<span
+lang=EN-US>1/70</span>秒內複製完畢，這使得開發者必須採用該平台上效能較佳的記憶體搬移演算法。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>最簡單的記憶體搬移方式是呼叫標準<span
+lang=EN-US>C</span>函數<span lang=EN-US> - memcpy()</span>，但這個函數的效能如何呢？每個平台有其最佳的<span
+lang=EN-US>access</span>記憶體的方式，例如從偶數位址一次搬移兩個<span lang=EN-US>byte</span>或四個<span
+lang=EN-US>byte</span>；但當初寫<span lang=EN-US>memcpy()</span>的工程師並不知道您的平台特性為何，也不能保證您傳入的一定是偶數位址，所以其實現方式相當簡單明瞭：<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'>void memcpy(void * dest,
+void * src, int n)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>// </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"微軟正黑體","sans-serif";color:red'>這個<span
+lang=EN-US>function</span>也有可能是用<span lang=EN-US>assembly</span>實現的<span
+lang=EN-US>, </span>但算法基本上一樣<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>int i ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>char *Dest = (char *)dest ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>char *Src = (char *)src ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span></span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>for(i=0;i&lt;n;i++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=SV
+style='font-family:"微軟正黑體","sans-serif";color:red;mso-ansi-language:SV'><span
+style='mso-tab-count:1'>        </span>Dest[i] = Src[i] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=SV
+style='font-family:"微軟正黑體","sans-serif";color:red;mso-ansi-language:SV'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=SV
+style='font-family:"微軟正黑體","sans-serif";color:red;mso-ansi-language:SV'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>可想而知這是效能最差的做法</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>在大部分</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>16bit or 32bit</span><span style='font-family:
+"微軟正黑體","sans-serif";color:red'>的</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>CPU</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>上</span><span style='font-family:"微軟正黑體","sans-serif";color:red;
+mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>在奇數位址上</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>access</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>一個</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>byte</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>是最浪費</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>CPU</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>運算資源的事情</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>；</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>以上述應用為例</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>假設您使用的平台在當位址為四的倍數</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>同時</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>access</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>四個</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>byte</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>的效能最佳</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>是否可以把前、後景</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>video RAM</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>的起始位址都設在四的倍數的地方</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>，</span><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>然後呼叫自己的</span><span lang=SV style='font-family:"微軟正黑體","sans-serif";
+color:red;mso-ansi-language:SV'>memory copy function</span><span
+style='font-family:"微軟正黑體","sans-serif";color:red;mso-ansi-language:SV'>？<span
+lang=SV><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=SV style='font-family:"微軟正黑體","sans-serif";color:red;mso-ansi-language:
+SV'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'>void my_memcpy(void * dest,
+void * src, int n)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>// for Video-RAM copy only<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>int i ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>long *Dest = (long *)dest ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>long *Src = (long *)src ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>for(i=0;i&lt;(n&gt;&gt;2);i++)<span
+style='mso-tab-count:2'>              </span><b style='mso-bidi-font-weight:
+normal'>// </b></span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"微軟正黑體","sans-serif";color:red'>往右移兩個<span lang=EN-US>bit </span></span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:Wingdings;
+mso-ascii-font-family:微軟正黑體;mso-fareast-font-family:微軟正黑體;mso-hansi-font-family:
+微軟正黑體;color:red;mso-char-type:symbol;mso-symbol-font-family:Wingdings'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Wingdings'>è</span></span></b><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'> n/4<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><span style='mso-tab-count:
+1'>        </span>Dest[i] = Src[i] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>在實務上，使用上面的<span lang=EN-US>function</span>速度比原來的<span lang=EN-US>memcpy()</span>快上不只四倍，<span
+lang=EN-US>LCD</span>顯示效能不彰的問題也因此解決。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>如果不能保證傳入的位址都是四的倍數，則可將<span lang=EN-US>my_memcpy()</span>作如下改善： <span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'>void
+my_memcpy2(void * dest, void * src, int n)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'><span style='mso-spacerun:yes'> </span>// general purpose memcpy()<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'><span style='mso-spacerun:yes'> </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>int i ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>long *Dest = (long *)dest ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>long *Src = (long *)src ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>if ( ( (unsigned long)Src % 4 == 0) &amp;&amp;
+((unsigned long)Dest % 4 == 0))<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>{<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'><span style='mso-tab-count:1'>        </span>// </span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>如果<span lang=EN-US>Src, Dest</span>都是四的倍數<span lang=EN-US><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><b
+style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-family:"微軟正黑體","sans-serif";
+color:red'><span style='mso-tab-count:1'>        </span>//<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'>     </span><span style='mso-tab-count:1'>      </span>for(i=0;i&lt;(n&gt;&gt;2);i++)<span
+style='mso-spacerun:yes'>            </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'>        </span><span style='mso-tab-count:1'>        </span>Dest[i]
+= Src[i] ;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'> </span>else<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'><span
+style='mso-spacerun:yes'>  </span><span style='mso-tab-count:1'>    </span>memcpy(dest,
+src, n);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";color:red'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span style='font-family:"微軟正黑體","sans-serif";
+color:red'>實務上一般狀況還是呼叫標準<span lang=EN-US>C</span>函數裡的<span lang=EN-US>memcpy()</span>，只有在對效能相當敏感的應用時才會去呼叫自己的<span
+lang=EN-US>memory copy</span>函數。讀者可以再對上面的<span lang=EN-US>memcpy()</span>函數作進一步的改良，例如這個函數可先作判斷，在起始與結束位址不全為<span
+lang=EN-US>4 byte</span>倍數的狀況下，可先單獨複製前後沒有與<span lang=EN-US>4 byte</span>對齊的<span
+lang=EN-US>byte</span>，然後中間大量的資料都是以<span lang=EN-US>4 byte</span>為單位作複製；當然這種複製的資料量要夠大，則多作上述判斷對效能提升才是有意義的。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-indent:27.0pt;mso-char-indent-count:2.25;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly'><span style='font-family:"微軟正黑體","sans-serif";color:red'>這篇牽扯了不少東西，但重點就在使用<span
+lang=EN-US>my_memcpy()</span>的<b style='mso-bidi-font-weight:normal'>時機與<span
+lang=EN-US>”</span>動機<span lang=EN-US>”</span></b>。<span lang=EN-US>Performance</span>調整是每個嵌入式系統工程師的必經歷程，當碰上效能問題時，您可能會後悔當初資料結構、演算法等課沒有認真修；在電子產品開發領域有個很嚴肅的<span
+lang=EN-US>”</span>規範<span lang=EN-US>”</span>：<b style='mso-bidi-font-weight:
+normal'>不能接受的效能和結果錯誤是等價的，</b><span lang=EN-US>PC</span>上的<span lang=EN-US>user</span>可以忍受漏斗轉個半天，但絕對無法忍受電子雞變成慢動作。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+line-height:18.0pt;mso-line-height-rule:exactly'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-left:82.35pt;text-indent:-54.0pt;line-height:18.0pt;
+mso-line-height-rule:exactly;mso-list:l3 level2 lfo23'><a name="_Toc304919882"><![if !supportLists]><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif";mso-bidi-font-family:微軟正黑體'><span
+style='mso-list:Ignore'>3.5.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-family:"微軟正黑體","sans-serif"'>總結：嵌入式<span lang=EN-US>Hello World</span></span></a><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>坊間嵌入式系統的書籍對實作技術都是點到即止或避而不談，致使讀者有見山不見林之憾，讀完全書還是對開發工作沒有半點頭緒。本章試著描述要寫作一個最簡單的嵌入式系統程式必須具備的基本知識，這應該是讀者看過最麻煩的“<span
+lang=EN-US>Hello World</span>”程式了。嵌入式系統最令人頭痛的地方就是多樣性，雖然沒有標準的<span lang=EN-US>CPU</span>和開發工具，但觀念和開發流程絕對是一致的！希望讀者可以反覆的閱讀本章的範例，不要拘泥在技術的細節上，先把嵌入式系統程式的開發與運作流程完完全全的弄清楚。<span
+lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-justify:inter-ideograph;
+text-indent:27.0pt;mso-char-indent-count:2.25;line-height:18.0pt;mso-line-height-rule:
+exactly;mso-layout-grid-align:none;text-autospace:none'><span style='font-family:
+"微軟正黑體","sans-serif"'>真正的電子產品開發比本章的範例程式複雜百倍，以下的章節會逐一幫讀者補上“<span lang=EN-US>Hello
+World</span>”之外的技術環節。<span lang=EN-US><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:18.0pt;mso-line-height-rule:exactly'><span
+lang=EN-US style='font-family:"微軟正黑體","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
