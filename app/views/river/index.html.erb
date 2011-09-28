@@ -57,14 +57,15 @@
     </span>
   </div><!-- #header -->
 
+  <!--Travel through time by dragging the timeline or the slider below. Click on any event to see more information.-->
+
   <div id="time_river">
+    <% @rivers.each do |river| %>
     <div class="river">
-    <%= render :partial => 'river/show_river_content', :locals => {:river => @river} %>
+      <%= render :partial => 'river/show_river_content', :locals => {:river => river} %>
     </div>
-    <hr>
-    <div class="river">
-    <%= render :partial => 'river/show_river_content', :locals => {:river => @river} %>
-    </div>
+    <div style="clear:both; padding: 15px"></div>
+    <% end %>
   </div>  <!-- #time_river -->
 
   <div id="news_footer">

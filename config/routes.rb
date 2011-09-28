@@ -76,6 +76,8 @@ HeyGoTimes::Application.routes.draw do
   post "news/comment"
   post "news/share"
   resources :news
+
+  get "river/select_event"
   resources :river
 
   #resources :search do

@@ -1,8 +1,9 @@
 class RiverController < ApplicationController
 
   def index
-    @river_count = 2
-    @river = River.find(1)
+
+    @rivers = River.all
+    @river_count = @rivers.count
     #@news = News.get_all_news_today
   end
 
@@ -43,6 +44,39 @@ class RiverController < ApplicationController
       news.river_event = true
       news.save
     end
+  end
+
+  def select_event
+    # - must check reviewer's id (prevent normal user using this function)
+    #
+    if !(admin_logged_in?)
+      render  :inline => "You got no right to enter this page!"
+      return
+    end
+
+    @ret_msg = "Usage: root_url/river/select_event?id=12345&r_id=1"
+
+    if params[:id] != nil
+
+      # set daily_news flag for news with decided ID
+      begin
+        news = News.find(Integer(params[:id]))
+        news.river_event = true
+        news.save
+
+        river = River.find(Integer(params[:r_id]))
+        event = RiverEvent.new
+        event.news = news
+        event.event_dt = news.created_at
+        event.river = river
+        event.save
+
+        @ret_msg = "River event selected - river: " + river.name
+      rescue Exception => e
+        @ret_msg = ("ID " + params[:id] + " not found")
+      end
+    end
+
   end
 
 end # end of RiverController
