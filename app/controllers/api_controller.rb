@@ -172,7 +172,7 @@ class ApiController < ApplicationController
     @news.save
 
     if (News.count > @@max_news)
-      outdated_news = News.where(:news=>{:special_flag => false,:daily_news => false}).order('news.created_at').first
+      outdated_news = News.where(:news=>{:special_flag => false,:river_event => false}).order('news.created_at').first
       News.destroy(outdated_news.id)
       puts 'removed news: '+outdated_news.id.to_s
     end
