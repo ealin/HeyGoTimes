@@ -64,13 +64,6 @@ Thread.start{
 
 
 
-      ############  TW-FREE   ############
-require './tw_free.rb'
-
-Thread.start{
- get_news_from_tw_free(m,@sleep_period)
-}
-
 
 
 require './tw_others.rb'
@@ -79,15 +72,21 @@ Thread.start{
     get_tw_other_news(m,@sleep_period)
 }
 
+      ############  TW-UDN   ############
+require './tw_udn.rb'
+
+Thread.start{
+ get_news_from_tw_udn(m,@sleep_period)
+}
 
 
 
   ############  TW-Yahoo-beta   ############
-require './tw_yahoo_beta.rb'
+#require './tw_yahoo_beta.rb'
 
-Thread.start{
-  get_news_from_tw_yahoo_beta(m,@sleep_period)
-}
+#Thread.start{
+#  get_news_from_tw_yahoo_beta(m,@sleep_period)
+#}
 
 
 
@@ -121,12 +120,13 @@ Thread.start{
 }
 
 
-      ############  TW-UDN   ############
-require './tw_udn.rb'
+      ############  TW-FREE   ############
+require './tw_free.rb'
 
 #Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
+ get_news_from_tw_free(m,@sleep_period)
 #}
+
 
 
 
