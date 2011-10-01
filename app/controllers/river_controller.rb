@@ -2,7 +2,7 @@ class RiverController < ApplicationController
 
   def index
 
-    @rivers = River.all
+    @rivers = River.find(:all, :order=>'position')
     @river_count = @rivers.count
     #@news = News.get_all_news_today
   end

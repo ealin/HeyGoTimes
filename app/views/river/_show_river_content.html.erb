@@ -1,6 +1,6 @@
 
 <% if river != nil %>
-  <% events = river.river_events.order('id') %>
+  <% events = river.river_events.order('event_dt DESC') %>
   <ul class="tr-events">
   <li class="welcome">
     <h2><%= river.name %></h2>
