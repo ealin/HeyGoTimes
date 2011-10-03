@@ -1,7 +1,7 @@
 zh:
 
   HeyGoTimes: "黑狗日报"
-  slogan: "您的新闻筛选属性： "
+  slogan: "新闻筛选属性： "
 
   DailyNews: "每日一篇"
   Home: "首页"
@@ -30,7 +30,8 @@ zh:
 
   search_hint: "快速筛选："
   search_button: "开始搜寻"
-  
+  default_title: "本日焦点新闻 - "
+
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------

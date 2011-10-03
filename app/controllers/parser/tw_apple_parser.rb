@@ -62,8 +62,8 @@ def parse_tw_apple(url)
     if str.include? 'summary'
       content = data.content
 
-      if content.length > 420
-        content = content.slice(0,417)
+      if content.length > 210
+        content = content.slice(0,208)
         content += '...'
 
       end

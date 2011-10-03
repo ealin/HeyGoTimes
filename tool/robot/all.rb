@@ -73,11 +73,11 @@ Thread.start{
 }
 
       ############  TW-UDN   ############
-require './tw_udn.rb'
+#require './tw_udn.rb'
 
-Thread.start{
- get_news_from_tw_udn(m,@sleep_period)
-}
+#Thread.start{
+# get_news_from_tw_udn(m,@sleep_period)
+#}
 
 
 
