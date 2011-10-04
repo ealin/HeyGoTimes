@@ -1,7 +1,7 @@
 zh_tw:
 
   HeyGoTimes: "黑狗日報"
-  slogan: "您的新聞篩選條件： "
+  slogan: "新聞篩選條件： "
 
   DailyNews: "每日一篇"
   Home: "首頁"
@@ -30,6 +30,8 @@ zh_tw:
   
   search_hint: "快速篩選："
   search_button: "開始搜尋"
+
+  default_title: "本日焦點新聞 - "
 
   #----------------------------------------
   # name of each page(controller/view)

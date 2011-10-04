@@ -33,7 +33,7 @@ en:
   search_hint: "Filter News："
   search_button: "Search"
   
-  
+  default_title: "Focus News Today - "
   #----------------------------------------
   # name of each page(controller/view)
   #----------------------------------------

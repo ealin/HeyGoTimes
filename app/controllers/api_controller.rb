@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class ApiController < ApplicationController
-  @@max_news = 30000
+  @@max_news = 35000
 
   if ENV['RAILS_ENV'] != 'development'
     @@host = "www.heygotimes.com"

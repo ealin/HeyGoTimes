@@ -38,6 +38,13 @@ class PaperController < NewsController
       session[:news_type] = 'rank'
     end
 
+    if params[:reload] == nil
+      # reload page => default tag = FOCUS
+      session[:news_type] = 'latest'
+      session[:filter_tags] = 'Focus'
+    end
+
+
     session[:friend_ranking_mode] = false
 
     session[:news_load_time] = Time.now
@@ -68,8 +75,19 @@ class PaperController < NewsController
     if app_mode == nil
       init_filter_setting()
 
-      # this function would use data in session, so it must be called after init_filter_setting()
-      get_paper_title_info()
+      if params[:reload] == nil
+        if session[:default_locale] != nil && session[:default_locale] == "en"
+          @newspaper_title = t(:default_title) + (Time.now).in_time_zone("Central Time (US & Canada)").strftime("%Y/%m/%d")
+        else
+          @newspaper_title = t(:default_title) + (Time.now).in_time_zone("Taipei").strftime("%Y/%m/%d")
+        end
+
+
+
+      else
+        # this function would use data in session, so it must be called after init_filter_setting()
+        get_paper_title_info()
+      end
 
       sysdata = get_system_data()
       if (session[:logged_in] == true && session[:id] != nil)
@@ -384,14 +402,14 @@ class PaperController < NewsController
     counter = 0
     @newspaper_title = t(:slogan)
     @areas.each do |area|
-      if session[:filter_area].include?(area.name)
+      if session[:filter_area] != nil && session[:filter_area].include?(area.name)
         @newspaper_title += (" " + t(area.name.to_sym) + "/")
       end
     end
 
 
     @tags.each do |tag|
-      if session[:filter_tags].include?(tag.name)
+      if session[:filter_tags] != nil && session[:filter_tags].include?(tag.name)
         @newspaper_title += (t(tag.name.to_sym) + "/")
         counter += 1
         if counter >= 4
@@ -567,7 +585,9 @@ class PaperController < NewsController
        end
     end
 
-    redirect_to root_url
+    url = root_url + '?reload=no'
+
+    redirect_to url
 
     #logger.debug "[logging]Filter setting saved in session!"
 
