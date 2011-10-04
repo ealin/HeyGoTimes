@@ -4,6 +4,7 @@
   <meta property="og:url" content="<%= root_url %>"/>
   <meta property="og:image" content="<%= root_url + "images/HeyGoTimes_logo.png" %> "/>
   <link type='text/css' href='/stylesheets/menu.css' rel='stylesheet' media='screen' />
+  <link type='text/css' href='/stylesheets/dropdown.css' rel='stylesheet' media='screen' />
   <script type='text/javascript' src='/javascripts/menu.js'></script>
 
   <script type="text/javascript">
@@ -244,9 +245,62 @@
            changePaperType(currType, subType);
       });
 
+      $(".dropdown dt a").unbind('click').click(function() {
+
+        // Change the behaviour of onclick states for links within the menu.
+        var toggleId = "#" + this.id.replace(/^link/,"ul");
+
+        // Hides all other menus depending on JQuery id assigned to them
+        $(".dropdown dd ul").not(toggleId).hide();
+
+        //Only toggles the menu we want since the menu could be showing and we want to hide it.
+        $(toggleId).toggle();
+
+        //Change the css class on the menu header to show the selected class.
+        if($(toggleId).css("display") == "none"){
+          $(this).removeClass("selected");
+        }else{
+          $(this).addClass("selected");
+        }
+
+      });
+
+      $(".dropdown dd ul li a").unbind('click').click(function() {
+
+        // This is the default behaviour for all links within the menus
+        var text = $(this).html();
+        $(".dropdown dt a span").html(text);
+        $(".dropdown dd ul").hide();
+      });
+
+      $(document).bind('click', function(e) {
+
+        // Lets hide the menu when the page is clicked anywhere but the menu.
+        var $clicked = $(e.target);
+        if (! $clicked.parents().hasClass("dropdown")){
+            $(".dropdown dd ul").hide();
+        $(".dropdown dt a").removeClass("selected");
+      }
+
+      });
+
       loading_animate(false);
 
     });
+
+    // id: news_id
+    // r_id: river_id
+    function set_river_event(id, r_id)
+    {
+      $.ajax({
+        type: "POST",
+        url: "/river/select_event",
+        data: "id="+id+"&r_id="+r_id,
+        complete: function(){
+          alert("complete");
+        }
+      });
+    }
 
     function set_default_locale(new_locale)
     {

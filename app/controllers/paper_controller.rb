@@ -75,6 +75,9 @@ class PaperController < NewsController
       if (session[:logged_in] == true && session[:id] != nil)
          user = User.find(session[:id])
 
+         if admin_logged_in?
+           @rivers = River.find(:all, :order=>'position')
+         end
 
          # check site system notice
          if user.last_sys_notification == nil || user.last_sys_notification < sysdata.last_system_notice
